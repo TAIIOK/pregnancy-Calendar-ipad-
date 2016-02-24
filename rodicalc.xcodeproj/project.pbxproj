@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
+		8E90A4151C7DF093001F3A07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4141C7DF093001F3A07 /* ViewController.swift */; };
+		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
+		8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */; };
+		8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A41C1C7DF093001F3A07 /* Assets.xcassets */; };
+		8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */; };
+		8E90A42B1C7DF093001F3A07 /* rodicalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A42A1C7DF093001F3A07 /* rodicalcTests.swift */; };
+		8E90A4361C7DF093001F3A07 /* rodicalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E90A4271C7DF093001F3A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E90A4071C7DF093001F3A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E90A40E1C7DF093001F3A07;
+			remoteInfo = rodicalc;
+		};
+		8E90A4321C7DF093001F3A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E90A4071C7DF093001F3A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E90A40E1C7DF093001F3A07;
+			remoteInfo = rodicalc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8E90A40F1C7DF093001F3A07 /* rodicalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rodicalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8E90A4141C7DF093001F3A07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8E90A41A1C7DF093001F3A07 /* rodicalc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rodicalc.xcdatamodel; sourceTree = "<group>"; };
+		8E90A41C1C7DF093001F3A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E90A41F1C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E90A4211C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A42A1C7DF093001F3A07 /* rodicalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcTests.swift; sourceTree = "<group>"; };
+		8E90A42C1C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcUITests.swift; sourceTree = "<group>"; };
+		8E90A4371C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E90A40C1C7DF093001F3A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A4231C7DF093001F3A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A42E1C7DF093001F3A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E90A4061C7DF093001F3A07 = {
+			isa = PBXGroup;
+			children = (
+				8E90A4111C7DF093001F3A07 /* rodicalc */,
+				8E90A4291C7DF093001F3A07 /* rodicalcTests */,
+				8E90A4341C7DF093001F3A07 /* rodicalcUITests */,
+				8E90A4101C7DF093001F3A07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E90A4101C7DF093001F3A07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E90A40F1C7DF093001F3A07 /* rodicalc.app */,
+				8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */,
+				8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
+			isa = PBXGroup;
+			children = (
+				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
+				8E90A4141C7DF093001F3A07 /* ViewController.swift */,
+				8E90A4161C7DF093001F3A07 /* Main.storyboard */,
+				8E90A41C1C7DF093001F3A07 /* Assets.xcassets */,
+				8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */,
+				8E90A4211C7DF093001F3A07 /* Info.plist */,
+				8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */,
+			);
+			path = rodicalc;
+			sourceTree = "<group>";
+		};
+		8E90A4291C7DF093001F3A07 /* rodicalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E90A42A1C7DF093001F3A07 /* rodicalcTests.swift */,
+				8E90A42C1C7DF093001F3A07 /* Info.plist */,
+			);
+			path = rodicalcTests;
+			sourceTree = "<group>";
+		};
+		8E90A4341C7DF093001F3A07 /* rodicalcUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */,
+				8E90A4371C7DF093001F3A07 /* Info.plist */,
+			);
+			path = rodicalcUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E90A40E1C7DF093001F3A07 /* rodicalc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalc" */;
+			buildPhases = (
+				8E90A40B1C7DF093001F3A07 /* Sources */,
+				8E90A40C1C7DF093001F3A07 /* Frameworks */,
+				8E90A40D1C7DF093001F3A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rodicalc;
+			productName = rodicalc;
+			productReference = 8E90A40F1C7DF093001F3A07 /* rodicalc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E90A4251C7DF093001F3A07 /* rodicalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcTests" */;
+			buildPhases = (
+				8E90A4221C7DF093001F3A07 /* Sources */,
+				8E90A4231C7DF093001F3A07 /* Frameworks */,
+				8E90A4241C7DF093001F3A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E90A4281C7DF093001F3A07 /* PBXTargetDependency */,
+			);
+			name = rodicalcTests;
+			productName = rodicalcTests;
+			productReference = 8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8E90A4301C7DF093001F3A07 /* rodicalcUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcUITests" */;
+			buildPhases = (
+				8E90A42D1C7DF093001F3A07 /* Sources */,
+				8E90A42E1C7DF093001F3A07 /* Frameworks */,
+				8E90A42F1C7DF093001F3A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E90A4331C7DF093001F3A07 /* PBXTargetDependency */,
+			);
+			name = rodicalcUITests;
+			productName = rodicalcUITests;
+			productReference = 8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E90A4071C7DF093001F3A07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = deck;
+				TargetAttributes = {
+					8E90A40E1C7DF093001F3A07 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					8E90A4251C7DF093001F3A07 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 8E90A40E1C7DF093001F3A07;
+					};
+					8E90A4301C7DF093001F3A07 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 8E90A40E1C7DF093001F3A07;
+					};
+				};
+			};
+			buildConfigurationList = 8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "rodicalc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E90A4061C7DF093001F3A07;
+			productRefGroup = 8E90A4101C7DF093001F3A07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E90A40E1C7DF093001F3A07 /* rodicalc */,
+				8E90A4251C7DF093001F3A07 /* rodicalcTests */,
+				8E90A4301C7DF093001F3A07 /* rodicalcUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E90A40D1C7DF093001F3A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */,
+				8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */,
+				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A4241C7DF093001F3A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A42F1C7DF093001F3A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E90A40B1C7DF093001F3A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */,
+				8E90A4151C7DF093001F3A07 /* ViewController.swift in Sources */,
+				8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A4221C7DF093001F3A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E90A42B1C7DF093001F3A07 /* rodicalcTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E90A42D1C7DF093001F3A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E90A4361C7DF093001F3A07 /* rodicalcUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E90A4281C7DF093001F3A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E90A40E1C7DF093001F3A07 /* rodicalc */;
+			targetProxy = 8E90A4271C7DF093001F3A07 /* PBXContainerItemProxy */;
+		};
+		8E90A4331C7DF093001F3A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E90A40E1C7DF093001F3A07 /* rodicalc */;
+			targetProxy = 8E90A4321C7DF093001F3A07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E90A4161C7DF093001F3A07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E90A4171C7DF093001F3A07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E90A41F1C7DF093001F3A07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E90A4381C7DF093001F3A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		8E90A4391C7DF093001F3A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E90A43B1C7DF093001F3A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = rodicalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8E90A43C1C7DF093001F3A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = rodicalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8E90A43E1C7DF093001F3A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = rodicalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rodicalc.app/rodicalc";
+			};
+			name = Debug;
+		};
+		8E90A43F1C7DF093001F3A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = rodicalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rodicalc.app/rodicalc";
+			};
+			name = Release;
+		};
+		8E90A4411C7DF093001F3A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = rodicalcUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = rodicalc;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8E90A4421C7DF093001F3A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = rodicalcUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = rodicalc;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "rodicalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E90A4381C7DF093001F3A07 /* Debug */,
+				8E90A4391C7DF093001F3A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E90A43B1C7DF093001F3A07 /* Debug */,
+				8E90A43C1C7DF093001F3A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E90A43E1C7DF093001F3A07 /* Debug */,
+				8E90A43F1C7DF093001F3A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E90A4411C7DF093001F3A07 /* Debug */,
+				8E90A4421C7DF093001F3A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8E90A41A1C7DF093001F3A07 /* rodicalc.xcdatamodel */,
+			);
+			currentVersion = 8E90A41A1C7DF093001F3A07 /* rodicalc.xcdatamodel */;
+			path = rodicalc.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8E90A4071C7DF093001F3A07 /* Project object */;
+}
