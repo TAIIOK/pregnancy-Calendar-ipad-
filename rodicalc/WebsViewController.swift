@@ -11,14 +11,14 @@ import WebKit
 
 class WebsViewController: UIViewController {
 
+    @IBOutlet weak var btnReconect: UIButton!
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var web: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title=items[id]
-        //let myWebView:UIWebView = UIWebView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
         web.loadRequest(NSURLRequest(URL: NSURL(string: urls[id])!))
         self.view.addSubview(web)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

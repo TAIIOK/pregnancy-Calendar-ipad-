@@ -26,12 +26,13 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         choosedSegment = index
         self.table.reloadData()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         table.delegate = self
         table.dataSource = self
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackOpaque
         //self.navigationItem.title = choosedSegment ? boyNames[choosedName] : girlNames[choosedName]
         //self.navigationController?.navigationBar.topItem?.title = ""

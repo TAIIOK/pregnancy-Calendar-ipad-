@@ -65,6 +65,7 @@ class NamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.selectedBackgroundView=getCustomBackgroundView()
+        cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
         return indexPath
     }
     

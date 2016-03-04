@@ -18,7 +18,8 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     var lineChart: LineChart!
     var label = UILabel()
     var label1 = UILabel()
-    
+    var views: [String: AnyObject] = [:]
+
     let IMT0: [CGFloat] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
     let IMT1: [CGFloat] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
     let IMT2: [CGFloat] = [0.5,0.5,0.6,0.7,0.8,0.9,1.0,1.4,2.3,2.9,3.4,3.9,5.0,5.4,5.9,6.4,7.3,7.9,8.6,9.1]
@@ -37,17 +38,16 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             drawGraph()
         }
         else{
-            var lbl = UILabel()
             let text = "Для отображения графика необходимо указать рост"
+            let lbl = UILabel()
             lbl.translatesAutoresizingMaskIntoConstraints = false
             lbl.text = text
             lbl.textColor=UIColor.blueColor()
             lbl.textAlignment = NSTextAlignment.Center
             self.view.addSubview(lbl)
-            var views: [String: AnyObject] = [:]
-            views["label"] = lbl
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-300-[label]", options: [], metrics: nil, views: views))
+            views["lbl"] = lbl
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[lbl]-|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-300-[lbl]", options: [], metrics: nil, views: views))
         }
     }
 
@@ -59,8 +59,6 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     func drawGraph(){
-        var views: [String: AnyObject] = [:]
-        
         label.text = "                  Фактический вес"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.Left
@@ -91,24 +89,28 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         
         var imt=ves*1000.0
         let x: Double = rost*rost
-        imt = imt/x
-        //var yLabels: [String] = ["\(rost)"]
+        if(x>0){
+            imt = imt/x}
+        else{
+            imt = 0
+        }
+        
         for (var i=0; i<20;i++){
-            if(mass==0){data1.append(0)
+            if(mass==0){
+                data1.append(0)
             }
             else{
                 if(imt < 18.5){
                     data1.append(b+IMT0[i])
                 }
-                else if (imt>=25){
-                    data.append(b+IMT0[i])
+                else if (imt >= 25){
+                    data1.append(b+IMT2[i])
                 }
                 else{
-                    data1.append(b+IMT0[i])
+                    data1.append(b+IMT1[i])
                 }
             }
             data.append(a+IMT2[i])
-            //yLabels.append("\(data[i])")
         }
         
         // simple line with custom x axis labels
@@ -129,6 +131,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         
         lineChart.translatesAutoresizingMaskIntoConstraints = false
         lineChart.delegate = self
+    
         self.view.addSubview(lineChart)
         views["chart"] = lineChart
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
@@ -186,32 +189,39 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         return firstComponent[self.pickerView.selectedRowInComponent(0)]*100 + secondComponent[self.pickerView.selectedRowInComponent(1)]*10 + thirdComponent[self.pickerView.selectedRowInComponent(2)]
     }
     
-    @available(iOS 8.0, *)
     func doneButtonTouched() {
         self.pickerViewTextField.resignFirstResponder()
         growth = getGrowthFromPickerView()
+
         self.navigationItem.rightBarButtonItem?.title = "\(growth) см"
         saveGrowthToPlist(growth)
         setupPickerViewValues()
         
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
-        
-        //Create and add the Cancel action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+        if #available(iOS 8.0, *) {
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
             //Do some stuff
-        }
-        actionSheetController.addAction(cancelAction)
-        //Create and an option action
-        let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
+                let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+                self.splitViewController?.showDetailViewController(graph!, sender: self)
+            }
+            actionSheetController.addAction(cancelAction)
+            //Create and an option action
+            let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
             //Do some other stuff
-            let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
-            self.splitViewController?.showDetailViewController(notes!, sender: self)
-        }
-        actionSheetController.addAction(nextAction)
+                let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
+                self.splitViewController?.showDetailViewController(notes!, sender: self)
+            }
+            actionSheetController.addAction(nextAction)
         
-        //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+
     }
     
     func cancelButtonTouched() {
