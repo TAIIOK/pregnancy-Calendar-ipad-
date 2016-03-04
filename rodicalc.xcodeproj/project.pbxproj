@@ -7,14 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E01775A1C843819004E7A46 /* WebsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0177591C843819004E7A46 /* WebsViewController.swift */; };
+		8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */; };
+		8E2538F11C84746D00B3C54E /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F01C84746D00B3C54E /* Plist.swift */; };
+		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
+		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
+		8E2538FD1C848E9000B3C54E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */; };
+		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
+		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
+		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
+		8E6D50391C7F056200878957 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50381C7F056200878957 /* VideosViewController.swift */; };
+		8E6D503B1C7F05AA00878957 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D503A1C7F05AA00878957 /* NotesViewController.swift */; };
+		8E6D503D1C7F05D700878957 /* ForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D503C1C7F05D700878957 /* ForumTableViewController.swift */; };
+		8E6D503F1C7F063A00878957 /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */; };
+		8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50401C7F068000878957 /* CalendarViewController.swift */; };
+		8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50421C7F06BE00878957 /* BuyViewController.swift */; };
+		8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50441C7F06D300878957 /* ExportViewController.swift */; };
 		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
-		8E90A4151C7DF093001F3A07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4141C7DF093001F3A07 /* ViewController.swift */; };
 		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
 		8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */; };
 		8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A41C1C7DF093001F3A07 /* Assets.xcassets */; };
 		8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */; };
 		8E90A42B1C7DF093001F3A07 /* rodicalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A42A1C7DF093001F3A07 /* rodicalcTests.swift */; };
 		8E90A4361C7DF093001F3A07 /* rodicalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */; };
+		8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */; };
+		8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */; };
+		8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4521C7DF381001F3A07 /* NamesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +53,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E0177591C843819004E7A46 /* WebsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsViewController.swift; sourceTree = "<group>"; };
+		8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		8E2538F01C84746D00B3C54E /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
+		8E2538F21C84779F00B3C54E /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
+		8E2538F91C848E5100B3C54E /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		8E2538FB1C848E9000B3C54E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
+		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
+		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		8E6D50381C7F056200878957 /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		8E6D503A1C7F05AA00878957 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		8E6D503C1C7F05D700878957 /* ForumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableViewController.swift; sourceTree = "<group>"; };
+		8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
+		8E6D50401C7F068000878957 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		8E6D50421C7F06BE00878957 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		8E6D50441C7F06D300878957 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
 		8E90A40F1C7DF093001F3A07 /* rodicalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rodicalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E90A4141C7DF093001F3A07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E90A41A1C7DF093001F3A07 /* rodicalc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rodicalc.xcdatamodel; sourceTree = "<group>"; };
 		8E90A41C1C7DF093001F3A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +83,10 @@
 		8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcUITests.swift; sourceTree = "<group>"; };
 		8E90A4371C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E90A4481C7DF12E001F3A07 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
+		8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
+		8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
+		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2538F41C848D9200B3C54E /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				8E2538F91C848E5100B3C54E /* LineChart.swift */,
+			);
+			name = LineChart;
+			sourceTree = "<group>";
+		};
 		8E90A4061C7DF093001F3A07 = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +145,31 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				8E2538F41C848D9200B3C54E /* LineChart */,
+				8E90A4471C7DF102001F3A07 /* SWRevealViewController */,
 				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
-				8E90A4141C7DF093001F3A07 /* ViewController.swift */,
+				8E2538F01C84746D00B3C54E /* Plist.swift */,
 				8E90A4161C7DF093001F3A07 /* Main.storyboard */,
 				8E90A41C1C7DF093001F3A07 /* Assets.xcassets */,
 				8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */,
 				8E90A4211C7DF093001F3A07 /* Info.plist */,
+				8E2538F21C84779F00B3C54E /* userInfo.plist */,
 				8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */,
+				8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */,
+				8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */,
+				8E90A4521C7DF381001F3A07 /* NamesViewController.swift */,
+				8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */,
+				8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */,
+				8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */,
+				8E6D50361C7F053B00878957 /* PhotosViewController.swift */,
+				8E6D50381C7F056200878957 /* VideosViewController.swift */,
+				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
+				8E6D503C1C7F05D700878957 /* ForumTableViewController.swift */,
+				8E0177591C843819004E7A46 /* WebsViewController.swift */,
+				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
+				8E6D50401C7F068000878957 /* CalendarViewController.swift */,
+				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
+				8E6D50441C7F06D300878957 /* ExportViewController.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -126,6 +190,16 @@
 				8E90A4371C7DF093001F3A07 /* Info.plist */,
 			);
 			path = rodicalcUITests;
+			sourceTree = "<group>";
+		};
+		8E90A4471C7DF102001F3A07 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8E2538FB1C848E9000B3C54E /* SWRevealViewController.h */,
+				8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */,
+				8E90A4481C7DF12E001F3A07 /* rodicalc-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +309,7 @@
 				8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */,
 				8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */,
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
+				8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +334,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
+				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
 				8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */,
-				8E90A4151C7DF093001F3A07 /* ViewController.swift in Sources */,
 				8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */,
+				8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */,
+				8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */,
+				8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */,
+				8E2538FD1C848E9000B3C54E /* SWRevealViewController.m in Sources */,
+				8E6D503D1C7F05D700878957 /* ForumTableViewController.swift in Sources */,
+				8E6D503B1C7F05AA00878957 /* NotesViewController.swift in Sources */,
+				8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */,
+				8E2538F11C84746D00B3C54E /* Plist.swift in Sources */,
+				8E6D503F1C7F063A00878957 /* ExperienceViewController.swift in Sources */,
+				8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */,
+				8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */,
+				8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */,
+				8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */,
+				8E6D50391C7F056200878957 /* VideosViewController.swift in Sources */,
+				8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */,
+				8E01775A1C843819004E7A46 /* WebsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,10 +495,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = rodicalc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -414,10 +510,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = rodicalc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
@@ -488,6 +588,7 @@
 				8E90A43C1C7DF093001F3A07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +597,7 @@
 				8E90A43F1C7DF093001F3A07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +606,7 @@
 				8E90A4421C7DF093001F3A07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
