@@ -27,7 +27,9 @@ class NamesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
+        //self.tableView(self.tableView, didSelectRowAtIndexPath: rowToSelect)
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }

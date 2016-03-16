@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		8E01775A1C843819004E7A46 /* WebsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0177591C843819004E7A46 /* WebsViewController.swift */; };
 		8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */; };
+		8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */; };
+		8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */; };
+		8E20C8B61C998F430003C1CF /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20C8B31C998F430003C1CF /* CustomCollectionViewLayout.swift */; };
+		8E20C8B91C998F520003C1CF /* NumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20C8B71C998F520003C1CF /* NumberCollectionViewCell.swift */; };
+		8E20C8BA1C998F520003C1CF /* NumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E20C8B81C998F520003C1CF /* NumberCollectionViewCell.xib */; };
 		8E2538F11C84746D00B3C54E /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F01C84746D00B3C54E /* Plist.swift */; };
 		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
 		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
-		8E2538FD1C848E9000B3C54E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */; };
 		8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4FACBF1C89CADF003405D0 /* MapKit.framework */; };
 		8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
@@ -25,6 +29,7 @@
 		8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50401C7F068000878957 /* CalendarViewController.swift */; };
 		8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50421C7F06BE00878957 /* BuyViewController.swift */; };
 		8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50441C7F06D300878957 /* ExportViewController.swift */; };
+		8E7553741C900C5300472DF0 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7553731C900C5300472DF0 /* SafariServices.framework */; };
 		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
 		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
 		8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */; };
@@ -57,11 +62,14 @@
 /* Begin PBXFileReference section */
 		8E0177591C843819004E7A46 /* WebsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsViewController.swift; sourceTree = "<group>"; };
 		8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCollectionViewCell.xib; sourceTree = "<group>"; };
+		8E20C8B31C998F430003C1CF /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		8E20C8B71C998F520003C1CF /* NumberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E20C8B81C998F520003C1CF /* NumberCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		8E2538F01C84746D00B3C54E /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		8E2538F21C84779F00B3C54E /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
 		8E2538F91C848E5100B3C54E /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		8E2538FB1C848E9000B3C54E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8E4FACBF1C89CADF003405D0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +82,7 @@
 		8E6D50401C7F068000878957 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8E6D50421C7F06BE00878957 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		8E6D50441C7F06D300878957 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		8E7553731C900C5300472DF0 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		8E90A40F1C7DF093001F3A07 /* rodicalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rodicalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +96,6 @@
 		8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcUITests.swift; sourceTree = "<group>"; };
 		8E90A4371C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E90A4481C7DF12E001F3A07 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7553741C900C5300472DF0 /* SafariServices.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +128,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E20C8B01C998F130003C1CF /* Custom Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				8E20C8B71C998F520003C1CF /* NumberCollectionViewCell.swift */,
+				8E20C8B81C998F520003C1CF /* NumberCollectionViewCell.xib */,
+				8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */,
+				8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */,
+				8E20C8B31C998F430003C1CF /* CustomCollectionViewLayout.swift */,
+			);
+			name = "Custom Layouts";
+			sourceTree = "<group>";
+		};
 		8E2538F41C848D9200B3C54E /* LineChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +151,7 @@
 		8E90A4061C7DF093001F3A07 = {
 			isa = PBXGroup;
 			children = (
+				8E7553731C900C5300472DF0 /* SafariServices.framework */,
 				8E4FACBF1C89CADF003405D0 /* MapKit.framework */,
 				8E90A4111C7DF093001F3A07 /* rodicalc */,
 				8E90A4291C7DF093001F3A07 /* rodicalcTests */,
@@ -151,8 +173,8 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				8E20C8B01C998F130003C1CF /* Custom Layouts */,
 				8E2538F41C848D9200B3C54E /* LineChart */,
-				8E90A4471C7DF102001F3A07 /* SWRevealViewController */,
 				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
 				8E2538F01C84746D00B3C54E /* Plist.swift */,
 				8E90A4161C7DF093001F3A07 /* Main.storyboard */,
@@ -197,16 +219,6 @@
 				8E90A4371C7DF093001F3A07 /* Info.plist */,
 			);
 			path = rodicalcUITests;
-			sourceTree = "<group>";
-		};
-		8E90A4471C7DF102001F3A07 /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8E2538FB1C848E9000B3C54E /* SWRevealViewController.h */,
-				8E2538FC1C848E9000B3C54E /* SWRevealViewController.m */,
-				8E90A4481C7DF12E001F3A07 /* rodicalc-Bridging-Header.h */,
-			);
-			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +289,7 @@
 				TargetAttributes = {
 					8E90A40E1C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = Y6XF9JEXKG;
 					};
 					8E90A4251C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -316,7 +329,9 @@
 				8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */,
 				8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */,
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
+				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
 				8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */,
+				8E20C8BA1C998F520003C1CF /* NumberCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,12 +358,13 @@
 			files = (
 				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
 				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
+				8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */,
+				8E20C8B91C998F520003C1CF /* NumberCollectionViewCell.swift in Sources */,
 				8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */,
 				8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */,
 				8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */,
 				8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */,
 				8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */,
-				8E2538FD1C848E9000B3C54E /* SWRevealViewController.m in Sources */,
 				8E6D503D1C7F05D700878957 /* ForumViewController.swift in Sources */,
 				8E6D503B1C7F05AA00878957 /* NotesViewController.swift in Sources */,
 				8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */,
@@ -361,6 +377,7 @@
 				8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */,
 				8E6D50391C7F056200878957 /* VideosViewController.swift in Sources */,
 				8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */,
+				8E20C8B61C998F430003C1CF /* CustomCollectionViewLayout.swift in Sources */,
 				8E01775A1C843819004E7A46 /* WebsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,11 +521,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
+				PRODUCT_BUNDLE_IDENTIFIER = newapp.calendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -519,11 +539,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalc;
+				PRODUCT_BUNDLE_IDENTIFIER = newapp.calendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -556,6 +579,7 @@
 		8E90A4411C7DF093001F3A07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				INFOPLIST_FILE = rodicalcUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcUITests;

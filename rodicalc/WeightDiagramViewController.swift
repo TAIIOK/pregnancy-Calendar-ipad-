@@ -20,6 +20,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     var label1 = UILabel()
     var views: [String: AnyObject] = [:]
 
+    @IBOutlet weak var lbl: UILabel!
     let IMT0: [CGFloat] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
     let IMT1: [CGFloat] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
     let IMT2: [CGFloat] = [0.5,0.5,0.6,0.7,0.8,0.9,1.0,1.4,2.3,2.9,3.4,3.9,5.0,5.4,5.9,6.4,7.3,7.9,8.6,9.1]
@@ -35,10 +36,12 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
         if (growth > 0){
+            lbl.hidden = true
             drawGraph()
         }
         else{
-            let text = "Для отображения графика необходимо указать рост"
+            lbl.hidden = false
+            /*let text = "Для отображения графика необходимо указать рост"
             let lbl = UILabel()
             lbl.translatesAutoresizingMaskIntoConstraints = false
             lbl.text = text
@@ -47,7 +50,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             self.view.addSubview(lbl)
             views["lbl"] = lbl
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[lbl]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-300-[lbl]", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-300-[lbl]", options: [], metrics: nil, views: views))*/
         }
     }
 

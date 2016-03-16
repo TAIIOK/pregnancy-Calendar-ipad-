@@ -27,10 +27,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Ct-nF7">
-                                                    <rect key="frame" x="205" y="8" width="186" height="125"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logosmall" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Ct-nF7">
+                                                    <rect key="frame" x="55" y="8" width="186" height="125"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="186" id="Prt-PK-IH4"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="top" secondItem="kt1-8H-nbQ" secondAttribute="topMargin" id="2bs-n6-uke"/>
+                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="centerY" secondItem="kt1-8H-nbQ" secondAttribute="centerY" id="Psk-jC-Co6"/>
+                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="leading" secondItem="kt1-8H-nbQ" secondAttribute="leading" constant="55" id="XcV-T4-5aG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -77,7 +85,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="LVZ-B8-Mx6" kind="showDetail" id="tSM-qp-kuV"/>
+                                            <segue destination="LVZ-B8-Mx6" kind="showDetail" identifier="" id="tSM-qp-kuV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PId-gf-lNC">
@@ -311,6 +319,7 @@
                     </tableView>
                     <connections>
                         <outlet property="cell0" destination="0ub-kp-w4L" id="Fku-cf-fuA"/>
+                        <outlet property="table" destination="t1i-kQ-01c" id="ugh-ST-8xp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpa-il-RwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,31 +505,6 @@
             </objects>
             <point key="canvasLocation" x="2635" y="887"/>
         </scene>
-        <!--Счетчик схваток-->
-        <scene sceneID="nfc-Gd-H8Y">
-            <objects>
-                <viewController id="QzA-oC-9TN" customClass="SkirmishCountViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cWs-TY-lqx"/>
-                        <viewControllerLayoutGuide type="bottom" id="hfG-3k-ZaV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CwU-su-6QS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Счетчик схваток" id="8SN-zW-4sM">
-                        <barButtonItem key="rightBarButtonItem" title="Очистить" id="143-Nb-XEe">
-                            <connections>
-                                <action selector="DoClean:" destination="QzA-oC-9TN" id="0Ww-yO-7hU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qJu-tu-PsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2272" y="1597"/>
-        </scene>
         <!--Photos View Controller-->
         <scene sceneID="8yL-XO-LCL">
             <objects>
@@ -692,7 +676,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Интеренет соединение отсутствует" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdn-ZA-wjG">
                                 <rect key="frame" x="141" y="249" width="318" height="101"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-Jl-A0Q" userLabel="Подключиться">
@@ -810,14 +794,14 @@
                                                     <rect key="frame" x="15" y="6" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bhX-4d-ZcO">
                                                     <rect key="frame" x="15" y="26" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -995,7 +979,28 @@
                     <view key="view" contentMode="scaleToFill" id="I7q-DO-CPd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-28-ANT">
+                                <rect key="frame" x="176" y="167" width="248" height="266"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Для отображения графика необходимо указать рост">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="19" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zNW-28-ANT" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leading" constant="176" id="SfH-E3-JJz"/>
+                            <constraint firstItem="zNW-28-ANT" firstAttribute="top" secondItem="8CD-zP-VZc" secondAttribute="bottom" constant="103" id="a2z-pY-WZb"/>
+                            <constraint firstAttribute="trailing" secondItem="zNW-28-ANT" secondAttribute="trailing" constant="176" id="bVN-Nv-V3k"/>
+                            <constraint firstItem="zNW-28-ANT" firstAttribute="centerY" secondItem="I7q-DO-CPd" secondAttribute="centerY" id="vH5-e8-WNh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="График набора веса" id="L3r-bx-0es">
                         <barButtonItem key="rightBarButtonItem" title="Ваш рост" id="8U7-E2-ZRp">
@@ -1007,6 +1012,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="growthButton" destination="8U7-E2-ZRp" id="wFj-9i-Ps7"/>
+                        <outlet property="lbl" destination="zNW-28-ANT" id="yYZ-gd-Hiy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzf-GO-aKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1022,7 +1028,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="QzA-oC-9TN" kind="relationship" relationship="rootViewController" id="ONu-67-JTf"/>
+                        <segue destination="IN0-Vg-fgl" kind="relationship" relationship="rootViewController" id="o3p-u9-SDn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qdv-VN-qpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1065,9 +1071,102 @@
             </objects>
             <point key="canvasLocation" x="759" y="971"/>
         </scene>
+        <!--Счетчик схваток-->
+        <scene sceneID="jly-hP-0vx">
+            <objects>
+                <viewController id="IN0-Vg-fgl" customClass="SkirmishCountViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JQw-IA-dDY"/>
+                        <viewControllerLayoutGuide type="bottom" id="IPB-gZ-cbd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t4J-JM-abi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-FY-cn5">
+                                <rect key="frame" x="294" y="475" width="286" height="42"/>
+                                <color key="backgroundColor" red="0.35155320169999998" green="0.69836688039999995" blue="0.4670632482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Vc9-y9-lob"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="ОЙ, СХВАТКА">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSpasms:" destination="IN0-Vg-fgl" eventType="touchUpInside" id="jxW-lq-0zi"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S1W-BV-eLV">
+                                <rect key="frame" x="83" y="92" width="472" height="272"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="TMG-zG-TXr" customClass="CustomCollectionViewLayout" customModule="rodicalc" customModuleProvider="target"/>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="IN0-Vg-fgl" id="dpT-A7-auH"/>
+                                    <outlet property="delegate" destination="IN0-Vg-fgl" id="0vi-aC-WQP"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlh-oa-BDu">
+                                <rect key="frame" x="61" y="421" width="172" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="bFz-n2-4Jv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hiB-O3-UYI">
+                                <rect key="frame" x="95" y="427" width="105" height="105"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="bottom" secondItem="hiB-O3-UYI" secondAttribute="bottom" constant="-6" id="4Qe-K4-Wll"/>
+                            <constraint firstItem="IPB-gZ-cbd" firstAttribute="top" secondItem="Ofu-FY-cn5" secondAttribute="bottom" constant="83" id="4js-EQ-qPq"/>
+                            <constraint firstItem="S1W-BV-eLV" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leading" constant="83" id="DQg-3a-Mbg"/>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="Dlh-oa-BDu" secondAttribute="leading" constant="34" id="E3D-Io-1XF">
+                                <variation key="heightClass=regular-widthClass=compact" constant="128"/>
+                            </constraint>
+                            <constraint firstItem="S1W-BV-eLV" firstAttribute="top" secondItem="JQw-IA-dDY" secondAttribute="bottom" constant="28" id="RqE-y3-bqs"/>
+                            <constraint firstItem="Ofu-FY-cn5" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="bottom" constant="-51" id="UT1-OF-ktf"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="Ofu-FY-cn5" secondAttribute="centerX" constant="-290" id="Xhc-KY-7n2"/>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="trailing" secondItem="Dlh-oa-BDu" secondAttribute="trailing" constant="-33" id="cjF-mv-Ejf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-128"/>
+                            </constraint>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leadingMargin" constant="75" id="gl0-IG-Se3">
+                                <variation key="heightClass=regular-widthClass=compact" constant="128"/>
+                            </constraint>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="top" constant="6" id="jvc-Ws-Sux"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="S1W-BV-eLV" secondAttribute="centerX" constant="-172" id="kVR-Pm-xtG"/>
+                            <constraint firstAttribute="trailing" secondItem="S1W-BV-eLV" secondAttribute="trailing" constant="45" id="kXe-da-biU"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="top" secondItem="S1W-BV-eLV" secondAttribute="bottom" constant="57" id="mob-QP-vSa"/>
+                            <constraint firstItem="Ofu-FY-cn5" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leadingMargin" constant="274" id="nVD-HK-sA1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Счетчик схваток" id="Kci-2b-BHe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="YyT-EG-Kbd">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="buttonTrash:" destination="IN0-Vg-fgl" id="tbx-j4-H99"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonSpasm" destination="Ofu-FY-cn5" id="3Yk-ei-NPM"/>
+                        <outlet property="collectionView" destination="S1W-BV-eLV" id="80D-0l-3NU"/>
+                        <outlet property="label" destination="Dlh-oa-BDu" id="kah-um-sHT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvQ-2s-qK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2195" y="1668"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="logosmall" width="195" height="106"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="P0H-Yd-JxP"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="OrH-IY-Cvz"/>
     </inferredMetricsTieBreakers>
 </document>

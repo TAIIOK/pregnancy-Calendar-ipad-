@@ -6,191 +6,192 @@
 //  Copyright © 2016 deck. All rights reserved.
 //
 
+
+//class SkirmishCountViewController: UIViewController {
+
 import UIKit
 
-class SkirmishCountViewController: UIViewController {
+enum State {
+    case Watching
+    case Stop
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+extension NSDate {
+    func toFormattedTimeString() -> String {
+        let today = NSDate()
+        let gregorian = NSCalendar.currentCalendar()
+        
+        if #available(iOS 8.0, *) {
+            let hour = gregorian.component(.Hour, fromDate: today)
+        
+        let hourStr = (hour < 10 ? "0" : "") + String(hour) + ":"
+        
+        let minute = gregorian.component(.Minute, fromDate: today)
+        let minuteStr = (minute < 10 ? "0" : "") + String(minute) + ":"
+        
+        let second = gregorian.component(.Second, fromDate: today)
+        let secondStr = (second < 10 ? "0" : "") + String(second)
+        
+        return hourStr + minuteStr + secondStr
+        } else {
+            // Fallback on earlier versions
+        }
+        return "nil"
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+class tmpSpasm {
+    var start = ""
+    var duration = NSTimeInterval()
+    var stop = ""
+}
 
-    @IBAction func DoClean(sender: UIBarButtonItem) {
-    }
-    /*let numberOfColumns = 8
-    var itemAttributes : NSMutableArray!
-    var itemsSize : NSMutableArray!
-    var contentSize : CGSize!
-    
-    func prepareLayout() {
-    if self.collectionView?.numberOfSections() == 0 {
-    return
-    }
-    
-    if (self.itemAttributes != nil && self.itemAttributes.count > 0) {
-    for section in 0..<self.collectionView!.numberOfSections() {
-    var numberOfItems : Int = self.collectionView!.numberOfItemsInSection(section)
-    for index in 0..<numberOfItems {
-    if section != 0 && index != 0 {
-    continue
-    }
-    
-    var attributes : UICollectionViewLayoutAttributes = self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: index, inSection: section))
-    if section == 0 {
-    var frame = attributes.frame
-    frame.origin.y = self.collectionView!.contentOffset.y
-    attributes.frame = frame
-    }
-    
-    if index == 0 {
-    var frame = attributes.frame
-    frame.origin.x = self.collectionView!.contentOffset.x
-    attributes.frame = frame
-    }
-    }
-    }
-    return
-    }
-    
-    if (self.itemsSize == nil || self.itemsSize.count != numberOfColumns) {
-    self.calculateItemsSize()
-    }
-    
-    var column = 0
-    var xOffset : CGFloat = 0
-    var yOffset : CGFloat = 0
-    var contentWidth : CGFloat = 0
-    var contentHeight : CGFloat = 0
-    
-    for section in 0..<self.collectionView!.numberOfSections() {
-    var sectionAttributes = NSMutableArray()
-    
-    for index in 0..<numberOfColumns {
-    var itemSize = self.itemsSize[index].CGSizeValue()
-    var indexPath = NSIndexPath(forItem: index, inSection: section)
-    var attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-    attributes.frame = CGRectIntegral(CGRectMake(xOffset, yOffset, itemSize.width, itemSize.height))
-    
-    if section == 0 && index == 0 {
-    attributes.zIndex = 1024;
-    } else  if section == 0 || index == 0 {
-    attributes.zIndex = 1023
-    }
-    
-    if section == 0 {
-    var frame = attributes.frame
-    frame.origin.y = self.collectionView!.contentOffset.y
-    attributes.frame = frame
-    }
-    if index == 0 {
-    var frame = attributes.frame
-    frame.origin.x = self.collectionView!.contentOffset.x
-    attributes.frame = frame
-    }
-    
-    sectionAttributes.addObject(attributes)
-    
-    xOffset += itemSize.width
-    column++
-    
-    if column == numberOfColumns {
-    if xOffset > contentWidth {
-    contentWidth = xOffset
-    }
-    
-    column = 0
-    xOffset = 0
-    yOffset += itemSize.height
-    }
-    }
-    if (self.itemAttributes == nil) {
-    self.itemAttributes = NSMutableArray(capacity: self.collectionView!.numberOfSections())
-    }
-    self.itemAttributes .addObject(sectionAttributes)
-    }
-    
-    var attributes : UICollectionViewLayoutAttributes = self.itemAttributes.lastObject?.lastObject as! UICollectionViewLayoutAttributes
-    contentHeight = attributes.frame.origin.y + attributes.frame.size.height
-    self.contentSize = CGSizeMake(contentWidth, contentHeight)
-    }
-    
-    func collectionViewContentSize() -> CGSize {
-    return self.contentSize
-    }
-    
-    func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-    return self.itemAttributes[indexPath.section][indexPath.row] as! UICollectionViewLayoutAttributes
-    }
-    
-    func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    var attributes = [UICollectionViewLayoutAttributes]()
-    if self.itemAttributes != nil {
-    for section in self.itemAttributes {
-    
-    let filteredArray  =  section.filteredArrayUsingPredicate(
-    
-    NSPredicate(block: { (evaluatedObject, bindings) -> Bool in
-    return CGRectIntersectsRect(rect, evaluatedObject.frame)
-    })
-    ) as! [UICollectionViewLayoutAttributes]
-    
-    
-    attributes.appendContentsOf(filteredArray)
-    
-    }
-    }
-    
-    return attributes
-    }
-    
-    func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-    return true
-    }
-    
-    func sizeForItemWithColumnIndex(columnIndex: Int) -> CGSize {
-    var text : String = ""
-    switch (columnIndex) {
-    case 0:
-    text = "Col 0"
-    case 1:
-    text = "Col 1"
-    case 2:
-    text = "Col 2"
-    case 3:
-    text = "Col 3"
-    case 4:
-    text = "Col 4"
-    case 5:
-    text = "Col 5"
-    case 6:
-    text = "Col 6"
-    default:
-    text = "Col 7"
-    }
-    
-    let size : CGSize = (text as NSString).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17.0)])
-    let width : CGFloat = size.width + 25
-    return CGSizeMake(width, 30)
-    }
-    
-    func calculateItemsSize() {
-    self.itemsSize = NSMutableArray(capacity: numberOfColumns)
-    for index in 0..<numberOfColumns {
-    self.itemsSize.addObject(NSValue(CGSize: self.sizeForItemWithColumnIndex(index)))
-    }
-    }*/
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    class SkirmishCountViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+        let numberCellIdentifier = "NumberCellIdentifier"
+        let contentCellIdentifier = "ContentCellIdentifier"
+        
+        
+        var timer = NSTimer()
+        var spasm = tmpSpasm()
+        var state = State.Stop
+        var dict: [tmpSpasm] = []
+        
+        @IBOutlet weak var label: UILabel!
+        @IBOutlet weak var buttonSpasm: UIButton!
+        @IBOutlet weak var collectionView: UICollectionView!
+        
+        @IBAction func buttonSpasms(sender: AnyObject) {
+            if self.state == .Stop {
+                self.buttonSpasm.setTitle("УФ, ЗАКОНЧИЛАСЬ", forState: .Normal)
+                self.state = .Watching
+                self.spasmStart()
+            } else {
+                self.buttonSpasm.setTitle("ОЙ, СХВАТКА", forState: .Normal)
+                self.state = .Stop
+                self.spasmStop()
+            }
+        }
+        @IBAction func buttonTrash(sender: AnyObject) {
+            self.collectionView.setContentOffset(CGPoint.zero, animated: false)
+            //scrollToTop()
+            self.dict.removeAll()
+            self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            self.collectionView.registerNib(UINib(nibName: "NumberCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: numberCellIdentifier)
+            self.collectionView.registerNib(UINib(nibName: "ContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: contentCellIdentifier)
+        }
+        
+        private func spasmStart() {
+            self.label.text = "0"
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: NSDate(), repeats: true)
+            self.spasm = tmpSpasm()
+            self.spasm.start = NSDate().toFormattedTimeString()
+        }
+        
+        private func spasmStop() {
+            self.spasm.stop = NSDate().toFormattedTimeString()
+            self.spasm.duration = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
+            self.dict.append(spasm)
+            self.collectionView.reloadData()
+            self.scrollToBottom()
+            self.timer.invalidate()
+            self.label.text = ""
+        }
+        
+        func timerUpdate() {
+            let elapsed = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
+            self.label.text = String(format: "%.0f", elapsed)
+        }
+        
+        func scrollToBottom() {
+            // don't look there
+            let item = self.collectionView(self.collectionView!, numberOfItemsInSection: 5) - 1
+            let lastItemIndex = NSIndexPath(forItem: item, inSection: self.dict.count)
+            self.collectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: .Bottom, animated: true)
+        }
+        
+        func scrollToTop() {
+            // don't look there
+            let item = self.collectionView(self.collectionView!, numberOfItemsInSection: 5) - 1
+            let lastItemIndex = NSIndexPath(forItem: item, inSection: 0)
+            self.collectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: .Top, animated: true)
+        }
+        
+        func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+            return self.dict.count + 1
+        }
+        
+        func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 5
+        }
+        
+        func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            if indexPath.section == 0 {
+                if indexPath.row == 0 {
+                    let numberCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(numberCellIdentifier, forIndexPath: indexPath) as! NumberCollectionViewCell
+                    numberCell.numberLabel.text = "№"
+                    numberCell.numberLabel.font = .boldSystemFontOfSize(13)
+                    return numberCell
+                } else if indexPath.row == 1 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.text = "НАЧАЛАСЬ"
+                    contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    return contentCell
+                } else if indexPath.row == 2 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.text = "ДЛИТЕЛЬНОСТЬ"
+                    contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    return contentCell
+                } else if indexPath.row == 3 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.text = "ЗАКОНЧИЛАСЬ"
+                    contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    return contentCell
+                } else {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.text = "ПРОМЕЖУТОК"
+                    contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    return contentCell
+                }
+            } else {
+                if indexPath.row == 0 {
+                    let numberCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(numberCellIdentifier, forIndexPath: indexPath) as! NumberCollectionViewCell
+                    numberCell.numberLabel.font = .systemFontOfSize(14)
+                    numberCell.numberLabel.text = String(indexPath.section)
+                    return numberCell
+                } else if indexPath.row == 1 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.font = .systemFontOfSize(14)
+                    contentCell.contentLabel.text = self.dict[indexPath.section - 1].start
+                    return contentCell
+                } else if indexPath.row == 2 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.font = .systemFontOfSize(14)
+                    contentCell.contentLabel.text = String(format: "%.0f", self.dict[indexPath.section - 1].duration) + " сек."
+                    return contentCell
+                } else if indexPath.row == 3 {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.font = .systemFontOfSize(14)
+                    contentCell.contentLabel.text = self.dict[indexPath.section - 1].stop
+                    return contentCell
+                } else {
+                    let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
+                    contentCell.contentLabel.font = .systemFontOfSize(14)
+                    contentCell.contentLabel.text = "_"
+                    return contentCell
+                }
+            }
+        }
+        
+        override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+            self.collectionView.collectionViewLayout.prepareLayout()
+        }
+        
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+        }
 }

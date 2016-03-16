@@ -12,10 +12,14 @@ class MasterTableViewController: UITableViewController {
     //var items: [String] = ["РАСЧЕТ ДАТЫ РОДОВ", "СПРАВОЧНИК ИМЕН", "СЧЕТЧИК СХВАТОК", "ГРАФИК НАБОРА ВЕСА","ФОТОАЛЬБОМ","ВИДЕОТЕКА","ЗАМЕТКИ","ФОРУМ","ПОЛЕЗНЫЙ ОПЫТ","КАЛЕНДАРЬ","БЛИЖАЙШИЕ МАГАЗИНЫ", "ЭКСПОРТ" ]
     
     
+    @IBOutlet var table: UITableView!
     @IBOutlet weak var cell0: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //cell0.setSelected(true, animated: true)
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+        self.table.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Top)
+        
+        self.tableView(self.table, willSelectRowAtIndexPath: rowToSelect)
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,21 +32,10 @@ class MasterTableViewController: UITableViewController {
         return BackgroundView
     }
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.selectedBackgroundView=getCustomBackgroundView()
+        if(indexPath.row>0){
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            cell!.selectedBackgroundView=getCustomBackgroundView()
+        }
         return indexPath
     }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }*/
-
-
 }
