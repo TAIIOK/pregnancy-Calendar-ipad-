@@ -90,7 +90,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         let b = CGFloat(ves)
         var data1 : [CGFloat] = [b]
         
-        var imt=ves*1000.0
+        var imt=ves*10000.0
         let x: Double = rost*rost
         if(x>0){
             imt = imt/x}

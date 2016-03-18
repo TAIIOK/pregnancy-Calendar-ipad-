@@ -10,6 +10,7 @@
 //class SkirmishCountViewController: UIViewController {
 
 import UIKit
+import CoreData
 
 enum State {
     case Watching
@@ -49,10 +50,10 @@ class tmpSpasm {
     class SkirmishCountViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
         let numberCellIdentifier = "NumberCellIdentifier"
         let contentCellIdentifier = "ContentCellIdentifier"
-        
-        
+
+        var people = [NSManagedObject]()
         var timer = NSTimer()
-        var spasm = tmpSpasm()
+        var tmp = tmpSpasm()
         var state = State.Stop
         var dict: [tmpSpasm] = []
         
@@ -73,8 +74,8 @@ class tmpSpasm {
         }
         @IBAction func buttonTrash(sender: AnyObject) {
             self.collectionView.setContentOffset(CGPoint.zero, animated: false)
-            //scrollToTop()
             self.dict.removeAll()
+            clearSpasm()
             self.collectionView.reloadData()
             self.collectionView.collectionViewLayout.invalidateLayout()
         }
@@ -88,18 +89,19 @@ class tmpSpasm {
         private func spasmStart() {
             self.label.text = "0"
             self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: NSDate(), repeats: true)
-            self.spasm = tmpSpasm()
-            self.spasm.start = NSDate().toFormattedTimeString()
+            self.tmp = tmpSpasm()
+            self.tmp.start = NSDate().toFormattedTimeString()
         }
         
         private func spasmStop() {
-            self.spasm.stop = NSDate().toFormattedTimeString()
-            self.spasm.duration = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
-            self.dict.append(spasm)
+            self.tmp.stop = NSDate().toFormattedTimeString()
+            self.tmp.duration = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
+            self.dict.append(tmp)
             self.collectionView.reloadData()
             self.scrollToBottom()
             self.timer.invalidate()
             self.label.text = ""
+            saveSpasm(tmp)
         }
         
         func timerUpdate() {
@@ -112,13 +114,6 @@ class tmpSpasm {
             let item = self.collectionView(self.collectionView!, numberOfItemsInSection: 5) - 1
             let lastItemIndex = NSIndexPath(forItem: item, inSection: self.dict.count)
             self.collectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: .Bottom, animated: true)
-        }
-        
-        func scrollToTop() {
-            // don't look there
-            let item = self.collectionView(self.collectionView!, numberOfItemsInSection: 5) - 1
-            let lastItemIndex = NSIndexPath(forItem: item, inSection: 0)
-            self.collectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: .Top, animated: true)
         }
         
         func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -182,8 +177,118 @@ class tmpSpasm {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.font = .systemFontOfSize(14)
                     contentCell.contentLabel.text = "_"
+                    
+                    if(indexPath.section > 1){
+                        
+                        let timeStart = self.dict[indexPath.section-1].start//"2015-10-06T15:42:34Z"
+                        let timeStop = self.dict[indexPath.section-2].stop
+                    
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "HH:mm:ss"
+                        
+                        let start = dateFormatter.dateFromString(timeStart)
+                        let stop = dateFormatter.dateFromString(timeStop)
+                        let interval = start?.timeIntervalSinceDate(stop!)
+                        if interval < 60 {
+                            contentCell.contentLabel.text = String(format: "%.0f", interval!) + " сек."
+                        }else {
+                            contentCell.contentLabel.text = String(format: "%.0f", interval!/60) + " мин."
+                        }
+                        
+                    }
                     return contentCell
                 }
+            }
+        }
+        
+        func saveSpasm(temp: tmpSpasm) {
+
+            let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            let entity =  NSEntityDescription.entityForName("Spasms",
+                inManagedObjectContext:
+                managedContext)
+            
+            let Spasms = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext:managedContext)
+            
+            Spasms.setValue(temp.start, forKey: "start")
+            Spasms.setValue(temp.stop, forKey: "stop")
+            Spasms.setValue(temp.duration, forKey: "duration")
+            do {
+                try Spasms.managedObjectContext?.save()
+            } catch {
+                print(error)
+            }
+        }
+        
+        func clearSpasm(){
+            let appDelegate =
+                UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            // Initialize Fetch Request
+            let fetchRequest = NSFetchRequest()
+            
+            // Create Entity Description
+            let entityDescription = NSEntityDescription.entityForName("Spasms", inManagedObjectContext:managedContext)
+            
+            fetchRequest.entity = entityDescription
+            
+            do {
+                let result = try managedContext.executeFetchRequest(fetchRequest)
+                
+                for i in result{
+                    managedContext.deleteObject(i as! NSManagedObject)}
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    let saveError = error as NSError
+                    print(saveError)
+                }
+            } catch {
+                let fetchError = error as NSError
+                print(fetchError)
+            }
+
+        }
+        
+        override func viewWillAppear(animated: Bool) {
+            super.viewWillAppear(animated)
+
+            let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+
+            // Initialize Fetch Request
+            let fetchRequest = NSFetchRequest()
+            
+            // Create Entity Description
+            let entityDescription = NSEntityDescription.entityForName("Spasms", inManagedObjectContext:managedContext)
+            
+            fetchRequest.entity = entityDescription
+            
+            do {
+                let result = try managedContext.executeFetchRequest(fetchRequest)
+                
+                if (result.count > 0) {
+                    for i in result {
+                    let Spasms = i as! NSManagedObject
+                    var temp = tmpSpasm()
+                    temp.start = Spasms.valueForKey("start") as! String
+                    temp.stop = Spasms.valueForKey("stop") as! String
+                    temp.duration = Spasms.valueForKey("duration") as! NSTimeInterval
+                        dict.append(temp)}
+                }
+            } catch {
+                let fetchError = error as NSError
+                print(fetchError)
             }
         }
         
