@@ -85,6 +85,44 @@ class tmpSpasm {
             self.label.textAlignment = .Center
             self.collectionView.registerNib(UINib(nibName: "NumberCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: numberCellIdentifier)
             self.collectionView.registerNib(UINib(nibName: "ContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: contentCellIdentifier)
+            
+
+        }
+        
+        func animWatch(){
+            // set up some values to use in the curve
+            let ovalStartAngle = CGFloat(270.01 * M_PI/180)
+            let ovalEndAngle = CGFloat(270 * M_PI/180)
+            let ovalRect = CGRectMake(97.5, 558.5, 125, 125)
+            
+            // create the bezier path
+            let ovalPath = UIBezierPath()
+            
+            ovalPath.addArcWithCenter(CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)),
+                radius: CGRectGetWidth(ovalRect) / 2,
+                startAngle: ovalStartAngle,
+                endAngle: ovalEndAngle, clockwise: true)
+            
+            // create an object that represents how the curve
+            // should be presented on the screen
+            let progressLine = CAShapeLayer()
+            progressLine.path = ovalPath.CGPath
+            progressLine.strokeColor = UIColor.blueColor().CGColor
+            progressLine.fillColor = UIColor.clearColor().CGColor
+            progressLine.lineWidth = 10.0
+            progressLine.lineCap = kCALineCapRound
+            
+            // add the curve to the screen
+            self.view.layer.addSublayer(progressLine)
+            
+            // create a basic animation that animates the value 'strokeEnd'
+            // from 0.0 to 1.0 over 3.0 seconds
+            let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
+            animateStrokeEnd.duration = 60.0
+            animateStrokeEnd.fromValue = 0.0
+            animateStrokeEnd.toValue = 1.0
+            // add the animation
+            progressLine.addAnimation(animateStrokeEnd, forKey: "animate stroke end animation")
         }
         
         private func spasmStart() {
@@ -92,6 +130,7 @@ class tmpSpasm {
             self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: NSDate(), repeats: true)
             self.tmp = tmpSpasm()
             self.tmp.start = NSDate().toFormattedTimeString()
+            animWatch()
         }
         
         private func spasmStop() {
