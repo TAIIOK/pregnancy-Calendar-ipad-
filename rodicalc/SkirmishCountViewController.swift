@@ -82,12 +82,13 @@ class tmpSpasm {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            self.label.textAlignment = .Center
             self.collectionView.registerNib(UINib(nibName: "NumberCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: numberCellIdentifier)
             self.collectionView.registerNib(UINib(nibName: "ContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: contentCellIdentifier)
         }
         
         private func spasmStart() {
-            self.label.text = "0"
+            self.label.text = "0\nсекунд"
             self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: NSDate(), repeats: true)
             self.tmp = tmpSpasm()
             self.tmp.start = NSDate().toFormattedTimeString()
@@ -106,7 +107,20 @@ class tmpSpasm {
         
         func timerUpdate() {
             let elapsed = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
-            self.label.text = String(format: "%.0f", elapsed)
+            let sek: Int = Int(Double(elapsed+0.1))
+            var txt = ""
+            if sek%10 == 1{
+                txt = "\nсекунда"
+            }else if sek%10 == 2 || sek%10 == 3 || sek%10 == 4 {
+                txt = "\nсекунды"
+            }else{
+                txt = "\nсекунд"
+            }
+            
+            if sek > 10 && sek < 15{
+                txt = "\nсекунд"
+            }
+            self.label.text = String(format: "%.0f", elapsed) + txt
         }
         
         func scrollToBottom() {

@@ -1107,39 +1107,39 @@
                                     <outlet property="delegate" destination="IN0-Vg-fgl" id="0vi-aC-WQP"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlh-oa-BDu">
-                                <rect key="frame" x="61" y="421" width="172" height="105"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlh-oa-BDu">
+                                <rect key="frame" x="109" y="423" width="44" height="73"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="105" id="bFz-n2-4Jv"/>
+                                    <constraint firstAttribute="height" constant="73" id="bFz-n2-4Jv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hiB-O3-UYI">
-                                <rect key="frame" x="95" y="427" width="105" height="105"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hiB-O3-UYI">
+                                <rect key="frame" x="79" y="412" width="105" height="105"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="bottom" secondItem="hiB-O3-UYI" secondAttribute="bottom" constant="-6" id="4Qe-K4-Wll"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="bottom" secondItem="hiB-O3-UYI" secondAttribute="bottom" constant="-16" id="4Qe-K4-Wll"/>
                             <constraint firstItem="IPB-gZ-cbd" firstAttribute="top" secondItem="Ofu-FY-cn5" secondAttribute="bottom" constant="83" id="4js-EQ-qPq"/>
                             <constraint firstItem="S1W-BV-eLV" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leading" constant="83" id="DQg-3a-Mbg"/>
-                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="Dlh-oa-BDu" secondAttribute="leading" constant="34" id="E3D-Io-1XF">
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="Dlh-oa-BDu" secondAttribute="leading" constant="-28" id="E3D-Io-1XF">
                                 <variation key="heightClass=regular-widthClass=compact" constant="128"/>
                             </constraint>
                             <constraint firstItem="S1W-BV-eLV" firstAttribute="top" secondItem="JQw-IA-dDY" secondAttribute="bottom" constant="28" id="RqE-y3-bqs"/>
-                            <constraint firstItem="Ofu-FY-cn5" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="bottom" constant="-51" id="UT1-OF-ktf"/>
-                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="Ofu-FY-cn5" secondAttribute="centerX" constant="-290" id="Xhc-KY-7n2"/>
-                            <constraint firstItem="hiB-O3-UYI" firstAttribute="trailing" secondItem="Dlh-oa-BDu" secondAttribute="trailing" constant="-33" id="cjF-mv-Ejf">
+                            <constraint firstItem="Ofu-FY-cn5" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="bottom" constant="-20" id="UT1-OF-ktf"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="Ofu-FY-cn5" secondAttribute="centerX" constant="-267.5" id="Xhc-KY-7n2"/>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="trailing" secondItem="Dlh-oa-BDu" secondAttribute="trailing" constant="28" id="cjF-mv-Ejf">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-128"/>
                             </constraint>
-                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leadingMargin" constant="75" id="gl0-IG-Se3">
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leadingMargin" constant="97" id="gl0-IG-Se3">
                                 <variation key="heightClass=regular-widthClass=compact" constant="128"/>
                             </constraint>
-                            <constraint firstItem="hiB-O3-UYI" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="top" constant="6" id="jvc-Ws-Sux"/>
-                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="S1W-BV-eLV" secondAttribute="centerX" constant="-172" id="kVR-Pm-xtG"/>
+                            <constraint firstItem="hiB-O3-UYI" firstAttribute="top" secondItem="Dlh-oa-BDu" secondAttribute="top" constant="-16" id="jvc-Ws-Sux"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="centerX" secondItem="S1W-BV-eLV" secondAttribute="centerX" constant="-149.5" id="kVR-Pm-xtG"/>
                             <constraint firstAttribute="trailing" secondItem="S1W-BV-eLV" secondAttribute="trailing" constant="45" id="kXe-da-biU"/>
-                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="top" secondItem="S1W-BV-eLV" secondAttribute="bottom" constant="57" id="mob-QP-vSa"/>
+                            <constraint firstItem="Dlh-oa-BDu" firstAttribute="top" secondItem="S1W-BV-eLV" secondAttribute="bottom" constant="58" id="mob-QP-vSa"/>
                             <constraint firstItem="Ofu-FY-cn5" firstAttribute="leading" secondItem="t4J-JM-abi" secondAttribute="leadingMargin" constant="274" id="nVD-HK-sA1"/>
                         </constraints>
                     </view>
