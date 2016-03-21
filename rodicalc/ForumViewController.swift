@@ -53,8 +53,11 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let websViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WebsViewController") as? WebsViewController
-        self.navigationController?.pushViewController(websViewController!, animated: true)
+        //let websViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WebsViewController") as? WebsViewController
+        //self.navigationController?.pushViewController(websViewController!, animated: true)
+        if let url = NSURL(string: urls[indexPath.row]){
+            UIApplication.sharedApplication().openURL(url)
+        }
         id=indexPath.row
     }
 

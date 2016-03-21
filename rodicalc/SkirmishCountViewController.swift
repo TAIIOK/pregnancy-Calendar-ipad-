@@ -57,6 +57,8 @@ class tmpSpasm {
         var state = State.Stop
         var dict: [tmpSpasm] = []
         
+        let progressLine = CAShapeLayer()
+        
         @IBOutlet weak var label: UILabel!
         @IBOutlet weak var buttonSpasm: UIButton!
         @IBOutlet weak var collectionView: UICollectionView!
@@ -105,7 +107,7 @@ class tmpSpasm {
             
             // create an object that represents how the curve
             // should be presented on the screen
-            let progressLine = CAShapeLayer()
+            
             progressLine.path = ovalPath.CGPath
             progressLine.strokeColor = UIColor.blueColor().CGColor
             progressLine.fillColor = UIColor.clearColor().CGColor
@@ -142,24 +144,29 @@ class tmpSpasm {
             self.timer.invalidate()
             self.label.text = ""
             saveSpasm(tmp)
+            progressLine.removeFromSuperlayer()
         }
         
         func timerUpdate() {
             let elapsed = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
             let sek: Int = Int(Double(elapsed+0.1))
             var txt = ""
-            if sek%10 == 1{
-                txt = "\nсекунда"
-            }else if sek%10 == 2 || sek%10 == 3 || sek%10 == 4 {
-                txt = "\nсекунды"
+            if elapsed<0{
+                self.label.text = "> 1 дня"
             }else{
-                txt = "\nсекунд"
-            }
+                if sek%10 == 1{
+                    txt = "\nсекунда"
+                }else if sek%10 == 2 || sek%10 == 3 || sek%10 == 4 {
+                    txt = "\nсекунды"
+                }else{
+                    txt = "\nсекунд"
+                }
             
-            if sek > 10 && sek < 15{
-                txt = "\nсекунд"
+                if sek > 10 && sek < 15{
+                    txt = "\nсекунд"
+                }
+                self.label.text = String(format: "%.0f", elapsed) + txt
             }
-            self.label.text = String(format: "%.0f", elapsed) + txt
         }
         
         func scrollToBottom() {

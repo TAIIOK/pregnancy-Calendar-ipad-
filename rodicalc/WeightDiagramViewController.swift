@@ -38,19 +38,11 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         if (growth > 0){
             lbl.hidden = true
             drawGraph()
+            drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
+            drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
         }
         else{
             lbl.hidden = false
-            /*let text = "Для отображения графика необходимо указать рост"
-            let lbl = UILabel()
-            lbl.translatesAutoresizingMaskIntoConstraints = false
-            lbl.text = text
-            lbl.textColor=UIColor.blueColor()
-            lbl.textAlignment = NSTextAlignment.Center
-            self.view.addSubview(lbl)
-            views["lbl"] = lbl
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[lbl]-|", options: [], metrics: nil, views: views))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-300-[lbl]", options: [], metrics: nil, views: views))*/
         }
     }
 
@@ -59,6 +51,15 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     */
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         //label.text = "x: \(x)     y: \(yValues)"
+    }
+    
+    private func drawDataDots(color: UIColor, X: CGFloat, Y: CGFloat) {
+        let dotLayer = DotCALayer()
+        dotLayer.dotInnerColor = color
+        dotLayer.innerRadius = 16
+        
+        dotLayer.frame = CGRect(x: X, y: Y, width: 16, height: 16)
+        self.view.layer.addSublayer(dotLayer)
     }
     
     func drawGraph(){
@@ -92,12 +93,13 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         
         var imt=ves*10000.0
         let x: Double = rost*rost
+        
         if(x>0){
             imt = imt/x}
         else{
             imt = 0
         }
-        
+
         for (var i=0; i<20;i++){
             if(mass==0){
                 data1.append(0)
@@ -139,6 +141,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         views["chart"] = lineChart
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==500)]", options: [], metrics: nil, views: views))
+        
     }
     
     /**
@@ -284,14 +287,4 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             return "\(thirdComponent[row])"
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
