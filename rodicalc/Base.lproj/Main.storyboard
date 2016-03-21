@@ -1022,7 +1022,7 @@
         <!--Navigation Controller-->
         <scene sceneID="JE8-kd-qjd">
             <objects>
-                <navigationController id="zNK-bo-s87" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StopWatch" id="zNK-bo-s87" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B7i-vx-f7U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

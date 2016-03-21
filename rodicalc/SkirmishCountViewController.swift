@@ -123,6 +123,7 @@ class tmpSpasm {
             animateStrokeEnd.duration = 60.0
             animateStrokeEnd.fromValue = 0.0
             animateStrokeEnd.toValue = 1.0
+            animateStrokeEnd.repeatCount = 2
             // add the animation
             progressLine.addAnimation(animateStrokeEnd, forKey: "animate stroke end animation")
         }
@@ -166,6 +167,32 @@ class tmpSpasm {
                     txt = "\nсекунд"
                 }
                 self.label.text = String(format: "%.0f", elapsed) + txt
+            }
+            
+            /*if sek==60 {
+                progressLine.removeFromSuperlayer()
+                animWatch()
+            }*/
+            if elapsed > 119 {
+                self.label.text = ""
+                progressLine.removeFromSuperlayer()
+                if #available(iOS 8.0, *) {
+                    let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Таймер остановлен", preferredStyle: .Alert)
+                    
+                    //Create and add the Cancel action
+                    let cancelAction: UIAlertAction = UIAlertAction(title: "Ок", style: .Default) { action -> Void in
+                        //Do some stuff
+                        let stopwatch = self.storyboard?.instantiateViewControllerWithIdentifier("StopWatch")
+                        self.splitViewController?.showDetailViewController(stopwatch!, sender: self)
+                    }
+                    actionSheetController.addAction(cancelAction)
+                    
+                    //Present the AlertController
+                    self.presentViewController(actionSheetController, animated: true, completion: nil)
+                } else {
+                    // Fallback on earlier versions
+                }
+
             }
         }
         
@@ -340,7 +367,7 @@ class tmpSpasm {
                 if (result.count > 0) {
                     for i in result {
                     let Spasms = i as! NSManagedObject
-                    var temp = tmpSpasm()
+                    let temp = tmpSpasm()
                     temp.start = Spasms.valueForKey("start") as! String
                     temp.stop = Spasms.valueForKey("stop") as! String
                     temp.duration = Spasms.valueForKey("duration") as! NSTimeInterval

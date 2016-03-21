@@ -70,7 +70,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,reuseIdentifier: "MagCell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,reuseIdentifier: "MagCell")
         cell.detailTextLabel?.font = UIFont.systemFontOfSize(10)
         cell.textLabel?.text = mags[indexPath.row]
         cell.detailTextLabel?.text=mags0[indexPath.row]
