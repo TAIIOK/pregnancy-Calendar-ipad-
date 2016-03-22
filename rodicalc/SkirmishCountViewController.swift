@@ -59,6 +59,7 @@ class tmpSpasm {
         
         let progressLine = CAShapeLayer()
         
+        @IBOutlet weak var textlabel: UILabel!
         @IBOutlet weak var label: UILabel!
         @IBOutlet weak var buttonSpasm: UIButton!
         @IBOutlet weak var collectionView: UICollectionView!
@@ -95,7 +96,7 @@ class tmpSpasm {
             // set up some values to use in the curve
             let ovalStartAngle = CGFloat(270.01 * M_PI/180)
             let ovalEndAngle = CGFloat(270 * M_PI/180)
-            let ovalRect = CGRectMake(97.5, 558.5, 125, 125)
+            let ovalRect = CGRectMake(85, 605, 100, 100)
             
             // create the bezier path
             let ovalPath = UIBezierPath()
@@ -129,7 +130,8 @@ class tmpSpasm {
         }
         
         private func spasmStart() {
-            self.label.text = "0\nсекунд"
+            self.label.text = "0"
+            self.textlabel.text = "СЕКУНД"
             self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: NSDate(), repeats: true)
             self.tmp = tmpSpasm()
             self.tmp.start = NSDate().toFormattedTimeString()
@@ -144,6 +146,7 @@ class tmpSpasm {
             self.scrollToBottom()
             self.timer.invalidate()
             self.label.text = ""
+            self.textlabel.text = ""
             saveSpasm(tmp)
             progressLine.removeFromSuperlayer()
         }
@@ -152,27 +155,24 @@ class tmpSpasm {
             let elapsed = -(self.timer.userInfo as! NSDate).timeIntervalSinceNow
             let sek: Int = Int(Double(elapsed+0.1))
             var txt = ""
-            if elapsed<0{
-                self.label.text = "> 1 дня"
+            if sek%10 == 1{
+                txt = "СЕКУНДА"
+            }else if sek%10 == 2 || sek%10 == 3 || sek%10 == 4 {
+                txt = "СЕКУНДЫ"
             }else{
-                if sek%10 == 1{
-                    txt = "\nсекунда"
-                }else if sek%10 == 2 || sek%10 == 3 || sek%10 == 4 {
-                    txt = "\nсекунды"
-                }else{
-                    txt = "\nсекунд"
-                }
-            
-                if sek > 10 && sek < 15{
-                    txt = "\nсекунд"
-                }
-                self.label.text = String(format: "%.0f", elapsed) + txt
+                txt = "СЕКУНД"
             }
             
-            /*if sek==60 {
-                progressLine.removeFromSuperlayer()
-                animWatch()
-            }*/
+            if sek > 10 && sek < 15{
+                txt = "СЕКУНД"
+            }
+            if sek == 111 {
+                txt = "СЕКУНД"
+            }
+            
+            self.label.text = String(format: "%.0f", elapsed)
+            self.textlabel.text = txt
+            
             if elapsed > 119 {
                 self.label.text = ""
                 progressLine.removeFromSuperlayer()
@@ -276,10 +276,14 @@ class tmpSpasm {
                         let start = dateFormatter.dateFromString(timeStart)
                         let stop = dateFormatter.dateFromString(timeStop)
                         let interval = start?.timeIntervalSinceDate(stop!)
-                        if interval < 60 {
+                        if interval < 0 {
+                            contentCell.contentLabel.text = "> 1 дня"
+                        }else if interval < 60 {
                             contentCell.contentLabel.text = String(format: "%.0f", interval!) + " сек."
-                        }else {
+                        }else if interval < 3600 {
                             contentCell.contentLabel.text = String(format: "%.0f", interval!/60) + " мин."
+                        }else {
+                            contentCell.contentLabel.text = String(format: "%.0f", interval!/3600) + " час."
                         }
                         
                     }
