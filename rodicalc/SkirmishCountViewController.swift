@@ -88,15 +88,13 @@ class tmpSpasm {
             self.label.textAlignment = .Center
             self.collectionView.registerNib(UINib(nibName: "NumberCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: numberCellIdentifier)
             self.collectionView.registerNib(UINib(nibName: "ContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: contentCellIdentifier)
-            
-
         }
         
         func animWatch(){
             // set up some values to use in the curve
             let ovalStartAngle = CGFloat(270.01 * M_PI/180)
             let ovalEndAngle = CGFloat(270 * M_PI/180)
-            let ovalRect = CGRectMake(85, 605, 100, 100)
+            let ovalRect = CGRectMake(110, 605, 100, 100)
             
             // create the bezier path
             let ovalPath = UIBezierPath()
