@@ -49,7 +49,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        map = MKMapView()
+        //map = MKMapView()
     }
     
     override func viewDidLoad() {
@@ -73,7 +73,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 if CLLocationManager.locationServicesEnabled() {
                     locationManager.delegate = self
                     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                    self.map.showsUserLocation = true
+                    //self.map.showsUserLocation = true
                     //locationManager.startUpdatingLocation() //8
                     setCenterOfMapToLocation(initialLocation)
                 }
@@ -192,6 +192,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? CalloutAnnotation {
             mapView.removeAnnotation(annotation)
+            //mapView.removeAnnotations(mapView.annotations)
         }
     }
     

@@ -18,12 +18,12 @@ import CoreLocation
 
 class CustomAnnotation : MKPointAnnotation {
 
-    override var coordinate: CLLocationCoordinate2D {
+    /*override var coordinate: CLLocationCoordinate2D {
         didSet {
-            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            self.title = ""
+            //let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            //self.title = ""
         }
-    }
+    }*/
 }
 
 

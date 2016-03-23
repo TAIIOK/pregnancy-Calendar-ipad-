@@ -59,6 +59,7 @@ class CalloutAnnotationView : MKAnnotationView {
     
     deinit {
         if let calloutAnnotation = annotation as? CalloutAnnotation {
+            print(calloutAnnotation.underlyingAnnotation.observationInfo)
             calloutAnnotation.underlyingAnnotation.removeObserver(self, forKeyPath: "title")
         }
     }
