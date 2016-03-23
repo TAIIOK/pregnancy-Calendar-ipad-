@@ -100,7 +100,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             imt = 0
         }
 
-        for (var i=0; i<20;i++){
+        for (var i=0; i<20;i += 1){
             if(mass==0){
                 data1.append(0)
             }

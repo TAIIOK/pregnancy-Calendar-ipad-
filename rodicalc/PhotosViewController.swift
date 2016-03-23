@@ -13,8 +13,8 @@ class PhotosViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "openCamera")
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addPhoto")
+        let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))
         a.tintColor = UIColor.whiteColor()
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)
