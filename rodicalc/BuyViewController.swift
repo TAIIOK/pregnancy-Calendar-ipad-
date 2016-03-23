@@ -134,7 +134,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let annotation = CustomAnnotation()
             annotation.coordinate = location
             annotation.title = mags[i] + "\nАдрес: " + mags0[i]
-        
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
             i = i+1
@@ -181,6 +180,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if let annotation = view.annotation as? CustomAnnotation {
             let calloutAnnotation = CalloutAnnotation(annotation: annotation)
             mapView.addAnnotation(calloutAnnotation)
+      
             dispatch_async(dispatch_get_main_queue()) {
                 mapView.selectAnnotation(calloutAnnotation, animated: false)
             }
@@ -192,6 +192,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? CalloutAnnotation {
             mapView.removeAnnotation(annotation)
+            
             //mapView.removeAnnotations(mapView.annotations)
         }
     }
@@ -200,6 +201,13 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidAppear(animated)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

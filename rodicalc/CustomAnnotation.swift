@@ -17,13 +17,6 @@ import CoreLocation
 /// This is a simple `MKPointAnnotation` subclass, which updates its `title` using reverse geocoding.
 
 class CustomAnnotation : MKPointAnnotation {
-
-    /*override var coordinate: CLLocationCoordinate2D {
-        didSet {
-            //let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            //self.title = ""
-        }
-    }*/
-}
+    }
 
 

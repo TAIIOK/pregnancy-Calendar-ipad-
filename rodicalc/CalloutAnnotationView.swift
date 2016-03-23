@@ -18,16 +18,7 @@ import MapKit
 class CalloutAnnotationView : MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-
-        // if the annotation is a callout annotation (and that's the only thing that this should ever
-        // be used for!), then add an observer for its title.
-        
-        if let calloutAnnotation = annotation as? CalloutAnnotation {
-            calloutAnnotation.underlyingAnnotation.addObserver(self, forKeyPath: "title", options: [], context: nil)
-        } else {
-            assert(false, "this annotation view class should only be used with CalloutAnnotation objects")
-        }
-        
+   
         configure()
     }
     
@@ -42,29 +33,11 @@ class CalloutAnnotationView : MKAnnotationView {
     // if we (re)set the annotation, remove old observer for title, if any and add new one
     
     override var annotation: MKAnnotation? {
-        willSet {
-            if let calloutAnnotation = annotation as? CalloutAnnotation {
-                calloutAnnotation.underlyingAnnotation.removeObserver(self, forKeyPath: "title")
-            }
-        }
+
         didSet {
             updateCallout()
-            if let calloutAnnotation = annotation as? CalloutAnnotation {
-                calloutAnnotation.underlyingAnnotation.addObserver(self, forKeyPath: "title", options: [], context: nil)
-            }
         }
     }
-
-    // if this gets deallocated, remove any observer of the title
-    
-    deinit {
-        if let calloutAnnotation = annotation as? CalloutAnnotation {
-            print(calloutAnnotation.underlyingAnnotation.observationInfo)
-            calloutAnnotation.underlyingAnnotation.removeObserver(self, forKeyPath: "title")
-        }
-    }
-    
-    // if the title changes, update the callout accordingly
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         updateCallout()
@@ -84,11 +57,11 @@ class CalloutAnnotationView : MKAnnotationView {
         var size = CGSizeZero
         if let string = annotation?.title where string != nil {
             let attributes = [NSFontAttributeName : font]
-            //print(string)
+
             var myMutableString = NSMutableAttributedString()
             myMutableString = NSMutableAttributedString(string: string!, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 10.0)!])
             let pos = string?.startIndex.distanceTo((string?.characters.indexOf(":"))!)
-            //print(pos)
+
             myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location: pos! ,length: (string?.characters.count)!-pos!))
 
             label.attributedText = myMutableString
