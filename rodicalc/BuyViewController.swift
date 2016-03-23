@@ -26,8 +26,6 @@ class MyAnnotation: NSObject, MKAnnotation {
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    
-    var firstLoad :Bool = true
     let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
     let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
     let magsLoc = [0,48.704360,48.706817]
@@ -76,7 +74,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     locationManager.delegate = self
                     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                     self.map.showsUserLocation = true
-                    locationManager.startUpdatingLocation() //8
+                    //locationManager.startUpdatingLocation() //8
+                    setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {
@@ -93,15 +92,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
  
     }
-    
-    /*func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        //initialLocation = locValue
-        if firstLoad {
-            setCenterOfMapToLocation(initialLocation)
-            firstLoad = false
-        }
-    }*/
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -138,9 +128,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
            
             /* Create the annotation using the location */
-            let annotation = MyAnnotation(coordinate: location,
+            /*let annotation = MyAnnotation(coordinate: location,
                                           title: mags[i],
-                                          subtitle: "Адрес: " + mags0[i])
+                                          subtitle: "Адрес: " + mags0[i])*/
+            let annotation = CustomAnnotation()
+            annotation.coordinate = location
+            annotation.title = mags[i] + "\nАдрес: " + mags0[i]
         
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
@@ -148,6 +141,60 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
 
+    
+    
+    // define annotation view identifiers
+    
+    let calloutAnnotationViewIdentifier = "CalloutAnnotation"
+    let customAnnotationViewIdentifier = "MyAnnotation"
+    
+    // If `CustomAnnotation`, show standard `MKPinAnnotationView`. If `CalloutAnnotation`, show `CalloutAnnotationView`.
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is CustomAnnotation {
+            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(customAnnotationViewIdentifier)
+            if pin == nil {
+                pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier)
+                pin?.canShowCallout = false
+            } else {
+                pin?.annotation = annotation
+            }
+            return pin
+        } else if annotation is CalloutAnnotation {
+            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(calloutAnnotationViewIdentifier)
+            if pin == nil {
+                pin = CalloutAnnotationView(annotation: annotation, reuseIdentifier: calloutAnnotationViewIdentifier)
+                pin?.canShowCallout = false
+            } else {
+                pin?.annotation = annotation
+            }
+            return pin
+        }
+        
+        return nil
+    }
+    
+    // If user selects annotation view for `CustomAnnotation`, then show callout for it. Automatically select
+    // that new callout annotation, too.
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if let annotation = view.annotation as? CustomAnnotation {
+            let calloutAnnotation = CalloutAnnotation(annotation: annotation)
+            mapView.addAnnotation(calloutAnnotation)
+            dispatch_async(dispatch_get_main_queue()) {
+                mapView.selectAnnotation(calloutAnnotation, animated: false)
+            }
+        }
+    }
+    
+    /// If user unselects callout annotation view, then remove it.
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        if let annotation = view.annotation as? CalloutAnnotation {
+            mapView.removeAnnotation(annotation)
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
