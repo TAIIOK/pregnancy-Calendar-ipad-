@@ -17,6 +17,7 @@
 		8E2538F11C84746D00B3C54E /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F01C84746D00B3C54E /* Plist.swift */; };
 		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
 		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
+		8E3BB4FA1CA3EB9800CFF7E2 /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BB4F91CA3EB9800CFF7E2 /* json.swift */; };
 		8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4FACBF1C89CADF003405D0 /* MapKit.framework */; };
 		8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */; };
 		8E51BF131CA2AA8000D8D739 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */; };
@@ -24,6 +25,7 @@
 		8E51BF1A1CA2D00200D8D739 /* CalloutAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF161CA2D00200D8D739 /* CalloutAnnotation.swift */; };
 		8E51BF1B1CA2D00200D8D739 /* CalloutAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF171CA2D00200D8D739 /* CalloutAnnotationView.swift */; };
 		8E51BF1C1CA2D00200D8D739 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF181CA2D00200D8D739 /* CustomAnnotation.swift */; };
+		8E51BF2D1CA3E8E900D8D739 /* points.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E51BF2C1CA3E8E900D8D739 /* points.json */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -75,6 +77,7 @@
 		8E2538F01C84746D00B3C54E /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		8E2538F21C84779F00B3C54E /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
 		8E2538F91C848E5100B3C54E /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		8E3BB4F91CA3EB9800CFF7E2 /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
 		8E4FACBF1C89CADF003405D0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		8E51BF161CA2D00200D8D739 /* CalloutAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutAnnotation.swift; sourceTree = "<group>"; };
 		8E51BF171CA2D00200D8D739 /* CalloutAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutAnnotationView.swift; sourceTree = "<group>"; };
 		8E51BF181CA2D00200D8D739 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		8E51BF2C1CA3E8E900D8D739 /* points.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = points.json; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				8E3BB4F91CA3EB9800CFF7E2 /* json.swift */,
+				8E51BF2C1CA3E8E900D8D739 /* points.json */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
 				8E20C8B01C998F130003C1CF /* Custom Layouts */,
 				8E2538F41C848D9200B3C54E /* LineChart */,
@@ -349,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E51BF2D1CA3E8E900D8D739 /* points.json in Resources */,
 				8E90A4201C7DF093001F3A07 /* LaunchScreen.storyboard in Resources */,
 				8E90A41D1C7DF093001F3A07 /* Assets.xcassets in Resources */,
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
@@ -404,6 +411,7 @@
 				8E6D50391C7F056200878957 /* VideosViewController.swift in Sources */,
 				8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */,
 				8E20C8B61C998F430003C1CF /* CustomCollectionViewLayout.swift in Sources */,
+				8E3BB4FA1CA3EB9800CFF7E2 /* json.swift in Sources */,
 				8E01775A1C843819004E7A46 /* WebsViewController.swift in Sources */,
 				8E51BF1B1CA2D00200D8D739 /* CalloutAnnotationView.swift in Sources */,
 				8E51BF1C1CA2D00200D8D739 /* CustomAnnotation.swift in Sources */,

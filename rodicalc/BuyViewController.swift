@@ -10,31 +10,37 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MyAnnotation: NSObject, MKAnnotation {
-    let coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
+class Points: NSObject {
+    var longitude: Double
+    var city: String
+    var address: String
+    var phone: String
+    var trade_point: String
+    var latitude: Double
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String){
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
+    init(city: String, address: String, trade_point: String, phone: String, longitude: Double, latitude: Double) {
+        self.city = city
+        self.address = address
+        self.trade_point = trade_point
+        self.phone = phone
+        self.longitude = longitude
+        self.latitude = latitude
         super.init()
     }
-    
 }
+
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
+    /*let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
     let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
     let magsLoc = [0,48.704360,48.706817]
-    let magsLoc0 = [0,44.509449,44.510901]
+    let magsLoc0 = [0,44.509449,44.510901]*/
     var locationManager = CLLocationManager()
     var initialLocation = CLLocationCoordinate2D(latitude: 48.704360,
                                                  longitude: 44.509449)
     
-    
+    var points: [Points] = []
 
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var tbl: UITableView!
@@ -47,14 +53,32 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             UIApplication.sharedApplication().openURL(url)
         }
     }
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        //map = MKMapView()
+    
+    func WorkWithJSON(){
+        points.append(Points(city: "",address: "",trade_point: "WILDBERRIELS",phone: "",longitude: 0.0,latitude: 0.0))
+        if let path = NSBundle.mainBundle().pathForResource("points", ofType: "json") {
+            do {
+                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                do {
+                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if let point : [NSDictionary] = jsonResult["colorsArray"] as? [NSDictionary] {
+                        for p: NSDictionary in point {
+                            for (city,address) in p {
+                                points.append(Points(city: "\(city)",address: "\(address)",trade_point: "sdds",phone: "",longitude: 48.704360,latitude: 44.509449))
+                            }
+                        }
+                    }
+                } catch {}
+            } catch {}
+        }
     }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        WorkWithJSON()
         if(Reachability.isConnectedToNetwork()==true){
             tbl.delegate = self
             tbl.dataSource = self
@@ -73,9 +97,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 if CLLocationManager.locationServicesEnabled() {
                     locationManager.delegate = self
                     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                    //self.map.showsUserLocation = true
+                    self.map.showsUserLocation = true
                     //locationManager.startUpdatingLocation() //8
-                    setCenterOfMapToLocation(initialLocation)
+                    //setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {
@@ -121,19 +145,14 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func addPinToMapView(){
         var i = Int(1)
-        while i < magsLoc.count {
+        while i < points.count {
             /* This is just a sample location */
-            let location = CLLocationCoordinate2D(latitude: magsLoc[i],
-                                                  longitude: magsLoc0[i])
-        
-           
+            let location = CLLocationCoordinate2D(latitude: points[i].latitude,
+                                                  longitude: points[i].longitude)
             /* Create the annotation using the location */
-            /*let annotation = MyAnnotation(coordinate: location,
-                                          title: mags[i],
-                                          subtitle: "Адрес: " + mags0[i])*/
             let annotation = CustomAnnotation()
             annotation.coordinate = location
-            annotation.title = mags[i] + "\nАдрес: " + mags0[i]
+            annotation.title = points[i].trade_point + "\nАдрес: " + points[i].address
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
             i = i+1
@@ -200,13 +219,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -221,28 +233,20 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return mags.count
+        return points.count
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if mags[indexPath.row] == "WILDBERRIELS" {
-            //let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,reuseIdentifier: "WildCell") as! TableViewCell
+        if points[indexPath.row].trade_point == "WILDBERRIELS" {
             let cell = tableView.dequeueReusableCellWithIdentifier("WildCell", forIndexPath: indexPath) as! TableViewCell
-            //cell.detailTextLabel?.font = UIFont.systemFontOfSize(10)
             cell.textLabel?.text = "WILDBERRIELS"
             cell.detailTextLabel?.text = "интернет-магазин"
             return cell
         } else {
-            //let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,reuseIdentifier: "MagCell") as! TableViewCell
             let cell = tableView.dequeueReusableCellWithIdentifier("MagCell", forIndexPath: indexPath)
-            //cell.detailTextLabel?.font = UIFont.systemFontOfSize(10)
-            //cell.textLabel?.numberOfLines = 2
-            //cell.textLabel?.text = mags[indexPath.row] + "\nАдрес: "
-            //cell.detailTextLabel?.text=mags0[indexPath.row]
-            //cell.detailTextLabel?.textColor = .blueColor()
             var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: mags[indexPath.row] + "\nАдрес: " + mags0[indexPath.row], attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:mags[indexPath.row].characters.count+8,length:mags0[indexPath.row].characters.count))
+            myMutableString = NSMutableAttributedString(string: points[indexPath.row].trade_point + "\nАдрес: " + points[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:points[indexPath.row].trade_point.characters.count+8,length:points[indexPath.row].address.characters.count))
             cell.textLabel?.attributedText = myMutableString
             return cell
         }
