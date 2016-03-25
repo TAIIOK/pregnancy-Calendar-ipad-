@@ -219,6 +219,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        map.removeAnnotations(map.annotations)
+        map.removeOverlays(map.overlays)
+        map.removeFromSuperview()
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
