@@ -130,6 +130,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         self.map.setRegion(region, animated: true)
         
+        self.map.showsUserLocation = true
+        
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -153,11 +155,15 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let location = CLLocationCoordinate2D(latitude: points[i].latitude,
                                                   longitude: points[i].longitude)
             /* Create the annotation using the location */
+        //   print(self.map.userLocation.location?.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)))
+            
+            if ( self.map.userLocation.location?.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude))<10000){
             let annotation = CustomAnnotation()
             annotation.coordinate = location
             annotation.title = points[i].trade_point + "\nАдрес: " + points[i].address
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
+            }
             i = i+1
         }
     }
