@@ -63,11 +63,13 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let point : [NSDictionary] = jsonResult["points"] as? [NSDictionary] {
                         for Point: NSDictionary in point {
-                            Point.valueForKey("address")
                             var address = Point.valueForKey("address")
                            address!.dataUsingEncoding(NSUTF8StringEncoding)
                             if let d = address {
-                            points.append(Points(city: "\(Point.valueForKey("city"))",address: "\(d))",trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
+                                
+                            points.append(Points(city: "\(Point.valueForKey("city"))",address: d as! String,trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
+                                
+                                
                             }
                         }
                     }
@@ -160,6 +162,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             if ( self.map.userLocation.location?.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude))<10000){
             let annotation = CustomAnnotation()
             annotation.coordinate = location
+               
             annotation.title = points[i].trade_point + "\nАдрес: " + points[i].address
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
