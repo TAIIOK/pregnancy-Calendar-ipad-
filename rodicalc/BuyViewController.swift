@@ -61,10 +61,13 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 do {
                     let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    if let point : [NSDictionary] = jsonResult["colorsArray"] as? [NSDictionary] {
-                        for p: NSDictionary in point {
-                            for (city,address) in p {
-                                points.append(Points(city: "\(city)",address: "\(address)",trade_point: "sdds",phone: "",longitude: 48.704360,latitude: 44.509449))
+                    if let point : [NSDictionary] = jsonResult["points"] as? [NSDictionary] {
+                        for Point: NSDictionary in point {
+                            Point.valueForKey("address")
+                            var address = Point.valueForKey("address")
+                           address!.dataUsingEncoding(NSUTF8StringEncoding)
+                            if let d = address {
+                            points.append(Points(city: "\(Point.valueForKey("city"))",address: "\(d))",trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
                             }
                         }
                     }
