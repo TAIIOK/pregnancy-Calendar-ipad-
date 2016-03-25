@@ -884,6 +884,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Купить белье ФЭСТ" id="rZ2-MO-KPo"/>
                     <connections>
+                        <outlet property="TableView" destination="tln-XQ-Gq6" id="UHv-gR-1TC"/>
                         <outlet property="btnReconnect" destination="Rc8-PI-vPi" id="RGa-Ld-Jfc"/>
                         <outlet property="label" destination="TDX-lw-G4K" id="Des-tt-5gz"/>
                         <outlet property="map" destination="Wgj-EF-am9" id="4CY-RY-W5I"/>

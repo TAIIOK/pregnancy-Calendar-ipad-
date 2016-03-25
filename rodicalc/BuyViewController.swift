@@ -32,6 +32,7 @@ class Points: NSObject {
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var TableView: UITableView!
     /*let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
     let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
     let magsLoc = [0,48.704360,48.706817]
@@ -41,7 +42,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                                                  longitude: 44.509449)
     
     var points: [Points] = []
-
+    var locate: [CLLocation] = []
+    
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var tbl: UITableView!
     
@@ -88,9 +90,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             tbl.delegate = self
             tbl.dataSource = self
             
-            //checkLocationAuthorizationStatus()
             map.delegate = self
-            
             // Ask for Authorisation from the User.
             if #available(iOS 8.0, *) {
                 self.locationManager.requestAlwaysAuthorization() //8
@@ -98,19 +98,20 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
                 // For use in foreground
                 self.locationManager.requestWhenInUseAuthorization() //8
-            
+
                 if CLLocationManager.locationServicesEnabled() {
                     locationManager.delegate = self
                     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                     self.map.showsUserLocation = true
-                    //locationManager.startUpdatingLocation() //8
-                    //setCenterOfMapToLocation(initialLocation)
+                    locationManager.startUpdatingLocation() //8
+                    
+                    setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {
                 // Fallback on earlier versions
             }
-            addPinToMapView()
+           
             
         }
         else{
@@ -126,6 +127,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     {
         let location = locations.last
         
+        locate = locations
+        addPinToMapView()
+        
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
@@ -134,6 +138,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         self.map.showsUserLocation = true
         
+      
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -152,14 +157,19 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func addPinToMapView(){
         var i = Int(1)
+        var nearMe = false
+        var distance :CLLocationDistance = 10000
+        
+        
         while i < points.count {
             /* This is just a sample location */
             let location = CLLocationCoordinate2D(latitude: points[i].latitude,
                                                   longitude: points[i].longitude)
             /* Create the annotation using the location */
-        //   print(self.map.userLocation.location?.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)))
+          
             
-            if ( self.map.userLocation.location?.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude))<10000){
+            if ( locate.last!.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)) < distance){
+                nearMe = true
             let annotation = CustomAnnotation()
             annotation.coordinate = location
                
@@ -168,9 +178,15 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             map.addAnnotation(annotation)
             }
             i = i+1
+            if (i == points.count && !nearMe){
+                i=1
+                distance *= 10
+                nearMe = true
+            }
         }
     }
 
+    
     
     
     // define annotation view identifiers

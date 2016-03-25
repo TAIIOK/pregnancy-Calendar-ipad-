@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/BuyViewController.swift"
-            timestampString = "480599347.462309"
+            timestampString = "480611843.330706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "BuyViewController"
             landmarkType = "3">
          </BreakpointContent>
