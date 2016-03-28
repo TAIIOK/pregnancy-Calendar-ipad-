@@ -884,11 +884,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Купить белье ФЭСТ" id="rZ2-MO-KPo"/>
                     <connections>
-                        <outlet property="TableView" destination="tln-XQ-Gq6" id="UHv-gR-1TC"/>
                         <outlet property="btnReconnect" destination="Rc8-PI-vPi" id="RGa-Ld-Jfc"/>
                         <outlet property="label" destination="TDX-lw-G4K" id="Des-tt-5gz"/>
                         <outlet property="map" destination="Wgj-EF-am9" id="4CY-RY-W5I"/>
-                        <outlet property="tbl" destination="tln-XQ-Gq6" id="MVs-pE-fLK"/>
+                        <outlet property="tbl" destination="tln-XQ-Gq6" id="S0B-WU-bx4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEG-jH-OaH" userLabel="First Responder" sceneMemberID="firstResponder"/>

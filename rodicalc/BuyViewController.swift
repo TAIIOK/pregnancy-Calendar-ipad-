@@ -32,12 +32,17 @@ class Points: NSObject {
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
-
+    /*let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
+    let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
+    let magsLoc = [0,48.704360,48.706817]
+    let magsLoc0 = [0,44.509449,44.510901]*/
     var locationManager = CLLocationManager()
     var initialLocation = CLLocationCoordinate2D(latitude: 48.704360,
                                                  longitude: 44.509449)
     
     var points: [Points] = []
+    var nearPoints: [Points] = []
+    
     var locate: [CLLocation] = []
     
     @IBOutlet weak var map: MKMapView!
@@ -54,6 +59,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func WorkWithJSON(){
         points.append(Points(city: "",address: "",trade_point: "WILDBERRIELS",phone: "",longitude: 0.0,latitude: 0.0))
+        nearPoints.append(Points(city: "",address: "",trade_point: "WILDBERRIELS",phone: "",longitude: 0.0,latitude: 0.0))
         if let path = NSBundle.mainBundle().pathForResource("points", ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
@@ -101,6 +107,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.map.showsUserLocation = true
                     locationManager.startUpdatingLocation() //8
                     
+                    setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {
@@ -170,20 +177,21 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             annotation.title = points[i].trade_point + "\nАдрес: " + points[i].address
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
-            }
-            else
-            {
-             points.removeAtIndex(i)
+                nearPoints.append(points[i])
+                
             }
             i = i+1
+             updateTable()
         }
         
-        updateTable()
+
     }
 
     func updateTable()
     {
-        tbl.reloadData()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tbl.reloadData()
+        })
     }
     
     
@@ -265,11 +273,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return points.count
+        return nearPoints.count
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if points[indexPath.row].trade_point == "WILDBERRIELS" {
+        if nearPoints[indexPath.row].trade_point == "WILDBERRIELS" {
             let cell = tableView.dequeueReusableCellWithIdentifier("WildCell", forIndexPath: indexPath) as! TableViewCell
             cell.textLabel?.text = "WILDBERRIELS"
             cell.detailTextLabel?.text = "интернет-магазин"
@@ -277,8 +285,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("MagCell", forIndexPath: indexPath)
             var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: points[indexPath.row].trade_point + "\nАдрес: " + points[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:points[indexPath.row].trade_point.characters.count+8,length:points[indexPath.row].address.characters.count))
+            myMutableString = NSMutableAttributedString(string: nearPoints[indexPath.row].trade_point + "\nАдрес: " + nearPoints[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:nearPoints[indexPath.row].trade_point.characters.count+8,length:nearPoints[indexPath.row].address.characters.count))
             cell.textLabel?.attributedText = myMutableString
             return cell
         }
