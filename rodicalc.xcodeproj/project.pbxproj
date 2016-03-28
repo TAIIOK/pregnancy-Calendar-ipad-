@@ -66,7 +66,6 @@
 		8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50401C7F068000878957 /* CalendarViewController.swift */; };
 		8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50421C7F06BE00878957 /* BuyViewController.swift */; };
 		8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50441C7F06D300878957 /* ExportViewController.swift */; };
-		8E7553741C900C5300472DF0 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7553731C900C5300472DF0 /* SafariServices.framework */; };
 		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
 		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
 		8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */; };
@@ -169,7 +168,6 @@
 		8E6D50401C7F068000878957 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8E6D50421C7F06BE00878957 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		8E6D50441C7F06D300878957 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
-		8E7553731C900C5300472DF0 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		8E90A40F1C7DF093001F3A07 /* rodicalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rodicalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E7553741C900C5300472DF0 /* SafariServices.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +290,6 @@
 		8E90A4061C7DF093001F3A07 = {
 			isa = PBXGroup;
 			children = (
-				8E7553731C900C5300472DF0 /* SafariServices.framework */,
 				8E4FACBF1C89CADF003405D0 /* MapKit.framework */,
 				8E90A4111C7DF093001F3A07 /* rodicalc */,
 				8E90A4291C7DF093001F3A07 /* rodicalcTests */,

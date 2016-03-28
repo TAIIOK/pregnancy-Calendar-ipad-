@@ -32,10 +32,6 @@ class Points: NSObject {
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    /*let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
-    let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
-    let magsLoc = [0,48.704360,48.706817]
-    let magsLoc0 = [0,44.509449,44.510901]*/
     var locationManager = CLLocationManager()
     var initialLocation = CLLocationCoordinate2D(latitude: 48.704360,
                                                  longitude: 44.509449)
@@ -113,9 +109,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             } else {
                 // Fallback on earlier versions
             }
-            addPinToMapView()
-           
-            
+            //addPinToMapView()
         }
         else{
             map.hidden = true
