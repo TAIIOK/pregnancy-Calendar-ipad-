@@ -113,6 +113,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             } else {
                 // Fallback on earlier versions
             }
+            addPinToMapView()
            
             
         }
@@ -161,16 +162,25 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var i = Int(1)
         let distance :CLLocationDistance = 100000
         
+       
         
+        if(locate.isEmpty){
+            
+            nearPoints = points
+            updateTable()
+        }
+        else{
         while i < points.count {
             /* This is just a sample location */
             let location = CLLocationCoordinate2D(latitude: points[i].latitude,
                                                   longitude: points[i].longitude)
             /* Create the annotation using the location */
-          
+           
+            
+           
             
             if ( locate.last!.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)) < distance){
-
+                print("lol")
             let annotation = CustomAnnotation()
             annotation.coordinate = location
                
@@ -183,6 +193,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             i = i+1
              updateTable()
         }
+    }
         
 
     }
