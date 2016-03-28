@@ -32,11 +32,7 @@ class Points: NSObject {
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var TableView: UITableView!
-    /*let mags = ["WILDBERRIELS","ТРЦ \"Пирамида\", 2 этаж","м-н \"40 недель\""]
-    let mags0 = ["","ул. Краснознаменская, 9","ул. Ленина, 19"]
-    let magsLoc = [0,48.704360,48.706817]
-    let magsLoc0 = [0,44.509449,44.510901]*/
+
     var locationManager = CLLocationManager()
     var initialLocation = CLLocationCoordinate2D(latitude: 48.704360,
                                                  longitude: 44.509449)
@@ -105,7 +101,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.map.showsUserLocation = true
                     locationManager.startUpdatingLocation() //8
                     
-                    setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {
@@ -157,8 +152,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func addPinToMapView(){
         var i = Int(1)
-        var nearMe = false
-        var distance :CLLocationDistance = 10000
+        let distance :CLLocationDistance = 100000
         
         
         while i < points.count {
@@ -169,7 +163,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
           
             
             if ( locate.last!.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)) < distance){
-                nearMe = true
+
             let annotation = CustomAnnotation()
             annotation.coordinate = location
                
@@ -177,15 +171,20 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             /* And eventually add it to the map */
             map.addAnnotation(annotation)
             }
-            i = i+1
-            if (i == points.count && !nearMe){
-                i=1
-                distance *= 10
-                nearMe = true
+            else
+            {
+             points.removeAtIndex(i)
             }
+            i = i+1
         }
+        
+        updateTable()
     }
 
+    func updateTable()
+    {
+        tbl.reloadData()
+    }
     
     
     
