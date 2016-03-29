@@ -52,26 +52,12 @@ class VideosViewController: UICollectionViewController {
                      "-2jV00pq8Iw",
                      "QELTjHFHqxg"]
     
-    
-   
-    //@IBOutlet weak var VideoCollectionView: UICollectionView!
-    
+
     @IBOutlet var VideoCollectionView: UICollectionView!
     @IBOutlet weak var VideoChanger: UISegmentedControl!
-    //@IBOutlet weak var VideoChanger: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        //VideoCollectionView.delegate = self
-        //VideoCollectionView.dataSource = self
-        //self.VideoCollectionView.registerClass(VideoCollectionViewCell.self, forCellWithReuseIdentifier: "VideoCell")
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-   
-
     
     @IBAction func ChangeSegment(sender: AnyObject) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
@@ -82,7 +68,6 @@ class VideosViewController: UICollectionViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -104,16 +89,11 @@ class VideosViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        
-        
         // youtube player
         var videoPlayer = YouTubePlayerView(frame: self.view.frame)
-       
+        videoPlayer.backgroundColor = .whiteColor()
         self.view.addSubview(videoPlayer)
         self.view.bringSubviewToFront(videoPlayer)
-        
-        
-        //videoPlayer.loadVideoID("iC5Oe_molfw")
         let id =  choosedSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
         videoPlayer.loadVideoID(id)
         

@@ -174,7 +174,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
            
             
             if ( locate.last!.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)) < distance){
-                print("lol")
+                
             let annotation = CustomAnnotation()
             annotation.coordinate = location
                
