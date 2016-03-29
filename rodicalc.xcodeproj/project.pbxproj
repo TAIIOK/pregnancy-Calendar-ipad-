@@ -56,6 +56,11 @@
 		8E51BF1B1CA2D00200D8D739 /* CalloutAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF171CA2D00200D8D739 /* CalloutAnnotationView.swift */; };
 		8E51BF1C1CA2D00200D8D739 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF181CA2D00200D8D739 /* CustomAnnotation.swift */; };
 		8E51BF2D1CA3E8E900D8D739 /* points.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E51BF2C1CA3E8E900D8D739 /* points.json */; };
+		8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; };
+		8E56189A1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; };
+		8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8E56189E1CAA8B9100C9B7D1 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */; };
+		8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -96,12 +101,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8E5618741CA967D400C9B7D1 /* Embed Frameworks */ = {
+		8E56189C1CAA8B2A00C9B7D1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +164,9 @@
 		8E51BF171CA2D00200D8D739 /* CalloutAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutAnnotationView.swift; sourceTree = "<group>"; };
 		8E51BF181CA2D00200D8D739 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		8E51BF2C1CA3E8E900D8D739 /* points.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = points.json; sourceTree = "<group>"; };
+		8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YouTubePlayer.framework; sourceTree = "<group>"; };
+		8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
+		8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
+				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
+				8E56189A1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +301,7 @@
 		8E90A4061C7DF093001F3A07 = {
 			isa = PBXGroup;
 			children = (
+				8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */,
 				8E4FACBF1C89CADF003405D0 /* MapKit.framework */,
 				8E90A4111C7DF093001F3A07 /* rodicalc */,
 				8E90A4291C7DF093001F3A07 /* rodicalcTests */,
@@ -311,6 +323,8 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */,
+				8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */,
 				8E51BF2C1CA3E8E900D8D739 /* points.json */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
 				8E20C8B01C998F130003C1CF /* Custom Layouts */,
@@ -375,7 +389,7 @@
 				8E90A40B1C7DF093001F3A07 /* Sources */,
 				8E90A40C1C7DF093001F3A07 /* Frameworks */,
 				8E90A40D1C7DF093001F3A07 /* Resources */,
-				8E5618741CA967D400C9B7D1 /* Embed Frameworks */,
+				8E56189C1CAA8B2A00C9B7D1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -501,6 +515,7 @@
 				8E1AC9911CA960820091D8BB /* 16.jpg in Resources */,
 				8E1AC9931CA960820091D8BB /* 18.jpg in Resources */,
 				8E1AC9A61CA960820091D8BB /* 4.png in Resources */,
+				8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */,
 				8E1AC98A1CA960820091D8BB /* 1.jpg in Resources */,
 				8E1AC9A01CA960820091D8BB /* 8.jpg in Resources */,
 				8E1AC99D1CA960820091D8BB /* 5.jpg in Resources */,
@@ -538,6 +553,7 @@
 				8E20C8B91C998F520003C1CF /* NumberCollectionViewCell.swift in Sources */,
 				8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */,
 				8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */,
+				8E56189E1CAA8B9100C9B7D1 /* YouTubePlayer.swift in Sources */,
 				8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */,
 				8E1AC9191CA937B30091D8BB /* VideoCollectionViewCell.swift in Sources */,
 				8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */,
@@ -705,10 +721,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -728,10 +744,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

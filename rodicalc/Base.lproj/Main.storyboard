@@ -959,6 +959,11 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
+                        <view key="backgroundView" contentMode="scaleToFill" id="qjA-O7-HK7" customClass="YouTubePlayerView" customModule="rodicalc" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
                                 <rect key="frame" x="10" y="74" width="100" height="100"/>
@@ -1007,6 +1012,7 @@
                     <connections>
                         <outlet property="VideoChanger" destination="aW4-ot-CGC" id="kc9-Mk-gGk"/>
                         <outlet property="VideoCollectionView" destination="7yX-Ee-KgM" id="N72-oU-kdo"/>
+                        <outlet property="playerView" destination="qjA-O7-HK7" id="P7C-3L-z7e"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EB-4N-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
