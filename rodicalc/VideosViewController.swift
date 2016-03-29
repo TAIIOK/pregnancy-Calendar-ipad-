@@ -20,37 +20,37 @@ class VideosViewController: UICollectionViewController {
     
 
     
-    let videosDress = ["https://www.youtube.com/embed/iC5Oe_molfw",
-                       "https://www.youtube.com/embed/2-rkmvmlZhY",
-                       "https://www.youtube.com/embed/PpIWPXG67LE",
-                       "https://www.youtube.com/embed/6xDPPupoErk",
-                       "https://www.youtube.com/embed/jTYKDH9Gp8A",
-                       "https://www.youtube.com/embed/CqbEmt5OvTw",
-                       "https://www.youtube.com/embed/qt4Nrwi2H6s",
-                       "https://www.youtube.com/embed/5EtmXqBcgHM",
-                       "https://www.youtube.com/embed/r5BwTUiPHDM",
-                       "https://www.youtube.com/embed/kfIfbrlg1Ik",
-                       "https://www.youtube.com/embed/gkTuKuvnVvo",
-                       "https://www.youtube.com/embed/H9u7Skai4gY",
-                       "https://www.youtube.com/embed/PJL5TMXYSOQ",
-                       "https://www.youtube.com/embed/fcUPgKMVWXA",
-                       "https://www.youtube.com/embed/6HI_l9JitwE",
-                       "https://www.youtube.com/embed/HBeBFGPJvwU",
-                       "https://www.youtube.com/embed/D7xclqFnmrk",
-                       "https://www.youtube.com/embed/YgsHdIhCCrQ",
-                       "https://www.youtube.com/embed/j3wmoPJlR2A",
-                       "https://www.youtube.com/embed/ZuBKd2D3TPg",
-                       "https://www.youtube.com/embed/u9-klWTYBeo",
-                       "https://www.youtube.com/embed/Da8nM8Ga1Jc",
-                       "https://www.youtube.com/embed/TgihONK_swI",
-                       "https://www.youtube.com/embed/dt-XaCO5mtc",
-                       "https://www.youtube.com/embed/0F-dlfN9664"]
+    let videosDress = ["iC5Oe_molfw",
+                       "2-rkmvmlZhY",
+                       "PpIWPXG67LE",
+                       "6xDPPupoErk",
+                       "jTYKDH9Gp8A",
+                       "CqbEmt5OvTw",
+                       "qt4Nrwi2H6s",
+                       "5EtmXqBcgHM",
+                       "r5BwTUiPHDM",
+                       "kfIfbrlg1Ik",
+                       "gkTuKuvnVvo",
+                       "H9u7Skai4gY",
+                       "PJL5TMXYSOQ",
+                       "fcUPgKMVWXA",
+                       "6HI_l9JitwE",
+                       "HBeBFGPJvwU",
+                       "D7xclqFnmrk",
+                       "YgsHdIhCCrQ",
+                       "j3wmoPJlR2A",
+                       "ZuBKd2D3TPg",
+                       "u9-klWTYBeo",
+                       "Da8nM8Ga1Jc",
+                       "TgihONK_swI",
+                       "dt-XaCO5mtc",
+                       "0F-dlfN9664"]
     
-    let videosGym = ["https://www.youtube.com/embed/iBzR_TNrWMI",
-                     "https://www.youtube.com/embed/oCXnXP2R1NE",
-                     "https://www.youtube.com/embed/evUKbaeGXB0",
-                     "https://www.youtube.com/embed/-2jV00pq8Iw",
-                     "https://www.youtube.com/embed/QELTjHFHqxg"]
+    let videosGym = ["iBzR_TNrWMI",
+                     "oCXnXP2R1NE",
+                     "evUKbaeGXB0",
+                     "-2jV00pq8Iw",
+                     "QELTjHFHqxg"]
     
     
    
@@ -106,17 +106,16 @@ class VideosViewController: UICollectionViewController {
         
         
         
-        
+        // youtube player
         var videoPlayer = YouTubePlayerView(frame: self.view.frame)
        
         self.view.addSubview(videoPlayer)
         self.view.bringSubviewToFront(videoPlayer)
         
         
-        videoPlayer.loadVideoID("iC5Oe_molfw")
-        
-        
-        
+        //videoPlayer.loadVideoID("iC5Oe_molfw")
+        let id =  choosedSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
+        videoPlayer.loadVideoID(id)
         
         
     
@@ -124,6 +123,7 @@ class VideosViewController: UICollectionViewController {
         let webView = UIWebView(frame: self.view.frame)
         
         self.view.addSubview(webView)
+         
         self.view.bringSubviewToFront(webView)
         
         webView.allowsInlineMediaPlayback = true
@@ -134,6 +134,7 @@ class VideosViewController: UICollectionViewController {
         
         
         
+         // попытка сделать через movieplayer
         
         var audioplayer : MPMoviePlayerController
         
@@ -147,10 +148,10 @@ class VideosViewController: UICollectionViewController {
         MPMoviePlayerViewController.play()
         MPMoviePlayerViewController.pause()
         */
-        print ( playerView.ready)
-
         
         
+        
+        // web view
         /*
         /*
         web.allowsInlineMediaPlayback = true
