@@ -27,7 +27,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallogo" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Ct-nF7">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Ct-nF7">
                                                     <rect key="frame" x="55" y="8" width="186" height="125"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="Prt-PK-IH4"/>
@@ -1274,7 +1274,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="QPZ-cd-WRK">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bCg-Nq-jPM">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oie-Se-AAV">
                             <rect key="frame" x="103" y="7" width="395" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -1282,11 +1282,20 @@
                                 <segment title="Узи"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="SegmentChanger:" destination="2aq-1D-rwJ" eventType="valueChanged" id="c0g-SQ-s1A"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Выбрать" id="R7f-0x-dyK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="BtnSelect:" destination="2aq-1D-rwJ" id="0xq-ht-j2U"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="PhotoCollectionView" destination="40H-Bg-gU9" id="ORz-Nq-bho"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBN-3i-Gvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1294,7 +1303,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="smallogo" width="197" height="113"/>
+        <image name="logo" width="112" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="L53-bo-E8K"/>
