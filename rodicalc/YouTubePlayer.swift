@@ -253,7 +253,10 @@ public class YouTubePlayerView: UIView, UIWebViewDelegate {
             "height": "100%",
             "width": "100%",
             "events": playerCallbacks(),
-            "playerVars": playerVars
+            "playerVars": playerVars,
+            "playsinline": "1",
+            "autoplay" : "1"
+
         ]
     }
 
