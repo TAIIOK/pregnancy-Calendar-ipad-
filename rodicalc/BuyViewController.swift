@@ -123,19 +123,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations.last
-        
         locate = locations
         addPinToMapView()
-        
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        
         self.map.setRegion(region, animated: true)
-        
         self.map.showsUserLocation = true
-        
-      
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -152,45 +145,50 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         map.setRegion(region, animated: true)
     }
     
-    func addPinToMapView(){
-        var i = Int(1)
-        let distance :CLLocationDistance = 100000
-        
-       
-        
-        if(locate.isEmpty){
-            
+    private func addPinToMapView() {
+        if locate.isEmpty {
             nearPoints = points
             updateTable()
-        }
-        else{
-        while i < points.count {
-            /* This is just a sample location */
-            let location = CLLocationCoordinate2D(latitude: points[i].latitude,
-                                                  longitude: points[i].longitude)
-            /* Create the annotation using the location */
-           
-            
-           
-            
-            if ( locate.last!.distanceFromLocation(CLLocation(latitude: points[i].latitude, longitude: points[i].longitude)) < distance){
-                
-            let annotation = CustomAnnotation()
-            annotation.coordinate = location
-               
-            annotation.title = points[i].trade_point + "\nАдрес: " + points[i].address
-            /* And eventually add it to the map */
-            map.addAnnotation(annotation)
-                nearPoints.append(points[i])
-                
+        } else {
+            if nearPoints.count > 1 {
+                return
             }
-            i = i+1
-             updateTable()
+            
+            var isFind = false
+            for point in points {
+                if point.latitude != 0 && point.longitude != 0 {
+                    let location = CLLocationCoordinate2DMake(point.latitude, point.longitude)
+                    
+                    if locate.last?.distanceFromLocation(CLLocation(latitude: point.latitude, longitude: point.longitude)) < 100000 {
+                        let annotation = CustomAnnotation()
+                        isFind = true
+                        annotation.coordinate = location
+                        annotation.title = point.trade_point + "\nАдрес: " + point.address
+                        map.addAnnotation(annotation)
+                        nearPoints.append(point)
+                    }
+                }
+            }
+            
+            updateTable()
+            
+            if !isFind {
+                nearPoints = points
+                updateTable()
+                
+                for point in nearPoints {
+                    if point.latitude != 0 && point.longitude != 0 {
+                        let location = CLLocationCoordinate2DMake(point.latitude, point.longitude)
+                        let annotation = CustomAnnotation()
+                        annotation.coordinate = location
+                        annotation.title = point.trade_point + "\nАдрес: " + point.address
+                        map.addAnnotation(annotation)
+                    }
+                }
+            }
         }
     }
-        
 
-    }
 
     func updateTable()
     {
