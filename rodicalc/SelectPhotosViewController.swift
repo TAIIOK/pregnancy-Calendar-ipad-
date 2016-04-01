@@ -30,7 +30,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     @IBAction func DeleteSelected(sender: AnyObject) {
         let indexPath = PhotoCollectionView.indexPathsForSelectedItems()
         for i in indexPath! {
-            choosedSegment ? photos.removeAtIndex(i.row) : uzis[i.row]
+            choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis[i.row]
             PhotoCollectionView.reloadData()
             selected -= 1
         }
@@ -42,12 +42,13 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  choosedSegment ? photos.count : uzis.count
+        return  choosedSegmentImages ? photos.count : uzis.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoSelCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
-        PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
+        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row] : uzis[indexPath.row]
+        
         return PhotoCell
     }
     

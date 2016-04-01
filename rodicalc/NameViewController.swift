@@ -23,7 +23,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     private func reloadTable(index: Bool) {
-        choosedSegment = index
+        choosedSegmentNames = index
         self.table.reloadData()
     }
     
@@ -64,20 +64,20 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return  choosedSegment ? boyNames.count : girlNames.count
+        return  choosedSegmentNames ? boyNames.count : girlNames.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath.row
-        info.text = choosedSegment ? boyNames[choosedName] : girlNames[choosedName]
+        info.text = choosedSegmentNames ? boyNames[choosedName] : girlNames[choosedName]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = choosedSegment ? boyNames[indexPath.row] : girlNames[indexPath.row]
+        cell.textLabel?.text = choosedSegmentNames ? boyNames[indexPath.row] : girlNames[indexPath.row]
         if(indexPath.row == choosedName){
-            info.text = choosedSegment ? boyNames[choosedName] : girlNames[choosedName]}
+            info.text = choosedSegmentNames ? boyNames[choosedName] : girlNames[choosedName]}
         return cell
     }
     

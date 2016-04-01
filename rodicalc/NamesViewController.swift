@@ -12,7 +12,7 @@ let boyNames = ["Александр", "Алексей", "Тимофей", "Юр�
 let girlNames = ["Дарья", "Света", "Софья"]
 
 var choosedName = 0 // index of name
-var choosedSegment = true // true: boys, false: girls
+var choosedSegmentNames = true // true: boys, false: girls
 
 class NamesTableViewController: UITableViewController {
     
@@ -21,7 +21,7 @@ class NamesTableViewController: UITableViewController {
     }
 
     private func reloadTable(index: Bool) {
-        choosedSegment = index
+        choosedSegmentNames = index
         self.tableView.reloadData()
     }
     
@@ -48,7 +48,7 @@ class NamesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return  choosedSegment ? boyNames.count : girlNames.count
+        return  choosedSegmentNames ? boyNames.count : girlNames.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -73,7 +73,7 @@ class NamesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = choosedSegment ? boyNames[indexPath.row] : girlNames[indexPath.row]
+        cell.textLabel?.text = choosedSegmentNames ? boyNames[indexPath.row] : girlNames[indexPath.row]
         return cell
     }
       

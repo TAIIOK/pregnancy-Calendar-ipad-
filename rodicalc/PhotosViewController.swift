@@ -11,8 +11,9 @@ import CoreData
 
 var photos = [UIImage]()
 var uzis = [UIImage]()
+var choosedSegmentImages = true // true: photo, false: uzi
 class PhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
-    var choosedSegment = true // true: photo, false: uzi
+    
     var picker:UIImagePickerController?=UIImagePickerController()
     
     @IBOutlet var PhotoCollectionView: UICollectionView!
@@ -55,11 +56,11 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        choosedSegment ? photos.append(chosenImage) : uzis.append(chosenImage)
+        choosedSegmentImages ? photos.append(chosenImage) : uzis.append(chosenImage)
         dismissViewControllerAnimated(true, completion: nil)
         PhotoCollectionView.reloadData()
         let type: String
-        choosedSegment ? (type="photo") : (type="uzi")
+        choosedSegmentImages ? (type="photo") : (type="uzi")
         savePhotos(chosenImage,type: type)
     }
     
@@ -67,7 +68,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
     private func reloadTable(index: Bool) {
-        choosedSegment = index
+        choosedSegmentImages = index
         PhotoCollectionView.reloadData()
     }
     
@@ -76,12 +77,12 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  choosedSegment ? photos.count : uzis.count
+        return  choosedSegmentImages ? photos.count : uzis.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
-        PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
+        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row] : uzis[indexPath.row]
         return PhotoCell
     }
     
