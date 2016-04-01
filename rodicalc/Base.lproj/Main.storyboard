@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Master Table View Controller-->
@@ -1236,7 +1237,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uQb-pF-evQ">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="uQb-pF-evQ">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1253,6 +1254,9 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JGf-b9-gd2">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="галочка" translatesAutoresizingMaskIntoConstraints="NO" id="5Vc-U7-P3o">
+                                            <rect key="frame" x="62" y="62" width="30" height="30"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -1263,6 +1267,7 @@
                                     <constraint firstAttribute="bottom" secondItem="JGf-b9-gd2" secondAttribute="bottom" id="rFN-cV-fSS"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="ImgSelector" destination="5Vc-U7-P3o" id="RKX-5s-LTT"/>
                                     <outlet property="photo" destination="JGf-b9-gd2" id="Pc9-KG-veb"/>
                                 </connections>
                             </collectionViewCell>
@@ -1290,6 +1295,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="BtnSelect:" destination="2aq-1D-rwJ" id="0xq-ht-j2U"/>
+                                <segue destination="KFD-Vq-IJK" kind="showDetail" id="udS-od-YRg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1301,13 +1307,109 @@
             </objects>
             <point key="canvasLocation" x="3112" y="3400"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o8c-AI-Aap">
+            <objects>
+                <navigationController id="KFD-Vq-IJK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nPn-Fp-0XX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5km-1G-n3U" kind="relationship" relationship="rootViewController" id="hyw-1d-cnt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5OZ-hq-3T1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3847" y="3511"/>
+        </scene>
+        <!--0 выбрано-->
+        <scene sceneID="mnn-UG-Uj4">
+            <objects>
+                <collectionViewController id="5km-1G-n3U" customClass="SelectPhotosViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qSU-bV-SCW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="IDX-8o-NXJ">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoSelCell" reuseIdentifier="PhotoSelCell" id="D27-BH-qE8" customClass="PhotoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
+                                <rect key="frame" x="10" y="74" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9eD-eU-vw9">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="галочка" translatesAutoresizingMaskIntoConstraints="NO" id="mjo-5h-Nty">
+                                            <rect key="frame" x="62" y="62" width="30" height="30"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="9eD-eU-vw9" firstAttribute="top" secondItem="D27-BH-qE8" secondAttribute="top" id="3A4-HI-2FH"/>
+                                    <constraint firstAttribute="trailing" secondItem="9eD-eU-vw9" secondAttribute="trailing" id="5dh-ta-0mr"/>
+                                    <constraint firstAttribute="bottom" secondItem="9eD-eU-vw9" secondAttribute="bottom" id="Tq2-M5-xnw"/>
+                                    <constraint firstItem="9eD-eU-vw9" firstAttribute="leading" secondItem="D27-BH-qE8" secondAttribute="leading" id="ahv-Re-8vD"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="ImgSelector" destination="mjo-5h-Nty" id="kUA-Sk-Mh7"/>
+                                    <outlet property="photo" destination="9eD-eU-vw9" id="q3y-hs-GfM"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="5km-1G-n3U" id="VwY-ba-w4V"/>
+                            <outlet property="delegate" destination="5km-1G-n3U" id="ZJc-5L-Bko"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="0 выбрано" id="nnn-R4-4Jv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9he-bk-xhZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="dBK-07-mjw" kind="showDetail" id="XcH-dH-mWH"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Share" id="SgX-8L-GLU">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="ShareSelected:" destination="5km-1G-n3U" id="H3H-fJ-PEE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Del" id="jh5-CO-ZRJ">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="DeleteSelected:" destination="5km-1G-n3U" id="Lfx-co-oiM"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PhotoCollectionView" destination="qSU-bV-SCW" id="2N9-pp-8zq"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cf6-jd-7YO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3791" y="2676"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo" width="112" height="63"/>
+        <image name="галочка" width="1157" height="1099"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XcH-dH-mWH"/>
+        <segue reference="P0H-Yd-JxP"/>
         <segue reference="L53-bo-E8K"/>
         <segue reference="kMg-vQ-vuk"/>
-        <segue reference="P0H-Yd-JxP"/>
     </inferredMetricsTieBreakers>
 </document>

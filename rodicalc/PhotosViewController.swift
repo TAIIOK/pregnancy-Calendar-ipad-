@@ -8,11 +8,12 @@
 
 import UIKit
 
+var photos = [UIImage]()
+var uzis = [UIImage]()
 class PhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
     var choosedSegment = true // true: photo, false: uzi
     var picker:UIImagePickerController?=UIImagePickerController()
-    var photos = [UIImage]()
-    var uzis = [UIImage]()
+    
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photos.append(chosenImage)
+        choosedSegment ? photos.append(chosenImage) : uzis.append(chosenImage)
         dismissViewControllerAnimated(true, completion: nil)
         PhotoCollectionView.reloadData()
     }
@@ -78,11 +79,15 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
         return PhotoCell
     }
-    
-    
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    }
+    /*override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
+        if(cell.ImgSelector.hidden == true){
+            cell.ImgSelector.hidden = false
+        }else{
+            cell.ImgSelector.hidden = true
+        }
+        
+    }*/
 
     
     override func didReceiveMemoryWarning() {
