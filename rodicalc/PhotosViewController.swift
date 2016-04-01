@@ -74,8 +74,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
-        //PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
+        let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
         return PhotoCell
     }
     

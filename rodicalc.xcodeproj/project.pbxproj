@@ -39,6 +39,7 @@
 		8E1AC9A41CA960820091D8BB /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1AC9861CA960820091D8BB /* 2.png */; };
 		8E1AC9A51CA960820091D8BB /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1AC9871CA960820091D8BB /* 3.png */; };
 		8E1AC9A61CA960820091D8BB /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1AC9881CA960820091D8BB /* 4.png */; };
+		8E1DD6021CAE78D300D55893 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */; };
 		8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */; };
 		8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */; };
 		8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */; };
@@ -147,6 +148,7 @@
 		8E1AC9861CA960820091D8BB /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		8E1AC9871CA960820091D8BB /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		8E1AC9881CA960820091D8BB /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				8E6D50441C7F06D300878957 /* ExportViewController.swift */,
 				8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */,
 				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
+				8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */,
 				8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */,
 				8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */,
+				8E1DD6021CAE78D300D55893 /* PhotoCollectionViewCell.swift in Sources */,
 				8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */,
 				8E51BF191CA2D00200D8D739 /* BubbleView.swift in Sources */,
 				8E6D50391C7F056200878957 /* VideosViewController.swift in Sources */,
