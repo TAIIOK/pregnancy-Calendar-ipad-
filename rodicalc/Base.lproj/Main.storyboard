@@ -374,7 +374,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="cKS-zn-3ye" kind="presentation" modalPresentationStyle="fullScreen" id="Oeo-av-twR"/>
+                                    <segue destination="cKS-zn-3ye" kind="presentation" modalPresentationStyle="overFullScreen" id="Oeo-av-twR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
