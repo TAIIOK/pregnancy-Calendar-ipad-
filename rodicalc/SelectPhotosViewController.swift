@@ -15,7 +15,6 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     var selected = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         /*
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))
@@ -28,13 +27,25 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     }
 
     @IBAction func DeleteSelected(sender: AnyObject) {
-        let indexPath = PhotoCollectionView.indexPathsForSelectedItems()
-        for i in indexPath! {
-            choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis[i.row]
-            PhotoCollectionView.reloadData()
-            selected -= 1
+        let indexPath = PhotoCollectionView.indexPathsForVisibleItems()
+        let reversed = indexPath.sort(backwards)
+        
+        for i in reversed{
+            print(i.row)
+            let cell = PhotoCollectionView.cellForItemAtIndexPath(i) as! PhotoCollectionViewCell
+            if cell.ImgSelector.hidden == false {
+                choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis.removeAtIndex(i.row)
+                selected -= 1
+                choosedSegmentImages ? deleteImage(i.row) : deleteImageUzi(i.row)
+            }
+
         }
         self.title =  "\(selected) выбрано"
+        PhotoCollectionView.reloadData()
+    }
+    
+    func backwards(s1: NSIndexPath, _ s2: NSIndexPath) -> Bool {
+        return s1.row > s2.row
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -48,7 +59,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoSelCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
         PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row] : uzis[indexPath.row]
-        
+        PhotoCell.ImgSelector.hidden = true
         return PhotoCell
     }
     
@@ -65,6 +76,76 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         }
         self.title =  "\(selected) выбрано"
     }
+    
+    func deleteImage(index: Int){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("Image", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
+        
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            var j=0
+            for i in result{
+                if j == index {
+                    managedContext.deleteObject(i as! NSManagedObject)}
+                j += 1
+            }
+            do {
+                try managedContext.save()
+            } catch {
+                let saveError = error as NSError
+                print(saveError)
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    }
+    
+    func deleteImageUzi(index: Int){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("ImageUzi", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
+        
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            var j=0
+            for i in result{
+                if j == index {
+                    managedContext.deleteObject(i as! NSManagedObject)}
+                j += 1
+            }
+            do {
+                try managedContext.save()
+            } catch {
+                let saveError = error as NSError
+                print(saveError)
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

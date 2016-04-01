@@ -16,9 +16,15 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     
     var picker:UIImagePickerController?=UIImagePickerController()
     
+    @IBOutlet weak var changer: UISegmentedControl!
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if choosedSegmentImages{
+            changer.selectedSegmentIndex = 0
+        }else{
+            changer.selectedSegmentIndex = 1
+        }
         picker?.delegate=self
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))
@@ -26,6 +32,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)
         loadImage()
+        loadImageUzi()
     }
 
     func openCamera(){
@@ -92,23 +99,42 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("Image",
-                                                        inManagedObjectContext:
-            managedContext)
+        if type == "photo" {
         
-        let Photos = NSManagedObject(entity: entity!,
+            let entity =  NSEntityDescription.entityForName("Image",
+                                                        inManagedObjectContext:
+                managedContext)
+        
+            let Photos = NSManagedObject(entity: entity!,
                                      insertIntoManagedObjectContext:managedContext)
         
-        let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+            let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
         
-        Photos.setValue(imageData, forKey: "photo")
+            Photos.setValue(imageData, forKey: "photo")
         
-        Photos.setValue(type, forKey: "type")
-        
-        do {
-            try Photos.managedObjectContext?.save()
-        } catch {
-            print(error)
+            do {
+                try Photos.managedObjectContext?.save()
+            } catch {
+                print(error)
+            }
+        }else{
+            let entity =  NSEntityDescription.entityForName("ImageUzi",
+                                                            inManagedObjectContext:
+                managedContext)
+            
+            let Photos = NSManagedObject(entity: entity!,
+                                         insertIntoManagedObjectContext:managedContext)
+            
+            let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+            
+            Photos.setValue(imageData, forKey: "photo")
+
+            do {
+                try Photos.managedObjectContext?.save()
+            } catch {
+                print(error)
+            }
+
         }
     }
  
@@ -126,6 +152,36 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         
         fetchRequest.entity = entityDescription
         photos.removeAll()
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            
+            if (result.count > 0) {
+                for i in result {
+                    let Images = i as! NSManagedObject
+                    let tmpIMG = Images.valueForKey("photo") as! NSData
+                    let img = UIImage(data: tmpIMG)
+                    photos.append(img!)
+                }
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    }
+    
+    func loadImageUzi(){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("ImageUzi", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
         uzis.removeAll()
         do {
             let result = try managedContext.executeFetchRequest(fetchRequest)
@@ -134,14 +190,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
                 for i in result {
                     let Images = i as! NSManagedObject
                     let tmpIMG = Images.valueForKey("photo") as! NSData
-                    let tmpTYPE = Images.valueForKey("type") as! String
                     let img = UIImage(data: tmpIMG)
                     
-                    if(tmpTYPE == "photo"){
-                        photos.append(img!)
-                    }else{
-                        uzis.append(img!)
-                    }
+                    uzis.append(img!)
                 }
             }
         } catch {
@@ -149,6 +200,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             print(fetchError)
         }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

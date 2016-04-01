@@ -1301,6 +1301,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="PhotoCollectionView" destination="40H-Bg-gU9" id="ORz-Nq-bho"/>
+                        <outlet property="changer" destination="oie-Se-AAV" id="ce8-H8-PPU"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBN-3i-Gvm" userLabel="First Responder" sceneMemberID="firstResponder"/>

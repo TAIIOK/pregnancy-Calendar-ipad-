@@ -2,7 +2,9 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="Image" syncable="YES">
         <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+    </entity>
+    <entity name="ImageUzi" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
     </entity>
     <entity name="Spasms" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -11,6 +13,7 @@
     </entity>
     <elements>
         <element name="Spasms" positionX="-54" positionY="-9" width="128" height="90"/>
-        <element name="Image" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Image" positionX="-54" positionY="18" width="128" height="58"/>
+        <element name="ImageUzi" positionX="-45" positionY="27" width="128" height="60"/>
     </elements>
 </model>
