@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SelectPhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
 

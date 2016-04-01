@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var photos = [UIImage]()
 var uzis = [UIImage]()
@@ -23,6 +24,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         a.tintColor = UIColor.whiteColor()
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)
+        loadImage()
     }
 
     func openCamera(){
@@ -56,6 +58,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         choosedSegment ? photos.append(chosenImage) : uzis.append(chosenImage)
         dismissViewControllerAnimated(true, completion: nil)
         PhotoCollectionView.reloadData()
+        let type: String
+        choosedSegment ? (type="photo") : (type="uzi")
+        savePhotos(chosenImage,type: type)
     }
     
     @IBAction func SegmentChanger(sender: AnyObject) {
@@ -79,16 +84,70 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         PhotoCell.photo.image = choosedSegment ? photos[indexPath.row] : uzis[indexPath.row]
         return PhotoCell
     }
-    /*override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
-        if(cell.ImgSelector.hidden == true){
-            cell.ImgSelector.hidden = false
-        }else{
-            cell.ImgSelector.hidden = true
-        }
+    
+    func savePhotos(img: UIImage, type: String){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
         
-    }*/
-
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("Image",
+                                                        inManagedObjectContext:
+            managedContext)
+        
+        let Photos = NSManagedObject(entity: entity!,
+                                     insertIntoManagedObjectContext:managedContext)
+        
+        let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+        
+        Photos.setValue(imageData, forKey: "photo")
+        
+        Photos.setValue(type, forKey: "type")
+        
+        do {
+            try Photos.managedObjectContext?.save()
+        } catch {
+            print(error)
+        }
+    }
+ 
+    func loadImage(){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("Image", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
+        photos.removeAll()
+        uzis.removeAll()
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            
+            if (result.count > 0) {
+                for i in result {
+                    let Images = i as! NSManagedObject
+                    let tmpIMG = Images.valueForKey("photo") as! NSData
+                    let tmpTYPE = Images.valueForKey("type") as! String
+                    let img = UIImage(data: tmpIMG)
+                    
+                    if(tmpTYPE == "photo"){
+                        photos.append(img!)
+                    }else{
+                        uzis.append(img!)
+                    }
+                }
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
