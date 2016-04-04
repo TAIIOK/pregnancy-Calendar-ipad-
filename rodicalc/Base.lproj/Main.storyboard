@@ -1185,7 +1185,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R8-4i-xoi">
                                 <rect key="frame" x="20" y="50" width="50" height="50"/>
-                                <state key="normal" image="vk_icon"/>
+                                <state key="normal" image="mail_icon"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1555,6 +1555,7 @@
     <resources>
         <image name="fb_icon" width="1024" height="1024"/>
         <image name="logo" width="112" height="63"/>
+        <image name="mail_icon" width="118" height="118"/>
         <image name="ok_icon" width="700" height="700"/>
         <image name="vk_icon" width="445" height="445"/>
         <image name="галочка" width="1157" height="1099"/>

@@ -28,40 +28,42 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
 
     @IBAction func DeleteSelected(sender: AnyObject) {
         
+        if selected > 0 {
         //Create the AlertController
-        if #available(iOS 8.0, *) {
-            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранные фото?", preferredStyle: .Alert)
-            
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
-                //Do some stuff
-            }
-            actionSheetController.addAction(cancelAction)
-            //Create and an option action
-            let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
-                //Do some other stuff
-                let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
-                let reversed = indexPath.sort(self.backwards)
+            if #available(iOS 8.0, *) {
+                let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранные фото?", preferredStyle: .Alert)
                 
-                for i in reversed{
-                    print(i.row)
-                    let cell = self.PhotoCollectionView.cellForItemAtIndexPath(i) as! PhotoCollectionViewCell
-                    if cell.ImgSelector.hidden == false {
-                        choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis.removeAtIndex(i.row)
-                        self.selected -= 1
-                        choosedSegmentImages ? self.deleteImage(i.row) : self.deleteImageUzi(i.row)
-                    }
-                    
+                //Create and add the Cancel action
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                    //Do some stuff
                 }
-                self.title =  "\(self.selected) выбрано"
-                self.PhotoCollectionView.reloadData()
+                actionSheetController.addAction(cancelAction)
+                //Create and an option action
+                let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
+                    //Do some other stuff
+                    let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
+                    let reversed = indexPath.sort(self.backwards)
+                    
+                    for i in reversed{
+                        print(i.row)
+                        let cell = self.PhotoCollectionView.cellForItemAtIndexPath(i) as! PhotoCollectionViewCell
+                        if cell.ImgSelector.hidden == false {
+                            choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis.removeAtIndex(i.row)
+                            self.selected -= 1
+                            choosedSegmentImages ? self.deleteImage(i.row) : self.deleteImageUzi(i.row)
+                        }
+                        
+                    }
+                    self.title =  "\(self.selected) выбрано"
+                    self.PhotoCollectionView.reloadData()
+                }
+                actionSheetController.addAction(nextAction)
+                
+                //Present the AlertController
+                self.presentViewController(actionSheetController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
             }
-            actionSheetController.addAction(nextAction)
-            
-            //Present the AlertController
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
-        } else {
-            // Fallback on earlier versions
         }
     }
     
