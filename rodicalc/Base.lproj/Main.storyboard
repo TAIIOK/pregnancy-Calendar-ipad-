@@ -357,7 +357,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftq-CS-t1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="1251"/>
+            <point key="canvasLocation" x="-116" y="1055"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ut9-V4-Uvv">
+            <objects>
+                <navigationController id="KBc-RC-uUB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ogX-mS-ibg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nND-Xz-dYe" kind="relationship" relationship="rootViewController" id="xdS-yD-M2O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEq-zm-kcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="-170"/>
         </scene>
         <!--Names Table View Controller-->
         <scene sceneID="Hj7-iJ-i5y">
@@ -1253,6 +1269,115 @@
             <point key="canvasLocation" x="1372" y="1668"/>
         </scene>
         <!--Предполагаемая дата родов-->
+        <scene sceneID="cs6-tP-9Tw">
+            <objects>
+                <viewController id="nND-Xz-dYe" customClass="ShowZodiacViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r6x-O1-9N4"/>
+                        <viewControllerLayoutGuide type="bottom" id="qRM-JT-6D4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QrC-Rd-H0b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juK-VP-Vgk">
+                                <rect key="frame" x="279" y="79" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xy1-BY-FrV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqJ-x9-59O">
+                                <rect key="frame" x="180" y="152" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Jpw-pb-ZdN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак зодиака ребенка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-1h-QuX">
+                                <rect key="frame" x="180" y="123" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Oxi-TE-kjL"/>
+                                    <constraint firstAttribute="width" constant="240" id="afC-KM-5lQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5u-wF-BfT">
+                                <rect key="frame" x="279" y="297" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="f7i-gV-tfB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrM-4A-Nby">
+                                <rect key="frame" x="279" y="334" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BTp-nl-DCg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
+                                <rect key="frame" x="20" y="363" width="560" height="217"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dgO-Yk-wrg" firstAttribute="top" secondItem="jrM-4A-Nby" secondAttribute="bottom" constant="8" symbolic="YES" id="1rZ-M0-x30"/>
+                            <constraint firstItem="dgO-Yk-wrg" firstAttribute="trailing" secondItem="QrC-Rd-H0b" secondAttribute="trailingMargin" id="8eQ-PR-BJN"/>
+                            <constraint firstItem="dgO-Yk-wrg" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="Ecu-lf-ydI"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="17" id="JN2-aB-4By"/>
+                            <constraint firstAttribute="bottom" secondItem="dgO-Yk-wrg" secondAttribute="bottom" constant="20" symbolic="YES" id="KjQ-Qu-Il8"/>
+                            <constraint firstItem="EqJ-x9-59O" firstAttribute="top" secondItem="xT6-1h-QuX" secondAttribute="bottom" constant="8" symbolic="YES" id="Lto-i4-S0X"/>
+                            <constraint firstItem="xT6-1h-QuX" firstAttribute="leading" secondItem="EqJ-x9-59O" secondAttribute="leading" id="MN4-jX-ZST"/>
+                            <constraint firstItem="juK-VP-Vgk" firstAttribute="top" secondItem="r6x-O1-9N4" secondAttribute="bottom" constant="15" id="NfW-xp-Juu"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="16" id="VfP-qb-ZdH"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="jrM-4A-Nby" secondAttribute="leading" id="Zo2-oQ-MI4"/>
+                            <constraint firstItem="juK-VP-Vgk" firstAttribute="leading" secondItem="y5u-wF-BfT" secondAttribute="leading" id="aWn-Aw-NMH"/>
+                            <constraint firstItem="xT6-1h-QuX" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="23" id="acg-ZZ-z8x"/>
+                            <constraint firstItem="juK-VP-Vgk" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="hdy-Wc-rYB"/>
+                            <constraint firstItem="xT6-1h-QuX" firstAttribute="trailing" secondItem="EqJ-x9-59O" secondAttribute="trailing" id="o9F-po-s0K"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="centerX" secondItem="dgO-Yk-wrg" secondAttribute="centerX" id="trm-IH-Io5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="Mx8-IS-U8c">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ZKG-bk-WQY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="4kp-g0-urL" kind="showDetail" id="Mgy-Bs-bQe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="birthDate" destination="juK-VP-Vgk" id="hfT-PM-jad"/>
+                        <outlet property="zodiacAbout" destination="dgO-Yk-wrg" id="xYQ-O2-QIC"/>
+                        <outlet property="zodiacElement" destination="jrM-4A-Nby" id="gKk-X9-0ki"/>
+                        <outlet property="zodiacIcon" destination="EqJ-x9-59O" id="W8c-hX-xVE"/>
+                        <outlet property="zodiacName" destination="y5u-wF-BfT" id="tX1-Vi-pZR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T5i-bo-bVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="-210"/>
+        </scene>
+        <!--Предполагаемая дата родов-->
         <scene sceneID="77a-eN-Izw">
             <objects>
                 <viewController id="FJg-Ce-JXU" customClass="CalcViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
@@ -1263,9 +1388,102 @@
                     <view key="view" contentMode="scaleToFill" id="OX6-IP-d3Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6i-XG-A8C">
+                                <rect key="frame" x="135" y="538" width="330" height="42"/>
+                                <color key="backgroundColor" red="0.27040867930000001" green="0.85893243990000001" blue="0.90912815160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="hsl-ag-Fjt"/>
+                                    <constraint firstAttribute="height" constant="42" id="qF3-Rc-wPI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="ПОКАЗАТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSpasms:" destination="IN0-Vg-fgl" eventType="touchUpInside" id="sWE-cx-o0m"/>
+                                    <segue destination="KBc-RC-uUB" kind="showDetail" id="ldf-ev-vyb"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lng-4N-mfi">
+                                <rect key="frame" x="20" y="396" width="560" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="GMF-wh-VVD"/>
+                                </constraints>
+                                <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DateCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="yY3-Ft-r18" detailTextLabel="N8l-aH-ab1" style="IBUITableViewCellStyleSubtitle" id="17e-Rg-xLS" customClass="DateTableViewCell" customModule="rodicalc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17e-Rg-xLS" id="7Qv-9M-S5L">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="По дате зачатия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yY3-Ft-r18">
+                                                    <rect key="frame" x="15" y="4" width="117" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="не выбрано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N8l-aH-ab1">
+                                                    <rect key="frame" x="15" y="22" width="64" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" highlightedImage="circle_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="4YS-89-lGS">
+                                                    <rect key="frame" x="512" y="4" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="SBO-YZ-wKr"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="4YS-89-lGS" secondAttribute="bottom" id="3vO-6P-GkQ"/>
+                                                <constraint firstItem="4YS-89-lGS" firstAttribute="top" secondItem="yY3-Ft-r18" secondAttribute="top" id="4L2-aS-DnG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4YS-89-lGS" secondAttribute="trailing" constant="5" id="izI-da-Qys"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="selImg" destination="4YS-89-lGS" id="Gm7-1Q-8N3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Определение предполагаемой даты родов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgi-f8-ybC">
+                                <rect key="frame" x="20" y="378" width="368" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="368" id="kx7-Vn-qul"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tgi-f8-ybC" firstAttribute="leading" secondItem="Lng-4N-mfi" secondAttribute="leading" id="0SZ-XS-fuJ"/>
+                            <constraint firstItem="W6i-XG-A8C" firstAttribute="centerX" secondItem="OX6-IP-d3Z" secondAttribute="centerX" id="3BL-ay-ZdI"/>
+                            <constraint firstItem="Lng-4N-mfi" firstAttribute="centerX" secondItem="W6i-XG-A8C" secondAttribute="centerX" id="ZgY-t3-BGd"/>
+                            <constraint firstItem="Lng-4N-mfi" firstAttribute="leading" secondItem="OX6-IP-d3Z" secondAttribute="leadingMargin" id="ioQ-wf-dPi"/>
+                            <constraint firstItem="W6i-XG-A8C" firstAttribute="top" secondItem="Lng-4N-mfi" secondAttribute="bottom" constant="22" id="kxB-6V-CQq"/>
+                            <constraint firstItem="Lng-4N-mfi" firstAttribute="top" secondItem="tgi-f8-ybC" secondAttribute="bottom" constant="-3" id="mJ0-WD-aiJ"/>
+                            <constraint firstAttribute="bottom" secondItem="W6i-XG-A8C" secondAttribute="bottom" constant="20" symbolic="YES" id="tmL-UB-Uoa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="XEc-6e-VnY"/>
+                    <connections>
+                        <outlet property="tbl" destination="Lng-4N-mfi" id="uEv-mn-brR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYf-TG-EYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1556,6 +1774,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle" width="128" height="128"/>
+        <image name="circle_highlighted" width="2400" height="2400"/>
         <image name="fb_icon" width="1024" height="1024"/>
         <image name="logo" width="112" height="63"/>
         <image name="mail_icon" width="118" height="118"/>
@@ -1566,7 +1786,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="XcH-dH-mWH"/>
         <segue reference="P0H-Yd-JxP"/>
-        <segue reference="L53-bo-E8K"/>
         <segue reference="kMg-vQ-vuk"/>
+        <segue reference="Mgy-Bs-bQe"/>
     </inferredMetricsTieBreakers>
 </document>
