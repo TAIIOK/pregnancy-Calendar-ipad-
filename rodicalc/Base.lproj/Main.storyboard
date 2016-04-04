@@ -1255,7 +1255,7 @@
         <!--Предполагаемая дата родов-->
         <scene sceneID="77a-eN-Izw">
             <objects>
-                <viewController id="FJg-Ce-JXU" sceneMemberID="viewController">
+                <viewController id="FJg-Ce-JXU" customClass="CalcViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0IG-TG-kcj"/>
                         <viewControllerLayoutGuide type="bottom" id="aYh-Bu-MHa"/>
