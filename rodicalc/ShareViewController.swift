@@ -16,18 +16,24 @@ class ShareViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
     @IBAction func Cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func ShareMail(sender: AnyObject) {
+        print("шарю на мыло")
+    }
+    
     @IBAction func ShareVK(sender: AnyObject) {
+        print("шарю во вконтактик")
     }
     
     @IBAction func ShareOK(sender: AnyObject) {
+        print("шарю в одноклассники")
     }
     
     @IBAction func ShareFB(sender: AnyObject) {
+        print("шарю в фсб")
     }
     
     

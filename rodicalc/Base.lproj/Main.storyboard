@@ -1186,6 +1186,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R8-4i-xoi">
                                 <rect key="frame" x="20" y="50" width="50" height="50"/>
                                 <state key="normal" image="mail_icon"/>
+                                <connections>
+                                    <action selector="ShareMail:" destination="j9S-9q-F2f" eventType="touchUpInside" id="0Bn-Rx-jM2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1535,7 +1538,7 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Del" id="jh5-CO-ZRJ">
+                            <barButtonItem systemItem="trash" id="jh5-CO-ZRJ">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="DeleteSelected:" destination="5km-1G-n3U" id="Lfx-co-oiM"/>
