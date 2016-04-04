@@ -1087,6 +1087,25 @@
             </objects>
             <point key="canvasLocation" x="2498" y="2446"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Tpy-ZA-Dba">
+            <objects>
+                <viewController id="j9S-9q-F2f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5mE-jY-G7U"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Wp-Bt-sTd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LYa-La-zZe">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="150"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JiO-FO-RwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3132" y="2563"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JE8-kd-qjd">
             <objects>
@@ -1384,6 +1403,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="ShareSelected:" destination="5km-1G-n3U" id="H3H-fJ-PEE"/>
+                                    <segue destination="j9S-9q-F2f" kind="popoverPresentation" popoverAnchorBarButtonItem="SgX-8L-GLU" id="IGw-IB-TBh">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Del" id="jh5-CO-ZRJ">
