@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -1087,10 +1089,10 @@
             </objects>
             <point key="canvasLocation" x="2498" y="2446"/>
         </scene>
-        <!--View Controller-->
+        <!--Share View Controller-->
         <scene sceneID="Tpy-ZA-Dba">
             <objects>
-                <viewController id="j9S-9q-F2f" sceneMemberID="viewController">
+                <viewController id="j9S-9q-F2f" customClass="ShareViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5mE-jY-G7U"/>
                         <viewControllerLayoutGuide type="bottom" id="0Wp-Bt-sTd"/>
@@ -1098,13 +1100,138 @@
                     <view key="view" contentMode="scaleToFill" id="LYa-La-zZe">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CK2-Pz-Cid">
+                                <rect key="frame" x="20" y="0.0" width="57" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="BRf-Lr-vOE"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Отмена"/>
+                                <connections>
+                                    <action selector="Cancel:" destination="j9S-9q-F2f" eventType="touchUpInside" id="b5n-ft-MuX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поделиться" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg3-YF-HIK">
+                                <rect key="frame" x="128" y="4" width="101" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="Uwc-U4-Tsh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNJ-lu-3zP">
+                                <rect key="frame" x="24" y="108" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="eJu-5K-afs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dR7-wK-XZu">
+                                <rect key="frame" x="101" y="108" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="ypw-MA-Ny4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Одноклассники" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jt-s3-Ufm">
+                                <rect key="frame" x="160" y="108" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec0-FD-NOK">
+                                <rect key="frame" x="263" y="108" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHe-kp-awJ">
+                                <rect key="frame" x="184" y="50" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="fTF-47-fjs"/>
+                                </constraints>
+                                <state key="normal" image="ok_icon"/>
+                                <connections>
+                                    <action selector="ShareOK:" destination="j9S-9q-F2f" eventType="touchUpInside" id="rB9-u6-XxP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-Za-trR">
+                                <rect key="frame" x="271" y="50" width="50" height="50"/>
+                                <state key="normal" image="fb_icon"/>
+                                <connections>
+                                    <action selector="ShareFB:" destination="j9S-9q-F2f" eventType="touchUpInside" id="cTX-p5-lCV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0An-Hb-xUI">
+                                <rect key="frame" x="97" y="50" width="50" height="50"/>
+                                <state key="normal" image="vk_icon">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="VK">
+                                            <attributes>
+                                                <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="ShareVK:" destination="j9S-9q-F2f" eventType="touchUpInside" id="YpN-wB-wvt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R8-4i-xoi">
+                                <rect key="frame" x="20" y="50" width="50" height="50"/>
+                                <state key="normal" image="vk_icon"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CK2-Pz-Cid" firstAttribute="top" secondItem="LYa-La-zZe" secondAttribute="top" id="0Kn-QG-Rcw"/>
+                            <constraint firstItem="FNJ-lu-3zP" firstAttribute="firstBaseline" secondItem="dR7-wK-XZu" secondAttribute="firstBaseline" id="0dD-6j-OZu"/>
+                            <constraint firstItem="7jt-s3-Ufm" firstAttribute="firstBaseline" secondItem="Ec0-FD-NOK" secondAttribute="firstBaseline" id="11p-ap-mPv"/>
+                            <constraint firstItem="8R8-4i-xoi" firstAttribute="top" secondItem="0An-Hb-xUI" secondAttribute="top" id="1rr-5V-QKr"/>
+                            <constraint firstItem="0An-Hb-xUI" firstAttribute="centerX" secondItem="dR7-wK-XZu" secondAttribute="centerX" id="2Ch-Kg-yUg"/>
+                            <constraint firstItem="dR7-wK-XZu" firstAttribute="firstBaseline" secondItem="7jt-s3-Ufm" secondAttribute="firstBaseline" id="3Wq-D2-QoK"/>
+                            <constraint firstItem="7jt-s3-Ufm" firstAttribute="baseline" secondItem="Ec0-FD-NOK" secondAttribute="baseline" id="7Kq-VQ-sHP"/>
+                            <constraint firstItem="0An-Hb-xUI" firstAttribute="top" secondItem="zg3-YF-HIK" secondAttribute="bottom" constant="25" id="7hf-ZI-uv3"/>
+                            <constraint firstItem="eRe-Za-trR" firstAttribute="centerX" secondItem="Ec0-FD-NOK" secondAttribute="centerX" id="95o-q6-Y5l"/>
+                            <constraint firstItem="lHe-kp-awJ" firstAttribute="centerX" secondItem="7jt-s3-Ufm" secondAttribute="centerX" id="C7k-Cj-eJ5"/>
+                            <constraint firstItem="lHe-kp-awJ" firstAttribute="leading" secondItem="0An-Hb-xUI" secondAttribute="trailing" constant="37" id="C8G-pV-k0i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ec0-FD-NOK" secondAttribute="trailing" constant="4" id="EG6-Co-kJD"/>
+                            <constraint firstItem="dR7-wK-XZu" firstAttribute="baseline" secondItem="7jt-s3-Ufm" secondAttribute="baseline" id="EYX-qJ-l2B"/>
+                            <constraint firstItem="CK2-Pz-Cid" firstAttribute="leading" secondItem="8R8-4i-xoi" secondAttribute="leading" id="Fdt-v8-6Gv"/>
+                            <constraint firstItem="dR7-wK-XZu" firstAttribute="leading" secondItem="FNJ-lu-3zP" secondAttribute="trailing" constant="35" id="FeL-EP-Gzn"/>
+                            <constraint firstItem="0Wp-Bt-sTd" firstAttribute="top" secondItem="FNJ-lu-3zP" secondAttribute="bottom" constant="21" id="FfH-Tp-xoZ"/>
+                            <constraint firstItem="FNJ-lu-3zP" firstAttribute="top" secondItem="8R8-4i-xoi" secondAttribute="bottom" constant="8" symbolic="YES" id="G0c-gI-dqM"/>
+                            <constraint firstItem="8R8-4i-xoi" firstAttribute="centerX" secondItem="FNJ-lu-3zP" secondAttribute="centerX" id="H5d-XE-Xx8"/>
+                            <constraint firstItem="dR7-wK-XZu" firstAttribute="top" secondItem="0An-Hb-xUI" secondAttribute="bottom" constant="8" symbolic="YES" id="HO7-az-WeX"/>
+                            <constraint firstItem="7jt-s3-Ufm" firstAttribute="leading" secondItem="dR7-wK-XZu" secondAttribute="trailing" constant="17" id="IQu-Gj-fMn"/>
+                            <constraint firstItem="CK2-Pz-Cid" firstAttribute="leading" secondItem="LYa-La-zZe" secondAttribute="leadingMargin" constant="4" id="JwY-wq-18b"/>
+                            <constraint firstItem="lHe-kp-awJ" firstAttribute="top" secondItem="eRe-Za-trR" secondAttribute="top" id="OCV-9q-sRt"/>
+                            <constraint firstItem="0An-Hb-xUI" firstAttribute="leading" secondItem="8R8-4i-xoi" secondAttribute="trailing" constant="27" id="Rt0-Ph-LV3"/>
+                            <constraint firstItem="FNJ-lu-3zP" firstAttribute="baseline" secondItem="dR7-wK-XZu" secondAttribute="baseline" id="Rxb-xo-8zo"/>
+                            <constraint firstItem="CK2-Pz-Cid" firstAttribute="baseline" secondItem="zg3-YF-HIK" secondAttribute="baseline" id="ThV-ao-MTe"/>
+                            <constraint firstItem="Ec0-FD-NOK" firstAttribute="leading" secondItem="7jt-s3-Ufm" secondAttribute="trailing" constant="4" id="YYc-tg-vsR"/>
+                            <constraint firstItem="zg3-YF-HIK" firstAttribute="leading" secondItem="CK2-Pz-Cid" secondAttribute="trailing" constant="51" id="aG2-2b-cLZ"/>
+                            <constraint firstItem="zg3-YF-HIK" firstAttribute="baseline" secondItem="CK2-Pz-Cid" secondAttribute="firstBaseline" id="bgY-tQ-2RZ"/>
+                            <constraint firstItem="Ec0-FD-NOK" firstAttribute="top" secondItem="eRe-Za-trR" secondAttribute="bottom" constant="8" symbolic="YES" id="dsd-tM-zUb"/>
+                            <constraint firstItem="8R8-4i-xoi" firstAttribute="centerY" secondItem="LYa-La-zZe" secondAttribute="centerY" id="e9j-GE-2cm"/>
+                            <constraint firstItem="FNJ-lu-3zP" firstAttribute="leading" secondItem="LYa-La-zZe" secondAttribute="leadingMargin" constant="8" id="jTV-db-srC"/>
+                            <constraint firstItem="7jt-s3-Ufm" firstAttribute="top" secondItem="lHe-kp-awJ" secondAttribute="bottom" constant="8" symbolic="YES" id="lVb-bf-h3N"/>
+                            <constraint firstItem="8R8-4i-xoi" firstAttribute="top" secondItem="CK2-Pz-Cid" secondAttribute="bottom" constant="20" id="wZg-8z-bZK"/>
+                            <constraint firstItem="0An-Hb-xUI" firstAttribute="top" secondItem="lHe-kp-awJ" secondAttribute="top" id="z4H-0x-IO6"/>
+                            <constraint firstItem="eRe-Za-trR" firstAttribute="leading" secondItem="lHe-kp-awJ" secondAttribute="trailing" constant="37" id="zs7-69-OeZ"/>
+                        </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="150"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="350" height="150"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JiO-FO-RwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="2563"/>
+            <point key="canvasLocation" x="3128" y="2563"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JE8-kd-qjd">
@@ -1426,7 +1553,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fb_icon" width="1024" height="1024"/>
         <image name="logo" width="112" height="63"/>
+        <image name="ok_icon" width="700" height="700"/>
+        <image name="vk_icon" width="445" height="445"/>
         <image name="галочка" width="1157" height="1099"/>
     </resources>
     <inferredMetricsTieBreakers>
