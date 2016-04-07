@@ -11,7 +11,7 @@ import UIKit
 class NameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var info: UILabel!
+    @IBOutlet weak var info: UITextView!
     @IBOutlet weak var changer: UISegmentedControl!
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
@@ -34,8 +34,6 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.dataSource = self
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackOpaque
-        //self.navigationItem.title = choosedSegment ? boyNames[choosedName] : girlNames[choosedName]
-        //self.navigationController?.navigationBar.topItem?.title = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,20 +62,20 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return  choosedSegmentNames ? boyNames.count : girlNames.count
+        return  choosedSegmentNames ? man.count : woman.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath.row
-        info.text = choosedSegmentNames ? boyNames[choosedName] : girlNames[choosedName]
+        info.text = choosedSegmentNames ? man[choosedName].about : woman[choosedName].about
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = choosedSegmentNames ? boyNames[indexPath.row] : girlNames[indexPath.row]
+        cell.textLabel?.text = choosedSegmentNames ? man[indexPath.row].name : woman[indexPath.row].name
         if(indexPath.row == choosedName){
-            info.text = choosedSegmentNames ? boyNames[choosedName] : girlNames[choosedName]}
+            info.text = choosedSegmentNames ? man[choosedName].about : woman[choosedName].about}
         return cell
     }
     

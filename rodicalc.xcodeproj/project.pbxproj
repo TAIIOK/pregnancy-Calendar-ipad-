@@ -45,6 +45,7 @@
 		8E1DD6081CB2896500D55893 /* zodiacs.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E1DD6071CB2896500D55893 /* zodiacs.json */; };
 		8E1DD60A1CB2978500D55893 /* ShowZodiacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DD6091CB2978500D55893 /* ShowZodiacViewController.swift */; };
 		8E1DD60C1CB2A79900D55893 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DD60B1CB2A79900D55893 /* DateTableViewCell.swift */; };
+		8E1DD60F1CB6894700D55893 /* names.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E1DD60E1CB6894700D55893 /* names.json */; };
 		8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */; };
 		8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */; };
 		8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */; };
@@ -159,6 +160,7 @@
 		8E1DD6071CB2896500D55893 /* zodiacs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zodiacs.json; sourceTree = "<group>"; };
 		8E1DD6091CB2978500D55893 /* ShowZodiacViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowZodiacViewController.swift; sourceTree = "<group>"; };
 		8E1DD60B1CB2A79900D55893 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		8E1DD60E1CB6894700D55893 /* names.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = names.json; sourceTree = "<group>"; };
 		8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		8E20C8B11C998F430003C1CF /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E20C8B21C998F430003C1CF /* ContentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */,
 				8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */,
 				8E51BF2C1CA3E8E900D8D739 /* points.json */,
+				8E1DD60E1CB6894700D55893 /* names.json */,
 				8E1DD6071CB2896500D55893 /* zodiacs.json */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
 				8E20C8B01C998F130003C1CF /* Custom Layouts */,
@@ -509,6 +512,7 @@
 				8E1AC9A41CA960820091D8BB /* 2.png in Resources */,
 				8E1AC9A51CA960820091D8BB /* 3.png in Resources */,
 				8E1AC9921CA960820091D8BB /* 17.jpg in Resources */,
+				8E1DD60F1CB6894700D55893 /* names.json in Resources */,
 				8E1AC9981CA960820091D8BB /* 22.jpg in Resources */,
 				8E1AC9991CA960820091D8BB /* 23.jpg in Resources */,
 				8E1AC98E1CA960820091D8BB /* 13.jpg in Resources */,
