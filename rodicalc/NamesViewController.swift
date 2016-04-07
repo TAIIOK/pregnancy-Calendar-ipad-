@@ -14,7 +14,7 @@ import UIKit
 var man = [Names]()
 var woman = [Names]()
 
-var choosedName = 0 // index of name
+var choosedName = NSIndexPath() // index of name
 var choosedSegmentNames = true // true: boys, false: girls
 
 
@@ -30,13 +30,10 @@ class Names: NSObject {
     }
 }
 
+var sections : [(index: Int, length :Int, title: String)] = Array()
+var sectionsGirl : [(index: Int, length :Int, title: String)] = Array()
 
 class NamesTableViewController: UITableViewController {
-    
-    
-    
-    var sections : [(index: Int, length :Int, title: String)] = Array()
-    var sectionsGirl : [(index: Int, length :Int, title: String)] = Array()
     
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
@@ -119,7 +116,7 @@ class NamesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        choosedName = indexPath.row
+        choosedName = indexPath
         //let nameViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NameViewController") as? NameViewController
         //self.navigationController?.pushViewController(nameViewController!, animated: true)
     }

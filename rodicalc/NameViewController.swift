@@ -57,37 +57,39 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return choosedSegmentNames ? sections.count : sectionsGirl.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return  choosedSegmentNames ? man.count : woman.count
+        return choosedSegmentNames ? sections[section].length : sectionsGirl[section].length
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        choosedName = indexPath.row
-        info.text = choosedSegmentNames ? man[choosedName].about : woman[choosedName].about
+        choosedName = indexPath
+        info.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].about : woman[sectionsGirl[indexPath.section].index + indexPath.row].about
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = choosedSegmentNames ? man[indexPath.row].name : woman[indexPath.row].name
-        if(indexPath.row == choosedName){
-            info.text = choosedSegmentNames ? man[choosedName].about : woman[choosedName].about}
+        cell.textLabel?.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].name : woman[sectionsGirl[indexPath.section].index + indexPath.row].name
+        if(indexPath == choosedName){
+            info.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].about : woman[sectionsGirl[indexPath.section].index + indexPath.row].about
+        }
         return cell
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        return choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
     }
-    */
-
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return choosedSegmentNames ? sections.map { $0.title } : sectionsGirl.map {$0.title}
+    }
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        return index
+    }
 }
