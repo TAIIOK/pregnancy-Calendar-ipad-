@@ -41,6 +41,7 @@ class NamesTableViewController: UITableViewController {
 
     private func reloadTable(index: Bool) {
         choosedSegmentNames = index
+        choosedName = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.reloadData()
     }
     
