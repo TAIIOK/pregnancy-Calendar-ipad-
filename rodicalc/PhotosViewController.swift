@@ -40,6 +40,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             picker!.allowsEditing = false
             picker!.sourceType = UIImagePickerControllerSourceType.Camera
             picker!.cameraCaptureMode = .Photo
+            picker!.modalPresentationStyle = .PageSheet
             presentViewController(picker!, animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .Alert)
@@ -52,10 +53,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     func addPhoto(){
         picker!.allowsEditing = false
         picker!.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        picker!.modalPresentationStyle = .PageSheet
         presentViewController(picker!, animated: true, completion: nil)
-    }
-    
-    @IBAction func BtnSelect(sender: AnyObject) {
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

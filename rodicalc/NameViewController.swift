@@ -13,8 +13,6 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var info: UITextView!
     @IBOutlet weak var changer: UISegmentedControl!
-    
-    
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
@@ -22,7 +20,6 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func toBack(sender: UIBarButtonItem) {
         self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     private func reloadTable(index: Bool) {
         choosedSegmentNames = index
@@ -33,7 +30,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if choosedSegmentNames == true {
+        if choosedSegmentNames {
             changer.selectedSegmentIndex = 0
         }else{
             changer.selectedSegmentIndex = 1
@@ -53,13 +50,13 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     /*private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
-        BackgroundView.backgroundColor=StrawBerryColor
+        BackgroundView.backgroundColor=UIColor.clearColor()
         return BackgroundView
     }
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
+        //cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
         return indexPath
     }*/
 
@@ -74,13 +71,11 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // #warning Incomplete implementation, return the number of rows
         return choosedSegmentNames ? sections[section].length : sectionsGirl[section].length
     }
-
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath
         info.text = choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n" + man[sections[indexPath.section].index + indexPath.row].value + "\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].value + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about)
-
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,8 +88,19 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var returnedView = UIView() //set these values as necessary
+        returnedView.backgroundColor = StrawBerryColor
+        
+        var label = UILabel(frame: CGRectMake(18, 7, 18, 18))
+        label.text = choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
+        label.textColor = UIColor.whiteColor()
+        returnedView.addSubview(label)
+        
+        return returnedView
+    }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
     }
     
@@ -103,5 +109,9 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return index
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("change")
     }
 }

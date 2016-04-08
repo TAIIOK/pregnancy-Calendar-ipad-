@@ -7,16 +7,12 @@
 //
 
 import UIKit
-// names test
-//let boyNames = ["Александр", "Алексей", "Тимофей", "Тимофей", "Юрий", "Хуита"]
-//let girlNames = ["Дарья", "Света", "Софья"]
 
 var man = [Names]()
 var woman = [Names]()
 
 var choosedName = NSIndexPath() // index of name
 var choosedSegmentNames = true // true: boys, false: girls
-
 
 class Names: NSObject {
     var name: String
@@ -35,15 +31,11 @@ var sectionsGirl : [(index: Int, length :Int, title: String)] = Array()
 
 class NamesTableViewController: UITableViewController {
     
-    func scrollToCurrent(){
-        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-    }
-    
-    
+    @IBOutlet weak var changer: UISegmentedControl!
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
-
+    
     private func reloadTable(index: Bool) {
         choosedSegmentNames = index
         choosedName = NSIndexPath(forRow: 0, inSection: 0)
@@ -53,15 +45,9 @@ class NamesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let rowToSelect:NSIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-        //self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
         WorkWithJSON();
         sections = AddSect(man)
         sectionsGirl = AddSect(woman)
-
-        //self.tableView(self.tableView, didSelectRowAtIndexPath: rowToSelect)
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     func AddSect(names: [Names]) -> [(index: Int, length :Int, title: String)] {
@@ -147,8 +133,17 @@ class NamesTableViewController: UITableViewController {
         return cell
     }
     
-    
-    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var returnedView = UIView() //set these values as necessary
+        returnedView.backgroundColor = StrawBerryColor
+        
+        var label = UILabel(frame: CGRectMake(18, 7, 18, 18))
+        label.text = choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
+        label.textColor = UIColor.whiteColor()
+        returnedView.addSubview(label)
+        
+        return returnedView
+    }
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         return choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
     }
@@ -162,6 +157,15 @@ class NamesTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         choosedSegmentNames = true
+    }
+
+    func Update(){
+        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        if choosedSegmentNames {
+            changer.selectedSegmentIndex = 0
+        } else{
+            changer.selectedSegmentIndex = 1
+        }
     }
     
     func WorkWithJSON(){

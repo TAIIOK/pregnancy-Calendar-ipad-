@@ -418,6 +418,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="changer" destination="4OQ-6A-WrR" id="I7Q-56-c8K"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wye-4S-9qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1032,7 +1035,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qgX-mh-VcI">
             <objects>
-                <navigationController id="dBK-07-mjw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="photo" id="dBK-07-mjw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hg3-8E-N3Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1668,7 +1671,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Выбрать" id="R7f-0x-dyK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="BtnSelect:" destination="2aq-1D-rwJ" id="0xq-ht-j2U"/>
                                 <segue destination="KFD-Vq-IJK" kind="showDetail" id="udS-od-YRg"/>
                             </connections>
                         </barButtonItem>
