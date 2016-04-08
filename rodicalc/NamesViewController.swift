@@ -35,6 +35,11 @@ var sectionsGirl : [(index: Int, length :Int, title: String)] = Array()
 
 class NamesTableViewController: UITableViewController {
     
+    func scrollToCurrent(){
+        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+    }
+    
+    
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
@@ -43,6 +48,7 @@ class NamesTableViewController: UITableViewController {
         choosedSegmentNames = index
         choosedName = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.reloadData()
+        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     override func viewDidLoad() {
@@ -122,7 +128,7 @@ class NamesTableViewController: UITableViewController {
         //self.navigationController?.pushViewController(nameViewController!, animated: true)
     }
     
-    private func getCustomBackgroundView() -> UIView{
+    /*private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
         BackgroundView.backgroundColor=StrawBerryColor
         return BackgroundView
@@ -133,13 +139,15 @@ class NamesTableViewController: UITableViewController {
         cell!.selectedBackgroundView=getCustomBackgroundView()
         cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
         return indexPath
-    }
+    }*/
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)        
         cell.textLabel?.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].name : woman[sectionsGirl[indexPath.section].index + indexPath.row].name
         return cell
     }
+    
+    
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         return choosedSegmentNames ? sections[section].title : sectionsGirl[section].title

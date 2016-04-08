@@ -13,6 +13,8 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var info: UITextView!
     @IBOutlet weak var changer: UISegmentedControl!
+    
+    
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
@@ -26,20 +28,22 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         choosedSegmentNames = index
         choosedName = NSIndexPath(forRow: 0, inSection: 0)
         self.table.reloadData()
+        self.table.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*if choosedSegmentNames {
-            changer.selectedSegmentIndex = 1
+        if choosedSegmentNames == true {
+            changer.selectedSegmentIndex = 0
         }else{
             changer.selectedSegmentIndex = 1
-        }*/
+        }
         self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         table.delegate = self
         table.dataSource = self
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackOpaque
+        self.table.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +51,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
-    private func getCustomBackgroundView() -> UIView{
+    /*private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
         BackgroundView.backgroundColor=StrawBerryColor
         return BackgroundView
@@ -57,7 +61,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.selectedBackgroundView=getCustomBackgroundView()
         cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
         return indexPath
-    }
+    }*/
 
     // MARK: - Table view data source
     
