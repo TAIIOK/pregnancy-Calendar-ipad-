@@ -67,7 +67,6 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     private func setupGraphSettings() {
         // общие настройки
         self.lineChartView.descriptionText = ""
-        
         self.lineChartView.noDataText = "Для отображения графика"
         self.lineChartView.noDataTextDescription = "необходимо указать рост"
         self.lineChartView.infoFont = .systemFontOfSize(18)
