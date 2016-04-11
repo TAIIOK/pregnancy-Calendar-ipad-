@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Charts
 
-class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,LineChartDelegate {
+class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var growth = 0
     var mass = 60
@@ -16,18 +17,19 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     var secondComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     var thirdComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     var lineChart: LineChart!
-    var label = UILabel()
-    var label1 = UILabel()
+    //var label = UILabel()
+    //var label1 = UILabel()
     var views: [String: AnyObject] = [:]
 
     @IBOutlet weak var lbl: UILabel!
-    let IMT0: [CGFloat] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
-    let IMT1: [CGFloat] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
-    let IMT2: [CGFloat] = [0.5,0.5,0.6,0.7,0.8,0.9,1.0,1.4,2.3,2.9,3.4,3.9,5.0,5.4,5.9,6.4,7.3,7.9,8.6,9.1]
+    let IMT0: [Double] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
+    let IMT1: [Double] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
+    let IMT2: [Double] = [0.5,0.5,0.6,0.7,0.8,0.9,1.0,1.4,2.3,2.9,3.4,3.9,5.0,5.4,5.9,6.4,7.3,7.9,8.6,9.1]
     
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var pickerViewTextField: UITextField!
     @IBOutlet weak var growthButton: UIBarButtonItem!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +37,22 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
+        setupGraphSettings()
         if (growth > 0){
-            lbl.hidden = true
+            //lbl.hidden = true
             drawGraph()
-            drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
-            drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
+            //drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
+            //drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
         }
         else{
-            lbl.hidden = false
+            //lbl.hidden = false
         }
     }
 
     /**
      * Line chart delegate method.
     */
-    func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
+    /*func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         //label.text = "x: \(x)     y: \(yValues)"
     }
     
@@ -60,10 +63,60 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         
         dotLayer.frame = CGRect(x: X, y: Y, width: 16, height: 16)
         self.view.layer.addSublayer(dotLayer)
+    }*/
+    private func setupGraphSettings() {
+        // общие настройки
+        self.lineChartView.descriptionText = ""
+        
+        self.lineChartView.noDataText = "Для отображения графика"
+        self.lineChartView.noDataTextDescription = "необходимо указать рост"
+        self.lineChartView.infoFont = .systemFontOfSize(18)
+        self.lineChartView.infoTextColor = UIColor.cyanColor()
+        
+        self.lineChartView.scaleXEnabled = true
+        self.lineChartView.scaleYEnabled = false
+        self.lineChartView.pinchZoomEnabled = true
+        self.lineChartView.rightAxis.enabled = false
+        
+        self.lineChartView.legend.form = .Circle
+        self.lineChartView.xAxis.labelPosition = .Bottom
+        self.lineChartView.legend.position = .AboveChartLeft
+        self.lineChartView.legend.font = .systemFontOfSize(14)
+        
+        // оси
+        self.lineChartView.xAxis.spaceBetweenLabels = 2
+        self.lineChartView.xAxis.drawGridLinesEnabled = false
+        self.lineChartView.leftAxis.drawAxisLineEnabled = false
+        self.lineChartView.leftAxis.drawGridLinesEnabled = false
     }
     
-    func drawGraph(){
-        label.text = "                  Фактический вес"
+    private func drawGraph(){
+        // сначала очистить график
+        self.lineChartView.clear()
+        
+        // графики
+        // нарисовать условно-рекомендуемый график
+        let dataEntries = self.getChartDataEntriesForRecommend(Double(50))
+        let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Условно-рекомендуемая норма")
+        self.setRecommendSetStyle(lineChartDataSet)
+        
+        // нарисовать график фактического веса
+        let weight = Double(mass)
+        let growth_ = Double(growth)
+        let dataEntriesSecond = self.getChartDataEntriesForFact(weight, growth: growth_)
+        let lineChartDataSetSecond = LineChartDataSet(yVals: dataEntriesSecond, label: "Фактический вес")
+        self.setFactSetStyle(lineChartDataSetSecond)
+        
+        // подписать недели
+        var dataPoints: [String] = []
+        for i in 0...40 {
+            dataPoints.append("\(i)")
+        }
+        
+        // готово
+        let dataSets = [lineChartDataSetSecond, lineChartDataSet]
+        self.lineChartView.data = LineChartData(xVals: dataPoints, dataSets: dataSets)
+       /* label.text = "                  Фактический вес"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.Left
         label.textColor=StrawBerryColor
@@ -140,18 +193,98 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.view.addSubview(lineChart)
         views["chart"] = lineChart
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==500)]", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==500)]", options: [], metrics: nil, views: views))*/
         
     }
     
     /**
      * Redraw chart on device rotation.
      */
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    /*override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         if let chart = lineChart {
             chart.setNeedsDisplay()
         }
+    }*/
+    
+    private func setRecommendSetStyle(lineChartDataSet: LineChartDataSet) {
+        lineChartDataSet.setColor(.cyanColor())
+        lineChartDataSet.fillColor = .cyanColor()
+        lineChartDataSet.setCircleColor(.cyanColor())
+        lineChartDataSet.circleHoleColor = .cyanColor()
+        lineChartDataSet.lineWidth = 1
+        lineChartDataSet.circleRadius = 6
+        lineChartDataSet.valueFont = .systemFontOfSize(0)
     }
+    private func setFactSetStyle(lineChartDataSet: LineChartDataSet) {
+        lineChartDataSet.setColor(StrawBerryColor)
+        lineChartDataSet.fillColor = StrawBerryColor
+        lineChartDataSet.setCircleColor(StrawBerryColor)
+        lineChartDataSet.circleHoleColor = StrawBerryColor
+        lineChartDataSet.lineWidth = 2
+        lineChartDataSet.circleRadius = 6
+        lineChartDataSet.valueFont = .systemFontOfSize(0)
+    }
+    private func getChartDataEntriesForRecommend(weight: Double) -> [ChartDataEntry] {
+        let weeks = self.getWeeks()
+        var dataEntries: [ChartDataEntry] = []
+        
+        let dataEntry = ChartDataEntry(value: weight, xIndex: weeks[0])
+        dataEntries.append(dataEntry)
+        
+        for i in 1..<weeks.count {
+            let dataEntry = ChartDataEntry(value: weight + self.IMT2[i-1], xIndex: weeks[i])
+            dataEntries.append(dataEntry)
+        }
+
+        return dataEntries
+    }
+    private func getChartDataEntriesForFact(weight: Double, growth: Double) -> [ChartDataEntry] {
+        let weeks = self.getWeeks()
+        var dataEntries: [ChartDataEntry] = []
+        
+        var imt=weight*10000.0
+        let x: Double = growth*growth
+        
+        if(x>0){
+            imt = imt/x}
+        else{
+            imt = 0
+        }
+        let dataEntry = ChartDataEntry(value: weight, xIndex: weeks[0])
+        dataEntries.append(dataEntry)
+        for i in 1..<weeks.count {
+            if(weight==0){
+                let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[i])
+                dataEntries.append(dataEntry)
+            }
+            else{
+                if(imt < 18.5){
+                    let dataEntry = ChartDataEntry(value: weight + self.IMT0[i-1], xIndex: weeks[i])
+                    dataEntries.append(dataEntry)
+                }
+                else if (imt >= 25){
+                    let dataEntry = ChartDataEntry(value: weight + self.IMT1[i-1], xIndex: weeks[i])
+                    dataEntries.append(dataEntry)
+                }
+                else{
+                    let dataEntry = ChartDataEntry(value: weight + self.IMT2[i-1], xIndex: weeks[i])
+                    dataEntries.append(dataEntry)
+                }
+            }
+        }
+        
+        return dataEntries
+    }
+    private func getWeeks() -> [Int] {
+        var weeks: [Int] = []
+        
+        for var i = 0; i <= 40; i += 2 {
+            weeks.append(i)
+        }
+        
+        return weeks
+    }
+
     
     
     @IBAction func setHeight(sender: UIBarButtonItem) {

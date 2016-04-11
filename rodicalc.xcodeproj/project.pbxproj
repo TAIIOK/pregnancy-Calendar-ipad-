@@ -64,7 +64,6 @@
 		8E51BF1C1CA2D00200D8D739 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF181CA2D00200D8D739 /* CustomAnnotation.swift */; };
 		8E51BF2D1CA3E8E900D8D739 /* points.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E51BF2C1CA3E8E900D8D739 /* points.json */; };
 		8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; };
-		8E56189A1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; };
 		8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E56189E1CAA8B9100C9B7D1 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */; };
 		8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */; };
@@ -207,6 +206,7 @@
 		8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
+		8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +216,6 @@
 			files = (
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
-				8E56189A1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +314,7 @@
 		8E90A4061C7DF093001F3A07 = {
 			isa = PBXGroup;
 			children = (
+				8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */,
 				8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */,
 				8E4FACBF1C89CADF003405D0 /* MapKit.framework */,
 				8E90A4111C7DF093001F3A07 /* rodicalc */,
@@ -749,6 +749,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
@@ -772,6 +773,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",

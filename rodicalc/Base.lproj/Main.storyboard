@@ -1089,12 +1089,20 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-xs-AeL" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="73" width="600" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="centerX" secondItem="zNW-28-ANT" secondAttribute="centerX" id="CgT-qg-9t6"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leading" constant="176" id="SfH-E3-JJz"/>
+                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="top" secondItem="8CD-zP-VZc" secondAttribute="bottom" constant="9" id="V5F-vY-7dj"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="top" secondItem="8CD-zP-VZc" secondAttribute="bottom" constant="103" id="a2z-pY-WZb"/>
                             <constraint firstAttribute="trailing" secondItem="zNW-28-ANT" secondAttribute="trailing" constant="176" id="bVN-Nv-V3k"/>
+                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="centerY" secondItem="zNW-28-ANT" secondAttribute="centerY" id="bwd-mx-fsr"/>
+                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leading" id="exs-70-qvm"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="centerY" secondItem="I7q-DO-CPd" secondAttribute="centerY" id="vH5-e8-WNh"/>
                         </constraints>
                     </view>
@@ -1109,6 +1117,7 @@
                     <connections>
                         <outlet property="growthButton" destination="8U7-E2-ZRp" id="wFj-9i-Ps7"/>
                         <outlet property="lbl" destination="zNW-28-ANT" id="yYZ-gd-Hiy"/>
+                        <outlet property="lineChartView" destination="Ep9-xs-AeL" id="621-cm-QPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzf-GO-aKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1469,8 +1478,8 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Определение предполагаемой даты родов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgi-f8-ybC">
-                                <rect key="frame" x="20" y="378" width="368" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Определение предполагаемой даты родов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgi-f8-ybC">
+                                <rect key="frame" x="20" y="382" width="368" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="368" id="kx7-Vn-qul"/>
                                 </constraints>
