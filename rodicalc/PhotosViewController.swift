@@ -12,8 +12,8 @@ import CoreData
 var photos = [UIImage]()
 var uzis = [UIImage]()
 var choosedSegmentImages = true // true: photo, false: uzi
+
 class PhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
-    
     var picker:UIImagePickerController?=UIImagePickerController()
     
     @IBOutlet weak var changer: UISegmentedControl!
@@ -40,13 +40,17 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             picker!.allowsEditing = false
             picker!.sourceType = UIImagePickerControllerSourceType.Camera
             picker!.cameraCaptureMode = .Photo
-            picker!.modalPresentationStyle = .PageSheet
+            picker!.modalPresentationStyle = .FormSheet
             presentViewController(picker!, animated: true, completion: nil)
         }else{
-            let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style:.Default, handler: nil)
-            alert.addAction(ok)
-            presentViewController(alert, animated: true, completion: nil)
+            if #available(iOS 8.0, *) {
+                let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style:.Default, handler: nil)
+                alert.addAction(ok)
+                presentViewController(alert, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -54,11 +58,20 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         picker!.allowsEditing = false
         picker!.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         picker!.modalPresentationStyle = .PageSheet
+        
         presentViewController(picker!, animated: true, completion: nil)
     }
-    
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        return UIInterfaceOrientation.LandscapeLeft
+    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    override func shouldAutorotate() -> Bool {
+        return true
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -196,11 +209,10 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             }
         } catch {
             let fetchError = error as NSError
-            print(fetchError)
+              print(fetchError)
         }
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

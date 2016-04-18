@@ -13,6 +13,8 @@ import YouTubePlayer
 let StrawBerryColor = UIColor(red: 255/255.0, green: 34/255.0, blue: 89/255.0, alpha: 1.0)
 let userGrowth = "userGrowth"
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -113,6 +115,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+   /* func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        //if window?.rootViewController?.navigationController?.splitViewController?.viewControllers[1].title is PhotosViewController{
+           // return UIInterfaceOrientationMask.All
+        //}
 
+        print(window?.rootViewController?.navigationController?.splitViewController)
+
+        return UIInterfaceOrientationMask.Landscape
+    }*/
 }
-

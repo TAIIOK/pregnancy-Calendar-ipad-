@@ -34,19 +34,42 @@ class ShowZodiacViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         WorkWithJSON()
-        birthDate.text = "66 ИЮНЯ 6666 ГОДА"
+        birthDate.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
         zodiacName.text = zodiacs[0].name
         zodiacElement.text = zodiacs[0].element
         zodiacAbout.text = zodiacs[0].about
         zodiacIcon.image = UIImage(named: "0.jpg")
+        var str = String()
+        print(zodiacs[0].name.characters.indexOf("(")!)
+        /*for var j = zodiacs[0].name.characters.indexOf("("); j < zodiacs[0].name.characters.indexOf(")"); j += 1
+        {
+            str.append(zodiacs[0].name[j!])
+        }
+        print(str)*/
         // Do any additional setup after loading the view.
     }
 
+    func searchZodiac(date: NSDate){
+        for i: Zodiac in zodiacs{
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnEditDate(sender: AnyObject) {
+        Back = true
+        let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDate")
+        if #available(iOS 8.0, *) {
+            self.splitViewController?.showDetailViewController(date!, sender: self)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
     func WorkWithJSON(){
         if let path = NSBundle.mainBundle().pathForResource("zodiacs", ofType: "json") {
             do {
