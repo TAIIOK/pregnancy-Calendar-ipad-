@@ -35,9 +35,10 @@ class ShowZodiacViewController: UIViewController {
         super.viewDidLoad()
         WorkWithJSON()
         birthDate.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
-        zodiacName.text = zodiacs[0].name
-        zodiacElement.text = zodiacs[0].element
-        zodiacAbout.text = zodiacs[0].about
+        let zodiac = searchZodiac(selectedDay.date.convertedDate()!)
+        zodiacName.text = zodiacs[zodiac].name
+        zodiacElement.text = zodiacs[zodiac].element
+        zodiacAbout.text = zodiacs[zodiac].about
         zodiacIcon.image = UIImage(named: "0.jpg")
         var str = String()
         print(zodiacs[0].name.characters.indexOf("(")!)
@@ -49,10 +50,56 @@ class ShowZodiacViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func searchZodiac(date: NSDate){
-        for i: Zodiac in zodiacs{
-            
+    func searchZodiac(date: NSDate) -> Int{
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        
+        let year =  components.year
+        let month = components.month
+        let day = components.day
+        
+        if((month==3 && day>=21) || (month==4 && day<=19)){
+        return 0;
         }
+        if((month==4 && day>=20) || (month==5 && day<=21)){
+            return 1;
+        }
+        if((month==5 && day>=22) || (month==6 && day<=21)){
+            return 2;
+        }
+        if((month==6 && day>=22) || (month==7 && day<=22)){
+            return 3;
+        }
+        if((month==8 && day>=23) || (month==7 && day<=22)){
+            return 4;
+        }
+        if((month==8 && day>=23) || (month==9 && day<=22)){
+            return 5;
+        }
+        if((month==9 && day>=23) || (month==10 && day<=22)){
+            return 6;
+        }
+        if((month==10 && day>=23) || (month==11 && day<=22)){
+            return 7;
+        }
+        if((month==11 && day>=23) || (month==12 && day<=22)){
+            return 8;
+        }
+        if((month==12 && day>=22) || (month==1 && day<=20)){
+            return 9;
+        }
+        if((month==1 && day>=21) || (month==2 && day<=18)){
+            return 10;
+        }
+        if((month==2 && day>=19) || (month==3 && day<=20)){
+            return 11;
+        }
+        
+        
+        
+        return 1;
+        
     }
     
     override func didReceiveMemoryWarning() {
