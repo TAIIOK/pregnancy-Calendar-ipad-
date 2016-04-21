@@ -103,7 +103,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.map.showsUserLocation = true
                     locationManager.startUpdatingLocation() //8
                     
-                    setCenterOfMapToLocation(initialLocation)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let region = MKCoordinateRegion(center: initialLocation, span: span)
+                    map.setRegion(region, animated: true)
+                    
+                    //setCenterOfMapToLocation(initialLocation)
                 }
                 
             } else {

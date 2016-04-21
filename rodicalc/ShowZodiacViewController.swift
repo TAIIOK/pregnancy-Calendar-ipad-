@@ -39,7 +39,7 @@ class ShowZodiacViewController: UIViewController {
         zodiacName.text = zodiacs[zodiac].name
         zodiacElement.text = zodiacs[zodiac].element
         zodiacAbout.text = zodiacs[zodiac].about
-        zodiacIcon.image = UIImage(named: "0.jpg")
+        zodiacIcon.image = UIImage(named: "\(zodiac)z.jpg")
         var str = String()
         print(zodiacs[0].name.characters.indexOf("(")!)
         /*for var j = zodiacs[0].name.characters.indexOf("("); j < zodiacs[0].name.characters.indexOf(")"); j += 1
