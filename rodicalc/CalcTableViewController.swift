@@ -81,6 +81,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.row == dateType && selectedDay != nil{
             cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
             cell.setHighlighted(true, animated: false)
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+
         }
         else{
             cell.detailTextLabel?.text = "не выбрано"
@@ -100,6 +102,13 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         //let a = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text
         dateType = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
         tableView.reloadData()
+        
+        
+
+    tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+
+        
+        
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
@@ -162,6 +171,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let dte = date.valueForKey("date") as! NSDate
                     dateType = date.valueForKey("type") as! Int
                     calendarView.toggleViewWithDate(dte)
+
                 }
             }
         } catch {
@@ -198,7 +208,9 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
         if dateType != -1{
+            let index = self.tbl.indexPathForSelectedRow
             self.tbl.reloadData()
+            self.tbl.selectRowAtIndexPath(index, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
         }
     }
     
