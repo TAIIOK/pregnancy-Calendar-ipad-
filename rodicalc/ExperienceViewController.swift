@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var not = [notifi]()
 
@@ -21,7 +22,6 @@ class notifi: NSObject {
     var HidenAdvertisment : String
     var advertisment : String
     var reflectionsPregnant : String
-
     
     init(day: String, generalInformation: String , healthMother: String , healthBaby: String , food: String ,important: String , HidenAdvertisment : String , advertisment : String , reflectionsPregnant : String) {
         self.day = day
@@ -37,6 +37,17 @@ class notifi: NSObject {
     }
 }
 
+class note: NSObject {
+    var name: String
+    var text: String
+    
+    init(name: String, text: String) {
+        self.name = name
+        self.text = text
+        super.init()
+    }
+}
+
 class ExperienceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -47,7 +58,11 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var tbl: UITableView!
     
-    
+    var day: Int = 0
+    var choosedSegmentNotes = true // true: статьи, false: уведомления
+    var BirthDate = NSDate()
+
+    var mas = [note]()
     /*
     {
         "Здоровье малыша":"",
@@ -61,6 +76,16 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         "реклама ФЭСТ":""
     }
     */
+    @IBAction func segmentChanger(sender: UISegmentedControl) {
+        self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
+    }
+    
+    private func reloadTable(index: Bool) {
+        choosedSegmentNotes = index
+        let choosedNote = NSIndexPath(forRow: 0, inSection: 0)
+        self.tbl.reloadData()
+        self.tbl.scrollToRowAtIndexPath(choosedNote, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+    }
     
     func WorkWithJSON(){
         if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {
@@ -82,9 +107,6 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-
-    
-    
     
     func setupNavigation(text :String){
     
@@ -101,8 +123,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let leftButton = UIBarButtonItem(customView: customView)
         self.navigationItem.leftBarButtonItem = leftButton
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,7 +133,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         tbl.delegate = self
         tbl.dataSource = self
         WorkWithJSON()
-
+        loadDate()
         //leftbutt![0] = leftButton
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -146,21 +168,58 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     */
 
-    // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return choosedSegmentNotes ? 0 : 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        notesperday()
+        return choosedSegmentNotes ? 0 : mas.count
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DateCell", forIndexPath: indexPath) as! DateTableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath)
+        if mas.count > 0 {
+            cell.textLabel?.text = mas[indexPath.row].name
+            cell.detailTextLabel?.text = mas[indexPath.row].text
+        }
         return cell
+    }
+    
+    private func notesperday(){
+        day = 300 - BirthDate.daysFrom(selectedDay.date.convertedDate()!)
+        mas.removeAll()
+        for var i in not{
+            let d = Int(i.day)
+            if d == day{
+                if i.generalInformation != ""{
+                    mas.append(note(name: "Общая информация",  text: "\(i.generalInformation)"))
+                }
+                if i.healthMother != ""{
+                    mas.append(note(name: "Здоровье мамы", text: "\(i.healthMother)"))
+                }
+                if i.healthBaby != ""{
+                    mas.append(note(name: "Здоровье малыша", text: "\(i.healthBaby)"))
+                }
+                if i.food != ""{
+                    mas.append(note(name: "Питание", text: "\(i.food)"))
+                }
+                if i.important != ""{
+                    mas.append(note(name: "Это важно!", text: "\(i.important)"))
+                }
+                if i.HidenAdvertisment != ""{
+                    mas.append(note(name: "Полезно знать каждой", text: "\(i.HidenAdvertisment)"))
+                }
+                if i.advertisment != ""{
+                    mas.append(note(name: "Полезно знать каждой", text: "\(i.advertisment)"))
+                }
+                if i.reflectionsPregnant != ""{
+                    mas.append(note(name: "Размышление беременной", text: "\(i.reflectionsPregnant)"))
+                }
+            }
+        }
     }
     
     private func getCustomBackgroundView() -> UIView{
@@ -174,10 +233,10 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DateTableViewCell
-        cell.selectedBackgroundView=getCustomBackgroundView()
-        cell.textLabel?.highlightedTextColor = StrawBerryColor
-        cell.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.selectedBackgroundView=getCustomBackgroundView()
+        cell!.textLabel?.highlightedTextColor = StrawBerryColor
+        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
         return indexPath
     }
     
@@ -185,11 +244,88 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     override func shouldAutorotate() -> Bool {
         return false
     }
-    override func viewWillDisappear(animated: Bool) {
-        Back = false
+    
+    func loadDate(){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            
+            if (result.count > 0) {
+                for i in result {
+                    let date = i as! NSManagedObject
+                    let dte = date.valueForKey("date") as! NSDate
+                    dateType = date.valueForKey("type") as! Int
+                    BirthDate = dte
+                    if dateType == 0{
+                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+                    }
+                    else if dateType == 1{
+                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                    }
+                }
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
     }
     
-    
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
+    }
+}
+
+extension NSDate {
+    func yearsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Year, fromDate: date, toDate: self, options: []).year
+    }
+    func monthsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Month, fromDate: date, toDate: self, options: []).month
+    }
+    func weeksFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: date, toDate: self, options: []).weekOfYear
+    }
+    func daysFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Day, fromDate: date, toDate: self, options: []).day
+    }
+    func hoursFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: []).hour
+    }
+    func minutesFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Minute, fromDate: date, toDate: self, options: []).minute
+    }
+    func secondsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: self, options: []).second
+    }
+    func offsetFrom(date:NSDate) -> String {
+        if yearsFrom(date)   > 0 { return "\(yearsFrom(date))y"   }
+        if monthsFrom(date)  > 0 { return "\(monthsFrom(date))M"  }
+        if weeksFrom(date)   > 0 { return "\(weeksFrom(date))w"   }
+        if daysFrom(date)    > 0 { return "\(daysFrom(date))d"    }
+        if hoursFrom(date)   > 0 { return "\(hoursFrom(date))h"   }
+        if minutesFrom(date) > 0 { return "\(minutesFrom(date))m" }
+        if secondsFrom(date) > 0 { return "\(secondsFrom(date))s" }
+        return ""
+    }
 }
 
 extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
@@ -217,7 +353,8 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
-
+        notesperday()
+        tbl.reloadData()
     }
     
     func swipedetected(){
