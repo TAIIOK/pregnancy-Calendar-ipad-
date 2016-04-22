@@ -34,22 +34,35 @@ class ShowZodiacViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         WorkWithJSON()
-        birthDate.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
-        let zodiac = searchZodiac(selectedDay.date.convertedDate()!)
+        var date = selectedDay.date.convertedDate()!
+        if dateType == 0{
+            date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
+        }
+        else if dateType == 1{
+            date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
+        }
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        birthDate.text = "\(components.day).\(components.month).\(components.year)"
+        let zodiac = searchZodiac(date)
         zodiacName.text = zodiacs[zodiac].name
         zodiacElement.text = zodiacs[zodiac].element
         zodiacAbout.text = zodiacs[zodiac].about
         zodiacIcon.image = UIImage(named: "\(zodiac)z.jpg")
-        var str = String()
-        print(zodiacs[0].name.characters.indexOf("(")!)
-        /*for var j = zodiacs[0].name.characters.indexOf("("); j < zodiacs[0].name.characters.indexOf(")"); j += 1
-        {
-            str.append(zodiacs[0].name[j!])
-        }
-        print(str)*/
-        // Do any additional setup after loading the view.
     }
 
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
+    }
+    
     func searchZodiac(date: NSDate) -> Int{
         
         let calendar = NSCalendar.currentCalendar()
@@ -71,7 +84,7 @@ class ShowZodiacViewController: UIViewController {
         if((month==6 && day>=22) || (month==7 && day<=22)){
             return 3;
         }
-        if((month==8 && day>=23) || (month==7 && day<=22)){
+        if((month==7 && day>=23) || (month==8 && day<=22)){
             return 4;
         }
         if((month==8 && day>=23) || (month==9 && day<=22)){
@@ -109,7 +122,7 @@ class ShowZodiacViewController: UIViewController {
     
     @IBAction func btnEditDate(sender: AnyObject) {
         Back = true
-        let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDate")
+        let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDateChanger")
         if #available(iOS 8.0, *) {
             self.splitViewController?.showDetailViewController(date!, sender: self)
         } else {
@@ -128,7 +141,6 @@ class ShowZodiacViewController: UIViewController {
                             var name = Zodiacs.valueForKey("Знак")
                             name!.dataUsingEncoding(NSUTF8StringEncoding)
                             if let d = name {
-                                //points.append(Points(city: "\(Point.valueForKey("city"))",address: d as! String,trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
                                 zodiacs.append(Zodiac(name: d as! String, element: "\(Zodiacs.valueForKey("Стихия")!)", about: "\(Zodiacs.valueForKey("Описание")!)"))
                             }
                         }

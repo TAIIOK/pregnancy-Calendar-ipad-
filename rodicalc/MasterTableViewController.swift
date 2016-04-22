@@ -17,9 +17,9 @@ class MasterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let rowToSelect:NSIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-        self.table.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Top)
-        
-        self.tableView(self.table, willSelectRowAtIndexPath: rowToSelect)
+        table.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+
+        self.tableView(table, willSelectRowAtIndexPath: rowToSelect)
     }
     
     override func didReceiveMemoryWarning() {

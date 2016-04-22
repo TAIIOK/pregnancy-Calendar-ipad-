@@ -11,6 +11,8 @@ import CoreData
 
 var Back = false
 var selectedDay:DayView!
+var dateType = -1
+//var BirthDate = NSDate()
 
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -23,9 +25,6 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     var shouldShowDaysOut = true
     var animationFinished = true
     
-    
-    var dateType = -1
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.delegate = self
@@ -37,9 +36,19 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.navigationItem.setLeftBarButtonItems([a], animated: true)
         }
         loadDate()
+        if selectedDay != nil && !Back{
+            Cancel()
+            /*let zodiac = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
+            if #available(iOS 8.0, *) {
+                self.splitViewController?.showDetailViewController(zodiac!, sender: self)
+            } else {
+                // Fallback on earlier versions
+            }*/
+        }
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -50,6 +59,19 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         // calendarView.changeMode(.WeekView)
         
     }
+    
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
+    }
+    
     func Cancel(){
         let zodiac = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
         if #available(iOS 8.0, *) {
@@ -79,10 +101,19 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = txt[indexPath.row]
     
         if indexPath.row == dateType && selectedDay != nil{
-            cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
+            var date = selectedDay.date.convertedDate()!
+            if dateType == 0{
+                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
+            }
+            else if dateType == 1{
+                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
+            }
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            cell.detailTextLabel?.text = "\(components.day).\(components.month).\(components.year)"
+            //cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-
         }
         else{
             cell.detailTextLabel?.text = "не выбрано"
@@ -101,14 +132,18 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //let a = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text
         dateType = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
+        /*if selectedDay != nil{
+            BirthDate = selectedDay.date.convertedDate()!
+            if dateType == 0{
+                BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+            }
+            else if dateType == 1{
+                BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+            }
+        }*/
         tableView.reloadData()
-        
-        
 
-    tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-
-        
-        
+        tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
@@ -138,12 +173,12 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let entity =  NSEntityDescription.entityForName("BirthDate", inManagedObjectContext: managedContext)
             
-        let BirthDate = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        let BD = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
             
-        BirthDate.setValue(date, forKey: "date")
-        BirthDate.setValue(type, forKey: "type")
+        BD.setValue(date, forKey: "date")
+        BD.setValue(type, forKey: "type")
         do {
-            try BirthDate.managedObjectContext?.save()
+            try BD.managedObjectContext?.save()
         } catch {
             print(error)
         }
@@ -171,7 +206,6 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let dte = date.valueForKey("date") as! NSDate
                     dateType = date.valueForKey("type") as! Int
                     calendarView.toggleViewWithDate(dte)
-
                 }
             }
         } catch {
