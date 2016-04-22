@@ -126,6 +126,7 @@
 		A02058B91CC8C50A00C70691 /* 9z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058AD1CC8C50A00C70691 /* 9z.jpg */; };
 		A02058BA1CC8C50A00C70691 /* 10z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058AE1CC8C50A00C70691 /* 10z.jpg */; };
 		A02058BB1CC8C50A00C70691 /* 11z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058AF1CC8C50A00C70691 /* 11z.jpg */; };
+		A02058BE1CC9091400C70691 /* notifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A02058BD1CC9091400C70691 /* notifi.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +315,7 @@
 		A02058AD1CC8C50A00C70691 /* 9z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9z.jpg; sourceTree = "<group>"; };
 		A02058AE1CC8C50A00C70691 /* 10z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10z.jpg; sourceTree = "<group>"; };
 		A02058AF1CC8C50A00C70691 /* 11z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11z.jpg; sourceTree = "<group>"; };
+		A02058BD1CC9091400C70691 /* notifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = notifi.json; path = Yoga/notifi.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +454,7 @@
 				8E51BF2C1CA3E8E900D8D739 /* points.json */,
 				8E1DD60E1CB6894700D55893 /* names.json */,
 				8E1DD6071CB2896500D55893 /* zodiacs.json */,
+				A02058BD1CC9091400C70691 /* notifi.json */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
 				8E20C8B01C998F130003C1CF /* Custom Layouts */,
 				8E2538F41C848D9200B3C54E /* LineChart */,
@@ -717,6 +720,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A02058BE1CC9091400C70691 /* notifi.json in Resources */,
 				A02058B91CC8C50A00C70691 /* 9z.jpg in Resources */,
 				8E1AC9A21CA960820091D8BB /* 0.png in Resources */,
 				8E1DD6081CB2896500D55893 /* zodiacs.json in Resources */,

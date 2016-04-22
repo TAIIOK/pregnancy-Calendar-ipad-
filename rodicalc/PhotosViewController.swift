@@ -13,8 +13,33 @@ var photos = [UIImage]()
 var uzis = [UIImage]()
 var choosedSegmentImages = true // true: photo, false: uzi
 
+
+extension UIImagePickerController
+{
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
+    
+    public override func shouldAutorotate() -> Bool {
+        return false
+    }
+}
+
+class LandscapePickerController: UIImagePickerController
+{
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
+    public override func shouldAutorotate() -> Bool {
+        return false
+    }
+}
 class PhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
-    var picker:UIImagePickerController?=UIImagePickerController()
+    
+
+
+    
+    var picker:LandscapePickerController?=LandscapePickerController()
     
     @IBOutlet weak var changer: UISegmentedControl!
     @IBOutlet var PhotoCollectionView: UICollectionView!
@@ -34,6 +59,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         loadImage()
         loadImageUzi()
     }
+
 
     func openCamera(){
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
@@ -58,20 +84,14 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         picker!.allowsEditing = false
         picker!.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         picker!.modalPresentationStyle = .PageSheet
-        
+        picker?.interfaceOrientation
         presentViewController(picker!, animated: true, completion: nil)
     }
-    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        return UIInterfaceOrientation.LandscapeLeft
-    }
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.All
-    }
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+      func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     override func shouldAutorotate() -> Bool {
-        return true
+        return false
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage

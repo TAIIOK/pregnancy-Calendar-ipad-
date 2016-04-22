@@ -392,7 +392,7 @@ extension CalcViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension CalcViewController {
+extension ExperienceViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -429,7 +429,7 @@ extension CalcViewController {
 
 // MARK: - Convenience API Demo
 
-extension CalcViewController {
+extension ExperienceViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager

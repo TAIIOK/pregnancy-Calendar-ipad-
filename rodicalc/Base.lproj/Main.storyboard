@@ -599,31 +599,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Kv3-q3-lNa" kind="relationship" relationship="rootViewController" id="yYu-3f-kvL"/>
+                        <segue destination="B3T-v7-VhL" kind="relationship" relationship="rootViewController" id="Lv0-Ho-wxS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPb-ow-aYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="55.000000000000007" y="3575.0000000000005"/>
-        </scene>
-        <!--Полезный опыт-->
-        <scene sceneID="HM7-Sz-RIy">
-            <objects>
-                <viewController id="Kv3-q3-lNa" customClass="ExperienceViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4eM-yQ-IVH"/>
-                        <viewControllerLayoutGuide type="bottom" id="v6e-YJ-NAR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9g7-SI-INd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Полезный опыт" id="0gZ-9O-cjp"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UCz-wv-6kl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="102" y="4378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bgQ-v1-caG">
@@ -1814,6 +1795,86 @@
             </objects>
             <point key="canvasLocation" x="586" y="311"/>
         </scene>
+        <!--Calendar Appearance Delegate-->
+        <scene sceneID="WA8-k7-BtE">
+            <objects>
+                <viewController title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DYG-Dr-979"/>
+                        <viewControllerLayoutGuide type="bottom" id="gs4-wJ-MDr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PYv-Ud-orr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aml-m3-YUa" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="24"/>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="B3T-v7-VhL" id="Qfs-FW-Bck"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW8-HO-dfN" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="600" height="167"/>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="B3T-v7-VhL" id="6fi-jU-GRm"/>
+                                    <outlet property="calendarDelegate" destination="B3T-v7-VhL" id="YJj-px-vCx"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MpK-mm-aTR">
+                                <rect key="frame" x="0.0" y="258" width="600" height="342"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="342" id="Tlh-vw-iAQ"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VnC-a1-gQ8">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VnC-a1-gQ8" id="S6G-ue-pU1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mW8-HO-dfN" firstAttribute="leading" secondItem="MpK-mm-aTR" secondAttribute="leading" id="0IR-dx-Pzi"/>
+                            <constraint firstItem="mW8-HO-dfN" firstAttribute="top" secondItem="PYv-Ud-orr" secondAttribute="top" constant="88" id="1zE-nx-B2j"/>
+                            <constraint firstItem="aml-m3-YUa" firstAttribute="top" secondItem="DYG-Dr-979" secondAttribute="bottom" id="98A-xM-jAs"/>
+                            <constraint firstItem="MpK-mm-aTR" firstAttribute="bottom" secondItem="gs4-wJ-MDr" secondAttribute="top" id="K2r-38-sT6"/>
+                            <constraint firstAttribute="trailing" secondItem="aml-m3-YUa" secondAttribute="trailing" id="Ljb-hW-Y5I"/>
+                            <constraint firstItem="aml-m3-YUa" firstAttribute="leading" secondItem="mW8-HO-dfN" secondAttribute="leading" id="Wxz-gz-TSH"/>
+                            <constraint firstItem="aml-m3-YUa" firstAttribute="leading" secondItem="PYv-Ud-orr" secondAttribute="leading" id="kCJ-hI-JFF"/>
+                            <constraint firstItem="mW8-HO-dfN" firstAttribute="top" secondItem="aml-m3-YUa" secondAttribute="bottom" id="kOY-pz-Iag"/>
+                            <constraint firstItem="mW8-HO-dfN" firstAttribute="trailing" secondItem="MpK-mm-aTR" secondAttribute="trailing" id="sg4-8o-yw6"/>
+                            <constraint firstItem="MpK-mm-aTR" firstAttribute="top" secondItem="mW8-HO-dfN" secondAttribute="bottom" constant="3" id="u1x-VO-FWq"/>
+                            <constraint firstItem="aml-m3-YUa" firstAttribute="trailing" secondItem="mW8-HO-dfN" secondAttribute="trailing" id="vlA-SO-Tq8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qhy-dJ-go2">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="aog-dk-hat">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="First"/>
+                                <segment title="Second"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendarView" destination="mW8-HO-dfN" id="tCj-w1-mES"/>
+                        <outlet property="menuView" destination="aml-m3-YUa" id="foF-4u-TUd"/>
+                        <outlet property="navbar" destination="Qhy-dJ-go2" id="8wp-6d-yuq"/>
+                        <outlet property="tbl" destination="MpK-mm-aTR" id="JlZ-xQ-2po"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MC0-zF-zSh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40" y="4358"/>
+        </scene>
     </scenes>
     <resources>
         <image name="circle" width="128" height="128"/>
@@ -1825,9 +1886,9 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XcH-dH-mWH"/>
+        <segue reference="J8J-RP-rbp"/>
         <segue reference="P0H-Yd-JxP"/>
+        <segue reference="kMg-vQ-vuk"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="Grh-Yv-0eG"/>
     </inferredMetricsTieBreakers>
 </document>
