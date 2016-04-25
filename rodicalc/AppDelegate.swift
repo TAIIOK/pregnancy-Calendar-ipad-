@@ -12,6 +12,7 @@ import YouTubePlayer
 
 let StrawBerryColor = UIColor(red: 255/255.0, green: 34/255.0, blue: 89/255.0, alpha: 1.0)
 let userGrowth = "userGrowth"
+var db = try! Connection()
 @UIApplicationMain
 
 
@@ -25,10 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
-        
+        createEditableCopyOfDatabaseIfNeeded()
         return true
     }
+    
+    private func createEditableCopyOfDatabaseIfNeeded() -> Void
+    {
+        // First, test for existence.
+        // Override point for customization after application launch.
+        let sourcePath = NSBundle.mainBundle().pathForResource("db", ofType: "sqlite")
+        //print(sourcePath)
+        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        //print(destinationPath)
+        do {
+            try NSFileManager().copyItemAtPath(sourcePath!, toPath: destinationPath)
+        } catch _ {
+        }
+        db = try! Connection(destinationPath)
+    }
 
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 var selectedNoteDay:DayView!
 class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -16,6 +17,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tbl: UITableView!
     var shouldShowDaysOut = true
     var animationFinished = true
+    var db = try! Connection()
     
     var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
     
@@ -24,10 +26,40 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.delegate = self
         tbl.dataSource = self
         self.title = CVDate(date: NSDate()).globalDescription
-
+        //WorkWithDB()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func WorkWithDB(){
+    
+        let path = NSSearchPathForDirectoriesInDomains(
+            .DocumentDirectory, .UserDomainMask, false
+            ).first!
+        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        db = try! Connection(destinationPath)
+        let id = Expression<Int64>("_id")
+        let articles = Table("article")
+
+        //for art in try! db.prepare(articles) {
+          //  print("id: \(art[id])")}
+        let count = try db.scalar(articles.count)
+        print(count)
+    }
+    
+    func returnTableCount(tableName: String) -> Int{
+        let path = NSSearchPathForDirectoriesInDomains(
+            .DocumentDirectory, .UserDomainMask, false
+            ).first!
+        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let db = try! Connection(destinationPath)
+        let table = Table(tableName)
+        let count = try db.scalar(table.count)
+        return count
+    }
+    // Creates a writable copy of the bundled default database in the application Documents directory.
     
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -43,7 +75,40 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath)
         cell.textLabel?.text = notes[indexPath.row]
-        cell.detailTextLabel?.text = "нет заметок"
+        //cell.detailTextLabel?.text = "нет заметок"
+        switch indexPath.row {
+        case 0:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 1:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 2:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 3:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 4:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 5:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 6:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 7:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 8:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+        case 9:
+            cell.detailTextLabel?.text = String(returnTableCount("article"))
+            break
+            default: break
+        }
         return cell
     }
     
@@ -54,14 +119,47 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //huita
-        let controller = (self.storyboard?.instantiateViewControllerWithIdentifier("huita"))! as UIViewController
+        switch indexPath.row {
+        case 0:
+            
+            break
+        case 1:
+            
+            break
+        case 2:
+            
+            break
+        case 3:
+            
+            break
+        case 4:
+            
+            break
+        case 5:
+            
+            break
+        case 6:
+            
+            break
+        case 7:
+            
+            break
+        case 8:
+            
+            break
+        case 9:
+           
+            break
+        default: break
+        }
+        /*
+        let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(""))! as UIViewController
         if #available(iOS 8.0, *) {
             //self.splitViewController?.showDetailViewController(date!, sender: self)
             
         } else {
             // Fallback on earlier versions
-        }
+        }*/
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
