@@ -63,6 +63,8 @@ class tmpSpasm {
         @IBOutlet weak var label: UILabel!
         @IBOutlet weak var buttonSpasm: UIButton!
         @IBOutlet weak var collectionView: UICollectionView!
+        @IBOutlet weak var watch: UIImageView!
+        @IBOutlet weak var animView: UIView!
         
         @IBAction func buttonSpasms(sender: AnyObject) {
             if self.state == .Stop {
@@ -93,33 +95,42 @@ class tmpSpasm {
         func animWatch(){
             // set up some values to use in the curve
             let ovalStartAngle = CGFloat(270.01 * M_PI/180)
-            let ovalEndAngle = CGFloat(270 * M_PI/180)
-            let ovalRect = CGRectMake(110, 605, 100, 100)
+            let ovalEndAngle = CGFloat(270.009 * M_PI/180)
+            let ovalRect = CGRectMake(17, 22, 85, 85)//(110, 605, 100, 100)
             
             // create the bezier path
-            let ovalPath = UIBezierPath()
+            let ovalPath = UIBezierPath(arcCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)),
+                                        radius: CGRectGetWidth(ovalRect) / 2,
+                                        startAngle: ovalStartAngle,
+                                        endAngle: ovalEndAngle, clockwise: true)
             
-            ovalPath.addArcWithCenter(CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)),
+            /*ovalPath.addArcWithCenter(CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)),
                 radius: CGRectGetWidth(ovalRect) / 2,
                 startAngle: ovalStartAngle,
-                endAngle: ovalEndAngle, clockwise: true)
+                endAngle: ovalEndAngle, clockwise: true)*/
             
+            /*ovalPath.moveToPoint(CGPoint(x: 60, y: 30))
+            ovalPath.addLineToPoint(CGPoint(x: 60, y: 20))
+            
+            ovalPath.moveToPoint(CGPoint(x: 60, y: 110))
+            ovalPath.addLineToPoint(CGPoint(x: 60, y: 100))*/
             // create an object that represents how the curve
             // should be presented on the screen
-            
             progressLine.path = ovalPath.CGPath
-            progressLine.strokeColor = UIColor.blueColor().CGColor
+            progressLine.strokeColor = StrawBerryColor.CGColor
             progressLine.fillColor = UIColor.clearColor().CGColor
-            progressLine.lineWidth = 10.0
-            progressLine.lineCap = kCALineCapRound
+            progressLine.lineWidth = 12.0
+        
+            //progressLine.lineCap = kCALineCapRound
+            progressLine.lineDashPattern = [4,18,4,18,4,18,4,18,4,18,4,18,4,18,4,18,4,18,4,18,4,20]
             
             // add the curve to the screen
-            self.view.layer.addSublayer(progressLine)
+            self.watch.layer.addSublayer(progressLine)
             
             // create a basic animation that animates the value 'strokeEnd'
             // from 0.0 to 1.0 over 3.0 seconds
             let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
-            animateStrokeEnd.duration = 60.0
+            animateStrokeEnd.duration = 3.0
             animateStrokeEnd.fromValue = 0.0
             animateStrokeEnd.toValue = 1.0
             animateStrokeEnd.repeatCount = 2
@@ -134,6 +145,7 @@ class tmpSpasm {
             self.tmp = tmpSpasm()
             self.tmp.start = NSDate().toFormattedTimeString()
             animWatch()
+            watch.highlighted = true
         }
         
         private func spasmStop() {
@@ -147,6 +159,7 @@ class tmpSpasm {
             self.textlabel.text = ""
             saveSpasm(tmp)
             progressLine.removeFromSuperlayer()
+            watch.highlighted = false
         }
         
         func timerUpdate() {
@@ -388,4 +401,5 @@ class tmpSpasm {
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
         }
+        
 }

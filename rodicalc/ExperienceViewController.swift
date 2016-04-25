@@ -82,9 +82,9 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func reloadTable(index: Bool) {
         choosedSegmentNotes = index
-        let choosedNote = NSIndexPath(forRow: 0, inSection: 0)
+        //let choosedNote = NSIndexPath(forRow: 0, inSection: 0)
         self.tbl.reloadData()
-        self.tbl.scrollToRowAtIndexPath(choosedNote, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        //self.tbl.scrollToRowAtIndexPath(choosedNote, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     func WorkWithJSON(){
@@ -175,13 +175,15 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if choosedSegmentNotes == false{
         notesperday()
+        }
         return choosedSegmentNotes ? 0 : mas.count
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath)
-        if mas.count > 0 {
+        if choosedSegmentNotes == false && mas.count > 0 {
             cell.textLabel?.text = mas[indexPath.row].name
             cell.detailTextLabel?.text = mas[indexPath.row].text
         }
