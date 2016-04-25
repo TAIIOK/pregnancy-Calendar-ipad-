@@ -137,6 +137,7 @@
 		8EEAC3441CCE542F007B4643 /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3311CCE542F007B4643 /* Schema.swift */; };
 		8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3321CCE542F007B4643 /* Setter.swift */; };
 		8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2FB1CCE508E007B4643 /* db.sqlite */; };
+		8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */; };
 		A02058B01CC8C50A00C70691 /* 0z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A41CC8C50A00C70691 /* 0z.jpg */; };
 		A02058B11CC8C50A00C70691 /* 1z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A51CC8C50A00C70691 /* 1z.jpg */; };
 		A02058B21CC8C50A00C70691 /* 2z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A61CC8C50A00C70691 /* 2z.jpg */; };
@@ -353,6 +354,7 @@
 		8EEAC3311CCE542F007B4643 /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
 		8EEAC3321CCE542F007B4643 /* Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setter.swift; sourceTree = "<group>"; };
 		8EEAC3461CCE5462007B4643 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
+		8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteViewController.swift; sourceTree = "<group>"; };
 		A02058A41CC8C50A00C70691 /* 0z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0z.jpg; sourceTree = "<group>"; };
 		A02058A51CC8C50A00C70691 /* 1z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1z.jpg; sourceTree = "<group>"; };
 		A02058A61CC8C50A00C70691 /* 2z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2z.jpg; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				8E1DD6051CB26A3D00D55893 /* ShareViewController.swift */,
 				8E6D50381C7F056200878957 /* VideosViewController.swift */,
 				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
+				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
 				8E6D503C1C7F05D700878957 /* ForumViewController.swift */,
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
@@ -921,6 +924,7 @@
 			files = (
 				8E1DD60C1CB2A79900D55893 /* DateTableViewCell.swift in Sources */,
 				8EEAC33E1CCE542F007B4643 /* Collation.swift in Sources */,
+				8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */,
 				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
 				8EEAC2CD1CC4E48E007B4643 /* CVCalendarDayViewControlCoordinator.swift in Sources */,
 				8EEAC2D61CC4E48E007B4643 /* CVCalendarViewAnimatorDelegate.swift in Sources */,

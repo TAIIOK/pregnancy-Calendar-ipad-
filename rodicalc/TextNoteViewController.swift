@@ -8,10 +8,8 @@
 
 import UIKit
 
-
-var selectedNoteDay:DayView!
-class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-
+class TextNoteViewController: UIViewController {
+    
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var tbl: UITableView!
@@ -23,160 +21,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbl.delegate = self
-        tbl.dataSource = self
         self.title = CVDate(date: NSDate()).globalDescription
+        calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         //WorkWithDB()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    func WorkWithDB(){
-    
-        let path = NSSearchPathForDirectoriesInDomains(
-            .DocumentDirectory, .UserDomainMask, false
-            ).first!
-        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
-        db = try! Connection(destinationPath)
-        let id = Expression<Int64>("_id")
-        let articles = Table("article")
-
-        //for art in try! db.prepare(articles) {
-          //  print("id: \(art[id])")}
-        let count = try db.scalar(articles.count)
-        print(count)
-    }
-    
-    func returnTableCount(tableName: String) -> Int{
-        let path = NSSearchPathForDirectoriesInDomains(
-            .DocumentDirectory, .UserDomainMask, false
-            ).first!
-        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
-        let db = try! Connection(destinationPath)
-        let table = Table(tableName)
-        let count = try db.scalar(table.count)
-        return count
-    }
-    // Creates a writable copy of the bundled default database in the application Documents directory.
-    
-    // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return notes.count
-    }
-    
-    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath)
-        cell.textLabel?.text = notes[indexPath.row]
-        //cell.detailTextLabel?.text = "нет заметок"
-        switch indexPath.row {
-        case 0:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 1:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 2:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 3:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 4:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 5:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 6:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 7:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 8:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 9:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-            default: break
-        }
-        return cell
-    }
-    
-    private func getCustomBackgroundView() -> UIView{
-        let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
-        return BackgroundView
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            let source = (self.storyboard?.instantiateViewControllerWithIdentifier("NotesTable"))! as! NotesViewController
-            let dest = (self.storyboard?.instantiateViewControllerWithIdentifier("textNote"))! as! TextNoteViewController
-            /*UINavigationController *navigationController = sourceViewController.navigationController;
-            // Pop to root view controller (not animated) before pushing
-            [navigationController popToRootViewControllerAnimated:NO];
-            [navigationController pushViewController:destinationController animated:YES];*/
-            let nav = source.navigationController! as UINavigationController
-            nav.pushViewController(dest, animated: true)
-            break
-        case 1:
-            
-            break
-        case 2:
-            
-            break
-        case 3:
-            
-            break
-        case 4:
-            
-            break
-        case 5:
-            
-            break
-        case 6:
-            
-            break
-        case 7:
-            
-            break
-        case 8:
-            
-            break
-        case 9:
-           
-            break
-        default: break
-        }
-        /*
-        let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(""))! as UIViewController
-        if #available(iOS 8.0, *) {
-            //self.splitViewController?.showDetailViewController(date!, sender: self)
-            
-        } else {
-            // Fallback on earlier versions
-        }*/
-    }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell!.textLabel?.highlightedTextColor = StrawBerryColor
-        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
-        return indexPath
-    }
-
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -192,20 +42,20 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
-extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -399,7 +249,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension NotesViewController: CVCalendarViewAppearanceDelegate {
+extension TextNoteViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -411,7 +261,7 @@ extension NotesViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension NotesViewController {
+extension TextNoteViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -448,7 +298,7 @@ extension NotesViewController {
 
 // MARK: - Convenience API Demo
 
-extension NotesViewController {
+extension TextNoteViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
