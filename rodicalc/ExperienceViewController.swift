@@ -88,6 +88,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func WorkWithJSON(){
+        if not.count == 0{
         if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
@@ -104,6 +105,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 } catch {}
             } catch {}
+        }
         }
     }
     
@@ -293,6 +295,12 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
         return newDate!
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        mas.removeAll()
+        tbl.reloadData()
+        print(mas)
     }
 }
 
@@ -539,7 +547,7 @@ extension ExperienceViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension CalcViewController {
+extension ExperienceViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -576,7 +584,7 @@ extension CalcViewController {
 
 // MARK: - Convenience API Demo
 
-extension CalcViewController {
+extension ExperienceViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager

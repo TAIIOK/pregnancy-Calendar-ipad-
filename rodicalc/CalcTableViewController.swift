@@ -33,6 +33,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         if Back {
             let a = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CalcViewController.Cancel))
             a.tintColor = UIColor.whiteColor()
+            
             self.navigationItem.setLeftBarButtonItems([a], animated: true)
         }
         loadDate()
@@ -426,7 +427,7 @@ extension CalcViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension ExperienceViewController {
+extension CalcViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -463,7 +464,7 @@ extension ExperienceViewController {
 
 // MARK: - Convenience API Demo
 
-extension ExperienceViewController {
+extension CalcViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
