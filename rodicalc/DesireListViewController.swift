@@ -1,64 +1,79 @@
 //
-//  NotesTableViewController.swift
+//  DesireListViewController.swift
 //  rodicalc
 //
-//  Created by deck on 25.02.16.
+//  Created by deck on 27.04.16.
 //  Copyright © 2016 deck. All rights reserved.
 //
 
 import UIKit
 
-class TextNoteViewController: UIViewController {
+class DesireListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var NoteTitle: UILabel!
-    @IBOutlet weak var NoteText: UITextView!
-    
+    @IBOutlet weak var tbl: UITableView!
     var shouldShowDaysOut = true
     var animationFinished = true
-    //var db = try! Connection()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationBar.backItem?.title = ""
+        tbl.delegate = self
+        tbl.dataSource = self
         self.title = CVDate(date: NSDate()).globalDescription
+        NoteTitle.text = notes[NoteType]
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         }else{
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-        NoteTitle.text = notes[NoteType]
-        print(NoteType)
-        if NoteType == 3{
-            NoteText.text = TextForWeight()
-        }else{
-            NoteText.text = TextForTextNote()
-        }
-        //WorkWithDB()
+        // Do any additional setup after loading the view.
     }
 
-    func TextForTextNote() -> String{
-        let table = Table("TextNote")
-        let Date = Expression<String>("Date")
-        let text = Expression<String>("NoteText")
-        let Type = Expression<Int64>("Type")
-        var str = ""
-        for tmp in try! db.prepare(table.select(text).filter(Date == "\(selectedNoteDay.date.convertedDate()!)" && Type == 0)){
-            str = tmp[text]}
-        return str
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
     
-    func TextForWeight() -> String{
-        let table = Table("WeightNote")
-        let Date = Expression<String>("Date")
-        let Weight = Expression<Double>("Weight")
-        var str = "0 кг 0 г"
-        for tmp in try! db.prepare(table.select(Weight).filter(Date == "\(selectedNoteDay.date.convertedDate()!)")){
-            str = String(tmp[Weight])}
-        return str
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return notes.count
+    }
+    
+    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("DesireCell", forIndexPath: indexPath)
+        cell.textLabel?.text = notes[indexPath.row]
+        return cell
+    }
+    
+    private func getCustomBackgroundView() -> UIView{
+        let BackgroundView = UIView()
+        BackgroundView.backgroundColor = UIColor.whiteColor()
+        return BackgroundView
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        let rowcount = self.tbl.numberOfRowsInSection(0)
+        print(rowcount)
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.selectedBackgroundView=getCustomBackgroundView()
+        cell!.textLabel?.highlightedTextColor = StrawBerryColor
+        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        return indexPath
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,51 +85,9 @@ class TextNoteViewController: UIViewController {
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        if NoteText.text.characters.count > 0 && NoteType != 3{
-            let table = Table("TextNote")
-            let date = Expression<String>("Date")
-            let text = Expression<String>("NoteText")
-            let type = Expression<Int64>("Type")
-            let count = try! db.scalar(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").count)
-        
-            if count == 0 {
-                try! db.run(table.insert(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
-            }else{
-                try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").update(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
-            }
-        }else if NoteText.text.characters.count > 0{
-            let table = Table("WeightNote")
-            let Date = Expression<String>("Date")
-            let Weight = Expression<Double>("Weight")
-            let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
-            if count == 0 {
-                try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
-            }else{
-                try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
-            }
-
-        }
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
-extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension DesireListViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -308,7 +281,7 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension TextNoteViewController: CVCalendarViewAppearanceDelegate {
+extension DesireListViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -320,7 +293,7 @@ extension TextNoteViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension TextNoteViewController {
+extension DesireListViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -357,7 +330,7 @@ extension TextNoteViewController {
 
 // MARK: - Convenience API Demo
 
-extension TextNoteViewController {
+extension DesireListViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager

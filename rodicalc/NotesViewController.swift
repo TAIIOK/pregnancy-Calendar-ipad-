@@ -11,6 +11,7 @@ import UIKit
 
 var selectedNoteDay:DayView!
 var NoteType = Int()
+var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
 class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -20,7 +21,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var animationFinished = true
     //var db = try! Connection()
     
-    var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -252,7 +253,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             break
         case 8:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("desireNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
 
         default: break

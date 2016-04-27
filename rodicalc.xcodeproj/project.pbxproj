@@ -138,6 +138,7 @@
 		8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3321CCE542F007B4643 /* Setter.swift */; };
 		8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2FB1CCE508E007B4643 /* db.sqlite */; };
 		8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */; };
+		8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */; };
 		A01D66F51CD0F826004960CD /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D66F21CD0F826004960CD /* export.swift */; };
 		A01D66F61CD0F826004960CD /* photo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F31CD0F826004960CD /* photo.xib */; };
 		A01D66F71CD0F826004960CD /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F41CD0F826004960CD /* temp.png */; };
@@ -370,6 +371,7 @@
 		8EEAC3321CCE542F007B4643 /* Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setter.swift; sourceTree = "<group>"; };
 		8EEAC3461CCE5462007B4643 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteViewController.swift; sourceTree = "<group>"; };
+		8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesireListViewController.swift; sourceTree = "<group>"; };
 		A01D66F21CD0F826004960CD /* export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
 		A01D66F31CD0F826004960CD /* photo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = photo.xib; sourceTree = "<group>"; };
 		A01D66F41CD0F826004960CD /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				8E6D50381C7F056200878957 /* VideosViewController.swift */,
 				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
 				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
+				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
 				8E6D503C1C7F05D700878957 /* ForumViewController.swift */,
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
@@ -1034,6 +1037,7 @@
 				8EEAC2D91CC4E48E007B4643 /* CVCalendarViewDelegate.swift in Sources */,
 				8EEAC2DD1CC4E48E007B4643 /* CVCalendarWeekView.swift in Sources */,
 				8E1DD6021CAE78D300D55893 /* PhotoCollectionViewCell.swift in Sources */,
+				8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */,
 				8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */,
 				8EEAC2CF1CC4E48E007B4643 /* CVCalendarMenuView.swift in Sources */,
 				8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */,
