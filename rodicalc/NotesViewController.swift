@@ -391,7 +391,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         let day = dayView.date.day
         let randomDay = Int(arc4random_uniform(31))
         if day == randomDay {
-            return false
+            return true
         }
         
         return false
@@ -405,7 +405,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         
-        let numberOfDots = 0
+        let numberOfDots = 3
         switch(numberOfDots) {
         case 2:
             return [color, color]
