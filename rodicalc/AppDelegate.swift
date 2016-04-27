@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import YouTubePlayer
+import Fabric
+import Crashlytics
 
 let StrawBerryColor = UIColor(red: 255/255.0, green: 34/255.0, blue: 89/255.0, alpha: 1.0)
 let userGrowth = "userGrowth"
@@ -27,6 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
         //UIBarButtonItem.appearance().title = ""
         createEditableCopyOfDatabaseIfNeeded()
+        Fabric.with([Crashlytics.self])
+        
+        if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
+            if #available(iOS 8.0, *) {
+                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil))
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        
         return true
     }
     
@@ -132,6 +144,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    
+    func loadNotifi() {
+        
+        let localNotification = UILocalNotification()
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 20) // время получения уведомления
+        localNotification.alertBody = "текст сообщения"
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1 // счетчик на  иконке приложения
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
     }
     
    /* func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {

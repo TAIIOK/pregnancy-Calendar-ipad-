@@ -141,6 +141,8 @@
 		A01D66F51CD0F826004960CD /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D66F21CD0F826004960CD /* export.swift */; };
 		A01D66F61CD0F826004960CD /* photo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F31CD0F826004960CD /* photo.xib */; };
 		A01D66F71CD0F826004960CD /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F41CD0F826004960CD /* temp.png */; };
+		A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01D66FC1CD0F960004960CD /* Crashlytics.framework */; };
+		A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01D66FD1CD0F960004960CD /* Fabric.framework */; };
 		A02058B01CC8C50A00C70691 /* 0z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A41CC8C50A00C70691 /* 0z.jpg */; };
 		A02058B11CC8C50A00C70691 /* 1z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A51CC8C50A00C70691 /* 1z.jpg */; };
 		A02058B21CC8C50A00C70691 /* 2z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A61CC8C50A00C70691 /* 2z.jpg */; };
@@ -361,6 +363,8 @@
 		A01D66F21CD0F826004960CD /* export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
 		A01D66F31CD0F826004960CD /* photo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = photo.xib; sourceTree = "<group>"; };
 		A01D66F41CD0F826004960CD /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
+		A01D66FC1CD0F960004960CD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A01D66FD1CD0F960004960CD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A02058A41CC8C50A00C70691 /* 0z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0z.jpg; sourceTree = "<group>"; };
 		A02058A51CC8C50A00C70691 /* 1z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1z.jpg; sourceTree = "<group>"; };
 		A02058A61CC8C50A00C70691 /* 2z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2z.jpg; sourceTree = "<group>"; };
@@ -382,7 +386,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */,
+				A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
+				A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */,
 				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +489,8 @@
 			isa = PBXGroup;
 			children = (
 				8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */,
+				A01D66FC1CD0F960004960CD /* Crashlytics.framework */,
+				A01D66FD1CD0F960004960CD /* Fabric.framework */,
 				8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */,
 				8E5618981CAA89AA00C9B7D1 /* YouTubePlayer.framework */,
 				8E4FACBF1C89CADF003405D0 /* MapKit.framework */,
@@ -718,6 +726,7 @@
 				8E90A40C1C7DF093001F3A07 /* Frameworks */,
 				8E90A40D1C7DF093001F3A07 /* Resources */,
 				8E56189C1CAA8B2A00C9B7D1 /* Embed Frameworks */,
+				A01D67011CD0FB7B004960CD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -776,7 +785,7 @@
 				TargetAttributes = {
 					8E90A40E1C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = Y6XF9JEXKG;
+						DevelopmentTeam = FBJJC74S38;
 					};
 					8E90A4251C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -927,6 +936,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A01D67011CD0FB7B004960CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 7f0d441a445b99ad9be96af08be5f9e0255de5f5 6f1c6d273d9d2d4f5e74dd780c4b86e441f769af139465503ee9d4a245096798";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E90A40B1C7DF093001F3A07 /* Sources */ = {
@@ -1168,7 +1193,7 @@
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = newapp.calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
@@ -1192,7 +1217,7 @@
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = newapp.calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
