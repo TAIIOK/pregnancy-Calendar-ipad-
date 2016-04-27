@@ -143,6 +143,8 @@
 		A01D66F71CD0F826004960CD /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F41CD0F826004960CD /* temp.png */; };
 		A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01D66FC1CD0F960004960CD /* Crashlytics.framework */; };
 		A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01D66FD1CD0F960004960CD /* Fabric.framework */; };
+		A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC2A11CBBB8FC007B4643 /* Charts.framework */; };
+		A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC2A11CBBB8FC007B4643 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A02058B01CC8C50A00C70691 /* 0z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A41CC8C50A00C70691 /* 0z.jpg */; };
 		A02058B11CC8C50A00C70691 /* 1z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A51CC8C50A00C70691 /* 1z.jpg */; };
 		A02058B21CC8C50A00C70691 /* 2z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A61CC8C50A00C70691 /* 2z.jpg */; };
@@ -201,6 +203,13 @@
 			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
 			remoteInfo = ChartsTests;
 		};
+		A01D67051CD0FF97004960CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -211,6 +220,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */,
+				A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +398,7 @@
 				8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */,
 				A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
+				A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */,
 				A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */,
 				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
@@ -731,6 +742,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A01D67061CD0FF97004960CD /* PBXTargetDependency */,
 			);
 			name = rodicalc;
 			productName = rodicalc;
@@ -1072,6 +1084,11 @@
 			target = 8E90A40E1C7DF093001F3A07 /* rodicalc */;
 			targetProxy = 8E90A4321C7DF093001F3A07 /* PBXContainerItemProxy */;
 		};
+		A01D67061CD0FF97004960CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = A01D67051CD0FF97004960CD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1185,13 +1202,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1209,13 +1227,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
