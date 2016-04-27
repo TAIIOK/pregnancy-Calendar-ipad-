@@ -9,23 +9,39 @@
 import UIKit
 
 class TextNoteViewController: UIViewController {
-    
-    @IBOutlet weak var calendarView: CVCalendarView!
+
     @IBOutlet weak var menuView: CVCalendarMenuView!
-    @IBOutlet weak var tbl: UITableView!
+    @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var NoteTitle: UILabel!
+    @IBOutlet weak var NoteText: UITextView!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
-    var db = try! Connection()
+    //var db = try! Connection()
     
     var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.backItem?.title = ""
         self.title = CVDate(date: NSDate()).globalDescription
-        calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
+        if selectedNoteDay != nil {
+            calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
+        }
+        NoteTitle.text = notes[NoteType]
+        NoteText.text = TextForTextNote()
         //WorkWithDB()
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    func TextForTextNote() -> String{
+        let table = Table("TextNote")
+        let Date = Expression<String>("Date")
+        let text = Expression<String>("NoteText")
+        let Type = Expression<Int64>("Type")
+        var str = ""
+        for tmp in try! db.prepare(table.select(text).filter(Date == "\(selectedNoteDay.date.convertedDate()!)" && Type == 0)){
+            str = tmp[text]}
+        return str
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,11 +52,28 @@ class TextNoteViewController: UIViewController {
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if NoteText.text.characters.count > 0 {
+            let table = Table("TextNote")
+            let date = Expression<String>("Date")
+            let text = Expression<String>("NoteText")
+            let type = Expression<Int64>("Type")
+            let count = try! db.scalar(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").count)
+        
+            if count == 0 {
+                try! db.run(table.insert(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
+                print("Date: \(selectedNoteDay.date.convertedDate()!), text: \(NoteText.text), type: \(NoteType)")
+            }else{
+                try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").update(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
+                print("Date: \(selectedNoteDay.date.convertedDate()!), text: \(NoteText.text), type: \(NoteType)")
+            }
+        }
     }
     
     /*

@@ -10,6 +10,7 @@ import UIKit
 
 
 var selectedNoteDay:DayView!
+var NoteType = Int()
 class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -17,7 +18,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tbl: UITableView!
     var shouldShowDaysOut = true
     var animationFinished = true
-    var db = try! Connection()
+    //var db = try! Connection()
     
     var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
     
@@ -26,9 +27,9 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.delegate = self
         tbl.dataSource = self
         self.title = CVDate(date: NSDate()).globalDescription
+        let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = btnBack
         //WorkWithDB()
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func WorkWithDB(){
@@ -48,7 +49,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(count)
     }
     
-    func returnTableCount(tableName: String) -> Int{
+    func returnTableCount(tableName: String, type: Int, date: NSDate) -> Int{
         let path = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, false
             ).first!
@@ -56,10 +57,74 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
         let db = try! Connection(destinationPath)
         let table = Table(tableName)
-        let count = try db.scalar(table.count)
+        var count = 0
+        
+        if tableName == "TextNote"{
+            let Type = Expression<Int64>("Type")
+            let Date = Expression<String>("Date")
+            switch type {
+            case 0:
+                count = try db.scalar(table.filter(Date == "\(date)" && Type == 0).count)
+                break
+            case 1:
+                count = try db.scalar(table.filter(Date == "\(date)" && Type == 1).count)
+                break
+            case 3:
+                count = try db.scalar(table.filter(Date == "\(date)" && Type == 3).count)
+                break
+            case 5:
+                count = try db.scalar(table.filter(Date == "\(date)" && Type == 5).count)
+                break
+            case 6:
+                count = try db.scalar(table.filter(Date == "\(date)" && Type == 6).count)
+                break
+            default: break
+            }
+        }
         return count
     }
-    // Creates a writable copy of the bundled default database in the application Documents directory.
+    
+    func returnTableText(tableName: String, type: Int, date: NSDate) -> String{
+        let path = NSSearchPathForDirectoriesInDomains(
+            .DocumentDirectory, .UserDomainMask, false
+            ).first!
+        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let db = try! Connection(destinationPath)
+        let table = Table(tableName)
+        var str = ""
+        
+        if tableName == "TextNote"{
+            let Type = Expression<Int64>("Type")
+            let Date = Expression<String>("Date")
+            let text = Expression<String>("NoteText")
+            switch type {
+            case 0:
+                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 0)){
+                    str = tmp[text]}
+                break
+            case 1:
+                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 1)){
+                    str = tmp[text]}
+                break
+            case 3:
+                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 3)){
+                    str = tmp[text]}
+                break
+            case 5:
+                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 5)){
+                    str = tmp[text]}
+                break
+            case 6:
+                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 6)){
+                    str = tmp[text]}
+                break
+            default: break
+            }
+        }
+        return str
+    }
+
     
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -76,36 +141,64 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath)
         cell.textLabel?.text = notes[indexPath.row]
         //cell.detailTextLabel?.text = "нет заметок"
+        var text = String()
+        var date = NSDate()
+        if selectedNoteDay != nil{
+            date = selectedNoteDay.date.convertedDate()!
+        }
         switch indexPath.row {
-        case 0:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 0: //мое самочувствие - тестовая
+            text = returnTableText("TextNote", type: 0, date: date)
+            
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
-        case 1:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 1: //как ведет сеья малыш - текстовая
+            text = returnTableText("TextNote", type: 1, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
-        case 2:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 2: //посещение врачей - список с напоминаниеями
+            cell.detailTextLabel?.text = "Нет заметок"
             break
-        case 3:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 3: //мой вес - текстовая
+            text = returnTableText("TextNote", type: 3, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
-        case 4:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 4: //принимаемые лекарства - список с напоминаниями
+            cell.detailTextLabel?.text = "Нет заметок"
             break
-        case 5:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 5: //приятное воспоминание дня - тестовая
+            text = returnTableText("TextNote", type: 5, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
-        case 6:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 6: //важные события - текстовая
+            text = returnTableText("TextNote", type: 6, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
-        case 7:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 7: //мое меню на сегодня - несколько списков
+            cell.detailTextLabel?.text = "Нет заметок"
             break
-        case 8:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
-            break
-        case 9:
-            cell.detailTextLabel?.text = String(returnTableCount("article"))
+        case 8: //мой "лист желаний" - список - не превязаны ко дню
+            cell.detailTextLabel?.text = "Нет заметок"
             break
             default: break
         }
@@ -119,34 +212,33 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NoteType = indexPath.row
         switch indexPath.row {
         case 0:
-            let source = (self.storyboard?.instantiateViewControllerWithIdentifier("NotesTable"))! as! NotesViewController
-            let dest = (self.storyboard?.instantiateViewControllerWithIdentifier("textNote"))! as! TextNoteViewController
-            /*UINavigationController *navigationController = sourceViewController.navigationController;
-            // Pop to root view controller (not animated) before pushing
-            [navigationController popToRootViewControllerAnimated:NO];
-            [navigationController pushViewController:destinationController animated:YES];*/
-            let nav = source.navigationController! as UINavigationController
-            nav.pushViewController(dest, animated: true)
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 1:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 2:
             
             break
         case 3:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 4:
             
             break
         case 5:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 6:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 7:
             
@@ -154,9 +246,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 8:
             
             break
-        case 9:
-           
-            break
+
         default: break
         }
         /*
@@ -185,9 +275,11 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
+
         // calendarView.changeMode(.WeekView)
         
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -230,7 +322,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView
-        
+        tbl.reloadData()
     }
     
     func swipedetected(){
@@ -457,7 +549,6 @@ extension NotesViewController {
         components.month += offset
         
         let resultDate = calendar.dateFromComponents(components)!
-        
         self.calendarView.toggleViewWithDate(resultDate)
     }
     

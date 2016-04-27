@@ -30,12 +30,12 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.delegate = self
         tbl.dataSource = self
         self.title = CVDate(date: NSDate()).globalDescription
-        if Back {
+        /*if Back {
             let a = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CalcViewController.Cancel))
             a.tintColor = UIColor.whiteColor()
             
             self.navigationItem.setLeftBarButtonItems([a], animated: true)
-        }
+        }*/
         loadDate()
         if selectedDay != nil && !Back{
             Cancel()
@@ -75,6 +75,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func Cancel(){
         let zodiac = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
+        //self.navigationController?.pushViewController(zodiac!, animated: false)
+        
         if #available(iOS 8.0, *) {
             self.splitViewController?.showDetailViewController(zodiac!, sender: self)
         } else {

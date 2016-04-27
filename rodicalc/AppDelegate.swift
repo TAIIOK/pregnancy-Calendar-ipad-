@@ -15,7 +15,6 @@ let userGrowth = "userGrowth"
 var db = try! Connection()
 @UIApplicationMain
 
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -26,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
+        //UIBarButtonItem.appearance().title = ""
         createEditableCopyOfDatabaseIfNeeded()
         return true
     }

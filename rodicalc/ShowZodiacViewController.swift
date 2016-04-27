@@ -49,6 +49,9 @@ class ShowZodiacViewController: UIViewController {
         zodiacElement.text = zodiacs[zodiac].element
         zodiacAbout.text = zodiacs[zodiac].about
         zodiacIcon.image = UIImage(named: "\(zodiac)z.jpg")
+        let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = btnBack
+
     }
 
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
@@ -122,12 +125,14 @@ class ShowZodiacViewController: UIViewController {
     
     @IBAction func btnEditDate(sender: AnyObject) {
         Back = true
-        let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDateChanger")
-        if #available(iOS 8.0, *) {
+        //self.navigationController?.navigationBar.backItem?.backBarButtonItem?.enabled = true
+        let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDate")
+        self.navigationController?.pushViewController(date!, animated: true)
+        /*(if #available(iOS 8.0, *) {
             self.splitViewController?.showDetailViewController(date!, sender: self)
         } else {
             // Fallback on earlier versions
-        }
+        }*/
     }
 
     func WorkWithJSON(){
