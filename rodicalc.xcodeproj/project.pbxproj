@@ -138,6 +138,9 @@
 		8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3321CCE542F007B4643 /* Setter.swift */; };
 		8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2FB1CCE508E007B4643 /* db.sqlite */; };
 		8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */; };
+		A01D66F51CD0F826004960CD /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D66F21CD0F826004960CD /* export.swift */; };
+		A01D66F61CD0F826004960CD /* photo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F31CD0F826004960CD /* photo.xib */; };
+		A01D66F71CD0F826004960CD /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F41CD0F826004960CD /* temp.png */; };
 		A02058B01CC8C50A00C70691 /* 0z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A41CC8C50A00C70691 /* 0z.jpg */; };
 		A02058B11CC8C50A00C70691 /* 1z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A51CC8C50A00C70691 /* 1z.jpg */; };
 		A02058B21CC8C50A00C70691 /* 2z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A02058A61CC8C50A00C70691 /* 2z.jpg */; };
@@ -355,6 +358,9 @@
 		8EEAC3321CCE542F007B4643 /* Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setter.swift; sourceTree = "<group>"; };
 		8EEAC3461CCE5462007B4643 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteViewController.swift; sourceTree = "<group>"; };
+		A01D66F21CD0F826004960CD /* export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
+		A01D66F31CD0F826004960CD /* photo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = photo.xib; sourceTree = "<group>"; };
+		A01D66F41CD0F826004960CD /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
 		A02058A41CC8C50A00C70691 /* 0z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0z.jpg; sourceTree = "<group>"; };
 		A02058A51CC8C50A00C70691 /* 1z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1z.jpg; sourceTree = "<group>"; };
 		A02058A61CC8C50A00C70691 /* 2z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2z.jpg; sourceTree = "<group>"; };
@@ -510,6 +516,9 @@
 				8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */,
 				8E51BF2C1CA3E8E900D8D739 /* points.json */,
 				8E1DD60E1CB6894700D55893 /* names.json */,
+				A01D66F21CD0F826004960CD /* export.swift */,
+				A01D66F31CD0F826004960CD /* photo.xib */,
+				A01D66F41CD0F826004960CD /* temp.png */,
 				8E1DD6071CB2896500D55893 /* zodiacs.json */,
 				A02058BD1CC9091400C70691 /* notifi.json */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
@@ -851,6 +860,7 @@
 				8E1AC9A51CA960820091D8BB /* 3.png in Resources */,
 				A02058B41CC8C50A00C70691 /* 4z.jpg in Resources */,
 				8EEAC2F01CCE0E21007B4643 /* watchG.jpg in Resources */,
+				A01D66F61CD0F826004960CD /* photo.xib in Resources */,
 				8E1AC9921CA960820091D8BB /* 17.jpg in Resources */,
 				8E1DD60F1CB6894700D55893 /* names.json in Resources */,
 				8E1AC9981CA960820091D8BB /* 22.jpg in Resources */,
@@ -878,6 +888,7 @@
 				8E1AC98D1CA960820091D8BB /* 12.jpg in Resources */,
 				A02058B81CC8C50A00C70691 /* 8z.jpg in Resources */,
 				8E1AC9961CA960820091D8BB /* 20.jpg in Resources */,
+				A01D66F71CD0F826004960CD /* temp.png in Resources */,
 				8E1AC98F1CA960820091D8BB /* 14.jpg in Resources */,
 				8EEAC2EF1CCE0E21007B4643 /* watchP.jpg in Resources */,
 				8E1AC9911CA960820091D8BB /* 16.jpg in Resources */,
@@ -947,6 +958,7 @@
 				8EEAC33D1CCE542F007B4643 /* AggregateFunctions.swift in Sources */,
 				8E1AC9191CA937B30091D8BB /* VideoCollectionViewCell.swift in Sources */,
 				8EEAC3411CCE542F007B4643 /* Expression.swift in Sources */,
+				A01D66F51CD0F826004960CD /* export.swift in Sources */,
 				8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */,
 				8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */,
 				8EEAC3361CCE542F007B4643 /* Statement.swift in Sources */,
