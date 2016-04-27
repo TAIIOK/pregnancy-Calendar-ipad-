@@ -284,6 +284,15 @@ extension CVCalendarDayView {
                     let dotMarker = CVAuxiliaryView(dayView: self, rect: markerFrame, shape: .Circle)
                     dotMarker.fillColor = color
                     dotMarker.center = CGPointMake(x, y)
+                    
+                    var imageView = UIImageView(frame: frame)
+                
+                    var image = UIImage(named: "Black_dot.png")
+                
+                    imageView.image = image
+                    
+                    dotMarker.addSubview(imageView)
+                    
                     insertSubview(dotMarker, atIndex: 0)
                     
                     dotMarker.setNeedsDisplay()
