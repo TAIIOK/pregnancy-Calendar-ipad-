@@ -29,10 +29,25 @@ class TextNoteViewController: UIViewController {
             calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         }
         NoteTitle.text = notes[NoteType]
-        NoteText.text = TextForTextNote()
+        if NoteType != 3{
+            NoteText.text = TextForTextNote()
+        }else{
+            NoteText.text = TextForWeight()
+        }
         //WorkWithDB()
     }
 
+    func TextForWeight() -> String{
+        let table = Table("TextNote")
+        let Date = Expression<String>("Date")
+        let text = Expression<String>("NoteText")
+        let Type = Expression<Int64>("Type")
+        var str = ""
+        for tmp in try! db.prepare(table.select(text).filter(Date == "\(selectedNoteDay.date.convertedDate()!)" && Type == 0)){
+            str = tmp[text]}
+        return str
+    }
+    
     func TextForTextNote() -> String{
         let table = Table("TextNote")
         let Date = Expression<String>("Date")
