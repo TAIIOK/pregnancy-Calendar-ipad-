@@ -26,18 +26,22 @@ class TextNoteViewController: UIViewController {
         self.navigationController?.navigationBar.backItem?.title = ""
         self.title = CVDate(date: NSDate()).globalDescription
         if selectedNoteDay != nil {
-            calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
+            self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
+        }else{
+            let date = NSDate()
+            self.calendarView.toggleViewWithDate(date)
         }
         NoteTitle.text = notes[NoteType]
-        if NoteType != 3{
-            NoteText.text = TextForTextNote()
-        }else{
+        print(NoteType)
+        if NoteType == 3{
             NoteText.text = TextForWeight()
+        }else{
+            NoteText.text = TextForTextNote()
         }
         //WorkWithDB()
     }
 
-    func TextForWeight() -> String{
+    func TextForTextNote() -> String{
         let table = Table("TextNote")
         let Date = Expression<String>("Date")
         let text = Expression<String>("NoteText")
@@ -48,14 +52,13 @@ class TextNoteViewController: UIViewController {
         return str
     }
     
-    func TextForTextNote() -> String{
-        let table = Table("TextNote")
+    func TextForWeight() -> String{
+        let table = Table("WeightNote")
         let Date = Expression<String>("Date")
-        let text = Expression<String>("NoteText")
-        let Type = Expression<Int64>("Type")
-        var str = ""
-        for tmp in try! db.prepare(table.select(text).filter(Date == "\(selectedNoteDay.date.convertedDate()!)" && Type == 0)){
-            str = tmp[text]}
+        let Weight = Expression<Double>("Weight")
+        var str = "0 кг 0 г"
+        for tmp in try! db.prepare(table.select(Weight).filter(Date == "\(selectedNoteDay.date.convertedDate()!)")){
+            str = String(tmp[Weight])}
         return str
     }
     
@@ -74,7 +77,7 @@ class TextNoteViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        if NoteText.text.characters.count > 0 {
+        if NoteText.text.characters.count > 0 && NoteType != 3{
             let table = Table("TextNote")
             let date = Expression<String>("Date")
             let text = Expression<String>("NoteText")
@@ -83,11 +86,20 @@ class TextNoteViewController: UIViewController {
         
             if count == 0 {
                 try! db.run(table.insert(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
-                print("Date: \(selectedNoteDay.date.convertedDate()!), text: \(NoteText.text), type: \(NoteType)")
             }else{
                 try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").update(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
-                print("Date: \(selectedNoteDay.date.convertedDate()!), text: \(NoteText.text), type: \(NoteType)")
             }
+        }else if NoteText.text.characters.count > 0{
+            let table = Table("WeightNote")
+            let Date = Expression<String>("Date")
+            let Weight = Expression<Double>("Weight")
+            let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
+            if count == 0 {
+                try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+            }else{
+                try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+            }
+
         }
     }
     

@@ -29,6 +29,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = CVDate(date: NSDate()).globalDescription
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
+        let date = NSDate()
+        self.calendarView.toggleViewWithDate(date)
         //WorkWithDB()
     }
     
@@ -121,6 +123,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 break
             default: break
             }
+        }else if tableName == "WeightNote"{
+            let table = Table("WeightNote")
+            let Date = Expression<String>("Date")
+            let Weight = Expression<Double>("Weight")
+            for tmp in try! db.prepare(table.select(Weight).filter(Date == "\(date)")){
+                str = String(tmp[Weight])}
         }
         return str
     }
@@ -168,7 +176,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.detailTextLabel?.text = "Нет заметок"
             break
         case 3: //мой вес - текстовая
-            text = returnTableText("TextNote", type: 3, date: date)
+            text = returnTableText("WeightNote", type: 3, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{

@@ -66,12 +66,12 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     }*/
     private func setupGraphSettings() {
         // общие настройки
-        self.lineChartView.descriptionText = ""
+        self.lineChartView.descriptionText = "КГ"
+        self.lineChartView.descriptionTextPosition = CGPoint(x: 20, y: 60)
         self.lineChartView.noDataText = "Для отображения графика"
         self.lineChartView.noDataTextDescription = "необходимо указать рост"
         self.lineChartView.infoFont = .systemFontOfSize(18)
         self.lineChartView.infoTextColor = UIColor.cyanColor()
-        
         self.lineChartView.scaleXEnabled = true
         self.lineChartView.scaleYEnabled = false
         self.lineChartView.pinchZoomEnabled = true
@@ -98,7 +98,6 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         let dataEntries = self.getChartDataEntriesForRecommend(Double(50))
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Условно-рекомендуемая норма")
         self.setRecommendSetStyle(lineChartDataSet)
-        
         // нарисовать график фактического веса
         let weight = Double(mass)
         let growth_ = Double(growth)
@@ -115,95 +114,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         // готово
         let dataSets = [lineChartDataSetSecond, lineChartDataSet]
         self.lineChartView.data = LineChartData(xVals: dataPoints, dataSets: dataSets)
-       /* label.text = "                  Фактический вес"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.Left
-        label.textColor=StrawBerryColor
-        self.view.addSubview(label)
-        views["label"] = label
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[label]", options: [], metrics: nil, views: views))
-        
-        label1.text = "                 Условно-рекомендуемая норма"
-        label1.translatesAutoresizingMaskIntoConstraints = false
-        label1.textAlignment = NSTextAlignment.Center
-        label1.textColor=UIColor.blueColor()
-        self.view.addSubview(label1)
-        views["label1"] = label1
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-100-[label1]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[label1]", options: [], metrics: nil, views: views))
-        
-        // simple arrays
-        let ves = Double(mass)
-        let rost = Double(growth)
-        let a = CGFloat(51)
-        
-        var data: [CGFloat] = [51]
-        
-        let b = CGFloat(ves)
-        var data1 : [CGFloat] = [b]
-        
-        var imt=ves*10000.0
-        let x: Double = rost*rost
-        
-        if(x>0){
-            imt = imt/x}
-        else{
-            imt = 0
-        }
-
-        for var i=0; i<20;i += 1 {
-            if(mass==0){
-                data1.append(0)
-            }
-            else{
-                if(imt < 18.5){
-                    data1.append(b+IMT0[i])
-                }
-                else if (imt >= 25){
-                    data1.append(b+IMT2[i])
-                }
-                else{
-                    data1.append(b+IMT1[i])
-                }
-            }
-            data.append(a+IMT2[i])
-        }
-        
-        // simple line with custom x axis labels
-        let xLabels: [String] = ["0","2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36", "38", "40"]
-        
-        lineChart = LineChart()
-        lineChart.animation.enabled = true
-        lineChart.area = false
-        lineChart.x.labels.visible = true
-        lineChart.y.labels.visible = true
-        lineChart.x.grid.count = 21
-        lineChart.y.grid.count = 21
-        lineChart.x.labels.values = xLabels
-        lineChart.x.axis.visible = true
-        lineChart.x.axis.color = UIColor.blueColor()
-        lineChart.addLine(data)
-        lineChart.addLine(data1)
-        
-        lineChart.translatesAutoresizingMaskIntoConstraints = false
-        lineChart.delegate = self
-    
-        self.view.addSubview(lineChart)
-        views["chart"] = lineChart
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==500)]", options: [], metrics: nil, views: views))*/
-        
-    }
-    
-    /**
-     * Redraw chart on device rotation.
-     */
-    /*override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        if let chart = lineChart {
-            chart.setNeedsDisplay()
-        }
-    }*/
+      }
     
     private func setRecommendSetStyle(lineChartDataSet: LineChartDataSet) {
         lineChartDataSet.setColor(.cyanColor())
