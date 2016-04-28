@@ -32,10 +32,15 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
-        let date = NSDate()
-        self.calendarView.toggleViewWithDate(date)
+        
+
+        
+        
+        
         //WorkWithDB()
     }
+    
+
     
     func WorkWithDB(){
     
@@ -263,14 +268,16 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
-        
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
-
-        // calendarView.changeMode(.WeekView)
         
+        
+        // calendarView.changeMode(.WeekView)
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -456,7 +463,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return false
+        return true
     }
     
     func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {

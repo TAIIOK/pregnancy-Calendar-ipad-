@@ -134,7 +134,7 @@ public final class CVCalendarDayView: UIView {
         var month = dateRange.month
         
         if isOut {
-            day > 20 ? (month -= 1) : (month += 1)
+            day > 20 ? month-- : month++
         }
         
         return CVDate(day: day, month: month, week: week, year: year)
@@ -152,11 +152,9 @@ extension CVCalendarDayView {
         let appearance = calendarView.appearance
         
         dayLabel = UILabel()
-        dayLabel!.textColor = UIColor.lightGrayColor()
         dayLabel!.text = String(date.day)
         dayLabel!.textAlignment = NSTextAlignment.Center
         dayLabel!.frame = bounds
-        
         
         var font = appearance.dayLabelWeekdayFont
         var color: UIColor?
@@ -186,7 +184,6 @@ extension CVCalendarDayView {
             dayLabel!.textColor = color!
             dayLabel!.font = font
         }
-        
         
         addSubview(dayLabel!)
     }
@@ -284,15 +281,6 @@ extension CVCalendarDayView {
                     let dotMarker = CVAuxiliaryView(dayView: self, rect: markerFrame, shape: .Circle)
                     dotMarker.fillColor = color
                     dotMarker.center = CGPointMake(x, y)
-                    
-                    var imageView = UIImageView(frame: frame)
-                
-                    var image = UIImage(named: "Black_dot.png")  // вставка картинки 
-                
-                    imageView.image = image
-                    
-                    dotMarker.addSubview(imageView)
-                    
                     insertSubview(dotMarker, atIndex: 0)
                     
                     dotMarker.setNeedsDisplay()
@@ -311,9 +299,9 @@ extension CVCalendarDayView {
 // MARK: - Dot marker movement
 
 extension CVCalendarDayView {
-    public func moveDotMarkerBack(unwinded: Bool, coloring: Bool) {
-        var coloring = coloring
+    public func moveDotMarkerBack(unwinded: Bool, var coloring: Bool) {
         for dotMarker in dotMarkers {
+
             if let calendarView = calendarView, let dotMarker = dotMarker {
                 var shouldMove = true
                 if let delegate = calendarView.delegate, let move = delegate.dotMarker?(shouldMoveOnHighlightingOnDayView: self) where !move {
