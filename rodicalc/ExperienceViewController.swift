@@ -276,6 +276,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(choosedSegmentNotes != false)
+        {
         articletype = indexPath.row
         switch indexPath.row {
         case 0:
@@ -288,10 +290,10 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             break
             
         default: break
-
+            }
             
         
-    }
+        }
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
