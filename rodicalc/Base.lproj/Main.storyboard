@@ -708,25 +708,6 @@
             </objects>
             <point key="canvasLocation" x="-1031" y="2463"/>
         </scene>
-        <!--Календарь-->
-        <scene sceneID="uIO-v6-GVy">
-            <objects>
-                <viewController id="Z1b-FN-f8c" customClass="CalendarViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ShB-rO-vfQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="XRb-U9-jYt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AhP-Lk-B0L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Календарь" id="gaD-Cq-b0e"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qu-rE-gJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2338" y="1576"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="boC-Rk-Dzf">
             <objects>
@@ -736,7 +717,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Z1b-FN-f8c" kind="relationship" relationship="rootViewController" id="iGW-M0-yks"/>
+                        <segue destination="Xud-Q9-YIg" kind="relationship" relationship="rootViewController" id="iYX-IB-OF9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aev-zd-MgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2088,22 +2069,23 @@
                                 <rect key="frame" x="20" y="298" width="560" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DesireCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DesireCell" textLabel="SHP-kz-HaQ" style="IBUITableViewCellStyleDefault" id="vcS-KX-4rE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DesireCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DesireCell" id="vcS-KX-4rE" customClass="DesireTableViewCell" customModule="rodicalc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vcS-KX-4rE" id="JKg-vQ-bKE">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SHP-kz-HaQ">
-                                                    <rect key="frame" x="15" y="0.0" width="530" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-qD-Gbh">
+                                                    <rect key="frame" x="8" y="5" width="544" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="VgT-qD-Gbh" id="SOt-D1-qRa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -2138,6 +2120,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WE6-uo-8F3" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="228" y="5264"/>
+        </scene>
+        <!--Calendar Appearance Delegate-->
+        <scene sceneID="zLg-ec-4Se">
+            <objects>
+                <viewController id="Xud-Q9-YIg" customClass="CalendarViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f66-eh-f3t"/>
+                        <viewControllerLayoutGuide type="bottom" id="mTU-14-nxz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UNN-W1-LiT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m0-bJ-UF0" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="24"/>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="Xud-Q9-YIg" id="LBZ-nq-VaL"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBR-FT-GHZ" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="600" height="170"/>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="Xud-Q9-YIg" id="G1K-n4-gq0"/>
+                                    <outlet property="calendarDelegate" destination="Xud-Q9-YIg" id="8Ge-Bw-XQy"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NEG-qZ-Zm6">
+                                <rect key="frame" x="20" y="280" width="560" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="calendarCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarCell" textLabel="FEh-kO-3Nk" detailTextLabel="BaP-Pz-C3H" style="IBUITableViewCellStyleSubtitle" id="fQw-pd-8bF">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fQw-pd-8bF" id="5fH-FQ-UUY">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FEh-kO-3Nk">
+                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BaP-Pz-C3H">
+                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NEG-qZ-Zm6" firstAttribute="leading" secondItem="UNN-W1-LiT" secondAttribute="leadingMargin" id="5bh-fu-Jg2"/>
+                            <constraint firstAttribute="bottom" secondItem="wBR-FT-GHZ" secondAttribute="bottom" constant="342" id="85q-PZ-JzW"/>
+                            <constraint firstItem="wBR-FT-GHZ" firstAttribute="top" secondItem="UNN-W1-LiT" secondAttribute="top" constant="88" id="BMk-AZ-61n"/>
+                            <constraint firstItem="2m0-bJ-UF0" firstAttribute="leading" secondItem="UNN-W1-LiT" secondAttribute="leading" id="CdZ-ii-P4f"/>
+                            <constraint firstItem="2m0-bJ-UF0" firstAttribute="trailing" secondItem="wBR-FT-GHZ" secondAttribute="trailing" id="Ez8-Xe-YxR"/>
+                            <constraint firstItem="2m0-bJ-UF0" firstAttribute="leading" secondItem="wBR-FT-GHZ" secondAttribute="leading" id="GxU-cd-6FO"/>
+                            <constraint firstAttribute="bottom" secondItem="NEG-qZ-Zm6" secondAttribute="bottom" constant="20" symbolic="YES" id="KN0-AM-ALJ"/>
+                            <constraint firstItem="NEG-qZ-Zm6" firstAttribute="centerX" secondItem="wBR-FT-GHZ" secondAttribute="centerX" id="M3r-G6-1OB"/>
+                            <constraint firstAttribute="trailing" secondItem="2m0-bJ-UF0" secondAttribute="trailing" id="QEO-bn-afi"/>
+                            <constraint firstItem="wBR-FT-GHZ" firstAttribute="top" secondItem="2m0-bJ-UF0" secondAttribute="bottom" id="UHX-8e-th6"/>
+                            <constraint firstItem="2m0-bJ-UF0" firstAttribute="top" secondItem="f66-eh-f3t" secondAttribute="bottom" id="b6k-TH-bZc"/>
+                            <constraint firstItem="NEG-qZ-Zm6" firstAttribute="top" secondItem="wBR-FT-GHZ" secondAttribute="bottom" constant="22" id="dQ0-rP-DMB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hSV-TO-WcM"/>
+                    <connections>
+                        <outlet property="calendarView" destination="wBR-FT-GHZ" id="6GK-CU-ciZ"/>
+                        <outlet property="menuView" destination="2m0-bJ-UF0" id="Voz-vZ-Scd"/>
+                        <outlet property="tbl" destination="NEG-qZ-Zm6" id="xqC-7X-wuO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RkG-Q7-Asg" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2347" y="1618"/>
         </scene>
     </scenes>
     <resources>

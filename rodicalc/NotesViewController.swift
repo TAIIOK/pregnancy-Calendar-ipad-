@@ -101,29 +101,10 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let Type = Expression<Int64>("Type")
             let Date = Expression<String>("Date")
             let text = Expression<String>("NoteText")
-            switch type {
-            case 0:
-                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 0)){
-                    str = tmp[text]}
-                break
-            case 1:
-                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 1)){
-                    str = tmp[text]}
-                break
-            case 3:
-                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 3)){
-                    str = tmp[text]}
-                break
-            case 5:
-                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 5)){
-                    str = tmp[text]}
-                break
-            case 6:
-                for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == 6)){
-                    str = tmp[text]}
-                break
-            default: break
-            }
+
+            for tmp in try! db.prepare(table.select(text).filter(Date == "\(date)" && Type == Int64(type))){
+                str = tmp[text]}
+                
         }else if tableName == "WeightNote"{
             let table = Table("WeightNote")
             let Date = Expression<String>("Date")

@@ -300,7 +300,6 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillDisappear(animated: Bool) {
         mas.removeAll()
         tbl.reloadData()
-        print(mas)
     }
 }
 

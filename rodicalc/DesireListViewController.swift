@@ -18,6 +18,8 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
     var shouldShowDaysOut = true
     var animationFinished = true
     
+    var Desires = [String()]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.delegate = self
@@ -30,7 +32,15 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
+        
+        if Desires.count == 0 {
+            Desires.append("")
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func loadDesires(){
+        
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -44,8 +54,8 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DesireCell", forIndexPath: indexPath)
-        cell.textLabel?.text = notes[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("DesireCell", forIndexPath: indexPath) as! DesireTableViewCell
+        //cell.textLabel?.text = notes[indexPath.row]
         return cell
     }
     
