@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1252,12 +1252,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqJ-x9-59O">
-                                <rect key="frame" x="180" y="152" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Jpw-pb-ZdN"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак зодиака ребенка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-1h-QuX">
                                 <rect key="frame" x="180" y="123" width="240" height="21"/>
                                 <constraints>
@@ -1300,23 +1294,29 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqJ-x9-59O">
+                                <rect key="frame" x="240" y="152" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Jpw-pb-ZdN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="top" secondItem="jrM-4A-Nby" secondAttribute="bottom" constant="8" symbolic="YES" id="1rZ-M0-x30"/>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="trailing" secondItem="QrC-Rd-H0b" secondAttribute="trailingMargin" id="8eQ-PR-BJN"/>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="Ecu-lf-ydI"/>
-                            <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="17" id="JN2-aB-4By"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="25" id="JN2-aB-4By"/>
                             <constraint firstAttribute="bottom" secondItem="dgO-Yk-wrg" secondAttribute="bottom" constant="20" symbolic="YES" id="KjQ-Qu-Il8"/>
                             <constraint firstItem="EqJ-x9-59O" firstAttribute="top" secondItem="xT6-1h-QuX" secondAttribute="bottom" constant="8" symbolic="YES" id="Lto-i4-S0X"/>
-                            <constraint firstItem="xT6-1h-QuX" firstAttribute="leading" secondItem="EqJ-x9-59O" secondAttribute="leading" id="MN4-jX-ZST"/>
+                            <constraint firstItem="xT6-1h-QuX" firstAttribute="leading" secondItem="EqJ-x9-59O" secondAttribute="leading" constant="-60" id="MN4-jX-ZST"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="top" secondItem="r6x-O1-9N4" secondAttribute="bottom" constant="15" id="NfW-xp-Juu"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="16" id="VfP-qb-ZdH"/>
                             <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="jrM-4A-Nby" secondAttribute="leading" id="Zo2-oQ-MI4"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="leading" secondItem="y5u-wF-BfT" secondAttribute="leading" id="aWn-Aw-NMH"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="23" id="acg-ZZ-z8x"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="hdy-Wc-rYB"/>
-                            <constraint firstItem="xT6-1h-QuX" firstAttribute="trailing" secondItem="EqJ-x9-59O" secondAttribute="trailing" id="o9F-po-s0K"/>
+                            <constraint firstItem="xT6-1h-QuX" firstAttribute="trailing" secondItem="EqJ-x9-59O" secondAttribute="trailing" constant="60" id="o9F-po-s0K"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="centerX" secondItem="dgO-Yk-wrg" secondAttribute="centerX" id="trm-IH-Io5"/>
                         </constraints>
                     </view>
@@ -2030,6 +2030,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk4-uE-u6h" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="922" y="5264"/>
+        </scene>
+        <!--Web Article View Controller-->
+        <scene sceneID="9nW-ck-vvb">
+            <objects>
+                <viewController storyboardIdentifier="webarticle" id="VIH-t8-i6m" customClass="webArticleViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qEl-ed-1yY"/>
+                        <viewControllerLayoutGuide type="bottom" id="jzL-6y-Fg6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="afE-2E-lRi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTE-NR-JoZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="632"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zTE-NR-JoZ" secondAttribute="trailing" id="2jk-rV-CUo"/>
+                            <constraint firstItem="zTE-NR-JoZ" firstAttribute="leading" secondItem="afE-2E-lRi" secondAttribute="leading" id="8Jn-d3-3jC"/>
+                            <constraint firstItem="zTE-NR-JoZ" firstAttribute="top" secondItem="afE-2E-lRi" secondAttribute="top" id="BaW-RY-P3o"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="zTE-NR-JoZ" secondAttribute="bottom" constant="-32" id="VNx-Ql-5IK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myWebView" destination="zTE-NR-JoZ" id="q4r-eq-zAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ie9-sw-v3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265" y="5173"/>
         </scene>
         <!--Calendar Appearance Delegate-->
         <scene sceneID="VZp-8r-VPQ">
