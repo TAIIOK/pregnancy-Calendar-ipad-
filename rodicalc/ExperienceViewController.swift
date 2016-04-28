@@ -11,6 +11,10 @@ import CoreData
 
 var not = [notifi]()
 
+var articles = ["Для чего нужен до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер"]
+var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов"]
+
+var articletype = 0
 
 class notifi: NSObject {
     var day: String
@@ -130,6 +134,9 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = btnBack
+        
         setupNavigation( CVDate(date: NSDate()).globalDescription )
         
         tbl.delegate = self
@@ -172,7 +179,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return choosedSegmentNotes ? 0 : 1
+        return choosedSegmentNotes ? 1 : 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -180,7 +187,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         if choosedSegmentNotes == false{
         notesperday()
         }
-        return choosedSegmentNotes ? 0 : mas.count
+        return choosedSegmentNotes ? articles.count : mas.count
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -189,6 +196,11 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textLabel?.text = mas[indexPath.row].name
             cell.detailTextLabel?.text = mas[indexPath.row].text
         }
+        if choosedSegmentNotes == true && articles.count > 0 {
+            cell.textLabel?.text = articles[indexPath.row]
+            cell.detailTextLabel?.text = artticlessub[indexPath.row]
+        }
+        
         return cell
     }
     
@@ -233,7 +245,22 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NoteType = indexPath.row
+        switch indexPath.row {
+        case 0:
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webarticle")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            break
+        case 1:
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webarticle")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            break
+            
+        default: break
+
+            
         
+    }
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

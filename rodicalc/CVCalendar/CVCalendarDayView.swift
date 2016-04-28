@@ -287,7 +287,7 @@ extension CVCalendarDayView {
                     
                     var imageView = UIImageView(frame: frame)
                 
-                    var image = UIImage(named: "Black_dot.png")
+                    var image = UIImage(named: "Black_dot.png")  // вставка картинки 
                 
                     imageView.image = image
                     

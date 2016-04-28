@@ -89,9 +89,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
       func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         choosedSegmentImages ? photos.append(chosenImage) : uzis.append(chosenImage)

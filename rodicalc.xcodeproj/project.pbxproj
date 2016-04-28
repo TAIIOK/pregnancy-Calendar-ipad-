@@ -153,6 +153,14 @@
 		8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2FB1CCE508E007B4643 /* db.sqlite */; };
 		8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */; };
 		8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */; };
+		A01028D41CD227D8005E339F /* bondage.html in Resources */ = {isa = PBXBuildFile; fileRef = A01028D01CD227D8005E339F /* bondage.html */; };
+		A01028D51CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */; };
+		A01028D61CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */; };
+		A01028D71CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028D31CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg */; };
+		A01028DC1CD22F13005E339F /* bra.html in Resources */ = {isa = PBXBuildFile; fileRef = A01028D91CD22F13005E339F /* bra.html */; };
+		A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028DA1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg */; };
+		A01028DE1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028DB1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg */; };
+		A01028E21CD23225005E339F /* webArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01028E11CD23225005E339F /* webArticleViewController.swift */; };
 		A01D66F51CD0F826004960CD /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D66F21CD0F826004960CD /* export.swift */; };
 		A01D66F61CD0F826004960CD /* photo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F31CD0F826004960CD /* photo.xib */; };
 		A01D66F71CD0F826004960CD /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = A01D66F41CD0F826004960CD /* temp.png */; };
@@ -388,6 +396,14 @@
 		8EEAC3461CCE5462007B4643 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteViewController.swift; sourceTree = "<group>"; };
 		8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesireListViewController.swift; sourceTree = "<group>"; };
+		A01028D01CD227D8005E339F /* bondage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bondage.html; sourceTree = "<group>"; };
+		A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_6eeb0e92aa2e7186_html_77d5e2ab.jpg; sourceTree = "<group>"; };
+		A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_6eeb0e92aa2e7186_html_85ee0ffa.jpg; sourceTree = "<group>"; };
+		A01028D31CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_6eeb0e92aa2e7186_html_7926d373.jpg; sourceTree = "<group>"; };
+		A01028D91CD22F13005E339F /* bra.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bra.html; sourceTree = "<group>"; };
+		A01028DA1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_a6a4e51b6778b3a0_html_9881344f.jpg; sourceTree = "<group>"; };
+		A01028DB1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_a6a4e51b6778b3a0_html_e70a7969.jpg; sourceTree = "<group>"; };
+		A01028E11CD23225005E339F /* webArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webArticleViewController.swift; sourceTree = "<group>"; };
 		A01D66F21CD0F826004960CD /* export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
 		A01D66F31CD0F826004960CD /* photo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = photo.xib; sourceTree = "<group>"; };
 		A01D66F41CD0F826004960CD /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
@@ -531,6 +547,7 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				A01028CB1CD227B0005E339F /* html */,
 				8EEAC2E81CCE0E0D007B4643 /* watch */,
 				A02058871CC8C45F00C70691 /* zodiac */,
 				8EEAC2AE1CC4E48E007B4643 /* CVCalendar */,
@@ -716,6 +733,36 @@
 			path = Typed;
 			sourceTree = "<group>";
 		};
+		A01028CB1CD227B0005E339F /* html */ = {
+			isa = PBXGroup;
+			children = (
+				A01028D81CD22F01005E339F /* bra */,
+				A01028CF1CD227BC005E339F /* bondage */,
+			);
+			name = html;
+			sourceTree = "<group>";
+		};
+		A01028CF1CD227BC005E339F /* bondage */ = {
+			isa = PBXGroup;
+			children = (
+				A01028D01CD227D8005E339F /* bondage.html */,
+				A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */,
+				A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */,
+				A01028D31CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg */,
+			);
+			name = bondage;
+			sourceTree = "<group>";
+		};
+		A01028D81CD22F01005E339F /* bra */ = {
+			isa = PBXGroup;
+			children = (
+				A01028D91CD22F13005E339F /* bra.html */,
+				A01028DA1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg */,
+				A01028DB1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg */,
+			);
+			name = bra;
+			sourceTree = "<group>";
+		};
 		A02058871CC8C45F00C70691 /* zodiac */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,8 +928,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */,
+				A01028D71CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg in Resources */,
 				A02058BE1CC9091400C70691 /* notifi.json in Resources */,
 				8E1AC9A21CA960820091D8BB /* 0.png in Resources */,
+				A01028D41CD227D8005E339F /* bondage.html in Resources */,
 				8E1DD6081CB2896500D55893 /* zodiacs.json in Resources */,
 				8E1AC9A31CA960820091D8BB /* 1.png in Resources */,
 				8E1AC9A41CA960820091D8BB /* 2.png in Resources */,
@@ -910,6 +959,8 @@
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
 				8E5A6BB31CD20C7D0073B693 /* 10z.jpg in Resources */,
 				8E1AC9891CA960820091D8BB /* 0.jpg in Resources */,
+				A01028DC1CD22F13005E339F /* bra.html in Resources */,
+				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
 				8E1AC99A1CA960820091D8BB /* 24.jpg in Resources */,
 				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
 				8E1AC99B1CA960820091D8BB /* 3.jpg in Resources */,
@@ -918,6 +969,7 @@
 				8E1AC98D1CA960820091D8BB /* 12.jpg in Resources */,
 				8E5A6BA91CD20C7D0073B693 /* 0z.jpg in Resources */,
 				8E1AC9961CA960820091D8BB /* 20.jpg in Resources */,
+				A01028D61CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg in Resources */,
 				A01D66F71CD0F826004960CD /* temp.png in Resources */,
 				8E1AC98F1CA960820091D8BB /* 14.jpg in Resources */,
 				8EEAC2EF1CCE0E21007B4643 /* watchP.jpg in Resources */,
@@ -934,7 +986,9 @@
 				8E1AC99D1CA960820091D8BB /* 5.jpg in Resources */,
 				8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */,
 				8E5A6BB01CD20C7D0073B693 /* 7z.jpg in Resources */,
+				A01028DE1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg in Resources */,
 				8E5A6BB21CD20C7D0073B693 /* 9z.jpg in Resources */,
+				A01028D51CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg in Resources */,
 				8EEAC33C1CCE542F007B4643 /* Info.plist in Resources */,
 				8E1AC99F1CA960820091D8BB /* 7.jpg in Resources */,
 				8E20C8BA1C998F520003C1CF /* NumberCollectionViewCell.xib in Resources */,
@@ -1057,6 +1111,7 @@
 				8EEAC2DC1CC4E48E007B4643 /* CVCalendarWeekday.swift in Sources */,
 				8EEAC33F1CCE542F007B4643 /* CoreFunctions.swift in Sources */,
 				8EEAC2E21CC4E48E007B4643 /* CVSet.swift in Sources */,
+				A01028E21CD23225005E339F /* webArticleViewController.swift in Sources */,
 				8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */,
 				8E20C8B61C998F430003C1CF /* CustomCollectionViewLayout.swift in Sources */,
 				8EEAC3421CCE542F007B4643 /* Operators.swift in Sources */,
