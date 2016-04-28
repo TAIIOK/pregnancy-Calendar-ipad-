@@ -9,8 +9,21 @@
 import UIKit
 import CoreData
 
-var photos = [UIImage]()
-var uzis = [UIImage]()
+//var photos = [UIImage]()
+//var uzis = [UIImage]()
+
+class Photo: NSObject {
+    var image: UIImage
+    var date: NSDate
+    init(image: UIImage, date: NSDate) {
+        self.image = image
+        self.date = date
+        super.init()
+    }
+}
+
+var photos = [Photo]()
+var uzis = [Photo]()
 var choosedSegmentImages = true // true: photo, false: uzi
 
 
@@ -37,8 +50,6 @@ class LandscapePickerController: UIImagePickerController
 class PhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
     
 
-
-    
     var picker:LandscapePickerController?=LandscapePickerController()
     
     @IBOutlet weak var changer: UISegmentedControl!
@@ -56,8 +67,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         a.tintColor = UIColor.whiteColor()
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)
-        loadImage()
-        loadImageUzi()
+        //loadImage()
+        //loadImageUzi()
+        loadPhotos()
     }
 
     func openCamera(){
@@ -92,12 +104,13 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        choosedSegmentImages ? photos.append(chosenImage) : uzis.append(chosenImage)
+        let type: Int
+        choosedSegmentImages ? (type=0) : (type=1)
+        choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: NSDate())) : uzis.append(Photo(image: chosenImage, date: NSDate()))
         dismissViewControllerAnimated(true, completion: nil)
         PhotoCollectionView.reloadData()
-        let type: String
-        choosedSegmentImages ? (type="photo") : (type="uzi")
-        savePhotos(chosenImage,type: type)
+        
+        savePhotos(chosenImage,Type: type)
     }
     
     @IBAction func SegmentChanger(sender: AnyObject) {
@@ -118,12 +131,25 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
-        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row] : uzis[indexPath.row]
+        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row].image : uzis[indexPath.row].image
         return PhotoCell
     }
     
-    func savePhotos(img: UIImage, type: String){
-        let appDelegate =
+    func savePhotos(img: UIImage, Type: Int){
+       
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+ 
+        let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+        
+        if(Type == 0){
+            let table = Table("Photo")
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+        }else{
+            let table = Table("Uzi")
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+        }
+        /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
@@ -163,11 +189,30 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             } catch {
                 print(error)
             }
-
-        }
+        }*/
     }
  
-    func loadImage(){
+    func loadPhotos(){
+        var table = Table("Photo")
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        let type = Expression<Int64>("Type")
+        
+        for i in try! db.prepare(table) {
+            let a = i[image] as! NSData
+            let b = i[date] as! NSDate
+            photos.append(Photo(image: UIImage(data: a)!, date: b))
+        }
+
+        table = Table("Uzi")
+        for i in try! db.prepare(table) {
+            let a = i[image] as! NSData
+            let b = i[date] as! NSDate
+            uzis.append(Photo(image: UIImage(data: a)!, date: b))
+        }
+    }
+    
+    /*func loadImage(){
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -228,7 +273,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             let fetchError = error as NSError
               print(fetchError)
         }
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

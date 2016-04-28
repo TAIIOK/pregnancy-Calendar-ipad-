@@ -41,11 +41,10 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                 //Create and an option action
                 let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
                     //Do some other stuff
-                    let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
+                    /*let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
                     let reversed = indexPath.sort(self.backwards)
                     
                     for i in reversed{
-                        print(i.row)
                         let cell = self.PhotoCollectionView.cellForItemAtIndexPath(i) as! PhotoCollectionViewCell
                         if cell.ImgSelector.hidden == false {
                             choosedSegmentImages ? photos.removeAtIndex(i.row) : uzis.removeAtIndex(i.row)
@@ -53,7 +52,8 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                             choosedSegmentImages ? self.deleteImage(i.row) : self.deleteImageUzi(i.row)
                         }
                         
-                    }
+                    }*/
+                    self.deleteImage(0)
                     self.title =  "\(self.selected) выбрано"
                     self.PhotoCollectionView.reloadData()
                 }
@@ -81,7 +81,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoSelCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
-        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row] : uzis[indexPath.row]
+        PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row].image : uzis[indexPath.row].image
         PhotoCell.ImgSelector.hidden = true
         return PhotoCell
     }
@@ -100,8 +100,52 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         self.title =  "\(selected) выбрано"
     }
     
+    func savePhotos(img: UIImage, Type: Int){
+        
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        let type = Expression<Int64>("Type")
+        
+        let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+        
+        if(Type == 0){
+            let table = Table("Photo")
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type)))
+        }else{
+            let table = Table("Uzi")
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type)))
+        }
+    }
+    
     func deleteImage(index: Int){
-        let appDelegate =
+        var table = Table("Photo")
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        
+        var count = try! db.scalar(table.count)
+        
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        
+        for var i in photos{
+            let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+        }
+        
+        table = Table("Uzi")
+        
+        count = try! db.scalar(table.count)
+        
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        
+        for var i in uzis{
+            let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+        }
+        /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
@@ -131,11 +175,11 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         } catch {
             let fetchError = error as NSError
             print(fetchError)
-        }
+        }*/
     }
     
     func deleteImageUzi(index: Int){
-        let appDelegate =
+        /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
@@ -165,7 +209,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         } catch {
             let fetchError = error as NSError
             print(fetchError)
-        }
+        }*/
         
     }
 
