@@ -10,49 +10,47 @@ import UIKit
 import MediaPlayer
 import YouTubePlayer
 
+let videosDress = ["iC5Oe_molfw",
+                   "2-rkmvmlZhY",
+                   "PpIWPXG67LE",
+                   "6xDPPupoErk",
+                   "jTYKDH9Gp8A",
+                   "CqbEmt5OvTw",
+                   "qt4Nrwi2H6s",
+                   "5EtmXqBcgHM",
+                   "r5BwTUiPHDM",
+                   "kfIfbrlg1Ik",
+                   "gkTuKuvnVvo",
+                   "H9u7Skai4gY",
+                   "PJL5TMXYSOQ",
+                   "fcUPgKMVWXA",
+                   "6HI_l9JitwE",
+                   "HBeBFGPJvwU",
+                   "D7xclqFnmrk",
+                   "YgsHdIhCCrQ",
+                   "j3wmoPJlR2A",
+                   "ZuBKd2D3TPg",
+                   "u9-klWTYBeo",
+                   "Da8nM8Ga1Jc",
+                   "TgihONK_swI",
+                   "dt-XaCO5mtc",
+                   "0F-dlfN9664"]
+
+let videosGym = ["iBzR_TNrWMI",
+                 "oCXnXP2R1NE",
+                 "evUKbaeGXB0",
+                 "-2jV00pq8Iw",
+                 "QELTjHFHqxg"]
+
+var videoIndex = 0
+var choosedVideoSegment = true // true: dress, false: gym
 
 class VideosViewController: UICollectionViewController {
-    var choosedSegment = true // true: dress, false: gym
+
     
     @IBOutlet weak var web: UIWebView!
 
     @IBOutlet weak var playerView: YouTubePlayerView!
-    
-
-    
-    let videosDress = ["iC5Oe_molfw",
-                       "2-rkmvmlZhY",
-                       "PpIWPXG67LE",
-                       "6xDPPupoErk",
-                       "jTYKDH9Gp8A",
-                       "CqbEmt5OvTw",
-                       "qt4Nrwi2H6s",
-                       "5EtmXqBcgHM",
-                       "r5BwTUiPHDM",
-                       "kfIfbrlg1Ik",
-                       "gkTuKuvnVvo",
-                       "H9u7Skai4gY",
-                       "PJL5TMXYSOQ",
-                       "fcUPgKMVWXA",
-                       "6HI_l9JitwE",
-                       "HBeBFGPJvwU",
-                       "D7xclqFnmrk",
-                       "YgsHdIhCCrQ",
-                       "j3wmoPJlR2A",
-                       "ZuBKd2D3TPg",
-                       "u9-klWTYBeo",
-                       "Da8nM8Ga1Jc",
-                       "TgihONK_swI",
-                       "dt-XaCO5mtc",
-                       "0F-dlfN9664"]
-    
-    let videosGym = ["iBzR_TNrWMI",
-                     "oCXnXP2R1NE",
-                     "evUKbaeGXB0",
-                     "-2jV00pq8Iw",
-                     "QELTjHFHqxg"]
-    
-
     @IBOutlet var VideoCollectionView: UICollectionView!
     @IBOutlet weak var VideoChanger: UISegmentedControl!
     override func viewDidLoad() {
@@ -63,7 +61,7 @@ class VideosViewController: UICollectionViewController {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
     private func reloadTable(index: Bool) {
-        choosedSegment = index
+        choosedVideoSegment = index
         VideoCollectionView.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -75,30 +73,34 @@ class VideosViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  choosedSegment ? videosDress.count : videosGym.count
+        return  choosedVideoSegment ? videosDress.count : videosGym.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let VideoCell = collectionView.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
 
-        VideoCell.photo.image = choosedSegment ? UIImage(named: "\(indexPath.row).jpg") : UIImage(named: "\(indexPath.row).png")
+
+        let id =  choosedVideoSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
+        
+        
+        
+        VideoCell.photo.image = choosedVideoSegment ? UIImage(named: "\(indexPath.row).jpg") : UIImage(named: "\(indexPath.row).png")
+        VideoCell.title.text = "\(indexPath.row)"
         return VideoCell
     }
     
-
-    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        // youtube player
+        videoIndex = indexPath.row
+        //let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+        //self.navigationController?.pushViewController(destinationViewController!, animated: true)
+        /*// youtube player
         var videoPlayer = YouTubePlayerView(frame: self.view.frame)
         videoPlayer.backgroundColor = .whiteColor()
         self.view.addSubview(videoPlayer)
         self.view.bringSubviewToFront(videoPlayer)
-        let id =  choosedSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
+        let id =  choosedVideoSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
         videoPlayer.loadVideoID(id)
-        
-        
-    
+        */
         /*
         let webView = UIWebView(frame: self.view.frame)
         

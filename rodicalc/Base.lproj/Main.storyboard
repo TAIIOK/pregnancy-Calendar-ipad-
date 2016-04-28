@@ -911,7 +911,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Hx-c5-ABs">
-                            <size key="itemSize" width="100" height="100"/>
+                            <size key="itemSize" width="120" height="140"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -923,15 +923,21 @@
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="100" height="100"/>
+                                <rect key="frame" x="10" y="74" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAb-rG-ZPF">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="100"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKT-Xf-CbS">
+                                            <rect key="frame" x="0.0" y="100" width="120" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -939,10 +945,16 @@
                                     <constraint firstItem="hAb-rG-ZPF" firstAttribute="leading" secondItem="6fr-Vv-44k" secondAttribute="leading" id="Gfv-5v-PJR"/>
                                     <constraint firstItem="hAb-rG-ZPF" firstAttribute="top" secondItem="6fr-Vv-44k" secondAttribute="top" id="KUG-oq-4pX"/>
                                     <constraint firstAttribute="trailing" secondItem="hAb-rG-ZPF" secondAttribute="trailing" id="LCt-Eg-K78"/>
-                                    <constraint firstAttribute="bottom" secondItem="hAb-rG-ZPF" secondAttribute="bottom" id="lZb-1P-8NG"/>
+                                    <constraint firstAttribute="bottom" secondItem="MKT-Xf-CbS" secondAttribute="bottom" id="Xk0-pJ-Zf8"/>
+                                    <constraint firstItem="MKT-Xf-CbS" firstAttribute="top" secondItem="hAb-rG-ZPF" secondAttribute="bottom" id="bsZ-HD-XcP"/>
+                                    <constraint firstAttribute="bottom" secondItem="hAb-rG-ZPF" secondAttribute="bottom" constant="40" id="lZb-1P-8NG"/>
+                                    <constraint firstItem="MKT-Xf-CbS" firstAttribute="leading" secondItem="hAb-rG-ZPF" secondAttribute="leading" id="laJ-iu-Foh"/>
+                                    <constraint firstItem="MKT-Xf-CbS" firstAttribute="trailing" secondItem="hAb-rG-ZPF" secondAttribute="trailing" id="tZ0-Xe-Fvt"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="photo" destination="hAb-rG-ZPF" id="Qi6-fV-eAY"/>
+                                    <outlet property="title" destination="MKT-Xf-CbS" id="pbL-Ed-JvQ"/>
+                                    <segue destination="aRX-aC-s8Q" kind="presentation" modalPresentationStyle="fullScreen" id="D65-R2-rDm"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -975,6 +987,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EB-4N-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1678" y="4399"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KwC-5V-HrG">
+            <objects>
+                <navigationController id="aRX-aC-s8Q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ndf-k6-nFR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FrD-d4-8dl" kind="relationship" relationship="rootViewController" id="Yzc-8V-2da"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqN-Mo-deW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2504" y="4399"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="kLw-mp-4HK">
+            <objects>
+                <viewController id="FrD-d4-8dl" customClass="VideoPlayerViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7EZ-16-LjU"/>
+                        <viewControllerLayoutGuide type="bottom" id="XsX-nJ-ADC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="VideoPlayerView" id="etd-qw-nRN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1qx-sz-kNZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UNA-e7-l9k">
+                            <connections>
+                                <action selector="back:" destination="FrD-d4-8dl" id="sl8-j8-4ez"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pc1-NQ-Z1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2354" y="4391"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qgX-mh-VcI">
