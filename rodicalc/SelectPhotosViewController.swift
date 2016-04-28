@@ -41,7 +41,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                 //Create and an option action
                 let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
                     //Do some other stuff
-                    /*let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
+                    let indexPath = self.PhotoCollectionView.indexPathsForVisibleItems()
                     let reversed = indexPath.sort(self.backwards)
                     
                     for i in reversed{
@@ -52,8 +52,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                             choosedSegmentImages ? self.deleteImage(i.row) : self.deleteImageUzi(i.row)
                         }
                         
-                    }*/
-                    self.deleteImage(0)
+                    }
                     self.title =  "\(self.selected) выбрано"
                     self.PhotoCollectionView.reloadData()
                 }
@@ -118,33 +117,21 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     }
     
     func deleteImage(index: Int){
-        var table = Table("Photo")
+        let table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         
-        var count = try! db.scalar(table.count)
+        let count = try! db.scalar(table.count)
         
         if count > 0{
             try! db.run(table.delete())
         }
-        
         for var i in photos{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }
         
-        table = Table("Uzi")
-        
-        count = try! db.scalar(table.count)
-        
-        if count > 0{
-            try! db.run(table.delete())
-        }
-        
-        for var i in uzis{
-            let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
-            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
-        }
+
         /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -179,6 +166,19 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     }
     
     func deleteImageUzi(index: Int){
+        let table = Table("Uzi")
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        let count = try! db.scalar(table.count)
+        
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        
+        for var i in uzis{
+            let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+        }
         /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         

@@ -193,22 +193,26 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
  
     func loadPhotos(){
+        photos.removeAll()
+        uzis.removeAll()
         var table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         let type = Expression<Int64>("Type")
         
         for i in try! db.prepare(table) {
-            let a = i[image] as! NSData
-            let b = i[date] as! NSDate
-            photos.append(Photo(image: UIImage(data: a)!, date: b))
+            let a = i[image] as! Blob
+            let c = NSData(bytes: a.bytes, length: a.bytes.count)
+            let b = i[date]
+            photos.append(Photo(image: UIImage(data: c)!, date: NSDate()))
         }
 
         table = Table("Uzi")
         for i in try! db.prepare(table) {
-            let a = i[image] as! NSData
-            let b = i[date] as! NSDate
-            uzis.append(Photo(image: UIImage(data: a)!, date: b))
+            let a = i[image] as! Blob
+            let c = NSData(bytes: a.bytes, length: a.bytes.count)
+            let b = i[date]
+            uzis.append(Photo(image: UIImage(data: c)!, date: NSDate()))
         }
     }
     
