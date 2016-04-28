@@ -32,7 +32,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-        
+        loadDesires()
         if Desires.count == 0 {
             Desires.append("")
         }
@@ -40,7 +40,12 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func loadDesires(){
-        
+        Desires.removeAll()
+        let table = Table("DesireList")
+        let text = Expression<String>("Text")
+        for i in try! db.prepare(table) {
+            Desires.append(i[text])
+        }
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -50,37 +55,53 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes.count
+        return Desires.count+1
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DesireCell", forIndexPath: indexPath) as! DesireTableViewCell
-        //cell.textLabel?.text = notes[indexPath.row]
+        if indexPath.row == Desires.count{
+            //cell.textField.enabled = false
+            cell.textField.hidden = true
+        }else{
+            cell.textField.hidden = false
+            cell.textField.text = Desires[indexPath.row]}
         return cell
     }
-    
-    private func getCustomBackgroundView() -> UIView{
-        let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
-        return BackgroundView
-    }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == Desires.count{
+            fromTableInArray()
+            Desires.append("")
+            self.tbl.reloadData()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
-        let rowcount = self.tbl.numberOfRowsInSection(0)
-        print(rowcount)
+        fromTableInArray()
+        let table = Table("DesireList")
+        let text = Expression<String>("Text")
+        let count = try! db.scalar(table.count)
+        
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        
+        for var i in Desires{
+            if i.characters.count > 0{
+                try! db.run(table.insert(text <- "\(i)"))}
+        }
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell!.textLabel?.highlightedTextColor = StrawBerryColor
-        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
-        return indexPath
+    func fromTableInArray(){
+        let int = self.tbl.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.tbl.cellForRowAtIndexPath(i) as! DesireTableViewCell
+            Desires[i.row] = cell.textField.text!
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,13 +143,9 @@ extension DesireListViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView
-        
     }
     
     func swipedetected(){
-        
-        
-        
     }
     
     func presentedDateUpdated(date: CVDate) {

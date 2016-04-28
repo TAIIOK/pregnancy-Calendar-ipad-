@@ -573,7 +573,6 @@
 				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
 				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
 				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
-				8E5A6B981CD203F80073B693 /* DesireTableViewCell.swift */,
 				8E6D503C1C7F05D700878957 /* ForumViewController.swift */,
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
@@ -584,6 +583,7 @@
 				8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */,
 				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
 				8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */,
+				8E5A6B981CD203F80073B693 /* DesireTableViewCell.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";

@@ -188,13 +188,21 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.detailTextLabel?.text = "Нет заметок"
             break
         case 8: //мой "лист желаний" - список - не превязаны ко дню
-            cell.detailTextLabel?.text = "Нет заметок"
+            if returnDesireCount() > 0 {
+                cell.detailTextLabel?.text = "\(returnDesireCount()) желаний"
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
             default: break
         }
         return cell
     }
     
+    func returnDesireCount()->Int{
+        let table = Table("DesireList")
+        return try! db.scalar(table.count)
+    }
     private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
         BackgroundView.backgroundColor = UIColor.whiteColor()
@@ -240,14 +248,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         default: break
         }
-        /*
-        let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(""))! as UIViewController
-        if #available(iOS 8.0, *) {
-            //self.splitViewController?.showDetailViewController(date!, sender: self)
-            
-        } else {
-            // Fallback on earlier versions
-        }*/
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
