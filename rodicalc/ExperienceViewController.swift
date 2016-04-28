@@ -67,19 +67,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     var BirthDate = NSDate()
 
     var mas = [note]()
-    /*
-    {
-        "Здоровье малыша":"",
-        "Здоровье мамы":"Вам пока сложно это представить, но этот ежемесячный женский цикл может оказаться последним в этом году. Это ли не чудесная новость?",
-        "Общая информация":"",
-        "Скрытая реклама":"",
-        "Это важно!":"",
-        "день":"3",
-        "питание":"",
-        "размышления беременной":"",
-        "реклама ФЭСТ":""
-    }
-    */
+
     @IBAction func segmentChanger(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
@@ -114,14 +102,57 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    func setupNavigation(text :String){
+    func setupNavigation(date : CVDate){
+    
     
         let customView = UIView(frame: CGRectMake(0, 0, 100, 44))
         customView.backgroundColor = StrawBerryColor
         
         
         let label = UILabel(frame: CGRectMake(0, 0,100, 44))
-        label.text = text
+        
+        switch date.month {
+        case 1:
+            label.text = "Январь"
+            break
+        case 2:
+            label.text = "Февраль"
+            break
+        case 3:
+            label.text = "Март"
+            break
+        case 4:
+            label.text = "Апрель"
+            break
+        case 5:
+            label.text = "Май"
+            break
+        case 6:
+            label.text = "Июнь"
+            break
+        case 7:
+            label.text = "Июль"
+            break
+        case 8:
+            label.text =  "Август"
+            break
+        case 9:
+            label.text =  "Сентябрь"
+            break
+        case 10:
+            label.text =  "Октябрь"
+            break
+        case 11:
+            label.text = "Ноябрь"
+            break
+        case 12:
+            label.text = "Декабрь"
+            break
+        default:
+            break
+        }
+
+
         label.textColor = UIColor.whiteColor()
         label.textAlignment = NSTextAlignment.Right
         label.backgroundColor = StrawBerryColor
@@ -137,8 +168,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
         
-        setupNavigation( CVDate(date: NSDate()).globalDescription )
-        
+
+        setupNavigation(CVDate(date: NSDate()))
         tbl.delegate = self
         tbl.dataSource = self
         WorkWithJSON()
@@ -409,10 +440,12 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
             updatedMonthLabel.text = date.globalDescription
             updatedMonthLabel.sizeToFit()
             updatedMonthLabel.alpha = 0
-            //updatedMonthLabel.center = self.monthLabel.center
-            setupNavigation(updatedMonthLabel.text!)
             
-            self.title = updatedMonthLabel.text
+            setupNavigation(date)
+            
+            
+            //updatedMonthLabel.center = self.monthLabel.center
+            // self.title = updatedMonthLabel.text
             /*
              let offset = CGFloat(48)
              updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)

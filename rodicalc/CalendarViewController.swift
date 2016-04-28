@@ -26,7 +26,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         tbl.delegate = self
         tbl.dataSource = self
         loadDate()
-        self.title = CVDate(date: NSDate()).globalDescription
+        
+        self.presentedDateUpdated(CVDate(date: NSDate()))
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -175,6 +176,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
+
+
 extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
@@ -219,8 +222,62 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             updatedMonthLabel.text = date.globalDescription
             updatedMonthLabel.sizeToFit()
             updatedMonthLabel.alpha = 0
+            
+            
+            switch date.month {
+            case 1:
+                self.navigationController?.parentViewController?.title = "Январь"
+                self.title = "Январь"
+                break
+            case 2:
+                self.navigationController?.parentViewController?.title = "Февраль"
+                self.title = "Февраль"
+                break
+            case 3:
+                self.navigationController?.parentViewController?.title = "Март"
+                self.title = "Март"
+                break
+            case 4:
+                self.navigationController?.parentViewController?.title = "Апрель"
+                self.title = "Апрель"
+                break
+            case 5:
+                self.navigationController?.parentViewController?.title = "Май"
+                self.title = "Май"
+                break
+            case 6:
+                self.navigationController?.parentViewController?.title = "Июнь"
+                self.title = "Июнь"
+                break
+            case 7:
+                self.navigationController?.parentViewController?.title = "Июль"
+                self.title = "Июль"
+                break
+            case 8:
+                self.navigationController?.parentViewController?.title = "Август"
+                self.title = "Август"
+                break
+            case 9:
+                self.navigationController?.parentViewController?.title = "Сентябрь"
+                self.title = "Сентябрь"
+                break
+            case 10:
+                self.navigationController?.parentViewController?.title = "Октябрь"
+                self.title = "Октябрь"
+                break
+            case 11:
+                self.navigationController?.parentViewController?.title = "Ноябрь"
+                self.title = "Ноябрь"
+                break
+            case 12:
+                self.navigationController?.parentViewController?.title = "Декабрь"
+                self.title = "Декабрь"
+                break
+            default:
+                break
+            }
             //updatedMonthLabel.center = self.monthLabel.center
-            self.title = updatedMonthLabel.text
+           // self.title = updatedMonthLabel.text
             /*
              let offset = CGFloat(48)
              updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)
