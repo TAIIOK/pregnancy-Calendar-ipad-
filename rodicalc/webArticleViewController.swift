@@ -22,7 +22,7 @@ class webArticleViewController: UIViewController, UIWebViewDelegate {
          localfilePath = NSBundle.mainBundle().URLForResource("bondage", withExtension: "html")!
         }
         else {
-         localfilePath = NSBundle.mainBundle().URLForResource("bondage", withExtension: "html")!
+         localfilePath = NSBundle.mainBundle().URLForResource("bra", withExtension: "html")!
         }
         let myRequest = NSURLRequest(URL: localfilePath);
         myWebView.loadRequest(myRequest);

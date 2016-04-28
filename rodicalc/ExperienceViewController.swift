@@ -245,7 +245,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NoteType = indexPath.row
+        articletype = indexPath.row
         switch indexPath.row {
         case 0:
             let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webarticle")
