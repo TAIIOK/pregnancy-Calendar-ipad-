@@ -60,7 +60,6 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         loadImageUzi()
     }
 
-
     func openCamera(){
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
             picker!.allowsEditing = false
