@@ -52,9 +52,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9M6-TT-HtC">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="РАСЧЕТ ДАТЫ РОДОВ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQd-Om-wDq">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,6 +59,9 @@
                                                     <color key="textColor" red="0.80784313725490198" green="0.058823529411764705" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gantt Chart-50 (1)" highlightedImage="Gantt Chart-50" translatesAutoresizingMaskIntoConstraints="NO" id="9M6-TT-HtC">
+                                                    <rect key="frame" x="14" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -75,9 +75,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6PQ-uM-j7l">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="СПРАВОЧНИК ИМЕН" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWN-vU-aZd">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,6 +82,9 @@
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Resume-50 (1)" highlightedImage="Resume-50" translatesAutoresizingMaskIntoConstraints="NO" id="6PQ-uM-j7l">
+                                                    <rect key="frame" x="14" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -98,9 +98,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-jA-MWj">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="СЧЕТЧИК СХВАТОК" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-k8-jTr">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -108,6 +105,9 @@
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alarm Clock-50 (1)" highlightedImage="Alarm Clock-50" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-jA-MWj">
+                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -121,15 +121,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uni-mC-LuJ">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ГРАФИК НАБОРА ВЕСА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-Bt-Q7F">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Line Chart-50 (1)" highlightedImage="Line Chart-50" translatesAutoresizingMaskIntoConstraints="NO" id="uni-mC-LuJ">
+                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -143,15 +143,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-R1-y7q">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ФОТОАЛЬБОМ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItU-ng-xsp">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Compact Camera-50 (1)" highlightedImage="Compact Camera-50" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-R1-y7q">
+                                                    <rect key="frame" x="14" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -165,15 +165,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0m-BK-IlV">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ВИДЕОТЕКА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7T-9X-LWc">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Video Call-50 (1)" highlightedImage="Video Call-50" translatesAutoresizingMaskIntoConstraints="NO" id="b0m-BK-IlV">
+                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -187,7 +187,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAD-cr-oM6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Note-Memo-01-256 (1)" highlightedImage="Note-Memo-01-256" translatesAutoresizingMaskIntoConstraints="NO" id="vAD-cr-oM6">
                                                     <rect key="frame" x="8" y="0.0" width="43" height="43"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЗАМЕТКИ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3x-Tg-0Q6">
@@ -209,15 +209,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YnY-0x-a6l">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ФОРУМ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBH-JI-MUF">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chat-64 (1)" highlightedImage="Chat-64" translatesAutoresizingMaskIntoConstraints="NO" id="YnY-0x-a6l">
+                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -231,15 +231,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jV-J3-hn9">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ПОЛЕЗНЫЙ ОПЫТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pif-LH-Qrt">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Diamond-50 (1)" highlightedImage="Diamond-50" translatesAutoresizingMaskIntoConstraints="NO" id="5jV-J3-hn9">
+                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -253,15 +253,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XG2-xI-TSq">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="КАЛЕНДАРЬ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyf-UL-P0j">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calendar-50 (1)" highlightedImage="Calendar-50" translatesAutoresizingMaskIntoConstraints="NO" id="XG2-xI-TSq">
+                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -275,15 +275,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYQ-Pw-lMd">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="КУПИТЬ БЕЛЬЕ ФЭСТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-WY-xxi">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Shopping Bag-50 (1)" highlightedImage="Shopping Bag-50" translatesAutoresizingMaskIntoConstraints="NO" id="OYQ-Pw-lMd">
+                                                    <rect key="frame" x="14" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -297,15 +297,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rh6-Zg-AXD">
-                                                    <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЭКСПОРТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To9-G4-r6u">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Share-50 (1)" highlightedImage="Share-50" translatesAutoresizingMaskIntoConstraints="NO" id="rh6-Zg-AXD">
+                                                    <rect key="frame" x="13" y="6" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -485,7 +485,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9O2-rR-dRp">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="Arrowhead-Left-01-48" id="S58-a4-YSO">
+                        <barButtonItem key="leftBarButtonItem" image="Row-48" id="S58-a4-YSO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toBack:" destination="cjh-ud-mGV" id="JT9-KM-xdd"/>
@@ -1411,7 +1411,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="Mx8-IS-U8c">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ZKG-bk-WQY">
+                        <barButtonItem key="rightBarButtonItem" image="Pencil-48" id="ZKG-bk-WQY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="btnEditDate:" destination="nND-Xz-dYe" id="lgb-r2-cZz"/>
@@ -1665,7 +1665,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9eD-eU-vw9">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="mjo-5h-Nty">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Checked Filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="mjo-5h-Nty">
                                             <rect key="frame" x="62" y="62" width="30" height="30"/>
                                         </imageView>
                                     </subviews>
@@ -1696,7 +1696,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Share" id="SgX-8L-GLU">
+                            <barButtonItem image="Share-35" id="SgX-8L-GLU">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="ShareSelected:" destination="5km-1G-n3U" id="H3H-fJ-PEE"/>
@@ -1778,7 +1778,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" highlightedImage="circle_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-ga-B0W">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle Thin-48" highlightedImage="Checked-50" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-ga-B0W">
                                                     <rect key="frame" x="512" y="4" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="5WI-Yu-5cf"/>
@@ -2329,10 +2329,38 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Alarm Clock-50" width="50" height="50"/>
+        <image name="Alarm Clock-50 (1)" width="50" height="50"/>
         <image name="Arrowhead-Left-01-48" width="48" height="48"/>
+        <image name="Calendar-50" width="50" height="50"/>
+        <image name="Calendar-50 (1)" width="50" height="50"/>
+        <image name="Chat-64" width="64" height="64"/>
+        <image name="Chat-64 (1)" width="64" height="64"/>
+        <image name="Checked Filled-50" width="50" height="50"/>
+        <image name="Checked-50" width="50" height="50"/>
+        <image name="Circle Thin-48" width="48" height="48"/>
+        <image name="Compact Camera-50" width="50" height="50"/>
+        <image name="Compact Camera-50 (1)" width="50" height="50"/>
+        <image name="Diamond-50" width="50" height="50"/>
+        <image name="Diamond-50 (1)" width="50" height="50"/>
+        <image name="Gantt Chart-50" width="50" height="50"/>
+        <image name="Gantt Chart-50 (1)" width="50" height="50"/>
+        <image name="Line Chart-50" width="50" height="50"/>
+        <image name="Line Chart-50 (1)" width="50" height="50"/>
+        <image name="Note-Memo-01-256" width="256" height="256"/>
+        <image name="Note-Memo-01-256 (1)" width="256" height="256"/>
+        <image name="Pencil-48" width="48" height="48"/>
+        <image name="Resume-50" width="50" height="50"/>
+        <image name="Resume-50 (1)" width="50" height="50"/>
+        <image name="Row-48" width="48" height="48"/>
+        <image name="Share-35" width="35" height="35"/>
+        <image name="Share-50" width="50" height="50"/>
+        <image name="Share-50 (1)" width="50" height="50"/>
+        <image name="Shopping Bag-50" width="50" height="50"/>
+        <image name="Shopping Bag-50 (1)" width="50" height="50"/>
+        <image name="Video Call-50" width="50" height="50"/>
+        <image name="Video Call-50 (1)" width="50" height="50"/>
         <image name="arrowUP" width="92" height="298"/>
-        <image name="circle" width="128" height="128"/>
-        <image name="circle_highlighted" width="2400" height="2400"/>
         <image name="fb_icon" width="1024" height="1024"/>
         <image name="logo" width="345" height="182"/>
         <image name="mail_icon" width="118" height="118"/>
@@ -2343,9 +2371,9 @@
         <image name="watchP.jpg" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J8J-RP-rbp"/>
         <segue reference="kMg-vQ-vuk"/>
         <segue reference="P0H-Yd-JxP"/>
+        <segue reference="J8J-RP-rbp"/>
         <segue reference="L53-bo-E8K"/>
         <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
