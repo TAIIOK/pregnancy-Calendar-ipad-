@@ -12,7 +12,7 @@
         <!--Master Table View Controller-->
         <scene sceneID="Elk-Qw-hjZ">
             <objects>
-                <tableViewController storyboardIdentifier="MasterView" id="bb6-Hn-XS3" customClass="MasterTableViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MasterView" id="bb6-Hn-XS3" customClass="MasterTableViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="t1i-kQ-01c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,7 +379,7 @@
         <!--Names Table View Controller-->
         <scene sceneID="Hj7-iJ-i5y">
             <objects>
-                <tableViewController storyboardIdentifier="NamesViewController" id="MQk-aP-hbn" customClass="NamesTableViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NamesViewController" id="MQk-aP-hbn" customClass="NamesTableViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="b7Y-HJ-XHe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -430,7 +430,7 @@
         <!--Name View Controller-->
         <scene sceneID="yHg-2X-bKf">
             <objects>
-                <viewController storyboardIdentifier="NameViewController" id="cjh-ud-mGV" customClass="NameViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NameViewController" id="cjh-ud-mGV" customClass="NameViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xQi-RC-6qW"/>
                         <viewControllerLayoutGuide type="bottom" id="y2Q-2m-gCF"/>
@@ -485,7 +485,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9O2-rR-dRp">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S58-a4-YSO">
+                        <barButtonItem key="leftBarButtonItem" title="cancel" id="S58-a4-YSO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toBack:" destination="cjh-ud-mGV" id="JT9-KM-xdd"/>
@@ -517,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEI-7l-ib7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="34"/>
+            <point key="canvasLocation" x="2643" y="-51"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ioa-vs-Hw3">
@@ -554,7 +554,7 @@
         <!--Webs View Controller-->
         <scene sceneID="QgU-ce-ZNU">
             <objects>
-                <viewController storyboardIdentifier="WebsViewController" id="KKb-Xs-4CX" customClass="WebsViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebsViewController" id="KKb-Xs-4CX" customClass="WebsViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q4e-iO-uwb"/>
                         <viewControllerLayoutGuide type="bottom" id="foB-4M-qYd"/>
@@ -626,7 +626,7 @@
         <!--Форум-->
         <scene sceneID="ELL-7E-7a6">
             <objects>
-                <viewController id="xWD-sH-Q4E" customClass="ForumViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xWD-sH-Q4E" customClass="ForumViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tTe-SJ-XZa"/>
                         <viewControllerLayoutGuide type="bottom" id="cWC-0R-0vR"/>
@@ -727,7 +727,7 @@
         <!--Купить белье ФЭСТ-->
         <scene sceneID="Uqm-Mn-tF4">
             <objects>
-                <viewController id="SJm-X7-kFe" customClass="BuyViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SJm-X7-kFe" customClass="BuyViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xtX-nK-P9v"/>
                         <viewControllerLayoutGuide type="bottom" id="umv-9q-d0a"/>
@@ -740,7 +740,7 @@
                                 <rect key="frame" x="0.0" y="302" width="600" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WildCell" textLabel="meY-XX-0lN" detailTextLabel="R8w-QV-Qeb" style="IBUITableViewCellStyleSubtitle" id="c3l-Pi-Hq3" customClass="TableViewCell" customModule="rodicalc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WildCell" textLabel="meY-XX-0lN" detailTextLabel="R8w-QV-Qeb" style="IBUITableViewCellStyleSubtitle" id="c3l-Pi-Hq3" customClass="TableViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c3l-Pi-Hq3" id="0b0-uK-HyE">
@@ -854,7 +854,7 @@
         <!--Экспорт-->
         <scene sceneID="4Vw-f3-UGj">
             <objects>
-                <viewController id="IZ4-ze-PYi" customClass="ExportViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IZ4-ze-PYi" customClass="ExportViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xcf-dZ-XST"/>
                         <viewControllerLayoutGuide type="bottom" id="w2Q-RP-5l1"/>
@@ -905,7 +905,7 @@
         <!--Videos View Controller-->
         <scene sceneID="3ku-rN-NL0">
             <objects>
-                <collectionViewController id="bvw-da-rz8" customClass="VideosViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="bvw-da-rz8" customClass="VideosViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7yX-Ee-KgM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -916,13 +916,13 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
-                        <view key="backgroundView" contentMode="scaleToFill" id="qjA-O7-HK7" customClass="YouTubePlayerView" customModule="rodicalc" customModuleProvider="target">
+                        <view key="backgroundView" contentMode="scaleToFill" id="qjA-O7-HK7" customClass="YouTubePlayerView" customModule="Календарь_беременности" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="10" y="74" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1007,7 +1007,7 @@
         <!--Video Player View Controller-->
         <scene sceneID="kLw-mp-4HK">
             <objects>
-                <viewController id="FrD-d4-8dl" customClass="VideoPlayerViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FrD-d4-8dl" customClass="VideoPlayerViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7EZ-16-LjU"/>
                         <viewControllerLayoutGuide type="bottom" id="XsX-nJ-ADC"/>
@@ -1064,7 +1064,7 @@
         <!--График набора веса-->
         <scene sceneID="d8E-qC-FkH">
             <objects>
-                <viewController id="y8F-fg-Re1" customClass="WeightDiagramViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y8F-fg-Re1" customClass="WeightDiagramViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8CD-zP-VZc"/>
                         <viewControllerLayoutGuide type="bottom" id="260-wl-sz7"/>
@@ -1088,7 +1088,20 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-xs-AeL" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="73" width="600" height="472"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowUP" translatesAutoresizingMaskIntoConstraints="NO" id="C6O-Zt-E6a">
+                                        <rect key="frame" x="460" y="0.0" width="140" height="206"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="RRr-4J-W61"/>
+                                            <constraint firstAttribute="height" constant="206" id="npW-X3-jfi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="C6O-Zt-E6a" secondAttribute="trailing" id="Ezk-Cm-QKj"/>
+                                    <constraint firstItem="C6O-Zt-E6a" firstAttribute="top" secondItem="Ep9-xs-AeL" secondAttribute="top" id="hmx-Ca-ARW"/>
+                                </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="недели" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gH-Q1V">
                                 <rect key="frame" x="37" y="553" width="42" height="21"/>
@@ -1124,6 +1137,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="arrow" destination="C6O-Zt-E6a" id="8ij-Kx-4Xb"/>
                         <outlet property="growthButton" destination="8U7-E2-ZRp" id="wFj-9i-Ps7"/>
                         <outlet property="lbl" destination="zNW-28-ANT" id="yYZ-gd-Hiy"/>
                         <outlet property="lineChartView" destination="Ep9-xs-AeL" id="621-cm-QPj"/>
@@ -1137,7 +1151,7 @@
         <!--Share View Controller-->
         <scene sceneID="Tpy-ZA-Dba">
             <objects>
-                <viewController id="j9S-9q-F2f" customClass="ShareViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j9S-9q-F2f" customClass="ShareViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5mE-jY-G7U"/>
                         <viewControllerLayoutGuide type="bottom" id="0Wp-Bt-sTd"/>
@@ -1300,7 +1314,7 @@
         <!--Предполагаемая дата родов-->
         <scene sceneID="cs6-tP-9Tw">
             <objects>
-                <viewController storyboardIdentifier="Zodiacs" id="nND-Xz-dYe" customClass="ShowZodiacViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Zodiacs" id="nND-Xz-dYe" customClass="ShowZodiacViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r6x-O1-9N4"/>
                         <viewControllerLayoutGuide type="bottom" id="qRM-JT-6D4"/>
@@ -1426,7 +1440,7 @@
         <!--Счетчик схваток-->
         <scene sceneID="jly-hP-0vx">
             <objects>
-                <viewController id="IN0-Vg-fgl" customClass="SkirmishCountViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IN0-Vg-fgl" customClass="SkirmishCountViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JQw-IA-dDY"/>
                         <viewControllerLayoutGuide type="bottom" id="IPB-gZ-cbd"/>
@@ -1453,7 +1467,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S1W-BV-eLV">
                                 <rect key="frame" x="83" y="92" width="497" height="272"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="TMG-zG-TXr" customClass="CustomCollectionViewLayout" customModule="rodicalc" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="TMG-zG-TXr" customClass="CustomCollectionViewLayout" customModule="Календарь_беременности" customModuleProvider="target"/>
                                 <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="IN0-Vg-fgl" id="dpT-A7-auH"/>
@@ -1525,7 +1539,7 @@
         <!--Photos View Controller-->
         <scene sceneID="Kry-qF-sTh">
             <objects>
-                <collectionViewController id="2aq-1D-rwJ" customClass="PhotosViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="2aq-1D-rwJ" customClass="PhotosViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="40H-Bg-gU9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1537,7 +1551,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoCell" reuseIdentifier="PhotoCell" id="fwH-b1-AkH" customClass="PhotoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoCell" reuseIdentifier="PhotoCell" id="fwH-b1-AkH" customClass="PhotoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="10" y="74" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1619,7 +1633,7 @@
         <!--0 выбрано-->
         <scene sceneID="mnn-UG-Uj4">
             <objects>
-                <collectionViewController id="5km-1G-n3U" customClass="SelectPhotosViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="5km-1G-n3U" customClass="SelectPhotosViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qSU-bV-SCW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1631,7 +1645,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoSelCell" reuseIdentifier="PhotoSelCell" id="D27-BH-qE8" customClass="PhotoCollectionViewCell" customModule="rodicalc" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoSelCell" reuseIdentifier="PhotoSelCell" id="D27-BH-qE8" customClass="PhotoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="10" y="74" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1700,7 +1714,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="XRx-8l-5O2">
             <objects>
-                <viewController storyboardIdentifier="BirthDate" id="FMa-bN-nRb" customClass="CalcViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BirthDate" id="FMa-bN-nRb" customClass="CalcViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQm-gL-Dd7"/>
                         <viewControllerLayoutGuide type="bottom" id="fPh-nK-QR6"/>
@@ -1709,13 +1723,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cR-Tu-RJS" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cR-Tu-RJS" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="FMa-bN-nRb" id="QJ1-aP-gr0"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOo-n9-PK8" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOo-n9-PK8" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="170"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="FMa-bN-nRb" id="MqO-Hx-Aav"/>
@@ -1731,7 +1745,7 @@
                                 </constraints>
                                 <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DateCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="PLo-g6-G7e" detailTextLabel="MFy-B1-1wD" style="IBUITableViewCellStyleSubtitle" id="1oo-fs-QmX" customClass="DateTableViewCell" customModule="rodicalc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DateCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="PLo-g6-G7e" detailTextLabel="MFy-B1-1wD" style="IBUITableViewCellStyleSubtitle" id="1oo-fs-QmX" customClass="DateTableViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1oo-fs-QmX" id="d9I-np-dd0">
@@ -1836,7 +1850,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="WA8-k7-BtE">
             <objects>
-                <viewController title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DYG-Dr-979"/>
                         <viewControllerLayoutGuide type="bottom" id="gs4-wJ-MDr"/>
@@ -1845,13 +1859,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aml-m3-YUa" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aml-m3-YUa" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="B3T-v7-VhL" id="Qfs-FW-Bck"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW8-HO-dfN" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW8-HO-dfN" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="167"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="B3T-v7-VhL" id="6fi-jU-GRm"/>
@@ -1935,7 +1949,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="9FG-fa-yN2">
             <objects>
-                <viewController storyboardIdentifier="NotesTable" id="KR8-bu-Spy" customClass="NotesViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotesTable" id="KR8-bu-Spy" customClass="NotesViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hz7-h0-Ofp"/>
                         <viewControllerLayoutGuide type="bottom" id="pkT-Dw-GFE"/>
@@ -1944,13 +1958,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLS-H1-24J" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLS-H1-24J" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="KR8-bu-Spy" id="CgX-Co-08n"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-1f-pzd" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-1f-pzd" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="170"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="KR8-bu-Spy" id="NGP-gu-1LX"/>
@@ -2027,7 +2041,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="gvX-il-CNU">
             <objects>
-                <viewController storyboardIdentifier="textNote" id="MpM-Lw-iQm" customClass="TextNoteViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="textNote" id="MpM-Lw-iQm" customClass="TextNoteViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ab3-uk-t18"/>
                         <viewControllerLayoutGuide type="bottom" id="igR-IZ-thL"/>
@@ -2036,13 +2050,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juq-tP-vPS" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juq-tP-vPS" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="MpM-Lw-iQm" id="kWI-Fh-hij"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opZ-u0-0lb" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opZ-u0-0lb" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="170"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="MpM-Lw-iQm" id="LtN-UV-2Vt"/>
@@ -2100,7 +2114,7 @@
         <!--Web Article View Controller-->
         <scene sceneID="9nW-ck-vvb">
             <objects>
-                <viewController storyboardIdentifier="webarticle" id="VIH-t8-i6m" customClass="webArticleViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webarticle" id="VIH-t8-i6m" customClass="webArticleViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qEl-ed-1yY"/>
                         <viewControllerLayoutGuide type="bottom" id="jzL-6y-Fg6"/>
@@ -2133,7 +2147,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="VZp-8r-VPQ">
             <objects>
-                <viewController storyboardIdentifier="desireNote" id="6AU-q2-0me" customClass="DesireListViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="desireNote" id="6AU-q2-0me" customClass="DesireListViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PyH-tc-myi"/>
                         <viewControllerLayoutGuide type="bottom" id="aQr-au-4ET"/>
@@ -2142,13 +2156,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9O-Ne-p0h" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9O-Ne-p0h" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="6AU-q2-0me" id="tO0-ZZ-Z1B"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKB-Bk-1Ak" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKB-Bk-1Ak" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="52" width="600" height="170"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="6AU-q2-0me" id="eQY-eT-1e5"/>
@@ -2168,7 +2182,7 @@
                                 <rect key="frame" x="20" y="298" width="560" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DesireCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DesireCell" id="vcS-KX-4rE" customClass="DesireTableViewCell" customModule="rodicalc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DesireCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DesireCell" id="vcS-KX-4rE" customClass="DesireTableViewCell" customModule="Календарь_беременности" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vcS-KX-4rE" id="JKg-vQ-bKE">
@@ -2223,7 +2237,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="zLg-ec-4Se">
             <objects>
-                <viewController id="Xud-Q9-YIg" customClass="CalendarViewController" customModule="rodicalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xud-Q9-YIg" customClass="CalendarViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f66-eh-f3t"/>
                         <viewControllerLayoutGuide type="bottom" id="mTU-14-nxz"/>
@@ -2232,13 +2246,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m0-bJ-UF0" customClass="CVCalendarMenuView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m0-bJ-UF0" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="24"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="Xud-Q9-YIg" id="LBZ-nq-VaL"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBR-FT-GHZ" customClass="CVCalendarView" customModule="rodicalc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBR-FT-GHZ" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="170"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="Xud-Q9-YIg" id="G1K-n4-gq0"/>
@@ -2305,6 +2319,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowUP" width="92" height="298"/>
         <image name="circle" width="128" height="128"/>
         <image name="circle_highlighted" width="2400" height="2400"/>
         <image name="fb_icon" width="1024" height="1024"/>
