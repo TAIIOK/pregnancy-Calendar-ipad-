@@ -95,14 +95,11 @@ class VideosViewController: UICollectionViewController {
         
         
         
-<<<<<<< HEAD
+
         VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
         VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
-=======
-        VideoCell.photo.image = choosedVideoSegment ? UIImage(named: "\(indexPath.row).jpg") : UIImage(named: "\(indexPath.row).png")
-        VideoCell.title.text = "\(indexPath.row)"
         VideoCell.backgroundColor = .clearColor()
->>>>>>> origin/master
+
         return VideoCell
     }
     
