@@ -47,6 +47,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var btnReconnect: UIButton!
     
+    @IBOutlet weak var smile: UIImageView!
     @IBAction func OpenSite(sender: UIButton) {
         if let url = NSURL(string: "https://wildberries.ru"){
             UIApplication.sharedApplication().openURL(url)
@@ -84,10 +85,10 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         WorkWithJSON()
+        tbl.backgroundColor = .clearColor()
         if(Reachability.isConnectedToNetwork()==true){
             tbl.delegate = self
             tbl.dataSource = self
-            tbl.backgroundColor = .clearColor()
             map.delegate = self
             // Ask for Authorisation from the User.
             if #available(iOS 8.0, *) {
@@ -116,6 +117,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             //addPinToMapView()
         }
         else{
+            smile.hidden = false
             map.hidden = true
             label.hidden=false
             btnReconnect.hidden=false

@@ -14,9 +14,13 @@ var id=0
 
 class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet weak var btnReconect: UIButton!
-    @IBOutlet weak var label: UILabel!
+
+
+    @IBOutlet weak var smile: UIImageView!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var btnReconect: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.backgroundColor = .clearColor()
@@ -24,12 +28,13 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
             table.delegate = self
             table.dataSource = self
-            table.hidden=false
+            table.hidden = false
         }
         else{
-            label.hidden=false
-            btnReconect.hidden=false
-            btnReconect.enabled=true
+            smile.hidden = false
+            label.hidden = false
+            btnReconect.hidden = false
+            btnReconect.enabled = true
         }
     }
 
