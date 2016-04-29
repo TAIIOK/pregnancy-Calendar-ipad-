@@ -84,7 +84,7 @@ class VideosViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  choosedVideoSegment ? videosDress.count : videosGym.count
+        return  choosedVideoSegment ? imagesfirst.count : imagessecond.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
