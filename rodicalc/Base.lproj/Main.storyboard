@@ -485,7 +485,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9O2-rR-dRp">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="cancel" id="S58-a4-YSO">
+                        <barButtonItem key="leftBarButtonItem" image="Arrowhead-Left-01-48" id="S58-a4-YSO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toBack:" destination="cjh-ud-mGV" id="JT9-KM-xdd"/>
@@ -1018,7 +1018,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1qx-sz-kNZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UNA-e7-l9k">
+                        <barButtonItem key="leftBarButtonItem" image="Arrowhead-Left-01-48" id="UNA-e7-l9k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="back:" destination="FrD-d4-8dl" id="sl8-j8-4ez"/>
                             </connections>
@@ -1323,15 +1324,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juK-VP-Vgk">
-                                <rect key="frame" x="279" y="79" width="42" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="231" horizontalCompressionResistancePriority="748" image="strip" translatesAutoresizingMaskIntoConstraints="NO" id="DeX-NN-P4g">
+                                <rect key="frame" x="111" y="60" width="378" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="xy1-BY-FrV"/>
+                                    <constraint firstAttribute="width" constant="378" id="rhh-vN-HG5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак зодиака ребенка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-1h-QuX">
                                 <rect key="frame" x="180" y="123" width="240" height="21"/>
                                 <constraints>
@@ -1380,12 +1378,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="231" horizontalCompressionResistancePriority="748" image="strip" translatesAutoresizingMaskIntoConstraints="NO" id="DeX-NN-P4g">
-                                <rect key="frame" x="111" y="64" width="378" height="51"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juK-VP-Vgk">
+                                <rect key="frame" x="279" y="79" width="42" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="378" id="rhh-vN-HG5"/>
+                                    <constraint firstAttribute="height" constant="21" id="xy1-BY-FrV"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1398,7 +1399,7 @@
                             <constraint firstItem="EqJ-x9-59O" firstAttribute="top" secondItem="xT6-1h-QuX" secondAttribute="bottom" constant="8" symbolic="YES" id="Lto-i4-S0X"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="leading" secondItem="EqJ-x9-59O" secondAttribute="leading" constant="-60" id="MN4-jX-ZST"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="top" secondItem="r6x-O1-9N4" secondAttribute="bottom" constant="15" id="NfW-xp-Juu"/>
-                            <constraint firstItem="DeX-NN-P4g" firstAttribute="centerY" secondItem="xT6-1h-QuX" secondAttribute="centerY" constant="-44" id="Tgd-yB-Ste"/>
+                            <constraint firstItem="DeX-NN-P4g" firstAttribute="centerY" secondItem="xT6-1h-QuX" secondAttribute="centerY" constant="-43.5" id="Tgd-yB-Ste"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="16" id="VfP-qb-ZdH"/>
                             <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="jrM-4A-Nby" secondAttribute="leading" id="Zo2-oQ-MI4"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="leading" secondItem="y5u-wF-BfT" secondAttribute="leading" id="aWn-Aw-NMH"/>
@@ -1406,7 +1407,7 @@
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="hdy-Wc-rYB"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="trailing" secondItem="EqJ-x9-59O" secondAttribute="trailing" constant="60" id="o9F-po-s0K"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="centerX" secondItem="dgO-Yk-wrg" secondAttribute="centerX" id="trm-IH-Io5"/>
-                            <constraint firstItem="DeX-NN-P4g" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="-36" id="zhI-We-7u2"/>
+                            <constraint firstItem="DeX-NN-P4g" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="-40" id="zhI-We-7u2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="Mx8-IS-U8c">
@@ -2328,6 +2329,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Arrowhead-Left-01-48" width="48" height="48"/>
         <image name="arrowUP" width="92" height="298"/>
         <image name="circle" width="128" height="128"/>
         <image name="circle_highlighted" width="2400" height="2400"/>
