@@ -141,13 +141,14 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         let image = Expression<Blob>("Image")
  
         let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
-        
+        let Date = NSDate()
         if(Type == 0){
             let table = Table("Photo")
-            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            
+            try! db.run(table.insert(date <- "\(Date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }else{
             let table = Table("Uzi")
-            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(Date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }
         /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
@@ -204,6 +205,10 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             let a = i[image] as! Blob
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
+            print(b)
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            print(dateFormatter.dateFromString(b))
             photos.append(Photo(image: UIImage(data: c)!, date: NSDate()))
         }
 

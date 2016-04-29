@@ -1087,19 +1087,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-xs-AeL" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="73" width="600" height="455"/>
+                                <rect key="frame" x="0.0" y="73" width="600" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="недели" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gH-Q1V">
+                                <rect key="frame" x="37" y="553" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="ySK-zD-vRu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ep9-xs-AeL" firstAttribute="centerX" secondItem="zNW-28-ANT" secondAttribute="centerX" id="CgT-qg-9t6"/>
+                            <constraint firstItem="J8a-gH-Q1V" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leadingMargin" constant="17" id="STG-Gy-pfm"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leading" constant="176" id="SfH-E3-JJz"/>
                             <constraint firstItem="Ep9-xs-AeL" firstAttribute="top" secondItem="8CD-zP-VZc" secondAttribute="bottom" constant="9" id="V5F-vY-7dj"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="top" secondItem="8CD-zP-VZc" secondAttribute="bottom" constant="103" id="a2z-pY-WZb"/>
                             <constraint firstAttribute="trailing" secondItem="zNW-28-ANT" secondAttribute="trailing" constant="176" id="bVN-Nv-V3k"/>
-                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="centerY" secondItem="zNW-28-ANT" secondAttribute="centerY" id="bwd-mx-fsr"/>
+                            <constraint firstItem="Ep9-xs-AeL" firstAttribute="centerY" secondItem="zNW-28-ANT" secondAttribute="centerY" constant="9" id="bwd-mx-fsr"/>
                             <constraint firstItem="Ep9-xs-AeL" firstAttribute="leading" secondItem="I7q-DO-CPd" secondAttribute="leading" id="exs-70-qvm"/>
+                            <constraint firstItem="260-wl-sz7" firstAttribute="top" secondItem="J8a-gH-Q1V" secondAttribute="bottom" constant="26" id="eyJ-8u-Lpa"/>
+                            <constraint firstItem="J8a-gH-Q1V" firstAttribute="top" secondItem="Ep9-xs-AeL" secondAttribute="bottom" constant="8" symbolic="YES" id="s5f-NV-Ygj"/>
                             <constraint firstItem="zNW-28-ANT" firstAttribute="centerY" secondItem="I7q-DO-CPd" secondAttribute="centerY" id="vH5-e8-WNh"/>
                         </constraints>
                     </view>
@@ -1115,6 +1127,7 @@
                         <outlet property="growthButton" destination="8U7-E2-ZRp" id="wFj-9i-Ps7"/>
                         <outlet property="lbl" destination="zNW-28-ANT" id="yYZ-gd-Hiy"/>
                         <outlet property="lineChartView" destination="Ep9-xs-AeL" id="621-cm-QPj"/>
+                        <outlet property="weekDescription" destination="J8a-gH-Q1V" id="sGM-IS-QCV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzf-GO-aKr" userLabel="First Responder" sceneMemberID="firstResponder"/>

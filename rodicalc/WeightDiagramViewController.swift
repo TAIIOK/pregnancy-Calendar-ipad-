@@ -30,6 +30,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet var pickerViewTextField: UITextField!
     @IBOutlet weak var growthButton: UIBarButtonItem!
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var weekDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,12 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         if (growth > 0){
             //lbl.hidden = true
             drawGraph()
+            weekDescription.hidden = false
             //drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
             //drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
         }
         else{
+            weekDescription.hidden = true
             //lbl.hidden = false
         }
     }
@@ -66,8 +69,9 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     }*/
     private func setupGraphSettings() {
         // общие настройки
-        self.lineChartView.descriptionText = "КГ"
-        self.lineChartView.descriptionTextPosition = CGPoint(x: 20, y: 60)
+        self.lineChartView.descriptionText = "кг"
+        self.lineChartView.descriptionTextPosition = CGPoint(x: 20, y: 45)
+        self.lineChartView.descriptionFont = .systemFontOfSize(11)
         self.lineChartView.noDataText = "Для отображения графика"
         self.lineChartView.noDataTextDescription = "необходимо указать рост"
         self.lineChartView.infoFont = .systemFontOfSize(18)
