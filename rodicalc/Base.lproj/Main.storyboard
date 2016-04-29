@@ -2667,50 +2667,64 @@
                                     <outlet property="calendarDelegate" destination="3pF-MW-Udw" id="B5u-M5-Ere"/>
                                 </connections>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="knu-1M-F2p">
-                                <rect key="frame" x="20" y="311" width="560" height="281"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration" label="tt"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3M-tk-Rax">
+                                <rect key="frame" x="57" y="317" width="100" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="281" id="8pA-rd-TZH"/>
+                                    <constraint firstAttribute="width" constant="100" id="qLb-Bl-25z"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdH-IU-i1P">
-                                <rect key="frame" x="20" y="266" width="560" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="0 кг">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setKg:" destination="3pF-MW-Udw" eventType="touchUpInside" id="2BZ-mj-Sen"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мой вес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdr-qJ-BMk">
+                                <rect key="frame" x="25" y="266" width="555" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g6-7C-67R">
+                                <rect key="frame" x="165" y="317" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="rnx-Et-Sea"/>
+                                </constraints>
+                                <state key="normal" title="0 г">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setGramm:" destination="3pF-MW-Udw" eventType="touchUpInside" id="mqq-05-qNM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="y3M-tk-Rax" firstAttribute="leading" secondItem="Rhb-D2-5nN" secondAttribute="leadingMargin" constant="37" id="3Bn-qz-ekH"/>
                             <constraint firstItem="Bcw-ha-nla" firstAttribute="top" secondItem="Rhb-D2-5nN" secondAttribute="top" id="3qI-iz-MgZ"/>
-                            <constraint firstItem="knu-1M-F2p" firstAttribute="centerX" secondItem="EUz-vs-CI4" secondAttribute="centerX" id="7ke-NQ-8mJ"/>
-                            <constraint firstItem="BdH-IU-i1P" firstAttribute="top" secondItem="EUz-vs-CI4" secondAttribute="bottom" constant="8" symbolic="YES" id="7oy-Ps-hFg"/>
-                            <constraint firstItem="Zjj-in-81T" firstAttribute="top" secondItem="knu-1M-F2p" secondAttribute="bottom" constant="8" symbolic="YES" id="8xa-hS-zwh"/>
+                            <constraint firstItem="Wdr-qJ-BMk" firstAttribute="top" secondItem="EUz-vs-CI4" secondAttribute="bottom" constant="8" symbolic="YES" id="6T2-lP-afl"/>
                             <constraint firstItem="CeL-fc-9ev" firstAttribute="trailing" secondItem="EUz-vs-CI4" secondAttribute="trailing" id="9W5-Aa-VMp"/>
                             <constraint firstItem="CeL-fc-9ev" firstAttribute="leading" secondItem="EUz-vs-CI4" secondAttribute="leading" id="9jB-bO-Ugn"/>
+                            <constraint firstItem="Wdr-qJ-BMk" firstAttribute="trailing" secondItem="Rhb-D2-5nN" secondAttribute="trailingMargin" id="9mT-7o-LEU"/>
                             <constraint firstItem="EUz-vs-CI4" firstAttribute="top" secondItem="CeL-fc-9ev" secondAttribute="bottom" id="B5x-7S-ha3"/>
-                            <constraint firstItem="knu-1M-F2p" firstAttribute="trailing" secondItem="BdH-IU-i1P" secondAttribute="trailing" id="D3e-oX-RRe"/>
+                            <constraint firstItem="Wdr-qJ-BMk" firstAttribute="leading" secondItem="Rhb-D2-5nN" secondAttribute="leadingMargin" constant="5" id="CCT-o5-Lxl"/>
                             <constraint firstItem="Bcw-ha-nla" firstAttribute="bottom" secondItem="Zjj-in-81T" secondAttribute="top" id="HjT-nj-dOZ"/>
-                            <constraint firstItem="knu-1M-F2p" firstAttribute="top" secondItem="BdH-IU-i1P" secondAttribute="bottom" id="LlW-lK-P9C"/>
                             <constraint firstItem="Bcw-ha-nla" firstAttribute="leading" secondItem="CeL-fc-9ev" secondAttribute="leading" id="MXm-Mm-4QL"/>
                             <constraint firstAttribute="trailing" secondItem="CeL-fc-9ev" secondAttribute="trailing" id="QZj-dO-684"/>
                             <constraint firstItem="EUz-vs-CI4" firstAttribute="top" secondItem="Rhb-D2-5nN" secondAttribute="top" constant="88" id="QdQ-gI-Nl4"/>
                             <constraint firstItem="CeL-fc-9ev" firstAttribute="leading" secondItem="Rhb-D2-5nN" secondAttribute="leading" id="Y4G-6b-XRw"/>
                             <constraint firstItem="Bcw-ha-nla" firstAttribute="trailing" secondItem="CeL-fc-9ev" secondAttribute="trailing" id="abf-9c-mRh"/>
+                            <constraint firstItem="3g6-7C-67R" firstAttribute="leading" secondItem="y3M-tk-Rax" secondAttribute="trailing" constant="8" symbolic="YES" id="bru-Zg-QGZ"/>
+                            <constraint firstItem="y3M-tk-Rax" firstAttribute="baseline" secondItem="3g6-7C-67R" secondAttribute="baseline" id="hWC-qu-kxZ"/>
+                            <constraint firstItem="y3M-tk-Rax" firstAttribute="top" secondItem="Wdr-qJ-BMk" secondAttribute="bottom" constant="30" id="iVT-xQ-Hyw"/>
                             <constraint firstAttribute="bottom" secondItem="EUz-vs-CI4" secondAttribute="bottom" constant="342" id="jCX-fT-7kC"/>
-                            <constraint firstItem="knu-1M-F2p" firstAttribute="leading" secondItem="BdH-IU-i1P" secondAttribute="leading" id="joG-d6-2Lo"/>
-                            <constraint firstItem="knu-1M-F2p" firstAttribute="leading" secondItem="Rhb-D2-5nN" secondAttribute="leadingMargin" id="kjn-jt-HUi"/>
                             <constraint firstItem="CeL-fc-9ev" firstAttribute="top" secondItem="IZM-KC-9iX" secondAttribute="bottom" id="pyQ-3Q-Ia2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C5f-5g-2r2"/>
                     <connections>
+                        <outlet property="btnGR" destination="3g6-7C-67R" id="yab-Fe-NnL"/>
+                        <outlet property="btnKG" destination="y3M-tk-Rax" id="NaF-DS-QEW"/>
                         <outlet property="calendarView" destination="EUz-vs-CI4" id="ceL-YH-Fhl"/>
                         <outlet property="menuView" destination="CeL-fc-9ev" id="yhc-Yc-Dr4"/>
                     </connections>

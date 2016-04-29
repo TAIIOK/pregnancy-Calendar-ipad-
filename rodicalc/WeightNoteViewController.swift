@@ -8,12 +8,26 @@
 
 import UIKit
 
-class WeightNoteViewController: UIViewController {
+class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
 
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
-        var shouldShowDaysOut = true
+    //@IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var pickerViewTextField: UITextField!
+    @IBOutlet var pickerView: UIPickerView!
+    
+    @IBOutlet weak var btnGR: UIButton!
+    @IBOutlet weak var btnKG: UIButton!
+    var firstComponent = [0, 1, 2]
+    var secondComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var thirdComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    var shouldShowDaysOut = true
     var animationFinished = true
+    
+    var weightKs = 0
+    var weightGramm = 0
+    var type = 0 //0-kg 1 -gr
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = CVDate(date: NSDate()).globalDescription
@@ -23,8 +37,109 @@ class WeightNoteViewController: UIViewController {
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-        self.presentedDateUpdated(CVDate(date: NSDate()))    }
+        self.presentedDateUpdated(CVDate(date: NSDate()))
+        loadWeight()
+        setupWeightPickerView()
+        setupWeightPickerViewToolbar()
+    }
+    
+    func loadWeight(){
+        
+    }
+    
+    @IBAction func setKg(sender: UIButton) {
+        type = 0
+        setupPickerViewValues()
+        self.pickerViewTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func setGramm(sender: UIButton) {
+        type = 1
+        setupPickerViewValues()
+        self.pickerViewTextField.becomeFirstResponder()
+    }
+    
+    private func setupWeightPickerView()  {
+        self.pickerViewTextField = UITextField(frame: CGRectZero)
+        self.view.addSubview(self.pickerViewTextField)
+        self.pickerView = UIPickerView(frame: CGRectMake(0, 0, 0, 0))
+        self.pickerView.showsSelectionIndicator = true
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        self.pickerView.backgroundColor = .whiteColor()
+        self.pickerViewTextField.inputView = pickerView
+    }
+    
+    private func setupPickerViewValues() {
+        var rowIndex = 0
+        if type == 0{
+            rowIndex = weightKs
+        }else {
+            rowIndex = weightGramm
+        }
+        self.pickerView.selectRow(rowIndex % 10, inComponent: 2, animated: true)
+        rowIndex /= 10
+        self.pickerView.selectRow(rowIndex % 10, inComponent: 1, animated: true)
+        rowIndex /= 10
+        self.pickerView.selectRow(rowIndex % 10, inComponent: 0, animated: true)
+    }
+    
+    private func setupWeightPickerViewToolbar() {
+        let toolBar = UIToolbar(frame: CGRectMake(0, 0, 320, 40))
+        toolBar.tintColor = StrawBerryColor
+        toolBar.barTintColor = .whiteColor()
+        let doneButton = UIBarButtonItem(title: "Готово", style: .Plain, target: self, action: Selector("doneButtonTouched"))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .Plain, target: self, action: Selector("cancelButtonTouched"))
+        toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
+        self.pickerViewTextField.inputAccessoryView = toolBar
+    }
+    
+    private func getWeightFromPickerView() -> Int {
+        return secondComponent[self.pickerView.selectedRowInComponent(0)]*100 + secondComponent[self.pickerView.selectedRowInComponent(1)]*10 + secondComponent[self.pickerView.selectedRowInComponent(2)]
+    }
+    
+    // MARK: - UIPickerView
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 && type == 0{
+            return firstComponent.count
+        } else {
+            return secondComponent.count
+        }
+        
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 && type == 0{
+            return "\(firstComponent[row])"
+        } else {
+            return "\(secondComponent[row])"
+        }
+    }
+    
+    func doneButtonTouched() {
+        //self.pickerViewTextField.resignFirstResponder()
+        
+        if type == 0{
+            weightKs = getWeightFromPickerView()
+            self.btnKG.setTitle("\(weightKs) кг", forState: UIControlState.Normal)
+        }else{
+            weightGramm = getWeightFromPickerView()
+            self.btnGR.setTitle("\(weightGramm) г", forState: UIControlState.Normal)
+        }
 
+        //setupPickerViewValues()
+        self.pickerViewTextField.resignFirstResponder()
+    }
+    
+    func cancelButtonTouched() {
+        self.pickerViewTextField.resignFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
