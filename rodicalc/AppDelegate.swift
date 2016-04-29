@@ -15,6 +15,8 @@ import Crashlytics
 let StrawBerryColor = UIColor(red: 255/255.0, green: 34/255.0, blue: 89/255.0, alpha: 1.0)
 let userGrowth = "userGrowth"
 var db = try! Connection()
+
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,8 +41,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
+        dispatch_async(dispatch_get_main_queue(), { self.getVideoDetails() })
+       
         return true
     }
+    
+
+    
+    func getVideoDetails() {
+        for (var i = 0 ; i < videosDress.count ; i += 1 ) {
+        
+        let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosDress[i])&format=json"
+           
+            let url: NSURL = NSURL(string: urlPath)!
+            let request1: NSURLRequest = NSURLRequest(URL: url)
+            let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+            
+            do{
+                
+                let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+                
+                print(response)
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+                        
+                        let url = NSURL(string:  (jsonResult.valueForKey("thumbnail_url") as? String)! )!
+                        let imageData = NSData(contentsOfURL: url)
+                        let Image: UIImage! = UIImage(data:imageData!)
+                        imagesfirst.insert(Image, atIndex: imagesfirst.count)
+                        let name = jsonResult.valueForKey("title") as! String
+                        videoTitlefirst.insert(name, atIndex: videoTitlefirst.count)
+                        print(imagesfirst.count)
+                        print(videoTitlefirst.count)
+                        
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+        
+                
+            }catch let error as NSError
+            {
+                print(error.localizedDescription)
+            }
+            
+        }
+
+        
+        for (var i = 0 ; i < videosGym.count ; i += 1 ) {
+            
+            let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosGym[i])&format=json"
+            
+            
+            let url: NSURL = NSURL(string: urlPath)!
+            let request1: NSURLRequest = NSURLRequest(URL: url)
+            let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+            
+            do{
+                
+                let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+                
+                print(response)
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+                        
+                        let url = NSURL(string:  (jsonResult.valueForKey("thumbnail_url") as? String)! )!
+                        let imageData = NSData(contentsOfURL: url)
+                        let Image: UIImage! = UIImage(data:imageData!)
+                        imagessecond.insert(Image, atIndex: i)
+                        let name = jsonResult.valueForKey("title") as! String
+                        videoTitlesecond.insert(name, atIndex: i)
+                        print(imagessecond.count)
+                        print(videoTitlesecond.count)
+                        
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                
+            }catch let error as NSError
+            {
+                print(error.localizedDescription)
+            }
+            
+        }
+
+        
+        
+        
+        
+    }
+    
     
     private func createEditableCopyOfDatabaseIfNeeded() -> Void
     {

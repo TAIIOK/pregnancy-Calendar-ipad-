@@ -42,12 +42,21 @@ let videosGym = ["iBzR_TNrWMI",
                  "-2jV00pq8Iw",
                  "QELTjHFHqxg"]
 
+var videoTitlefirst = [String]()
+var imagesfirst = [UIImage]()
+
+
+var imagessecond = [UIImage]()
+var videoTitlesecond = [String]()
+
+
 var videoIndex = 0
 var choosedVideoSegment = true // true: dress, false: gym
 
 class VideosViewController: UICollectionViewController {
 
     
+
     @IBOutlet weak var web: UIWebView!
 
     @IBOutlet weak var playerView: YouTubePlayerView!
@@ -84,8 +93,8 @@ class VideosViewController: UICollectionViewController {
         
         
         
-        VideoCell.photo.image = choosedVideoSegment ? UIImage(named: "\(indexPath.row).jpg") : UIImage(named: "\(indexPath.row).png")
-        VideoCell.title.text = "\(indexPath.row)"
+        VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
+        VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
         return VideoCell
     }
     
