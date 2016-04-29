@@ -866,7 +866,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "rodicalc" */;
+			buildConfigurationList = 8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "Календарь беременности" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1366,7 +1366,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "rodicalc" */ = {
+		8E90A40A1C7DF093001F3A07 /* Build configuration list for PBXProject "Календарь беременности" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E90A4381C7DF093001F3A07 /* Debug */,

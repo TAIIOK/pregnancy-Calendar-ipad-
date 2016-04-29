@@ -35,6 +35,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
         growth = loadGrowthFromCoreData()
+        loadWeight()
         self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
@@ -52,6 +53,17 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         }
     }
 
+    func loadWeight(){
+        var table = Table("WeightNote")
+        let date = Expression<String>("Date")
+        let w = Expression<Double>("Weight")
+        for i in try! db.prepare(table) {
+            //mass = i[w]
+            //let c = NSData(bytes: a.bytes, length: a.bytes.count)
+            //let b = i[date]
+        }
+
+    }
     /**
      * Line chart delegate method.
     */
