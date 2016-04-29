@@ -19,6 +19,7 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        table.backgroundColor = .clearColor()
         if(Reachability.isConnectedToNetwork()==true){
             self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
             table.delegate = self
@@ -48,6 +49,7 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.textColor=UIColor.blueColor()
         cell.selectionStyle=UITableViewCellSelectionStyle.None
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+        cell.backgroundColor = .clearColor()
         return cell
     }
     

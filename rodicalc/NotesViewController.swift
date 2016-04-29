@@ -29,13 +29,11 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tbl.delegate = self
         tbl.dataSource = self
+        tbl.backgroundColor = .clearColor()
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
-        
 
-        
-        
         
         //WorkWithDB()
     }
@@ -203,6 +201,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             break
             default: break
         }
+        cell.backgroundColor = .clearColor()
         return cell
     }
     

@@ -102,8 +102,6 @@
 		8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */; };
 		8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */; };
 		8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4521C7DF381001F3A07 /* NamesViewController.swift */; };
-		8EEAC2EF1CCE0E21007B4643 /* watchP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2ED1CCE0E21007B4643 /* watchP.jpg */; };
-		8EEAC2F01CCE0E21007B4643 /* watchG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2EE1CCE0E21007B4643 /* watchG.jpg */; };
 		8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31B1CCE542F007B4643 /* Blob.swift */; };
 		8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31C1CCE542F007B4643 /* Connection.swift */; };
@@ -341,8 +339,6 @@
 		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
-		8EEAC2ED1CCE0E21007B4643 /* watchP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watchP.jpg; sourceTree = "<group>"; };
-		8EEAC2EE1CCE0E21007B4643 /* watchG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watchG.jpg; sourceTree = "<group>"; };
 		8EEAC2FB1CCE508E007B4643 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		8EEAC31B1CCE542F007B4643 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
@@ -548,7 +544,6 @@
 			isa = PBXGroup;
 			children = (
 				A01028CB1CD227B0005E339F /* html */,
-				8EEAC2E81CCE0E0D007B4643 /* watch */,
 				A02058871CC8C45F00C70691 /* zodiac */,
 				8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */,
 				8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */,
@@ -636,15 +631,6 @@
 				8EEAC2A71CBBB8FC007B4643 /* ChartsTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8EEAC2E81CCE0E0D007B4643 /* watch */ = {
-			isa = PBXGroup;
-			children = (
-				8EEAC2ED1CCE0E21007B4643 /* watchP.jpg */,
-				8EEAC2EE1CCE0E21007B4643 /* watchG.jpg */,
-			);
-			name = watch;
 			sourceTree = "<group>";
 		};
 		8EEAC3191CCE542F007B4643 /* SQLite */ = {
@@ -937,7 +923,6 @@
 				8E1AC9A31CA960820091D8BB /* 1.png in Resources */,
 				8E1AC9A41CA960820091D8BB /* 2.png in Resources */,
 				8E1AC9A51CA960820091D8BB /* 3.png in Resources */,
-				8EEAC2F01CCE0E21007B4643 /* watchG.jpg in Resources */,
 				A01D66F61CD0F826004960CD /* photo.xib in Resources */,
 				8E1AC9921CA960820091D8BB /* 17.jpg in Resources */,
 				8E1DD60F1CB6894700D55893 /* names.json in Resources */,
@@ -973,7 +958,6 @@
 				A01028D61CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg in Resources */,
 				A01D66F71CD0F826004960CD /* temp.png in Resources */,
 				8E1AC98F1CA960820091D8BB /* 14.jpg in Resources */,
-				8EEAC2EF1CCE0E21007B4643 /* watchP.jpg in Resources */,
 				8E1AC9911CA960820091D8BB /* 16.jpg in Resources */,
 				8E1AC9931CA960820091D8BB /* 18.jpg in Resources */,
 				8E5A6BAD1CD20C7D0073B693 /* 4z.jpg in Resources */,

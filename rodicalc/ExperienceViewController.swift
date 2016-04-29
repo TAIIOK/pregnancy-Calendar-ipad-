@@ -164,7 +164,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tbl.backgroundColor = .clearColor()
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
         
@@ -231,7 +231,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textLabel?.text = articles[indexPath.row]
             cell.detailTextLabel?.text = artticlessub[indexPath.row]
         }
-        
+        cell.backgroundColor = .clearColor()
         return cell
     }
     

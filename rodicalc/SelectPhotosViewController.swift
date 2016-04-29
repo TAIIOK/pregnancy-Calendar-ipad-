@@ -15,6 +15,8 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     var selected = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        PhotoCollectionView.backgroundColor = .clearColor()
         /*
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))

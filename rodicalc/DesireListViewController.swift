@@ -24,6 +24,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         tbl.delegate = self
         tbl.dataSource = self
+        tbl.backgroundColor = .clearColor()
         self.title = CVDate(date: NSDate()).globalDescription
         NoteTitle.text = notes[NoteType]
         if selectedNoteDay != nil {
@@ -66,6 +67,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
         }else{
             cell.textField.hidden = false
             cell.textField.text = Desires[indexPath.row]}
+        cell.backgroundColor = .clearColor()
         return cell
     }
 

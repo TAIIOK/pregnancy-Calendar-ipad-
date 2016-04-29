@@ -29,7 +29,9 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         tbl.delegate = self
         tbl.dataSource = self
+        tbl.backgroundColor = .clearColor()
         self.presentedDateUpdated(CVDate(date: NSDate()))
+
         /*if Back {
             let a = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CalcViewController.Cancel))
             a.tintColor = UIColor.whiteColor()
@@ -121,6 +123,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         else{
             cell.detailTextLabel?.text = "не выбрано"
         }
+        cell.backgroundColor = .clearColor()
         cell.tintColor = UIColor.lightGrayColor()
         cell.detailTextLabel?.tintColor = UIColor.lightGrayColor()
         return cell
