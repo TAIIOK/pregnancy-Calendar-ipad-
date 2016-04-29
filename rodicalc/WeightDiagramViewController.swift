@@ -90,7 +90,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.lineChartView.noDataText = "Для отображения графика"
         self.lineChartView.noDataTextDescription = "необходимо указать рост"
         self.lineChartView.infoFont = .systemFontOfSize(18)
-        self.lineChartView.infoTextColor = UIColor.cyanColor()
+        self.lineChartView.infoTextColor = BiruzaColor
         self.lineChartView.scaleXEnabled = true
         self.lineChartView.scaleYEnabled = false
         self.lineChartView.pinchZoomEnabled = true
@@ -136,10 +136,10 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
       }
     
     private func setRecommendSetStyle(lineChartDataSet: LineChartDataSet) {
-        lineChartDataSet.setColor(.cyanColor())
-        lineChartDataSet.fillColor = .cyanColor()
-        lineChartDataSet.setCircleColor(.cyanColor())
-        lineChartDataSet.circleHoleColor = .cyanColor()
+        lineChartDataSet.setColor(BiruzaColor)
+        lineChartDataSet.fillColor = BiruzaColor
+        lineChartDataSet.setCircleColor(BiruzaColor)
+        lineChartDataSet.circleHoleColor = BiruzaColor
         lineChartDataSet.lineWidth = 1
         lineChartDataSet.circleRadius = 6
         lineChartDataSet.valueFont = .systemFontOfSize(0)

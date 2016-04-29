@@ -31,16 +31,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-Ct-nF7">
-                                                    <rect key="frame" x="55" y="8" width="186" height="125"/>
+                                                    <rect key="frame" x="78" y="26" width="132" height="89"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="186" id="Prt-PK-IH4"/>
+                                                        <constraint firstAttribute="width" constant="132" id="Prt-PK-IH4"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="top" secondItem="kt1-8H-nbQ" secondAttribute="topMargin" id="2bs-n6-uke"/>
+                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="top" secondItem="kt1-8H-nbQ" secondAttribute="topMargin" constant="18" id="2bs-n6-uke"/>
                                                 <constraint firstItem="tBP-Ct-nF7" firstAttribute="centerY" secondItem="kt1-8H-nbQ" secondAttribute="centerY" id="Psk-jC-Co6"/>
-                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="leading" secondItem="kt1-8H-nbQ" secondAttribute="leading" constant="55" id="XcV-T4-5aG"/>
+                                                <constraint firstItem="tBP-Ct-nF7" firstAttribute="leading" secondItem="kt1-8H-nbQ" secondAttribute="leading" constant="78" id="XcV-T4-5aG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +59,7 @@
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313725490198" green="0.058823529411764705" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -82,7 +82,7 @@
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -105,7 +105,7 @@
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -127,7 +127,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ГРАФИК НАБОРА ВЕСА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-Bt-Q7F">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -149,7 +149,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ФОТОАЛЬБОМ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItU-ng-xsp">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -171,7 +171,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ВИДЕОТЕКА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7T-9X-LWc">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -193,7 +193,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЗАМЕТКИ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3x-Tg-0Q6">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -215,7 +215,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ФОРУМ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBH-JI-MUF">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -237,7 +237,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ПОЛЕЗНЫЙ ОПЫТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pif-LH-Qrt">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -259,7 +259,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="КАЛЕНДАРЬ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyf-UL-P0j">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -281,7 +281,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="КУПИТЬ БЕЛЬЕ ФЭСТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-WY-xxi">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -303,7 +303,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЭКСПОРТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To9-G4-r6u">
                                                     <rect key="frame" x="59" y="11" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -1329,7 +1329,7 @@
                                     <constraint firstAttribute="height" constant="21" id="xy1-BY-FrV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак зодиака ребенка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-1h-QuX">
@@ -1380,17 +1380,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="231" horizontalCompressionResistancePriority="748" image="strip" translatesAutoresizingMaskIntoConstraints="NO" id="DeX-NN-P4g">
+                                <rect key="frame" x="111" y="64" width="378" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="378" id="rhh-vN-HG5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="top" secondItem="jrM-4A-Nby" secondAttribute="bottom" constant="8" symbolic="YES" id="1rZ-M0-x30"/>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="trailing" secondItem="QrC-Rd-H0b" secondAttribute="trailingMargin" id="8eQ-PR-BJN"/>
+                            <constraint firstItem="DeX-NN-P4g" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="EKO-M9-Smz"/>
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="Ecu-lf-ydI"/>
                             <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="25" id="JN2-aB-4By"/>
                             <constraint firstAttribute="bottom" secondItem="dgO-Yk-wrg" secondAttribute="bottom" constant="20" symbolic="YES" id="KjQ-Qu-Il8"/>
                             <constraint firstItem="EqJ-x9-59O" firstAttribute="top" secondItem="xT6-1h-QuX" secondAttribute="bottom" constant="8" symbolic="YES" id="Lto-i4-S0X"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="leading" secondItem="EqJ-x9-59O" secondAttribute="leading" constant="-60" id="MN4-jX-ZST"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="top" secondItem="r6x-O1-9N4" secondAttribute="bottom" constant="15" id="NfW-xp-Juu"/>
+                            <constraint firstItem="DeX-NN-P4g" firstAttribute="centerY" secondItem="xT6-1h-QuX" secondAttribute="centerY" constant="-44" id="Tgd-yB-Ste"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="16" id="VfP-qb-ZdH"/>
                             <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="jrM-4A-Nby" secondAttribute="leading" id="Zo2-oQ-MI4"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="leading" secondItem="y5u-wF-BfT" secondAttribute="leading" id="aWn-Aw-NMH"/>
@@ -1398,6 +1406,7 @@
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="hdy-Wc-rYB"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="trailing" secondItem="EqJ-x9-59O" secondAttribute="trailing" constant="60" id="o9F-po-s0K"/>
                             <constraint firstItem="jrM-4A-Nby" firstAttribute="centerX" secondItem="dgO-Yk-wrg" secondAttribute="centerX" id="trm-IH-Io5"/>
+                            <constraint firstItem="DeX-NN-P4g" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="-36" id="zhI-We-7u2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="Mx8-IS-U8c">
@@ -1451,7 +1460,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-FY-cn5">
                                 <rect key="frame" x="231" y="477" width="330" height="42"/>
-                                <color key="backgroundColor" red="0.27040867930000001" green="0.85893243990000001" blue="0.90912815160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Vc9-y9-lob"/>
                                     <constraint firstAttribute="width" constant="330" id="XrE-Zp-tqz"/>
@@ -1801,7 +1810,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1U-XF-Qi1">
                                 <rect key="frame" x="135" y="503" width="330" height="42"/>
-                                <color key="backgroundColor" red="0.27040867930000001" green="0.85893243990000001" blue="0.90912815160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.74117647058823533" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="2lW-FA-pXF"/>
                                     <constraint firstAttribute="height" constant="42" id="tXU-uH-FS5"/>
@@ -2323,9 +2332,10 @@
         <image name="circle" width="128" height="128"/>
         <image name="circle_highlighted" width="2400" height="2400"/>
         <image name="fb_icon" width="1024" height="1024"/>
-        <image name="logo" width="112" height="63"/>
+        <image name="logo" width="345" height="182"/>
         <image name="mail_icon" width="118" height="118"/>
         <image name="ok_icon" width="700" height="700"/>
+        <image name="strip" width="900" height="185"/>
         <image name="vk_icon" width="445" height="445"/>
         <image name="watchG.jpg" width="450" height="450"/>
         <image name="watchP.jpg" width="450" height="450"/>
