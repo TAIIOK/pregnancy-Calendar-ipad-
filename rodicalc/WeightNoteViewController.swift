@@ -1,5 +1,5 @@
 //
-//  FoodViewController.swift
+//  WeightNoteViewController.swift
 //  Календарь беременности
 //
 //  Created by deck on 29.04.16.
@@ -8,14 +8,11 @@
 
 import UIKit
 
-class FoodViewController: UIViewController {
+class WeightNoteViewController: UIViewController {
 
-    @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
-    @IBOutlet weak var FoodTable: UITableView!
-    @IBOutlet weak var PaRTable: UITableView!
-    
-    var shouldShowDaysOut = true
+    @IBOutlet weak var menuView: CVCalendarMenuView!
+        var shouldShowDaysOut = true
     var animationFinished = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +23,13 @@ class FoodViewController: UIViewController {
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-        self.presentedDateUpdated(CVDate(date: NSDate()))
-        // Do any additional setup after loading the view.
-    }
+        self.presentedDateUpdated(CVDate(date: NSDate()))    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -45,9 +39,21 @@ class FoodViewController: UIViewController {
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
     }
+    override func viewWillDisappear(animated: Bool) {
+
+        let table = Table("WeightNote")
+        let Date = Expression<String>("Date")
+        let Weight = Expression<Double>("Weight")
+        let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
+        if count == 0 {
+            try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+        }else{
+            try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+        }
+    }
 }
 
-extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -295,7 +301,7 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension FoodViewController: CVCalendarViewAppearanceDelegate {
+extension WeightNoteViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -307,7 +313,7 @@ extension FoodViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension FoodViewController {
+extension WeightNoteViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -344,7 +350,7 @@ extension FoodViewController {
 
 // MARK: - Convenience API Demo
 
-extension FoodViewController {
+extension WeightNoteViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
@@ -375,4 +381,5 @@ extension FoodViewController {
         
         print("Showing Month: \(components.month)")
     }
+    
 }

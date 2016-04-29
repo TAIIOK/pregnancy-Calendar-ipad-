@@ -83,6 +83,7 @@
 		8E5A6BBB1CD22DF50073B693 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */; };
 		8E5A6BC31CD25BFA0073B693 /* webArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */; };
 		8E5A6BCE1CD3CAA90073B693 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */; };
+		8E5A6BD01CD3EC030073B693 /* WeightNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BCF1CD3EC030073B693 /* WeightNoteViewController.swift */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -313,6 +314,7 @@
 		8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webArticleViewController.swift; sourceTree = "<group>"; };
 		8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		8E5A6BCF1CD3EC030073B693 /* WeightNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightNoteViewController.swift; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				8E6D50381C7F056200878957 /* VideosViewController.swift */,
 				8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */,
 				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
+				8E5A6BCF1CD3EC030073B693 /* WeightNoteViewController.swift */,
 				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
 				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
 				8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */,
@@ -1043,6 +1046,7 @@
 				8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */,
 				A010290A1CD29E0B005E339F /* CVCalendarMenuViewDelegate.swift in Sources */,
 				8EEAC33D1CCE542F007B4643 /* AggregateFunctions.swift in Sources */,
+				8E5A6BD01CD3EC030073B693 /* WeightNoteViewController.swift in Sources */,
 				A01029041CD29E0B005E339F /* CVAuxiliaryView.swift in Sources */,
 				8E1AC9191CA937B30091D8BB /* VideoCollectionViewCell.swift in Sources */,
 				A010290F1CD29E0B005E339F /* CVCalendarViewAnimator.swift in Sources */,

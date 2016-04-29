@@ -230,7 +230,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             break
         case 3:
-            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WeightNote")
             self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 4:
