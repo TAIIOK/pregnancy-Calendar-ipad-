@@ -46,46 +46,46 @@ class ShowZodiacViewController: UIViewController {
         var month = ""
         switch components.month {
         case 1:
-            month = "января"
+            month = "ЯНВАРЯ"
             break
         case 2:
-            month = "февраля"
+            month = "ФЕВРАЛЯ"
             break
         case 3:
-            month = "марта"
+            month = "МАРТА"
             break
         case 4:
-            month = "апреля"
+            month = "АПРЕЛЯ"
             break
         case 5:
-            month = "мая"
+            month = "МАЯ"
             break
         case 6:
-            month = "июня"
+            month = "ИЮНЯ"
             break
         case 7:
-            month = "июля"
+            month = "ИЮЛЯ"
             break
         case 8:
-            month =  "августа"
+            month =  "АВГУСТА"
             break
         case 9:
-            month =  "сентября"
+            month =  "СЕНТЯБРЯ"
             break
         case 10:
-            month =  "октября"
+            month =  "ОКТЯБРЯ"
             break
         case 11:
-            month = "ноября"
+            month = "НОЯБРЯ"
             break
         case 12:
-            month = "декабря"
+            month = "ДЕКАБРЯ"
             break
         default:
             break
         }
 
-        birthDate.text = "\(components.day) \(month) \(components.year)"
+        birthDate.text = "\(components.day) \(month) \(components.year) ГОДА"
         let zodiac = searchZodiac(date)
         zodiacName.text = zodiacs[zodiac].name
         zodiacElement.text = zodiacs[zodiac].element

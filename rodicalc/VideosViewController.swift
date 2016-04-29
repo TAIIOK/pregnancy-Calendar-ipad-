@@ -64,6 +64,8 @@ class VideosViewController: UICollectionViewController {
     @IBOutlet weak var VideoChanger: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        VideoCollectionView.backgroundColor = .clearColor()
     }
     
     @IBAction func ChangeSegment(sender: AnyObject) {
@@ -93,8 +95,14 @@ class VideosViewController: UICollectionViewController {
         
         
         
+<<<<<<< HEAD
         VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
         VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
+=======
+        VideoCell.photo.image = choosedVideoSegment ? UIImage(named: "\(indexPath.row).jpg") : UIImage(named: "\(indexPath.row).png")
+        VideoCell.title.text = "\(indexPath.row)"
+        VideoCell.backgroundColor = .clearColor()
+>>>>>>> origin/master
         return VideoCell
     }
     

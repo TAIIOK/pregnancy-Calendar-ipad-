@@ -87,7 +87,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if(Reachability.isConnectedToNetwork()==true){
             tbl.delegate = self
             tbl.dataSource = self
-            
+            tbl.backgroundColor = .clearColor()
             map.delegate = self
             // Ask for Authorisation from the User.
             if #available(iOS 8.0, *) {
@@ -288,6 +288,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let cell = tableView.dequeueReusableCellWithIdentifier("WildCell", forIndexPath: indexPath) as! TableViewCell
             cell.textLabel?.text = "WILDBERRIELS"
             cell.detailTextLabel?.text = "интернет-магазин"
+            cell.backgroundColor = .clearColor()
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("MagCell", forIndexPath: indexPath)
@@ -295,6 +296,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             myMutableString = NSMutableAttributedString(string: nearPoints[indexPath.row].trade_point + "\nАдрес: " + nearPoints[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
             myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:nearPoints[indexPath.row].trade_point.characters.count+8,length:nearPoints[indexPath.row].address.characters.count))
             cell.textLabel?.attributedText = myMutableString
+            cell.backgroundColor = .clearColor()
             return cell
         }
     }

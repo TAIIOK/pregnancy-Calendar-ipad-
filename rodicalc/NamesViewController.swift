@@ -31,6 +31,7 @@ var sectionsGirl : [(index: Int, length :Int, title: String)] = Array()
 
 class NamesTableViewController: UITableViewController {
     
+    @IBOutlet var table: UITableView!
     @IBOutlet weak var changer: UISegmentedControl!
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
@@ -45,6 +46,8 @@ class NamesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        table.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        table.backgroundColor = .clearColor()
         WorkWithJSON();
         sections = AddSect(man)
         sectionsGirl = AddSect(woman)
@@ -130,6 +133,7 @@ class NamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)        
         cell.textLabel?.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].name : woman[sectionsGirl[indexPath.section].index + indexPath.row].name
+        cell.backgroundColor = .clearColor()
         return cell
     }
     

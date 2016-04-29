@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tbl.delegate = self
         tbl.dataSource = self
+        tbl.backgroundColor = .clearColor()
         loadDate()
         
         self.presentedDateUpdated(CVDate(date: NSDate()))
@@ -60,6 +61,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             break
         }
         }
+        cell.backgroundColor = .clearColor()
         return cell
     }
     

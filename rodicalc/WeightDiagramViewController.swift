@@ -21,6 +21,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     //var label1 = UILabel()
     var views: [String: AnyObject] = [:]
 
+    @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var lbl: UILabel!
     let IMT0: [Double] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
     let IMT1: [Double] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
@@ -46,9 +47,11 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             weekDescription.hidden = false
             //drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
             //drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
+            arrow.hidden = true
         }
         else{
             weekDescription.hidden = true
+            arrow.hidden = false
             //lbl.hidden = false
         }
     }
@@ -87,7 +90,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.lineChartView.noDataText = "Для отображения графика"
         self.lineChartView.noDataTextDescription = "необходимо указать рост"
         self.lineChartView.infoFont = .systemFontOfSize(18)
-        self.lineChartView.infoTextColor = UIColor.cyanColor()
+        self.lineChartView.infoTextColor = BiruzaColor
         self.lineChartView.scaleXEnabled = true
         self.lineChartView.scaleYEnabled = false
         self.lineChartView.pinchZoomEnabled = true
@@ -133,10 +136,10 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
       }
     
     private func setRecommendSetStyle(lineChartDataSet: LineChartDataSet) {
-        lineChartDataSet.setColor(.cyanColor())
-        lineChartDataSet.fillColor = .cyanColor()
-        lineChartDataSet.setCircleColor(.cyanColor())
-        lineChartDataSet.circleHoleColor = .cyanColor()
+        lineChartDataSet.setColor(BiruzaColor)
+        lineChartDataSet.fillColor = BiruzaColor
+        lineChartDataSet.setCircleColor(BiruzaColor)
+        lineChartDataSet.circleHoleColor = BiruzaColor
         lineChartDataSet.lineWidth = 1
         lineChartDataSet.circleRadius = 6
         lineChartDataSet.valueFont = .systemFontOfSize(0)

@@ -56,6 +56,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        PhotoCollectionView.backgroundColor = .clearColor()
         if choosedSegmentImages{
             changer.selectedSegmentIndex = 0
         }else{
