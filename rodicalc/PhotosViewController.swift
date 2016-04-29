@@ -205,11 +205,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             let a = i[image] as! Blob
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
-            print(b)
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy.MM.dd"
-            print(dateFormatter.dateFromString(b))
-            photos.append(Photo(image: UIImage(data: c)!, date: NSDate()))
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            photos.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
         }
 
         table = Table("Uzi")
@@ -217,7 +215,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             let a = i[image] as! Blob
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
-            uzis.append(Photo(image: UIImage(data: c)!, date: NSDate()))
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            uzis.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
         }
     }
     

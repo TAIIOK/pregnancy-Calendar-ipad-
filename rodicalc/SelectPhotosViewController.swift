@@ -177,6 +177,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         
         for var i in uzis{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+            let dateFormatter = NSDateFormatter()
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }
         /*let appDelegate =

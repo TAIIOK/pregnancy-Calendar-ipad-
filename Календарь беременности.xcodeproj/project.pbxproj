@@ -323,17 +323,17 @@
 		8E6D50401C7F068000878957 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8E6D50421C7F06BE00878957 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		8E6D50441C7F06D300878957 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
-		8E90A40F1C7DF093001F3A07 /* rodicalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rodicalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A40F1C7DF093001F3A07 /* Календарь беременности.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Календарь беременности.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E90A41A1C7DF093001F3A07 /* rodicalc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rodicalc.xcdatamodel; sourceTree = "<group>"; };
 		8E90A41C1C7DF093001F3A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E90A41F1C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E90A4211C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A4261C7DF093001F3A07 /* Календарь беременности.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Календарь беременности.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A42A1C7DF093001F3A07 /* rodicalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcTests.swift; sourceTree = "<group>"; };
 		8E90A42C1C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rodicalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E90A4311C7DF093001F3A07 /* Календарь беременности.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Календарь беременности.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4351C7DF093001F3A07 /* rodicalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rodicalcUITests.swift; sourceTree = "<group>"; };
 		8E90A4371C7DF093001F3A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
@@ -537,9 +537,9 @@
 		8E90A4101C7DF093001F3A07 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8E90A40F1C7DF093001F3A07 /* rodicalc.app */,
-				8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */,
-				8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */,
+				8E90A40F1C7DF093001F3A07 /* Календарь беременности.app */,
+				8E90A4261C7DF093001F3A07 /* Календарь беременности.xctest */,
+				8E90A4311C7DF093001F3A07 /* Календарь беременности.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -786,9 +786,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8E90A40E1C7DF093001F3A07 /* rodicalc */ = {
+		8E90A40E1C7DF093001F3A07 /* Календарь беременности */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalc" */;
+			buildConfigurationList = 8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременности" */;
 			buildPhases = (
 				8E90A40B1C7DF093001F3A07 /* Sources */,
 				8E90A40C1C7DF093001F3A07 /* Frameworks */,
@@ -801,14 +801,14 @@
 			dependencies = (
 				A01D67061CD0FF97004960CD /* PBXTargetDependency */,
 			);
-			name = rodicalc;
+			name = "Календарь беременности";
 			productName = rodicalc;
-			productReference = 8E90A40F1C7DF093001F3A07 /* rodicalc.app */;
+			productReference = 8E90A40F1C7DF093001F3A07 /* Календарь беременности.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8E90A4251C7DF093001F3A07 /* rodicalcTests */ = {
+		8E90A4251C7DF093001F3A07 /* Календарь беременностиTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcTests" */;
+			buildConfigurationList = 8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременностиTests" */;
 			buildPhases = (
 				8E90A4221C7DF093001F3A07 /* Sources */,
 				8E90A4231C7DF093001F3A07 /* Frameworks */,
@@ -819,14 +819,14 @@
 			dependencies = (
 				8E90A4281C7DF093001F3A07 /* PBXTargetDependency */,
 			);
-			name = rodicalcTests;
+			name = "Календарь беременностиTests";
 			productName = rodicalcTests;
-			productReference = 8E90A4261C7DF093001F3A07 /* rodicalcTests.xctest */;
+			productReference = 8E90A4261C7DF093001F3A07 /* Календарь беременности.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8E90A4301C7DF093001F3A07 /* rodicalcUITests */ = {
+		8E90A4301C7DF093001F3A07 /* Календарь беременностиUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcUITests" */;
+			buildConfigurationList = 8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременностиUITests" */;
 			buildPhases = (
 				8E90A42D1C7DF093001F3A07 /* Sources */,
 				8E90A42E1C7DF093001F3A07 /* Frameworks */,
@@ -837,9 +837,9 @@
 			dependencies = (
 				8E90A4331C7DF093001F3A07 /* PBXTargetDependency */,
 			);
-			name = rodicalcUITests;
+			name = "Календарь беременностиUITests";
 			productName = rodicalcUITests;
-			productReference = 8E90A4311C7DF093001F3A07 /* rodicalcUITests.xctest */;
+			productReference = 8E90A4311C7DF093001F3A07 /* Календарь беременности.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -885,9 +885,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				8E90A40E1C7DF093001F3A07 /* rodicalc */,
-				8E90A4251C7DF093001F3A07 /* rodicalcTests */,
-				8E90A4301C7DF093001F3A07 /* rodicalcUITests */,
+				8E90A40E1C7DF093001F3A07 /* Календарь беременности */,
+				8E90A4251C7DF093001F3A07 /* Календарь беременностиTests */,
+				8E90A4301C7DF093001F3A07 /* Календарь беременностиUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1144,12 +1144,12 @@
 /* Begin PBXTargetDependency section */
 		8E90A4281C7DF093001F3A07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8E90A40E1C7DF093001F3A07 /* rodicalc */;
+			target = 8E90A40E1C7DF093001F3A07 /* Календарь беременности */;
 			targetProxy = 8E90A4271C7DF093001F3A07 /* PBXContainerItemProxy */;
 		};
 		8E90A4331C7DF093001F3A07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8E90A40E1C7DF093001F3A07 /* rodicalc */;
+			target = 8E90A40E1C7DF093001F3A07 /* Календарь беременности */;
 			targetProxy = 8E90A4321C7DF093001F3A07 /* PBXContainerItemProxy */;
 		};
 		A01D67061CD0FF97004960CD /* PBXTargetDependency */ = {
@@ -1280,7 +1280,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Календарь беременности";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1305,7 +1305,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Календарь беременности";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1319,8 +1319,8 @@
 				INFOPLIST_FILE = rodicalcTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rodicalc.app/rodicalc";
+				PRODUCT_NAME = "Календарь беременности";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Календарь беременности.app/Календарь беременности";
 			};
 			name = Debug;
 		};
@@ -1331,8 +1331,8 @@
 				INFOPLIST_FILE = rodicalcTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rodicalc.app/rodicalc";
+				PRODUCT_NAME = "Календарь беременности";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Календарь беременности.app/Календарь беременности";
 			};
 			name = Release;
 		};
@@ -1344,7 +1344,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Календарь беременности";
 				TEST_TARGET_NAME = rodicalc;
 				USES_XCTRUNNER = YES;
 			};
@@ -1357,7 +1357,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cirkon.rodicalcUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Календарь беременности";
 				TEST_TARGET_NAME = rodicalc;
 				USES_XCTRUNNER = YES;
 			};
@@ -1375,7 +1375,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalc" */ = {
+		8E90A43A1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременности" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E90A43B1C7DF093001F3A07 /* Debug */,
@@ -1384,7 +1384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcTests" */ = {
+		8E90A43D1C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременностиTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E90A43E1C7DF093001F3A07 /* Debug */,
@@ -1393,7 +1393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "rodicalcUITests" */ = {
+		8E90A4401C7DF093001F3A07 /* Build configuration list for PBXNativeTarget "Календарь беременностиUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E90A4411C7DF093001F3A07 /* Debug */,
