@@ -18,7 +18,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="Ymg-6O-csc">
@@ -290,7 +289,7 @@
                                             <segue destination="kAl-Lj-NIO" kind="showDetail" id="kMg-vQ-vuk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VN9-ng-Q9P">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VN9-ng-Q9P">
                                         <rect key="frame" x="0.0" y="626" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VN9-ng-Q9P" id="qXC-tZ-LqR">
@@ -322,6 +321,18 @@
                     </tableView>
                     <connections>
                         <outlet property="cell0" destination="0ub-kp-w4L" id="Fku-cf-fuA"/>
+                        <outlet property="cell1" destination="C04-7g-tCT" id="MBM-x3-uTa"/>
+                        <outlet property="cell10" destination="t4j-Bz-dXf" id="0Y7-b3-JZh"/>
+                        <outlet property="cell11" destination="VN9-ng-Q9P" id="S7A-Em-tg7"/>
+                        <outlet property="cell2" destination="PId-gf-lNC" id="FSI-ru-57H"/>
+                        <outlet property="cell3" destination="bIv-5R-rzW" id="x3D-C5-X53"/>
+                        <outlet property="cell4" destination="ygH-YN-wR6" id="HNb-ly-ipT"/>
+                        <outlet property="cell5" destination="PTH-i4-oPf" id="Tu0-Sy-jYf"/>
+                        <outlet property="cell6" destination="LZ4-YG-eIU" id="pwx-YN-Zix"/>
+                        <outlet property="cell7" destination="IZo-u5-tcf" id="K5m-AO-LO2"/>
+                        <outlet property="cell8" destination="v2i-tO-l5B" id="cwY-kK-lVN"/>
+                        <outlet property="cell9" destination="uA1-rf-gVw" id="glO-Bb-yAA"/>
+                        <outlet property="cellLogo" destination="UIV-RC-wNg" id="gwQ-lI-5HK"/>
                         <outlet property="table" destination="t1i-kQ-01c" id="ugh-ST-8xp"/>
                     </connections>
                 </tableViewController>
