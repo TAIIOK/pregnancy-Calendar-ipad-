@@ -245,7 +245,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 7:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FoodNote")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 8:
             let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("desireNote")

@@ -82,6 +82,7 @@
 		8E5A6BB41CD20C7D0073B693 /* 11z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A6BA81CD20C7D0073B693 /* 11z.jpg */; };
 		8E5A6BBB1CD22DF50073B693 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */; };
 		8E5A6BC31CD25BFA0073B693 /* webArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */; };
+		8E5A6BCE1CD3CAA90073B693 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -311,6 +312,7 @@
 		8E5A6BA81CD20C7D0073B693 /* 11z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11z.jpg; sourceTree = "<group>"; };
 		8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webArticleViewController.swift; sourceTree = "<group>"; };
+		8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
 				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
 				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
+				8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */,
 				8E6D503C1C7F05D700878957 /* ForumViewController.swift */,
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
@@ -1064,6 +1067,7 @@
 				8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */,
 				A01029081CD29E0B005E339F /* CVCalendarManager.swift in Sources */,
 				A010291D1CD29E0B005E339F /* CVShape.swift in Sources */,
+				8E5A6BCE1CD3CAA90073B693 /* FoodViewController.swift in Sources */,
 				8E51BF1A1CA2D00200D8D739 /* CalloutAnnotation.swift in Sources */,
 				8EEAC33B1CCE542F007B4643 /* Helpers.swift in Sources */,
 				8E2538F11C84746D00B3C54E /* Plist.swift in Sources */,
