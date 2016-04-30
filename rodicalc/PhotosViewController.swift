@@ -144,13 +144,19 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
  
         let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
         let Date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: Date)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let newDate = calendar.dateFromComponents(components)
         if(Type == 0){
             let table = Table("Photo")
             
-            try! db.run(table.insert(date <- "\(Date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }else{
             let table = Table("Uzi")
-            try! db.run(table.insert(date <- "\(Date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
         }
         /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate

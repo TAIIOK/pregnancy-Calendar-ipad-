@@ -82,7 +82,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let Date = Expression<String>("Date")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
             print("дата калдаря\(selectedCalendarDay.date.convertedDate()!)")
-            print("дата калдаря\(NSDate())")
+   
+            for tmp in try! db.prepare(table.select(Date)){
+                print("дата фото \(tmp[Date])")
+            }
+            
             table = Table("Uzi")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
             break
