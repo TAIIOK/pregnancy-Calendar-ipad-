@@ -25,7 +25,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     var shouldShowDaysOut = true
     var animationFinished = true
     
-    var weightKs = 0
+    var weightKg = 0
     var weightGramm = 0
     var type = 0 //0-kg 1 -gr
     override func viewDidLoad() {
@@ -44,7 +44,16 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func loadWeight(){
-        
+        let table = Table("WeightNote")
+        let Date = Expression<String>("Date")
+        let WeightKg = Expression<Int64>("WeightKg")
+        let WeightGr = Expression<Int64>("WeightGr")
+        for tmp in try! db.prepare(table.select(WeightKg, WeightGr).filter(Date == "\(selectedNoteDay.date.convertedDate()!)")){
+            weightKg = Int(tmp[WeightKg])
+            weightGramm = Int(tmp[WeightGr])
+        }
+        self.btnKG.setTitle("\(weightKg) кг", forState: UIControlState.Normal)
+        self.btnGR.setTitle("\(weightGramm) г", forState: UIControlState.Normal)
     }
     
     @IBAction func setKg(sender: UIButton) {
@@ -73,7 +82,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     private func setupPickerViewValues() {
         var rowIndex = 0
         if type == 0{
-            rowIndex = weightKs
+            rowIndex = weightKg
         }else {
             rowIndex = weightGramm
         }
@@ -125,8 +134,8 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         //self.pickerViewTextField.resignFirstResponder()
         
         if type == 0{
-            weightKs = getWeightFromPickerView()
-            self.btnKG.setTitle("\(weightKs) кг", forState: UIControlState.Normal)
+            weightKg = getWeightFromPickerView()
+            self.btnKG.setTitle("\(weightKg) кг", forState: UIControlState.Normal)
         }else{
             weightGramm = getWeightFromPickerView()
             self.btnGR.setTitle("\(weightGramm) г", forState: UIControlState.Normal)
@@ -158,12 +167,14 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
 
         let table = Table("WeightNote")
         let Date = Expression<String>("Date")
-        let Weight = Expression<Double>("Weight")
+        let WeightKg = Expression<Int64>("WeightKg")
+        let WeightGr = Expression<Int64>("WeightGr")
+
         let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
         if count == 0 {
-            try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+            try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
         }else{
-            try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
+            try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
         }
     }
 }

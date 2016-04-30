@@ -113,9 +113,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }else if tableName == "WeightNote"{
             let table = Table("WeightNote")
             let Date = Expression<String>("Date")
-            let Weight = Expression<Double>("Weight")
-            for tmp in try! db.prepare(table.select(Weight).filter(Date == "\(date)")){
-                str = String(tmp[Weight])}
+            let WeightKg = Expression<Int64>("WeightKg")
+            let WeightGr = Expression<Int64>("WeightGr")
+            print("дата веса \(date)")
+            for tmp in try! db.prepare(table.select(WeightKg, WeightGr).filter(Date == "\(date)")){
+                str = "\(tmp[WeightKg]) кг \(tmp[WeightGr]) г"
+            }
         }
         return str
     }
