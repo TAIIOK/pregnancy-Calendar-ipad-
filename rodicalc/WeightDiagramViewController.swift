@@ -9,6 +9,19 @@
 import UIKit
 import Charts
 
+class Weight: NSObject {
+    var date: NSDate
+    var kg: Double
+    var gr: Double
+    
+    init(date: NSDate, kg: Double, gr: Double) {
+        self.date = date
+        self.kg = kg
+        self.gr = gr
+        super.init()
+    }
+}
+
 class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var growth = 0
@@ -26,6 +39,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     let IMT0: [Double] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
     let IMT1: [Double] = [0.5,0.7,1.0,1.2,1.3,1.5,1.9,2.3,3.6,4.8,5.7,6.4,7.7,8.2,9.1,10.0,10.9,11.9,12.7,13.6]
     let IMT2: [Double] = [0.5,0.5,0.6,0.7,0.8,0.9,1.0,1.4,2.3,2.9,3.4,3.9,5.0,5.4,5.9,6.4,7.3,7.9,8.6,9.1]
+    var weights: [Weight] = []
     
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var pickerViewTextField: UITextField!
@@ -59,13 +73,14 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     func loadWeight(){
         var table = Table("WeightNote")
         let date = Expression<String>("Date")
-        let w = Expression<Double>("Weight")
+        let kg = Expression<Double>("WeightKg")
+        let gr = Expression<Double>("WeightGr")
         for i in try! db.prepare(table) {
-            //mass = i[w]
-            //let c = NSData(bytes: a.bytes, length: a.bytes.count)
-            //let b = i[date]
+            let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            weights.append(Weight(date: dateFormatter.dateFromString(b)!, kg: i[kg], gr: i[gr]))
         }
-
     }
     /**
      * Line chart delegate method.

@@ -83,11 +83,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             var table = Table("Photo")
             let Date = Expression<String>("Date")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            print("дата калдаря\(selectedCalendarDay.date.convertedDate()!)")
-   
-            for tmp in try! db.prepare(table.select(Date)){
-                print("дата фото \(tmp[Date])")
-            }
             
             table = Table("Uzi")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
@@ -109,15 +104,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         BackgroundView.backgroundColor = UIColor.whiteColor()
         return BackgroundView
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        let rowcount = self.tbl.numberOfRowsInSection(0)
-        print(rowcount)
-    }
-    
+        
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.selectedBackgroundView=getCustomBackgroundView()
