@@ -8,15 +8,21 @@
 
 import UIKit
 
-class FoodViewController: UIViewController {
+class FoodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var FoodTable: UITableView!
-    @IBOutlet weak var PaRTable: UITableView!
+    @IBOutlet weak var PreferencesTable: UITableView!
+    @IBOutlet weak var RestrictionsTable: UITableView!
     
     var shouldShowDaysOut = true
     var animationFinished = true
+    
+    var Food = [String]()
+    var Preferences = [String]()
+    var Restrictions = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = CVDate(date: NSDate()).globalDescription
@@ -27,9 +33,185 @@ class FoodViewController: UIViewController {
             self.calendarView.toggleViewWithDate(date)
         }
         self.presentedDateUpdated(CVDate(date: NSDate()))
-        // Do any additional setup after loading the view.
+        
+        
+        FoodTable.delegate = self
+        FoodTable.dataSource = self
+        FoodTable.backgroundColor = .clearColor()
+        PreferencesTable.delegate = self
+        PreferencesTable.dataSource = self
+        PreferencesTable.backgroundColor = .clearColor()
+        RestrictionsTable.delegate = self
+        RestrictionsTable.dataSource = self
+        RestrictionsTable.backgroundColor = .clearColor()
+        loadData()
     }
 
+    func loadData(){
+        Food.removeAll()
+        var table = Table("Food")
+        var text = Expression<String>("Text")
+        let date = Expression<String>("Date")
+        for i in try! db.prepare(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)")) {
+            Food.append(i[text])
+        }
+        
+        Preferences.removeAll()
+        table = Table("Preferences")
+        text = Expression<String>("Text")
+
+        for i in try! db.prepare(table) {
+            Preferences.append(i[text])
+        }
+        
+        Restrictions.removeAll()
+        table = Table("Restrictions")
+        text = Expression<String>("Text")
+        for i in try! db.prepare(table) {
+            Restrictions.append(i[text])
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if tableView == FoodTable{
+            return Food.count+1
+        }else if tableView == PreferencesTable{
+            return Preferences.count+1
+        }else{
+            return Restrictions.count+1
+        }
+    }
+    
+    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if tableView == FoodTable{
+            let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell
+            if indexPath.row == Food.count{
+                cell.textField.hidden = true
+            }else{
+                cell.textField.hidden = false
+                cell.textField.text = Food[indexPath.row]}
+            cell.backgroundColor = .clearColor()
+            return cell
+        }else if tableView == PreferencesTable{
+            let cell = tableView.dequeueReusableCellWithIdentifier("PreferencesCell", forIndexPath: indexPath) as! PreferencesTableViewCell
+            if indexPath.row == Preferences.count{
+                cell.textField.hidden = true
+            }else{
+                cell.textField.hidden = false
+                cell.textField.text = Preferences[indexPath.row]}
+            cell.backgroundColor = .clearColor()
+            return cell
+
+        }else{
+            let cell = tableView.dequeueReusableCellWithIdentifier("RestrictionsCell", forIndexPath: indexPath) as! RestrictionsTableViewCell
+            if indexPath.row == Restrictions.count{
+                cell.textField.hidden = true
+            }else{
+                cell.textField.hidden = false
+                cell.textField.text = Restrictions[indexPath.row]}
+            cell.backgroundColor = .clearColor()
+            return cell
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView == FoodTable{
+            if indexPath.row == Food.count{
+                fromTableFoodInArray()
+                Food.append("")
+                self.FoodTable.reloadData()
+                fromTablePreferencesInArray()
+                fromTableRestrictionsInArray()
+            }
+        }else if tableView == PreferencesTable{
+            if indexPath.row == Preferences.count{
+                fromTablePreferencesInArray()
+                Preferences.append("")
+                self.PreferencesTable.reloadData()
+                fromTableFoodInArray()
+                fromTableRestrictionsInArray()
+            }
+        }else{
+            if indexPath.row == Restrictions.count{
+                fromTableRestrictionsInArray()
+                Restrictions.append("")
+                self.RestrictionsTable.reloadData()
+                fromTableFoodInArray()
+                fromTablePreferencesInArray()
+            }
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        fromTableFoodInArray()
+        var table = Table("Food")
+        var text = Expression<String>("Text")
+        let date = Expression<String>("Date")
+        
+        var count = try! db.scalar(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").count)
+        if count > 0{
+            try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)").delete())
+        }
+        for var i in Food{
+            if i.characters.count > 0{
+                try! db.run(table.insert(text <- "\(i)", date <- "\(selectedNoteDay.date.convertedDate()!)"))}
+        }
+
+        fromTablePreferencesInArray()
+        table = Table("Preferences")
+        count = try! db.scalar(table.count)
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        for var i in Preferences{
+            if i.characters.count > 0{
+                try! db.run(table.insert(text <- "\(i)"))}
+        }
+        
+        fromTableRestrictionsInArray()
+        table = Table("Restrictions")
+        count = try! db.scalar(table.count)
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        for var i in Restrictions{
+            if i.characters.count > 0{
+                try! db.run(table.insert(text <- "\(i)"))}
+        }
+    }
+    
+    func fromTableFoodInArray(){
+        let int = self.FoodTable.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.FoodTable.cellForRowAtIndexPath(i) as! FoodTableViewCell
+            Food[i.row] = cell.textField.text!
+        }
+    }
+    
+    func fromTablePreferencesInArray(){
+        let int = self.PreferencesTable.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.PreferencesTable.cellForRowAtIndexPath(i) as! PreferencesTableViewCell
+            Preferences[i.row] = cell.textField.text!
+        }
+    }
+    
+    func fromTableRestrictionsInArray(){
+        let int = self.RestrictionsTable.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.RestrictionsTable.cellForRowAtIndexPath(i) as! RestrictionsTableViewCell
+            Restrictions[i.row] = cell.textField.text!
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,7 +254,6 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView
-        
     }
     
     func swipedetected(){

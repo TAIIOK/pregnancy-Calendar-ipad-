@@ -76,6 +76,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
             table = Table("DoctorVisit")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            table = Table("Food")
+            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
             break
         case 1: //фото
             var table = Table("Photo")

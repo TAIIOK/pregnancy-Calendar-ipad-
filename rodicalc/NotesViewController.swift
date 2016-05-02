@@ -193,7 +193,11 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 7: //мое меню на сегодня - несколько списков
-            cell.detailTextLabel?.text = "Нет заметок"
+            if returnFoodCount(date) > 0 {
+                cell.detailTextLabel?.text = "\(returnFoodCount(date)) желаний"
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
         case 8: //мой "лист желаний" - список - не превязаны ко дню
             if returnDesireCount() > 0 {
@@ -212,6 +216,13 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let table = Table("DesireList")
         return try! db.scalar(table.count)
     }
+    
+    func returnFoodCount(date: NSDate)->Int{
+        let table = Table("Food")
+        let Date = Expression<String>("Date")
+        return try! db.scalar(table.filter(Date == "\(date)").count)
+    }
+    
     private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
         BackgroundView.backgroundColor = UIColor.whiteColor()
