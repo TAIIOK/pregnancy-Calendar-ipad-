@@ -34,7 +34,7 @@ class ShowZodiacViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         WorkWithJSON()
-        var date = selectedDay.date.convertedDate()!
+        var date = BirthDate//selectedDay.date.convertedDate()!
         if dateType == 0{
             date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
         }

@@ -8,16 +8,19 @@
 
 import UIKit
 import Charts
+import CoreData
 
 class Weight: NSObject {
     var date: NSDate
-    var kg: Double
-    var gr: Double
+    var kg: Int
+    var gr: Int
+    var week: Int
     
-    init(date: NSDate, kg: Double, gr: Double) {
+    init(date: NSDate, kg: Int, gr: Int, week: Int) {
         self.date = date
         self.kg = kg
         self.gr = gr
+        self.week = week
         super.init()
     }
 }
@@ -33,7 +36,8 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     //var label = UILabel()
     //var label1 = UILabel()
     var views: [String: AnyObject] = [:]
-
+var BirthDate = NSDate()
+    
     @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var lbl: UILabel!
     let IMT0: [Double] = [0.5,0.9,1.4,1.6,1.8,2.0,2.7,3.2,4.5,5.4,6.8,7.7,8.6,9.8,10.2,11.3,12.5,13.6,14.5,15.2]
@@ -50,6 +54,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
         growth = loadGrowthFromCoreData()
+        loadDate()
         loadWeight()
         self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         setupGrowthPickerView()
@@ -73,16 +78,23 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     func loadWeight(){
         var table = Table("WeightNote")
         let date = Expression<String>("Date")
-        let kg = Expression<Double>("WeightKg")
-        let gr = Expression<Double>("WeightGr")
-        for i in try! db.prepare(table) {
+        let kg = Expression<Int64>("WeightKg")
+        let gr = Expression<Int64>("WeightGr")
+        var weights_: [Weight] = []
+        for i in try! db.prepare(table.select(date ,kg , gr)) {
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            weights.append(Weight(date: dateFormatter.dateFromString(b)!, kg: i[kg], gr: i[gr]))
+            let week = Int((300 - BirthDate.daysFrom(dateFormatter.dateFromString(b)!))/7)
+
+            weights_.append(Weight(date: dateFormatter.dateFromString(b)!, kg: Int(i[kg]), gr: Int(i[gr]),week: week))
         }
+        weights = weights_.sort(self.fronkwards)
     }
-    /**
+    
+    func fronkwards(s1: Weight, _ s2: Weight) -> Bool {
+        return s1.week < s2.week
+    }    /**
      * Line chart delegate method.
     */
     /*func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
@@ -186,6 +198,39 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         let weeks = self.getWeeks()
         var dataEntries: [ChartDataEntry] = []
         
+        /*let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[0])
+        dataEntries.append(dataEntry)
+        var j = 0
+        for i in 1..<weeks.count {
+            if(weights.count>0 && weights[j].week == i){
+                let dataEntry = ChartDataEntry(value: Double(weights[i].kg), xIndex: weeks[i])
+                dataEntries.append(dataEntry)
+                j += 1
+            }
+            else{
+                let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[i])
+                dataEntries.append(dataEntry)
+            }
+        }*/
+        
+        if weights.count > 0{
+            for i in weights{
+                let dataEntry = ChartDataEntry(value: Double(i.kg+i.gr/100), xIndex: i.week)
+                dataEntries.append(dataEntry)
+            }
+        }else{
+            let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[0])
+            dataEntries.append(dataEntry)
+            for i in 1..<weeks.count {
+                let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[i])
+                dataEntries.append(dataEntry)
+            }
+        }
+        
+        return dataEntries
+        /*let weeks = self.getWeeks()
+        var dataEntries: [ChartDataEntry] = []
+        
         var imt=weight*10000.0
         let x: Double = growth*growth
         
@@ -217,7 +262,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             }
         }
         
-        return dataEntries
+        return dataEntries*/
     }
     private func getWeeks() -> [Int] {
         var weeks: [Int] = []
@@ -362,5 +407,53 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         } else {
             return "\(thirdComponent[row])"
         }
+    }
+    
+    func loadDate(){
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
+        
+        fetchRequest.entity = entityDescription
+        do {
+            let result = try managedContext.executeFetchRequest(fetchRequest)
+            
+            if (result.count > 0) {
+                for i in result {
+                    let date = i as! NSManagedObject
+                    let dte = date.valueForKey("date") as! NSDate
+                    dateType = date.valueForKey("type") as! Int
+                    BirthDate = dte
+                    if dateType == 0{
+                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+                    }
+                    else if dateType == 1{
+                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                    }
+                }
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    }
+    
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
     }
 }

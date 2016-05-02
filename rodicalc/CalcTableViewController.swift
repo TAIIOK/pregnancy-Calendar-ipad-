@@ -12,7 +12,7 @@ import CoreData
 var Back = false
 var selectedDay:DayView!
 var dateType = -1
-//var BirthDate = NSDate()
+var BirthDate = NSDate()
 
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -24,6 +24,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var calendarView: CVCalendarView!
     var shouldShowDaysOut = true
     var animationFinished = true
+    var DateisLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +33,12 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.backgroundColor = .clearColor()
         self.presentedDateUpdated(CVDate(date: NSDate()))
 
-        /*if Back {
-            let a = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CalcViewController.Cancel))
-            a.tintColor = UIColor.whiteColor()
-            
-            self.navigationItem.setLeftBarButtonItems([a], animated: true)
-        }*/
+
         loadDate()
-        if selectedDay != nil && !Back{
+
+        if !Back && DateisLoaded{
             Cancel()
-            /*let zodiac = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
-            if #available(iOS 8.0, *) {
-                self.splitViewController?.showDetailViewController(zodiac!, sender: self)
-            } else {
-                // Fallback on earlier versions
-            }*/
         }
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,6 +77,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func OK(sender: AnyObject) {
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
+        BirthDate = selectedDay.date.convertedDate()!
     }
     
     // MARK: - Table view data source
@@ -212,6 +202,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let dte = date.valueForKey("date") as! NSDate
                     dateType = date.valueForKey("type") as! Int
                     calendarView.toggleViewWithDate(dte)
+                    BirthDate = dte
+                    DateisLoaded = true
                 }
             }
         } catch {
@@ -248,6 +240,9 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
         if dateType != -1{
+            if !Back{
+                //self.Cancel()
+            }
             let index = self.tbl.indexPathForSelectedRow
             self.tbl.reloadData()
             self.tbl.selectRowAtIndexPath(index, animated: true, scrollPosition: UITableViewScrollPosition.Middle)

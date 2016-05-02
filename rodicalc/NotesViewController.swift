@@ -115,7 +115,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let Date = Expression<String>("Date")
             let WeightKg = Expression<Int64>("WeightKg")
             let WeightGr = Expression<Int64>("WeightGr")
-            print("дата веса \(date)")
+   
             for tmp in try! db.prepare(table.select(WeightKg, WeightGr).filter(Date == "\(date)")){
                 str = "\(tmp[WeightKg]) кг \(tmp[WeightGr]) г"
             }
