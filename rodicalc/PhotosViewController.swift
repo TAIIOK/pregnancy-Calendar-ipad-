@@ -26,7 +26,7 @@ class Photo: NSObject {
 var photos = [Photo]()
 var uzis = [Photo]()
 var choosedSegmentImages = true // true: photo, false: uzi
-
+var currentPhoto = 0
 
 extension UIImagePickerController
 {
@@ -136,6 +136,10 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
         PhotoCell.photo.image = choosedSegmentImages ? photos[indexPath.row].image : uzis[indexPath.row].image
         return PhotoCell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        currentPhoto = indexPath.row
     }
     
     func savePhotos(img: UIImage, Type: Int){

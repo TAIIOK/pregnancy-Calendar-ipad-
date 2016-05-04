@@ -89,6 +89,7 @@
 		8E5A6BD61CD7A1920073B693 /* RestrictionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */; };
 		8E5A6BDB1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */; };
 		8E5A6BDE1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */; };
+		8E5A6BE01CDA2E3F0073B693 /* OnePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BDF1CDA2E3F0073B693 /* OnePhotoViewController.swift */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -327,6 +328,7 @@
 		8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+UIVCOrientationFix.m"; path = "../UIViewController+UIVCOrientationFix.m"; sourceTree = "<group>"; };
 		8E5A6BDC1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+UIIMPOrientationFix.h"; sourceTree = "<group>"; };
 		8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+UIIMPOrientationFix.m"; sourceTree = "<group>"; };
+		8E5A6BDF1CDA2E3F0073B693 /* OnePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePhotoViewController.swift; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */,
 				8E6D50361C7F053B00878957 /* PhotosViewController.swift */,
 				8E1DD6031CAE7F2800D55893 /* SelectPhotosViewController.swift */,
+				8E5A6BDF1CDA2E3F0073B693 /* OnePhotoViewController.swift */,
 				8E1DD6051CB26A3D00D55893 /* ShareViewController.swift */,
 				8E6D50381C7F056200878957 /* VideosViewController.swift */,
 				8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */,
@@ -1047,6 +1050,7 @@
 				8EEAC33E1CCE542F007B4643 /* Collation.swift in Sources */,
 				8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */,
 				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
+				8E5A6BE01CDA2E3F0073B693 /* OnePhotoViewController.swift in Sources */,
 				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
 				8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */,
 				8E5A6BD21CD7A1680073B693 /* FoodTableViewCell.swift in Sources */,

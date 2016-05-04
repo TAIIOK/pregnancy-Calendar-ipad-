@@ -1180,7 +1180,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3L-Hz-EAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="3357"/>
+            <point key="canvasLocation" x="2386" y="3400"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qGO-Hq-EaF">
@@ -1442,7 +1442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JiO-FO-RwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3128" y="2563"/>
+            <point key="canvasLocation" x="4525" y="3452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JE8-kd-qjd">
@@ -1493,7 +1493,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
                                 <rect key="frame" x="20" y="363" width="560" height="217"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
@@ -1740,6 +1740,7 @@
                                 <connections>
                                     <outlet property="ImgSelector" destination="5Vc-U7-P3o" id="RKX-5s-LTT"/>
                                     <outlet property="photo" destination="JGf-b9-gd2" id="Pc9-KG-veb"/>
+                                    <segue destination="RCp-OX-BVE" kind="showDetail" id="UZa-JL-DlW"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -2791,6 +2792,85 @@
             </objects>
             <point key="canvasLocation" x="2209" y="5184"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SRM-5Q-OXG">
+            <objects>
+                <navigationController id="RCp-OX-BVE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gdf-nX-ZRt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sIn-en-0ln" kind="relationship" relationship="rootViewController" id="T1X-gS-9z4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIh-6g-HUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="4202"/>
+        </scene>
+        <!--Фото-->
+        <scene sceneID="coT-cN-fkI">
+            <objects>
+                <viewController id="sIn-en-0ln" customClass="OnePhotoViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h3H-tO-hlf"/>
+                        <viewControllerLayoutGuide type="bottom" id="yvQ-JJ-oPF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iEt-nn-rjk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="HKP-UD-nkW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-VY-pl3">
+                                <rect key="frame" x="20" y="72" width="560" height="508"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HKP-UD-nkW" firstAttribute="bottom" secondItem="yvQ-JJ-oPF" secondAttribute="top" id="1rd-rM-DHv"/>
+                            <constraint firstItem="HKP-UD-nkW" firstAttribute="top" secondItem="iEt-nn-rjk" secondAttribute="top" id="9uw-BD-xyD"/>
+                            <constraint firstAttribute="trailing" secondItem="HKP-UD-nkW" secondAttribute="trailing" id="CZ1-gh-DR4"/>
+                            <constraint firstItem="HKP-UD-nkW" firstAttribute="leading" secondItem="iEt-nn-rjk" secondAttribute="leading" id="NUx-pS-EZY"/>
+                            <constraint firstItem="HKP-UD-nkW" firstAttribute="centerX" secondItem="cCX-VY-pl3" secondAttribute="centerX" id="OEN-Ms-G6A"/>
+                            <constraint firstItem="cCX-VY-pl3" firstAttribute="top" secondItem="h3H-tO-hlf" secondAttribute="bottom" constant="8" symbolic="YES" id="aFw-FR-nxT"/>
+                            <constraint firstAttribute="bottom" secondItem="cCX-VY-pl3" secondAttribute="bottom" constant="20" symbolic="YES" id="f6I-sB-RzK"/>
+                            <constraint firstItem="cCX-VY-pl3" firstAttribute="leading" secondItem="iEt-nn-rjk" secondAttribute="leadingMargin" id="wyK-fX-sIh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Фото" id="XsY-dU-anA">
+                        <barButtonItem key="leftBarButtonItem" image="Arrowhead-Left-01-48" id="1jF-Yo-UWk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="dBK-07-mjw" kind="showDetail" id="T6c-gQ-90V"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Share-30" id="HoJ-Dz-cFT">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="j9S-9q-F2f" kind="popoverPresentation" popoverAnchorBarButtonItem="HoJ-Dz-cFT" id="gAm-h9-WUK">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="LqQ-GW-EVO">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="Delete:" destination="sIn-en-0ln" id="ddi-Rw-9dL"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="image" destination="cCX-VY-pl3" id="8yK-Jh-9Ih"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdo-jz-rsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4003" y="4493"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Alarm Clock-50" width="50" height="50"/>
@@ -2837,10 +2917,11 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L53-bo-E8K"/>
-        <segue reference="J8J-RP-rbp"/>
         <segue reference="kMg-vQ-vuk"/>
         <segue reference="P0H-Yd-JxP"/>
+        <segue reference="L53-bo-E8K"/>
+        <segue reference="T6c-gQ-90V"/>
+        <segue reference="gAm-h9-WUK"/>
         <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
