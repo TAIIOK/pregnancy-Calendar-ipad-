@@ -405,7 +405,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="cKS-zn-3ye" kind="presentation" modalPresentationStyle="overFullScreen" id="Oeo-av-twR"/>
+                                    <segue destination="cKS-zn-3ye" kind="presentation" identifier="" modalPresentationStyle="overFullScreen" id="Oeo-av-twR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -438,7 +438,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wye-4S-9qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834" y="441.00000000000006"/>
+            <point key="canvasLocation" x="1955" y="573"/>
         </scene>
         <!--Name View Controller-->
         <scene sceneID="yHg-2X-bKf">
@@ -509,6 +509,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toBack:" destination="cjh-ud-mGV" id="JT9-KM-xdd"/>
+                                <segue destination="Y00-zY-ym5" kind="unwind" unwindAction="returnToFirstViewController:" id="NRh-Fb-Clx"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="zGk-Bl-Lmm">
@@ -536,8 +537,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEI-7l-ib7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Y00-zY-ym5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2643" y="-51"/>
+            <point key="canvasLocation" x="2609" y="100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ioa-vs-Hw3">
@@ -1572,12 +1574,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5i-bo-bVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1227" y="-212"/>
+            <point key="canvasLocation" x="1260" y="-245"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Vu-8i-wat">
             <objects>
-                <navigationController id="LVZ-B8-Mx6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NamesNavController" id="LVZ-B8-Mx6" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Q6i-7e-aFu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2WI-5R-cgn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1589,7 +1591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqm-Lc-GZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759" y="971"/>
+            <point key="canvasLocation" x="1182" y="721"/>
         </scene>
         <!--Счетчик схваток-->
         <scene sceneID="jly-hP-0vx">
@@ -2839,6 +2841,6 @@
         <segue reference="J8J-RP-rbp"/>
         <segue reference="kMg-vQ-vuk"/>
         <segue reference="P0H-Yd-JxP"/>
-        <segue reference="FRt-JM-3Od"/>
+        <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>

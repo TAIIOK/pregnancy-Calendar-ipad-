@@ -40,8 +40,8 @@ class NamesTableViewController: UITableViewController {
     private func reloadTable(index: Bool) {
         choosedSegmentNames = index
         choosedName = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.reloadData()
-        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        self.table.reloadData()
+        self.table.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     override func viewDidLoad() {
@@ -113,10 +113,14 @@ class NamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath
-        //let nameViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NameViewController") as? NameViewController
         //self.navigationController?.pushViewController(nameViewController!, animated: true)
     }
     
+    @IBAction func returnToFirstViewController(segue:UIStoryboardSegue) {
+        print("This is called after  modal is dismissed by menu button on Siri Remote")
+        Update()
+    }
+
     /*private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
         BackgroundView.backgroundColor=StrawBerryColor
@@ -129,6 +133,7 @@ class NamesTableViewController: UITableViewController {
         cell?.textLabel?.highlightedTextColor = UIColor.whiteColor()
         return indexPath
     }*/
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)        
@@ -162,14 +167,15 @@ class NamesTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         choosedSegmentNames = true
     }
-
+    
     func Update(){
-        self.tableView.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         if choosedSegmentNames {
             changer.selectedSegmentIndex = 0
         } else{
             changer.selectedSegmentIndex = 1
         }
+        self.table.reloadData()
+        self.table.scrollToRowAtIndexPath(choosedName, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
     }
     
     func WorkWithJSON(){
@@ -201,7 +207,4 @@ class NamesTableViewController: UITableViewController {
             } catch {}
         }
     }
-    
-   
-    
 }

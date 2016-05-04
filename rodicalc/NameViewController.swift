@@ -18,7 +18,11 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func toBack(sender: UIBarButtonItem) {
-        self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: complete)
+    }
+    
+    func complete(){
+        self.performSegueWithIdentifier("YourUnwindSegueIdentifier", sender: nil)
     }
     
     private func reloadTable(index: Bool) {
@@ -111,9 +115,5 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.selectedBackgroundView=getCustomBackgroundView()
         return indexPath
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        print("change")
     }
 }
