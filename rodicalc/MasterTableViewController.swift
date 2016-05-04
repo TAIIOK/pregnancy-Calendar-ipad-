@@ -50,6 +50,8 @@ class MasterTableViewController: UITableViewController {
         cell9.backgroundColor = .clearColor()
         cell10.backgroundColor = .clearColor()
         cell11.backgroundColor = .clearColor()
+        cell0.setHighlighted(true, animated: false)
+        cell0.setSelected(true, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,6 +68,12 @@ class MasterTableViewController: UITableViewController {
         return BackgroundView
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView.cellForRowAtIndexPath(indexPath) != cell0 && cell0.highlighted == true{
+            cell0.setHighlighted(false, animated: false)
+        }
+    }
+    
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         if(indexPath.row>0){
             let cell = tableView.cellForRowAtIndexPath(indexPath)
