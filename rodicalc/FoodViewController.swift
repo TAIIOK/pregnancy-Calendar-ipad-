@@ -45,6 +45,15 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         RestrictionsTable.dataSource = self
         RestrictionsTable.backgroundColor = .clearColor()
         loadData()
+        if Food.count == 0 {
+            Food.append("")
+        }
+        if Preferences.count == 0 {
+            Preferences.append("")
+        }
+        if Restrictions.count == 0 {
+            Restrictions.append("")
+        }
     }
 
     func loadData(){
