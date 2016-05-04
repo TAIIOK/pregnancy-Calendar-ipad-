@@ -196,4 +196,8 @@ class ShowZodiacViewController: UIViewController {
             } catch {}
         }
     }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
 }

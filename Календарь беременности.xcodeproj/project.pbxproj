@@ -87,6 +87,8 @@
 		8E5A6BD21CD7A1680073B693 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BD11CD7A1680073B693 /* FoodTableViewCell.swift */; };
 		8E5A6BD41CD7A1810073B693 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BD31CD7A1810073B693 /* PreferencesTableViewCell.swift */; };
 		8E5A6BD61CD7A1920073B693 /* RestrictionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */; };
+		8E5A6BDB1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */; };
+		8E5A6BDE1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */; };
 		8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */; };
 		8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */; };
 		8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50361C7F053B00878957 /* PhotosViewController.swift */; };
@@ -321,6 +323,10 @@
 		8E5A6BD11CD7A1680073B693 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		8E5A6BD31CD7A1810073B693 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestrictionsTableViewCell.swift; sourceTree = "<group>"; };
+		8E5A6BD91CD9F0530073B693 /* UIViewController+UIVCOrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+UIVCOrientationFix.h"; path = "../UIViewController+UIVCOrientationFix.h"; sourceTree = "<group>"; };
+		8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+UIVCOrientationFix.m"; path = "../UIViewController+UIVCOrientationFix.m"; sourceTree = "<group>"; };
+		8E5A6BDC1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+UIIMPOrientationFix.h"; sourceTree = "<group>"; };
+		8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+UIIMPOrientationFix.m"; sourceTree = "<group>"; };
 		8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkirmishCountViewController.swift; sourceTree = "<group>"; };
 		8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightDiagramViewController.swift; sourceTree = "<group>"; };
 		8E6D50361C7F053B00878957 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -573,6 +579,10 @@
 				8E2538F41C848D9200B3C54E /* LineChart */,
 				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
 				8E2538F01C84746D00B3C54E /* Plist.swift */,
+				8E5A6BD91CD9F0530073B693 /* UIViewController+UIVCOrientationFix.h */,
+				8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */,
+				8E5A6BDC1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.h */,
+				8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */,
 				8E1AC9691CA960820091D8BB /* Dress */,
 				8E1AC9831CA960820091D8BB /* Yoga */,
 				8E90A4161C7DF093001F3A07 /* Main.storyboard */,
@@ -1063,6 +1073,7 @@
 				8EEAC3411CCE542F007B4643 /* Expression.swift in Sources */,
 				A01D66F51CD0F826004960CD /* export.swift in Sources */,
 				8E6D50331C7F047100878957 /* SkirmishCountViewController.swift in Sources */,
+				8E5A6BDB1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m in Sources */,
 				A01029161CD29E0B005E339F /* CVCalendarWeekday.swift in Sources */,
 				8E20A0961C7F3A8D00CD6141 /* NameViewController.swift in Sources */,
 				8EEAC3361CCE542F007B4643 /* Statement.swift in Sources */,
@@ -1102,6 +1113,7 @@
 				8E5A6BC31CD25BFA0073B693 /* webArticleViewController.swift in Sources */,
 				8E1DD6021CAE78D300D55893 /* PhotoCollectionViewCell.swift in Sources */,
 				A01029111CD29E0B005E339F /* CVCalendarViewAppearance.swift in Sources */,
+				8E5A6BDE1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m in Sources */,
 				8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */,
 				A01029191CD29E0B005E339F /* CVRange.swift in Sources */,
 				8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */,

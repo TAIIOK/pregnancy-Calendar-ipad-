@@ -212,6 +212,10 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
+    
 }
 
 extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
@@ -552,4 +556,5 @@ extension CalcViewController {
     }
     
 }
+
 

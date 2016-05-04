@@ -259,13 +259,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-   /* func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
-        //if window?.rootViewController?.navigationController?.splitViewController?.viewControllers[1].title is PhotosViewController{
-           // return UIInterfaceOrientationMask.All
-        //}
-
-        print(window?.rootViewController?.navigationController?.splitViewController)
-
-        return UIInterfaceOrientationMask.Landscape
-    }*/
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
 }

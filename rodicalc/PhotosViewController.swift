@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 //var photos = [UIImage]()
 //var uzis = [UIImage]()
 
@@ -30,7 +31,7 @@ var choosedSegmentImages = true // true: photo, false: uzi
 extension UIImagePickerController
 {
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
+        return UIInterfaceOrientationMask.All
     }
     
     public override func shouldAutorotate() -> Bool {
@@ -41,7 +42,7 @@ extension UIImagePickerController
 class LandscapePickerController: UIImagePickerController
 {
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
+        return UIInterfaceOrientationMask.All
     }
     public override func shouldAutorotate() -> Bool {
         return false
@@ -96,8 +97,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     func addPhoto(){
         picker!.allowsEditing = false
         picker!.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        picker!.modalPresentationStyle = .PageSheet
-        picker?.interfaceOrientation
+        picker!.modalPresentationStyle = .FormSheet
+        //picker?.interfaceOrientation
         presentViewController(picker!, animated: true, completion: nil)
     }
       func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -295,4 +296,14 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
 }
+
+
