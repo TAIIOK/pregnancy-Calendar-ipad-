@@ -86,8 +86,9 @@ var BirthDate = NSDate()
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
             let week = Int((300 - BirthDate.daysFrom(dateFormatter.dateFromString(b)!))/7)
-
-            weights_.append(Weight(date: dateFormatter.dateFromString(b)!, kg: Int(i[kg]), gr: Int(i[gr]),week: week))
+            if week < 41 {
+                weights_.append(Weight(date: dateFormatter.dateFromString(b)!, kg: Int(i[kg]), gr: Int(i[gr]),week: week))
+            }
         }
         weights = weights_.sort(self.fronkwards)
     }
