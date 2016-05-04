@@ -96,7 +96,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(arrayForBool .objectAtIndex(indexPath.section).boolValue == true){
-            return 90
+            return 60
         }
         
         return 2;
@@ -187,7 +187,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
         vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-        vc.preferredContentSize =  CGSizeMake(600,300)
+        vc.preferredContentSize =  CGSizeMake(340,300)
         let popover: UIPopoverPresentationController = vc.popoverPresentationController!
         
         
@@ -202,8 +202,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         popover.sourceRect = CGRect(
             x: location.x,
             y: location.y,
-            width: 100,
-            height: 100)
+            width: 1,
+            height: 1)
         
         presentViewController(vc, animated: true, completion:nil)
         
@@ -234,6 +234,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             but = cell.notifibutton
             let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
+            cell.backgroundColor = .clearColor()
             
             
         }

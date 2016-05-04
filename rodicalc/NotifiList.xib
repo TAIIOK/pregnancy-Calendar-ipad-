@@ -5,13 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifiList" customModule="AccordionMenu" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifiList" customModule="Календарь_беременности" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="dPe-Eb-ip0" id="pGW-Dl-RWT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="NotifiList" id="41p-8C-4NB" customClass="notifiViewCell" customModule="AccordionMenu" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="NotifiList" id="41p-8C-4NB" customClass="notifiViewCell" customModule="Календарь_беременности" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="350" height="504"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
