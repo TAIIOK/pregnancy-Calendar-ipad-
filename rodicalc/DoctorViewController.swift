@@ -7,8 +7,7 @@
 //
 
 import UIKit
-var but = UIButton()
-var notifiview = UIView()
+
 
 class Doctor: NSObject {
     var date: NSDate
@@ -27,7 +26,9 @@ class Doctor: NSObject {
     }
 }
 
-class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
+
+
+class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     
@@ -36,25 +37,30 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var NoteTitle: UILabel!
     
     @IBOutlet weak var tbl: UITableView!
-    /*var sectionTitleArray : NSMutableArray = NSMutableArray()
-    var sectionContentDict : NSMutableDictionary = NSMutableDictionary()
+
     var arrayForBool : NSMutableArray = NSMutableArray()
-    */
     var doctors = [Doctor]()
 
     var shouldShowDaysOut = true
     var animationFinished = true
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         
-        /*let nibName = UINib(nibName: "DoctorViewCell", bundle:nil)
+        var nibName = UINib(nibName: "DoctorViewCell", bundle:nil)
         self.tbl.registerNib(nibName, forCellReuseIdentifier: "DoctorViewCell")
-        */
-        self.title = CVDate(date: NSDate()).globalDescription
+        
+         nibName = UINib(nibName: "addCell", bundle:nil)
+        self.tbl.registerNib(nibName, forCellReuseIdentifier: "addCell")
+        
+        //self.title = CVDate(date: NSDate()).globalDescription
         NoteTitle.text = notes[NoteType]
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
@@ -62,252 +68,31 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-        
-        //arrayForBool = ["0","0","0"]
-        //sectionTitleArray = ["Pool A","Pool B"]
-        
+
+        arrayForBool.addObject("1")
+        for(var i = 0 ; i<doctors.count ;i++)
+        {
+        arrayForBool.addObject("0")
+        }
+
+
         self.presentedDateUpdated(CVDate(date: NSDate()))
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        print(doctors.count+1)
-        return doctors.count+1
-    }
-    
-    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("DoctorAddCell", forIndexPath: indexPath)
-            cell.backgroundColor = .clearColor()
-            return cell
-        }else if doctors[indexPath.row-1].cellType == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("DoctorTestCell", forIndexPath: indexPath) as! DoctorTestCell
-            cell.name.text = doctors[indexPath.row-1].name
-            cell.time.text = String(doctors[indexPath.row-1].date)
-            
-            cell.bell.userInteractionEnabled = true
-            let Selector1 : Selector = "imageTapped:"
-            let tapGesture = UITapGestureRecognizer(target: self, action: Selector1)
-            tapGesture.numberOfTapsRequired = 1
-            cell.bell.addGestureRecognizer(tapGesture)
-            
-            if (doctors[indexPath.row-1].isRemind == true){
-                
-                cell.bell.highlighted = true
-                
-            }
-            
 
-            cell.backgroundColor = .clearColor()
-            
-       cell.selectionStyle = .None
-            
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("DoctorSettingCell", forIndexPath: indexPath) as! DoctorSettingCell
-            cell.backgroundColor = .clearColor()
-            cell.nameText.hidden = false
-            cell.nameField.hidden = true
-            
-            if (doctors[indexPath.row-1].name.isEmpty)
-            {
-             
-                cell.nameField.text = "Название врача"
-                cell.nameText.text = "Название врача"
-                
-            }
-            else{
-            cell.nameField.text = doctors[indexPath.row-1].name
-            cell.nameText.text = doctors[indexPath.row-1].name
-            }
-            
-            cell.bell.userInteractionEnabled = true
-            var tapGesture = UITapGestureRecognizer(target: self, action: "imageTapped:")
-            tapGesture.numberOfTapsRequired = 1
-            cell.bell.addGestureRecognizer(tapGesture)
-            
-            if (doctors[indexPath.row-1].isRemind == true){
-                
-                cell.bell.highlighted = true
-                
-            }
-
-            
-            
-            
-            cell.nameText.userInteractionEnabled = true
-            tapGesture = UITapGestureRecognizer(target: self, action: "lblTapped:")
-            tapGesture.numberOfTapsRequired = 1
-            cell.nameText.addGestureRecognizer(tapGesture)
-            
-            cell.nameText.tag = indexPath.row
-            cell.tag = indexPath.row
-            
-            
-            cell.btnSetRemind.userInteractionEnabled = true
-            tapGesture = UITapGestureRecognizer(target: self, action: "btnTapped:")
-            tapGesture.numberOfTapsRequired = 1
-            cell.btnSetRemind.addGestureRecognizer(tapGesture)
-
-        
-            
-            
-           cell.selectionStyle = .None
-
-            return cell
-        }
-        
-    }
-    
-    func imageTapped (recognizer: UITapGestureRecognizer){
-        
-        
-        let swipeLocation = recognizer.locationInView(self.tbl)
-        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
-            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorSettingCell {
-                if (swipedCell.bell.highlighted == true )
-                {
-                    swipedCell.bell.highlighted = false
-                }
-                else{
-                    swipedCell.bell.highlighted = true
-                }
-            }
-            
-            else {
-                if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorTestCell {
-                    if (swipedCell.bell.highlighted == true )
-                    {
-                        swipedCell.bell.highlighted = false
-                    }
-                    else{
-                        swipedCell.bell.highlighted = true
-                    }
-                }
-
-            
-            }
-        }
-    }
-    
-    
-    func lblTapped(recognizer: UITapGestureRecognizer){
-       
-        
-        let swipeLocation = recognizer.locationInView(self.tbl)
-        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
-            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorSettingCell {
-                swipedCell.nameText.hidden = true
-                swipedCell.nameField.hidden = false
-                swipedCell.nameField.text = swipedCell.nameText.text
-                
-            }
-        }
-    }
-    
-    
-    func btnTapped(recognizer: UITapGestureRecognizer){
-        
-        
-        let swipeLocation = recognizer.locationInView(self.tbl)
-        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
-            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorSettingCell {
-
-                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
-                vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                vc.preferredContentSize =  CGSizeMake(340,300)
-                let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-                
-                var location = recognizer.locationInView(recognizer.view)
-                popover.permittedArrowDirections = .Right
-                popover.delegate = self
-                
-                
-                popover.sourceView = swipedCell.btnSetRemind
-                
-                popover.sourceRect = CGRect(
-                    x: location.x,
-                    y: location.y,
-                    width: 1,
-                    height: 1)
-                
-                presentViewController(vc, animated: true, completion:nil)
-                
-                
-            }
-        }
-    }
-    
-    
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row != 0 && doctors.count >= indexPath.row && doctors[indexPath.row-1].cellType == 1{
-           return CGFloat(100)
-        }else{
-            return CGFloat(44)
-        }
-    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
-        
-        if indexPath.row == 0 {
-            doctors.append(Doctor(date: selectedNoteDay.date.convertedDate()!, name: "", isRemind: false, remindType: 0, cellType: 1))
+        if indexPath.row == 0 && indexPath.section == 0  {
+            doctors.append(Doctor(date: selectedNoteDay.date.convertedDate()!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
+            arrayForBool.addObject("0")
             tbl.reloadData()
         }
-        
 
-        for (var i = 0 ; i<doctors.count   ; i += 1  ){
-            
-            let index = NSIndexPath(forItem: i+1, inSection: 0)
-            
-            let cell = tableView.cellForRowAtIndexPath(index) as? DoctorSettingCell
-            
-            if (((cell?.nameField.text)?.isEmpty) != nil)
-            {
-            doctors[i].name = (cell?.nameField.text)!
-            doctors[i].date = NSDate()
-            if(cell?.bell.highlighted == true)
-            {
-             doctors[i].isRemind = true
-            }
-            else{
-             doctors[i].isRemind = false
-            }
-            }
-        }
-        
-        
-        
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if cell?.reuseIdentifier! == "DoctorTestCell"{
-            doctors[indexPath.row-1].cellType = 1
-            tbl.reloadData()
-        }
-        if cell?.reuseIdentifier! == "DoctorSettingCell"{
-            let curcell = tableView.dequeueReusableCellWithIdentifier("DoctorSettingCell", forIndexPath: indexPath) as! DoctorSettingCell
-            doctors[indexPath.row-1].cellType = 0
-         tbl.reloadData()
-        }
- 
-        for i in doctors{
-            print(i.name)
-        }
     }
-
-    
-    /*func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionTitleArray.count
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return arrayForBool.count
     }
     
     
@@ -317,14 +102,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {
             return 1
         }
-        return doctors.count;
+        return 0;
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "ABC"
-    }
+
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return CGFloat.min
+        }
         
         return 50
     }
@@ -342,108 +128,172 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
         
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
         
         
-        var view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
+        let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
         
         
-        view.setupView(section, doctor: "Here doctors name", time: "time")
+        view.setupView(section, doctor: doctors[section-1].name, time: String(doctors[section-1].date))
+        
+        
+        
+        view.tag = section
         
         headerView.tag = section
         
-        let timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 45, height: 30)) as UILabel
-        timestring.text = "10:11"   // sectionTitleArray.objectAtIndex(section) as? String
-        headerView.addSubview(timestring)
-        
-        let doctorname  = UILabel(frame: CGRect(x: 65, y: 10, width: 90, height: 30)) as UILabel
-        doctorname.text = "Гениколог"   // sectionTitleArray.objectAtIndex(section) as? String
-        headerView.addSubview(doctorname)
-        
-        var image: UIImage = UIImage(named: "Bell-30_1")!
-        var bgImage = UIImageView()
-        bgImage.image = image
-        bgImage.highlightedImage = UIImage(named: "Bell-30")!
-        bgImage.frame = CGRectMake(tableView.frame.size.width - 40,10,30,30)
-        bgImage.userInteractionEnabled = true
-        
-        headerView.addSubview(bgImage)
-        
-        //bgImage.image = bgImage.highlightedImage
-        
-        
-        
-        
         let imageTapped = UITapGestureRecognizer (target: self, action:"enablenotification:")
+        imageTapped.numberOfTapsRequired = 1
+        imageTapped.numberOfTouchesRequired = 1
+        imageTapped.delegate = self
+        
+   
         view.imageView.addGestureRecognizer(imageTapped)
-        
-        
-        
+      
         let headerTapped = UITapGestureRecognizer (target: self, action:"sectionHeaderTapped:")
         view.addGestureRecognizer(headerTapped)
+        
+        if (doctors[section-1].isRemind == true){
+            
+            view.changeImage()
+            
+        }
+        
+        
+        view.doctorname.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: "lblTapped:")
+        tapGesture.numberOfTapsRequired = 1
+        view.doctorname.addGestureRecognizer(tapGesture)
+        
         
         return view
     }
     
-    func enablenotification(recognizer: UITapGestureRecognizer) {
+    
+
+    func lblTapped(recognizer: UITapGestureRecognizer){
+        if let cellContentView = recognizer.view {
+            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
+            for i in 0..<tbl.numberOfSections {
+                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
+                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                    print("tapped on section header:: \(i)")
+                    
+                   
+                    var headerview = tbl.viewWithTag(i) as? DoctorHeader
+                    headerview?.changeFields()
+                    //tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+                    
+                    
+                }
+            }
+        }
+
         
-        var header = self.tbl.headerViewForSection((recognizer.view?.tag)!) as? DoctorHeader
-        print("notification")
-        /*
-         Сохранение изменений в массив и перезагрузка таблицы
-         
-         self.tableView.reloadData()
-         */
-        
-        
+
     }
+
+    
+    
+    func enablenotification(gesture:UIGestureRecognizer){
+        if let cellContentView = gesture.view {
+            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
+            for i in 1..<tbl.numberOfSections  {
+                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
+                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                    print("tapped on section header:: \(i)")
+                    
+                    if(doctors[i-1].isRemind == true){
+                    doctors[i-1].isRemind = false
+                    }
+                    else if(doctors[i-1].isRemind == false){
+                        doctors[i-1].isRemind = true
+                    }
+                    tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+               
+    
+                }
+            }
+        }
+    }
+    
+    
     
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         print("Tapping working")
         print(recognizer.view?.tag)
         
+          //  var header = tbl.headerViewForSection((recognizer.view?.tag)!) as? DoctorHeader
+   
+        
+        
         let indexPath : NSIndexPath = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
-        if (indexPath.row == 0) {
+        if (indexPath.row == 0 && indexPath.section != 0) {
             
             var collapsed = arrayForBool .objectAtIndex(indexPath.section).boolValue
-            collapsed       = !collapsed;
+            print(collapsed)
+            collapsed = !collapsed;
+            print(collapsed)
+
+            save()
             
             arrayForBool .replaceObjectAtIndex(indexPath.section, withObject: collapsed)
-            //reload specific section animated
+
             let range = NSMakeRange(indexPath.section, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
             self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+            var header = tbl?.viewWithTag(indexPath.section) as? DoctorHeader
+            if(collapsed == true){
+                header!.setopen(true)
+            }
+            else if (collapsed == false){
+                header!.setopen(false)
+            }
+            header!.changeFields()
         }
         
     }
     
+    
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         
-        print("загружено")
         
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-        vc.preferredContentSize =  CGSizeMake(340,300)
-        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-        
-        var location = recognizer.locationInView(recognizer.view)
-        popover.permittedArrowDirections = .Any
-        popover.delegate = self
-        
-        
-        popover.sourceView = but
-        
-        popover.sourceRect = CGRect(
-            x: location.x,
-            y: location.y,
-            width: 1,
-            height: 1)
-        
-        presentViewController(vc, animated: true, completion:nil)
+        let swipeLocation = recognizer.locationInView(self.tbl)
+        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
+                
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
+                vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                vc.preferredContentSize =  CGSizeMake(340,300)
+                let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+                
+                var location = recognizer.locationInView(recognizer.view)
+                popover.permittedArrowDirections = .Right
+                popover.delegate = self
+                
+                
+                popover.sourceView = swipedCell.notifibutton
+                
+                popover.sourceRect = CGRect(
+                    x: location.x,
+                    y: location.y,
+                    width: 1,
+                    height: 1)
+                
+                presentViewController(vc, animated: true, completion:nil)
+                
+                
+            }
+        }
     }
+
+    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
@@ -451,7 +301,13 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-        
+        if(indexPath.row == 0 && indexPath.section == 0)
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath)
+            cell.backgroundColor = .clearColor()
+            cell.selectionStyle = .None
+            return cell
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier("DoctorViewCell", forIndexPath: indexPath) as! DoctorViewCell
         
         let manyCells : Bool = arrayForBool .objectAtIndex(indexPath.section).boolValue
@@ -460,27 +316,69 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.time.text = "lol"
         }
         else{
-     //       let content = sectionContentDict .valueForKey(sectionTitleArray.objectAtIndex(indexPath.section) as! String) as! NSArray
+
             
-            cell.time.text = "ssssss"
+            cell.time.text = String(NSDate())
             
-            but = cell.notifibutton
             let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
-            cell.backgroundColor = .clearColor()
             
             
         }
+        cell.backgroundColor = UIColor.clearColor()
+        cell.selectionStyle = .None
         
         return cell
-    }*/
-        
+    }
 
     
     override func viewDidDisappear(animated: Bool) {
-
+        /*
+        fromTableInArray()
+        let table = Table("DesireList")
+        let text = Expression<String>("Text")
+        let count = try! db.scalar(table.count)
+        
+        if count > 0{
+            try! db.run(table.delete())
+        }
+        
+        for var i in Desires{
+            if i.characters.count > 0{
+                try! db.run(table.insert(text <- "\(i)"))}
+        }
+         */
     }
     
+    func fromTableInArray(){
+        /*
+        let int = self.tbl.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.tbl.cellForRowAtIndexPath(i) as! DesireTableViewCell
+            Desires[i.row] = cell.textField.text!
+        }
+         */
+    }
+    
+    func save()
+    {
+    
+        for (var i = 0 ; i<doctors.count   ; i += 1  ){
+            
+            let index = NSIndexPath(forItem: 0, inSection: i+1)
+            
+            var header = tbl?.viewWithTag(index.section) as? DoctorHeader
+            
+
+            if(header!.doctornameText.text?.isEmpty == false){
+
+                doctors[i].name = (header!.doctornameText.text)!
+                doctors[i].date = NSDate()
+            }
+            
+        }
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -496,8 +394,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // calendarView.changeMode(.WeekView)
     }
 }
-
-
 
 extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     

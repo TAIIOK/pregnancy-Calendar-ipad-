@@ -14,8 +14,10 @@ class DoctorHeader: UIView {
     var doctor:String
     var time:String
     var imageView:UIImageView
-
-    
+    var open:Bool
+    var timestring:UILabel
+    var doctorname:UILabel
+    var doctornameText:UITextField
     
     override init (frame : CGRect) {
         self.doctor = "Гениколог"
@@ -26,6 +28,11 @@ class DoctorHeader: UIView {
         self.imageView.frame =  CGRectMake(frame.width - 40,10,30,30)
         self.imageView.userInteractionEnabled = true
         self.imageView.tag = 99
+        self.open = false
+        self.timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 45, height: 30))
+        self.doctorname  = UILabel(frame: CGRect(x: 65, y: 10, width: 90, height: 30))
+        self.doctornameText = UITextField(frame: CGRect(x: 65, y: 10, width: 90, height: 30))
+        self.doctornameText.hidden = true
         super.init(frame : frame)
     }
     
@@ -43,15 +50,20 @@ class DoctorHeader: UIView {
         
         self.tag = tag
         
-        let timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 45, height: 30)) as UILabel
-        timestring.text = self.time  // sectionTitleArray.objectAtIndex(section) as? String
+
+        self.timestring.text = self.time  // sectionTitleArray.objectAtIndex(section) as? String
         self.addSubview(timestring)
         
-        let doctorname  = UILabel(frame: CGRect(x: 65, y: 10, width: 90, height: 30)) as UILabel
-        doctorname.text = self.doctor  // sectionTitleArray.objectAtIndex(section) as? String
+
+        self.doctorname.text = self.doctor  // sectionTitleArray.objectAtIndex(section) as? String
         self.addSubview(doctorname)
-        
+        self.addSubview(doctornameText)
         self.addSubview(imageView)
+    }
+    
+    func setopen(open : Bool)
+    {
+        self.open = open
     }
     
     func changeImage() {
@@ -72,6 +84,24 @@ class DoctorHeader: UIView {
         
         self.addSubview(imageView)
     
+    }
+    
+    func changeFields()
+    {
+        
+        if(self.open)
+        {
+        self.doctorname.hidden = true
+        self.doctornameText.hidden = false
+        }
+        else{
+        self.doctorname.hidden = false
+        self.doctornameText.hidden = true
+        }
+        
+
+        
+        self.doctornameText.text = self.doctorname.text
     }
     
 
