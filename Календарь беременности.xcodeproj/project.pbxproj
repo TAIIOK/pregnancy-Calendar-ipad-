@@ -82,6 +82,7 @@
 		8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4521C7DF381001F3A07 /* NamesViewController.swift */; };
 		8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */; };
 		8EE947B91CE484F100064446 /* NotifiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B81CE484F100064446 /* NotifiCell.swift */; };
+		8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947BA1CE4A67C00064446 /* TimeListController.swift */; };
 		8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31B1CCE542F007B4643 /* Blob.swift */; };
 		8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31C1CCE542F007B4643 /* Connection.swift */; };
@@ -305,6 +306,7 @@
 		8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiListTableViewController.swift; sourceTree = "<group>"; };
 		8EE947B81CE484F100064446 /* NotifiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiCell.swift; sourceTree = "<group>"; };
+		8EE947BA1CE4A67C00064446 /* TimeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeListController.swift; sourceTree = "<group>"; };
 		8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		8EEAC2FB1CCE508E007B4643 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				A0669E711CDA3597002F8E95 /* DoctorViewController.swift */,
 				8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */,
+				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
 				A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */,
 				A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */,
@@ -999,6 +1002,7 @@
 				8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */,
 				8E6D503F1C7F063A00878957 /* ExperienceViewController.swift in Sources */,
 				8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */,
+				8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */,
 				8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */,
 				A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */,
 				A01029141CD29E0B005E339F /* CVCalendarViewPresentationMode.swift in Sources */,
