@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2874,7 +2874,7 @@
         <!--NotifiTable-->
         <scene sceneID="XG0-HP-8Dk">
             <objects>
-                <viewController storyboardIdentifier="NotifiTable" title="NotifiTable" id="FOc-gQ-lYC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotifiTable" title="NotifiTable" id="FOc-gQ-lYC" customClass="NotifiListTableViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yg2-yi-OJZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Ynk-la-9tx"/>
@@ -2883,50 +2883,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="468"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mZr-DL-RQO">
-                                <rect key="frame" x="0.0" y="44" width="600" height="418"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mZr-DL-RQO">
+                                <rect key="frame" x="0.0" y="44" width="400" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JSH-9I-co0">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="notifiCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notifiCell" id="JSH-9I-co0" customClass="NotifiCell" customModule="Календарь_беременности" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSH-9I-co0" id="GyZ-dY-gjo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-dK-tcb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-dK-tcb">
                                                     <rect key="frame" x="39" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Circle Thin-48" translatesAutoresizingMaskIntoConstraints="NO" id="2af-it-RBW">
-                                                    <rect key="frame" x="230" y="0.0" width="46" height="42"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle Thin-48" highlightedImage="Checked-50" translatesAutoresizingMaskIntoConstraints="NO" id="2af-it-RBW">
+                                                    <rect key="frame" x="315" y="0.0" width="46" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="Rma-jS-b6K"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AOV-dK-tcb" firstAttribute="centerY" secondItem="2af-it-RBW" secondAttribute="centerY" id="1KR-xQ-2cD"/>
+                                                <constraint firstItem="2af-it-RBW" firstAttribute="centerY" secondItem="GyZ-dY-gjo" secondAttribute="centerY" id="9ft-4R-Hh5"/>
+                                                <constraint firstItem="AOV-dK-tcb" firstAttribute="leading" secondItem="GyZ-dY-gjo" secondAttribute="leadingMargin" constant="31" id="BZs-xa-pOG"/>
+                                                <constraint firstAttribute="trailing" secondItem="2af-it-RBW" secondAttribute="trailing" constant="39" id="lq7-fC-4Gu"/>
+                                                <constraint firstItem="2af-it-RBW" firstAttribute="top" secondItem="GyZ-dY-gjo" secondAttribute="top" id="nYf-dz-1zl"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="img" destination="2af-it-RBW" id="2Qa-Rt-57P"/>
+                                            <outlet property="textLbl" destination="AOV-dK-tcb" id="xtF-dV-Qw7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHQ-cp-9Yg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            </navigationBar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-Cl-ZPp">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-Cl-ZPp">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="nWH-6C-lbp">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="toW-BW-0pV"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="aee-of-tzM"/>
+                                    <navigationItem title="Напоминание" id="nWH-6C-lbp">
+                                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="toW-BW-0pV">
+                                            <connections>
+                                                <action selector="Cancel:" destination="FOc-gQ-lYC" id="Aow-C5-9lo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="aee-of-tzM">
+                                            <connections>
+                                                <action selector="Save:" destination="FOc-gQ-lYC" id="Z8a-W0-Bnf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ynk-la-9tx" firstAttribute="top" secondItem="mZr-DL-RQO" secondAttribute="bottom" constant="6" id="2au-pN-RZ5"/>
+                            <constraint firstItem="u4A-Cl-ZPp" firstAttribute="leading" secondItem="uA3-Cq-ZOQ" secondAttribute="leading" id="DNx-TS-hlq"/>
+                            <constraint firstItem="u4A-Cl-ZPp" firstAttribute="leading" secondItem="mZr-DL-RQO" secondAttribute="leading" id="RCk-OY-DEA"/>
+                            <constraint firstAttribute="trailing" secondItem="u4A-Cl-ZPp" secondAttribute="trailing" id="Zeo-DK-iuu"/>
+                            <constraint firstItem="u4A-Cl-ZPp" firstAttribute="top" secondItem="uA3-Cq-ZOQ" secondAttribute="top" id="qOY-iH-An1"/>
+                            <constraint firstItem="u4A-Cl-ZPp" firstAttribute="trailing" secondItem="mZr-DL-RQO" secondAttribute="trailing" id="t2I-TJ-KxZ"/>
+                            <constraint firstItem="u4A-Cl-ZPp" firstAttribute="bottom" secondItem="mZr-DL-RQO" secondAttribute="top" id="vFg-1a-gEs"/>
+                        </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="150" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="468"/>
+                    <connections>
+                        <outlet property="table" destination="mZr-DL-RQO" id="Fj9-H7-QIl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcG-0c-chY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

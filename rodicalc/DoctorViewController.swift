@@ -26,8 +26,9 @@ class Doctor: NSObject {
     }
 }
 
-
-
+var doctors = [Doctor]()
+let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут"]
+var currentRec = 0
 class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -39,7 +40,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tbl: UITableView!
 
     var arrayForBool : NSMutableArray = NSMutableArray()
-    var doctors = [Doctor]()
 
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -72,7 +72,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         arrayForBool.addObject("1")
         for(var i = 0 ; i<doctors.count ;i++)
         {
-        arrayForBool.addObject("0")
+            arrayForBool.addObject("0")
         }
 
 
@@ -85,7 +85,18 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         if indexPath.row == 0 && indexPath.section == 0  {
-            doctors.append(Doctor(date: selectedNoteDay.date.convertedDate()!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
+            
+            let curDate = NSDate()
+            let calendar = NSCalendar.currentCalendar()
+            let componentsCurrent = calendar.components([.Hour , .Minute , .Second], fromDate: curDate)
+
+            let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+            components.hour = componentsCurrent.hour
+            components.minute = componentsCurrent.minute
+            components.second = componentsCurrent.second
+            let newDate = calendar.dateFromComponents(components)
+            
+            doctors.append(Doctor(date: newDate!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
             arrayForBool.addObject("0")
             tbl.reloadData()
         }
@@ -136,8 +147,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
-        
-        
+
         view.setupView(section, doctor: doctors[section-1].name, time: String(doctors[section-1].date))
         
         
@@ -192,9 +202,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
-
-        
-
     }
 
     
@@ -286,9 +293,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     width: 1,
                     height: 1)
                 
+                currentRec = swipedIndexPath.row
                 presentViewController(vc, animated: true, completion:nil)
-                
-                
             }
         }
     }
@@ -310,27 +316,24 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         let cell = tableView.dequeueReusableCellWithIdentifier("DoctorViewCell", forIndexPath: indexPath) as! DoctorViewCell
         
+        if(indexPath.section != 0)
+        {
         let manyCells : Bool = arrayForBool .objectAtIndex(indexPath.section).boolValue
         
         if (!manyCells) {
             cell.time.text = "lol"
         }
         else{
-
-            
-            cell.time.text = String(NSDate())
-            
+            cell.time.text = String(doctors[indexPath.row].date)
+            cell.notifibutton.setTitle(Notification[doctors[indexPath.row].remindType], forState: .Normal)
             let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
-            
-            
         }
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
-        
+        }
         return cell
     }
-
     
     override func viewDidDisappear(animated: Bool) {
         /*
@@ -348,6 +351,9 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 try! db.run(table.insert(text <- "\(i)"))}
         }
          */
+        for i in doctors {
+            print(i.name)
+        }
     }
     
     func fromTableInArray(){
@@ -371,9 +377,18 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
 
             if(header!.doctornameText.text?.isEmpty == false){
-
+                let curDate = NSDate()
+                let calendar = NSCalendar.currentCalendar()
+                let componentsCurrent = calendar.components([.Hour , .Minute , .Second], fromDate: curDate)
+                
+                let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+                components.hour = componentsCurrent.hour
+                components.minute = componentsCurrent.minute
+                components.second = componentsCurrent.second
+                let newDate = calendar.dateFromComponents(components)
+                
                 doctors[i].name = (header!.doctornameText.text)!
-                doctors[i].date = NSDate()
+                doctors[i].date = newDate!
             }
             
         }

@@ -29,9 +29,10 @@ class DoctorHeader: UIView {
         self.imageView.userInteractionEnabled = true
         self.imageView.tag = 99
         self.open = false
-        self.timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 45, height: 30))
-        self.doctorname  = UILabel(frame: CGRect(x: 65, y: 10, width: 90, height: 30))
-        self.doctornameText = UITextField(frame: CGRect(x: 65, y: 10, width: 90, height: 30))
+        self.timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 105, height: 30))
+        self.timestring.font = .systemFontOfSize(9)
+        self.doctorname  = UILabel(frame: CGRect(x: 125, y: 10, width: 90, height: 30))
+        self.doctornameText = UITextField(frame: CGRect(x: 125, y: 10, width: 90, height: 30))
         self.doctornameText.hidden = true
         super.init(frame : frame)
     }
