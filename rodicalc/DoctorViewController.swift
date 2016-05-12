@@ -27,8 +27,9 @@ class Doctor: NSObject {
 }
 
 var doctors = [Doctor]()
-let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут"]
+let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 час","За 1 день","За 1 неделю"]
 var currentRec = 0
+var changeRemindInCurRec = 0
 class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -47,9 +48,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
@@ -293,7 +292,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     width: 1,
                     height: 1)
                 
-                currentRec = swipedIndexPath.row
+                currentRec = swipedIndexPath.section
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -324,8 +323,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.time.text = "lol"
         }
         else{
-            cell.time.text = String(doctors[indexPath.row].date)
-            cell.notifibutton.setTitle(Notification[doctors[indexPath.row].remindType], forState: .Normal)
+            cell.time.text = String(doctors[indexPath.section-1].date)
+            cell.notifibutton.setTitle(Notification[doctors[indexPath.section-1].remindType], forState: .Normal)
             let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
         }
@@ -333,6 +332,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.selectionStyle = .None
         }
         return cell
+    }
+    
+    @IBAction func UpdateSection(segue:UIStoryboardSegue) {
+        print("This is called after  modal is dismissed by menu button on Siri Remote")
+        print(changeRemindInCurRec)
+        print(currentRec)
+        doctors[currentRec-1].remindType = changeRemindInCurRec
+        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        tbl.reloadData()
     }
     
     override func viewDidDisappear(animated: Bool) {

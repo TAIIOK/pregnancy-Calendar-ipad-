@@ -13,13 +13,20 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
 
     
     @IBOutlet weak var table: UITableView!
-    var remind = 0
-    
+    var firstStart = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
         table.delegate = self
         table.dataSource = self
+        self.navigationController?.navigationBar.barTintColor = .whiteColor()
+        self.navigationController?.navigationBar.tintColor = .blackColor()
+    }
+    
+    func complete(){
+        print("save")
+        doctors[currentRec-1].remindType = (table.indexPathForSelectedRow?.row)!
+        self.performSegueWithIdentifier("YourUnwindSegueIdentifier1", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,15 +50,21 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notifiCell", forIndexPath: indexPath) as! NotifiCell
         cell.textLbl.text = Notification[indexPath.row]
+        
+        if firstStart && indexPath.row == doctors[currentRec-1].remindType{
+            cell.setHighlighted(true, animated: false)
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+            firstStart = false
+        }
+        cell.selectedBackgroundView?.backgroundColor = .whiteColor()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        changeRemindInCurRec = indexPath.row
     }
     
     @IBAction func Cancel(sender: UIBarButtonItem) {
          self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    @IBAction func Save(sender: UIBarButtonItem) {
-        print("save")
-        doctors[currentRec].remindType = (table.indexPathForSelectedRow?.row)!
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
