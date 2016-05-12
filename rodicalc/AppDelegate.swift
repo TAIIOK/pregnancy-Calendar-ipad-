@@ -247,17 +247,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    
     func loadNotifi() {
-        
+        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        var dateFire=NSDate()
+        var fireComponents=calendar.components([NSCalendarUnit.Day , NSCalendarUnit.Month , NSCalendarUnit.Year , NSCalendarUnit.Hour , NSCalendarUnit.Minute], fromDate:dateFire)
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 20) // время получения уведомления
-        localNotification.alertBody = "текст сообщения"
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1 // счетчик на  иконке приложения
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        
+        for (var i = 0 ; i < 10 ; i += 1){
+            for (var j = 0 ; j < 10 ; j += 1){
+                if (fireComponents.hour < 12 && i == 0){
+                    let localNotification = UILocalNotification()
+                    localNotification.fireDate = NSDate(timeIntervalSinceNow: 60) // время получения уведомления
+                }
+                else {
+                    fireComponents.hour = 12
+                    fireComponents.minute = j
+                    dateFire = calendar.dateFromComponents(fireComponents)!
+                    let localNotification = UILocalNotification()
+                    localNotification.fireDate = dateFire // время получения уведомления
+                }
+                localNotification.alertBody = "текст"
+                localNotification.timeZone = NSTimeZone.defaultTimeZone()
+                localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            }
+            fireComponents.day += 1
+        }
     }
+
     
     func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.All
