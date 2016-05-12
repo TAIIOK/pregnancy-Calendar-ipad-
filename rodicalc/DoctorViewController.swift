@@ -293,7 +293,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     width: 1,
                     height: 1)
                 
-                currentRec = swipedIndexPath.row
+                currentRec = swipedIndexPath.section
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -359,9 +359,9 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.time.text = "lol"
         }
         else{
-            cell.time.text = String(doctors[indexPath.section-1].date)
+            cell.timebutton.setTitle(String(doctors[indexPath.section-1].date), forState: .Normal)
             cell.notifibutton.setTitle(Notification[doctors[indexPath.section-1].remindType], forState: .Normal)
-            let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
+            var notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
             notifiTapped = UITapGestureRecognizer (target: self, action:"loadtime:")
             cell.timebutton.addGestureRecognizer(notifiTapped)

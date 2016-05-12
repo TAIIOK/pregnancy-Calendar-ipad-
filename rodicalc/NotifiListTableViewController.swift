@@ -12,6 +12,7 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
 
 
     
+    @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var table: UITableView!
     var firstStart = true
     override func viewDidLoad() {
@@ -19,8 +20,8 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
 
         table.delegate = self
         table.dataSource = self
-        self.navigationController?.navigationBar.barTintColor = .whiteColor()
-        self.navigationController?.navigationBar.tintColor = .blackColor()
+        navbar.barTintColor = .whiteColor()
+        navbar.tintColor = .blackColor()
     }
     
     func complete(){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -44,8 +44,8 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fv4-XK-DmC">
                         <rect key="frame" x="251" y="8" width="37" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="fl1-Vw-4By"/>
-                            <constraint firstAttribute="width" constant="37" id="pEM-nQ-hBh"/>
+                            <constraint firstAttribute="height" constant="30" id="Bnb-Ys-8sW"/>
+                            <constraint firstAttribute="width" constant="37" id="yXg-g5-GAZ"/>
                         </constraints>
                         <state key="normal" title="10:10">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,19 +53,21 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Fv4-XK-DmC" secondAttribute="bottom" constant="17" id="2Aa-36-0EV"/>
+                    <constraint firstItem="Fv4-XK-DmC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="8LB-Xp-eGk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="PA2-EI-Opz" secondAttribute="bottom" constant="-3" id="AlG-nw-OcT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fv4-XK-DmC" secondAttribute="trailing" constant="24" id="F5e-11-wOl"/>
                     <constraint firstAttribute="bottomMargin" secondItem="aTE-j8-TnP" secondAttribute="bottom" constant="-8" id="IqS-g5-YdW"/>
                     <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="82" id="Mjs-Nn-F0V"/>
                     <constraint firstItem="P8y-L4-umW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="OQC-e8-RXS"/>
                     <constraint firstItem="P8y-L4-umW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="QNy-AO-edW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Fv4-XK-DmC" secondAttribute="bottom" constant="17" id="Wic-6k-Nv6"/>
                     <constraint firstItem="aTE-j8-TnP" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="arA-dL-dyA"/>
-                    <constraint firstItem="Fv4-XK-DmC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="clg-x2-D9l"/>
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="top" secondItem="P8y-L4-umW" secondAttribute="bottom" constant="8" id="dP0-V5-joS"/>
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="dTg-lQ-790"/>
+                    <constraint firstItem="Fv4-XK-DmC" firstAttribute="leading" secondItem="P8y-L4-umW" secondAttribute="trailing" constant="191" id="fag-V4-8uw"/>
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="top" secondItem="P8y-L4-umW" secondAttribute="bottom" constant="8" id="hxy-so-Ah5"/>
                     <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="82" id="o7A-bM-94h"/>
-                    <constraint firstItem="bgn-mM-UbL" firstAttribute="trailing" secondItem="aTE-j8-TnP" secondAttribute="trailing" id="rxK-SB-IFf"/>
+                    <constraint firstAttribute="trailing" secondItem="aTE-j8-TnP" secondAttribute="trailing" constant="8" id="rxK-SB-IFf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
