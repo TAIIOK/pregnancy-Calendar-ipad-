@@ -266,6 +266,42 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
+    
+    func loadtime(recognizer: UITapGestureRecognizer){
+        
+        
+        let swipeLocation = recognizer.locationInView(self.tbl)
+        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
+                
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
+                vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                vc.preferredContentSize =  CGSizeMake(340,300)
+                let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+                
+                var location = recognizer.locationInView(recognizer.view)
+                popover.permittedArrowDirections = .Right
+                popover.delegate = self
+                
+                
+                popover.sourceView = swipedCell.timebutton
+                
+                popover.sourceRect = CGRect(
+                    x: location.x,
+                    y: location.y,
+                    width: 1,
+                    height: 1)
+                
+                currentRec = swipedIndexPath.row
+                presentViewController(vc, animated: true, completion:nil)
+            }
+        }
+    }
+    
+    
+    
+    
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         
         
@@ -327,6 +363,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.notifibutton.setTitle(Notification[doctors[indexPath.section-1].remindType], forState: .Normal)
             let notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
+            notifiTapped = UITapGestureRecognizer (target: self, action:"loadtime:")
+            cell.timebutton.addGestureRecognizer(notifiTapped)
         }
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
