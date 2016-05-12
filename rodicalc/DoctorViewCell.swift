@@ -11,7 +11,7 @@ import UIKit
 class DoctorViewCell: UITableViewCell {
 
     @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var notifiLabel: UILabel!
+    @IBOutlet weak var timebutton: UIButton!
     @IBOutlet weak var notifibutton: UIButton!
     
 
