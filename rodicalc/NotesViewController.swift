@@ -34,14 +34,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
-
-  
-
-        
         //WorkWithDB()
     }
     
-
+    @IBAction func UpdateSectionTable(segue:UIStoryboardSegue) {
+        tbl.reloadData()
+    }
     
     func WorkWithDB(){
     
@@ -122,6 +120,50 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             for tmp in try! db.prepare(table.select(WeightKg, WeightGr).filter(Date == "\(date)")){
                 str = "\(tmp[WeightKg]) кг \(tmp[WeightGr]) г"
             }
+        }else if tableName == "DoctorVisit"{
+            var table = Table("DoctorVisit")
+            let name = Expression<String>("Name")
+            let Date = Expression<String>("Date")
+            let isRemind = Expression<Bool>("isRemind")
+            let remindType = Expression<Int>("RemindType")
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            
+            var count = 0
+            
+            for i in try! db.prepare(table.select(Date)) {
+                let b = i[Date]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+                if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
+                    count += 1
+                }
+            }
+            if count > 0 {
+                str = "\(count) заметок"
+            }
+        }else if tableName == "MedicineTake"{
+            var table = Table("MedicineTake")
+            let name = Expression<String>("Name")
+            let start = Expression<String>("Start")
+            let end = Expression<String>("End")
+            var count = 0
+            
+            for i in try! db.prepare(table.select(start,end)) {
+                //let b = i[date]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+                var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
+                var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+                if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
+                     count += 1
+                }
+            }
+            if count > 0 {
+                str = "\(count) лекарств"
+            }
         }
         return str
     }
@@ -166,7 +208,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 2: //посещение врачей - список с напоминаниеями
-            cell.detailTextLabel?.text = "Нет заметок"
+            text = returnTableText("DoctorVisit", type: 2, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
         case 3: //мой вес - текстовая
             text = returnTableText("WeightNote", type: 3, date: date)
@@ -177,7 +224,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 4: //принимаемые лекарства - список с напоминаниями
-            cell.detailTextLabel?.text = "Нет заметок"
+            text = returnTableText("MedicineTake", type: 4, date: date)
+            if  text  != "" {
+                cell.detailTextLabel?.text = String(text)
+            }else{
+                cell.detailTextLabel?.text = "Нет заметок"
+            }
             break
         case 5: //приятное воспоминание дня - тестовая
             text = returnTableText("TextNote", type: 5, date: date)
@@ -253,7 +305,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 4:
-            
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Drugs")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 5:
             let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("textNote")

@@ -27,7 +27,7 @@ class Doctor: NSObject {
 }
 
 
-let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 час","За 1 день","За 1 неделю"]
+let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 часа","За 1 день","За 1 неделю"]
 let firstComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
 let secondComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 var currentRec = 0
@@ -94,21 +94,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
         
-        let count = try! db.scalar(table.count)
-        print("db count", count)
-        
         for i in try! db.prepare(table.select(name,date,isRemind,remindType)) {
-            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
             let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
             if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                print("wtf")
                 doctors.append(Doctor(date: dateFormatter.dateFromString(b)!, name: i[name], isRemind: i[isRemind], remindType: i[remindType], cellType: 0))
             }
         }
-        print(doctors.count)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -139,7 +133,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return arrayForBool.count
     }
     
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if(arrayForBool .objectAtIndex(section).boolValue == true)
@@ -148,8 +141,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return 0;
     }
-    
-
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -164,10 +155,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0{
+            return 40
+        }
         if(arrayForBool .objectAtIndex(indexPath.section).boolValue == true){
             return 60
         }
-        
         return 2;
     }
     
@@ -181,11 +174,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
 
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
-        
-        view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
-        
+        if doctors.count > 0{
+            let calendar = NSCalendar.currentCalendar()
+            print(section, doctors.count)
+            let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
+            view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
+        }
         view.tag = section
         
         headerView.tag = section
@@ -197,6 +191,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
    
         view.imageView.addGestureRecognizer(imageTapped)
+        
+        
+        let delimageTapped = UITapGestureRecognizer (target: self, action:"deletenote:")
+        delimageTapped.numberOfTapsRequired = 1
+        delimageTapped.numberOfTouchesRequired = 1
+        delimageTapped.delegate = self
+        
+        
+        view.deletecross.addGestureRecognizer(delimageTapped)
       
         let headerTapped = UITapGestureRecognizer (target: self, action:"sectionHeaderTapped:")
         view.addGestureRecognizer(headerTapped)
@@ -215,8 +218,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return view
     }
-    
-    
 
     func lblTapped(recognizer: UITapGestureRecognizer){
         if let cellContentView = recognizer.view {
@@ -235,8 +236,22 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
     
+    func deletenote(gesture:UIGestureRecognizer){
+        if let cellContentView = gesture.view {
+            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
+            for i in 1..<tbl.numberOfSections  {
+                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
+                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                    print("delete note:: \(i)")
+                    doctors.removeAtIndex(i-1)
+                    arrayForBool.removeObjectAtIndex(i)
+                    tbl.reloadData()
+                    break
+                }
+            }
+        }
+    }
     
     func enablenotification(gesture:UIGestureRecognizer){
         if let cellContentView = gesture.view {
@@ -253,15 +268,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         doctors[i-1].isRemind = true
                     }
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
-               
-    
+                    break
                 }
             }
         }
     }
-    
-    
-    
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         print("Tapping working")
@@ -297,8 +308,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     }
-    
-    
     
     func loadtime(recognizer: UITapGestureRecognizer){
         
@@ -337,9 +346,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
-    
-    
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         
