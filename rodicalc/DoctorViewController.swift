@@ -30,6 +30,8 @@ var doctors = [Doctor]()
 let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 час","За 1 день","За 1 неделю"]
 var currentRec = 0
 var changeRemindInCurRec = 0
+var min = 0
+var hour = 0
 class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -275,7 +277,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") as! UIViewController
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
@@ -304,7 +306,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         
-        
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
@@ -318,7 +319,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 var location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
-                
                 
                 popover.sourceView = swipedCell.notifibutton
                 
@@ -374,8 +374,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("This is called after  modal is dismissed by menu button on Siri Remote")
-        print(changeRemindInCurRec)
-        print(currentRec)
+        print(hour, min)
         doctors[currentRec-1].remindType = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
