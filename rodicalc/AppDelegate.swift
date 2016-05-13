@@ -33,7 +33,7 @@ func getVideoDetails() {
             
             let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
             
-            print(response)
+           // print(response)
             do {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
                     
@@ -43,8 +43,8 @@ func getVideoDetails() {
                     imagesfirst.insert(Image, atIndex: imagesfirst.count)
                     let name = jsonResult.valueForKey("title") as! String
                     videoTitlefirst.insert(name, atIndex: videoTitlefirst.count)
-                    print(imagesfirst.count)
-                    print(videoTitlefirst.count)
+                    //print(imagesfirst.count)
+                    //print(videoTitlefirst.count)
                     
                 }
             } catch let error as NSError {
@@ -73,7 +73,7 @@ func getVideoDetails() {
             
             let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
             
-            print(response)
+            //print(response)
             do {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
                     
@@ -83,8 +83,8 @@ func getVideoDetails() {
                     imagessecond.insert(Image, atIndex: i)
                     let name = jsonResult.valueForKey("title") as! String
                     videoTitlesecond.insert(name, atIndex: i)
-                    print(imagessecond.count)
-                    print(videoTitlesecond.count)
+                    //print(imagessecond.count)
+                    //print(videoTitlesecond.count)
                     
                 }
             } catch let error as NSError {

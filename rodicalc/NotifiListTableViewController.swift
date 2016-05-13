@@ -26,7 +26,7 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
     
     func complete(){
         print("save")
-        doctors[currentRec-1].remindType = (table.indexPathForSelectedRow?.row)!
+        //doctors[currentRec-1].remindType = (table.indexPathForSelectedRow?.row)!
         self.performSegueWithIdentifier("YourUnwindSegueIdentifier1", sender: nil)
     }
     
@@ -52,7 +52,7 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCellWithIdentifier("notifiCell", forIndexPath: indexPath) as! NotifiCell
         cell.textLbl.text = Notification[indexPath.row]
         
-        if firstStart && indexPath.row == doctors[currentRec-1].remindType{
+        if firstStart && indexPath.row == curRemindType{
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
             firstStart = false

@@ -3095,6 +3095,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="CPW-4p-hMr">
                                             <color key="tintColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="uSe-Fi-9LP" kind="unwind" unwindAction="UpdateSectionTime:" id="dyu-fi-Den"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -3125,6 +3128,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOP-js-xx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uSe-Fi-9LP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-818" y="-106"/>
         </scene>

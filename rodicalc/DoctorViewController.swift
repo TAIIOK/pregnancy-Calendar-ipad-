@@ -26,11 +26,14 @@ class Doctor: NSObject {
     }
 }
 
-var doctors = [Doctor]()
+
 let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 час","За 1 день","За 1 неделю"]
+let firstComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
+let secondComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 var currentRec = 0
 var changeRemindInCurRec = 0
-var min = 0
+var curRemindType = 0
+var minute = 0
 var hour = 0
 class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
@@ -46,7 +49,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var shouldShowDaysOut = true
     var animationFinished = true
-    
+    var doctors = [Doctor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,16 +74,42 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         arrayForBool.addObject("1")
+        loadNotes()
         for(var i = 0 ; i<doctors.count ;i++)
         {
             arrayForBool.addObject("0")
         }
 
-
+        
         self.presentedDateUpdated(CVDate(date: NSDate()))
     }
     
-
+    func loadNotes(){
+        doctors.removeAll()
+        var table = Table("DoctorVisit")
+        let name = Expression<String>("Name")
+        let date = Expression<String>("Date")
+        let isRemind = Expression<Bool>("isRemind")
+        let remindType = Expression<Int>("RemindType")
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+        
+        let count = try! db.scalar(table.count)
+        print("db count", count)
+        
+        for i in try! db.prepare(table.select(name,date,isRemind,remindType)) {
+            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
+            let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+            if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
+                print("wtf")
+                doctors.append(Doctor(date: dateFormatter.dateFromString(b)!, name: i[name], isRemind: i[isRemind], remindType: i[remindType], cellType: 0))
+            }
+        }
+        print(doctors.count)
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -149,9 +178,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
 
-        view.setupView(section, doctor: doctors[section-1].name, time: String(doctors[section-1].date))
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
         
-        
+        view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
         
         view.tag = section
         
@@ -171,7 +201,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (doctors[section-1].isRemind == true){
             
             view.changeImage()
-            
         }
         
         
@@ -194,7 +223,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
                     print("tapped on section header:: \(i)")
                     
-                   
                     var headerview = tbl.viewWithTag(i) as? DoctorHeader
                     headerview?.changeFields()
                     //tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
@@ -296,6 +324,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     height: 1)
                 
                 currentRec = swipedIndexPath.section
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Hour , .Minute], fromDate: doctors[currentRec-1].date)
+                hour = components.hour
+                minute = components.minute
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -329,6 +361,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     height: 1)
                 
                 currentRec = swipedIndexPath.section
+                curRemindType = doctors[currentRec-1].remindType
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -359,7 +392,9 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.time.text = "lol"
         }
         else{
-            cell.timebutton.setTitle(String(doctors[indexPath.section-1].date), forState: .Normal)
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[indexPath.section-1].date)
+            cell.timebutton.setTitle("\(firstComponent1[components.hour]):\(secondComponent1[components.minute])", forState: .Normal)
             cell.notifibutton.setTitle(Notification[doctors[indexPath.section-1].remindType], forState: .Normal)
             var notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
@@ -372,48 +407,55 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
+        print("Update TIME")
+        let tmp = doctors[currentRec-1].date
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: tmp)
+        components.hour = hour
+        components.minute = minute
+        components.second = 00
+        let newDate = calendar.dateFromComponents(components)
+        doctors[currentRec-1].date = newDate!
+        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        tbl.reloadData()
+    }
+    
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
-        print("This is called after  modal is dismissed by menu button on Siri Remote")
-        print(hour, min)
+        print("Update Notifi")
         doctors[currentRec-1].remindType = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
     
     override func viewDidDisappear(animated: Bool) {
-        /*
-        fromTableInArray()
-        let table = Table("DesireList")
-        let text = Expression<String>("Text")
-        let count = try! db.scalar(table.count)
+        var table = Table("DoctorVisit")
+        let id = Expression<Int64>("_id")
+        let name = Expression<String>("Name")
+        let date = Expression<String>("Date")
+        let isRemind = Expression<Bool>("isRemind")
+        let remindType = Expression<Int>("RemindType")
         
-        if count > 0{
-            try! db.run(table.delete())
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+        for i in try! db.prepare(table.select(id,date)) {
+            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
+            let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+            if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year{
+                try! db.run(table.filter(id == i[id]).delete())
+            }
         }
         
-        for var i in Desires{
-            if i.characters.count > 0{
-                try! db.run(table.insert(text <- "\(i)"))}
+        for i in doctors{
+            try! db.run(table.insert(name <- i.name, date <- String(i.date), isRemind <- i.isRemind, remindType <- i.remindType))
         }
-         */
-        for i in doctors {
-            print(i.name)
-        }
-    }
-    
-    func fromTableInArray(){
-        /*
-        let int = self.tbl.numberOfRowsInSection(0)-1
-        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
-            let cell = self.tbl.cellForRowAtIndexPath(i) as! DesireTableViewCell
-            Desires[i.row] = cell.textField.text!
-        }
-         */
     }
     
     func save()
     {
-    
         for (var i = 0 ; i<doctors.count   ; i += 1  ){
             
             let index = NSIndexPath(forItem: 0, inSection: i+1)
@@ -422,7 +464,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
 
             if(header!.doctornameText.text?.isEmpty == false){
-                let curDate = NSDate()
+                let curDate = doctors[i].date
                 let calendar = NSCalendar.currentCalendar()
                 let componentsCurrent = calendar.components([.Hour , .Minute , .Second], fromDate: curDate)
                 
