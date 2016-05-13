@@ -87,6 +87,9 @@
 		8EE947C61CE5E56000064446 /* DrugsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947C51CE5E56000064446 /* DrugsViewController.swift */; };
 		8EE947D91CE5E7CD00064446 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE947D41CE5E78300064446 /* SwiftyVK.framework */; };
 		8EE947DA1CE5E7CD00064446 /* SwiftyVK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE947D41CE5E78300064446 /* SwiftyVK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE947DD1CE5EFAC00064446 /* DrugsViewCell.xib */; };
+		8EE947E21CE5F41C00064446 /* DrugsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */; };
+		8EE947E61CE6036E00064446 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947E51CE6036E00064446 /* DatePickerViewController.swift */; };
 		8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31B1CCE542F007B4643 /* Blob.swift */; };
 		8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31C1CCE542F007B4643 /* Connection.swift */; };
@@ -354,6 +357,9 @@
 		8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugsListTableViewController.swift; sourceTree = "<group>"; };
 		8EE947C51CE5E56000064446 /* DrugsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugsViewController.swift; sourceTree = "<group>"; };
 		8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyVK.xcodeproj; path = "SwiftyVK-master/SwiftyVK.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		8EE947DD1CE5EFAC00064446 /* DrugsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrugsViewCell.xib; sourceTree = "<group>"; };
+		8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugsTableViewCell.swift; sourceTree = "<group>"; };
+		8EE947E51CE6036E00064446 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		8EEAC2FB1CCE508E007B4643 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
@@ -588,6 +594,7 @@
 				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
 				8EE947C51CE5E56000064446 /* DrugsViewController.swift */,
 				8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */,
+				8EE947E51CE6036E00064446 /* DatePickerViewController.swift */,
 				8E6D50401C7F068000878957 /* CalendarViewController.swift */,
 				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
 				8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */,
@@ -603,7 +610,9 @@
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
 				A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */,
 				A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */,
+				8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */,
 				A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */,
+				8EE947DD1CE5EFAC00064446 /* DrugsViewCell.xib */,
 				A04288041CE21656005DB953 /* addCell.xib */,
 			);
 			path = rodicalc;
@@ -1022,6 +1031,7 @@
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
 				8E5A6BB31CD20C7D0073B693 /* 10z.jpg in Resources */,
 				A01028DC1CD22F13005E339F /* bra.html in Resources */,
+				8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */,
 				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
 				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
 				8E5A6BB11CD20C7D0073B693 /* 8z.jpg in Resources */,
@@ -1151,6 +1161,7 @@
 				8E5A6BBB1CD22DF50073B693 /* VideoPlayerViewController.swift in Sources */,
 				A01029061CD29E0B005E339F /* CVCalendarDayView.swift in Sources */,
 				8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */,
+				8EE947E21CE5F41C00064446 /* DrugsTableViewCell.swift in Sources */,
 				8E6D503F1C7F063A00878957 /* ExperienceViewController.swift in Sources */,
 				8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */,
 				8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */,
@@ -1169,6 +1180,7 @@
 				A01029191CD29E0B005E339F /* CVRange.swift in Sources */,
 				8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */,
 				A010290E1CD29E0B005E339F /* CVCalendarView.swift in Sources */,
+				8EE947E61CE6036E00064446 /* DatePickerViewController.swift in Sources */,
 				8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */,
 				8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */,
 				A01029151CD29E0B005E339F /* CVCalendarWeekContentViewController.swift in Sources */,

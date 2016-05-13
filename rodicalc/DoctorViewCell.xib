@@ -32,19 +32,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTE-j8-TnP">
-                        <rect key="frame" x="202" y="33" width="110" height="30"/>
+                        <rect key="frame" x="186" y="33" width="126" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="4Eb-MV-wI1"/>
-                            <constraint firstAttribute="width" constant="110" id="bKx-aP-FOe"/>
+                            <constraint firstAttribute="width" constant="126" id="bKx-aP-FOe"/>
                         </constraints>
                         <state key="normal" title="За 15 минут">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fv4-XK-DmC">
-                        <rect key="frame" x="202" y="8" width="110" height="30"/>
+                        <rect key="frame" x="186" y="8" width="126" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="110" id="N7Q-Vg-Vui"/>
+                            <constraint firstAttribute="width" constant="126" id="N7Q-Vg-Vui"/>
                         </constraints>
                         <state key="normal" title="10:10">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,7 +55,7 @@
                     <constraint firstItem="Fv4-XK-DmC" firstAttribute="top" secondItem="P8y-L4-umW" secondAttribute="top" id="7jl-bV-KGG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="PA2-EI-Opz" secondAttribute="bottom" constant="-3" id="AlG-nw-OcT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="aTE-j8-TnP" secondAttribute="bottom" constant="-8" id="IqS-g5-YdW"/>
-                    <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="82" id="Mjs-Nn-F0V"/>
+                    <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="66" id="Mjs-Nn-F0V"/>
                     <constraint firstItem="P8y-L4-umW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="OQC-e8-RXS"/>
                     <constraint firstItem="P8y-L4-umW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="QNy-AO-edW"/>
                     <constraint firstItem="Fv4-XK-DmC" firstAttribute="trailing" secondItem="aTE-j8-TnP" secondAttribute="trailing" id="abL-by-Lak"/>
@@ -63,7 +63,7 @@
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="top" secondItem="P8y-L4-umW" secondAttribute="bottom" constant="8" id="dP0-V5-joS"/>
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="dTg-lQ-790"/>
                     <constraint firstItem="PA2-EI-Opz" firstAttribute="top" secondItem="P8y-L4-umW" secondAttribute="bottom" constant="8" id="hxy-so-Ah5"/>
-                    <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="82" id="o7A-bM-94h"/>
+                    <constraint firstItem="aTE-j8-TnP" firstAttribute="leading" secondItem="PA2-EI-Opz" secondAttribute="trailing" constant="66" id="o7A-bM-94h"/>
                     <constraint firstAttribute="trailing" secondItem="aTE-j8-TnP" secondAttribute="trailing" constant="8" id="rxK-SB-IFf"/>
                 </constraints>
             </tableViewCellContentView>

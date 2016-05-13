@@ -8,9 +8,12 @@
 
 import UIKit
 
-class TimeListController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class TimeListController: UIViewController{
 
-    @IBOutlet weak var picker: UIPickerView!
+    
+
+    
+    @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var navbar: UINavigationBar!
     
     let firstComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
@@ -19,19 +22,34 @@ class TimeListController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = self
-        picker.dataSource = self
+        //picker.delegate = self
+        //picker.dataSource = self
         navbar.barTintColor = .whiteColor()
         navbar.tintColor = .blackColor()
-        setupPickerViewValues()
+        //setupPickerViewValues()
         // Do any additional setup after loading the view.
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
+        components.hour = hour
+        components.minute = minute
+        components.second = 00
+        let newDate = calendar.dateFromComponents(components)
+        picker.setDate(newDate!, animated: false)
     }
 
-    private func setupPickerViewValues() {
-        picker.selectRow(minute, inComponent: 1, animated: true)
-        picker.selectRow(hour, inComponent: 0, animated: true)
-    }
+
     
+    @IBAction func getTime(sender: UIDatePicker) {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Hour , .Minute , .Second], fromDate: sender.date)
+        hour = components.hour
+        minute = components.minute
+    }
+    /*
+     private func setupPickerViewValues() {
+     picker.selectRow(minute, inComponent: 1, animated: true)
+     picker.selectRow(hour, inComponent: 0, animated: true)
+     }
     // MARK: - UIPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
@@ -60,15 +78,17 @@ class TimeListController: UIViewController, UIPickerViewDataSource, UIPickerView
     private func getMinuteFromPicker() -> Int {
         return secondComponent[picker.selectedRowInComponent(1)]
     }
+     
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        hour = getHourFromPicker()
+        minute = getMinuteFromPicker()
+     } */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        hour = getHourFromPicker()
-        minute = getMinuteFromPicker()
-    }
+ 
     override func viewDidDisappear(animated: Bool) {
         //print("did")
         //print(hour,minute)

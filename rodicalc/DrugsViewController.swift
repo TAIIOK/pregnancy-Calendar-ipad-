@@ -10,17 +10,23 @@ import UIKit
 
 
 class Drugs: NSObject {
-    var date: NSDate
     var name: String
+    var hour: Int
+    var minute: Int
+    var start: NSDate
+    var end: NSDate
+    var interval: Int
     var isRemind: Bool
-    var remindType: Int
     var cellType: Int
     
-    init(date: NSDate, name: String, isRemind: Bool, remindType: Int, cellType: Int) {
-        self.date = date
+    init(name: String, hour: Int, minute: Int, start: NSDate, end: NSDate, interval: Int, isRemind: Bool, cellType: Int) {
         self.name = name
+        self.hour = hour
+        self.minute = minute
+        self.start = start
+        self.end = end
+        self.interval = interval
         self.isRemind = isRemind
-        self.remindType = remindType
         self.cellType = cellType
         super.init()
     }
@@ -28,7 +34,8 @@ class Drugs: NSObject {
 
 
 let Interval = ["Никогда","Каждый день","Каждую неделю","Раз в 2 недели","Каждый месяц","Каждый год"]
-
+var StartORend = -1 //0 - start 1 - end
+var curDate = NSDate()
 class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
     
@@ -51,8 +58,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         
-        var nibName = UINib(nibName: "DoctorViewCell", bundle:nil)
-        self.tbl.registerNib(nibName, forCellReuseIdentifier: "DoctorViewCell")
+        var nibName = UINib(nibName: "DrugsViewCell", bundle:nil)
+        self.tbl.registerNib(nibName, forCellReuseIdentifier: "DrugsViewCell")
         
          nibName = UINib(nibName: "addCell", bundle:nil)
         self.tbl.registerNib(nibName, forCellReuseIdentifier: "addCell")
@@ -78,30 +85,31 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func loadNotes(){
-        /*drugs.removeAll()
-        var table = Table("DoctorVisit")
+        drugs.removeAll()
+        var table = Table("MedicineTake")
         let name = Expression<String>("Name")
-        let date = Expression<String>("Date")
+        let start = Expression<String>("Start")
+        let end = Expression<String>("End")
         let isRemind = Expression<Bool>("isRemind")
-        let remindType = Expression<Int>("RemindType")
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+        let hour_ = Expression<Int>("Hour")
+        let minute_ = Expression<Int>("Minute")
+        let interval_ = Expression<Int>("Interval")
         
-        let count = try! db.scalar(table.count)
-        print("db count", count)
-        
-        for i in try! db.prepare(table.select(name,date,isRemind,remindType)) {
-            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
-            let b = i[date]
+        //let calendar = NSCalendar.currentCalendar()
+        //let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+
+        for i in try! db.prepare(table.select(name,start,end,isRemind,hour_,minute_,interval_)) {
+            //let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-            if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                print("wtf")
-                drugs.append(Doctor(date: dateFormatter.dateFromString(b)!, name: i[name], isRemind: i[isRemind], remindType: i[remindType], cellType: 0))
+            //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+            var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
+            var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+            print(selectedNoteDay.date.convertedDate()!, i[start], i[end])
+            if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
+                drugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
         }
-        print(drugs.count)*/
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -119,7 +127,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             components.second = componentsCurrent.second
             let newDate = calendar.dateFromComponents(components)
             
-            drugs.append(Drugs(date: newDate!, name: "Лекарство", isRemind: false, remindType: 0, cellType: 1))
+            drugs.append(Drugs(name: "Лекарство", hour: 0, minute: 0, start: NSDate(), end: NSDate(), interval: 0, isRemind: false, cellType: 0))
             arrayForBool.addObject("0")
             tbl.reloadData()
         }
@@ -154,8 +162,11 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(indexPath.section == 0){
+            return 40
+        }
         if(arrayForBool .objectAtIndex(indexPath.section).boolValue == true){
-            return 60
+            return 120
         }
         
         return 2;
@@ -170,11 +181,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
-
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Hour , .Minute , .Second], fromDate: drugs[section-1].date)
         
-        view.setupView(section, doctor: drugs[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
+        view.setupView(section, doctor: drugs[section-1].name, time: "\(firstComponent1[drugs[section-1].hour]):\(secondComponent1[drugs[section-1].minute])")
         
         view.tag = section
         
@@ -292,7 +300,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
-            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") as! UIViewController
@@ -314,10 +322,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     height: 1)
                 
                 currentRec = swipedIndexPath.section
-                let calendar = NSCalendar.currentCalendar()
-                let components = calendar.components([.Hour , .Minute], fromDate: drugs[currentRec-1].date)
-                hour = components.hour
-                minute = components.minute
+                hour = drugs[currentRec-1].hour
+                minute = drugs[currentRec-1].minute
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -330,10 +336,10 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
-            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DrugsTable") as! UIViewController
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
@@ -351,13 +357,75 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     height: 1)
                 
                 currentRec = swipedIndexPath.section
-                curRemindType = drugs[currentRec-1].remindType
+                curRemindType = drugs[currentRec-1].interval
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
     }
 
-    
+    func loadstartdate(recognizer: UITapGestureRecognizer){
+        let swipeLocation = recognizer.locationInView(self.tbl)
+        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
+                
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") as! UIViewController
+                vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                vc.preferredContentSize =  CGSizeMake(340,300)
+                let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+                
+                var location = recognizer.locationInView(recognizer.view)
+                popover.permittedArrowDirections = .Right
+                popover.delegate = self
+                
+                
+                popover.sourceView = swipedCell.timebutton
+                
+                popover.sourceRect = CGRect(
+                    x: location.x,
+                    y: location.y,
+                    width: 1,
+                    height: 1)
+                
+                currentRec = swipedIndexPath.section
+                curDate = drugs[currentRec-1].start
+                StartORend = 0
+                presentViewController(vc, animated: true, completion:nil)
+            }
+        }
+    }
+
+    func loadenddate(recognizer: UITapGestureRecognizer){
+        let swipeLocation = recognizer.locationInView(self.tbl)
+        if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
+            if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
+                
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") as! UIViewController
+                vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                vc.preferredContentSize =  CGSizeMake(340,300)
+                let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+                
+                var location = recognizer.locationInView(recognizer.view)
+                popover.permittedArrowDirections = .Right
+                popover.delegate = self
+                
+                popover.sourceView = swipedCell.timebutton
+                
+                popover.sourceRect = CGRect(
+                    x: location.x,
+                    y: location.y,
+                    width: 1,
+                    height: 1)
+                
+                currentRec = swipedIndexPath.section
+                curDate = drugs[currentRec-1].end
+                StartORend = 1
+                presentViewController(vc, animated: true, completion:nil)
+            }
+        }
+    }
+
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
@@ -372,22 +440,29 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.selectionStyle = .None
             return cell
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier("DoctorViewCell", forIndexPath: indexPath) as! DoctorViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("DrugsViewCell", forIndexPath: indexPath) as! DrugsTableViewCell
         
         if(indexPath.section != 0)
         {
         let manyCells : Bool = arrayForBool .objectAtIndex(indexPath.section).boolValue
         
         if (!manyCells) {
-            cell.time.text = "lol"
+            
         }
         else{
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Hour , .Minute , .Second], fromDate: drugs[indexPath.section-1].date)
-            cell.timebutton.setTitle("\(firstComponent1[components.hour]):\(secondComponent1[components.minute])", forState: .Normal)
-            cell.notifibutton.setTitle(Notification[drugs[indexPath.section-1].remindType], forState: .Normal)
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            var selectedDate = dateFormatter.stringFromDate(drugs[indexPath.section-1].start)
+            cell.timebutton.setTitle("\(firstComponent1[drugs[indexPath.section-1].hour]):\(secondComponent1[drugs[indexPath.section-1].minute])", forState: .Normal)
+            cell.startbutton.setTitle(dateFormatter.stringFromDate(drugs[indexPath.section-1].start), forState: .Normal)
+            cell.stopbutton.setTitle(dateFormatter.stringFromDate(drugs[indexPath.section-1].end), forState: .Normal)
+            cell.notifibutton.setTitle(Interval[drugs[indexPath.section-1].interval], forState: .Normal)
             var notifiTapped = UITapGestureRecognizer (target: self, action:"loadnotifilist:")
             cell.notifibutton.addGestureRecognizer(notifiTapped)
+            notifiTapped = UITapGestureRecognizer (target: self, action:"loadstartdate:")
+            cell.startbutton.addGestureRecognizer(notifiTapped)
+            notifiTapped = UITapGestureRecognizer (target: self, action:"loadenddate:")
+            cell.stopbutton.addGestureRecognizer(notifiTapped)
             notifiTapped = UITapGestureRecognizer (target: self, action:"loadtime:")
             cell.timebutton.addGestureRecognizer(notifiTapped)
         }
@@ -399,32 +474,33 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
         print("Update TIME")
-        let tmp = drugs[currentRec-1].date
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: tmp)
-        components.hour = hour
-        components.minute = minute
-        components.second = 00
-        let newDate = calendar.dateFromComponents(components)
-        drugs[currentRec-1].date = newDate!
+        drugs[currentRec-1].hour = hour
+        drugs[currentRec-1].minute = minute
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("Update Notifi")
-        drugs[currentRec-1].remindType = changeRemindInCurRec
+        drugs[currentRec-1].interval = changeRemindInCurRec
+        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        tbl.reloadData()
+    }
+    
+    @IBAction func UpdateSectionDate(segue:UIStoryboardSegue) {
+        print("Update Date")
+        switch StartORend {
+        case 0:
+            drugs[currentRec-1].start = curDate
+        default:
+            drugs[currentRec-1].end = curDate
+        }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
     
     override func viewDidDisappear(animated: Bool) {
-       /* var table = Table("DoctorVisit")
-        let id = Expression<Int64>("_id")
-        let name = Expression<String>("Name")
-        let date = Expression<String>("Date")
-        let isRemind = Expression<Bool>("isRemind")
-        let remindType = Expression<Int>("RemindType")
+       /*
         
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
@@ -442,6 +518,33 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         for i in doctors{
             try! db.run(table.insert(name <- i.name, date <- String(i.date), isRemind <- i.isRemind, remindType <- i.remindType))
         }*/
+        var table = Table("MedicineTake")
+        let id = Expression<Int64>("_id")
+        let name = Expression<String>("Name")
+        let start = Expression<String>("Start")
+        let end = Expression<String>("End")
+        let isRemind = Expression<Bool>("isRemind")
+        let hour_ = Expression<Int>("Hour")
+        let minute_ = Expression<Int>("Minute")
+        let interval_ = Expression<Int>("Interval")
+        
+        for i in try! db.prepare(table.select(id,start,end)) {
+            //let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+            var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
+            var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+            if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
+                try! db.run(table.filter(id == i[id]).delete())
+            }
+            
+        }
+        
+        for i in drugs{
+            try! db.run(table.insert(name <- i.name, start <- String(i.start), end <- String(i.end), isRemind <- i.isRemind, hour_ <- i.hour, minute_ <- i.minute, interval_ <- i.interval))
+        }
+
     }
     
     func save()
@@ -451,21 +554,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let index = NSIndexPath(forItem: 0, inSection: i+1)
             
             var header = tbl?.viewWithTag(index.section) as? DoctorHeader
-            
-
             if(header!.doctornameText.text?.isEmpty == false){
-                let curDate = drugs[i].date
-                let calendar = NSCalendar.currentCalendar()
-                let componentsCurrent = calendar.components([.Hour , .Minute , .Second], fromDate: curDate)
-                
-                let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
-                components.hour = componentsCurrent.hour
-                components.minute = componentsCurrent.minute
-                components.second = componentsCurrent.second
-                let newDate = calendar.dateFromComponents(components)
-                
                 drugs[i].name = (header!.doctornameText.text)!
-                drugs[i].date = newDate!
             }
             
         }

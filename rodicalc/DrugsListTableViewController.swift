@@ -37,13 +37,13 @@ class DrugsListTableViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Notification.count
+        return Interval.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("notifiCell", forIndexPath: indexPath) as! NotifiCell
-        cell.textLbl.text = Notification[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("drugsCell", forIndexPath: indexPath) as! NotifiCell
+        cell.textLbl.text = Interval[indexPath.row]
         
         if firstStart && indexPath.row == curRemindType{
             cell.setHighlighted(true, animated: false)

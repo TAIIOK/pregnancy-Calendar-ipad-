@@ -94,15 +94,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
         
-        let count = try! db.scalar(table.count)
-        
         for i in try! db.prepare(table.select(name,date,isRemind,remindType)) {
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
             let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
             if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                print("wtf")
                 doctors.append(Doctor(date: dateFormatter.dateFromString(b)!, name: i[name], isRemind: i[isRemind], remindType: i[remindType], cellType: 0))
             }
         }
@@ -133,7 +130,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return arrayForBool.count
     }
     
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if(arrayForBool .objectAtIndex(section).boolValue == true)
@@ -142,8 +138,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return 0;
     }
-    
-
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -158,10 +152,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0{
+            return 40
+        }
         if(arrayForBool .objectAtIndex(indexPath.section).boolValue == true){
             return 60
         }
-        
         return 2;
     }
     
@@ -209,8 +205,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return view
     }
-    
-    
 
     func lblTapped(recognizer: UITapGestureRecognizer){
         if let cellContentView = recognizer.view {
@@ -229,8 +223,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
-    
     
     func enablenotification(gesture:UIGestureRecognizer){
         if let cellContentView = gesture.view {
@@ -253,9 +245,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
-    
-    
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         print("Tapping working")
@@ -292,8 +281,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    
-    
     func loadtime(recognizer: UITapGestureRecognizer){
         
         
@@ -329,9 +316,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
-    
-    
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         
