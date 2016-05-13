@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyVK
 
 class OnePhotoViewController: UIViewController {
 
@@ -50,6 +51,14 @@ class OnePhotoViewController: UIViewController {
     func backwards(s1: NSIndexPath, _ s2: NSIndexPath) -> Bool {
         return s1.row > s2.row
     }
+    
+    
+    @IBAction func UpdateSection(segue:UIStoryboardSegue) {
+        print("This is called after  modal is dismissed by menu button on Siri Remote")
+        VK.autorize()
+    }
+    
+    
     
     
     func savePhotos(img: UIImage, Type: Int){

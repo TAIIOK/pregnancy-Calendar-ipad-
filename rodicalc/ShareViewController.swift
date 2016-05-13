@@ -8,14 +8,28 @@
 
 import UIKit
 
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
+
+import SwiftyVK
+
+var vk = 0
+
 class ShareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         // Do any additional setup after loading the view.
     }
 
+    func complete(){
+        print("save")
+        self.performSegueWithIdentifier("", sender: nil)
+    }
+    
     @IBAction func Cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -25,7 +39,10 @@ class ShareViewController: UIViewController {
     }
     
     @IBAction func ShareVK(sender: AnyObject) {
-        print("шарю во вконтактик")
+        
+            print("шарю во вконтактик")
+            print("save")
+
     }
     
     @IBAction func ShareOK(sender: AnyObject) {
@@ -42,6 +59,7 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

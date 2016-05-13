@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyVK
 
 class SelectPhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
 
@@ -15,6 +16,9 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     var selected = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        
         PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         PhotoCollectionView.backgroundColor = .clearColor()
         /*
@@ -70,6 +74,13 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     
     func backwards(s1: NSIndexPath, _ s2: NSIndexPath) -> Bool {
         return s1.row > s2.row
+    }
+    
+    @IBAction func UpdateSection(segue:UIStoryboardSegue) {
+        fuck()
+    }
+    func fuck()  {
+        VK.autorize()
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
