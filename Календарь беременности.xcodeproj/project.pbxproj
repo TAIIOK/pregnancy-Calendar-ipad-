@@ -83,6 +83,10 @@
 		8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */; };
 		8EE947B91CE484F100064446 /* NotifiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B81CE484F100064446 /* NotifiCell.swift */; };
 		8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947BA1CE4A67C00064446 /* TimeListController.swift */; };
+		8EE947C41CE5E4D500064446 /* DrugsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */; };
+		8EE947C61CE5E56000064446 /* DrugsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947C51CE5E56000064446 /* DrugsViewController.swift */; };
+		8EE947D91CE5E7CD00064446 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE947D41CE5E78300064446 /* SwiftyVK.framework */; };
+		8EE947DA1CE5E7CD00064446 /* SwiftyVK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE947D41CE5E78300064446 /* SwiftyVK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31B1CCE542F007B4643 /* Blob.swift */; };
 		8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31C1CCE542F007B4643 /* Connection.swift */; };
@@ -153,8 +157,6 @@
 		A042882C1CE4B064005DB953 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04288291CE4B064005DB953 /* FBSDKLoginKit.framework */; };
 		A042882D1CE4B064005DB953 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A042882A1CE4B064005DB953 /* FBSDKShareKit.framework */; };
 		A04288351CE4B0D4005DB953 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A04288341CE4B0D4005DB953 /* OKSDK.m */; };
-		A042895E1CE4C30E005DB953 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04289591CE4C2DB005DB953 /* SwiftyVK.framework */; };
-		A042895F1CE4C30E005DB953 /* SwiftyVK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A04289591CE4C2DB005DB953 /* SwiftyVK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0669E661CDA34E4002F8E95 /* DoctorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */; };
 		A0669E671CDA34E4002F8E95 /* DoctorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */; };
 		A0669E701CDA34F2002F8E95 /* DoctorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */; };
@@ -175,6 +177,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8E90A40E1C7DF093001F3A07;
 			remoteInfo = rodicalc;
+		};
+		8EE947D11CE5E78300064446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2EB6EA81BD180E9008E7D86;
+			remoteInfo = "SwiftyVK-OSX";
+		};
+		8EE947D31CE5E78300064446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2EB6E9B1BD180DD008E7D86;
+			remoteInfo = "SwiftyVK-iOS";
+		};
+		8EE947D51CE5E78300064446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2527D4B1BD1130D00F65412;
+			remoteInfo = "SwiftyVKResources-OSX";
+		};
+		8EE947D71CE5E78300064446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2527D551BD1134500F65412;
+			remoteInfo = "SwiftyVKResources-iOS";
+		};
+		8EE947DB1CE5E7CD00064446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A2EB6E9A1BD180DD008E7D86;
+			remoteInfo = "SwiftyVK-iOS";
 		};
 		8EEAC2A01CBBB8FC007B4643 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -211,41 +248,6 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
-		A04289561CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A2EB6EA81BD180E9008E7D86;
-			remoteInfo = "SwiftyVK-OSX";
-		};
-		A04289581CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A2EB6E9B1BD180DD008E7D86;
-			remoteInfo = "SwiftyVK-iOS";
-		};
-		A042895A1CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A2527D4B1BD1130D00F65412;
-			remoteInfo = "SwiftyVKResources-OSX";
-		};
-		A042895C1CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A2527D551BD1134500F65412;
-			remoteInfo = "SwiftyVKResources-iOS";
-		};
-		A04289601CE4C30E005DB953 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A2EB6E9A1BD180DD008E7D86;
-			remoteInfo = "SwiftyVK-iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -255,7 +257,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A042895F1CE4C30E005DB953 /* SwiftyVK.framework in Embed Frameworks */,
+				8EE947DA1CE5E7CD00064446 /* SwiftyVK.framework in Embed Frameworks */,
 				8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */,
 				A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */,
 			);
@@ -349,6 +351,9 @@
 		8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiListTableViewController.swift; sourceTree = "<group>"; };
 		8EE947B81CE484F100064446 /* NotifiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiCell.swift; sourceTree = "<group>"; };
 		8EE947BA1CE4A67C00064446 /* TimeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeListController.swift; sourceTree = "<group>"; };
+		8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugsListTableViewController.swift; sourceTree = "<group>"; };
+		8EE947C51CE5E56000064446 /* DrugsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugsViewController.swift; sourceTree = "<group>"; };
+		8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyVK.xcodeproj; path = "SwiftyVK-master/SwiftyVK.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		8EEAC2FB1CCE508E007B4643 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
@@ -423,7 +428,6 @@
 		A042882A1CE4B064005DB953 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A04288331CE4B0D4005DB953 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
 		A04288341CE4B0D4005DB953 /* OKSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKSDK.m; sourceTree = "<group>"; };
-		A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyVK.xcodeproj; path = "../../../../../Downloads/SwiftyVK-master-2/SwiftyVK.xcodeproj"; sourceTree = "<group>"; };
 		A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewCell.swift; sourceTree = "<group>"; };
 		A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewCell.xib; sourceTree = "<group>"; };
 		A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorHeader.swift; sourceTree = "<group>"; };
@@ -442,7 +446,7 @@
 				A042882B1CE4B064005DB953 /* FBSDKCoreKit.framework in Frameworks */,
 				A042882D1CE4B064005DB953 /* FBSDKShareKit.framework in Frameworks */,
 				A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */,
-				A042895E1CE4C30E005DB953 /* SwiftyVK.framework in Frameworks */,
+				8EE947D91CE5E7CD00064446 /* SwiftyVK.framework in Frameworks */,
 				A042882C1CE4B064005DB953 /* FBSDKLoginKit.framework in Frameworks */,
 				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
@@ -582,6 +586,8 @@
 				A0669E711CDA3597002F8E95 /* DoctorViewController.swift */,
 				8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */,
 				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
+				8EE947C51CE5E56000064446 /* DrugsViewController.swift */,
+				8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */,
 				8E6D50401C7F068000878957 /* CalendarViewController.swift */,
 				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
 				8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */,
@@ -619,6 +625,17 @@
 				8E90A4371C7DF093001F3A07 /* Info.plist */,
 			);
 			path = rodicalcUITests;
+			sourceTree = "<group>";
+		};
+		8EE947CB1CE5E78300064446 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EE947D21CE5E78300064446 /* SwiftyVK.framework */,
+				8EE947D41CE5E78300064446 /* SwiftyVK.framework */,
+				8EE947D61CE5E78300064446 /* SwiftyVKResources-OSX.bundle */,
+				8EE947D81CE5E78300064446 /* SwiftyVKResources-iOS.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8EEAC29A1CBBB8FC007B4643 /* Products */ = {
@@ -800,20 +817,9 @@
 		A042887B1CE4C14D005DB953 /* vk */ = {
 			isa = PBXGroup;
 			children = (
-				A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */,
+				8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */,
 			);
 			path = vk;
-			sourceTree = "<group>";
-		};
-		A04289501CE4C2DB005DB953 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A04289571CE4C2DB005DB953 /* SwiftyVK.framework */,
-				A04289591CE4C2DB005DB953 /* SwiftyVK.framework */,
-				A042895B1CE4C2DB005DB953 /* SwiftyVKResources-OSX.bundle */,
-				A042895D1CE4C2DB005DB953 /* SwiftyVKResources-iOS.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,13 +833,13 @@
 				8E90A40C1C7DF093001F3A07 /* Frameworks */,
 				8E90A40D1C7DF093001F3A07 /* Resources */,
 				8E56189C1CAA8B2A00C9B7D1 /* Embed Frameworks */,
-				A01D67011CD0FB7B004960CD /* ShellScript */,
+				A01D67011CD0FB7B004960CD /* Run Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				A01D67061CD0FF97004960CD /* PBXTargetDependency */,
-				A04289611CE4C30E005DB953 /* PBXTargetDependency */,
+				8EE947DC1CE5E7CD00064446 /* PBXTargetDependency */,
 			);
 			name = "Календарь беременности";
 			productName = rodicalc;
@@ -924,8 +930,8 @@
 					ProjectRef = 8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */;
 				},
 				{
-					ProductGroup = A04289501CE4C2DB005DB953 /* Products */;
-					ProjectRef = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+					ProductGroup = 8EE947CB1CE5E78300064446 /* Products */;
+					ProjectRef = 8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -938,6 +944,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8EE947D21CE5E78300064446 /* SwiftyVK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyVK.framework;
+			remoteRef = 8EE947D11CE5E78300064446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8EE947D41CE5E78300064446 /* SwiftyVK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyVK.framework;
+			remoteRef = 8EE947D31CE5E78300064446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8EE947D61CE5E78300064446 /* SwiftyVKResources-OSX.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyVKResources-OSX.bundle";
+			remoteRef = 8EE947D51CE5E78300064446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8EE947D81CE5E78300064446 /* SwiftyVKResources-iOS.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyVKResources-iOS.bundle";
+			remoteRef = 8EE947D71CE5E78300064446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8EEAC2A11CBBB8FC007B4643 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -964,34 +998,6 @@
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
 			remoteRef = 8EEAC2A61CBBB8FC007B4643 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A04289571CE4C2DB005DB953 /* SwiftyVK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyVK.framework;
-			remoteRef = A04289561CE4C2DB005DB953 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A04289591CE4C2DB005DB953 /* SwiftyVK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyVK.framework;
-			remoteRef = A04289581CE4C2DB005DB953 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A042895B1CE4C2DB005DB953 /* SwiftyVKResources-OSX.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftyVKResources-OSX.bundle";
-			remoteRef = A042895A1CE4C2DB005DB953 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A042895D1CE4C2DB005DB953 /* SwiftyVKResources-iOS.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftyVKResources-iOS.bundle";
-			remoteRef = A042895C1CE4C2DB005DB953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1057,13 +1063,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A01D67011CD0FB7B004960CD /* ShellScript */ = {
+		A01D67011CD0FB7B004960CD /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1094,6 +1101,7 @@
 				A01029091CD29E0B005E339F /* CVCalendarMenuView.swift in Sources */,
 				8E1DD60A1CB2978500D55893 /* ShowZodiacViewController.swift in Sources */,
 				8EEAC3381CCE542F007B4643 /* FTS4.swift in Sources */,
+				8EE947C41CE5E4D500064446 /* DrugsListTableViewController.swift in Sources */,
 				8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */,
 				A010291A1CD29E0B005E339F /* CVScrollDirection.swift in Sources */,
 				8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */,
@@ -1134,6 +1142,7 @@
 				8E5A6BD41CD7A1810073B693 /* PreferencesTableViewCell.swift in Sources */,
 				A0669E661CDA34E4002F8E95 /* DoctorViewCell.swift in Sources */,
 				8E5A6BCE1CD3CAA90073B693 /* FoodViewController.swift in Sources */,
+				8EE947C61CE5E56000064446 /* DrugsViewController.swift in Sources */,
 				8E51BF1A1CA2D00200D8D739 /* CalloutAnnotation.swift in Sources */,
 				8EEAC33B1CCE542F007B4643 /* Helpers.swift in Sources */,
 				8E2538F11C84746D00B3C54E /* Plist.swift in Sources */,
@@ -1210,15 +1219,15 @@
 			target = 8E90A40E1C7DF093001F3A07 /* Календарь беременности */;
 			targetProxy = 8E90A4321C7DF093001F3A07 /* PBXContainerItemProxy */;
 		};
+		8EE947DC1CE5E7CD00064446 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyVK-iOS";
+			targetProxy = 8EE947DB1CE5E7CD00064446 /* PBXContainerItemProxy */;
+		};
 		A01D67061CD0FF97004960CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
 			targetProxy = A01D67051CD0FF97004960CD /* PBXContainerItemProxy */;
-		};
-		A04289611CE4C30E005DB953 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftyVK-iOS";
-			targetProxy = A04289601CE4C30E005DB953 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -27,7 +27,7 @@ class Doctor: NSObject {
 }
 
 
-let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 час","За 1 день","За 1 неделю"]
+let Notification = ["Нет","За 5 минут","За 15 минут","За 30 минут","За 1 час","За 2 часа","За 1 день","За 1 неделю"]
 let firstComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
 let secondComponent1 = ["00", "01", "02","03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 var currentRec = 0
@@ -95,10 +95,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
         
         let count = try! db.scalar(table.count)
-        print("db count", count)
         
         for i in try! db.prepare(table.select(name,date,isRemind,remindType)) {
-            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
@@ -108,7 +106,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 doctors.append(Doctor(date: dateFormatter.dateFromString(b)!, name: i[name], isRemind: i[isRemind], remindType: i[remindType], cellType: 0))
             }
         }
-        print(doctors.count)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
