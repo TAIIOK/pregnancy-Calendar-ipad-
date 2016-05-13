@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyVK
 
 class Doctor: NSObject {
     var date: NSDate
@@ -53,7 +53,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
@@ -129,6 +129,9 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             doctors.append(Doctor(date: newDate!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
             arrayForBool.addObject("0")
             tbl.reloadData()
+            
+            
+            
         }
 
     }
@@ -328,6 +331,8 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let components = calendar.components([.Hour , .Minute], fromDate: doctors[currentRec-1].date)
                 hour = components.hour
                 minute = components.minute
+                
+                
                 presentViewController(vc, animated: true, completion:nil)
             }
         }
@@ -419,6 +424,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         doctors[currentRec-1].date = newDate!
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
+   // self.view.addSubview(photo())
     }
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {

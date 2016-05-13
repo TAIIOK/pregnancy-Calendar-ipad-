@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import SwiftyVK
+
 
 class SelectPhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
 
@@ -76,12 +76,8 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         return s1.row > s2.row
     }
     
-    @IBAction func UpdateSection(segue:UIStoryboardSegue) {
-        fuck()
-    }
-    func fuck()  {
-        VK.autorize()
-    }
+
+
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1

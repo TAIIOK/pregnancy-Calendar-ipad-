@@ -11,7 +11,6 @@ import CoreData
 import YouTubePlayer
 import Fabric
 import Crashlytics
-import SwiftyVK
 
 
 let StrawBerryColor = UIColor(red: 206/255.0, green: 15/255.0, blue: 105/255.0, alpha: 1.0)
@@ -109,7 +108,7 @@ func getVideoDetails() {
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate , VKDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -123,7 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , VKDelegate {
         createEditableCopyOfDatabaseIfNeeded()
         Fabric.with([Crashlytics.self])
         
-        VK.start(appID: "5437729", delegate: self)
         
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
             if #available(iOS 8.0, *) {
@@ -144,37 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , VKDelegate {
     }
 
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        if #available(iOS 9.0, *) {
-            VK.processURL(url, options: options)
-        } else {
-            // Fallback on earlier versions
-        }
-        return true
-    }
-    
-    func vkAutorizationFailed(error: VK.Error) {
-        print("Autorization failed with error: \n\(error)")
-    }
-    
-    func vkWillAutorize() -> [VK.Scope] {
-       let scope = [VK.Scope.messages,.offline,.friends,.wall,.photos,.audio,.video,.docs,.market,.email]
 
-        return  scope
-    }
-    
-    func vkDidAutorize(parameters: Dictionary<String, String>) {
-    }
-    
-    func vkDidUnautorize() {}
-    
-    func vkTokenPath() -> (useUserDefaults: Bool, alternativePath: String) {
-        return (true, "")
-    }
-    
-    func vkWillPresentView() -> UIViewController {
-        return self.window!.rootViewController!
-    }
     
 
     

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import SwiftyVK
 
 class photo: UIView{
     
@@ -38,6 +38,7 @@ class photo: UIView{
         xibSetup()
     }
     
+    
     func xibSetup() {
         view = loadViewFromNib()
         
@@ -49,6 +50,8 @@ class photo: UIView{
         
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(view)
+        
+        VK.autorize()
 
     }
     

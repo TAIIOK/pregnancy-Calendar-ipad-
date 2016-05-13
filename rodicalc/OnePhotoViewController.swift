@@ -7,14 +7,16 @@
 //
 
 import UIKit
-import SwiftyVK
 
-class OnePhotoViewController: UIViewController {
 
+class OnePhotoViewController: UIViewController{
+
+    
     @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         image.image = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
     }
     
@@ -52,12 +54,7 @@ class OnePhotoViewController: UIViewController {
         return s1.row > s2.row
     }
     
-    
-    @IBAction func UpdateSection(segue:UIStoryboardSegue) {
-        print("This is called after  modal is dismissed by menu button on Siri Remote")
-        VK.autorize()
-    }
-    
+  
     
     
     

@@ -1396,7 +1396,6 @@
                                 </state>
                                 <connections>
                                     <action selector="ShareVK:" destination="j9S-9q-F2f" eventType="touchUpInside" id="YpN-wB-wvt"/>
-                                    <segue destination="Qsx-kz-lIK" kind="unwind" unwindAction="UpdateSection:" id="sTZ-Kv-M5e"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1442,7 +1441,6 @@
                     <value key="contentSizeForViewInPopover" type="size" width="350" height="150"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JiO-FO-RwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Qsx-kz-lIK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4525" y="3452"/>
         </scene>
@@ -3180,11 +3178,11 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FRD-nV-ZPC"/>
+        <segue reference="kMg-vQ-vuk"/>
         <segue reference="L53-bo-E8K"/>
         <segue reference="P0H-Yd-JxP"/>
-        <segue reference="kMg-vQ-vuk"/>
-        <segue reference="T6c-gQ-90V"/>
-        <segue reference="gAm-h9-WUK"/>
+        <segue reference="XcH-dH-mWH"/>
+        <segue reference="IGw-IB-TBh"/>
+        <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
