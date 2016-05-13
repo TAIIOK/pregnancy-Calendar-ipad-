@@ -171,11 +171,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let view = DoctorHeader(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
 
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
-        
-        view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
-        
+        if doctors.count > 0{
+            let calendar = NSCalendar.currentCalendar()
+            print(section, doctors.count)
+            let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
+            view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
+        }
         view.tag = section
         
         headerView.tag = section
@@ -187,6 +188,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
    
         view.imageView.addGestureRecognizer(imageTapped)
+        
+        
+        let delimageTapped = UITapGestureRecognizer (target: self, action:"deletenote:")
+        delimageTapped.numberOfTapsRequired = 1
+        delimageTapped.numberOfTouchesRequired = 1
+        delimageTapped.delegate = self
+        
+        
+        view.deletecross.addGestureRecognizer(delimageTapped)
       
         let headerTapped = UITapGestureRecognizer (target: self, action:"sectionHeaderTapped:")
         view.addGestureRecognizer(headerTapped)
@@ -224,6 +234,22 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func deletenote(gesture:UIGestureRecognizer){
+        if let cellContentView = gesture.view {
+            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
+            for i in 1..<tbl.numberOfSections  {
+                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
+                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                    print("delete note:: \(i)")
+                    doctors.removeAtIndex(i-1)
+                    arrayForBool.removeObjectAtIndex(i)
+                    tbl.reloadData()
+                    break
+                }
+            }
+        }
+    }
+    
     func enablenotification(gesture:UIGestureRecognizer){
         if let cellContentView = gesture.view {
             let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
@@ -239,8 +265,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         doctors[i-1].isRemind = true
                     }
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
-               
-    
+                    break
                 }
             }
         }

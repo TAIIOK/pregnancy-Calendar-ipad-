@@ -94,9 +94,6 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let hour_ = Expression<Int>("Hour")
         let minute_ = Expression<Int>("Minute")
         let interval_ = Expression<Int>("Interval")
-        
-        //let calendar = NSCalendar.currentCalendar()
-        //let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
 
         for i in try! db.prepare(table.select(name,start,end,isRemind,hour_,minute_,interval_)) {
             //let b = i[date]
@@ -105,7 +102,6 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
             var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
             var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
-            print(selectedNoteDay.date.convertedDate()!, i[start], i[end])
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 drugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
@@ -196,6 +192,15 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
    
         view.imageView.addGestureRecognizer(imageTapped)
       
+        let delimageTapped = UITapGestureRecognizer (target: self, action:"deletenote:")
+        delimageTapped.numberOfTapsRequired = 1
+        delimageTapped.numberOfTouchesRequired = 1
+        delimageTapped.delegate = self
+        
+        
+        view.deletecross.addGestureRecognizer(delimageTapped)
+        
+        
         let headerTapped = UITapGestureRecognizer (target: self, action:"sectionHeaderTapped:")
         view.addGestureRecognizer(headerTapped)
         
@@ -214,6 +219,21 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    func deletenote(gesture:UIGestureRecognizer){
+        if let cellContentView = gesture.view {
+            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
+            for i in 1..<tbl.numberOfSections  {
+                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
+                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                    print("delete note:: \(i)")
+                    drugs.removeAtIndex(i-1)
+                    arrayForBool.removeObjectAtIndex(i)
+                    tbl.reloadData()
+                    break
+                }
+            }
+        }
+    }
 
     func lblTapped(recognizer: UITapGestureRecognizer){
         if let cellContentView = recognizer.view {
@@ -250,6 +270,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         drugs[i-1].isRemind = true
                     }
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+                    break
                 }
             }
         }
@@ -328,9 +349,6 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
-    
-    
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
         

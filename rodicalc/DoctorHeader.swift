@@ -18,6 +18,7 @@ class DoctorHeader: UIView {
     var timestring:UILabel
     var doctorname:UILabel
     var doctornameText:UITextField
+    var deletecross: UIImageView
     
     override init (frame : CGRect) {
         self.doctor = "Гениколог"
@@ -29,11 +30,18 @@ class DoctorHeader: UIView {
         self.imageView.userInteractionEnabled = true
         self.imageView.tag = 99
         self.open = false
-        self.timestring = UILabel(frame: CGRect(x: 10, y: 10, width: 85, height: 30))
+        self.timestring = UILabel(frame: CGRect(x: 50, y: 10, width: 85, height: 30))
         //self.timestring.font = .systemFontOfSize(9)
         self.doctorname  = UILabel(frame: CGRect(x: 105, y: 10, width: 210, height: 30))
         self.doctornameText = UITextField(frame: CGRect(x: 105, y: 10, width: 210, height: 30))
         self.doctornameText.hidden = true
+        
+        self.deletecross = UIImageView()
+        self.deletecross.image = UIImage(named: "Delete-30 (1)")!
+        self.deletecross.frame =  CGRectMake(10,15,20,20)
+        self.deletecross.userInteractionEnabled = true
+        self.deletecross.tag = 666
+        
         super.init(frame : frame)
     }
     
@@ -57,6 +65,8 @@ class DoctorHeader: UIView {
         
 
         self.doctorname.text = self.doctor  // sectionTitleArray.objectAtIndex(section) as? String
+        
+        self.addSubview(deletecross)
         self.addSubview(doctorname)
         self.addSubview(doctornameText)
         self.addSubview(imageView)
@@ -84,7 +94,6 @@ class DoctorHeader: UIView {
         }
         
         self.addSubview(imageView)
-    
     }
     
     func changeFields()

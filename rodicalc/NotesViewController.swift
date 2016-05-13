@@ -157,7 +157,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
                 var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
                 var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
-                print(selectedNoteDay.date.convertedDate()!, i[start], i[end])
                 if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                      count += 1
                 }
