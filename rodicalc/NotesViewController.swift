@@ -8,6 +8,7 @@
 
 import UIKit
 
+import SwiftyVK
 
 var selectedNoteDay:DayView!
 var NoteType = Int()
@@ -33,6 +34,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
+
+  
 
         
         //WorkWithDB()

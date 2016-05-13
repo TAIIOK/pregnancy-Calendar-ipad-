@@ -148,6 +148,12 @@
 		A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC2A11CBBB8FC007B4643 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A04288051CE21656005DB953 /* addCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04288041CE21656005DB953 /* addCell.xib */; };
 		A042880F1CE2329B005DB953 /* notifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A042880E1CE2329B005DB953 /* notifi.json */; };
+		A042882B1CE4B064005DB953 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04288281CE4B064005DB953 /* FBSDKCoreKit.framework */; };
+		A042882C1CE4B064005DB953 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04288291CE4B064005DB953 /* FBSDKLoginKit.framework */; };
+		A042882D1CE4B064005DB953 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A042882A1CE4B064005DB953 /* FBSDKShareKit.framework */; };
+		A04288351CE4B0D4005DB953 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A04288341CE4B0D4005DB953 /* OKSDK.m */; };
+		A042895E1CE4C30E005DB953 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04289591CE4C2DB005DB953 /* SwiftyVK.framework */; };
+		A042895F1CE4C30E005DB953 /* SwiftyVK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A04289591CE4C2DB005DB953 /* SwiftyVK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0669E661CDA34E4002F8E95 /* DoctorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */; };
 		A0669E671CDA34E4002F8E95 /* DoctorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */; };
 		A0669E701CDA34F2002F8E95 /* DoctorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */; };
@@ -204,6 +210,41 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
+		A04289561CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2EB6EA81BD180E9008E7D86;
+			remoteInfo = "SwiftyVK-OSX";
+		};
+		A04289581CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2EB6E9B1BD180DD008E7D86;
+			remoteInfo = "SwiftyVK-iOS";
+		};
+		A042895A1CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2527D4B1BD1130D00F65412;
+			remoteInfo = "SwiftyVKResources-OSX";
+		};
+		A042895C1CE4C2DB005DB953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2527D551BD1134500F65412;
+			remoteInfo = "SwiftyVKResources-iOS";
+		};
+		A04289601CE4C30E005DB953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A2EB6E9A1BD180DD008E7D86;
+			remoteInfo = "SwiftyVK-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -213,6 +254,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A042895F1CE4C30E005DB953 /* SwiftyVK.framework in Embed Frameworks */,
 				8E56189B1CAA8B2A00C9B7D1 /* YouTubePlayer.framework in Embed Frameworks */,
 				A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */,
 			);
@@ -374,6 +416,12 @@
 		A01D66FD1CD0F960004960CD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A04288041CE21656005DB953 /* addCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addCell.xib; sourceTree = "<group>"; };
 		A042880E1CE2329B005DB953 /* notifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notifi.json; sourceTree = "<group>"; };
+		A04288281CE4B064005DB953 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A04288291CE4B064005DB953 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A042882A1CE4B064005DB953 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A04288331CE4B0D4005DB953 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
+		A04288341CE4B0D4005DB953 /* OKSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKSDK.m; sourceTree = "<group>"; };
+		A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyVK.xcodeproj; path = "../../../../../Downloads/SwiftyVK-master-2/SwiftyVK.xcodeproj"; sourceTree = "<group>"; };
 		A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewCell.swift; sourceTree = "<group>"; };
 		A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewCell.xib; sourceTree = "<group>"; };
 		A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorHeader.swift; sourceTree = "<group>"; };
@@ -389,7 +437,11 @@
 				A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 				A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */,
+				A042882B1CE4B064005DB953 /* FBSDKCoreKit.framework in Frameworks */,
+				A042882D1CE4B064005DB953 /* FBSDKShareKit.framework in Frameworks */,
 				A01D66FE1CD0F960004960CD /* Crashlytics.framework in Frameworks */,
+				A042895E1CE4C30E005DB953 /* SwiftyVK.framework in Frameworks */,
+				A042882C1CE4B064005DB953 /* FBSDKLoginKit.framework in Frameworks */,
 				8E5618991CAA89AA00C9B7D1 /* YouTubePlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +523,7 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				A04288241CE4B03A005DB953 /* socialNetwork */,
 				A01028CB1CD227B0005E339F /* html */,
 				A02058871CC8C45F00C70691 /* zodiac */,
 				8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */,
@@ -712,6 +765,54 @@
 			name = zodiac;
 			sourceTree = "<group>";
 		};
+		A04288241CE4B03A005DB953 /* socialNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				A042887B1CE4C14D005DB953 /* vk */,
+				A04288321CE4B0AB005DB953 /* ok */,
+				A042882E1CE4B06C005DB953 /* facebook */,
+			);
+			name = socialNetwork;
+			sourceTree = "<group>";
+		};
+		A042882E1CE4B06C005DB953 /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				A04288281CE4B064005DB953 /* FBSDKCoreKit.framework */,
+				A04288291CE4B064005DB953 /* FBSDKLoginKit.framework */,
+				A042882A1CE4B064005DB953 /* FBSDKShareKit.framework */,
+			);
+			name = facebook;
+			sourceTree = "<group>";
+		};
+		A04288321CE4B0AB005DB953 /* ok */ = {
+			isa = PBXGroup;
+			children = (
+				A04288331CE4B0D4005DB953 /* OKSDK.h */,
+				A04288341CE4B0D4005DB953 /* OKSDK.m */,
+			);
+			name = ok;
+			sourceTree = "<group>";
+		};
+		A042887B1CE4C14D005DB953 /* vk */ = {
+			isa = PBXGroup;
+			children = (
+				A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */,
+			);
+			path = vk;
+			sourceTree = "<group>";
+		};
+		A04289501CE4C2DB005DB953 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A04289571CE4C2DB005DB953 /* SwiftyVK.framework */,
+				A04289591CE4C2DB005DB953 /* SwiftyVK.framework */,
+				A042895B1CE4C2DB005DB953 /* SwiftyVKResources-OSX.bundle */,
+				A042895D1CE4C2DB005DB953 /* SwiftyVKResources-iOS.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -729,6 +830,7 @@
 			);
 			dependencies = (
 				A01D67061CD0FF97004960CD /* PBXTargetDependency */,
+				A04289611CE4C30E005DB953 /* PBXTargetDependency */,
 			);
 			name = "Календарь беременности";
 			productName = rodicalc;
@@ -802,6 +904,13 @@
 			knownRegions = (
 				en,
 				Base,
+				be,
+				de,
+				es,
+				fi,
+				it,
+				ru,
+				uk,
 			);
 			mainGroup = 8E90A4061C7DF093001F3A07;
 			productRefGroup = 8E90A4101C7DF093001F3A07 /* Products */;
@@ -810,6 +919,10 @@
 				{
 					ProductGroup = 8EEAC29A1CBBB8FC007B4643 /* Products */;
 					ProjectRef = 8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */;
+				},
+				{
+					ProductGroup = A04289501CE4C2DB005DB953 /* Products */;
+					ProjectRef = A042894F1CE4C2DB005DB953 /* SwiftyVK.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -848,6 +961,34 @@
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
 			remoteRef = 8EEAC2A61CBBB8FC007B4643 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A04289571CE4C2DB005DB953 /* SwiftyVK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyVK.framework;
+			remoteRef = A04289561CE4C2DB005DB953 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A04289591CE4C2DB005DB953 /* SwiftyVK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyVK.framework;
+			remoteRef = A04289581CE4C2DB005DB953 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A042895B1CE4C2DB005DB953 /* SwiftyVKResources-OSX.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyVKResources-OSX.bundle";
+			remoteRef = A042895A1CE4C2DB005DB953 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A042895D1CE4C2DB005DB953 /* SwiftyVKResources-iOS.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyVKResources-iOS.bundle";
+			remoteRef = A042895C1CE4C2DB005DB953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -939,6 +1080,7 @@
 				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
 				8E5A6BE01CDA2E3F0073B693 /* OnePhotoViewController.swift in Sources */,
 				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
+				A04288351CE4B0D4005DB953 /* OKSDK.m in Sources */,
 				8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */,
 				8E5A6BD21CD7A1680073B693 /* FoodTableViewCell.swift in Sources */,
 				8EEAC3401CCE542F007B4643 /* CustomFunctions.swift in Sources */,
@@ -1069,6 +1211,11 @@
 			name = "Charts-iOS";
 			targetProxy = A01D67051CD0FF97004960CD /* PBXContainerItemProxy */;
 		};
+		A04289611CE4C30E005DB953 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyVK-iOS";
+			targetProxy = A04289601CE4C30E005DB953 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1187,6 +1334,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/rodicalc/vk/Products/iOS",
+					"$(PROJECT_DIR)/rodicalc/vk/Products/OSX",
+					"$(PROJECT_DIR)/rodicalc/vk/Resources/Products/iOS",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1212,6 +1362,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/rodicalc",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/rodicalc/vk/Products/iOS",
+					"$(PROJECT_DIR)/rodicalc/vk/Products/OSX",
+					"$(PROJECT_DIR)/rodicalc/vk/Resources/Products/iOS",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
