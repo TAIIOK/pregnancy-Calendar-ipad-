@@ -138,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
        
+
         return true
     }
 
@@ -186,7 +187,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print("lol")
+        OKSDK.openUrl(url)
+        return true;
+    }
+    
+        
+        
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {

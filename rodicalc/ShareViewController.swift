@@ -77,11 +77,7 @@ class ShareViewController: UIViewController ,VKDelegate {
         // Do any additional setup after loading the view.
     }
 
-    func complete(){
-        print("save")
-   
-        self.performSegueWithIdentifier("", sender: nil)
-    }
+
     
     @IBAction func Cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -101,7 +97,87 @@ class ShareViewController: UIViewController ,VKDelegate {
     }
     
     @IBAction func ShareOK(sender: AnyObject) {
-        print("шарю в одноклассники")
+        
+
+        var settings  = OKSDKInitSettings.init()
+        settings.appKey = "CBAFLEFLEBABABABA"
+        settings.appId = "1246999552"
+        settings.controllerHandler = {
+            return self;
+        }
+        
+        OKSDK.initWithSettings(settings)
+
+        
+        OKSDK.getInstallSource({data in print(data)}, error: {error in print(error)})
+        
+        OKSDK.authorizeWithPermissions(["VALUABLE_ACCESS","LONG_ACCESS_TOKEN","PHOTO_CONTENT"], success: {id in print(id)
+            
+          //  OKSDK.invokeMethod("users.getCurrentUser", arguments: [:], success: {data in print(data)}, error: {error in print(error)})
+            
+            }, error: {error in print(error)})
+        
+
+        
+        OKSDK.invokeMethod("photosV2.getUploadUrl", arguments: [:], success: {
+            data in print(data)
+            
+            
+            let imageData = UIImageJPEGRepresentation(UIImage(named: "0z.jpg")!, 1)
+
+         let photoId = data["photo_ids"]![0]
+         let boundary = "0xKhTmLbOuNdArY"
+         let kNewLine = "\r\n"
+         let urlPath = data["upload_url"] as! String
+         let url: NSURL = NSURL(string: urlPath)!
+         let request1: NSMutableURLRequest = NSMutableURLRequest(URL: url)
+          var data = NSMutableData()
+            
+            request1.HTTPMethod = "POST"
+            request1.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            data.appendData("--\(boundary)\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("Content-Disposition: form-data; name=\"0z.jpg\"; filename=\"0z.jpg\"\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("Content-Type: image/jpg".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("\(kNewLine)\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData(imageData!)
+            data.appendData("\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("--\(boundary)--".dataUsingEncoding(NSUTF8StringEncoding)!)
+            request1.HTTPBody=data
+
+            
+
+
+            request1.timeoutInterval = 60
+            request1.HTTPShouldHandleCookies=false
+               let queue:NSOperationQueue = NSOperationQueue()
+            
+            NSURLConnection.sendAsynchronousRequest(request1, queue: queue, completionHandler:{ (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                        print("ASynchronous\(jsonResult)")
+                        
+                        var token = jsonResult.valueForKeyPath("photos.\(photoId).token") // ["photos"][photoId]["token"]
+
+                        OKSDK.invokeMethod("photosV2.commit", arguments: ["photo_id":photoId,"token":token!,"comment":"Example Anon"], success:{ data in print(data)}, error: {error in print(error)})
+                        
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                
+                
+            })
+            
+            
+            
+            
+            
+            }
+            , error: {error in print(error)})
+        
+        //OKSDK.clearAuth()
+        
     }
     
     @IBAction func ShareFB(sender: AnyObject) {
