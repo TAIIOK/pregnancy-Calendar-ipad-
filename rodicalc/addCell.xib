@@ -14,8 +14,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1-AddButtonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TI6-Gu-n6O">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Plus Filled-41" translatesAutoresizingMaskIntoConstraints="NO" id="TI6-Gu-n6O">
                         <rect key="frame" x="8" y="0.0" width="41" height="41"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
@@ -23,6 +24,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="1-AddButtonFinal" width="127" height="126"/>
+        <image name="Plus Filled-41" width="41" height="41"/>
     </resources>
 </document>

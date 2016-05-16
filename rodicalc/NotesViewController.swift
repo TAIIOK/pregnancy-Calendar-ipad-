@@ -122,10 +122,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }else if tableName == "DoctorVisit"{
             var table = Table("DoctorVisit")
-            let name = Expression<String>("Name")
             let Date = Expression<String>("Date")
-            let isRemind = Expression<Bool>("isRemind")
-            let remindType = Expression<Int>("RemindType")
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components([.Day , .Month , .Year], fromDate: date)
             
@@ -150,13 +147,28 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let end = Expression<String>("End")
             var count = 0
             
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            components.hour = 00
+            components.minute = 00
+            components.second = 00
+            let newcurDate = calendar.dateFromComponents(components)
+            
             for i in try! db.prepare(table.select(start,end)) {
-                //let b = i[date]
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-                //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-                var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
-                var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+                let componentsS = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[start])!)
+                let componentsE = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[end])!)
+                componentsS.hour = 00
+                componentsS.minute = 00
+                componentsS.second = 00
+                let newDateS = calendar.dateFromComponents(componentsS)
+                componentsE.hour = 00
+                componentsE.minute = 00
+                componentsE.second = 00
+                let newDateE = calendar.dateFromComponents(componentsE)
+                var a = newcurDate?.compare(newDateS!)
+                var b = newcurDate?.compare(newDateE!)
                 if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                      count += 1
                 }

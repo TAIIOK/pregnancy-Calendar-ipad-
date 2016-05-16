@@ -95,13 +95,30 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let minute_ = Expression<Int>("Minute")
         let interval_ = Expression<Int>("Interval")
 
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let newcurDate = calendar.dateFromComponents(components)
+        
+        
         for i in try! db.prepare(table.select(name,start,end,isRemind,hour_,minute_,interval_)) {
             //let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-            var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
-            var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+            let componentsS = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[start])!)
+            let componentsE = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[end])!)
+            componentsS.hour = 00
+            componentsS.minute = 00
+            componentsS.second = 00
+            let newDateS = calendar.dateFromComponents(componentsS)
+            componentsE.hour = 00
+            componentsE.minute = 00
+            componentsE.second = 00
+            let newDateE = calendar.dateFromComponents(componentsE)
+            var a = newcurDate?.compare(newDateS!)
+            var b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 drugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
@@ -215,9 +232,56 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.doctorname.addGestureRecognizer(tapGesture)
         
         
+        let longtap = UILongPressGestureRecognizer (target: self, action:"longtap:")
+        longtap.minimumPressDuration = 1.2
+        longtap.delegate = self
+        
+        view.doctorname.addGestureRecognizer(longtap)
+
+        
         return view
     }
     
+    func longtap(gesture:UILongPressGestureRecognizer){
+        
+        if gesture.state == .Began {
+            //Create the AlertController
+            if #available(iOS 8.0, *) {
+                let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Дублировать выбранное лекарство?", preferredStyle: .Alert)
+                
+                //Create and add the Cancel action
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                    //Do some stuff
+                }
+                actionSheetController.addAction(cancelAction)
+                //Create and an option action
+                let nextAction: UIAlertAction = UIAlertAction(title: "Да", style: .Default) { action -> Void in
+                    //Do some other stuff
+                    if let cellContentView = gesture.view {
+                        let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: self.tbl)
+                        for i in 1..<self.tbl.numberOfSections  {
+                            let sectionHeaderArea = self.tbl.rectForHeaderInSection(i)
+                            if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                                print("longtap:: \(i)")
+                                self.drugs.append(Drugs(name: self.drugs[i-1].name, hour: self.drugs[i-1].hour, minute: self.drugs[i-1].minute, start: self.drugs[i-1].start, end: self.drugs[i-1].end, interval: self.drugs[i-1].interval, isRemind: self.drugs[i-1].isRemind, cellType: 0))
+                                self.arrayForBool.addObject("0")
+    
+                                self.tbl.reloadData()
+                                break
+                            }
+                        }
+                    }
+                }
+                actionSheetController.addAction(nextAction)
+                
+                //Present the AlertController
+                self.presentViewController(actionSheetController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
+
+        }
+    }
     
     func deletenote(gesture:UIGestureRecognizer){
         if let cellContentView = gesture.view {
@@ -546,13 +610,28 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let minute_ = Expression<Int>("Minute")
         let interval_ = Expression<Int>("Interval")
         
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let newcurDate = calendar.dateFromComponents(components)
+        
         for i in try! db.prepare(table.select(id,start,end)) {
-            //let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            //let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-            var a = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[start])!)
-            var b = selectedNoteDay.date.convertedDate()?.compare(dateFormatter.dateFromString(i[end])!)
+            let componentsS = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[start])!)
+            let componentsE = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[end])!)
+            componentsS.hour = 00
+            componentsS.minute = 00
+            componentsS.second = 00
+            let newDateS = calendar.dateFromComponents(componentsS)
+            componentsE.hour = 00
+            componentsE.minute = 00
+            componentsE.second = 00
+            let newDateE = calendar.dateFromComponents(componentsE)
+            var a = newcurDate?.compare(newDateS!)
+            var b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 try! db.run(table.filter(id == i[id]).delete())
             }

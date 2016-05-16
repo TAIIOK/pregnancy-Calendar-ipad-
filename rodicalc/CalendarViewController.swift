@@ -74,10 +74,54 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
             table = Table("WeightNote")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            
             table = Table("DoctorVisit")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            let calendar = NSCalendar.currentCalendar()
+            var components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
+            
+            for i in try! db.prepare(table.select(Date)) {
+                let b = i[Date]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+                if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
+                    count += 1
+                }
+            }
+            
             table = Table("Food")
             count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            
+            table = Table("MedicineTake")
+            let start = Expression<String>("Start")
+            let end = Expression<String>("End")
+            
+            components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
+            components.hour = 00
+            components.minute = 00
+            components.second = 00
+            let newcurDate = calendar.dateFromComponents(components)
+            
+            for i in try! db.prepare(table.select(start,end)) {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                let componentsS = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[start])!)
+                let componentsE = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[end])!)
+                componentsS.hour = 00
+                componentsS.minute = 00
+                componentsS.second = 00
+                let newDateS = calendar.dateFromComponents(componentsS)
+                componentsE.hour = 00
+                componentsE.minute = 00
+                componentsE.second = 00
+                let newDateE = calendar.dateFromComponents(componentsE)
+                var a = newcurDate?.compare(newDateS!)
+                var b = newcurDate?.compare(newDateE!)
+                if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
+                    count += 1
+                }
+            }
+
             break
         case 1: //фото
             var table = Table("Photo")
