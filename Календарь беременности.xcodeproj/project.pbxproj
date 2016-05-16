@@ -540,28 +540,21 @@
 				A04288241CE4B03A005DB953 /* socialNetwork */,
 				A01028CB1CD227B0005E339F /* html */,
 				A02058871CC8C45F00C70691 /* zodiac */,
-				8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */,
-				8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */,
 				8EEAC3191CCE542F007B4643 /* SQLite */,
-				8EEAC2FB1CCE508E007B4643 /* db.sqlite */,
-				8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */,
-				8E51BF2C1CA3E8E900D8D739 /* points.json */,
-				8E1DD60E1CB6894700D55893 /* names.json */,
-				A01D66F21CD0F826004960CD /* export.swift */,
 				A01028E81CD29E0B005E339F /* CVCalendar */,
-				A01D66F31CD0F826004960CD /* photo.xib */,
-				A01D66F41CD0F826004960CD /* temp.png */,
-				8E1DD6071CB2896500D55893 /* zodiacs.json */,
-				A042880E1CE2329B005DB953 /* notifi.json */,
+				A0B9D3A31CEA0563005B5797 /* Youtube */,
+				A0B9D3A41CEA057F005B5797 /* jsonFiles */,
 				8E2538F41C848D9200B3C54E /* LineChart */,
 				8E51BF141CA2CFE000D8D739 /* Custom Pins */,
 				8E20C8B01C998F130003C1CF /* Custom Layouts */,
-				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
+				A0B9D3A51CEA059F005B5797 /* ViewControllerFix */,
 				8E2538F01C84746D00B3C54E /* Plist.swift */,
-				8E5A6BD91CD9F0530073B693 /* UIViewController+UIVCOrientationFix.h */,
-				8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */,
-				8E5A6BDC1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.h */,
-				8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */,
+				8E90A4121C7DF093001F3A07 /* AppDelegate.swift */,
+				A01D66F21CD0F826004960CD /* export.swift */,
+				8EEAC2FB1CCE508E007B4643 /* db.sqlite */,
+				8EEAC2991CBBB8FC007B4643 /* Charts.xcodeproj */,
+				A01D66F31CD0F826004960CD /* photo.xib */,
+				A01D66F41CD0F826004960CD /* temp.png */,
 				8E90A4161C7DF093001F3A07 /* Main.storyboard */,
 				8E90A41C1C7DF093001F3A07 /* Assets.xcassets */,
 				8E90A41E1C7DF093001F3A07 /* LaunchScreen.storyboard */,
@@ -569,6 +562,7 @@
 				8E90A4211C7DF093001F3A07 /* Info.plist */,
 				8E2538F21C84779F00B3C54E /* userInfo.plist */,
 				8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */,
+				A0B9D39C1CEA04CF005B5797 /* Doctor */,
 				8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */,
 				8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */,
 				8E1DD60B1CB2A79900D55893 /* DateTableViewCell.swift */,
@@ -611,12 +605,6 @@
 				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
-				A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */,
-				A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */,
-				8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */,
-				A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */,
-				8EE947DD1CE5EFAC00064446 /* DrugsViewCell.xib */,
-				A04288041CE21656005DB953 /* addCell.xib */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -832,6 +820,50 @@
 				8EE947CA1CE5E78300064446 /* SwiftyVK.xcodeproj */,
 			);
 			path = vk;
+			sourceTree = "<group>";
+		};
+		A0B9D39C1CEA04CF005B5797 /* Doctor */ = {
+			isa = PBXGroup;
+			children = (
+				A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */,
+				A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */,
+				8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */,
+				A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */,
+				8EE947DD1CE5EFAC00064446 /* DrugsViewCell.xib */,
+				A04288041CE21656005DB953 /* addCell.xib */,
+			);
+			name = Doctor;
+			sourceTree = "<group>";
+		};
+		A0B9D3A31CEA0563005B5797 /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				8E56189F1CAA8BF600C9B7D1 /* YTPlayer.html */,
+				8E56189D1CAA8B9100C9B7D1 /* YouTubePlayer.swift */,
+			);
+			name = Youtube;
+			sourceTree = "<group>";
+		};
+		A0B9D3A41CEA057F005B5797 /* jsonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8E51BF2C1CA3E8E900D8D739 /* points.json */,
+				8E1DD6071CB2896500D55893 /* zodiacs.json */,
+				A042880E1CE2329B005DB953 /* notifi.json */,
+				8E1DD60E1CB6894700D55893 /* names.json */,
+			);
+			name = jsonFiles;
+			sourceTree = "<group>";
+		};
+		A0B9D3A51CEA059F005B5797 /* ViewControllerFix */ = {
+			isa = PBXGroup;
+			children = (
+				8E5A6BD91CD9F0530073B693 /* UIViewController+UIVCOrientationFix.h */,
+				8E5A6BDA1CD9F0530073B693 /* UIViewController+UIVCOrientationFix.m */,
+				8E5A6BDC1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.h */,
+				8E5A6BDD1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m */,
+			);
+			name = ViewControllerFix;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
