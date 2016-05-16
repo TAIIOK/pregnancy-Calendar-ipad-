@@ -12,6 +12,9 @@ import YouTubePlayer
 import Fabric
 import Crashlytics
 
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
 
 let StrawBerryColor = UIColor(red: 206/255.0, green: 15/255.0, blue: 105/255.0, alpha: 1.0)
 let BiruzaColor = UIColor(red: 0/255.0, green: 189/255.0, blue: 255/255.0, alpha: 1.0)
@@ -139,6 +142,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
        
 
+
+        FBSDKApplicationDelegate.sharedInstance()
+        
         return true
     }
 
@@ -188,13 +194,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        print("lol")
+        print("open share link ")
+        print(url)
+        if(url.absoluteString.containsString("vk54745842://"))
+        {
+        }
+        else if(url.absoluteString.containsString("fb1731805480431829://"))
+        {
+       return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+        else{
         OKSDK.openUrl(url)
+        }
         return true;
     }
     
-        
-        
+    
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {

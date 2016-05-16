@@ -13,9 +13,11 @@ import FBSDKLoginKit
 import FBSDKShareKit
 
 import SwiftyVK
+import Social
 
+import MessageUI
 
-class ShareViewController: UIViewController ,VKDelegate {
+class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewControllerDelegate {
 
     
     func vkAutorizationFailed(error: VK.Error) {
@@ -84,7 +86,44 @@ class ShareViewController: UIViewController ,VKDelegate {
     }
     
     @IBAction func ShareMail(sender: AnyObject) {
+        var mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self;
+        if let filePath = NSBundle.mainBundle().pathForResource("0z", ofType: "jpg") {
+            print("File path loaded.")
+            
+            if let fileData = NSData(contentsOfFile: filePath) {
+                print("File data loaded.")
+                mailComposerVC.addAttachmentData(fileData, mimeType: "image/jpg", fileName: "0z")
+            }
+        }
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposerVC, animated: true, completion: nil)
+        } else {
+            
+        }
+        
         print("шарю на мыло")
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        
+        switch result {
+            
+        case MFMailComposeResultCancelled:
+            print("Cancelled mail")
+            self.dismissViewControllerAnimated(true, completion: nil)
+            break
+        case MFMailComposeResultSent:
+            print("Message sent")
+            self.dismissViewControllerAnimated(true, completion: nil)
+            break
+        default:
+            break
+        }
+        
+        
+        
     }
     
     @IBAction func ShareVK(sender: AnyObject) {
@@ -108,16 +147,11 @@ class ShareViewController: UIViewController ,VKDelegate {
         
         OKSDK.initWithSettings(settings)
 
-        
-        OKSDK.getInstallSource({data in print(data)}, error: {error in print(error)})
+
         
         OKSDK.authorizeWithPermissions(["VALUABLE_ACCESS","LONG_ACCESS_TOKEN","PHOTO_CONTENT"], success: {id in print(id)
             
           //  OKSDK.invokeMethod("users.getCurrentUser", arguments: [:], success: {data in print(data)}, error: {error in print(error)})
-            
-            }, error: {error in print(error)})
-        
-
         
         OKSDK.invokeMethod("photosV2.getUploadUrl", arguments: [:], success: {
             data in print(data)
@@ -125,7 +159,7 @@ class ShareViewController: UIViewController ,VKDelegate {
             
             let imageData = UIImageJPEGRepresentation(UIImage(named: "0z.jpg")!, 1)
 
-         let photoId = data["photo_ids"]![0]
+         let photoId = (data["photo_ids"]as! NSArray)[0] as! String
          let boundary = "0xKhTmLbOuNdArY"
          let kNewLine = "\r\n"
          let urlPath = data["upload_url"] as! String
@@ -143,10 +177,6 @@ class ShareViewController: UIViewController ,VKDelegate {
             data.appendData("\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
             data.appendData("--\(boundary)--".dataUsingEncoding(NSUTF8StringEncoding)!)
             request1.HTTPBody=data
-
-            
-
-
             request1.timeoutInterval = 60
             request1.HTTPShouldHandleCookies=false
                let queue:NSOperationQueue = NSOperationQueue()
@@ -169,19 +199,52 @@ class ShareViewController: UIViewController ,VKDelegate {
                 
             })
             
-            
-            
-            
-            
+      
             }
             , error: {error in print(error)})
         
-        //OKSDK.clearAuth()
+            }, error: {error in print(error)
+        })
+        OKSDK.clearAuth()
+    
         
     }
     
     @IBAction func ShareFB(sender: AnyObject) {
         print("шарю в фсб")
+        
+        var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        shareToFacebook.setInitialText("")
+        shareToFacebook.addImage(UIImage(named: "0z.jpg"))
+        
+        self.presentViewController(shareToFacebook, animated: true, completion: nil)
+        
+        // если использовать апи )) для верисии ios 7
+        
+        /*
+       var login = FBSDKLoginManager()
+        
+        login.logInWithReadPermissions(["public_profile"],
+                                                     fromViewController:self,
+            handler: { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
+                
+                if ((error) != nil) {
+                    NSLog("Process error");
+                } else if (result.isCancelled) {
+                    NSLog("Cancelled");
+                } else {
+                    NSLog("Logged in");
+   
+                }
+                
+        })
+        
+        
+       var res =  FBSDKLoginManager.logOut(login)
+        
+
+        print(res)
+        */
     }
     
     

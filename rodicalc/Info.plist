@@ -28,6 +28,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>ok1246999552</string>
+				<string>fb1731805480431829</string>
 			</array>
 		</dict>
 	</array>
@@ -79,12 +80,16 @@
 	<string>ok1246999552</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fbauth2</string>
+		<string>fb1731805480431829</string>
 		<string>vkauthorize</string>
 		<string>vk54745842</string>
 		<string>okauth</string>
-		<string>ok1246999552</string>	
+		<string>ok1246999552</string>
 	</array>
-	
-
+	<key>FacebookAppID</key>
+	<string>1731805480431829</string>
+	<key>FacebookDisplayName</key>
+	<string>test_auth</string>
 </dict>
 </plist>
