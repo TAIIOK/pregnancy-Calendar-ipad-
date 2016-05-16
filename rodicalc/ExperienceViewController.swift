@@ -232,6 +232,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.detailTextLabel?.text = artticlessub[indexPath.row]
         }
         cell.backgroundColor = .clearColor()
+        cell.textLabel?.textColor = StrawBerryColor
+        cell.detailTextLabel?.textColor = BiruzaColor
         return cell
     }
     
@@ -291,16 +293,21 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             
         default: break
             }
-            
-        
+        }else{
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            if cell?.textLabel?.text == "Полезно знать каждой"{
+                let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("advertising")
+                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            }
         }
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell!.textLabel?.highlightedTextColor = StrawBerryColor
-        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        //cell!.selectedBackgroundView=getCustomBackgroundView()
+        //cell!.textLabel?.highlightedTextColor = StrawBerryColor
+        //cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        cell?.selectedBackgroundView?.backgroundColor = .clearColor()
         return indexPath
     }
     

@@ -1,44 +1,34 @@
 //
-//  CalcTableViewController.swift
-//  rodicalc
+//  AdvertisingViewController.swift
+//  Календарь беременности
 //
-//  Created by deck on 24.02.16.
+//  Created by deck on 16.05.16.
 //  Copyright © 2016 deck. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-var Back = false
-var selectedDay:DayView!
-var dateType = -1
-var BirthDate = NSDate()
-
-class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AdvertisingViewController: UIViewController {
     
-    let txt = ["По дате зачатия","По дате последней менструации","По дате, указанной врачем"]
-
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
-    @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var calendarView: CVCalendarView!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
-    var DateisLoaded = false
+    //var db = try! Connection()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbl.delegate = self
-        tbl.dataSource = self
-        tbl.backgroundColor = .clearColor()
-        loadDate()
-        if selectedDay == nil{
-            //self.presentedDateUpdated(CVDate(date: NSDate()))
-        }
 
-        if !Back && DateisLoaded{
-            Cancel()
+        if selectedDay != nil {
+            self.calendarView.toggleViewWithDate(selectedDay.date.convertedDate()!)
+        }else{
+            let date = NSDate()
+            self.calendarView.toggleViewWithDate(date)
         }
+                self.presentedDateUpdated(CVDate(date: NSDate()))        //WorkWithDB()
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,174 +40,14 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
     }
-    
-    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
-    {
-        let dateComponents = NSDateComponents()
-        let CurrentCalendar = NSCalendar.currentCalendar()
-        let CalendarOption = NSCalendarOptions()
-        
-        dateComponents.day = NumberOfDaysToAdd
-        
-        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
-        return newDate!
-    }
-    
-    func Cancel(){
-        let zodiac = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
-        //self.navigationController?.pushViewController(zodiac!, animated: false)
-        
-        if #available(iOS 8.0, *) {
-            self.splitViewController?.showDetailViewController(zodiac!, sender: self)
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    @IBAction func OK(sender: AnyObject) {
-        saveDate(selectedDay.date.convertedDate()!, type: dateType)
-        BirthDate = selectedDay.date.convertedDate()!
-    }
-    
-    // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return txt.count
-    }
-    
-    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DateCell", forIndexPath: indexPath) as! DateTableViewCell
-        cell.textLabel?.text = txt[indexPath.row]
-    
-        if indexPath.row == dateType && selectedDay != nil{
-            var date = selectedDay.date.convertedDate()!
-            if dateType == 0{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
-            }
-            else if dateType == 1{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
-            }
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
-            cell.detailTextLabel?.text = "\(components.day).\(components.month).\(components.year)"
-            //cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
-            cell.setHighlighted(true, animated: false)
-            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-        }
-        else{
-            cell.detailTextLabel?.text = "не выбрано"
-        }
-        cell.backgroundColor = .clearColor()
-        cell.tintColor = UIColor.lightGrayColor()
-        cell.detailTextLabel?.tintColor = UIColor.lightGrayColor()
-        return cell
-    }
-    
-    private func getCustomBackgroundView() -> UIView{
-        let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
-        return BackgroundView
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //let a = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text
-        dateType = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
-        /*if selectedDay != nil{
-            BirthDate = selectedDay.date.convertedDate()!
-            if dateType == 0{
-                BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
-            }
-            else if dateType == 1{
-                BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
-            }
-        }*/
-        tableView.reloadData()
-
-        tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-    }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DateTableViewCell
-        cell.selectedBackgroundView=getCustomBackgroundView()
-        cell.textLabel?.highlightedTextColor = StrawBerryColor
-        cell.detailTextLabel?.highlightedTextColor = StrawBerryColor
-        return indexPath
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
-    override func viewWillDisappear(animated: Bool) {
-        Back = false
-    }
     
-    func saveDate(date: NSDate, type: Int){
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        let entity =  NSEntityDescription.entityForName("BirthDate", inManagedObjectContext: managedContext)
-            
-        let BD = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-            
-        BD.setValue(date, forKey: "date")
-        BD.setValue(type, forKey: "type")
-        do {
-            try BD.managedObjectContext?.save()
-        } catch {
-            print(error)
-        }
-    }
-    
-    func loadDate(){
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
-        
-        fetchRequest.entity = entityDescription
-        do {
-            let result = try managedContext.executeFetchRequest(fetchRequest)
-            
-            if (result.count > 0) {
-                for i in result {
-                    let date = i as! NSManagedObject
-                    let dte = date.valueForKey("date") as! NSDate
-                    dateType = date.valueForKey("type") as! Int
-                    calendarView.toggleViewWithDate(dte)
-                    BirthDate = dte
-                    DateisLoaded = true
-                }
-            }
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
-    }
-    
-}
-
-extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension AdvertisingViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -241,20 +71,13 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
-        if dateType != -1{
-            if !Back{
-                //self.Cancel()
-            }
-            let index = self.tbl.indexPathForSelectedRow
-            self.tbl.reloadData()
-            self.tbl.selectRowAtIndexPath(index, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-        }
+        selectedNoteDay = dayView
+        
     }
     
     func swipedetected(){
         
-
+        
         
     }
     
@@ -355,7 +178,6 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
              */
         }
     }
-
     
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return false
@@ -473,7 +295,7 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension CalcViewController: CVCalendarViewAppearanceDelegate {
+extension AdvertisingViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -485,7 +307,7 @@ extension CalcViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension CalcViewController {
+extension AdvertisingViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -522,7 +344,7 @@ extension CalcViewController {
 
 // MARK: - Convenience API Demo
 
-extension CalcViewController {
+extension AdvertisingViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
@@ -531,7 +353,7 @@ extension CalcViewController {
         components.month += offset
         
         let resultDate = calendar.dateFromComponents(components)!
-
+        
         self.calendarView.toggleViewWithDate(resultDate)
     }
     
@@ -555,5 +377,3 @@ extension CalcViewController {
     }
     
 }
-
-
