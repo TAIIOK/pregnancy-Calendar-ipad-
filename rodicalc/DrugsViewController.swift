@@ -284,18 +284,37 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func deletenote(gesture:UIGestureRecognizer){
-        if let cellContentView = gesture.view {
-            let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
-            for i in 1..<tbl.numberOfSections  {
-                let sectionHeaderArea = tbl.rectForHeaderInSection(i)
-                if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
-                    print("delete note:: \(i)")
-                    drugs.removeAtIndex(i-1)
-                    arrayForBool.removeObjectAtIndex(i)
-                    tbl.reloadData()
-                    break
-                }
+        //Create the AlertController
+        if #available(iOS 8.0, *) {
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранное лекарство?", preferredStyle: .Alert)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                //Do some stuff
             }
+            actionSheetController.addAction(cancelAction)
+            //Create and an option action
+            let nextAction: UIAlertAction = UIAlertAction(title: "Да", style: .Default) { action -> Void in
+                //Do some other stuff
+                if let cellContentView = gesture.view {
+                    let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: self.tbl)
+                    for i in 1..<self.tbl.numberOfSections  {
+                        let sectionHeaderArea = self.tbl.rectForHeaderInSection(i)
+                        if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
+                            print("delete note:: \(i)")
+                            self.drugs.removeAtIndex(i-1)
+                            self.arrayForBool.removeObjectAtIndex(i)
+                            self.tbl.reloadData()
+                            break
+                        }
+                    }
+                }            }
+                actionSheetController.addAction(nextAction)
+            
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
         }
     }
 
