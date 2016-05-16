@@ -82,28 +82,37 @@ public final class CVCalendarView: UIView {
     
     public var shouldAutoSelectDayOnMonthChange: Bool{
         get {
+            return false
+            /*
             if let delegate = delegate, should = delegate.shouldAutoSelectDayOnMonthChange?() {
                 return should
             }
             return true
+             */
         }
     }
     
     public var shouldAutoSelectDayOnWeekChange: Bool{
         get {
+            return false
+            /*
             if let delegate = delegate, should = delegate.shouldAutoSelectDayOnWeekChange?() {
                 return should
             }
             return true
+             */
         }
     }
     
     public var shouldScrollOnOutDayViewSelection: Bool{
         get {
+            return false
+            /*
             if let delegate = delegate, should = delegate.shouldScrollOnOutDayViewSelection?() {
                 return should
             }
             return true
+             */
         }
     }
     
