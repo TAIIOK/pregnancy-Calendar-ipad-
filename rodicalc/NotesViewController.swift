@@ -276,6 +276,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             default: break
         }
         cell.backgroundColor = .clearColor()
+        cell.selectedBackgroundView?.backgroundColor = .clearColor()
         return cell
     }
     
@@ -288,12 +289,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let table = Table("Food")
         let Date = Expression<String>("Date")
         return try! db.scalar(table.filter(Date == "\(date)").count)
-    }
-    
-    private func getCustomBackgroundView() -> UIView{
-        let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
-        return BackgroundView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -341,11 +336,18 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    private func getCustomBackgroundView() -> UIView{
+        let BackgroundView = UIView()
+        BackgroundView.backgroundColor = UIColor.clearColor()
+        return BackgroundView
+    }
+    
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell!.textLabel?.highlightedTextColor = StrawBerryColor
-        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        //cell!.textLabel?.highlightedTextColor = StrawBerryColor
+        //cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
+        //cell?.selectedBackgroundView?.backgroundColor = .clearColor()
         return indexPath
     }
 
