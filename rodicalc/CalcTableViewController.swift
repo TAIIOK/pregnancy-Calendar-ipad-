@@ -215,6 +215,21 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UIInterfaceOrientationMask.Landscape
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+
+            let  date = CVDate(date: BirthDate)
+            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+            controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        
+        
+    }
+    
+    
+    
 }
 
 extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
@@ -238,6 +253,12 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
     }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
+    }
+    
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
