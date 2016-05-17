@@ -109,6 +109,13 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -140,6 +147,11 @@ extension DesireListViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {

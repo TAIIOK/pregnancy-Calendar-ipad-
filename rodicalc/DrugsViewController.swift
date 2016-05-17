@@ -682,6 +682,14 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -709,6 +717,11 @@ extension DrugsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func shouldShowWeekdaysOut() -> Bool {
         return shouldShowDaysOut
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
     }
     
     func shouldAnimateResizing() -> Bool {

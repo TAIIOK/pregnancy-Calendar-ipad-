@@ -364,6 +364,14 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         return newDate!
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         mas.removeAll()
         tbl.reloadData()
@@ -432,6 +440,7 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
         notesperday()
         tbl.reloadData()
     }
+    
     
     func swipedetected(){
         

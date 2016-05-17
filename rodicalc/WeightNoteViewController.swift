@@ -22,14 +22,20 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     var secondComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     var thirdComponent = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     
+    var firstrun = true
+    
     var shouldShowDaysOut = true
     var animationFinished = true
     
     var weightKg = 0
     var weightGramm = 0
     var type = 0 //0-kg 1 -gr
+
+    var shouldAutoSelect = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         //self.title = CVDate(date: NSDate()).globalDescription
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
@@ -37,6 +43,13 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
+
+        shouldAutoSelect = false
+        
+        self.calendarView.delegate = self
+        
+        
+        
         self.presentedDateUpdated(CVDate(date: NSDate()))
         loadWeight()
         setupWeightPickerView()
@@ -159,10 +172,25 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
         
+       
+       
+
+            
+        
+        
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
 
         let table = Table("WeightNote")
@@ -178,6 +206,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
 }
+
 
 extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
@@ -196,6 +225,14 @@ extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     func shouldShowWeekdaysOut() -> Bool {
         return shouldShowDaysOut
     }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
+    }
+    
+
+    
     
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true

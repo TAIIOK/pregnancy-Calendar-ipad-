@@ -40,6 +40,15 @@ class AdvertisingViewController: UIViewController {
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,6 +82,11 @@ extension AdvertisingViewController: CVCalendarViewDelegate, CVCalendarMenuViewD
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView
         
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
     }
     
     func swipedetected(){

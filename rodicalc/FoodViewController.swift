@@ -226,7 +226,14 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -260,6 +267,10 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
         return true // Default value is true
     }
     
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
+    }
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView

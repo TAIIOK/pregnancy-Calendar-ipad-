@@ -23,7 +23,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var shouldShowDaysOut = true
     var animationFinished = true
     //var db = try! Connection()
-    
+
    
     
     override func viewDidLoad() {
@@ -33,6 +33,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.backgroundColor = .clearColor()
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+
+        
         self.navigationItem.backBarButtonItem = btnBack
         //WorkWithDB()
     }
@@ -351,6 +353,23 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return indexPath
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        if(selectedNoteDay != nil){
+        let  date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        }
+        else{
+            let  date = CVDate(date: NSDate())
+            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+            controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+            }
+
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -358,6 +377,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
+        
+        
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
         
@@ -399,6 +420,10 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func shouldShowWeekdaysOut() -> Bool {
         return shouldShowDaysOut
+    }
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return false
     }
     
     func shouldAnimateResizing() -> Bool {
@@ -576,6 +601,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
+ 
         if (dayView.isCurrentDay) {
             return true
         }

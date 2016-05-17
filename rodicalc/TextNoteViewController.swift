@@ -60,6 +60,14 @@ class TextNoteViewController: UIViewController {
         return str
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let date = selectedNoteDay.date
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -256,6 +264,11 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             return false
         }
         
+        return false
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
         return false
     }
     
