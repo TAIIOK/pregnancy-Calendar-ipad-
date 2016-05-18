@@ -80,6 +80,7 @@
 		8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */; };
 		8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */; };
 		8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4521C7DF381001F3A07 /* NamesViewController.swift */; };
+		8EE75B381CEC766E002CF72C /* ImageFromCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */; };
 		8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */; };
 		8EE947B91CE484F100064446 /* NotifiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B81CE484F100064446 /* NotifiCell.swift */; };
 		8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947BA1CE4A67C00064446 /* TimeListController.swift */; };
@@ -352,6 +353,7 @@
 		8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromCalendar.swift; sourceTree = "<group>"; };
 		8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiListTableViewController.swift; sourceTree = "<group>"; };
 		8EE947B81CE484F100064446 /* NotifiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiCell.swift; sourceTree = "<group>"; };
 		8EE947BA1CE4A67C00064446 /* TimeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeListController.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				8E6D50401C7F068000878957 /* CalendarViewController.swift */,
 				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
 				8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */,
+				8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */,
 				8E6D50441C7F06D300878957 /* ExportViewController.swift */,
 				8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */,
 				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
@@ -1129,6 +1132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE75B381CEC766E002CF72C /* ImageFromCalendar.swift in Sources */,
 				8E1DD60C1CB2A79900D55893 /* DateTableViewCell.swift in Sources */,
 				8EEAC33E1CCE542F007B4643 /* Collation.swift in Sources */,
 				8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */,
