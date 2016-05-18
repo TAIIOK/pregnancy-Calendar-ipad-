@@ -60,6 +60,20 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             break
         }
+        }else{
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "Заметки"
+                break
+            case 1:
+                cell.textLabel?.text = "Фотографии"
+                break
+            case 2:
+                cell.textLabel?.text = "Уведомления"
+                break
+            default:
+                break
+            }
         }
         cell.backgroundColor = .clearColor()
         return cell
