@@ -40,11 +40,11 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func UpdateSectionTable(segue:UIStoryboardSegue) {
+        print("update notes table")
         tbl.reloadData()
     }
-    
+
     func WorkWithDB(){
-    
         let path = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, false
             ).first!

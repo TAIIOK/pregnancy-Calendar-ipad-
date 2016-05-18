@@ -462,7 +462,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tbl.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         var table = Table("DoctorVisit")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
@@ -486,6 +486,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for i in doctors{
             try! db.run(table.insert(name <- i.name, date <- String(i.date), isRemind <- i.isRemind, remindType <- i.remindType))
         }
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func save()
@@ -526,6 +527,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let date = selectedNoteDay.date
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+
     }
     
     override func viewDidLayoutSubviews() {

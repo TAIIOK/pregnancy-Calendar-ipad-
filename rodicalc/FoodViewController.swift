@@ -159,7 +159,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         fromTableFoodInArray()
         var table = Table("Food")
         var text = Expression<String>("Text")
@@ -195,6 +195,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)"))}
         }
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func fromTableFoodInArray(){

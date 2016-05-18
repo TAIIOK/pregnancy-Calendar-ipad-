@@ -79,8 +79,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             self.tbl.reloadData()
         }
     }
-    
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         fromTableInArray()
         let table = Table("DesireList")
         let text = Expression<String>("Text")
@@ -94,6 +93,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)"))}
         }
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func fromTableInArray(){

@@ -600,25 +600,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
-       /*
-        
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: selectedNoteDay.date.convertedDate()!)
-        for i in try! db.prepare(table.select(id,date)) {
-            //filter(date == "\(selectedNoteDay.date.convertedDate()!)")
-            let b = i[date]
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-            if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year{
-                try! db.run(table.filter(id == i[id]).delete())
-            }
-        }
-        
-        for i in doctors{
-            try! db.run(table.insert(name <- i.name, date <- String(i.date), isRemind <- i.isRemind, remindType <- i.remindType))
-        }*/
+    override func viewWillDisappear(animated: Bool) {
         var table = Table("MedicineTake")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
@@ -660,7 +642,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         for i in drugs{
             try! db.run(table.insert(name <- i.name, start <- String(i.start), end <- String(i.end), isRemind <- i.isRemind, hour_ <- i.hour, minute_ <- i.minute, interval_ <- i.interval))
         }
-
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func save()

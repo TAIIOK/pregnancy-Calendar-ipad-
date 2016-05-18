@@ -107,7 +107,9 @@ class TextNoteViewController: UIViewController {
             }
 
         }
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
+
     
     /*
      // MARK: - Navigation

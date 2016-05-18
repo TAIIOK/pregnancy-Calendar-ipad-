@@ -192,18 +192,18 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     override func viewWillDisappear(animated: Bool) {
-
         let table = Table("WeightNote")
         let Date = Expression<String>("Date")
         let WeightKg = Expression<Int64>("WeightKg")
         let WeightGr = Expression<Int64>("WeightGr")
-
+        
         let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
         if count == 0 {
             try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
         }else{
             try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
         }
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
 }
 
