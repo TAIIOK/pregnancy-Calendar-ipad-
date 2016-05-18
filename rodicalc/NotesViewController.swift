@@ -546,10 +546,12 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        let randomDay = Int(arc4random_uniform(31))
-        if day == randomDay {
+        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        if (res.0 || res.1 || res.2)
+        {
             return true
         }
+
         
         return false
     }
@@ -562,7 +564,24 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         
-        let numberOfDots = 3
+         var numberOfDots = 0
+        
+        let day = dayView.date.day
+        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        if (res.0 )
+        {
+           numberOfDots += 1
+        }
+        if (res.1 )
+        {
+            numberOfDots += 1
+        }
+        if (res.2 )
+        {
+            numberOfDots += 1
+        }
+        
+       
         switch(numberOfDots) {
         case 2:
             return [color, color]
@@ -571,10 +590,11 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         default:
             return [color] // return 1 dot
         }
+        
     }
     
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
+        return false
     }
     
     func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
