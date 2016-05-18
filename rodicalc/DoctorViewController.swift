@@ -690,38 +690,28 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
     
     func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
         
-        let red = CGFloat(arc4random_uniform(600) / 255)
-        let green = CGFloat(arc4random_uniform(600) / 255)
-        let blue = CGFloat(arc4random_uniform(600) / 255)
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
-        
         var numberOfDots = 0
         
-        let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        var colors = [UIColor]()
+        
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 )
         {
             numberOfDots += 1
+            colors.append(UIColor.redColor())
         }
         if (res.1 )
         {
             numberOfDots += 1
+            colors.append(UIColor.greenColor())
         }
         if (res.2 )
         {
             numberOfDots += 1
+            colors.append(UIColor.blueColor())
         }
         
-        
-        switch(numberOfDots) {
-        case 2:
-            return [color, color]
-        case 3:
-            return [color, color, color]
-        default:
-            return [color] // return 1 dot
-        }
+        return colors
         
     }
     
