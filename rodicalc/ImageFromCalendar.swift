@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public class ImageFromCalendar {
     
     class func ShowCalendarImages(date: NSDate) -> (Bool, Bool, Bool) {

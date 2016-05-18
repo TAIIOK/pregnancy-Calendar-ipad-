@@ -279,8 +279,31 @@ extension CVCalendarDayView {
                     }
                     
                     let dotMarker = CVAuxiliaryView(dayView: self, rect: markerFrame, shape: .Circle)
-                    dotMarker.fillColor = color
+                    dotMarker.fillColor = StrawBerryColor
                     dotMarker.center = CGPointMake(x, y)
+                    
+                    var imageView = UIImageView(frame: CGRectMake(0, 2 , 12, 12));
+                    
+                    var image = UIImage(named: "White_Bell-50.png");
+                    
+                    if(color == UIColor.redColor())
+                    {
+                        image = UIImage(named: "White_Bell-50.png");
+                    }
+                    if(color == UIColor.greenColor())
+                    {
+                         image = UIImage(named: "Calendar-50.png");
+                    }
+                    if(color == UIColor.blueColor())
+                    {
+                        image = UIImage(named: "Compact Camera-50.png");
+                    }
+                    
+                    
+                    
+                    imageView.image = image
+                    
+                    dotMarker.addSubview(imageView)
                     insertSubview(dotMarker, atIndex: 0)
                     
                     dotMarker.setNeedsDisplay()
@@ -320,7 +343,7 @@ extension CVCalendarDayView {
                             color = appearance.dotMarkerColor
                         }
                         
-                        dotMarker.fillColor = color
+                        dotMarker.fillColor = UIColor.clearColor()
                         dotMarker.setNeedsDisplay()
                     }
                     
