@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 
+var selectedImages = [UIImage]()
+
 class SelectPhotosViewController: UICollectionViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet var PhotoCollectionView: UICollectionView!
@@ -98,9 +100,12 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
         if(cell.ImgSelector.hidden == true){
             cell.ImgSelector.hidden = false
+            selectedImages.append(cell.photo.image!)
+            
             cell.selected = true
             selected += 1
         }else{
+            selectedImages.removeAtIndex(selectedImages.indexOf(cell.photo.image!)!)
             cell.ImgSelector.hidden = true
             selected -= 1
             cell.selected = false

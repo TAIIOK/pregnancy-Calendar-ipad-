@@ -24,7 +24,7 @@ public struct Media : CustomStringConvertible {
   
   let data : NSData
   let mediaType : MediaType
-  var imageType : ImageType = .JPG
+  var imageType : ImageType = .PNG
   var documentType : String = "untitled"
   var type : String {
     switch mediaType {

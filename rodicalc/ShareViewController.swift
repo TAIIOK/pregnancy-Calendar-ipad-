@@ -30,26 +30,59 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         return  scope
     }
     
+    func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
     func vkDidAutorize(parameters: Dictionary<String, String>) {
         
-        let data = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("0z", ofType: "jpg")!)
+        print(selectedImages.count)
+
+        
+        
+       //let data1 = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("0", ofType: "png")!)
         //Crete media object to upload
 
-        let media = Media(imageData: data!, type: .JPG)
 
-        VK.API.Upload.Photo.toWall.toUser(media, userId: parameters["user_id"]!).send(method: HTTPMethods.GET , success: {response in print(response)
+        
 
+        var string = ""
+        var result = 0
+         dispatch_sync(dispatch_get_main_queue(),
+                       {
+        for(var i=0;i<selectedImages.count;i++){
+            
+        let media = Media(imageData: UIImagePNGRepresentation(selectedImages[i])!, type: .PNG )
+        
+           print(media)
+            
+         VK.API.Upload.Photo.toWall.toUser(media, userId: parameters["user_id"]!).send(method: HTTPMethods.GET , success: {response in print(response)
+
+            
             let name = response.arrayObject![0] as! NSDictionary
             
-           var string = "photo" + parameters["user_id"]! as String + "_" + String(name.valueForKey("id")!)
+            if(string.characters.count > 0)
+            {
+                string.appendContentsOf(",")
+            }
+            string.appendContentsOf("photo" + parameters["user_id"]! as String + "_" + String(name.valueForKey("id")!))
           
             print(string)
-            
-            let mass = [VK.Arg.userId : parameters["user_id"]! , VK.Arg.friendsOnly : "0" , VK.Arg.message : "risov privet " , VK.Arg.attachments : string + "," + string ]
-            let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
-            
-            
-                       }, error: {error in print(error)})
+            result += 1
+            }, error: {error in print(error)  ; result += 1})
+            }
+                       
+        })
+        
+        while (result != selectedImages.count)
+        {
+        }
+        
+        let mass = [VK.Arg.userId : parameters["user_id"]! , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
+        
+        let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
     
       
     }
@@ -88,14 +121,12 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     @IBAction func ShareMail(sender: AnyObject) {
         var mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self;
-        if let filePath = NSBundle.mainBundle().pathForResource("0z", ofType: "jpg") {
-            print("File path loaded.")
-            
-            if let fileData = NSData(contentsOfFile: filePath) {
-                print("File data loaded.")
-                mailComposerVC.addAttachmentData(fileData, mimeType: "image/jpg", fileName: "0z")
+
+                for (var i = 0 ; i < selectedImages.count ; i++){
+                mailComposerVC.addAttachmentData(UIImagePNGRepresentation(selectedImages[i])!, mimeType: "image/png", fileName: "\(i)")
+
             }
-        }
+        
         
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposerVC, animated: true, completion: nil)
@@ -129,7 +160,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     @IBAction func ShareVK(sender: AnyObject) {
         
             print("шарю во вконтактик")
-        VK.start(appID: "4745842", delegate: self)
+        VK.start(appID: "5437729", delegate: self)
         VK.autorize()
         
 
@@ -152,12 +183,14 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         OKSDK.authorizeWithPermissions(["VALUABLE_ACCESS","LONG_ACCESS_TOKEN","PHOTO_CONTENT"], success: {id in print(id)
             
           //  OKSDK.invokeMethod("users.getCurrentUser", arguments: [:], success: {data in print(data)}, error: {error in print(error)})
-        
+            for(var i = 0 ; i<selectedImages.count; i++){
+              let imageData = UIImagePNGRepresentation(selectedImages[i])
+            
         OKSDK.invokeMethod("photosV2.getUploadUrl", arguments: [:], success: {
             data in print(data)
             
             
-            let imageData = UIImageJPEGRepresentation(UIImage(named: "0z.jpg")!, 1)
+          
 
          let photoId = (data["photo_ids"]as! NSArray)[0] as! String
          let boundary = "0xKhTmLbOuNdArY"
@@ -170,8 +203,8 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             request1.HTTPMethod = "POST"
             request1.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             data.appendData("--\(boundary)\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
-            data.appendData("Content-Disposition: form-data; name=\"0z.jpg\"; filename=\"0z.jpg\"\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
-            data.appendData("Content-Type: image/jpg".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("Content-Disposition: form-data; name=\"0.png\"; filename=\"0.png\"\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data.appendData("Content-Type: image/png".dataUsingEncoding(NSUTF8StringEncoding)!)
             data.appendData("\(kNewLine)\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
             data.appendData(imageData!)
             data.appendData("\(kNewLine)".dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -202,6 +235,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
       
             }
             , error: {error in print(error)})
+            }
         
             }, error: {error in print(error)
         })
