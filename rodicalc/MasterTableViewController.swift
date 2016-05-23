@@ -8,6 +8,8 @@
 
 import UIKit
 
+var MasterViewSelectedRow = 1
+
 class MasterTableViewController: UITableViewController {
     //var items: [String] = ["РАСЧЕТ ДАТЫ РОДОВ", "СПРАВОЧНИК ИМЕН", "СЧЕТЧИК СХВАТОК", "ГРАФИК НАБОРА ВЕСА","ФОТОАЛЬБОМ","ВИДЕОТЕКА","ЗАМЕТКИ","ФОРУМ","ПОЛЕЗНЫЙ ОПЫТ","КАЛЕНДАРЬ","БЛИЖАЙШИЕ МАГАЗИНЫ", "ЭКСПОРТ" ]
     
@@ -31,7 +33,7 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rowToSelect:NSIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: MasterViewSelectedRow, inSection: 0)
         table.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
 
         self.tableView(table, willSelectRowAtIndexPath: rowToSelect)
@@ -50,8 +52,12 @@ class MasterTableViewController: UITableViewController {
         cell9.backgroundColor = .clearColor()
         cell10.backgroundColor = .clearColor()
         cell11.backgroundColor = .clearColor()
-        cell0.setHighlighted(true, animated: false)
-        cell0.setSelected(true, animated: false)
+        
+        if MasterViewSelectedRow == 12 {
+            cell11.setHighlighted(true, animated: false)
+        }else{
+            cell0.setHighlighted(true, animated: false)
+        }
     }
     
     override func didReceiveMemoryWarning() {
