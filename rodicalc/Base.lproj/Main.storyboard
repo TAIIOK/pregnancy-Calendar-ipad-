@@ -677,71 +677,81 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="3WQ-I7-aHh">
-                                <rect key="frame" x="240" y="143" width="120" height="120"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBE-fT-zhQ">
+                                <rect key="frame" x="0.0" y="129" width="600" height="342"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkz-Eu-vMv">
+                                        <rect key="frame" x="141" y="176" width="318" height="63"/>
+                                        <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="318" id="9fg-yF-cWZ"/>
+                                            <constraint firstAttribute="height" constant="63" id="P5a-nf-Jis"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="f8t-51-6La">
+                                        <rect key="frame" x="240" y="25" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="K4h-tN-ceK"/>
+                                            <constraint firstAttribute="height" constant="120" id="vgk-Sn-yyQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-BD-zM8" userLabel="Подключиться">
+                                        <rect key="frame" x="230" y="254" width="141" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="iZa-I4-knh"/>
+                                            <constraint firstAttribute="width" constant="141" id="nfe-WF-1LD"/>
+                                        </constraints>
+                                        <state key="normal" title="Подключиться">
+                                            <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ZdE-8Q-tBW" kind="showDetail" id="K7f-B5-ZW2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="Ez0-57-kfQ"/>
-                                    <constraint firstAttribute="height" constant="120" id="gYt-ET-por"/>
+                                    <constraint firstItem="Hkz-Eu-vMv" firstAttribute="top" secondItem="f8t-51-6La" secondAttribute="bottom" constant="31" id="0AB-K0-zZr"/>
+                                    <constraint firstItem="tbr-BD-zM8" firstAttribute="top" secondItem="Hkz-Eu-vMv" secondAttribute="bottom" constant="15" id="KVU-qv-OSY"/>
+                                    <constraint firstItem="Hkz-Eu-vMv" firstAttribute="centerX" secondItem="tbr-BD-zM8" secondAttribute="centerX" id="dhU-22-Jb6"/>
+                                    <constraint firstItem="f8t-51-6La" firstAttribute="centerX" secondItem="SBE-fT-zhQ" secondAttribute="centerX" id="m0j-Qb-SpI"/>
+                                    <constraint firstItem="f8t-51-6La" firstAttribute="centerX" secondItem="Hkz-Eu-vMv" secondAttribute="centerX" id="w2M-NA-Ade"/>
+                                    <constraint firstItem="f8t-51-6La" firstAttribute="top" secondItem="SBE-fT-zhQ" secondAttribute="top" constant="25" id="zsZ-ht-P73"/>
                                 </constraints>
-                            </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdn-ZA-wjG">
-                                <rect key="frame" x="141" y="326" width="318" height="63"/>
-                                <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="318" id="Zg0-2W-jaL"/>
-                                    <constraint firstAttribute="height" constant="63" id="ixd-A9-Y1d"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-Jl-A0Q" userLabel="Подключиться">
-                                <rect key="frame" x="235" y="405" width="141" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cLg-1i-kEO"/>
-                                    <constraint firstAttribute="width" constant="141" id="zNP-26-9ob"/>
-                                </constraints>
-                                <state key="normal" title="Подключиться">
-                                    <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ZdE-8Q-tBW" kind="showDetail" id="OrH-IY-Cvz"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3WQ-I7-aHh" firstAttribute="top" secondItem="tTe-SJ-XZa" secondAttribute="bottom" constant="79" id="2V1-EN-hrT"/>
                             <constraint firstItem="UTq-08-ihv" firstAttribute="bottom" secondItem="cWC-0R-0vR" secondAttribute="top" id="7XD-Gw-Yhu"/>
                             <constraint firstItem="UTq-08-ihv" firstAttribute="top" secondItem="tTe-SJ-XZa" secondAttribute="bottom" id="8JA-DI-kP1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AeL-Jl-A0Q" secondAttribute="trailing" constant="204" id="8OU-ZG-hAc"/>
-                            <constraint firstItem="Sdn-ZA-wjG" firstAttribute="top" secondItem="3WQ-I7-aHh" secondAttribute="bottom" constant="63" id="Ezc-yj-wSr"/>
                             <constraint firstItem="JCq-IN-p0u" firstAttribute="bottom" secondItem="cWC-0R-0vR" secondAttribute="top" id="FX7-WC-sW2"/>
-                            <constraint firstItem="Sdn-ZA-wjG" firstAttribute="centerX" secondItem="JCq-IN-p0u" secondAttribute="centerX" id="ML8-eq-Q4s"/>
+                            <constraint firstItem="SBE-fT-zhQ" firstAttribute="leading" secondItem="UTq-08-ihv" secondAttribute="leading" id="Oxs-Od-yZ0"/>
+                            <constraint firstItem="SBE-fT-zhQ" firstAttribute="trailing" secondItem="JCq-IN-p0u" secondAttribute="trailing" id="SbF-ZC-vxc"/>
                             <constraint firstItem="JCq-IN-p0u" firstAttribute="leading" secondItem="KAu-FR-2a7" secondAttribute="leading" id="V7L-IJ-j3e"/>
-                            <constraint firstItem="AeL-Jl-A0Q" firstAttribute="top" secondItem="Sdn-ZA-wjG" secondAttribute="bottom" constant="16" id="anm-yh-nbi"/>
-                            <constraint firstItem="3WQ-I7-aHh" firstAttribute="leading" secondItem="KAu-FR-2a7" secondAttribute="leadingMargin" constant="220" id="cVb-Z1-R8Z"/>
+                            <constraint firstItem="SBE-fT-zhQ" firstAttribute="centerY" secondItem="JCq-IN-p0u" secondAttribute="centerY" id="YE0-Jl-HUh"/>
+                            <constraint firstItem="SBE-fT-zhQ" firstAttribute="top" secondItem="tTe-SJ-XZa" secondAttribute="bottom" constant="65" id="eYV-Xe-NPq"/>
                             <constraint firstItem="JCq-IN-p0u" firstAttribute="leading" secondItem="UTq-08-ihv" secondAttribute="leading" id="ebY-14-mdh"/>
                             <constraint firstAttribute="trailing" secondItem="JCq-IN-p0u" secondAttribute="trailing" id="fqO-Xu-FVV"/>
-                            <constraint firstItem="AeL-Jl-A0Q" firstAttribute="leading" secondItem="KAu-FR-2a7" secondAttribute="leadingMargin" constant="215" id="iTf-Wf-ttY"/>
                             <constraint firstItem="JCq-IN-p0u" firstAttribute="top" secondItem="KAu-FR-2a7" secondAttribute="top" id="lHl-Zr-11Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3WQ-I7-aHh" secondAttribute="trailing" constant="220" id="nhg-jW-r2s"/>
-                            <constraint firstItem="cWC-0R-0vR" firstAttribute="top" secondItem="AeL-Jl-A0Q" secondAttribute="bottom" constant="165" id="ytP-2e-vlz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Форум" id="Let-Ex-P1p"/>
                     <connections>
-                        <outlet property="btnReconect" destination="AeL-Jl-A0Q" id="VNa-5r-b5y"/>
-                        <outlet property="label" destination="Sdn-ZA-wjG" id="wIC-ow-l4N"/>
-                        <outlet property="smile" destination="3WQ-I7-aHh" id="g2A-ty-o4V"/>
+                        <outlet property="noConnectionButton" destination="tbr-BD-zM8" id="9Eb-7H-Htp"/>
+                        <outlet property="noConnetionImage" destination="f8t-51-6La" id="YRh-XN-veg"/>
+                        <outlet property="noConnetionLabel" destination="Hkz-Eu-vMv" id="fXS-IO-HF0"/>
+                        <outlet property="noConnetionView" destination="SBE-fT-zhQ" id="tC6-dz-D80"/>
                         <outlet property="table" destination="UTq-08-ihv" id="0zb-AU-Dda"/>
                     </connections>
                 </viewController>
@@ -884,80 +894,93 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lET-IQ-c6p">
+                                <rect key="frame" x="0.0" y="129" width="600" height="342"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REk-so-Q6h">
+                                        <rect key="frame" x="141" y="176" width="318" height="63"/>
+                                        <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="318" id="cqj-lt-2pm"/>
+                                            <constraint firstAttribute="height" constant="63" id="kxs-Bn-znC"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="6be-92-lkr">
+                                        <rect key="frame" x="240" y="25" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="IdT-4X-KLh"/>
+                                            <constraint firstAttribute="height" constant="120" id="fa0-R7-vuc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mns-th-pXE" userLabel="Подключиться">
+                                        <rect key="frame" x="230" y="254" width="141" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="a7U-Gp-q6i"/>
+                                            <constraint firstAttribute="width" constant="141" id="q2g-UD-GTn"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Подключиться">
+                                            <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="kAl-Lj-NIO" kind="showDetail" id="hz0-ZP-idO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6be-92-lkr" firstAttribute="top" secondItem="lET-IQ-c6p" secondAttribute="top" constant="25" id="4WY-Ha-XnK"/>
+                                    <constraint firstItem="REk-so-Q6h" firstAttribute="centerX" secondItem="mns-th-pXE" secondAttribute="centerX" id="Get-zR-eIT"/>
+                                    <constraint firstItem="REk-so-Q6h" firstAttribute="top" secondItem="6be-92-lkr" secondAttribute="bottom" constant="31" id="Yeb-Gn-gyM"/>
+                                    <constraint firstItem="mns-th-pXE" firstAttribute="top" secondItem="REk-so-Q6h" secondAttribute="bottom" constant="15" id="g77-sZ-hE4"/>
+                                    <constraint firstItem="6be-92-lkr" firstAttribute="centerX" secondItem="REk-so-Q6h" secondAttribute="centerX" id="ph4-qg-RPu"/>
+                                    <constraint firstItem="6be-92-lkr" firstAttribute="centerX" secondItem="lET-IQ-c6p" secondAttribute="centerX" id="y4b-7b-yGy"/>
+                                </constraints>
+                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="mapViev" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-EF-am9">
                                 <rect key="frame" x="0.0" y="64" width="600" height="267"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="267" id="SuJ-OA-ksm"/>
                                 </constraints>
                             </mapView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="hsJ-Wb-StG">
-                                <rect key="frame" x="240" y="169" width="120" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="j3l-rR-7u9"/>
-                                    <constraint firstAttribute="width" constant="120" id="uW5-GP-lzF"/>
-                                </constraints>
-                            </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDX-lw-G4K">
-                                <rect key="frame" x="141" y="298" width="318" height="101"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="318" id="fmB-yQ-mCN"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Интернет соединение недоступно Повторите попытку подключения">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc8-PI-vPi" userLabel="Подключиться">
-                                <rect key="frame" x="230" y="376" width="141" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="141" id="1SB-pf-Zz9"/>
-                                </constraints>
-                                <color key="tintColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Подключиться">
-                                    <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="kAl-Lj-NIO" kind="showDetail" id="Grh-Yv-0eG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wgj-EF-am9" firstAttribute="leading" secondItem="tln-XQ-Gq6" secondAttribute="leading" id="21f-Bf-uIW"/>
-                            <constraint firstItem="hsJ-Wb-StG" firstAttribute="leading" secondItem="0gA-sA-RSL" secondAttribute="leadingMargin" constant="220" id="2wn-j6-VKc"/>
-                            <constraint firstItem="TDX-lw-G4K" firstAttribute="top" secondItem="hsJ-Wb-StG" secondAttribute="bottom" constant="9" id="4Jh-3Z-4iU"/>
+                            <constraint firstItem="lET-IQ-c6p" firstAttribute="top" secondItem="xtX-nK-P9v" secondAttribute="bottom" constant="65" id="3f1-WB-PFR"/>
                             <constraint firstItem="umv-9q-d0a" firstAttribute="top" secondItem="tln-XQ-Gq6" secondAttribute="bottom" constant="8" symbolic="YES" id="7GI-Id-7PN"/>
-                            <constraint firstItem="hsJ-Wb-StG" firstAttribute="top" secondItem="xtX-nK-P9v" secondAttribute="bottom" constant="105" id="99A-KB-jwI"/>
                             <constraint firstItem="IZK-uc-mBl" firstAttribute="bottom" secondItem="umv-9q-d0a" secondAttribute="top" id="CLv-Ey-BY4"/>
-                            <constraint firstItem="TDX-lw-G4K" firstAttribute="top" secondItem="xtX-nK-P9v" secondAttribute="bottom" constant="234" id="DNf-i5-V98"/>
+                            <constraint firstItem="lET-IQ-c6p" firstAttribute="centerY" secondItem="IZK-uc-mBl" secondAttribute="centerY" id="CZE-OK-trN"/>
                             <constraint firstAttribute="trailing" secondItem="Wgj-EF-am9" secondAttribute="trailing" id="EyI-vQ-8Tv"/>
                             <constraint firstItem="IZK-uc-mBl" firstAttribute="top" secondItem="0gA-sA-RSL" secondAttribute="top" id="FWK-p2-HgY"/>
-                            <constraint firstItem="Rc8-PI-vPi" firstAttribute="top" secondItem="tln-XQ-Gq6" secondAttribute="top" constant="37" id="GZJ-vL-Eal"/>
                             <constraint firstItem="Wgj-EF-am9" firstAttribute="top" secondItem="0gA-sA-RSL" secondAttribute="topMargin" constant="64" id="JT0-eS-1wx"/>
                             <constraint firstItem="IZK-uc-mBl" firstAttribute="trailing" secondItem="Wgj-EF-am9" secondAttribute="trailing" id="OQr-qq-R8D"/>
                             <constraint firstItem="Wgj-EF-am9" firstAttribute="trailing" secondItem="tln-XQ-Gq6" secondAttribute="trailing" id="Woi-Hi-3hS"/>
                             <constraint firstItem="tln-XQ-Gq6" firstAttribute="top" secondItem="Wgj-EF-am9" secondAttribute="bottom" constant="8" id="XUv-1s-4RW"/>
-                            <constraint firstItem="IZK-uc-mBl" firstAttribute="centerY" secondItem="TDX-lw-G4K" secondAttribute="centerY" constant="-48.5" id="Y9n-Qc-Aaj"/>
-                            <constraint firstItem="TDX-lw-G4K" firstAttribute="centerX" secondItem="Rc8-PI-vPi" secondAttribute="centerX" id="iwm-j2-Z0O"/>
+                            <constraint firstItem="lET-IQ-c6p" firstAttribute="leading" secondItem="Wgj-EF-am9" secondAttribute="leading" id="iIP-do-FPq"/>
                             <constraint firstItem="Wgj-EF-am9" firstAttribute="leading" secondItem="0gA-sA-RSL" secondAttribute="leading" id="jru-j4-GBR"/>
-                            <constraint firstItem="umv-9q-d0a" firstAttribute="top" secondItem="Rc8-PI-vPi" secondAttribute="bottom" constant="159" id="qby-R3-htr"/>
                             <constraint firstItem="IZK-uc-mBl" firstAttribute="leading" secondItem="Wgj-EF-am9" secondAttribute="leading" id="r08-sy-LVx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hsJ-Wb-StG" secondAttribute="trailing" constant="220" id="raD-tD-rsR"/>
-                            <constraint firstItem="TDX-lw-G4K" firstAttribute="centerX" secondItem="Wgj-EF-am9" secondAttribute="centerX" id="w64-XX-7mW"/>
+                            <constraint firstItem="lET-IQ-c6p" firstAttribute="trailing" secondItem="Wgj-EF-am9" secondAttribute="trailing" id="xbJ-6H-v2k"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Купить белье ФЭСТ" id="rZ2-MO-KPo"/>
                     <connections>
-                        <outlet property="btnReconnect" destination="Rc8-PI-vPi" id="RGa-Ld-Jfc"/>
-                        <outlet property="label" destination="TDX-lw-G4K" id="Des-tt-5gz"/>
                         <outlet property="map" destination="Wgj-EF-am9" id="4CY-RY-W5I"/>
-                        <outlet property="smile" destination="hsJ-Wb-StG" id="fnz-LS-wfz"/>
+                        <outlet property="noConnectionButton" destination="mns-th-pXE" id="4Wx-Vl-Oul"/>
+                        <outlet property="noConnectionImage" destination="6be-92-lkr" id="DeQ-lk-ntK"/>
+                        <outlet property="noConnectionLabel" destination="REk-so-Q6h" id="cjA-FI-i3u"/>
+                        <outlet property="noConnectionView" destination="lET-IQ-c6p" id="plH-db-XUh"/>
                         <outlet property="tbl" destination="tln-XQ-Gq6" id="S0B-WU-bx4"/>
                     </connections>
                 </viewController>
@@ -2082,6 +2105,59 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Zj-Yz-Ax2">
+                                <rect key="frame" x="0.0" y="258" width="600" height="342"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xE-Yo-CGW">
+                                        <rect key="frame" x="141" y="176" width="318" height="63"/>
+                                        <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="63" id="fuH-gw-m0G"/>
+                                            <constraint firstAttribute="width" constant="318" id="hsV-K6-xyX"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="Ozn-4I-mXL">
+                                        <rect key="frame" x="240" y="25" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="5Dd-GH-nD4"/>
+                                            <constraint firstAttribute="width" constant="120" id="hLh-Wm-GQ2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFS-Qm-9nN" userLabel="Подключиться">
+                                        <rect key="frame" x="230" y="254" width="141" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="F3V-Ca-3Zx"/>
+                                            <constraint firstAttribute="width" constant="141" id="JDp-6y-orj"/>
+                                        </constraints>
+                                        <state key="normal" title="Подключиться">
+                                            <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="WEd-qH-raw" kind="showDetail" id="VCA-Rz-Uxj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2xE-Yo-CGW" firstAttribute="top" secondItem="Ozn-4I-mXL" secondAttribute="bottom" constant="31" id="11s-Xe-zYC"/>
+                                    <constraint firstItem="wFS-Qm-9nN" firstAttribute="top" secondItem="2xE-Yo-CGW" secondAttribute="bottom" constant="15" id="59N-Al-J45"/>
+                                    <constraint firstItem="Ozn-4I-mXL" firstAttribute="top" secondItem="5Zj-Yz-Ax2" secondAttribute="top" constant="25" id="NSP-nb-swg"/>
+                                    <constraint firstItem="Ozn-4I-mXL" firstAttribute="centerX" secondItem="2xE-Yo-CGW" secondAttribute="centerX" id="gog-0W-Q2f"/>
+                                    <constraint firstItem="Ozn-4I-mXL" firstAttribute="centerX" secondItem="5Zj-Yz-Ax2" secondAttribute="centerX" id="mfH-5E-Nne"/>
+                                    <constraint firstItem="2xE-Yo-CGW" firstAttribute="centerX" secondItem="wFS-Qm-9nN" secondAttribute="centerX" id="qKt-pe-NSQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -2089,6 +2165,10 @@
                             <constraint firstItem="mW8-HO-dfN" firstAttribute="top" secondItem="PYv-Ud-orr" secondAttribute="top" constant="88" id="1zE-nx-B2j"/>
                             <constraint firstItem="uGD-vs-hsc" firstAttribute="top" secondItem="PYv-Ud-orr" secondAttribute="topMargin" constant="-32" id="8Wz-Iz-cAm"/>
                             <constraint firstItem="aml-m3-YUa" firstAttribute="top" secondItem="DYG-Dr-979" secondAttribute="bottom" id="98A-xM-jAs"/>
+                            <constraint firstItem="5Zj-Yz-Ax2" firstAttribute="trailing" secondItem="MpK-mm-aTR" secondAttribute="trailing" id="AEL-Pa-xBF"/>
+                            <constraint firstItem="5Zj-Yz-Ax2" firstAttribute="top" secondItem="MpK-mm-aTR" secondAttribute="top" id="BUS-EX-BBs"/>
+                            <constraint firstItem="5Zj-Yz-Ax2" firstAttribute="leading" secondItem="MpK-mm-aTR" secondAttribute="leading" id="Bbs-3Z-Wkk"/>
+                            <constraint firstItem="5Zj-Yz-Ax2" firstAttribute="bottom" secondItem="gs4-wJ-MDr" secondAttribute="top" id="JKf-b9-gBC"/>
                             <constraint firstItem="MpK-mm-aTR" firstAttribute="bottom" secondItem="gs4-wJ-MDr" secondAttribute="top" id="K2r-38-sT6"/>
                             <constraint firstAttribute="trailing" secondItem="aml-m3-YUa" secondAttribute="trailing" id="Ljb-hW-Y5I"/>
                             <constraint firstItem="aml-m3-YUa" firstAttribute="leading" secondItem="mW8-HO-dfN" secondAttribute="leading" id="Wxz-gz-TSH"/>
@@ -2121,6 +2201,10 @@
                         <outlet property="calendarView" destination="mW8-HO-dfN" id="tCj-w1-mES"/>
                         <outlet property="menuView" destination="aml-m3-YUa" id="foF-4u-TUd"/>
                         <outlet property="navbar" destination="Qhy-dJ-go2" id="8wp-6d-yuq"/>
+                        <outlet property="noConnetionButton" destination="wFS-Qm-9nN" id="hTa-IR-xAB"/>
+                        <outlet property="noConnetionImage" destination="Ozn-4I-mXL" id="VIu-yS-0E4"/>
+                        <outlet property="noConnetionLabel" destination="2xE-Yo-CGW" id="dXQ-Yz-Yv3"/>
+                        <outlet property="noConnetionView" destination="5Zj-Yz-Ax2" id="4Ya-ev-5gF"/>
                         <outlet property="tbl" destination="MpK-mm-aTR" id="JlZ-xQ-2po"/>
                     </connections>
                 </viewController>
@@ -3562,9 +3646,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="J8J-RP-rbp"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="P0H-Yd-JxP"/>
-        <segue reference="kMg-vQ-vuk"/>
         <segue reference="IGw-IB-TBh"/>
         <segue reference="FRD-nV-ZPC"/>
+        <segue reference="VCA-Rz-Uxj"/>
+        <segue reference="hz0-ZP-idO"/>
+        <segue reference="K7f-B5-ZW2"/>
     </inferredMetricsTieBreakers>
 </document>

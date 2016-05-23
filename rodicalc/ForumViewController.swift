@@ -16,13 +16,18 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 
 
-    @IBOutlet weak var smile: UIImageView!
+    @IBOutlet weak var noConnetionView: UIView!
+    @IBOutlet weak var noConnetionImage: UIImageView!
+    @IBOutlet weak var noConnetionLabel: UILabel!
+    @IBOutlet weak var noConnectionButton: UIButton!
+    
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var btnReconect: UIButton!
+
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noConnetionView.backgroundColor = .clearColor()
         table.backgroundColor = .clearColor()
         if(Reachability.isConnectedToNetwork()==true){
             self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
@@ -31,10 +36,11 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
             table.hidden = false
         }
         else{
-            smile.hidden = false
-            label.hidden = false
-            btnReconect.hidden = false
-            btnReconect.enabled = true
+            noConnetionImage.hidden = false
+            noConnetionLabel.hidden = false
+            noConnectionButton.hidden = false
+            noConnetionView.hidden = false
+            noConnectionButton.enabled = true
         }
     }
 

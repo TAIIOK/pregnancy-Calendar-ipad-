@@ -54,6 +54,11 @@ class note: NSObject {
 
 class ExperienceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    @IBOutlet weak var noConnetionView: UIView!
+    @IBOutlet weak var noConnetionImage: UIImageView!
+    @IBOutlet weak var noConnetionLabel: UILabel!
+    @IBOutlet weak var noConnetionButton: UIButton!
+    
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     var shouldShowDaysOut = true
@@ -75,6 +80,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     private func reloadTable(index: Bool) {
         choosedSegmentNotes = index
         //let choosedNote = NSIndexPath(forRow: 0, inSection: 0)
+        checkConnectionAndUpdateView()
         self.tbl.reloadData()
         //self.tbl.scrollToRowAtIndexPath(choosedNote, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
@@ -174,13 +180,27 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         tbl.dataSource = self
         WorkWithJSON()
         loadDate()
-        //leftbutt![0] = leftButton
-        
+                //leftbutt![0] = leftButton
+        checkConnectionAndUpdateView()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-   
+    private func checkConnectionAndUpdateView(){
+        if(Reachability.isConnectedToNetwork()==false && choosedSegmentNotes==true){
+            noConnetionImage.hidden = false
+            noConnetionLabel.hidden = false
+            noConnetionButton.hidden = false
+            noConnetionView.hidden = false
+            noConnetionButton.enabled = true
+        }else{
+            noConnetionImage.hidden = true
+            noConnetionLabel.hidden = true
+            noConnetionButton.hidden = true
+            noConnetionView.hidden = true
+            noConnetionButton.enabled = false
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -367,7 +387,12 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let date = selectedNoteDay.date
+        var date = CVDate(date: NSDate())
+        
+        if selectedNoteDay != nil{
+            date = selectedNoteDay.date
+        }
+        
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
     }

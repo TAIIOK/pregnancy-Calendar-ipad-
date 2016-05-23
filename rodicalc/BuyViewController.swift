@@ -44,10 +44,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var tbl: UITableView!
     
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var btnReconnect: UIButton!
+    @IBOutlet weak var noConnectionView: UIView!
+    @IBOutlet weak var noConnectionLabel: UILabel!
+    @IBOutlet weak var noConnectionImage: UIImageView!
+    @IBOutlet weak var noConnectionButton: UIButton!
     
-    @IBOutlet weak var smile: UIImageView!
     @IBAction func OpenSite(sender: UIButton) {
         if let url = NSURL(string: "https://wildberries.ru"){
             UIApplication.sharedApplication().openURL(url)
@@ -117,11 +118,13 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             //addPinToMapView()
         }
         else{
-            smile.hidden = false
+            noConnectionView.backgroundColor = .clearColor()
+            noConnectionImage.hidden = false
+            noConnectionView.hidden = false
             map.hidden = true
-            label.hidden=false
-            btnReconnect.hidden=false
-            btnReconnect.enabled=true
+            noConnectionLabel.hidden=false
+            noConnectionButton.hidden=false
+            noConnectionButton.enabled=true
         }
  
     }
