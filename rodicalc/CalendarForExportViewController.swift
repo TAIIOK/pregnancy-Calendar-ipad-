@@ -53,6 +53,35 @@ class CalendarForExportViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func getDays()
+    {
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        let temp =  controller.getSelectedDates()
+        var days = [NSDate]()
+        for element in temp {
+           days.append(addDaystoGivenDate(element.date.convertedDate()!, NumberOfDaysToAdd: 1))
+        }
+        print(temp.count)
+        
+        for element in days {
+        print(element)
+        }
+        
+        print(days.count)
+    }
+    
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
+    }
 }
 
 
@@ -89,18 +118,13 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
         print("\(dayView.date.commonDescription) is selected!")
         calendarView.coordinator.selection = true
         selectedExportCalendarDay = dayView
+        getDays()
         
-        ////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////МЕСТО ПОЛУЧЕНИЯ ДНЕЙ ИЗ КАЛЕНДАРЯ////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////
-        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        var days =  controller.getSelectedDates()
+    }
+    
+    
 
-        for element in days {
-                print(element.date.convertedDate())
-        }
-            print(days.count)
-        }
+    
     
     
     func swipedetected(){
