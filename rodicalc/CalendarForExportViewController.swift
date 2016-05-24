@@ -118,8 +118,6 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
         print("\(dayView.date.commonDescription) is selected!")
         calendarView.coordinator.selection = true
         selectedExportCalendarDay = dayView
-        getDays()
-        
     }
     
     
