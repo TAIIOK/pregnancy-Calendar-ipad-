@@ -47,6 +47,7 @@ class AdvertisingViewController: UIViewController {
         let date = selectedNoteDay.date
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,6 +82,7 @@ extension AdvertisingViewController: CVCalendarViewDelegate, CVCalendarMenuViewD
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedNoteDay = dayView
+
         
     }
     

@@ -35,6 +35,9 @@ class CalendarForExportViewController: UIViewController {
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
         
+        
+ 
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,8 +55,12 @@ class CalendarForExportViewController: UIViewController {
     }
 }
 
+
+
+
 extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
+
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
         return .MonthView
@@ -80,8 +87,21 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        calendarView.coordinator.selection = true
         selectedExportCalendarDay = dayView
-    }
+        
+        ////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////МЕСТО ПОЛУЧЕНИЯ ДНЕЙ ИЗ КАЛЕНДАРЯ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        var days =  controller.getSelectedDates()
+
+        for element in days {
+                print(element.date.convertedDate())
+        }
+            print(days.count)
+        }
+    
     
     func swipedetected(){
         

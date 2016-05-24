@@ -142,7 +142,7 @@ public final class CVCalendarView: UIView {
             }
             
             if coordinator == nil {
-                coordinator = Coordinator(calendarView: self)
+                coordinator = Coordinator(calendarView: self )
             }
             
             if animator == nil {
@@ -281,6 +281,8 @@ extension CVCalendarView {
     
     public func toggleCurrentDayView() {
         contentController.togglePresentedDate(NSDate())
+        
+        
     }
     
     public func loadNextView() {

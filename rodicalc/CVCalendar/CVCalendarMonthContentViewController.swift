@@ -364,7 +364,24 @@ extension CVCalendarMonthContentViewController {
             }
         }
     }
+    
+    
+    public func getSelectedDates() -> Set<DayView>
+    {
+        
+        let coordinator = calendarView.coordinator
+    
+        var dates =   coordinator.selectionSet
+        
+    
+        return dates
+   
+    }
+
+    
 }
+
+
 
 // MARK: - UIScrollViewDelegate
 
