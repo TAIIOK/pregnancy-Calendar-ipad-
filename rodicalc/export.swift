@@ -10,14 +10,23 @@ import Foundation
 import UIKit
 import SwiftyVK
 
+class image1: UIView{
+    @IBOutlet weak var leftImage: UIImageView!
+
+    @IBOutlet weak var rightImage: UIImageView!
+    
+    func setImage(left: UIImage){
+    
+        leftImage.image = left
+    }
+
+}
 class photo: UIView{
     
-
-    // Our custom view from the XIB file
-    var view: UIView!
+   // var view = UIView()
     
     // Outlets
-
+    
     override init(frame: CGRect) {
         // 1. setup any properties here
         
@@ -38,39 +47,44 @@ class photo: UIView{
         xibSetup()
     }
     
-    
-    func xibSetup() {
-        view = loadViewFromNib()
-        
-        // use bounds not frame or it'll be offset
-        view.frame = bounds
-        
-        // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
-        // Adding custom subview on top of our view (over any custom drawing > see note below)
-        addSubview(view)
-        
-        VK.autorize()
+        func setContent(LeftImage : UIImage,RightImage : UIImage, Tittle: String,LeftLabel : String, RightLabel: String)
+        {
 
-    }
-    
-    func returnView() -> UIView{
-    return self.view
-    }
-    
-    
-    func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "photo", bundle: bundle)
+        }
         
-        // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        return view
-    }
-    
-    
+        
+        func xibSetup() {
+           var view1 = loadViewFromNib() as! image1
+            
+        
+            view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
 
-    
-    
+            
+            view1.tag = 911
+          
+            view1.setImage(UIImage(named: "1z.jpg")!)
+            // use bounds not frame or it'll be offset
+            view1.frame = bounds
+            
+            // Make the view stretch with containing view
+            view1.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+            
+            // Adding custom subview on top of our view (over any custom drawing > see note below)
+            addSubview(view1)
+
+        }
+        
+   
+        
+        
+        func loadViewFromNib() -> UIView {
+            let bundle = NSBundle(forClass: self.dynamicType)
+            let nib = UINib(nibName: "photo", bundle: bundle)
+            
+            // Assumes UIView is top level and only object in CustomView.xib file
+            let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+            return view
+        }
+        
+        
 }

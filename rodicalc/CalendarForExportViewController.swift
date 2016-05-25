@@ -117,14 +117,17 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
         return false
     }
     
+    
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
+        
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         calendarView.coordinator.selection = true
         selectedExportCalendarDay = dayView
+
     }
     
     
