@@ -22,14 +22,11 @@ extension UIView{
     }
 }
 
-func loltest(){
+func CreateFirstImage(){
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
     
     let image = exportView.screenshot
     
-    print(image)
-    
-    ImageViewTest.image = exportView.screenshot
     
 }
