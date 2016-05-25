@@ -114,7 +114,6 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
         
-        CGFloat(M_PI_4)
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {

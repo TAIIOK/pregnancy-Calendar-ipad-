@@ -167,6 +167,8 @@
 		A0669E671CDA34E4002F8E95 /* DoctorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */; };
 		A0669E701CDA34F2002F8E95 /* DoctorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */; };
 		A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E711CDA3597002F8E95 /* DoctorViewController.swift */; };
+		A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622611CF5CA5A003951EC /* CreatingExportImage.swift */; };
+		A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622621CF5CA5A003951EC /* pdfCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -444,6 +446,8 @@
 		A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewCell.xib; sourceTree = "<group>"; };
 		A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorHeader.swift; sourceTree = "<group>"; };
 		A0669E711CDA3597002F8E95 /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
+		A07622611CF5CA5A003951EC /* CreatingExportImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingExportImage.swift; sourceTree = "<group>"; };
+		A07622621CF5CA5A003951EC /* pdfCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pdfCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -541,6 +545,8 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
+				A07622621CF5CA5A003951EC /* pdfCreator.swift */,
 				A04288241CE4B03A005DB953 /* socialNetwork */,
 				A01028CB1CD227B0005E339F /* html */,
 				A02058871CC8C45F00C70691 /* zodiac */,
@@ -1178,6 +1184,7 @@
 				8EEAC3361CCE542F007B4643 /* Statement.swift in Sources */,
 				A01029101CD29E0B005E339F /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				8E51BF131CA2AA8000D8D739 /* TableViewCell.swift in Sources */,
+				A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */,
 				8EEAC3441CCE542F007B4643 /* Schema.swift in Sources */,
 				8E1DD6061CB26A3D00D55893 /* ShareViewController.swift in Sources */,
 				8E6D503D1C7F05D700878957 /* ForumViewController.swift in Sources */,
@@ -1193,6 +1200,7 @@
 				A010291D1CD29E0B005E339F /* CVShape.swift in Sources */,
 				8E5A6BD41CD7A1810073B693 /* PreferencesTableViewCell.swift in Sources */,
 				A0669E661CDA34E4002F8E95 /* DoctorViewCell.swift in Sources */,
+				A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */,
 				8E5A6BCE1CD3CAA90073B693 /* FoodViewController.swift in Sources */,
 				8EE947C61CE5E56000064446 /* DrugsViewController.swift in Sources */,
 				8E51BF1A1CA2D00200D8D739 /* CalloutAnnotation.swift in Sources */,
