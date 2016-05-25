@@ -22,11 +22,31 @@ extension UIView{
     }
 }
 
-func CreateFirstImage(){
+func CreateFirstImage() -> UIImage{
+    
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
     
-    let image = exportView.screenshot
+    exportView.xibFirstSetup()
     
-    
+    return exportView.screenshot
 }
+
+func CreateSecondImage() -> UIImage{
+    
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
+    
+    exportView.xibSecondSetup()
+    
+    return exportView.screenshot
+}
+
+func CreateThirdImage() -> UIImage{
+    
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
+    
+    exportView.xibThirdSetup()
+    
+    return exportView.screenshot
+}
+
