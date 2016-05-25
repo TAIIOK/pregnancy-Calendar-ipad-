@@ -12,65 +12,21 @@ import SwiftyVK
 
 class photo: UIView{
     
-
-    // Our custom view from the XIB file
-    var view: UIView!
+    @IBOutlet weak var LeftImageView: UIImageView!
+    @IBOutlet weak var RightImageView: UIImageView!
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var LeftImageLabel: UILabel!
+    @IBOutlet weak var RightImageLabel: UILabel!
     
-    // Outlets
-
-    override init(frame: CGRect) {
-        // 1. setup any properties here
+    func setContent(LeftImage : UIImage,RightImage : UIImage, Tittle: String,LeftLabel : String, RightLabel: String)
+    {
+        LeftImageView.image = LeftImage
+        RightImageView.image = RightImage
+        TitleLabel.text = Tittle
+        LeftImageLabel.text = LeftLabel
+        RightImageLabel.text = RightLabel
         
-        // 2. call super.init(frame:)
-        super.init(frame: frame)
-        
-        // 3. Setup view from .xib file
-        xibSetup()
+        M_PI_4
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        // 1. setup any properties here
-        
-        // 2. call super.init(coder:)
-        super.init(coder: aDecoder)
-        
-        // 3. Setup view from .xib file
-        xibSetup()
-    }
-    
-    
-    func xibSetup() {
-        view = loadViewFromNib()
-        
-        // use bounds not frame or it'll be offset
-        view.frame = bounds
-        
-        // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
-        // Adding custom subview on top of our view (over any custom drawing > see note below)
-        addSubview(view)
-        
-        VK.autorize()
-
-    }
-    
-    func returnView() -> UIView{
-    return self.view
-    }
-    
-    
-    func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "photo", bundle: bundle)
-        
-        // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        return view
-    }
-    
-    
-
-    
     
 }
