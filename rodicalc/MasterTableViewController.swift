@@ -78,6 +78,9 @@ class MasterTableViewController: UITableViewController {
         if tableView.cellForRowAtIndexPath(indexPath) != cell0 && cell0.highlighted == true{
             cell0.setHighlighted(false, animated: false)
         }
+        if tableView.cellForRowAtIndexPath(indexPath) != cell11 && cell11.highlighted == true{
+            cell11.setHighlighted(false, animated: false)
+        }
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

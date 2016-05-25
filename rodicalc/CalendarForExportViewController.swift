@@ -54,21 +54,28 @@ class CalendarForExportViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        getDays()
+    }
+    
     func getDays()
     {
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
         var days = [NSDate]()
         for element in temp {
-           days.append(addDaystoGivenDate(element.date.convertedDate()!, NumberOfDaysToAdd: 1))
+            days.append(addDaystoGivenDate(element.date.convertedDate()!, NumberOfDaysToAdd: 1))
+            if selectonDateType == 0 {
+                selectedExportDays.append(element.date.convertedDate()!)}
         }
-        print(temp.count)
+        //print(selectedExportDays.count)
+        /*print(temp.count)
         
         for element in days {
-        print(element)
+            //print(element)
+            
         }
-        
-        print(days.count)
+        print(days)*/
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
