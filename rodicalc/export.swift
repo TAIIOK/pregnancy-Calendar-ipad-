@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import SwiftyVK
+
 
 class image1: UIView{
     @IBOutlet weak var leftImage: UIImageView!
@@ -21,6 +21,8 @@ class image1: UIView{
     
     func setContent(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String){
     
+        leftImage.rotate(degrees: -16.0)
+        
         leftImage.image = left
         rightImage.image = right
         titleLabel.text = title

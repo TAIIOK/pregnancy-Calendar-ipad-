@@ -169,6 +169,7 @@
 		A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E711CDA3597002F8E95 /* DoctorViewController.swift */; };
 		A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622611CF5CA5A003951EC /* CreatingExportImage.swift */; };
 		A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622621CF5CA5A003951EC /* pdfCreator.swift */; };
+		A076226C1CF5E0E4003951EC /* Rotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076226B1CF5E0E4003951EC /* Rotatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,6 +449,7 @@
 		A0669E711CDA3597002F8E95 /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		A07622611CF5CA5A003951EC /* CreatingExportImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingExportImage.swift; sourceTree = "<group>"; };
 		A07622621CF5CA5A003951EC /* pdfCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pdfCreator.swift; sourceTree = "<group>"; };
+		A076226B1CF5E0E4003951EC /* Rotatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -545,6 +547,7 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
+				A076226B1CF5E0E4003951EC /* Rotatable.swift */,
 				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
 				A01D66F21CD0F826004960CD /* export.swift */,
 				A01D66F31CD0F826004960CD /* photo.xib */,
@@ -1169,6 +1172,7 @@
 				8EE947B91CE484F100064446 /* NotifiCell.swift in Sources */,
 				8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */,
 				A010290A1CD29E0B005E339F /* CVCalendarMenuViewDelegate.swift in Sources */,
+				A076226C1CF5E0E4003951EC /* Rotatable.swift in Sources */,
 				8EEAC33D1CCE542F007B4643 /* AggregateFunctions.swift in Sources */,
 				8E5A6BD01CD3EC030073B693 /* WeightNoteViewController.swift in Sources */,
 				A01029041CD29E0B005E339F /* CVAuxiliaryView.swift in Sources */,
