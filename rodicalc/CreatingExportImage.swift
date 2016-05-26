@@ -24,28 +24,30 @@ extension UIView{
 
 func CreateTwoPhotosBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) -> UIImage{
     
-    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
     exportView.xibFirstSetup(left, right: right, title: title, leftText: leftText, rightText: rightText)
     
     return exportView.screenshot
 }
 
-func CreateTextWithTwoPhotosBlue() -> UIImage{
+func CreateTextWithTwoPhotosBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) -> UIImage{
     
-    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
-    exportView.xibSecondSetup()
+    exportView.xibSecondSetup(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
     
     return exportView.screenshot
 }
 
-func CreateTextOnlyBlue() -> UIImage{
+func CreateTextOnlyBlue(Title : String, CenterText: String) -> UIImage{
     
-    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
-    exportView.xibThirdSetup()
+    exportView.xibThirdSetup(Title, CenterText: CenterText)
     
     return exportView.screenshot
 }
+
+
 

@@ -26,12 +26,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgV-rC-enx">
-                    <rect key="frame" x="85" y="339" width="196" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2N-fx-u6Z">
                     <rect key="frame" x="106" y="600" width="186" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -45,6 +39,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgV-rC-enx">
+                    <rect key="frame" x="85" y="339" width="196" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -54,6 +54,14 @@
                 <constraint firstAttribute="trailing" secondItem="0xV-hQ-dHH" secondAttribute="trailing" id="mzR-0v-BmK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="CenterTextView" destination="k2j-Tr-sPa" id="iiI-YF-Scq"/>
+                <outlet property="DownLabel" destination="k2N-fx-u6Z" id="jX2-1y-Yft"/>
+                <outlet property="DownPhotoView" destination="5JK-8j-vTD" id="dce-wa-vmC"/>
+                <outlet property="TitleLabel" destination="Wys-7A-c3d" id="BN2-PX-tef"/>
+                <outlet property="UpLabel" destination="FgV-rC-enx" id="CwN-cF-KeB"/>
+                <outlet property="UpPhotoView" destination="6Ww-69-Pfg" id="tcf-sI-U15"/>
+            </connections>
             <point key="canvasLocation" x="460" y="397"/>
         </view>
     </objects>

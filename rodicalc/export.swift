@@ -42,14 +42,31 @@ class TwoPhotoBlue: UIView{
 
 class TextWithTwoPhotoBlue: UIView{
     
-    func setContent(){
+    @IBOutlet weak var UpPhotoView: UIImageView!
+    @IBOutlet weak var UpLabel: UILabel!
+    @IBOutlet weak var DownPhotoView: UIImageView!
+    @IBOutlet weak var DownLabel: UILabel!
+    @IBOutlet weak var TitleLabel: UILabel!
+    
+    @IBOutlet weak var CenterTextView: UITextView!
+    
+    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
+        
         rotateViews()
+        UpPhotoView.image = UpPhoto
+        UpLabel.text = UpText
+        DownPhotoView.image = DownPhoto
+        DownLabel.text = DownText
+        TitleLabel.text = Title
+        CenterTextView.text = CenterText
 
     }
     
     func rotateViews(){
-
-        
+        UpPhotoView.rotate(degrees: 10)
+        UpLabel.rotate(degrees: 10)
+        DownPhotoView.rotate(degrees: 10)
+        DownLabel.rotate(degrees: 10)
     }
 
 }
@@ -57,46 +74,32 @@ class TextWithTwoPhotoBlue: UIView{
 
 class TextOnlyBlue: UIView{
     
-    func setContent(){
-        rotateViews()
-        
-    }
-    
-    func rotateViews(){
-        
-        
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var CenterTextView: UITextView!
+    func setContent(Title : String, CenterText: String){
+        TitleLabel.text = Title
+        CenterTextView.text = CenterText
     }
     
 }
 class photo: UIView{
     
-   // var view = UIView()
-    
-    // Outlets
     
     override init(frame: CGRect) {
-        // 1. setup any properties here
         
-        // 2. call super.init(frame:)
         super.init(frame: frame)
-        
-        // 3. Setup view from .xib file
-     //  xibSetup()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
-        // 1. setup any properties here
-        
-        // 2. call super.init(coder:)
+
         super.init(coder: aDecoder)
         
-        // 3. Setup view from .xib file
-       // xibSetup()
     }
             
         
         func xibFirstSetup(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
-           var view1 = loadViewFromNib("2PhotoBlue") as! TwoPhotoBlue
+           var view1 = loadViewFromNib("TwoPhotoBlue") as! TwoPhotoBlue
             
             
             view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
@@ -115,8 +118,10 @@ class photo: UIView{
 
         }
     
-    func xibSecondSetup() {
-        var view1 = loadViewFromNib("photo") as! TextWithTwoPhotoBlue
+    func xibSecondSetup(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
+        var view1 = loadViewFromNib("TextWithTwoPhotosBlue") as! TextWithTwoPhotoBlue
+        
+        view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
         
         view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
         
@@ -131,8 +136,10 @@ class photo: UIView{
         
     }
     
-    func xibThirdSetup() {
-        var view1 = loadViewFromNib("photo") as! TextOnlyBlue
+    func xibThirdSetup(Title : String, CenterText: String) {
+        var view1 = loadViewFromNib("TextOnlyBlue") as! TextOnlyBlue
+        
+        view1.setContent(Title, CenterText: CenterText)
         
         view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
         

@@ -853,6 +853,9 @@
 		A076226D1CF70D02003951EC /* bluePhoto */ = {
 			isa = PBXGroup;
 			children = (
+				A076227D1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib */,
+				A07622801CF71264003951EC /* TextOnlyBlue.xib */,
+				A01D66F31CD0F826004960CD /* TwoPhotoBlue.xib */,
 				A01D66F41CD0F826004960CD /* 2photo(blue).png */,
 				A076226E1CF70D20003951EC /* text+2photo(blue).png */,
 				A076226F1CF70D20003951EC /* textonly(blue).png */,
@@ -878,9 +881,6 @@
 				A076226B1CF5E0E4003951EC /* Rotatable.swift */,
 				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
 				A01D66F21CD0F826004960CD /* export.swift */,
-				A076227D1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib */,
-				A07622801CF71264003951EC /* TextOnlyBlue.xib */,
-				A01D66F31CD0F826004960CD /* TwoPhotoBlue.xib */,
 				A07622621CF5CA5A003951EC /* pdfCreator.swift */,
 				A076226D1CF70D02003951EC /* bluePhoto */,
 				A07622741CF70D63003951EC /* pinkPhoto */,
