@@ -179,6 +179,9 @@
 		A076227C1CF70D75003951EC /* title(pink).png in Resources */ = {isa = PBXBuildFile; fileRef = A07622781CF70D75003951EC /* title(pink).png */; };
 		A076227E1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib in Resources */ = {isa = PBXBuildFile; fileRef = A076227D1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib */; };
 		A07622811CF71264003951EC /* TextOnlyBlue.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622801CF71264003951EC /* TextOnlyBlue.xib */; };
+		A07622831CF71CC7003951EC /* TextWithTwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622821CF71CC7003951EC /* TextWithTwoPhotosPink.xib */; };
+		A07622851CF71CD5003951EC /* TextOnlyPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622841CF71CD5003951EC /* TextOnlyPink.xib */; };
+		A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622861CF71CEF003951EC /* TwoPhotosPink.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -468,6 +471,9 @@
 		A07622781CF70D75003951EC /* title(pink).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title(pink).png"; sourceTree = "<group>"; };
 		A076227D1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextWithTwoPhotosBlue.xib; sourceTree = "<group>"; };
 		A07622801CF71264003951EC /* TextOnlyBlue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyBlue.xib; sourceTree = "<group>"; };
+		A07622821CF71CC7003951EC /* TextWithTwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextWithTwoPhotosPink.xib; sourceTree = "<group>"; };
+		A07622841CF71CD5003951EC /* TextOnlyPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyPink.xib; sourceTree = "<group>"; };
+		A07622861CF71CEF003951EC /* TwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotosPink.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -871,6 +877,9 @@
 				A07622761CF70D75003951EC /* text+2photo(pink).png */,
 				A07622771CF70D75003951EC /* textonly(pink).png */,
 				A07622781CF70D75003951EC /* title(pink).png */,
+				A07622821CF71CC7003951EC /* TextWithTwoPhotosPink.xib */,
+				A07622841CF71CD5003951EC /* TextOnlyPink.xib */,
+				A07622861CF71CEF003951EC /* TwoPhotosPink.xib */,
 			);
 			name = pinkPhoto;
 			sourceTree = "<group>";
@@ -1133,6 +1142,8 @@
 				8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */,
 				A07622811CF71264003951EC /* TextOnlyBlue.xib in Resources */,
 				8E5A6BB31CD20C7D0073B693 /* 10z.jpg in Resources */,
+				A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */,
+				A07622831CF71CC7003951EC /* TextWithTwoPhotosPink.xib in Resources */,
 				A07622731CF70D20003951EC /* title(blue).png in Resources */,
 				A01028DC1CD22F13005E339F /* bra.html in Resources */,
 				A07622711CF70D20003951EC /* text+2photo(blue).png in Resources */,
@@ -1142,6 +1153,7 @@
 				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
 				A076227E1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib in Resources */,
 				8E5A6BB11CD20C7D0073B693 /* 8z.jpg in Resources */,
+				A07622851CF71CD5003951EC /* TextOnlyPink.xib in Resources */,
 				8E5A6BAF1CD20C7D0073B693 /* 6z.jpg in Resources */,
 				8E5A6BA91CD20C7D0073B693 /* 0z.jpg in Resources */,
 				A01028D61CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg in Resources */,

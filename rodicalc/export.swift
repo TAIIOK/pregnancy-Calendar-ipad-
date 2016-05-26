@@ -38,8 +38,6 @@ class TwoPhotoBlue: UIView{
     
 }
 
-
-
 class TextWithTwoPhotoBlue: UIView{
     
     @IBOutlet weak var UpPhotoView: UIImageView!
@@ -82,6 +80,87 @@ class TextOnlyBlue: UIView{
     }
     
 }
+
+class TwoPhotoPink: UIView{
+ 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rightImage: UIImageView!
+    
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var leftImage: UIImageView!
+
+    @IBOutlet weak var leftLabel: UILabel!
+    func setContent(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String){
+        rotateViews()
+        leftImage.image = left
+        rightImage.image = right
+        titleLabel.text = title
+        leftLabel.text = leftText
+        rightLabel.text = rightText
+    }
+    
+    func rotateViews(){
+        leftImage.rotate(degrees: 10)
+        rightImage.rotate(degrees: 10)
+        titleLabel.rotate(degrees: 10)
+        leftLabel.rotate(degrees: 10)
+        rightLabel.rotate(degrees: 10)
+        
+    }
+    
+}
+
+class TextWithTwoPhotoPink: UIView{
+    
+    
+    @IBOutlet weak var TitleLabel: UILabel!
+    
+    @IBOutlet weak var CenterTextView: UITextView!
+    
+    
+    @IBOutlet weak var UpPhotoView: UIImageView!
+    
+    @IBOutlet weak var UpLabel: UILabel!
+    
+    @IBOutlet weak var DownPhotoView: UIImageView!
+    
+    @IBOutlet weak var DownLabel: UILabel!
+    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
+        
+        rotateViews()
+        UpPhotoView.image = UpPhoto
+        UpLabel.text = UpText
+        DownPhotoView.image = DownPhoto
+        DownLabel.text = DownText
+        TitleLabel.text = Title
+        CenterTextView.text = CenterText
+        
+    }
+    
+    func rotateViews(){
+        UpPhotoView.rotate(degrees: 10)
+        UpLabel.rotate(degrees: 10)
+        DownPhotoView.rotate(degrees: 10)
+        DownLabel.rotate(degrees: 10)
+    }
+    
+}
+
+
+class TextOnlyPink: UIView{
+    
+    @IBOutlet weak var TitleLabel: UILabel!
+    
+    @IBOutlet weak var CenterTextView: UITextView!
+    func setContent(Title : String, CenterText: String){
+        TitleLabel.text = Title
+        CenterTextView.text = CenterText
+    }
+    
+}
+
+
+
 class photo: UIView{
     
     
@@ -98,62 +177,74 @@ class photo: UIView{
     }
             
         
-        func xibFirstSetup(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
+        func xibFirstSetupBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
            var view1 = loadViewFromNib("TwoPhotoBlue") as! TwoPhotoBlue
-            
             
             view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
             
-        
-            view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
-
-            // use bounds not frame or it'll be offset
-            view1.frame = bounds
-            
-            // Make the view stretch with containing view
-            view1.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-            
-            // Adding custom subview on top of our view (over any custom drawing > see note below)
-            addSubview(view1)
+            frameSetup(view1)
 
         }
     
-    func xibSecondSetup(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
+    func xibSecondSetupBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
         var view1 = loadViewFromNib("TextWithTwoPhotosBlue") as! TextWithTwoPhotoBlue
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
         
-        view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
-        
-        // use bounds not frame or it'll be offset
-        view1.frame = bounds
-        
-        // Make the view stretch with containing view
-        view1.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
-        // Adding custom subview on top of our view (over any custom drawing > see note below)
-        addSubview(view1)
+        frameSetup(view1)
         
     }
     
-    func xibThirdSetup(Title : String, CenterText: String) {
+    func xibThirdSetupBlue(Title : String, CenterText: String) {
         var view1 = loadViewFromNib("TextOnlyBlue") as! TextOnlyBlue
         
         view1.setContent(Title, CenterText: CenterText)
         
-        view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
-        
-        // use bounds not frame or it'll be offset
-        view1.frame = bounds
-        
-        // Make the view stretch with containing view
-        view1.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
-        // Adding custom subview on top of our view (over any custom drawing > see note below)
-        addSubview(view1)
+        frameSetup(view1)
         
     }
     
+    func xibFirstSetupPink(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
+        var view1 = loadViewFromNib("TwoPhotoPink") as! TwoPhotoBlue
+        
+        view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
+        
+        frameSetup(view1)
+        
+    }
+    
+    func xibSecondSetupPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
+        var view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoBlue
+        
+        view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
+        
+        frameSetup(view1)
+        
+    }
+    
+    func xibThirdSetupPink(Title : String, CenterText: String) {
+        var view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyBlue
+        
+        view1.setContent(Title, CenterText: CenterText)
+        
+        frameSetup(view1)
+        
+    }
+    
+    func frameSetup(view : UIView)
+    {
+        view.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
+        
+        // use bounds not frame or it'll be offset
+        view.frame = bounds
+        
+        // Make the view stretch with containing view
+        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        
+        // Adding custom subview on top of our view (over any custom drawing > see note below)
+        addSubview(view)
+
+    }
 
     func loadViewFromNib(nibString : String) -> UIView {
             let bundle = NSBundle(forClass: self.dynamicType)
@@ -164,5 +255,5 @@ class photo: UIView{
             return view
         }
         
-        
+    
 }

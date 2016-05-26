@@ -26,7 +26,7 @@ func CreateTwoPhotosBlue(left: UIImage,right: UIImage, title: String,leftText : 
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
-    exportView.xibFirstSetup(left, right: right, title: title, leftText: leftText, rightText: rightText)
+    exportView.xibFirstSetupBlue(left, right: right, title: title, leftText: leftText, rightText: rightText)
     
     return exportView.screenshot
 }
@@ -35,7 +35,7 @@ func CreateTextWithTwoPhotosBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UII
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
-    exportView.xibSecondSetup(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
+    exportView.xibSecondSetupBlue(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
     
     return exportView.screenshot
 }
@@ -44,10 +44,39 @@ func CreateTextOnlyBlue(Title : String, CenterText: String) -> UIImage{
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
     
-    exportView.xibThirdSetup(Title, CenterText: CenterText)
+    exportView.xibThirdSetupBlue(Title, CenterText: CenterText)
     
     return exportView.screenshot
 }
+
+func CreateTwoPhotosPink(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) -> UIImage{
+    
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
+    
+    exportView.xibFirstSetupPink(left, right: right, title: title, leftText: leftText, rightText: rightText)
+    
+    return exportView.screenshot
+}
+
+func CreateTextWithTwoPhotosPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) -> UIImage{
+    
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
+    
+    exportView.xibSecondSetupPink(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
+    
+    return exportView.screenshot
+}
+
+func CreateTextOnlyPink(Title : String, CenterText: String) -> UIImage{
+    
+    let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))
+    
+    exportView.xibThirdSetupPink(Title, CenterText: CenterText)
+    
+    return exportView.screenshot
+}
+
+
 
 
 
