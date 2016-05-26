@@ -14,23 +14,11 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(pink).png" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0K-hud">
                     <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
-                    <rect key="frame" x="148" y="168" width="318" height="253"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
+                    <rect key="frame" x="141" y="152" width="360" height="369"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLabelLab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bq-U4-p5J">
-                    <rect key="frame" x="253" y="517" width="281" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLS-Yf-yZc">
-                    <rect key="frame" x="542" y="481" width="266" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZm-TD-3CC">
-                    <rect key="frame" x="501" y="105" width="374" height="348"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aZm-TD-3CC">
+                    <rect key="frame" x="464" y="110" width="442" height="421"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rek-g4-m3r">
                     <rect key="frame" x="746" y="76" width="179" height="21"/>
@@ -43,15 +31,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="leftImage" destination="s30-2C-tDk" id="SEf-9u-NiO"/>
-                <outlet property="leftLabel" destination="8Bq-U4-p5J" id="bGs-F6-jOX"/>
                 <outlet property="rightImage" destination="aZm-TD-3CC" id="jWb-MB-IGp"/>
-                <outlet property="rightLabel" destination="kLS-Yf-yZc" id="UgV-v0-po1"/>
                 <outlet property="titleLabel" destination="Rek-g4-m3r" id="71n-di-zFD"/>
             </connections>
             <point key="canvasLocation" x="185" y="198"/>
         </view>
     </objects>
     <resources>
+        <image name="0z.jpg" width="400" height="400"/>
         <image name="2photo(pink).png" width="2000" height="1400"/>
     </resources>
 </document>

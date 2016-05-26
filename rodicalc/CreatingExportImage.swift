@@ -22,6 +22,8 @@ extension UIView{
     }
 }
 
+
+
 func CreateTwoPhotosBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) -> UIImage{
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 1000, height: 700))

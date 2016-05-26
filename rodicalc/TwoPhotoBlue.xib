@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-bF-1fA">
-                    <rect key="frame" x="160" y="208" width="338" height="301"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
+                    <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-ve-mwY">
-                    <rect key="frame" x="612" y="136" width="280" height="251"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-bF-1fA">
+                    <rect key="frame" x="127" y="196" width="381" height="410"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LabelLabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktC-mD-1pO">
                     <rect key="frame" x="630" y="55" width="290" height="27"/>
@@ -23,20 +23,8 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lS-AK-azi">
-                    <rect key="frame" x="193" y="545" width="305" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIn-1y-dZ4">
-                    <rect key="frame" x="612" y="434" width="246" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
-                    <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-ve-mwY">
+                    <rect key="frame" x="607" y="132" width="298" height="335"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -48,9 +36,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="leftImage" destination="2pU-bF-1fA" id="gRv-Fv-WzC"/>
-                <outlet property="leftLabel" destination="UIn-1y-dZ4" id="Wwl-tX-4yV"/>
                 <outlet property="rightImage" destination="Z2c-ve-mwY" id="Mgt-GT-ilF"/>
-                <outlet property="rightLabel" destination="8lS-AK-azi" id="7hh-e9-NBN"/>
                 <outlet property="titleLabel" destination="ktC-mD-1pO" id="mBO-mz-uld"/>
             </connections>
             <point key="canvasLocation" x="319" y="225"/>

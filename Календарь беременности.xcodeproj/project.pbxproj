@@ -182,6 +182,8 @@
 		A07622831CF71CC7003951EC /* TextWithTwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622821CF71CC7003951EC /* TextWithTwoPhotosPink.xib */; };
 		A07622851CF71CD5003951EC /* TextOnlyPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622841CF71CD5003951EC /* TextOnlyPink.xib */; };
 		A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622861CF71CEF003951EC /* TwoPhotosPink.xib */; };
+		A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622901CF7465A003951EC /* PhotoTemplate.xib */; };
+		A07622931CF746B4003951EC /* phototemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = A07622921CF746B4003951EC /* phototemplate.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -474,6 +476,8 @@
 		A07622821CF71CC7003951EC /* TextWithTwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextWithTwoPhotosPink.xib; sourceTree = "<group>"; };
 		A07622841CF71CD5003951EC /* TextOnlyPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyPink.xib; sourceTree = "<group>"; };
 		A07622861CF71CEF003951EC /* TwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotosPink.xib; sourceTree = "<group>"; };
+		A07622901CF7465A003951EC /* PhotoTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTemplate.xib; sourceTree = "<group>"; };
+		A07622921CF746B4003951EC /* phototemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototemplate.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -887,12 +891,14 @@
 		A076227F1CF70FD1003951EC /* Export */ = {
 			isa = PBXGroup;
 			children = (
+				A07622921CF746B4003951EC /* phototemplate.png */,
 				A076226B1CF5E0E4003951EC /* Rotatable.swift */,
 				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
 				A01D66F21CD0F826004960CD /* export.swift */,
 				A07622621CF5CA5A003951EC /* pdfCreator.swift */,
 				A076226D1CF70D02003951EC /* bluePhoto */,
 				A07622741CF70D63003951EC /* pinkPhoto */,
+				A07622901CF7465A003951EC /* PhotoTemplate.xib */,
 			);
 			name = Export;
 			sourceTree = "<group>";
@@ -1150,6 +1156,7 @@
 				8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */,
 				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
 				A076227B1CF70D75003951EC /* textonly(pink).png in Resources */,
+				A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */,
 				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
 				A076227E1CF70FBC003951EC /* TextWithTwoPhotosBlue.xib in Resources */,
 				8E5A6BB11CD20C7D0073B693 /* 8z.jpg in Resources */,
@@ -1165,6 +1172,7 @@
 				8E5A6BAE1CD20C7D0073B693 /* 5z.jpg in Resources */,
 				A042880F1CE2329B005DB953 /* notifi.json in Resources */,
 				8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */,
+				A07622931CF746B4003951EC /* phototemplate.png in Resources */,
 				A07622721CF70D20003951EC /* textonly(blue).png in Resources */,
 				8E5A6BAC1CD20C7D0073B693 /* 3z.jpg in Resources */,
 				8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */,

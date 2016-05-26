@@ -14,20 +14,14 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text+2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="0xV-hQ-dHH">
                     <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6Ww-69-Pfg">
-                    <rect key="frame" x="41" y="126" width="240" height="209"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5JK-8j-vTD">
-                    <rect key="frame" x="106" y="381" width="240" height="201"/>
+                    <rect key="frame" x="96" y="393" width="240" height="240"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6Ww-69-Pfg">
+                    <rect key="frame" x="38" y="131" width="244" height="237"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLabelLab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wys-7A-c3d">
                     <rect key="frame" x="636" y="61" width="287" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2N-fx-u6Z">
-                    <rect key="frame" x="106" y="600" width="186" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -39,12 +33,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgV-rC-enx">
-                    <rect key="frame" x="85" y="339" width="196" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -56,10 +44,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="CenterTextView" destination="k2j-Tr-sPa" id="iiI-YF-Scq"/>
-                <outlet property="DownLabel" destination="k2N-fx-u6Z" id="jX2-1y-Yft"/>
                 <outlet property="DownPhotoView" destination="5JK-8j-vTD" id="dce-wa-vmC"/>
                 <outlet property="TitleLabel" destination="Wys-7A-c3d" id="BN2-PX-tef"/>
-                <outlet property="UpLabel" destination="FgV-rC-enx" id="CwN-cF-KeB"/>
                 <outlet property="UpPhotoView" destination="6Ww-69-Pfg" id="tcf-sI-U15"/>
             </connections>
             <point key="canvasLocation" x="460" y="397"/>
