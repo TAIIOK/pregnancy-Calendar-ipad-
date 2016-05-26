@@ -11,8 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
-                    <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-bF-1fA">
+                    <rect key="frame" x="160" y="208" width="338" height="301"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-ve-mwY">
                     <rect key="frame" x="612" y="136" width="280" height="251"/>
@@ -35,8 +35,8 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-bF-1fA">
-                    <rect key="frame" x="160" y="208" width="338" height="301"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
+                    <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

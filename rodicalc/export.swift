@@ -28,11 +28,10 @@ class TwoPhotoBlue: UIView{
     }
     
     func rotateViews(){
-        leftImage.rotate(degrees: 10)
-        rightImage.rotate(degrees: 10)
-        titleLabel.rotate(degrees: 10)
-        leftLabel.rotate(degrees: 10)
-        rightLabel.rotate(degrees: 10)
+        leftImage.rotate(degrees: -12)
+        rightImage.rotate(degrees: 6)
+        leftLabel.rotate(degrees: -12)
+        rightLabel.rotate(degrees: 5)
     
     }
     
@@ -61,10 +60,10 @@ class TextWithTwoPhotoBlue: UIView{
     }
     
     func rotateViews(){
-        UpPhotoView.rotate(degrees: 10)
-        UpLabel.rotate(degrees: 10)
-        DownPhotoView.rotate(degrees: 10)
-        DownLabel.rotate(degrees: 10)
+        UpPhotoView.rotate(degrees: -11)
+        UpLabel.rotate(degrees: -11)
+        DownPhotoView.rotate(degrees: 7)
+        DownLabel.rotate(degrees: 7)
     }
 
 }
@@ -100,11 +99,10 @@ class TwoPhotoPink: UIView{
     }
     
     func rotateViews(){
-        leftImage.rotate(degrees: 10)
-        rightImage.rotate(degrees: 10)
-        titleLabel.rotate(degrees: 10)
-        leftLabel.rotate(degrees: 10)
-        rightLabel.rotate(degrees: 10)
+        leftImage.rotate(degrees: -21)
+        rightImage.rotate(degrees: 13)
+        leftLabel.rotate(degrees: -21)
+        rightLabel.rotate(degrees: 13)
         
     }
     
@@ -138,10 +136,10 @@ class TextWithTwoPhotoPink: UIView{
     }
     
     func rotateViews(){
-        UpPhotoView.rotate(degrees: 10)
-        UpLabel.rotate(degrees: 10)
-        DownPhotoView.rotate(degrees: 10)
-        DownLabel.rotate(degrees: 10)
+        UpPhotoView.rotate(degrees: -15)
+        UpLabel.rotate(degrees: -15)
+        DownPhotoView.rotate(degrees: 12)
+        DownLabel.rotate(degrees: 12)
     }
     
 }
