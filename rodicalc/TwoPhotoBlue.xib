@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="photo" customModule="Календарь_беременности" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="image1" customModule="Календарь_беременности" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TwoPhotoBlue" customModule="Календарь_беременности" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="421"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="temp.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-m6-iNl">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="421"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-bF-1fA">
@@ -58,6 +58,6 @@
     </objects>
     <resources>
         <image name="0z.jpg" width="400" height="400"/>
-        <image name="temp.png" width="2000" height="1400"/>
+        <image name="2photo(blue).png" width="2000" height="1400"/>
     </resources>
 </document>

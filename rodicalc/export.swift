@@ -10,19 +10,16 @@ import Foundation
 import UIKit
 
 
-class image1: UIView{
+class TwoPhotoBlue: UIView{
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
     
     func setContent(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String){
-    
-        leftImage.rotate(degrees: -16.0)
-        
+        rotateViews()
         leftImage.image = left
         rightImage.image = right
         titleLabel.text = title
@@ -30,6 +27,45 @@ class image1: UIView{
         rightLabel.text = rightText
     }
     
+    func rotateViews(){
+        leftImage.rotate(degrees: 10)
+        rightImage.rotate(degrees: 10)
+        titleLabel.rotate(degrees: 10)
+        leftLabel.rotate(degrees: 10)
+        rightLabel.rotate(degrees: 10)
+    
+    }
+    
+}
+
+
+
+class TextWithTwoPhotoBlue: UIView{
+    
+    func setContent(){
+        rotateViews()
+
+    }
+    
+    func rotateViews(){
+
+        
+    }
+
+}
+
+
+class TextOnlyBlue: UIView{
+    
+    func setContent(){
+        rotateViews()
+        
+    }
+    
+    func rotateViews(){
+        
+        
+    }
     
 }
 class photo: UIView{
@@ -60,7 +96,7 @@ class photo: UIView{
             
         
         func xibFirstSetup(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
-           var view1 = loadViewFromNib("photo") as! image1
+           var view1 = loadViewFromNib("2PhotoBlue") as! TwoPhotoBlue
             
             
             view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
@@ -80,7 +116,7 @@ class photo: UIView{
         }
     
     func xibSecondSetup() {
-        var view1 = loadViewFromNib("photo") as! image1
+        var view1 = loadViewFromNib("photo") as! TextWithTwoPhotoBlue
         
         view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
         
@@ -96,7 +132,7 @@ class photo: UIView{
     }
     
     func xibThirdSetup() {
-        var view1 = loadViewFromNib("photo") as! image1
+        var view1 = loadViewFromNib("photo") as! TextOnlyBlue
         
         view1.frame = CGRectMake(0 , 0, self.frame.width, self.frame.height)
         

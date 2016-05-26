@@ -22,17 +22,16 @@ extension UIView{
     }
 }
 
-func CreateFirstImage() -> UIImage{
-    
+func CreateTwoPhotosBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) -> UIImage{
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
     
-    exportView.xibFirstSetup()
+    exportView.xibFirstSetup(left, right: right, title: title, leftText: leftText, rightText: rightText)
     
     return exportView.screenshot
 }
 
-func CreateSecondImage() -> UIImage{
+func CreateTextWithTwoPhotosBlue() -> UIImage{
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
     
@@ -41,7 +40,7 @@ func CreateSecondImage() -> UIImage{
     return exportView.screenshot
 }
 
-func CreateThirdImage() -> UIImage{
+func CreateTextOnlyBlue() -> UIImage{
     
     let exportView = photo(frame: CGRect(x: 0, y: 0, width: 600, height: 600))
     
