@@ -14,11 +14,11 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2photo(pink).png" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0K-hud">
                     <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
-                    <rect key="frame" x="141" y="152" width="360" height="369"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aZm-TD-3CC">
-                    <rect key="frame" x="464" y="110" width="442" height="421"/>
+                    <rect key="frame" x="458" y="94" width="442" height="482"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
+                    <rect key="frame" x="150" y="140" width="360" height="419"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rek-g4-m3r">
                     <rect key="frame" x="746" y="76" width="179" height="21"/>

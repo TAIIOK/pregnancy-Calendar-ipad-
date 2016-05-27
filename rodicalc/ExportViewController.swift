@@ -88,6 +88,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.navigationItem.leftBarButtonItem = btn
             //print("!!!!\(selectonDateType)!!!!")
         }
+        
+    
     }
     
     func FallBack(){

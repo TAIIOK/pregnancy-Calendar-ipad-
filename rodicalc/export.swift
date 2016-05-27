@@ -86,7 +86,7 @@ class TwoPhotoBlue: UIView{
     func setContent(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String){
         rotateViews()
         
-        let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 700, height: 800))
+        let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
         
@@ -162,7 +162,7 @@ class TwoPhotoPink: UIView{
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
         
-        let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 700, height: 800))
+        let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         RightView.xibSetup(right,title: rightText)
         rightImage.image = RightView.screenshot
         
@@ -271,7 +271,7 @@ class photo: UIView{
     }
     
     func xibFirstSetupPink(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
-        var view1 = loadViewFromNib("TwoPhotoPink") as! TwoPhotoBlue
+        var view1 = loadViewFromNib("TwoPhotosPink") as! TwoPhotoPink
         
         view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
         
@@ -280,7 +280,7 @@ class photo: UIView{
     }
     
     func xibSecondSetupPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
-        var view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoBlue
+        var view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoPink
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
         
@@ -289,7 +289,7 @@ class photo: UIView{
     }
     
     func xibThirdSetupPink(Title : String, CenterText: String) {
-        var view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyBlue
+        var view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyPink
         
         view1.setContent(Title, CenterText: CenterText)
         

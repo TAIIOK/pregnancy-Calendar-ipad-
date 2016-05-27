@@ -249,8 +249,13 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         
         var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         shareToFacebook.setInitialText("")
-        shareToFacebook.addImage(UIImage(named: "0z.jpg"))
         
+        for (var i = 0 ; i < selectedImages.count ; i++){
+            shareToFacebook.addImage(selectedImages[i])
+            
+        }
+    
+
         self.presentViewController(shareToFacebook, animated: true, completion: nil)
         
         // если использовать апи )) для верисии ios 7
