@@ -4004,19 +4004,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3BB-2k-xkE">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkh-Kr-f7N">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkh-Kr-f7N">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3BB-2k-xkE" firstAttribute="top" secondItem="Jxk-wF-mLK" secondAttribute="top" id="6Ad-RH-pGA"/>
-                            <constraint firstItem="3BB-2k-xkE" firstAttribute="leading" secondItem="Xkh-Kr-f7N" secondAttribute="leading" id="Q4a-YG-IWU"/>
-                            <constraint firstItem="3BB-2k-xkE" firstAttribute="trailing" secondItem="Xkh-Kr-f7N" secondAttribute="trailing" id="Y0R-nA-xu0"/>
-                            <constraint firstItem="3BB-2k-xkE" firstAttribute="bottom" secondItem="Xkh-Kr-f7N" secondAttribute="bottom" id="gVe-Hz-mRq"/>
+                            <constraint firstItem="Xkh-Kr-f7N" firstAttribute="leading" secondItem="Jxk-wF-mLK" secondAttribute="leadingMargin" constant="-20" id="EMz-hy-3t7"/>
+                            <constraint firstItem="Xkh-Kr-f7N" firstAttribute="top" secondItem="Ybq-dS-V4N" secondAttribute="bottom" id="Tvr-2p-ua9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xkh-Kr-f7N" secondAttribute="trailing" constant="-20" id="UuR-Yq-mE6"/>
                             <constraint firstAttribute="trailing" secondItem="3BB-2k-xkE" secondAttribute="trailing" id="iL4-VX-sXU"/>
                             <constraint firstItem="3BB-2k-xkE" firstAttribute="bottom" secondItem="j2y-Su-ve4" secondAttribute="top" id="jOf-65-4jT"/>
                             <constraint firstItem="3BB-2k-xkE" firstAttribute="leading" secondItem="Jxk-wF-mLK" secondAttribute="leading" id="p3v-DR-nUF"/>
+                            <constraint firstItem="j2y-Su-ve4" firstAttribute="top" secondItem="Xkh-Kr-f7N" secondAttribute="bottom" id="zSZ-Vn-OmO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UqD-4g-urV">
