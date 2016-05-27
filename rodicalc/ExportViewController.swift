@@ -128,9 +128,12 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     @IBAction func Show(sender: UIButton) {
         
         AllExportNotes.removeAll()
+
         let days = selectedExportDays.sort(self.frontwards)
+        
+        print(days)
         for day_ in days{
-            SelectedNoteFromDate(day_)
+            self.SelectedNoteFromDate(day_)
         }
         
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")

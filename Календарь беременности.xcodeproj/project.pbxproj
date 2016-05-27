@@ -634,7 +634,6 @@
 				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
 				8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */,
 				8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */,
-				8E6D50441C7F06D300878957 /* ExportViewController.swift */,
 				8EE75B411CF31EA2002CF72C /* CalendarForExportViewController.swift */,
 				8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */,
 				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
@@ -645,7 +644,6 @@
 				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
-				A0A527101CF87559003F7041 /* ShowExportViewController.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -898,6 +896,8 @@
 				A076226B1CF5E0E4003951EC /* Rotatable.swift */,
 				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
 				A01D66F21CD0F826004960CD /* export.swift */,
+				8E6D50441C7F06D300878957 /* ExportViewController.swift */,
+				A0A527101CF87559003F7041 /* ShowExportViewController.swift */,
 				A07622621CF5CA5A003951EC /* pdfCreator.swift */,
 				A076226D1CF70D02003951EC /* bluePhoto */,
 				A07622741CF70D63003951EC /* pinkPhoto */,
