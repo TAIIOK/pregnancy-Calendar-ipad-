@@ -13,7 +13,7 @@
         <!--Master Table View Controller-->
         <scene sceneID="Elk-Qw-hjZ">
             <objects>
-                <tableViewController storyboardIdentifier="MasterView" id="bb6-Hn-XS3" customClass="MasterTableViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MasterView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bb6-Hn-XS3" customClass="MasterTableViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="t1i-kQ-01c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3973,6 +3973,72 @@
             </objects>
             <point key="canvasLocation" x="-2513" y="4031"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HS3-fr-ELo">
+            <objects>
+                <navigationController storyboardIdentifier="ShowingExport" id="BTW-uA-c6Q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eGA-9Q-nHH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fF2-zf-6If" kind="relationship" relationship="rootViewController" id="963-9C-r0h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UjW-33-4pl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3282" y="4724"/>
+        </scene>
+        <!--Show Export View Controller-->
+        <scene sceneID="5sQ-aZ-oZv">
+            <objects>
+                <viewController id="fF2-zf-6If" customClass="ShowExportViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ybq-dS-V4N"/>
+                        <viewControllerLayoutGuide type="bottom" id="j2y-Su-ve4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jxk-wF-mLK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3BB-2k-xkE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkh-Kr-f7N">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="top" secondItem="Jxk-wF-mLK" secondAttribute="top" id="6Ad-RH-pGA"/>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="leading" secondItem="Xkh-Kr-f7N" secondAttribute="leading" id="Q4a-YG-IWU"/>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="trailing" secondItem="Xkh-Kr-f7N" secondAttribute="trailing" id="Y0R-nA-xu0"/>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="bottom" secondItem="Xkh-Kr-f7N" secondAttribute="bottom" id="gVe-Hz-mRq"/>
+                            <constraint firstAttribute="trailing" secondItem="3BB-2k-xkE" secondAttribute="trailing" id="iL4-VX-sXU"/>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="bottom" secondItem="j2y-Su-ve4" secondAttribute="top" id="jOf-65-4jT"/>
+                            <constraint firstItem="3BB-2k-xkE" firstAttribute="leading" secondItem="Jxk-wF-mLK" secondAttribute="leading" id="p3v-DR-nUF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UqD-4g-urV">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="4bi-Kd-guP">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Голубой"/>
+                                <segment title="Розовый"/>
+                            </segments>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" image="Share-30" id="Knh-Pk-E15"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CurrentScrollView" destination="Xkh-Kr-f7N" id="o9N-bb-YDj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9i-58-lmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2603" y="4724"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Alarm Clock-50" width="50" height="50"/>
@@ -4019,12 +4085,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P0H-Yd-JxP"/>
-        <segue reference="kMg-vQ-vuk"/>
         <segue reference="J8J-RP-rbp"/>
         <segue reference="L53-bo-E8K"/>
+        <segue reference="0ZV-Wo-vNj"/>
+        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="kMg-vQ-vuk"/>
         <segue reference="IGw-IB-TBh"/>
         <segue reference="FRD-nV-ZPC"/>
-        <segue reference="VCA-Rz-Uxj"/>
     </inferredMetricsTieBreakers>
 </document>

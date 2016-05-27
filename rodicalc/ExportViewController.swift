@@ -55,6 +55,8 @@ var NotestExportWeight = [Weight]()
 var NotesExportDoctor = [Doctor]()
 var NotesExportFood = [Food]()
 var NotesExportDrugs = [Drugs]()
+
+
 var AllNotesCount = [AllNotesForExport]()
 
 class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -108,19 +110,20 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     }
 
     @IBAction func Show(sender: UIButton) {
-        print("показать")
         
         let indexPathNote = NotesTable.indexPathsForSelectedRows
+        
         if indexPathNote != nil{
             for i in indexPathNote!{
                 AllNotesCount[i.row].selected = true
                 
             }
         }
+        
         let indexPathPhoto = PhotoCollectionVIew.indexPathsForSelectedItems()
         if indexPathPhoto != nil{
             for i in indexPathPhoto!{
-                
+
             }
         }
         
@@ -129,6 +132,11 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             NotifiSelected = true
         }
         
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+        let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+        self.splitViewController?.viewControllers[0] = vc!
+        self.splitViewController?.showDetailViewController(vc1!, sender: self)
+        //}
     }
     
     //TABLE

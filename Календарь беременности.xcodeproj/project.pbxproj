@@ -184,6 +184,7 @@
 		A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622861CF71CEF003951EC /* TwoPhotosPink.xib */; };
 		A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622901CF7465A003951EC /* PhotoTemplate.xib */; };
 		A07622931CF746B4003951EC /* phototemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = A07622921CF746B4003951EC /* phototemplate.png */; };
+		A0A527111CF87559003F7041 /* ShowExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A527101CF87559003F7041 /* ShowExportViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,6 +479,7 @@
 		A07622861CF71CEF003951EC /* TwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotosPink.xib; sourceTree = "<group>"; };
 		A07622901CF7465A003951EC /* PhotoTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTemplate.xib; sourceTree = "<group>"; };
 		A07622921CF746B4003951EC /* phototemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototemplate.png; sourceTree = "<group>"; };
+		A0A527101CF87559003F7041 /* ShowExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowExportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -643,6 +645,7 @@
 				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
+				A0A527101CF87559003F7041 /* ShowExportViewController.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -1299,6 +1302,7 @@
 				8E6D503F1C7F063A00878957 /* ExperienceViewController.swift in Sources */,
 				8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */,
 				8EE947BB1CE4A67C00064446 /* TimeListController.swift in Sources */,
+				A0A527111CF87559003F7041 /* ShowExportViewController.swift in Sources */,
 				8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */,
 				A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */,
 				A01029141CD29E0B005E339F /* CVCalendarViewPresentationMode.swift in Sources */,
