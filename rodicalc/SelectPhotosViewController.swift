@@ -31,6 +31,11 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)*/
     }
     
+    
+    override func viewDidDisappear(animated: Bool) {
+        selectedImages.removeAll()
+    }
+    
     @IBAction func ShareSelected(sender: AnyObject) {
     }
 

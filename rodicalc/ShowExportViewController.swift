@@ -25,9 +25,9 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     func loadExportImages()
     {
         
-       var image = UIImageView(image: <#T##UIImage?#>)
+     //  var image = UIImageView(image: <#T##UIImage?#>)
         
-        CurrentScrollView.addSubview(image)
+       // CurrentScrollView.addSubview(image)
         
     }
 

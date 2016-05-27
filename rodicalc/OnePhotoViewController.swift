@@ -18,8 +18,13 @@ class OnePhotoViewController: UIViewController{
         super.viewDidLoad()
         
         image.image = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
+        
+        selectedImages.append(image.image!)
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        selectedImages.removeAll()
+    }
 
     @IBAction func Delete(sender: UIBarButtonItem) {
  
