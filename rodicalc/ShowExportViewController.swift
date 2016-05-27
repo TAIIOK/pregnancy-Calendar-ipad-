@@ -16,6 +16,8 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         super.viewDidLoad()
 
         CurrentScrollView.delegate = self
+        CurrentScrollView.userInteractionEnabled = true
+        CurrentScrollView.scrollEnabled = true
         loadExportImages()
         
         // Do any additional setup after loading the view.
@@ -25,9 +27,16 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     func loadExportImages()
     {
         
-     //  var image = UIImageView(image: <#T##UIImage?#>)
+        CurrentScrollView.contentSize = CGSizeMake(700 , 620 * 2)
+
+       var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+        image.image = CreateTextOnlyBlue("sss", CenterText: "sss")
+        var image1 = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+        image1.image = CreateTextOnlyBlue("sss", CenterText: "sss")
+        CurrentScrollView.addSubview(image)
+        image1.frame.origin.y += image.frame.height + 20
+        CurrentScrollView.addSubview(image1)
         
-       // CurrentScrollView.addSubview(image)
         
     }
 
