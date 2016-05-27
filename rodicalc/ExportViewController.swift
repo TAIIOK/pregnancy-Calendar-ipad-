@@ -104,14 +104,13 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.title = ""
             let btn = UIBarButtonItem(image: img , style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ExportViewController.FallBack))
             self.navigationItem.leftBarButtonItem = btn
-            //print("!!!!\(selectonDateType)!!!!")
+
         }
         
     
     }
     
     func FallBack(){
-        print("fall back!!!")
         MasterViewSelectedRow = 12
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
         let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("MasterView")
@@ -136,11 +135,27 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.SelectedNoteFromDate(day_)
         }
         
+        /*print("Count: \(AllExportNotes.count)")
+        for i in AllExportNotes{
+            print("Date: \(i.date)")
+            print("Photo count: \(i.photos.count)")
+            for j in i.photos{
+                print("\tPhoto: \(j)")
+            }
+            print("Note count: \(i.notes.count)")
+            for k in i.notes{
+                print("\tNote: \(k)")
+            }
+            print("Notifi count: \(i.notifi.count)")
+            for n in i.notifi{
+                print("\tNotifi: \(n)")
+            }
+        }*/
+        
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
         let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
         self.splitViewController?.viewControllers[0] = vc!
         self.splitViewController?.showDetailViewController(vc1!, sender: self)
-        //}
     }
     
     func SelectedNoteFromDate(date: NSDate){
@@ -156,10 +171,18 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 }
             }
         }
+        var indexes = [Int]()
         let indexPathNote = NotesTable.indexPathsForSelectedRows
         if indexPathNote != nil{
             for i in indexPathNote!{
-                AllNotesCount[i.row].selected = true
+                indexes.append(i.row)
+            }
+        }
+        for (var i = 0; i < AllNotesCount.count; i += 1){
+            if indexes.contains(i){
+                AllNotesCount[i].selected = true
+            }else{
+                AllNotesCount[i].selected = false
             }
         }
         let calendar = NSCalendar.currentCalendar()
@@ -172,9 +195,30 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
         for i in AllNotesCount{
             if i.selected == true{
-                if i.type == "Мое самочувствие" || i.type == "Как ведет себя малыш" || i.type == "Приятное воспоминание дня" || i.type == "Важные события" {
+                if i.type == "Мое самочувствие" {
                     for j in NotesExportText{
-                        if j.date == date{
+                        if j.date == date && j.typeS == "Мое самочувствие"{
+                            notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
+                        }
+                    }
+                }
+                if i.type == "Как ведет себя малыш"{
+                    for j in NotesExportText{
+                        if j.date == date && j.typeS == "Как ведет себя малыш"{
+                            notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
+                        }
+                    }
+                }
+                if i.type == "Приятное воспоминание дня"{
+                    for j in NotesExportText{
+                        if j.date == date && j.typeS == "Приятное воспоминание дня"{
+                            notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
+                        }
+                    }
+                }
+                if i.type == "Важные события"{
+                    for j in NotesExportText{
+                        if j.date == date && j.typeS == "Важные события"{
                             notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
                         }
                     }
@@ -222,8 +266,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 }
             }
         }
-        
-        //NotificationExport
         var NotifiSelected = false
         if NotifiTable.indexPathsForSelectedRows != nil{
             NotifiSelected = true
@@ -235,7 +277,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 }
             }
         }
-        
         AllExportNotes.append(ExportNote(date: date, photos: imgmas, notes: notemas, notifi: notifimas))
     }
     
@@ -563,7 +604,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         
         let days = selectedExportDays.sort(self.frontwards)
         for day_ in days{
-            print(day_)
             PhotoFromDate(day_)
         }
     }
