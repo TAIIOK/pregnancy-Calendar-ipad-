@@ -9,6 +9,21 @@
 import UIKit
 import CoreData
 
+class ExportNote: NSObject {
+    var date: NSDate
+    var photos: [UIImage]
+    var notes: [TextNoteE]
+    var notifi: [TextNoteE]
+    init(date: NSDate, photos: [UIImage], notes: [TextNoteE], notifi: [TextNoteE]) {
+        self.date = date
+        self.photos = photos
+        self.notes = notes
+        self.notifi = notifi
+        super.init()
+    }
+}
+
+
 class TextNoteE: NSObject {
     var date: NSDate
     var typeS: String
@@ -45,10 +60,11 @@ class Food: NSObject {
     }
 }
 
+
 var selectonDateType = -1
 var selectedExportDays = [NSDate]()
 var ExpPhoto = [Photo]()
-var NotificationExport = [Food]()
+var NotificationExport = [TextNoteE]()
 
 var NotesExportText = [TextNoteE]()
 var NotestExportWeight = [Weight]()
@@ -56,7 +72,7 @@ var NotesExportDoctor = [Doctor]()
 var NotesExportFood = [Food]()
 var NotesExportDrugs = [Drugs]()
 
-
+var AllExportNotes = [ExportNote]()
 var AllNotesCount = [AllNotesForExport]()
 
 class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -111,25 +127,10 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
 
     @IBAction func Show(sender: UIButton) {
         
-        let indexPathNote = NotesTable.indexPathsForSelectedRows
-        
-        if indexPathNote != nil{
-            for i in indexPathNote!{
-                AllNotesCount[i.row].selected = true
-                
-            }
-        }
-        
-        let indexPathPhoto = PhotoCollectionVIew.indexPathsForSelectedItems()
-        if indexPathPhoto != nil{
-            for i in indexPathPhoto!{
-
-            }
-        }
-        
-        var NotifiSelected = false
-        if NotifiTable.indexPathsForSelectedRows != nil{
-            NotifiSelected = true
+        AllExportNotes.removeAll()
+        let days = selectedExportDays.sort(self.frontwards)
+        for day_ in days{
+            SelectedNoteFromDate(day_)
         }
         
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
@@ -137,6 +138,102 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         self.splitViewController?.viewControllers[0] = vc!
         self.splitViewController?.showDetailViewController(vc1!, sender: self)
         //}
+    }
+    
+    func SelectedNoteFromDate(date: NSDate){
+        var imgmas = [UIImage]()
+        var notemas = [TextNoteE]()
+        var notifimas = [TextNoteE]()
+        
+        let indexPathPhoto = PhotoCollectionVIew.indexPathsForSelectedItems()
+        if indexPathPhoto != nil{
+            for i in indexPathPhoto!{
+                if ExpPhoto[i.row].date == date{
+                    imgmas.append(ExpPhoto[i.row].image)
+                }
+            }
+        }
+        let indexPathNote = NotesTable.indexPathsForSelectedRows
+        if indexPathNote != nil{
+            for i in indexPathNote!{
+                AllNotesCount[i.row].selected = true
+            }
+        }
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let newcurDate = calendar.dateFromComponents(components)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+        for i in AllNotesCount{
+            if i.selected == true{
+                if i.type == "Мое самочувствие" || i.type == "Как ведет себя малыш" || i.type == "Приятное воспоминание дня" || i.type == "Важные события" {
+                    for j in NotesExportText{
+                        if j.date == date{
+                            notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
+                        }
+                    }
+                }
+                if i.type == "Мой вес"{
+                    for j in NotestExportWeight{
+                        if j.date == date{
+                            notemas.append(TextNoteE(typeS: "Мой вес", text: "\(j.kg) кг \(j.gr) г", date: date))
+                        }
+                    }
+
+                }else if i.type == "Принимаемые лекарства"{
+                    for j in NotesExportDrugs{
+ 
+                        let componentsS = calendar.components([.Day , .Month , .Year], fromDate: j.start)
+                        let componentsE = calendar.components([.Day , .Month , .Year], fromDate: j.end)
+                        componentsS.hour = 00
+                        componentsS.minute = 00
+                        componentsS.second = 00
+                        let newDateS = calendar.dateFromComponents(componentsS)
+                        componentsE.hour = 00
+                        componentsE.minute = 00
+                        componentsE.second = 00
+                        let newDateE = calendar.dateFromComponents(componentsE)
+                        var a = newcurDate?.compare(newDateS!)
+                        var b = newcurDate?.compare(newDateE!)
+
+                        if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
+                            notemas.append(TextNoteE(typeS: "Принимаемые лекарства", text: j.name, date: date))
+                        }
+                    }
+                }else if i.type == "Посещение врачей"{
+                    for j in NotesExportDoctor{
+                        let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: j.date)
+                        if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
+                            notemas.append(TextNoteE(typeS: "Посещение врачей", text: j.name, date: date))
+                        }
+                    }
+                }else if i.type == "Мое меню на сегодня"{
+                    for j in NotesExportFood{
+                        if j.date == date{
+                            notemas.append(TextNoteE(typeS: "Мое меню на сегодня", text: j.text, date: date))
+                        }
+                    }
+                }
+            }
+        }
+        
+        //NotificationExport
+        var NotifiSelected = false
+        if NotifiTable.indexPathsForSelectedRows != nil{
+            NotifiSelected = true
+        }
+        if NotifiSelected{
+            for i in NotificationExport{
+                if i.date == date{
+                    notifimas.append(TextNoteE(typeS: i.typeS, text: i.text, date: date))
+                }
+            }
+        }
+        
+        AllExportNotes.append(ExportNote(date: date, photos: imgmas, notes: notemas, notifi: notifimas))
     }
     
     //TABLE
@@ -422,6 +519,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         var table = Table("Notification")
         let day = Expression<Int64>("Day")
         let text = Expression<String>("Text")
+        let type = Expression<Int64>("CategoryId")
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: BirthExportDate)
         components.hour = 24
@@ -430,8 +528,29 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         let NewDate = calendar.dateFromComponents(components)!
         for i in days{
             var a = 300-NewDate.daysFrom(i)
-            for j in try! db.prepare(table.select(text).filter(day == Int64(a))){
-                NotificationExport.append(Food(text: j[text], date: i))
+            for j in try! db.prepare(table.select(text,type).filter(day == Int64(a))){
+                var str = ""
+                switch j[type] {
+                case 1:
+                    str = "Общая информация"
+                case 2:
+                    str = "Здоровье мамы"
+                case 3:
+                    str = "Здоровье малыша"
+                case 4:
+                    str = "Питание"
+                case 5:
+                    str = "Это важно!"
+                case 6:
+                    str = "Скрытая реклама"
+                case 7:
+                    str = "Рекалама ФЭСТ"
+                case 8:
+                    str = "Размышления ФЭСТ"
+                default:
+                    str = ""
+                }
+                NotificationExport.append(TextNoteE(typeS: str, text: j[text], date: i))
             }
         }
     }
