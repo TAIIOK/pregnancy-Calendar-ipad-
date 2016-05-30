@@ -167,6 +167,8 @@
 		A0669E671CDA34E4002F8E95 /* DoctorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */; };
 		A0669E701CDA34F2002F8E95 /* DoctorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */; };
 		A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E711CDA3597002F8E95 /* DoctorViewController.swift */; };
+		A06A785B1CFC518D00552496 /* phototemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = A06A785A1CFC518D00552496 /* phototemplate.png */; };
+		A06A785D1CFC539700552496 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = A06A785C1CFC539700552496 /* pink.png */; };
 		A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622611CF5CA5A003951EC /* CreatingExportImage.swift */; };
 		A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622621CF5CA5A003951EC /* pdfCreator.swift */; };
 		A076226C1CF5E0E4003951EC /* Rotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076226B1CF5E0E4003951EC /* Rotatable.swift */; };
@@ -183,7 +185,6 @@
 		A07622851CF71CD5003951EC /* TextOnlyPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622841CF71CD5003951EC /* TextOnlyPink.xib */; };
 		A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622861CF71CEF003951EC /* TwoPhotosPink.xib */; };
 		A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622901CF7465A003951EC /* PhotoTemplate.xib */; };
-		A07622931CF746B4003951EC /* phototemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = A07622921CF746B4003951EC /* phototemplate.png */; };
 		A0A527111CF87559003F7041 /* ShowExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A527101CF87559003F7041 /* ShowExportViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -462,6 +463,8 @@
 		A0669E611CDA34E4002F8E95 /* DoctorViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewCell.xib; sourceTree = "<group>"; };
 		A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorHeader.swift; sourceTree = "<group>"; };
 		A0669E711CDA3597002F8E95 /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
+		A06A785A1CFC518D00552496 /* phototemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototemplate.png; sourceTree = "<group>"; };
+		A06A785C1CFC539700552496 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink.png; sourceTree = "<group>"; };
 		A07622611CF5CA5A003951EC /* CreatingExportImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingExportImage.swift; sourceTree = "<group>"; };
 		A07622621CF5CA5A003951EC /* pdfCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pdfCreator.swift; sourceTree = "<group>"; };
 		A076226B1CF5E0E4003951EC /* Rotatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotatable.swift; sourceTree = "<group>"; };
@@ -478,7 +481,6 @@
 		A07622841CF71CD5003951EC /* TextOnlyPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyPink.xib; sourceTree = "<group>"; };
 		A07622861CF71CEF003951EC /* TwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotosPink.xib; sourceTree = "<group>"; };
 		A07622901CF7465A003951EC /* PhotoTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTemplate.xib; sourceTree = "<group>"; };
-		A07622921CF746B4003951EC /* phototemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototemplate.png; sourceTree = "<group>"; };
 		A0A527101CF87559003F7041 /* ShowExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowExportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -877,6 +879,7 @@
 		A07622741CF70D63003951EC /* pinkPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				A06A785C1CFC539700552496 /* pink.png */,
 				A07622751CF70D75003951EC /* 2photo(pink).png */,
 				A07622761CF70D75003951EC /* text+2photo(pink).png */,
 				A07622771CF70D75003951EC /* textonly(pink).png */,
@@ -891,7 +894,7 @@
 		A076227F1CF70FD1003951EC /* Export */ = {
 			isa = PBXGroup;
 			children = (
-				A07622921CF746B4003951EC /* phototemplate.png */,
+				A06A785A1CFC518D00552496 /* phototemplate.png */,
 				A076226B1CF5E0E4003951EC /* Rotatable.swift */,
 				A07622611CF5CA5A003951EC /* CreatingExportImage.swift */,
 				A01D66F21CD0F826004960CD /* export.swift */,
@@ -1136,6 +1139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */,
+				A06A785D1CFC539700552496 /* pink.png in Resources */,
 				A01028D71CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg in Resources */,
 				A01028D41CD227D8005E339F /* bondage.html in Resources */,
 				8E1DD6081CB2896500D55893 /* zodiacs.json in Resources */,
@@ -1158,6 +1162,7 @@
 				A07622711CF70D20003951EC /* text+2photo(blue).png in Resources */,
 				8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */,
 				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
+				A06A785B1CFC518D00552496 /* phototemplate.png in Resources */,
 				A076227B1CF70D75003951EC /* textonly(pink).png in Resources */,
 				A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */,
 				8E20C8B51C998F430003C1CF /* ContentCollectionViewCell.xib in Resources */,
@@ -1175,7 +1180,6 @@
 				8E5A6BAE1CD20C7D0073B693 /* 5z.jpg in Resources */,
 				A042880F1CE2329B005DB953 /* notifi.json in Resources */,
 				8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */,
-				A07622931CF746B4003951EC /* phototemplate.png in Resources */,
 				A07622721CF70D20003951EC /* textonly(blue).png in Resources */,
 				8E5A6BAC1CD20C7D0073B693 /* 3z.jpg in Resources */,
 				8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */,

@@ -288,6 +288,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 }
             }
         }
+   
+        
         AllExportNotes.append(ExportNote(date: date, photos: imgmas, notes: notemas, notifi: notifimas))
     }
     

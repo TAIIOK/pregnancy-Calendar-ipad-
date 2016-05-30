@@ -89,11 +89,12 @@ class TwoPhotoBlue: UIView{
         let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
-        
+        if(left == right)
+        {
         let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         RightView.xibSetup(right,title: rightText)
         rightImage.image = RightView.screenshot
-        
+        }
         titleLabel.text = title
 
     }
@@ -115,11 +116,11 @@ class TextWithTwoPhotoBlue: UIView{
     func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
         
         rotateViews()
-        
+        if(UpPhoto == DownPhoto){
         let PhotoUPView = PhotoTemplate(frame: CGRect(x: UpPhotoView.frame.origin.x, y: UpPhotoView.frame.origin.y, width: 600, height: 700))
         PhotoUPView.xibSetup(UpPhoto,title: UpText)
         UpPhotoView.image = PhotoUPView.screenshot
-        
+        }
         let PhotoDownView = PhotoTemplate(frame: CGRect(x: DownPhotoView.frame.origin.x, y: DownPhotoView.frame.origin.y, width: 600, height: 700))
         
         PhotoDownView.xibSetup(DownPhoto,title: DownText)
@@ -161,13 +162,12 @@ class TwoPhotoPink: UIView{
         let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
-        
+        if(left == right){
         let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         RightView.xibSetup(right,title: rightText)
         rightImage.image = RightView.screenshot
+        }
         
-        
-      
         titleLabel.text = title
 
     }
@@ -191,11 +191,11 @@ class TextWithTwoPhotoPink: UIView{
         
         rotateViews()
         
-        
+        if(UpPhoto == DownPhoto){
         let PhotoUPView = PhotoTemplate(frame: CGRect(x: UpPhotoView.frame.origin.x, y: UpPhotoView.frame.origin.y, width: 600, height: 700))
         PhotoUPView.xibSetup(UpPhoto,title: UpText)
         UpPhotoView.image = PhotoUPView.screenshot
-        
+        }
         let PhotoDownView = PhotoTemplate(frame: CGRect(x: DownPhotoView.frame.origin.x, y: DownPhotoView.frame.origin.y, width: 600, height: 700))
         
         PhotoDownView.xibSetup(DownPhoto,title: DownText)
