@@ -40,12 +40,21 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         
         print(selectedImages.count)
 
-        
-        
-       //let data1 = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("0", ofType: "png")!)
-        //Crete media object to upload
+        /*
 
+        VK.API.Upload.document(Media(documentData: PDF, type: "pdf")).send(method: HTTPMethods.POST , success:{response in print(response)
+            let name = response.arrayObject![0] as! NSDictionary
+            
+            var string = "doc" + parameters["user_id"]! as String + "_" + String(name.valueForKey("id"))
+            print(string)
+            let mass = [VK.Arg.userId : parameters["user_id"]! , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
+            
+            let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
+            
+            },error: { error in print(error)})
 
+        */
+        
         
         selectedImages = selectedImages.reverse()
         var string = ""

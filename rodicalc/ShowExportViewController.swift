@@ -9,7 +9,7 @@
 import UIKit
 
 var segmenttype = true
-
+var PDF = NSData()
 class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
 
     @IBOutlet weak var Segment: UISegmentedControl!
@@ -255,7 +255,10 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     y += 20
    
             }
+            PDF = toPDF(CurrentScrollView.subviews)!
+            
         }
+        
     
     }
 

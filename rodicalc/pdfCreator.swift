@@ -11,6 +11,28 @@ import UIKit
 
 let defaultResolution: Int = 72
 
+
+func toPDF(views: [UIView]) -> NSData? {
+    
+    if views.isEmpty {
+        return nil
+    }
+    
+    let pdfData = NSMutableData()
+    UIGraphicsBeginPDFContextToData(pdfData, CGRect(x: 0, y: 0, width: 612, height: 792), nil)
+    
+    let context = UIGraphicsGetCurrentContext()
+    
+    for view in views {
+        UIGraphicsBeginPDFPage()
+        view.layer.renderInContext(context!)
+    }
+    
+    UIGraphicsEndPDFContext()
+    
+    return pdfData
+}
+
 extension NSData {
     
     class func convertImageToPDF(image: UIImage) -> NSData? {
