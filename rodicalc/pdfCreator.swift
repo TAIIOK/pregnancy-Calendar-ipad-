@@ -19,7 +19,7 @@ func toPDF(views: [UIView]) -> NSData? {
     }
     
     let pdfData = NSMutableData()
-    UIGraphicsBeginPDFContextToData(pdfData, CGRect(x: 0, y: 0, width: 612, height: 792), nil)
+    UIGraphicsBeginPDFContextToData(pdfData, CGRect(x: 0, y: 0, width: 700, height: 600), nil)
     
     let context = UIGraphicsGetCurrentContext()
     
