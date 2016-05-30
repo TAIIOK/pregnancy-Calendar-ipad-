@@ -21,7 +21,16 @@ extension UIView{
         return screenShot
     }
 }
-
+func CreateTitleBlue() -> UIImageView {
+   var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
+    imageView.image = UIImage(named: "title(blue).png")
+    return imageView
+}
+func CreateTitlePink() -> UIImageView{
+    var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
+    imageView.image = UIImage(named: "title(pink).png")
+    return imageView
+}
 
 
 func CreateTwoPhotosBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) -> UIImage{

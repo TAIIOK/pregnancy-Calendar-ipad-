@@ -15,10 +15,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="670"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Yza-Hq-Nlq">
-                    <rect key="frame" x="44" y="39" width="511" height="474"/>
+                    <rect key="frame" x="23" y="17" width="553" height="509"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmd-fa-0RL">
-                    <rect key="frame" x="63" y="559" width="473" height="21"/>
+                    <rect key="frame" x="64" y="575" width="473" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -35,6 +35,6 @@
     </objects>
     <resources>
         <image name="0z.jpg" width="400" height="400"/>
-        <image name="phototemplate.png" width="650" height="720"/>
+        <image name="phototemplate.png" width="600" height="670"/>
     </resources>
 </document>

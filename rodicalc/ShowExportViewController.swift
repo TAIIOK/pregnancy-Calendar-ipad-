@@ -12,8 +12,15 @@ var segmenttype = true
 
 class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
 
+    @IBOutlet weak var Segment: UISegmentedControl!
     @IBOutlet weak var CurrentScrollView: UIScrollView!
     
+    @IBAction func SegmentAction(sender: AnyObject) {
+        segmenttype = segmenttype ? false : true
+
+        loadExportImages()
+    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,11 +36,19 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     
     func loadExportImages()
     {
-        
-        let height =  CGFloat(integerLiteral: 620 * AllExportNotes.count)
+        CurrentScrollView.removeAllSubviews()
+        print(CurrentScrollView.subviews.count)
+        let height =  CGFloat(integerLiteral:  620 * AllExportNotes.count + 1)
          CurrentScrollView.contentSize = CGSizeMake(700 , height)
         
         var y = CGFloat(integerLiteral: 0)
+        
+        if(segmenttype){
+            CurrentScrollView.addSubview(CreateTitleBlue())}
+        else{
+            CurrentScrollView.addSubview(CreateTitlePink())}
+        
+        y += 20
         
         for( var i = 0;i < AllExportNotes.count ; i++)
         {
@@ -52,7 +67,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                                 image.image = CreateTwoPhotosPink(photos[0], right: photos[1], title: String(AllExportNotes[i].date) , leftText: "", rightText: "")
                                 }
                                 print(CurrentScrollView.subviews.count)
-                                if(CurrentScrollView.subviews.count > 2)
+                                if(CurrentScrollView.subviews.count > 0)
                                 {
                                 image.frame.origin.y = image.frame.height + y
                                 y += image.frame.height
@@ -72,7 +87,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                                 }
                                 // Добавить шаблон для 1 фотографии 
                                 
-                                if(CurrentScrollView.subviews.count > 2)
+                                if(CurrentScrollView.subviews.count > 0)
                                 {
                                     image.frame.origin.y = image.frame.height + y
                                      y += image.frame.height
@@ -117,7 +132,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         else{
                             image.image = CreateTextWithTwoPhotosPink(photos[0], UpText: "", DownPhoto: photos[1], DownText: "", Title: String(AllExportNotes[i].date), CenterText: String(Text + "\n" + Textnotifi))
                         }
-                        if(CurrentScrollView.subviews.count > 2)
+                        if(CurrentScrollView.subviews.count > 0)
                         {
                             image.frame.origin.y = image.frame.height + y
                             y += image.frame.height
@@ -155,7 +170,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         
                         // Добавить шаблон для 1 фотографии
                         
-                        if(CurrentScrollView.subviews.count > 2)
+                        if(CurrentScrollView.subviews.count > 0)
                         {
                             image.frame.origin.y = image.frame.height + y
                              y += image.frame.height
@@ -195,7 +210,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         else{
                             image.image = CreateTextOnlyPink(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
                         }
-                        if(CurrentScrollView.subviews.count > 2)
+                        if(CurrentScrollView.subviews.count > 0)
                         {
                             image.frame.origin.y = image.frame.height + y
                              y += image.frame.height
@@ -238,7 +253,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     else{
                         image.image = CreateTextOnlyPink(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
                     }
-                    if(CurrentScrollView.subviews.count > 2)
+                    if(CurrentScrollView.subviews.count >  0)
                     {
                         image.frame.origin.y = image.frame.height + y
                          y += image.frame.height
