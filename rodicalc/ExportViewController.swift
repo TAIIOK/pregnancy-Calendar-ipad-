@@ -60,6 +60,7 @@ class Food: NSObject {
     }
 }
 
+var showingExportType = 0 //0-экспорт справа, слева меню выбора вкладок 1-экспорт слева, справа календарь 2-экспорт слева, справа предпросмотр
 
 var selectonDateType = -1
 var selectedExportDays = [NSDate]()
@@ -104,8 +105,10 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.title = ""
             let btn = UIBarButtonItem(image: img , style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ExportViewController.FallBack))
             self.navigationItem.leftBarButtonItem = btn
-
+        }else{
+            showingExportType = 0
         }
+        print("type = ",showingExportType)
         
     
     }
@@ -148,11 +151,17 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 print("\tNotifi: \(n)")
             }
         }*/
-        
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-        let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
-        self.splitViewController?.viewControllers[0] = vc!
-        self.splitViewController?.showDetailViewController(vc1!, sender: self)
+        if showingExportType == 0 {
+            showingExportType = 1
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+            self.splitViewController?.viewControllers[0] = vc!
+            self.splitViewController?.showDetailViewController(vc1!, sender: self)
+        }else{
+            showingExportType = 1
+            let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+            self.splitViewController?.showDetailViewController(vc1!, sender: self)
+        }
     }
     
     func SelectedNoteFromDate(date: NSDate){
@@ -380,12 +389,20 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == DateTable{
+            
             selectonDateType = indexPath.row
             selectedExportDays.removeAll()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-            let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("CalendarNav")
-            self.splitViewController?.viewControllers[0] = vc!
-            self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            if showingExportType == 0 {
+                showingExportType = 1
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+                let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("CalendarNav")
+                self.splitViewController?.viewControllers[0] = vc!
+                self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            }else{
+                showingExportType = 1
+                let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("CalendarNav")
+                self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            }
         }else if tableView == NotesTable{
 
         }else{
