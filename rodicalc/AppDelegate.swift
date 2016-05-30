@@ -158,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // First, test for existence.
         // Override point for customization after application launch.
         let sourcePath = NSBundle.mainBundle().pathForResource("db", ofType: "sqlite")
-        //print(sourcePath)
+        print(sourcePath)
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
         //print(destinationPath)

@@ -325,31 +325,35 @@ var BirthDate = NSDate()
         saveGrowthToPlist(growth)
         setupPickerViewValues()
         
+        if growth > 0{
         //Create the AlertController
-        if #available(iOS 8.0, *) {
-            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
+            if #available(iOS 8.0, *) {
+                let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
+                
+                //Create and add the Cancel action
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                //Do some stuff
+                    let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+                    self.splitViewController?.showDetailViewController(graph!, sender: self)
+                }
+                actionSheetController.addAction(cancelAction)
+                //Create and an option action
+                let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
+                //Do some other stuff
+                    let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
+                    self.splitViewController?.showDetailViewController(notes!, sender: self)
+                }
+                actionSheetController.addAction(nextAction)
             
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
-            //Do some stuff
-                let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
-                self.splitViewController?.showDetailViewController(graph!, sender: self)
+                //Present the AlertController
+                self.presentViewController(actionSheetController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
             }
-            actionSheetController.addAction(cancelAction)
-            //Create and an option action
-            let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
-            //Do some other stuff
-                let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
-                self.splitViewController?.showDetailViewController(notes!, sender: self)
-            }
-            actionSheetController.addAction(nextAction)
-        
-            //Present the AlertController
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
-        } else {
-            // Fallback on earlier versions
+        }else{
+            let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+            self.splitViewController?.showDetailViewController(graph!, sender: self)
         }
-
     }
     
     func cancelButtonTouched() {

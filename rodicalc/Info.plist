@@ -48,6 +48,19 @@
 			</dict>
 		</array>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>1731805480431829</string>
+	<key>FacebookDisplayName</key>
+	<string>test_auth</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+		<string>fb1731805480431829</string>
+		<string>vkauthorize</string>
+		<string>vk5437729</string>
+		<string>okauth</string>
+		<string>ok1246999552</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -71,25 +84,10 @@
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>item0</key>
 	<string>okauth</string>
 	<key>item1</key>
 	<string>ok1246999552</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbauth2</string>
-		<string>fb1731805480431829</string>
-		<string>vkauthorize</string>
-		<string>vk5437729</string>
-		<string>okauth</string>
-		<string>ok1246999552</string>
-	</array>
-	<key>FacebookAppID</key>
-	<string>1731805480431829</string>
-	<key>FacebookDisplayName</key>
-	<string>test_auth</string>
 </dict>
 </plist>
