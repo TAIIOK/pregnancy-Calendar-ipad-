@@ -47,7 +47,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
 
 
         
-
+        selectedImages = selectedImages.reverse()
         var string = ""
         var result = 0
          dispatch_sync(dispatch_get_main_queue(),
