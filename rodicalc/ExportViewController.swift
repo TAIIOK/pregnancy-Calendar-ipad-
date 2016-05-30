@@ -105,12 +105,15 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.title = ""
             let btn = UIBarButtonItem(image: img , style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ExportViewController.FallBack))
             self.navigationItem.leftBarButtonItem = btn
+            loadPhotos()
+            PhotoCollectionVIew.reloadData()
+            loadNotifi()
+            NotifiTable.reloadData()
+            loadNotes()
+            NotesTable.reloadData()
         }else{
             showingExportType = 0
         }
-        print("type = ",showingExportType)
-        
-    
     }
     
     func FallBack(){
@@ -133,7 +136,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
 
         let days = selectedExportDays.sort(self.frontwards)
         
-        print(days)
         for day_ in days{
             self.SelectedNoteFromDate(day_)
         }
@@ -454,18 +456,26 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             NotesFromDate(day_)
         }
         AllNotesCount.removeAll()
-        
+        var temp = [AllNotesForExport]()
+        var mas = [String]()
         for note in NotesExportText{
-            var count = 0
-            for n in NotesExportText {
-                if n.typeS == note.typeS{
-                    count += 1
-                }
+            if !mas.contains(note.typeS){
+                mas.append(note.typeS)
             }
-            
-            AllNotesCount.append(AllNotesForExport(type: note.typeS, text: note.text, count: count,selected: false))
         }
-
+        
+        if mas.count > 0{
+            for type in mas{
+                var count = 0
+                for n in NotesExportText {
+                    if n.typeS == type{
+                        count += 1
+                    }
+                }
+                AllNotesCount.append(AllNotesForExport(type: type, text: "", count: count,selected: false))
+            }
+        }
+        
         if NotestExportWeight.count > 0{
             AllNotesCount.append(AllNotesForExport(type: "Мой вес", text: "", count: NotestExportWeight.count, selected: false))
         }

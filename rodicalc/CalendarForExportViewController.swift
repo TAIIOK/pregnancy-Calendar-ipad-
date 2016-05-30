@@ -60,6 +60,7 @@ class CalendarForExportViewController: UIViewController {
     
     func getDays()
     {
+        selectedExportDays.removeAll()
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
         var days = [NSDate]()
@@ -127,7 +128,9 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
         print("\(dayView.date.commonDescription) is selected!")
         calendarView.coordinator.selection = true
         selectedExportCalendarDay = dayView
-
+        getDays()
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+        self.splitViewController?.viewControllers[0] = vc!
     }
     
     
