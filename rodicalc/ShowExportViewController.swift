@@ -8,6 +8,8 @@
 
 import UIKit
 
+var segmenttype = true
+
 class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
 
     @IBOutlet weak var CurrentScrollView: UIScrollView!
@@ -15,9 +17,10 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CurrentScrollView.delegate = self
+       CurrentScrollView.delegate = self
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
+        CurrentScrollView.contentSize = CGSizeMake(1000 , 1000)
         loadExportImages()
         
         // Do any additional setup after loading the view.
@@ -27,17 +30,226 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     func loadExportImages()
     {
         
-        CurrentScrollView.contentSize = CGSizeMake(700 , 620 * 2)
+        let height =  CGFloat(integerLiteral: 620 * AllExportNotes.count)
+         CurrentScrollView.contentSize = CGSizeMake(700 , height)
+        
+        var y = CGFloat(integerLiteral: 0)
+        
+        for( var i = 0;i < AllExportNotes.count ; i++)
+        {
+            if(!AllExportNotes[i].photos.isEmpty && AllExportNotes[i].notes.isEmpty && AllExportNotes[i].notifi.isEmpty)
+            {
+                var photos = AllExportNotes[i].photos
+                
+                            if(photos.count >= 2 )
+                            {
+                                var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                                
+                                if(segmenttype){
+                                image.image = CreateTwoPhotosBlue(photos[0], right: photos[1], title: String(AllExportNotes[i].date) , leftText: "", rightText: "")
+                                }
+                                else{
+                                image.image = CreateTwoPhotosPink(photos[0], right: photos[1], title: String(AllExportNotes[i].date) , leftText: "", rightText: "")
+                                }
+                                print(CurrentScrollView.subviews.count)
+                                if(CurrentScrollView.subviews.count > 2)
+                                {
+                                image.frame.origin.y = image.frame.height + y
+                                y += image.frame.height
+                                }
+                                CurrentScrollView.addSubview(image)
+                                y += 20
+                                
+                            }
+                            
+                            else if (photos.count < 2 )  {
+                                var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                                if(segmenttype){
+                                image.image = CreateTwoPhotosBlue(photos[0], right: photos[0], title: String(AllExportNotes[i].date) , leftText: "", rightText: "")
+                                }
+                                else{
+                                image.image = CreateTwoPhotosPink(photos[0], right: photos[0], title: String(AllExportNotes[i].date) , leftText: "", rightText: "")
+                                }
+                                // Добавить шаблон для 1 фотографии 
+                                
+                                if(CurrentScrollView.subviews.count > 2)
+                                {
+                                    image.frame.origin.y = image.frame.height + y
+                                     y += image.frame.height
+                                }
+                                CurrentScrollView.addSubview(image)
+                                y += 20
+                            }
 
-       var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
-        image.image = CreateTextOnlyBlue("sss", CenterText: "sss")
-        var image1 = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
-        image1.image = CreateTextOnlyBlue("sss", CenterText: "sss")
-        CurrentScrollView.addSubview(image)
-        image1.frame.origin.y += image.frame.height + 20
-        CurrentScrollView.addSubview(image1)
-        
-        
+            }
+            else if(!AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
+                
+                var photos = AllExportNotes[i].photos
+                var notes = AllExportNotes[i].notes
+                var notifi = AllExportNotes[i].notifi
+                var Text = ""
+                var Textnotifi = ""
+                
+                    if(photos.count >= 2 )
+                    {
+                        
+                        var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        Text.removeAll()
+                        for(var n = 0 ; n < notes.count ; n++)
+                        {
+                            Text.appendContentsOf(notes[n].typeS)
+                            Text.appendContentsOf(":  ")
+                            Text.appendContentsOf(notes[n].text)
+                        }
+                        Textnotifi.removeAll()
+                        for(var n = 0 ; n < notifi.count ; n++)
+                        {
+                            Textnotifi.appendContentsOf(notifi[n].typeS)
+                            Textnotifi.appendContentsOf(":  ")
+                            Textnotifi.appendContentsOf(notifi[n].text)
+                        }
+                        
+                        if(segmenttype){
+
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0], UpText: "", DownPhoto: photos[1], DownText: "", Title: String(AllExportNotes[i].date), CenterText: String(Text + "\n" + Textnotifi))
+                            
+                        }
+                        else{
+                            image.image = CreateTextWithTwoPhotosPink(photos[0], UpText: "", DownPhoto: photos[1], DownText: "", Title: String(AllExportNotes[i].date), CenterText: String(Text + "\n" + Textnotifi))
+                        }
+                        if(CurrentScrollView.subviews.count > 2)
+                        {
+                            image.frame.origin.y = image.frame.height + y
+                            y += image.frame.height
+                        }
+                        CurrentScrollView.addSubview(image)
+                        y += 20
+                    }
+                        
+                    else if (photos.count < 2  && photos.count != 0)  {
+                        
+                        var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        Text.removeAll()
+                        for(var n = 0 ; n < notes.count ; n++)
+                        {
+                            Text.appendContentsOf(notes[n].typeS)
+                            Text.appendContentsOf(":  ")
+                            Text.appendContentsOf(notes[n].text)
+                        }
+                        Textnotifi.removeAll()
+                        for(var n = 0 ; n < notifi.count ; n++)
+                        {
+                            Textnotifi.appendContentsOf(notifi[n].typeS)
+                            Textnotifi.appendContentsOf(":  ")
+                            Textnotifi.appendContentsOf(notifi[n].text)
+                        }
+                        
+                        if(segmenttype){
+                            
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0], UpText: "", DownPhoto: photos[0], DownText: "", Title: String(AllExportNotes[i].date), CenterText: String(Text + "\n" + Textnotifi))
+                            
+                        }
+                        else{
+                            image.image = CreateTextWithTwoPhotosPink(photos[0], UpText: "", DownPhoto: photos[0], DownText: "", Title: String(AllExportNotes[i].date), CenterText: String(Text + "\n" + Textnotifi))
+                        }
+                        
+                        // Добавить шаблон для 1 фотографии
+                        
+                        if(CurrentScrollView.subviews.count > 2)
+                        {
+                            image.frame.origin.y = image.frame.height + y
+                             y += image.frame.height
+                        }
+                        CurrentScrollView.addSubview(image)
+                        y += 20
+                    }
+                
+                else if (photos.count == 0)
+                    {
+                        
+                        var notes = AllExportNotes[i].notes
+                        var notifi = AllExportNotes[i].notifi
+                        var Text = ""
+                        var Textnotifi = ""
+                        
+                        Text.removeAll()
+                        for(var n = 0 ; n < notes.count ; n++)
+                        {
+                            Text.appendContentsOf(notes[n].typeS)
+                            Text.appendContentsOf(":  ")
+                            Text.appendContentsOf(notes[n].text)
+                        }
+                        Textnotifi.removeAll()
+                        for(var n = 0 ; n < notifi.count ; n++)
+                        {
+                            Textnotifi.appendContentsOf(notifi[n].typeS)
+                            Textnotifi.appendContentsOf(":  ")
+                            Textnotifi.appendContentsOf(notifi[n].text)
+                        }
+                        
+                        var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        
+                        if(segmenttype){
+                            image.image = CreateTextOnlyBlue(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
+                        }
+                        else{
+                            image.image = CreateTextOnlyPink(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
+                        }
+                        if(CurrentScrollView.subviews.count > 2)
+                        {
+                            image.frame.origin.y = image.frame.height + y
+                             y += image.frame.height
+                        }
+                        CurrentScrollView.addSubview(image)
+                        y += 20
+                        
+                }
+
+            
+            }
+            
+            else if(AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
+                
+                var notes = AllExportNotes[i].notes
+                var notifi = AllExportNotes[i].notifi
+                var Text = ""
+                var Textnotifi = ""
+
+                Text.removeAll()
+                for(var n = 0 ; n < notes.count ; n++)
+                {
+                    Text.appendContentsOf(notes[n].typeS)
+                    Text.appendContentsOf(":  ")
+                    Text.appendContentsOf(notes[n].text)
+                }
+                Textnotifi.removeAll()
+                for(var n = 0 ; n < notifi.count ; n++)
+                {
+                    Textnotifi.appendContentsOf(notifi[n].typeS)
+                    Textnotifi.appendContentsOf(":  ")
+                    Textnotifi.appendContentsOf(notifi[n].text)
+                }
+
+                    var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                
+                    if(segmenttype){
+                        image.image = CreateTextOnlyBlue(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
+                    }
+                    else{
+                        image.image = CreateTextOnlyPink(String(AllExportNotes[i].date) , CenterText: Text + "\n" + Textnotifi)
+                    }
+                    if(CurrentScrollView.subviews.count > 2)
+                    {
+                        image.frame.origin.y = image.frame.height + y
+                         y += image.frame.height
+                    }
+                    CurrentScrollView.addSubview(image)
+                    y += 20
+   
+            }
+        print(CurrentScrollView.subviews.count)
+        }
+    
     }
 
     override func didReceiveMemoryWarning() {
