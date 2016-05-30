@@ -1767,7 +1767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JiO-FO-RwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4525" y="3452"/>
+            <point key="canvasLocation" x="-1843" y="4696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JE8-kd-qjd">
@@ -4033,7 +4033,13 @@
                                 <action selector="SegmentAction:" destination="fF2-zf-6If" eventType="valueChanged" id="Jmp-pP-nnG"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" image="Share-30" id="Knh-Pk-E15"/>
+                        <barButtonItem key="rightBarButtonItem" image="Share-30" id="Knh-Pk-E15">
+                            <connections>
+                                <segue destination="j9S-9q-F2f" kind="popoverPresentation" popoverAnchorBarButtonItem="Knh-Pk-E15" id="7ZU-P8-efV">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="CurrentScrollView" destination="Xkh-Kr-f7N" id="o9N-bb-YDj"/>
@@ -4090,12 +4096,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="0ZV-Wo-vNj"/>
         <segue reference="J8J-RP-rbp"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="0ZV-Wo-vNj"/>
-        <segue reference="P0H-Yd-JxP"/>
         <segue reference="kMg-vQ-vuk"/>
-        <segue reference="IGw-IB-TBh"/>
+        <segue reference="7ZU-P8-efV"/>
         <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
