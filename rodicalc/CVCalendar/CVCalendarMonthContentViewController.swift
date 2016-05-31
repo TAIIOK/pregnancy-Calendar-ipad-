@@ -288,7 +288,7 @@ extension CVCalendarMonthContentViewController {
 extension CVCalendarMonthContentViewController {
     public func prepareTopMarkersOnMonthView(monthView: MonthView, hidden: Bool) {
         monthView.mapDayViews { dayView in
-            dayView.topMarker?.hidden = hidden
+            dayView.topMarker?.hidden = false
         }
     }
     

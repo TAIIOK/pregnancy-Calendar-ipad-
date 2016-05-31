@@ -140,19 +140,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             getVideoDetails()
         }
 
-       
-
-
         FBSDKApplicationDelegate.sharedInstance()
         
         return true
     }
 
-    
 
-    
-
-    
     private func createEditableCopyOfDatabaseIfNeeded() -> Void
     {
         // First, test for existence.
@@ -169,6 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         db = try! Connection(destinationPath)
     }
 
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -276,32 +270,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    func loadNotifi() {
-        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        var dateFire=NSDate()
-        var fireComponents=calendar.components([NSCalendarUnit.Day , NSCalendarUnit.Month , NSCalendarUnit.Year , NSCalendarUnit.Hour , NSCalendarUnit.Minute], fromDate:dateFire)
-        let localNotification = UILocalNotification()
-        for (var i = 0 ; i < 10 ; i += 1){
-            for (var j = 0 ; j < 10 ; j += 1){
-                if (fireComponents.hour < 12 && i == 0){
-                    let localNotification = UILocalNotification()
-                    localNotification.fireDate = NSDate(timeIntervalSinceNow: 60) // время получения уведомления
-                }
-                else {
-                    fireComponents.hour = 12
-                    fireComponents.minute = j
-                    dateFire = calendar.dateFromComponents(fireComponents)!
-                    let localNotification = UILocalNotification()
-                    localNotification.fireDate = dateFire // время получения уведомления
-                }
-                localNotification.alertBody = "текст"
-                localNotification.timeZone = NSTimeZone.defaultTimeZone()
-                localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-            }
-            fireComponents.day += 1
-        }
-    }
 
     
     func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {

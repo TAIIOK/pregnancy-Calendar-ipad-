@@ -157,6 +157,7 @@
 		A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01D66FD1CD0F960004960CD /* Fabric.framework */; };
 		A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC2A11CBBB8FC007B4643 /* Charts.framework */; };
 		A01D67041CD0FF97004960CD /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC2A11CBBB8FC007B4643 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0244DDF1CFDCB370085C8F1 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0244DDE1CFDCB370085C8F1 /* Notifications.swift */; };
 		A04288051CE21656005DB953 /* addCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04288041CE21656005DB953 /* addCell.xib */; };
 		A042880F1CE2329B005DB953 /* notifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A042880E1CE2329B005DB953 /* notifi.json */; };
 		A042882B1CE4B064005DB953 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04288281CE4B064005DB953 /* FBSDKCoreKit.framework */; };
@@ -452,6 +453,7 @@
 		A01D66F41CD0F826004960CD /* 2photo(blue).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2photo(blue).png"; sourceTree = "<group>"; };
 		A01D66FC1CD0F960004960CD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A01D66FD1CD0F960004960CD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A0244DDE1CFDCB370085C8F1 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		A04288041CE21656005DB953 /* addCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addCell.xib; sourceTree = "<group>"; };
 		A042880E1CE2329B005DB953 /* notifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notifi.json; sourceTree = "<group>"; };
 		A04288281CE4B064005DB953 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
+				A0244DDE1CFDCB370085C8F1 /* Notifications.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				A010290B1CD29E0B005E339F /* CVCalendarMonthContentViewController.swift in Sources */,
 				A01029091CD29E0B005E339F /* CVCalendarMenuView.swift in Sources */,
 				8E1DD60A1CB2978500D55893 /* ShowZodiacViewController.swift in Sources */,
+				A0244DDF1CFDCB370085C8F1 /* Notifications.swift in Sources */,
 				8EEAC3381CCE542F007B4643 /* FTS4.swift in Sources */,
 				8EE947C41CE5E4D500064446 /* DrugsListTableViewController.swift in Sources */,
 				8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */,

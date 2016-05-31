@@ -80,7 +80,7 @@ public final class CVCalendarDayView: UIView {
         
         labelSetup()
         setupDotMarker()
-        topMarkerSetup()
+        
         
         if (frame.width > 0) {
             preliminarySetup()
@@ -90,6 +90,25 @@ public final class CVCalendarDayView: UIView {
         if !calendarView.shouldShowWeekdaysOut && isOut {
             hidden = true
         }
+        
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
+        
+        if(BirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 &&  (self.date.month >= components.month && self.date.year >= components.year  ) ){
+            let height = CGFloat(0.5)
+            let layer = CALayer()
+            layer.borderColor = UIColor.whiteColor().CGColor
+            layer.borderWidth = self.frame.width + 10
+            layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
+            
+            self.topMarker = layer
+            self.layer.addSublayer(self.topMarker!)
+            
+            
+        }
+        
+
     }
     
     public func dateWithWeekView(weekView: CVCalendarWeekView, andWeekIndex index: Int) -> CVDate {
@@ -209,14 +228,33 @@ extension CVCalendarDayView {
     public func topMarkerSetup() {
         safeExecuteBlock({
             func createMarker() {
+            //////////////////////////////////////////////// настройка полоски
                 let height = CGFloat(0.5)
                 let layer = CALayer()
-                layer.borderColor = UIColor.grayColor().CGColor
-                layer.borderWidth = height
-                layer.frame = CGRectMake(0, 1, CGRectGetWidth(self.frame), height)
-                
+                layer.borderColor = UIColor.whiteColor().CGColor
+                layer.borderWidth = self.frame.width + 10
+                layer.frame = CGRectMake(0,self.frame.height - 4, self.frame.width + 10, height)
                 self.topMarker = layer
                 self.layer.addSublayer(self.topMarker!)
+                
+                if (self.date != nil){
+                    
+                    let calendar = NSCalendar.currentCalendar()
+                    let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
+            
+        if(BirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 &&  ( self.date.month >= components.month && self.date.year >= components.year  ) ){
+                    let height = CGFloat(0.5)
+                    let layer = CALayer()
+                    layer.borderColor = UIColor.whiteColor().CGColor
+                    layer.borderWidth = self.frame.width + 10
+                    layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
+                    
+                    self.topMarker = layer
+                    self.layer.addSublayer(self.topMarker!)
+                
+                }
+                }
+                
             }
             
             if let delegate = self.calendarView.delegate {
