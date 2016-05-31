@@ -348,9 +348,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     if(drugs[i-1].isRemind == true){
                     drugs[i-1].isRemind = false
+                        //cancelLocalNotification("\(drugs[i-1].date)")
                     }
                     else if(drugs[i-1].isRemind == false){
                         drugs[i-1].isRemind = true
+                        
+           // scheduleNotification(calculateDate(drugs[i-1].date, before: drugs[i-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(drugs[i-1].name)" , objectId: "\(calculateDate(drugs[i-1].date, before: drugs[i-1].remindType , after: changeRemindInCurRec))")
                     }
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
                     break
@@ -574,19 +577,105 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
-        print("Update TIME")
+        print("Update TIME")/*
+        cancelLocalNotification("\(drugs[currentRec-1].date)")
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: drugs[currentRec-1].date)
+        components.hour = hour
+        components.minute = minute
+        components.second = 00
+        let newDate = calendar.dateFromComponents(components)
+        drugs[currentRec-1].date = newDate!
+        */
         drugs[currentRec-1].hour = hour
         drugs[currentRec-1].minute = minute
+        /*
+        if(doctors[currentRec-1].isRemind){
+            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
+        }*/
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("Update Notifi")
+        
+        /*
+        cancelLocalNotification("\(drugs[currentRec-1].date)")
+        
+        if(drugs[currentRec-1].isRemind){
+            scheduleNotification(calculateDate(drugs[currentRec-1].date, before: drugs[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(drugs[currentRec-1].name)" , objectId: "\(calculateDate(drugs[currentRec-1].date, before: drugs[currentRec-1].remindType , after: changeRemindInCurRec))")
+        }
+        */
         drugs[currentRec-1].interval = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
+    
+    
+    func calculateDate(date : NSDate,before : Int ,after : Int) -> NSDate
+    {
+        func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int, NumberOfHoursToAdd: Int, NumberOfMinuteToAdd: Int) -> NSDate
+        {
+            let dateComponents = NSDateComponents()
+            let CurrentCalendar = NSCalendar.currentCalendar()
+            let CalendarOption = NSCalendarOptions()
+            
+            dateComponents.day = NumberOfDaysToAdd
+            dateComponents.hour = NumberOfHoursToAdd
+            dateComponents.minute = NumberOfMinuteToAdd
+            let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+            return newDate!
+        }
+        var newdate = NSDate()
+        
+        switch before {
+        case 0:
+            return date
+        case 1:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -5)
+        case 2:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -15)
+        case 3:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -30)
+        case 4:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -1, NumberOfMinuteToAdd: 0)
+        case 5:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -2, NumberOfMinuteToAdd: 0)
+        case 6:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+        case 7:
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+        default:
+            break
+        }
+        
+        switch after {
+        case 0:
+            return newdate
+        case 1:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 5)
+        case 2:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 15)
+        case 3:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 30)
+        case 4:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 1, NumberOfMinuteToAdd: 0)
+        case 5:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 2, NumberOfMinuteToAdd: 0)
+        case 6:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+        case 7:
+            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+        default:
+            break
+        }
+        
+        return date
+        
+    }
+
     
     @IBAction func UpdateSectionDate(segue:UIStoryboardSegue) {
         print("Update Date")
