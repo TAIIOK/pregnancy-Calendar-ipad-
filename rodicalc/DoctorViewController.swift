@@ -289,7 +289,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     else if(doctors[i-1].isRemind == false){
                         doctors[i-1].isRemind = true
-                            scheduleNotification(calculateDate(doctors[i-1].date, before: doctors[i-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: doctors[i-1].remindType , after: changeRemindInCurRec))")
+                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: -1 , after: changeRemindInCurRec))")
                     }
                     
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)

@@ -348,12 +348,27 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     if(drugs[i-1].isRemind == true){
                     drugs[i-1].isRemind = false
-                        //cancelLocalNotification("\(drugs[i-1].date)")
+                        
+                        var notifiday = drugs[i-1].start
+                        
+                        for(var i = 0 ;i <= notifiday.daysFrom(drugs[i-1].end); i++)
+                        {
+                        cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
+                        }
+
+                        
                     }
                     else if(drugs[i-1].isRemind == false){
                         drugs[i-1].isRemind = true
                         
-           // scheduleNotification(calculateDate(drugs[i-1].date, before: drugs[i-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(drugs[i-1].name)" , objectId: "\(calculateDate(drugs[i-1].date, before: drugs[i-1].remindType , after: changeRemindInCurRec))")
+                        var notifiday = drugs[i-1].start
+                        
+                        for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
+                        {
+                            scheduleNotification(calculateDate(addDaystoGivenDate(drugs[j-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[j-1].cellType), notificationTitle:"У вас посещение врача \(drugs[j-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[j-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[j-1].cellType))")
+                        }
+                        
+        
                     }
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
                     break
@@ -577,23 +592,38 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
-        print("Update TIME")/*
-        cancelLocalNotification("\(drugs[currentRec-1].date)")
+        print("Update TIME")
+        //cancelLocalNotification("\(drugs[currentRec-1].date)")
+        var notifiday = drugs[currentRec-1].start
         
+        for(var i = 0 ;i <= notifiday.daysFrom(drugs[i-1].end); i++)
+        {
+            cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
+        }
+        
+
+    
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: drugs[currentRec-1].date)
+        let components = calendar.components([.Day , .Month , .Year], fromDate: drugs[currentRec-1].start)
         components.hour = hour
         components.minute = minute
         components.second = 00
         let newDate = calendar.dateFromComponents(components)
-        drugs[currentRec-1].date = newDate!
-        */
+        drugs[currentRec-1].start = newDate!
+    
+        
         drugs[currentRec-1].hour = hour
         drugs[currentRec-1].minute = minute
-        /*
-        if(doctors[currentRec-1].isRemind){
-            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
-        }*/
+        
+        if(drugs[currentRec-1].isRemind){
+            
+            var notifiday = drugs[currentRec-1].start
+            
+            for(var i = 0 ;i <= notifiday.daysFrom(drugs[currentRec-1].end); i++)
+            {
+                scheduleNotification(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[i-1].cellType), notificationTitle:"У вас посещение врача \(drugs[i-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[i-1].cellType))")
+            }
+        }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
@@ -613,21 +643,22 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.reloadData()
     }
     
+    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int, NumberOfHoursToAdd: Int, NumberOfMinuteToAdd: Int) -> NSDate
+    {
+        let dateComponents = NSDateComponents()
+        let CurrentCalendar = NSCalendar.currentCalendar()
+        let CalendarOption = NSCalendarOptions()
+        
+        dateComponents.day = NumberOfDaysToAdd
+        dateComponents.hour = NumberOfHoursToAdd
+        dateComponents.minute = NumberOfMinuteToAdd
+        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+        return newDate!
+    }
     
     func calculateDate(date : NSDate,before : Int ,after : Int) -> NSDate
     {
-        func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int, NumberOfHoursToAdd: Int, NumberOfMinuteToAdd: Int) -> NSDate
-        {
-            let dateComponents = NSDateComponents()
-            let CurrentCalendar = NSCalendar.currentCalendar()
-            let CalendarOption = NSCalendarOptions()
-            
-            dateComponents.day = NumberOfDaysToAdd
-            dateComponents.hour = NumberOfHoursToAdd
-            dateComponents.minute = NumberOfMinuteToAdd
-            let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
-            return newDate!
-        }
+
         var newdate = NSDate()
         
         switch before {
