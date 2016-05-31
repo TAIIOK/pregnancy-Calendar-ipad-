@@ -17,6 +17,8 @@ import Social
 
 import MessageUI
 
+var sharingExportVk = false
+var userID = ""
 class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewControllerDelegate {
 
     
@@ -37,63 +39,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     }
     
     func vkDidAutorize(parameters: Dictionary<String, String>) {
-        
-        print(selectedImages.count)
-
-        /*
-
-        VK.API.Upload.document(Media(documentData: PDF, type: "pdf")).send(method: HTTPMethods.POST , success:{response in print(response)
-            let name = response.arrayObject![0] as! NSDictionary
-            
-            var string = "doc" + parameters["user_id"]! as String + "_" + String(name.valueForKey("id"))
-            print(string)
-            let mass = [VK.Arg.userId : parameters["user_id"]! , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
-            
-            let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
-            
-            },error: { error in print(error)})
-
-        */
-        
-        
-        selectedImages = selectedImages.reverse()
-        var string = ""
-        var result = 0
-         dispatch_sync(dispatch_get_main_queue(),
-                       {
-        for(var i=0;i<selectedImages.count;i++){
-            
-        let media = Media(imageData: UIImagePNGRepresentation(selectedImages[i])!, type: .PNG )
-        
-           print(media)
-            
-         VK.API.Upload.Photo.toWall.toUser(media, userId: parameters["user_id"]!).send(method: HTTPMethods.GET , success: {response in print(response)
-
-            
-            let name = response.arrayObject![0] as! NSDictionary
-            
-            if(string.characters.count > 0)
-            {
-                string.appendContentsOf(",")
-            }
-            string.appendContentsOf("photo" + parameters["user_id"]! as String + "_" + String(name.valueForKey("id")!))
-          
-            print(string)
-            result += 1
-            }, error: {error in print(error)  ; result += 1})
-            }
-                       
-        })
-        
-        while (result != selectedImages.count)
-        {
-        }
-        
-        let mass = [VK.Arg.userId : parameters["user_id"]! , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
-        
-        let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
-    
-      
+      userID =  parameters["user_id"]! as String
     }
 
     func vkDidUnautorize() {
@@ -111,12 +57,72 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
 
     
     
-    
+    func Vk_sharing(){
+        
+        print(selectedImages.count)
+        
+        print(PDF.length)
+        
+        if(sharingExportVk){
+            VK.API.Upload.document(Media(documentData: PDF, type: "pdf")).send(method: HTTPMethods.POST , success:{response in print(response)
+                let name = response.arrayObject![0] as! NSDictionary
+                
+                var string = "doc" + userID + "_" + String(name.valueForKey("id")!)
+                print(string)
+                let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
+                
+                let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
+                
+                },error: { error in print(error)})
+            
+        }
+        else {
+            
+            
+            selectedImages = selectedImages.reverse()
+            var string = ""
+            var result = 0
+            dispatch_sync(dispatch_get_main_queue(),
+                          {
+                            for(var i=0;i<selectedImages.count;i++){
+                                
+                                let media = Media(imageData: UIImagePNGRepresentation(selectedImages[i])!, type: .PNG )
+                                
+                                print(media)
+                                
+                                VK.API.Upload.Photo.toWall.toUser(media, userId: userID).send(method: HTTPMethods.GET , success: {response in print(response)
+                                    
+                                    
+                                    let name = response.arrayObject![0] as! NSDictionary
+                                    
+                                    if(string.characters.count > 0)
+                                    {
+                                        string.appendContentsOf(",")
+                                    }
+                                    string.appendContentsOf("photo" + userID + "_" + String(name.valueForKey("id")!))
+                                    
+                                    print(string)
+                                    result += 1
+                                    }, error: {error in print(error)  ; result += 1})
+                            }
+                            
+            })
+            
+            while (result != selectedImages.count)
+            {
+            }
+            
+            let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
+            
+            let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-   
+        VK.start(appID: "5437729", delegate: self)
+        
     //view.opaque = false
         // Do any additional setup after loading the view.
     }
@@ -169,8 +175,10 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     @IBAction func ShareVK(sender: AnyObject) {
         
             print("шарю во вконтактик")
-        VK.start(appID: "5437729", delegate: self)
+
         VK.autorize()
+      
+        Vk_sharing()
         
 
     }

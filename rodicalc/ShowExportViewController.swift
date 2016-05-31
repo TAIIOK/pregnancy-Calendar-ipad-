@@ -27,10 +27,14 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
        CurrentScrollView.delegate = self
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
-        CurrentScrollView.contentSize = CGSizeMake(1000 , 1000)
         loadExportImages()
-        
+        sharingExportVk = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        sharingExportVk  = false
+        PDF = NSData()
     }
     
     
@@ -255,9 +259,13 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     y += 20
    
             }
+            else {
+                CurrentScrollView.contentSize = CGSizeMake(700 , CurrentScrollView.contentSize.height -  620)
+            }
             PDF = toPDF(CurrentScrollView.subviews)!
             
         }
+
         
     
     }
@@ -267,6 +275,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         // Dispose of any resources that can be recreated.
     }
     
+
 
     /*
     // MARK: - Navigation

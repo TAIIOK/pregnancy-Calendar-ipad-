@@ -56,6 +56,9 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     @IBOutlet weak var changer: UISegmentedControl!
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
+        
+        sharingExportVk  = false
+        
         super.viewDidLoad()
         PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         PhotoCollectionView.backgroundColor = .clearColor()
