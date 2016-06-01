@@ -121,6 +121,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = CustomPhotoAlbum.sharedInstance
         VK.start(appID: "5437729", delegate: self)
         
     //view.opaque = false
@@ -264,16 +265,32 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     @IBAction func ShareFB(sender: AnyObject) {
         print("шарю в фсб")
         
-        var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        shareToFacebook.setInitialText("")
-        
+        //var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+      //  shareToFacebook.setInitialText("")
+  
         for (var i = 0 ; i < selectedImages.count ; i++){
-            shareToFacebook.addImage(selectedImages[i])
+          //  shareToFacebook.addImage(selectedImages[i])
+            CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
             
         }
     
-
-        self.presentViewController(shareToFacebook, animated: true, completion: nil)
+        var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
+        var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        alert.addAction(ok)
+        var open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+            
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
+                UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/PageId")!)
+            }
+            else {
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }
+             } )
+        alert.addAction(open)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        //self.presentViewController(shareToFacebook, animated: true, completion: nil)
         
         // если использовать апи )) для верисии ios 7
         

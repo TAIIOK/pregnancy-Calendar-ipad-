@@ -54,6 +54,7 @@
 	<string>test_auth</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fb</string>
 		<string>fbauth2</string>
 		<string>fb1731805480431829</string>
 		<string>vkauthorize</string>
@@ -79,6 +80,11 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

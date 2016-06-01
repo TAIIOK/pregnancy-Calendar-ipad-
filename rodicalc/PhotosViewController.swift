@@ -78,6 +78,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         //loadImage()
         //loadImageUzi()
         loadPhotos()
+        
+        
     }
 
     func openCamera(){

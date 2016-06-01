@@ -14,15 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gNC1jGqWHDyOi8AjxhekiFXNm7w=
-		</data>
-		<key>Modules/SwiftyVK.swiftmodule/arm.swiftdoc</key>
-		<data>
-		J2pm0SFygaqrVZS1k2WMwmU//NI=
-		</data>
-		<key>Modules/SwiftyVK.swiftmodule/arm.swiftmodule</key>
-		<data>
-		aiqGJlHtuors888q5jrXjMcXmCc=
+		ffLQngKSiveuqq3qp0G1KIsUc98=
 		</data>
 		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -56,7 +48,7 @@
 		</dict>
 		<key>SwiftyVKResources-iOS.bundle/Info.plist</key>
 		<data>
-		NjMmBsPqz+UsHeD4Mx0LzUZkJUk=
+		e74/4BxxsMH7zbWN+pqBH1FAEB4=
 		</data>
 		<key>SwiftyVKResources-iOS.bundle/be.lproj/CaptchaView-iOS.strings</key>
 		<dict>
@@ -155,28 +147,6 @@
 			2T/EsQ2AeOdS8pdyK0MXsCNtAldnEuNkrJWj9v3FDzE=
 			</data>
 		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/arm.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			J2pm0SFygaqrVZS1k2WMwmU//NI=
-			</data>
-			<key>hash2</key>
-			<data>
-			OIY34DCjmgQcUHrpVXH+TGlhc2S+djfeC2s9cykrMY0=
-			</data>
-		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/arm.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			aiqGJlHtuors888q5jrXjMcXmCc=
-			</data>
-			<key>hash2</key>
-			<data>
-			didxp/zIyAr6R14E2tS0+40e/xFk1bewMMTrvzI6W+4=
-			</data>
-		</dict>
 		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
@@ -240,11 +210,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NjMmBsPqz+UsHeD4Mx0LzUZkJUk=
+			e74/4BxxsMH7zbWN+pqBH1FAEB4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zy4+ZXFyHdnemZljx0/XeBwujvBBzrJTqkzGO9/OSnQ=
+			aiLPKGUWCDaBIhDxFrB2yY1rIwfhFX7OK6obCeMtRno=
 			</data>
 		</dict>
 		<key>SwiftyVKResources-iOS.bundle/be.lproj/CaptchaView-iOS.strings</key>

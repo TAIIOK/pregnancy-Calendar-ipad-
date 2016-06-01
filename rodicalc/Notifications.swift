@@ -84,6 +84,10 @@ func loadNotifi() {
             {
                 continue
             }
+            if(notification[j].characters.count < 5)
+            {
+                continue
+            }
             localNotification.alertBody = notification[j]
             
             localNotification.category = "invite"

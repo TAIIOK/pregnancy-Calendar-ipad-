@@ -186,6 +186,7 @@
 		A07622851CF71CD5003951EC /* TextOnlyPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622841CF71CD5003951EC /* TextOnlyPink.xib */; };
 		A07622871CF71CEF003951EC /* TwoPhotosPink.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622861CF71CEF003951EC /* TwoPhotosPink.xib */; };
 		A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622901CF7465A003951EC /* PhotoTemplate.xib */; };
+		A09350CB1CFF90BE00563AE8 /* CreateAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */; };
 		A0A527111CF87559003F7041 /* ShowExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A527101CF87559003F7041 /* ShowExportViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -483,6 +484,7 @@
 		A07622841CF71CD5003951EC /* TextOnlyPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyPink.xib; sourceTree = "<group>"; };
 		A07622861CF71CEF003951EC /* TwoPhotosPink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotosPink.xib; sourceTree = "<group>"; };
 		A07622901CF7465A003951EC /* PhotoTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTemplate.xib; sourceTree = "<group>"; };
+		A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAlbum.swift; sourceTree = "<group>"; };
 		A0A527101CF87559003F7041 /* ShowExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowExportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -648,6 +650,7 @@
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
 				A0244DDE1CFDCB370085C8F1 /* Notifications.swift */,
+				A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -1243,6 +1246,7 @@
 				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
 				A04288351CE4B0D4005DB953 /* OKSDK.m in Sources */,
 				8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */,
+				A09350CB1CFF90BE00563AE8 /* CreateAlbum.swift in Sources */,
 				8E5A6BD21CD7A1680073B693 /* FoodTableViewCell.swift in Sources */,
 				8EEAC3401CCE542F007B4643 /* CustomFunctions.swift in Sources */,
 				A010291C1CD29E0B005E339F /* CVSet.swift in Sources */,
