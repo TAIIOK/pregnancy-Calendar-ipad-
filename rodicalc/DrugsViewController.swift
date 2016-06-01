@@ -679,7 +679,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 7:
             newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         default:
-            break
+            return date
         }
         
         switch after {

@@ -32,9 +32,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         loadDate()
-        if selectedDay == nil{
-            //self.presentedDateUpdated(CVDate(date: NSDate()))
-        }
+
+        self.presentedDateUpdated(CVDate(date: NSDate()))
 
         if !Back && DateisLoaded{
             Cancel()

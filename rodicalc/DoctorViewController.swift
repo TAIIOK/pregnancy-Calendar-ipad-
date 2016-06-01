@@ -241,7 +241,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         //Create the AlertController
         if #available(iOS 8.0, *) {
-            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранное лекарство?", preferredStyle: .Alert)
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранного врача?", preferredStyle: .Alert)
             
             //Create and add the Cancel action
             let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
@@ -289,7 +289,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     else if(doctors[i-1].isRemind == false){
                         doctors[i-1].isRemind = true
-                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: -1 , after: changeRemindInCurRec))")
+                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: doctors[i-1].remindType , after: changeRemindInCurRec))")
                     }
                     
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
@@ -512,7 +512,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 7:
             newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         default:
-            break
+            return date
         }
         
         switch after {
