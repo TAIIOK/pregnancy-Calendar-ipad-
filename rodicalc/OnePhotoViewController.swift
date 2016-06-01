@@ -12,6 +12,7 @@ import UIKit
 class OnePhotoViewController: UIViewController{
 
     
+    @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
@@ -19,9 +20,23 @@ class OnePhotoViewController: UIViewController{
         
         image.image = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
         
+     //  commentField.text = choosedSegmentImages ? photos[currentPhoto].comment : uzis[currentPhoto].comment
+        
         selectedImages.append(image.image!)
     }
     
+    @IBAction func SaveButton(sender: AnyObject) {
+      /*
+    if(choosedSegmentImages)
+    {
+     photos[currentPhoto].comment = commentField.text
+    }
+    else{
+     uzis[currentPhoto].comment = commentField.text
+        }
+        */
+        
+    }
     override func viewDidDisappear(animated: Bool) {
         selectedImages.removeAll()
     }

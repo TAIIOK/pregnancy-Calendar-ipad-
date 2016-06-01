@@ -1012,7 +1012,7 @@
                                             <constraint firstAttribute="width" constant="42" id="qrc-Pi-s7n"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DateExpTable" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-H3-VQN">
@@ -1076,7 +1076,7 @@
                                             <constraint firstAttribute="width" constant="115" id="ueE-Ar-8Ba"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E4w-jA-BwI">
@@ -1136,7 +1136,7 @@
                                             <constraint firstAttribute="width" constant="168" id="FvC-Q9-iP3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LjR-gp-5sU">
@@ -1195,7 +1195,7 @@
                                             <constraint firstAttribute="width" constant="154" id="qMj-2N-hfW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7TB-dr-9Do">
@@ -3250,18 +3250,44 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-VY-pl3">
-                                <rect key="frame" x="20" y="72" width="560" height="508"/>
+                                <rect key="frame" x="20" y="72" width="560" height="411"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGW-cT-UV8">
+                                <rect key="frame" x="28" y="522" width="373" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-F5-2Wh">
+                                <rect key="frame" x="410" y="506" width="170" height="58"/>
+                                <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="GiS-i1-Mmj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Сохранить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SaveButton:" destination="sIn-en-0ln" eventType="touchUpInside" id="hCB-j5-gkx"/>
+                                    <action selector="buttonSpasms:" destination="IN0-Vg-fgl" eventType="touchUpInside" id="HsO-2f-QCv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HKP-UD-nkW" firstAttribute="bottom" secondItem="yvQ-JJ-oPF" secondAttribute="top" id="1rd-rM-DHv"/>
+                            <constraint firstItem="Tuc-F5-2Wh" firstAttribute="trailing" secondItem="cCX-VY-pl3" secondAttribute="trailing" id="20n-vz-5gi"/>
+                            <constraint firstItem="uGW-cT-UV8" firstAttribute="baseline" secondItem="Tuc-F5-2Wh" secondAttribute="baseline" id="4M3-rA-2ay"/>
                             <constraint firstItem="HKP-UD-nkW" firstAttribute="top" secondItem="iEt-nn-rjk" secondAttribute="top" id="9uw-BD-xyD"/>
                             <constraint firstAttribute="trailing" secondItem="HKP-UD-nkW" secondAttribute="trailing" id="CZ1-gh-DR4"/>
                             <constraint firstItem="HKP-UD-nkW" firstAttribute="leading" secondItem="iEt-nn-rjk" secondAttribute="leading" id="NUx-pS-EZY"/>
                             <constraint firstItem="HKP-UD-nkW" firstAttribute="centerX" secondItem="cCX-VY-pl3" secondAttribute="centerX" id="OEN-Ms-G6A"/>
+                            <constraint firstItem="yvQ-JJ-oPF" firstAttribute="top" secondItem="Tuc-F5-2Wh" secondAttribute="bottom" constant="36" id="W9V-sa-xEr"/>
                             <constraint firstItem="cCX-VY-pl3" firstAttribute="top" secondItem="h3H-tO-hlf" secondAttribute="bottom" constant="8" symbolic="YES" id="aFw-FR-nxT"/>
-                            <constraint firstAttribute="bottom" secondItem="cCX-VY-pl3" secondAttribute="bottom" constant="20" symbolic="YES" id="f6I-sB-RzK"/>
+                            <constraint firstAttribute="bottom" secondItem="cCX-VY-pl3" secondAttribute="bottom" constant="117" id="f6I-sB-RzK"/>
+                            <constraint firstItem="Tuc-F5-2Wh" firstAttribute="top" secondItem="cCX-VY-pl3" secondAttribute="bottom" constant="23" id="gQg-5d-ksc"/>
+                            <constraint firstItem="uGW-cT-UV8" firstAttribute="leading" secondItem="iEt-nn-rjk" secondAttribute="leadingMargin" constant="8" id="nck-2E-0vK"/>
+                            <constraint firstItem="Tuc-F5-2Wh" firstAttribute="leading" secondItem="uGW-cT-UV8" secondAttribute="trailing" constant="9" id="vJV-eV-McO"/>
                             <constraint firstItem="cCX-VY-pl3" firstAttribute="leading" secondItem="iEt-nn-rjk" secondAttribute="leadingMargin" id="wyK-fX-sIh"/>
                         </constraints>
                     </view>
@@ -3290,6 +3316,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="commentField" destination="uGW-cT-UV8" id="ogd-I3-uGg"/>
                         <outlet property="image" destination="cCX-VY-pl3" id="8yK-Jh-9Ih"/>
                     </connections>
                 </viewController>
@@ -4096,12 +4123,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="T6c-gQ-90V"/>
+        <segue reference="gAm-h9-WUK"/>
         <segue reference="0ZV-Wo-vNj"/>
-        <segue reference="J8J-RP-rbp"/>
         <segue reference="L53-bo-E8K"/>
         <segue reference="kMg-vQ-vuk"/>
-        <segue reference="7ZU-P8-efV"/>
+        <segue reference="P0H-Yd-JxP"/>
         <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
