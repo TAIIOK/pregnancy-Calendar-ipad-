@@ -86,6 +86,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
             picker!.sourceType = UIImagePickerControllerSourceType.Camera
             picker!.cameraCaptureMode = .Photo
             picker!.modalPresentationStyle = .FormSheet
+        
             presentViewController(picker!, animated: true, completion: nil)
         }else{
             if #available(iOS 8.0, *) {
@@ -113,6 +114,12 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let type: Int
+        
+        if (picker.sourceType == UIImagePickerControllerSourceType.Camera)
+        {
+            UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
+        }
+        
         choosedSegmentImages ? (type=0) : (type=1)
         choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: NSDate(), text: "")) : uzis.append(Photo(image: chosenImage, date: NSDate(), text: ""))
         dismissViewControllerAnimated(true, completion: nil)
