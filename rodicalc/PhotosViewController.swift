@@ -16,9 +16,11 @@ import CoreData
 class Photo: NSObject {
     var image: UIImage
     var date: NSDate
-    init(image: UIImage, date: NSDate) {
+    var text: String
+    init(image: UIImage, date: NSDate, text: String) {
         self.image = image
         self.date = date
+        self.text = text
         super.init()
     }
 }
@@ -112,7 +114,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let type: Int
         choosedSegmentImages ? (type=0) : (type=1)
-        choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: NSDate())) : uzis.append(Photo(image: chosenImage, date: NSDate()))
+        choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: NSDate(), text: "")) : uzis.append(Photo(image: chosenImage, date: NSDate(), text: ""))
         dismissViewControllerAnimated(true, completion: nil)
         PhotoCollectionView.reloadData()
         
@@ -149,7 +151,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
        
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
- 
+        let text = Expression<String>("Text")
         let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
         let Date = NSDate()
         let calendar = NSCalendar.currentCalendar()
@@ -161,10 +163,10 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         if(Type == 0){
             let table = Table("Photo")
             
-            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- ""))
         }else{
             let table = Table("Uzi")
-            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(newDate!)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- ""))
         }
         /*let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
@@ -216,24 +218,25 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         let type = Expression<Int64>("Type")
+        let text = Expression<String>("Text")
         
-        for i in try! db.prepare(table) {
+        for i in try! db.prepare(table.select(date,image,type,text)) {
             let a = i[image] as! Blob
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            photos.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
+            photos.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
         }
 
         table = Table("Uzi")
-        for i in try! db.prepare(table) {
+        for i in try! db.prepare(table.select(date,image,type,text)) {
             let a = i[image] as! Blob
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter() 
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            uzis.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
+            uzis.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
         }
     }
     

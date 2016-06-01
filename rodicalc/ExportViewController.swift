@@ -11,10 +11,10 @@ import CoreData
 
 class ExportNote: NSObject {
     var date: NSDate
-    var photos: [UIImage]
+    var photos: [PhotoWithText]
     var notes: [TextNoteE]
     var notifi: [TextNoteE]
-    init(date: NSDate, photos: [UIImage], notes: [TextNoteE], notifi: [TextNoteE]) {
+    init(date: NSDate, photos: [PhotoWithText], notes: [TextNoteE], notifi: [TextNoteE]) {
         self.date = date
         self.photos = photos
         self.notes = notes
@@ -23,6 +23,15 @@ class ExportNote: NSObject {
     }
 }
 
+class PhotoWithText: NSObject {
+    var image: UIImage
+    var text: String
+    init(photos: UIImage, text: String) {
+        self.image = photos
+        self.text = text
+        super.init()
+    }
+}
 
 class TextNoteE: NSObject {
     var date: NSDate
@@ -140,7 +149,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.SelectedNoteFromDate(day_)
         }
         
-        /*print("Count: \(AllExportNotes.count)")
+        print("Count: \(AllExportNotes.count)")
         for i in AllExportNotes{
             print("Date: \(i.date)")
             print("Photo count: \(i.photos.count)")
@@ -155,7 +164,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             for n in i.notifi{
                 print("\tNotifi: \(n)")
             }
-        }*/
+        }
         if showingExportType == 0 {
             showingExportType = 1
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
@@ -170,7 +179,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     }
     
     func SelectedNoteFromDate(date: NSDate){
-        var imgmas = [UIImage]()
+        var imgmas = [PhotoWithText]()
         var notemas = [TextNoteE]()
         var notifimas = [TextNoteE]()
         
@@ -178,7 +187,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         if indexPathPhoto != nil{
             for i in indexPathPhoto!{
                 if ExpPhoto[i.row].date == date{
-                    imgmas.append(ExpPhoto[i.row].image)
+                    imgmas.append(PhotoWithText(photos: ExpPhoto[i.row].image, text: ExpPhoto[i.row].text))
                 }
             }
         }
@@ -582,7 +591,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 NotesExportDrugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
         }
-
     }
 
     func loadNotifi(){
@@ -641,6 +649,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         var table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
         let count = try db.scalar(table.filter(date == "\(Date)").count)
         for i in try! db.prepare(table.filter(date == "\(Date)")) {
             let a = i[image] as! Blob
@@ -648,7 +657,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
+            ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
         }
         
         table = Table("Uzi")
@@ -658,7 +667,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             let b = i[date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!))
+            ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
         }
 
     }

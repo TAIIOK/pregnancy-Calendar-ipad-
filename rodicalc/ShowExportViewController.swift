@@ -69,19 +69,19 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                 if(photos.count >= 2 ){
                 if(segmenttype){
-                image.image = CreateTwoPhotosBlue(photos[0], right: photos[1], title: dateString , leftText: "", rightText: "")
+                image.image = CreateTwoPhotosBlue(photos[0].image, right: photos[1].image, title: dateString , leftText: photos[0].text, rightText: photos[1].text)
                 }
                 else{
-                image.image = CreateTwoPhotosPink(photos[0], right: photos[1], title: dateString , leftText: "", rightText: "")
+                image.image = CreateTwoPhotosPink(photos[0].image, right: photos[1].image, title: dateString , leftText: photos[0].text, rightText: photos[1].text)
                       }
                             }
                             
                             else if (photos.count < 2 )  {
                                 if(segmenttype){
-                                image.image = CreateTwoPhotosBlue(photos[0], right: photos[0], title: dateString , leftText: "", rightText: "")
+                                image.image = CreateTwoPhotosBlue(photos[0].image, right: photos[0].image, title: dateString , leftText: photos[0].text, rightText: photos[0].text)
                                 }
                                 else{
-                                image.image = CreateTwoPhotosPink(photos[0], right: photos[0], title: dateString , leftText: "", rightText: "")
+                                image.image = CreateTwoPhotosPink(photos[0].image, right: photos[0].image, title: dateString , leftText: photos[0].text, rightText: photos[0].text)
                                 }
                             }
                 
@@ -122,12 +122,10 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         
                         if(segmenttype){
-
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0], UpText: "", DownPhoto: photos[1], DownText: "", Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
-                            
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0], UpText: "", DownPhoto: photos[1], DownText: "", Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -159,12 +157,10 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         
                         if(segmenttype){
-                            
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0], UpText: "", DownPhoto: photos[0], DownText: "", Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
-                            
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0], UpText: "", DownPhoto: photos[0], DownText: "", Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
