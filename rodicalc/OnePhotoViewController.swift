@@ -20,23 +20,60 @@ class OnePhotoViewController: UIViewController{
         
         image.image = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
         
-     //  commentField.text = choosedSegmentImages ? photos[currentPhoto].comment : uzis[currentPhoto].comment
+        commentField.text = choosedSegmentImages ? photos[currentPhoto].text : uzis[currentPhoto].text
         
         selectedImages.append(image.image!)
     }
     
     @IBAction func SaveButton(sender: AnyObject) {
-      /*
-    if(choosedSegmentImages)
-    {
-     photos[currentPhoto].comment = commentField.text
-    }
-    else{
-     uzis[currentPhoto].comment = commentField.text
+      
+        if(choosedSegmentImages)
+        {
+            photos[currentPhoto].text = commentField.text!
         }
-        */
-        
+        else{
+            uzis[currentPhoto].text = commentField.text!
+        }
+        UpdatePhotosInDB()
     }
+    
+    func UpdatePhotosInDB() {
+        if(choosedSegmentImages)
+        {
+            let table = Table("Photo")
+            let date = Expression<String>("Date")
+            let image = Expression<Blob>("Image")
+            let text = Expression<String>("Text")
+            
+            let count = try! db.scalar(table.count)
+            
+            if count > 0{
+                try! db.run(table.delete())
+            }
+            for var i in photos{
+                let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+                try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
+            }
+        }
+        else{
+            let table = Table("Uzi")
+            let date = Expression<String>("Date")
+            let image = Expression<Blob>("Image")
+            let text = Expression<String>("Text")
+            let count = try! db.scalar(table.count)
+            
+            if count > 0{
+                try! db.run(table.delete())
+            }
+            
+            for var i in uzis{
+                let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+                let dateFormatter = NSDateFormatter()
+                try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
+            }
+        }
+    }
+    
     override func viewDidDisappear(animated: Bool) {
         selectedImages.removeAll()
     }
@@ -74,24 +111,21 @@ class OnePhotoViewController: UIViewController{
         return s1.row > s2.row
     }
     
-  
-    
-    
-    
-    func savePhotos(img: UIImage, Type: Int){
+    func savePhotos(img: UIImage, Type: Int, Text: String){
         
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         let type = Expression<Int64>("Type")
+        let text = Expression<String>("Text")
         
         let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
         
         if(Type == 0){
             let table = Table("Photo")
-            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type)))
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type), text <- Text))
         }else{
             let table = Table("Uzi")
-            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type)))
+            try! db.run(table.insert(date <- "\(NSDate())", image <- Blob(bytes: imageData.datatypeValue.bytes), type <- Int64(Type), text <- Text))
         }
     }
     
@@ -99,6 +133,7 @@ class OnePhotoViewController: UIViewController{
         let table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
         
         let count = try! db.scalar(table.count)
         
@@ -107,7 +142,7 @@ class OnePhotoViewController: UIViewController{
         }
         for var i in photos{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
-            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
     }
     
@@ -115,6 +150,7 @@ class OnePhotoViewController: UIViewController{
         let table = Table("Uzi")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
         let count = try! db.scalar(table.count)
         
         if count > 0{
@@ -124,7 +160,7 @@ class OnePhotoViewController: UIViewController{
         for var i in uzis{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             let dateFormatter = NSDateFormatter()
-            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
     }
     

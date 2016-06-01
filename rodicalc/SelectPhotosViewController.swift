@@ -139,6 +139,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         let table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
         
         let count = try! db.scalar(table.count)
         
@@ -147,47 +148,15 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         }
         for var i in photos{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
-            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
-        
-
-        /*let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("Image", inManagedObjectContext:managedContext)
-        
-        fetchRequest.entity = entityDescription
-        
-        do {
-            let result = try managedContext.executeFetchRequest(fetchRequest)
-            var j=0
-            for i in result{
-                if j == index {
-                    managedContext.deleteObject(i as! NSManagedObject)}
-                j += 1
-            }
-            do {
-                try managedContext.save()
-            } catch {
-                let saveError = error as NSError
-                print(saveError)
-            }
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }*/
     }
     
     func deleteImageUzi(index: Int){
         let table = Table("Uzi")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
         let count = try! db.scalar(table.count)
         
         if count > 0{
@@ -196,43 +165,9 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         
         for var i in uzis{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
-            let dateFormatter = NSDateFormatter()
-            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes)))
+            try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
-        /*let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("ImageUzi", inManagedObjectContext:managedContext)
-        
-        fetchRequest.entity = entityDescription
-        
-        do {
-            let result = try managedContext.executeFetchRequest(fetchRequest)
-            var j=0
-            for i in result{
-                if j == index {
-                    managedContext.deleteObject(i as! NSManagedObject)}
-                j += 1
-            }
-            do {
-                try managedContext.save()
-            } catch {
-                let saveError = error as NSError
-                print(saveError)
-            }
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }*/
-        
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

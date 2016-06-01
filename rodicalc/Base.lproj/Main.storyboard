@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -711,7 +711,7 @@
                                             <constraint firstAttribute="height" constant="30" id="iZa-I4-knh"/>
                                             <constraint firstAttribute="width" constant="141" id="nfe-WF-1LD"/>
                                         </constraints>
-                                        <state key="normal" title="Подключиться">
+                                        <state key="normal" title="Повторить">
                                             <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -929,7 +929,7 @@
                                             <constraint firstAttribute="width" constant="141" id="q2g-UD-GTn"/>
                                         </constraints>
                                         <color key="tintColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Подключиться">
+                                        <state key="normal" title="Повторить">
                                             <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -2441,7 +2441,7 @@
                                             <constraint firstAttribute="height" constant="30" id="F3V-Ca-3Zx"/>
                                             <constraint firstAttribute="width" constant="141" id="JDp-6y-orj"/>
                                         </constraints>
-                                        <state key="normal" title="Подключиться">
+                                        <state key="normal" title="Повторить">
                                             <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -4123,12 +4123,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1hf-Db-e0Z"/>
+        <segue reference="FRD-nV-ZPC"/>
         <segue reference="T6c-gQ-90V"/>
         <segue reference="gAm-h9-WUK"/>
-        <segue reference="0ZV-Wo-vNj"/>
-        <segue reference="L53-bo-E8K"/>
-        <segue reference="kMg-vQ-vuk"/>
-        <segue reference="P0H-Yd-JxP"/>
-        <segue reference="FRD-nV-ZPC"/>
+        <segue reference="hz0-ZP-idO"/>
+        <segue reference="K7f-B5-ZW2"/>
+        <segue reference="VCA-Rz-Uxj"/>
     </inferredMetricsTieBreakers>
 </document>

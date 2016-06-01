@@ -89,7 +89,7 @@ class TwoPhotoBlue: UIView{
         let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
-        if(left == right)
+        if(left != right)
         {
         let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         RightView.xibSetup(right,title: rightText)
@@ -116,7 +116,7 @@ class TextWithTwoPhotoBlue: UIView{
     func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
         
         rotateViews()
-        if(UpPhoto == DownPhoto){
+        if(UpPhoto != DownPhoto){
         let PhotoUPView = PhotoTemplate(frame: CGRect(x: UpPhotoView.frame.origin.x, y: UpPhotoView.frame.origin.y, width: 600, height: 700))
         PhotoUPView.xibSetup(UpPhoto,title: UpText)
         UpPhotoView.image = PhotoUPView.screenshot
@@ -162,7 +162,7 @@ class TwoPhotoPink: UIView{
         let LeftView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         LeftView.xibSetup(left,title: leftText)
         leftImage.image = LeftView.screenshot
-        if(left == right){
+        if(left != right){
         let RightView = PhotoTemplate(frame: CGRect(x: leftImage.frame.origin.x, y: leftImage.frame.origin.y, width: 600, height: 700))
         RightView.xibSetup(right,title: rightText)
         rightImage.image = RightView.screenshot
@@ -191,7 +191,7 @@ class TextWithTwoPhotoPink: UIView{
         
         rotateViews()
         
-        if(UpPhoto == DownPhoto){
+        if(UpPhoto != DownPhoto){
         let PhotoUPView = PhotoTemplate(frame: CGRect(x: UpPhotoView.frame.origin.x, y: UpPhotoView.frame.origin.y, width: 600, height: 700))
         PhotoUPView.xibSetup(UpPhoto,title: UpText)
         UpPhotoView.image = PhotoUPView.screenshot
