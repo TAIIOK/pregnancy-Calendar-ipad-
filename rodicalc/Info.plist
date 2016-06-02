@@ -54,6 +54,11 @@
 	<string>test_auth</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fbshareextension</string>
+		<string>fbauth2</string>
+		<string>fb-messenger-api</string>
+		<string>fbapi</string>
+		<string>ok</string>
 		<string>fb</string>
 		<string>fbauth2</string>
 		<string>fb1731805480431829</string>
