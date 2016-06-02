@@ -96,10 +96,10 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.row == dateType && selectedDay != nil{
             var date = selectedDay.date.convertedDate()!
             if dateType == 0{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
+               // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
             }
             else if dateType == 1{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
+               // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
             }
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components([.Day , .Month , .Year], fromDate: date)

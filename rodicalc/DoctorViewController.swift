@@ -447,7 +447,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("Update TIME")
         let tmp = doctors[currentRec-1].date
         cancelLocalNotification("\(doctors[currentRec-1].date)")
-
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: tmp)
         components.hour = hour
@@ -455,9 +454,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         components.second = 00
         let newDate = calendar.dateFromComponents(components)
         doctors[currentRec-1].date = newDate!
-        
+        if(doctors.count >= currentRec-1){
         if(doctors[currentRec-1].isRemind){
             scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
+        }
         }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()

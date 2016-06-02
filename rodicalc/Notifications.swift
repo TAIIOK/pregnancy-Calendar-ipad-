@@ -71,7 +71,7 @@ func loadNotifi() {
         
         for (var j = 0 ; j < 9 ; j += 1){
             var localNotification = UILocalNotification()
-            localNotification.category = "invite"
+            //localNotification.category = "adolf"
             if (components.hour > 12 && i == 0){
                 localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 + Double(j) * 60) // время получения уведомления
             }
@@ -136,8 +136,8 @@ func scheduleNotification(notifiDate :NSDate, notificationTitle:String, objectId
     localNotification.alertBody = notificationTitle
     localNotification.timeZone = NSTimeZone.defaultTimeZone()
     localNotification.applicationIconBadgeNumber = 1
-    localNotification.soundName = UILocalNotificationDefaultSoundName
-    localNotification.category = "invite"
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.alertAction = "View"
     var infoDict = ["objectId" : objectId]
     localNotification.userInfo = infoDict
     

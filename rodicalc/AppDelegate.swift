@@ -133,6 +133,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
 
+        if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
+            if #available(iOS 8.0, *) {
+                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil))
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        
+        /*
+        
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge , .Sound], categories: nil))
 
         let acceptAction = UIMutableUserNotificationAction()
@@ -151,12 +161,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let category = UIMutableUserNotificationCategory()
-        category.identifier = "invite"
+        category.identifier = "adolf"
         category.setActions([acceptAction, declineAction], forContext: UIUserNotificationActionContext.Default)
         let categories = Set([category])
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge , .Sound] , categories: categories )
         application.registerUserNotificationSettings(settings)
-        
+        */
   
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
@@ -396,10 +406,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 /*
                     let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
+                    let vc : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
                     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                    self.window?.rootViewController = initialViewControlleripad
-                    self.window?.makeKeyAndVisible()
-                     */
+                   var  ViewControllers =  [vc,initialViewControlleripad]
+                
+                self.window?.rootViewController?.presentViewController(initialViewControlleripad, animated: true, completion: nil)
+                */
         
                 } )
 
