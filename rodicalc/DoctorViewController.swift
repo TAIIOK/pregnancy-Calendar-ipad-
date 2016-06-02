@@ -51,9 +51,27 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var animationFinished = true
     var doctors = [Doctor]()
     
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
+        
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
@@ -121,11 +139,19 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let newDate = calendar.dateFromComponents(components)
             
             doctors.append(Doctor(date: newDate!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
-            arrayForBool.addObject("0")
+            arrayForBool.addObject("1")
+
             tbl.reloadData()
+            var headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
+            headerview?.setopen(true)
+            headerview?.changeFields()
+            headerview?.doctornameText.editing == true
+            headerview?.doctornameText.selected == true
+            headerview?.doctornameText.becomeFirstResponder();
             
             
             
+
         }
 
     }

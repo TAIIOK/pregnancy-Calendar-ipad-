@@ -50,14 +50,14 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var noConnectionButton: UIButton!
     
     @IBAction func OpenSite(sender: UIButton) {
-        if let url = NSURL(string: "https://wildberries.ru"){
+        if let url = NSURL(string: "https://www.wildberries.ru/1.3266.ФЭСТ"){
             UIApplication.sharedApplication().openURL(url)
         }
     }
     
     func WorkWithJSON(){
-        points.append(Points(city: "",address: "",trade_point: "WILDBERRIELS",phone: "",longitude: 0.0,latitude: 0.0))
-        nearPoints.append(Points(city: "",address: "",trade_point: "WILDBERRIELS",phone: "",longitude: 0.0,latitude: 0.0))
+        points.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
+        nearPoints.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
         if let path = NSBundle.mainBundle().pathForResource("points", ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
@@ -190,7 +190,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         let location = CLLocationCoordinate2DMake(point.latitude, point.longitude)
                         let annotation = CustomAnnotation()
                         annotation.coordinate = location
-                        annotation.title = point.trade_point + "\nАдрес: " + point.address
+                        annotation.title = point.trade_point + "\nАдрес: " + "\(point.city) " + point.address
                         map.addAnnotation(annotation)
                     }
                 }
@@ -289,9 +289,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if nearPoints[indexPath.row].trade_point == "WILDBERRIELS" {
+        if nearPoints[indexPath.row].trade_point == "WILDBERRIES" {
             let cell = tableView.dequeueReusableCellWithIdentifier("WildCell", forIndexPath: indexPath) as! TableViewCell
-            cell.textLabel?.text = "WILDBERRIELS"
+            cell.textLabel?.text = "WILDBERRIES"
             cell.detailTextLabel?.text = "интернет-магазин"
             cell.backgroundColor = .clearColor()
             return cell
