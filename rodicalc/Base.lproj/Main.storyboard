@@ -2349,7 +2349,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="WA8-k7-BtE">
             <objects>
-                <viewController title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExperienceViewController" title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DYG-Dr-979"/>
                         <viewControllerLayoutGuide type="bottom" id="gs4-wJ-MDr"/>
@@ -4123,12 +4123,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1hf-Db-e0Z"/>
-        <segue reference="FRD-nV-ZPC"/>
-        <segue reference="T6c-gQ-90V"/>
+        <segue reference="L53-bo-E8K"/>
+        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="kMg-vQ-vuk"/>
+        <segue reference="J8J-RP-rbp"/>
         <segue reference="gAm-h9-WUK"/>
-        <segue reference="hz0-ZP-idO"/>
-        <segue reference="K7f-B5-ZW2"/>
+        <segue reference="FRD-nV-ZPC"/>
         <segue reference="VCA-Rz-Uxj"/>
     </inferredMetricsTieBreakers>
 </document>

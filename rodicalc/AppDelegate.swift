@@ -379,7 +379,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if(notification.alertBody!.contains("http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/")){
                 
                 var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
-                    var ok = UIAlertAction(title: "OK", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+                    var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
                     
                     alert.addAction(ok)
 
@@ -391,10 +391,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             else
             {
            var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
-            var ok = UIAlertAction(title: "OK", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+            var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+                var read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
+                /*
+                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                    self.window?.rootViewController = initialViewControlleripad
+                    self.window?.makeKeyAndVisible()
+                     */
+        
+                } )
 
+                
             alert.addAction(ok)
-            
+            alert.addAction(read)
             self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             }
             

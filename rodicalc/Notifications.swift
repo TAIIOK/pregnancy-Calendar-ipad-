@@ -71,6 +71,7 @@ func loadNotifi() {
         
         for (var j = 0 ; j < 9 ; j += 1){
             var localNotification = UILocalNotification()
+            localNotification.category = "invite"
             if (components.hour > 12 && i == 0){
                 localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 + Double(j) * 60) // время получения уведомления
             }
@@ -80,17 +81,15 @@ func loadNotifi() {
                 Notificalendar = calendar.dateFromComponents(components)!
                 localNotification.fireDate = Notificalendar // время получения уведомления
             }
-            if(notification[j].isEmpty)
+            if(notification[j].isEmpty || notification[j].characters.count < 4)
             {
                 continue
             }
-            if(notification[j].characters.count < 5)
-            {
-                continue
-            }
+
+            
             localNotification.alertBody = notification[j]
             
-            localNotification.category = "invite"
+
             if(lolnotifies.contains(notification[8]) && j == 5)
             {
             var infoDict = ["objectId" : notification[8]]
