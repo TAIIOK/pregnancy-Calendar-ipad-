@@ -185,8 +185,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     
     @IBAction func ShareOK(sender: AnyObject) {
         
-
-        if(!sharingExportVk){
+        if(sharingExportVk){
             for (var i = 0 ; i < selectedImages.count ; i++){
                 CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
             }
@@ -230,10 +229,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             
         OKSDK.invokeMethod("photosV2.getUploadUrl", arguments: [:], success: {
             data in print(data)
-            
-            
-          
-
+        
          let photoId = (data["photo_ids"]as! NSArray)[0] as! String
          let boundary = "0xKhTmLbOuNdArY"
          let kNewLine = "\r\n"
@@ -328,8 +324,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
                 
                     var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
  
-          
-                  shareToFacebook.setInitialText("LOL")
+                  shareToFacebook.setInitialText("")
                 for (var i = 0 ; i < selectedImages.count ; i++){
                       shareToFacebook.addImage(selectedImages[i])
                 }
