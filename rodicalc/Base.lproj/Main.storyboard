@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1371,12 +1371,8 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsO-Fj-SuX">
-                                    <rect key="frame" x="141" y="276" width="318" height="63"/>
+                                    <rect key="frame" x="155" y="322" width="318" height="63"/>
                                     <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="63" id="KwY-Mz-zP5"/>
-                                        <constraint firstAttribute="width" constant="318" id="fSQ-oU-vte"/>
-                                    </constraints>
                                     <attributedString key="attributedText">
                                         <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                             <attributes>
@@ -1389,36 +1385,24 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="px7-XQ-VS7">
-                                    <rect key="frame" x="240" y="125" width="120" height="120"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="120" id="4jr-bK-Xgf"/>
-                                        <constraint firstAttribute="width" constant="120" id="evK-rJ-hob"/>
-                                    </constraints>
+                                    <rect key="frame" x="254" y="171" width="120" height="120"/>
                                 </imageView>
                                 <button contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-dR-a60" userLabel="Подключиться">
-                                    <rect key="frame" x="230" y="354" width="141" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="141" id="GGM-9V-h1C"/>
-                                        <constraint firstAttribute="height" constant="30" id="wGe-qP-bdU"/>
-                                    </constraints>
+                                    <rect key="frame" x="244" y="400" width="141" height="30"/>
                                     <state key="normal" title="Повторить">
                                         <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
+                                        <action selector="reloadCollection:" destination="bvw-da-rz8" eventType="touchUpInside" id="k7O-lw-7ma"/>
                                         <segue destination="usG-bQ-BVK" kind="showDetail" id="p9A-X4-hOs"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="px7-XQ-VS7" firstAttribute="centerX" secondItem="zsO-Fj-SuX" secondAttribute="centerX" id="2n7-bu-dHX"/>
-                                <constraint firstItem="zsO-Fj-SuX" firstAttribute="top" secondItem="px7-XQ-VS7" secondAttribute="bottom" constant="31" id="WT2-gG-mJm"/>
-                                <constraint firstItem="zsO-Fj-SuX" firstAttribute="centerX" secondItem="VXZ-dR-a60" secondAttribute="centerX" id="aHe-2t-pS0"/>
-                                <constraint firstItem="VXZ-dR-a60" firstAttribute="top" secondItem="zsO-Fj-SuX" secondAttribute="bottom" constant="15" id="fVG-6X-ggp"/>
-                                <constraint firstItem="px7-XQ-VS7" firstAttribute="centerX" secondItem="se0-0H-chL" secondAttribute="centerX" id="luX-4d-KqS"/>
-                                <constraint firstItem="px7-XQ-VS7" firstAttribute="top" secondItem="se0-0H-chL" secondAttribute="top" constant="25" id="rhK-zA-eCu"/>
-                            </constraints>
+                            <accessibility key="accessibilityConfiguration">
+                                <bool key="isElement" value="YES"/>
+                            </accessibility>
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">

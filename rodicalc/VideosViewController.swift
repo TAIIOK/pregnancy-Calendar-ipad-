@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import YouTubePlayer
 
-let videosDress = ["iC5Oe_molfw",
+var videosDress = ["iC5Oe_molfw",
                    "2-rkmvmlZhY",
                    "PpIWPXG67LE",
                    "6xDPPupoErk",
@@ -36,7 +36,7 @@ let videosDress = ["iC5Oe_molfw",
                    "dt-XaCO5mtc",
                    "0F-dlfN9664"]
 
-let videosGym = ["iBzR_TNrWMI",
+var videosGym = ["iBzR_TNrWMI",
                  "oCXnXP2R1NE",
                  "evUKbaeGXB0",
                  "-2jV00pq8Iw",
@@ -67,16 +67,121 @@ class VideosViewController: UICollectionViewController {
     @IBOutlet weak var noConnectionButton: UIButton!
     @IBOutlet var noConnectionView: UIView!
     
+    @IBAction func reloadCollection(sender: AnyObject) {
+        imagesfirst.removeAll()
+        videoTitlefirst.removeAll()
+        imagessecond.removeAll()
+        videoTitlesecond.removeAll()
+        if(Reachability.isConnectedToNetwork()==true){
+
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+        for (var i = 0 ; i < videosDress.count ; i += 1 ) {
+            let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosDress[i])&format=json"
+            
+            let url: NSURL = NSURL(string: urlPath)!
+            let request1: NSURLRequest = NSURLRequest(URL: url)
+            let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+            
+            do{
+                
+                let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+                
+                // print(response)
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+                        
+                        let url = NSURL(string:  (jsonResult.valueForKey("thumbnail_url") as? String)! )!
+                        let imageData = NSData(contentsOfURL: url)
+                        let Image: UIImage! = UIImage(data:imageData!)
+                        imagesfirst.insert(Image, atIndex: imagesfirst.count)
+                        let name = jsonResult.valueForKey("title") as! String
+                        videoTitlefirst.insert(name, atIndex: videoTitlefirst.count)
+                        //print(imagesfirst.count)
+                        //print(videoTitlefirst.count)
+                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+                        
+                        
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                
+                
+            }catch let error as NSError
+            {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        
+        for (var i = 0 ; i < videosGym.count ; i += 1 ) {
+            
+          
+            
+            let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosGym[i])&format=json"
+            
+            
+            let url: NSURL = NSURL(string: urlPath)!
+            let request1: NSURLRequest = NSURLRequest(URL: url)
+            let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+            
+            do{
+                
+                let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+                
+                //print(response)
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+                        
+                        let url = NSURL(string:  (jsonResult.valueForKey("thumbnail_url") as? String)! )!
+                        let imageData = NSData(contentsOfURL: url)
+                        let Image: UIImage! = UIImage(data:imageData!)
+                        imagessecond.insert(Image, atIndex: i)
+                        let name = jsonResult.valueForKey("title") as! String
+                        videoTitlesecond.insert(name, atIndex: i)
+                        //print(imagessecond.count)
+                        //print(videoTitlesecond.count)
+                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+          
+                        
+            
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                
+            }catch let error as NSError
+            {
+                print(error.localizedDescription)
+            }
+            
+        }
+        }
+        }
+    }
+    func loadList(notification: NSNotification){
+        self.VideoCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:", name:"load", object: nil)
+        
+        VideoCollectionView.delegate = self
+        VideoCollectionView.dataSource = self
         if(Reachability.isConnectedToNetwork()==true){
             VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
             
             VideoCollectionView.backgroundColor = .clearColor()
         }
         else{
+            imagesfirst.removeAll()
+            videoTitlefirst.removeAll()
+            imagessecond.removeAll()
+            videoTitlesecond.removeAll()
+            VideoCollectionView.reloadData()
             //  noConnetionView.backgroundColor = .clearColor()
             
             noConnectionImage.hidden = false
@@ -115,8 +220,8 @@ class VideosViewController: UICollectionViewController {
         VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
         VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
         VideoCell.backgroundColor = .clearColor()
-        if(Reachability.isConnectedToNetwork()==true){
-                VideoCell.hidden = true
+        if(Reachability.isConnectedToNetwork()==false){
+              VideoCell.hidden = true
         }
         return VideoCell
     }
