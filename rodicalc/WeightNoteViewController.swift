@@ -198,10 +198,15 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         let WeightGr = Expression<Int64>("WeightGr")
         
         let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
-        if count == 0 {
-            try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
+        print(weightKg, weightGramm)
+        if weightKg > 0 || weightGramm > 0 {
+            if count == 0 {
+                try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
+            }else{
+                try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
+            }
         }else{
-            try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))
+            try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").delete())
         }
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }

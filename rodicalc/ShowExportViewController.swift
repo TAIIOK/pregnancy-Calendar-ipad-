@@ -17,14 +17,17 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     
     @IBAction func SegmentAction(sender: AnyObject) {
         segmenttype = segmenttype ? false : true
-
         loadExportImages()
-    
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       CurrentScrollView.delegate = self
+        if segmenttype {
+            Segment.selectedSegmentIndex = 0
+        }else{
+            Segment.selectedSegmentIndex = 1
+        }
+        
+        CurrentScrollView.delegate = self
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
         loadExportImages()

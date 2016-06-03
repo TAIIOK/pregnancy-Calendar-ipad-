@@ -58,25 +58,32 @@ class VideosViewController: UICollectionViewController {
     
 
     @IBOutlet weak var web: UIWebView!
-    @IBOutlet weak var playerView: YouTubePlayerView!
+    //@IBOutlet weak var playerView: YouTubePlayerView!
     @IBOutlet var VideoCollectionView: UICollectionView!
     @IBOutlet weak var VideoChanger: UISegmentedControl!
+    
+    @IBOutlet weak var noConnectionImage: UIImageView!
+    @IBOutlet weak var noConnectionLable: UILabel!
+    @IBOutlet weak var noConnectionButton: UIButton!
+    @IBOutlet var noConnectionView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
-      //  noConnetionView.backgroundColor = .clearColor()
-        VideoCollectionView.backgroundColor = .clearColor()
         if(Reachability.isConnectedToNetwork()==true){
-    
+            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+            
+            VideoCollectionView.backgroundColor = .clearColor()
         }
         else{
-   //         noConnetionImage.hidden = false
-     //       noConnetionLabel.hidden = false
-       //     noConnectionButton.hidden = false
-         //   noConnetionView.hidden = false
-           // noConnectionButton.enabled = true
+            //  noConnetionView.backgroundColor = .clearColor()
+            
+            noConnectionImage.hidden = false
+            noConnectionLable.hidden = false
+            noConnectionButton.hidden = false
+            noConnectionView.hidden = false
+            noConnectionButton.enabled = true
         }
     }
     
@@ -102,16 +109,15 @@ class VideosViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let VideoCell = collectionView.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
 
-
+        
         let id =  choosedVideoSegment ? "\(videosDress[indexPath.row])" : "\(videosGym[indexPath.row])"
         
-        
-        
-
         VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
         VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
         VideoCell.backgroundColor = .clearColor()
-
+        if(Reachability.isConnectedToNetwork()==true){
+                VideoCell.hidden = true
+        }
         return VideoCell
     }
     
