@@ -131,8 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createEditableCopyOfDatabaseIfNeeded()
         Fabric.with([Crashlytics.self])
         
-        
-      //  cancelLocalNotification("zlupa")
+    
         
         
 
@@ -171,6 +170,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         */
   
+        dispatch_async(dispatch_get_main_queue(), {
+            NamesJSON()
+            sections = AddSect(man)
+            sectionsGirl = AddSect(woman)
+            }
+            
+        )
+        
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             getVideoDetails()
