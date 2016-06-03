@@ -78,3 +78,51 @@ func AddSect(names: [Names]) -> [(index: Int, length :Int, title: String)] {
     }
     return sect
 }
+
+func NotificationJSON(){
+    if not.count == 0{
+        if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {
+            do {
+                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                do {
+                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if let Man : [NSDictionary] = jsonResult["reminder"] as? [NSDictionary] {
+                        for mans: NSDictionary in Man {
+                            var day = mans.valueForKey("день")
+                            day!.dataUsingEncoding(NSUTF8StringEncoding)
+                            if let d = day {
+                                not.append(notifi(day: d as! String, generalInformation: "\(mans.valueForKey("Общая информация")!)", healthMother: "\(mans.valueForKey("Здоровье мамы")!)", healthBaby: "\(mans.valueForKey("Здоровье малыша")!)", food: "\(mans.valueForKey("питание")!)", important: "\(mans.valueForKey("Это важно!")!)", HidenAdvertisment: "\(mans.valueForKey("Скрытая реклама")!)", advertisment: "\(mans.valueForKey("реклама ФЭСТ")!)", reflectionsPregnant: "\(mans.valueForKey("размышления беременной")!)"))
+                                NSNotificationCenter.defaultCenter().postNotificationName("loadNotification", object: nil)
+                            }
+                        }
+                    }
+                } catch {}
+            } catch {}
+        }
+    }
+}
+
+func PointsJSON(){
+    points.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
+    nearPoints.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
+    if let path = NSBundle.mainBundle().pathForResource("points", ofType: "json") {
+        do {
+            let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            do {
+                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let point : [NSDictionary] = jsonResult["points"] as? [NSDictionary] {
+                    for Point: NSDictionary in point {
+                        var address = Point.valueForKey("address")
+                        address!.dataUsingEncoding(NSUTF8StringEncoding)
+                        if let d = address {
+                            
+                            points.append(Points(city: "\(Point.valueForKey("city"))",address: d as! String,trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
+                            NSNotificationCenter.defaultCenter().postNotificationName("loadPoints", object: nil)
+                            
+                        }
+                    }
+                }
+            } catch {}
+        } catch {}
+    }
+}

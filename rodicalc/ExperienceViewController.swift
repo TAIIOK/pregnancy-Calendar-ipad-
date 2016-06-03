@@ -89,28 +89,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         //self.tbl.scrollToRowAtIndexPath(choosedNote, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
-    func WorkWithJSON(){
-        if not.count == 0{
-        if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {
-            do {
-                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                do {
-                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    if let Man : [NSDictionary] = jsonResult["reminder"] as? [NSDictionary] {
-                        for mans: NSDictionary in Man {
-                            var day = mans.valueForKey("день")
-                            day!.dataUsingEncoding(NSUTF8StringEncoding)
-                            if let d = day {
-                                not.append(notifi(day: d as! String, generalInformation: "\(mans.valueForKey("Общая информация")!)", healthMother: "\(mans.valueForKey("Здоровье мамы")!)", healthBaby: "\(mans.valueForKey("Здоровье малыша")!)", food: "\(mans.valueForKey("питание")!)", important: "\(mans.valueForKey("Это важно!")!)", HidenAdvertisment: "\(mans.valueForKey("Скрытая реклама")!)", advertisment: "\(mans.valueForKey("реклама ФЭСТ")!)", reflectionsPregnant: "\(mans.valueForKey("размышления беременной")!)"))
-                            }
-                        }
-                    }
-                } catch {}
-            } catch {}
-        }
-        }
-    }
-    
+        
     
     func setupNavigation(date : CVDate){
     
@@ -184,11 +163,11 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             choosedSegmentNotes = false
             self.tbl.reloadData()
         }
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNotification:", name:"loadNotification", object: nil)
         setupNavigation(CVDate(date: NSDate()))
         tbl.delegate = self
         tbl.dataSource = self
-        WorkWithJSON()
+
         loadDate()
                 //leftbutt![0] = leftButton
         checkConnectionAndUpdateView()
@@ -196,6 +175,13 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    func loadNotification(notification: NSNotification){
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tbl.reloadData()
+            return
+        })
+    }
+    
     private func checkConnectionAndUpdateView(){
         if(Reachability.isConnectedToNetwork()==false && choosedSegmentNotes==true){
             noConnetionImage.hidden = false

@@ -351,9 +351,9 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         var notifiday = drugs[i-1].start
                         
-                        for(var i = 0 ;i <= notifiday.daysFrom(drugs[i-1].end); i++)
+                        for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
                         {
-                        cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
+                        cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
                         }
 
                         
@@ -365,7 +365,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
                         {
-                            scheduleNotification(calculateDate(addDaystoGivenDate(drugs[j-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[j-1].cellType), notificationTitle:"У вас посещение врача \(drugs[j-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[j-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[j-1].cellType))")
+                            scheduleNotification(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[i-1].cellType), notificationTitle:"Время приема лекарства \(drugs[i-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[i-1].cellType))")
                         }
                         
         
@@ -595,10 +595,10 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("Update TIME")
         //cancelLocalNotification("\(drugs[currentRec-1].date)")
         var notifiday = drugs[currentRec-1].start
-        
-        for(var i = 0 ;i <= notifiday.daysFrom(drugs[i-1].end); i++)
+        print(drugs[currentRec-1].start, drugs[currentRec-1].end)
+        for(var i = 0 ;i <= notifiday.daysFrom(drugs[currentRec-1].end); i++)
         {
-            cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
+            cancelLocalNotification("\(addDaystoGivenDate(drugs[currentRec-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
         }
         
 
@@ -621,7 +621,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             for(var i = 0 ;i <= notifiday.daysFrom(drugs[currentRec-1].end); i++)
             {
-                scheduleNotification(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[i-1].cellType), notificationTitle:"У вас посещение врача \(drugs[i-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[i-1].cellType))")
+                scheduleNotification(calculateDate(addDaystoGivenDate(drugs[currentRec-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[currentRec-1].cellType), notificationTitle:"Время приема лекарства \(drugs[currentRec-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[currentRec-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[currentRec-1].cellType))")
             }
         }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
@@ -712,8 +712,10 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("Update Date")
         switch StartORend {
         case 0:
+            if drugs[currentRec-1].end.daysFrom(curDate) < 0 {break}
             drugs[currentRec-1].start = curDate
         default:
+            if drugs[currentRec-1].start.daysFrom(curDate) > 0 {break}
             drugs[currentRec-1].end = curDate
         }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)

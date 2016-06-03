@@ -29,15 +29,14 @@ class Points: NSObject {
     }
 }
 
+var points: [Points] = []
+var nearPoints: [Points] = []
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var initialLocation = CLLocationCoordinate2D(latitude: 48.704360,
                                                  longitude: 44.509449)
-    
-    var points: [Points] = []
-    var nearPoints: [Points] = []
     
     var locate: [CLLocation] = []
     
@@ -55,42 +54,14 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    func WorkWithJSON(){
-        points.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
-        nearPoints.append(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0))
-        if let path = NSBundle.mainBundle().pathForResource("points", ofType: "json") {
-            do {
-                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                do {
-                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    if let point : [NSDictionary] = jsonResult["points"] as? [NSDictionary] {
-                        for Point: NSDictionary in point {
-                            var address = Point.valueForKey("address")
-                           address!.dataUsingEncoding(NSUTF8StringEncoding)
-                            if let d = address {
-                                
-                            points.append(Points(city: "\(Point.valueForKey("city"))",address: d as! String,trade_point: "\(Point.valueForKey("trade_point")!)",phone: "\(Point.valueForKey("phone")!)",longitude: (Point.valueForKey("coord_last_latitude") as? Double)! ,latitude:(Point.valueForKey("coord_first_longtitude") as? Double)!))
-                                
-                                
-                            }
-                        }
-                    }
-                } catch {}
-            } catch {}
-        }
-    }
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        WorkWithJSON()
         tbl.backgroundColor = .clearColor()
         if(Reachability.isConnectedToNetwork()==true){
             tbl.delegate = self
             tbl.dataSource = self
             map.delegate = self
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPoints:", name:"loadPoints", object: nil)
             // Ask for Authorisation from the User.
             if #available(iOS 8.0, *) {
                 self.locationManager.requestAlwaysAuthorization() //8
@@ -127,6 +98,13 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             noConnectionButton.enabled=true
         }
  
+    }
+    
+    func loadPoints(notification: NSNotification){
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tbl.reloadData()
+            return
+        })
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -172,7 +150,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         let annotation = CustomAnnotation()
                         isFind = true
                         annotation.coordinate = location
-                        annotation.title = point.trade_point + "\nАдрес: " + point.address
+                        annotation.title = point.trade_point + "\nАдрес: " + "\(point.city) " + point.address
                         map.addAnnotation(annotation)
                         nearPoints.append(point)
                     }

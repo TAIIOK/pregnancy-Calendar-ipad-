@@ -46,7 +46,7 @@ class NamesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNameTable:", name:"LoadNameTable", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNameTable:", name:"LoadNameTable", object: nil)
         table.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         table.backgroundColor = .clearColor()
         //WorkWithJSON()
@@ -145,12 +145,10 @@ class NamesTableViewController: UITableViewController {
         })
     }
     
-    func LoadTable(notification: NSNotification){
+    func LoadNameTable(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue(), {
             self.table.reloadData()
             return
         })
     }
-    
-
 }

@@ -175,7 +175,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sections = AddSect(man)
             sectionsGirl = AddSect(woman)
             }
-            
+        )
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            NotificationJSON()
+            }
+        )
+
+        dispatch_async(dispatch_get_main_queue(), {
+            PointsJSON()
+            }
         )
         
         
