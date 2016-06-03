@@ -149,7 +149,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.SelectedNoteFromDate(day_)
         }
         
-        print("Count: \(AllExportNotes.count)")
+        /*print("Count: \(AllExportNotes.count)")
         for i in AllExportNotes{
             print("Date: \(i.date)")
             print("Photo count: \(i.photos.count)")
@@ -164,7 +164,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             for n in i.notifi{
                 print("\tNotifi: \(n)")
             }
-        }
+        }*/
         if showingExportType == 0 {
             showingExportType = 1
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")

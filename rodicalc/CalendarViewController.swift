@@ -171,6 +171,30 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return indexPath
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            //cell.textLabel?.text = "Заметки"
+            selectedNoteDay = selectedCalendarDay!
+            
+            let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
+            self.splitViewController?.showDetailViewController(notes!, sender: self)
+            break
+        case 1:
+            //cell.textLabel?.text = "Фотографии"
+            break
+        case 2:
+            //cell.textLabel?.text = "Уведомления"
+            selectedExperienceDay = selectedCalendarDay!
+            fromCalendar = true
+            let experience = self.storyboard?.instantiateViewControllerWithIdentifier("Experience")
+            self.splitViewController?.showDetailViewController(experience!, sender: self)
+            break
+        default:
+            break
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor

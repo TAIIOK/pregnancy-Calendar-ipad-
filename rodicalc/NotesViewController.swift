@@ -11,6 +11,7 @@ import UIKit
 import SwiftyVK
 
 var selectedNoteDay:DayView!
+var DayForView = NSDate()
 var NoteType = Int()
 var notes = ["Сегодня я чувствую себя","Сегодня мой малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
 
@@ -31,6 +32,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
+        print(DayForView)
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
 
@@ -358,16 +360,19 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         if(selectedNoteDay != nil){
-        let  date = selectedNoteDay.date
-        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
-        }
-        else{
+            let  date = selectedNoteDay.date
+            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+            controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        }else{
             let  date = CVDate(date: NSDate())
             let controller = calendarView.contentController as! CVCalendarMonthContentViewController
             controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
-            }
+        }
 
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        DayForView = NSDate()
     }
     
     

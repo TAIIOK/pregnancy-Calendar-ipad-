@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 
 var not = [notifi]()
-
+var selectedExperienceDay:DayView!
+var fromCalendar = false
 var articles = ["Для чего нужен до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер"]
 var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов"]
 
 var articletype = 0
+
 
 class notifi: NSObject {
     var day: String
@@ -66,6 +68,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var tbl: UITableView!
+    
+    @IBOutlet weak var changer: UISegmentedControl!
     
     var day: Int = 0
     var choosedSegmentNotes = true // true: статьи, false: уведомления
@@ -174,7 +178,13 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
         
-
+        if fromCalendar{
+            fromCalendar = false
+            changer.selectedSegmentIndex = 1
+            choosedSegmentNotes = false
+            self.tbl.reloadData()
+        }
+        
         setupNavigation(CVDate(date: NSDate()))
         tbl.delegate = self
         tbl.dataSource = self
@@ -258,7 +268,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func notesperday(){
-        day = 300 - BirthDate.daysFrom(selectedDay.date.convertedDate()!)
+        day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
         mas.removeAll()
         for var i in not{
             let d = Int(i.day)
@@ -389,8 +399,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         var date = CVDate(date: NSDate())
         
-        if selectedNoteDay != nil{
-            date = selectedNoteDay.date
+        if selectedExperienceDay != nil{
+            date = selectedExperienceDay.date
         }
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
@@ -461,7 +471,7 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
+        selectedExperienceDay = dayView
         notesperday()
         tbl.reloadData()
     }
