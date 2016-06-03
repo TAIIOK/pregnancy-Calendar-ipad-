@@ -51,9 +51,27 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var animationFinished = true
     var doctors = [Doctor]()
     
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
+        
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
@@ -121,11 +139,19 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let newDate = calendar.dateFromComponents(components)
             
             doctors.append(Doctor(date: newDate!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
-            arrayForBool.addObject("0")
+            arrayForBool.addObject("1")
+
             tbl.reloadData()
+            var headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
+            headerview?.setopen(true)
+            headerview?.changeFields()
+            headerview?.doctornameText.editing == true
+            headerview?.doctornameText.selected == true
+            headerview?.doctornameText.becomeFirstResponder();
             
             
             
+
         }
 
     }
@@ -241,7 +267,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         //Create the AlertController
         if #available(iOS 8.0, *) {
-            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранное лекарство?", preferredStyle: .Alert)
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Удалить выбранного врача?", preferredStyle: .Alert)
             
             //Create and add the Cancel action
             let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
@@ -289,7 +315,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     else if(doctors[i-1].isRemind == false){
                         doctors[i-1].isRemind = true
-                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: -1 , after: changeRemindInCurRec))")
+                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: doctors[i-1].remindType , after: changeRemindInCurRec))")
                     }
                     
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
@@ -447,7 +473,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("Update TIME")
         let tmp = doctors[currentRec-1].date
         cancelLocalNotification("\(doctors[currentRec-1].date)")
-
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: tmp)
         components.hour = hour
@@ -455,9 +480,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         components.second = 00
         let newDate = calendar.dateFromComponents(components)
         doctors[currentRec-1].date = newDate!
-        
+        if(doctors.count >= currentRec-1){
         if(doctors[currentRec-1].isRemind){
             scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
+        }
         }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
@@ -512,7 +538,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 7:
             newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         default:
-            break
+            return date
         }
         
         switch after {

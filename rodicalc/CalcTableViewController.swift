@@ -32,9 +32,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         loadDate()
-        if selectedDay == nil{
-            //self.presentedDateUpdated(CVDate(date: NSDate()))
-        }
+
+        self.presentedDateUpdated(CVDate(date: NSDate()))
 
         if !Back && DateisLoaded{
             Cancel()
@@ -97,14 +96,23 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.row == dateType && selectedDay != nil{
             var date = selectedDay.date.convertedDate()!
             if dateType == 0{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
+               // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
             }
             else if dateType == 1{
-                date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
+               // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*40)
             }
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components([.Day , .Month , .Year], fromDate: date)
-            cell.detailTextLabel?.text = "\(components.day).\(components.month).\(components.year)"
+            var string = ""
+            if(components.month<10)
+            {
+                string = "0\(components.month)"
+            }
+            else
+            {
+                string = "\(components.month)"
+            }
+            cell.detailTextLabel?.text = "\(components.day).\(string).\(components.year)"
             //cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)

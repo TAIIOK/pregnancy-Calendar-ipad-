@@ -58,14 +58,26 @@ class VideosViewController: UICollectionViewController {
     
 
     @IBOutlet weak var web: UIWebView!
-
     @IBOutlet weak var playerView: YouTubePlayerView!
     @IBOutlet var VideoCollectionView: UICollectionView!
     @IBOutlet weak var VideoChanger: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+      //  noConnetionView.backgroundColor = .clearColor()
         VideoCollectionView.backgroundColor = .clearColor()
+        if(Reachability.isConnectedToNetwork()==true){
+    
+        }
+        else{
+   //         noConnetionImage.hidden = false
+     //       noConnetionLabel.hidden = false
+       //     noConnectionButton.hidden = false
+         //   noConnetionView.hidden = false
+           // noConnectionButton.enabled = true
+        }
     }
     
     @IBAction func ChangeSegment(sender: AnyObject) {

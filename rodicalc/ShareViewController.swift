@@ -78,7 +78,6 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         }
         else {
             
-            
             selectedImages = selectedImages.reverse()
             var string = ""
             var result = 0
@@ -121,6 +120,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = CustomPhotoAlbum.sharedInstance
         VK.start(appID: "5437729", delegate: self)
         
     //view.opaque = false
@@ -185,7 +185,29 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     
     @IBAction func ShareOK(sender: AnyObject) {
         
-
+        if(sharingExportVk){
+            for (var i = 0 ; i < selectedImages.count ; i++){
+                CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
+            }
+            
+            var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение Одноклассники", preferredStyle: .Alert)
+            var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+            alert.addAction(ok)
+            var open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+                
+                if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "https://ok.ru")!)){
+                    UIApplication.sharedApplication().openURL(NSURL(string: "https://ok.ru")!)
+                }
+                else {
+                    alert.dismissViewControllerAnimated(true, completion: nil)
+                }
+            } )
+            alert.addAction(open)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else{
+            
         var settings  = OKSDKInitSettings.init()
         settings.appKey = "CBAFLEFLEBABABABA"
         settings.appId = "1246999552"
@@ -200,15 +222,14 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         OKSDK.authorizeWithPermissions(["VALUABLE_ACCESS","LONG_ACCESS_TOKEN","PHOTO_CONTENT"], success: {id in print(id)
             
           //  OKSDK.invokeMethod("users.getCurrentUser", arguments: [:], success: {data in print(data)}, error: {error in print(error)})
+            
+            
             for(var i = 0 ; i<selectedImages.count; i++){
               let imageData = UIImagePNGRepresentation(selectedImages[i])
             
         OKSDK.invokeMethod("photosV2.getUploadUrl", arguments: [:], success: {
             data in print(data)
-            
-            
-          
-
+        
          let photoId = (data["photo_ids"]as! NSArray)[0] as! String
          let boundary = "0xKhTmLbOuNdArY"
          let kNewLine = "\r\n"
@@ -258,49 +279,64 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         })
         OKSDK.clearAuth()
     
-        
+        }
     }
     
     @IBAction func ShareFB(sender: AnyObject) {
         print("шарю в фсб")
         
-        var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        shareToFacebook.setInitialText("")
-        
+
+            if(sharingExportVk){
         for (var i = 0 ; i < selectedImages.count ; i++){
-            shareToFacebook.addImage(selectedImages[i])
-            
+            CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
         }
     
+        var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
+        var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        alert.addAction(ok)
+        var open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+            
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
+                UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/PageId")!)
+            }
+            else {
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }
+             } )
+        alert.addAction(open)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+            }
+            else{
+        
 
-        self.presentViewController(shareToFacebook, animated: true, completion: nil)
+                
+                 if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
+                    var dialog = FBSDKShareDialog()
+                    dialog.fromViewController = self
+                    dialog.mode = FBSDKShareDialogMode.Native
+                    var content = FBSDKSharePhotoContent()
+                    content.photos = selectedImages
+                    dialog.shareContent = content
+                    dialog.show()
+                }
+                 else{
+                
+                    var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+ 
+                  shareToFacebook.setInitialText("")
+                for (var i = 0 ; i < selectedImages.count ; i++){
+                      shareToFacebook.addImage(selectedImages[i])
+                }
+                self.presentViewController(shareToFacebook, animated: true, completion: nil)
+            
+                }
+        }
+     
         
         // если использовать апи )) для верисии ios 7
         
-        /*
-       var login = FBSDKLoginManager()
-        
-        login.logInWithReadPermissions(["public_profile"],
-                                                     fromViewController:self,
-            handler: { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
-                
-                if ((error) != nil) {
-                    NSLog("Process error");
-                } else if (result.isCancelled) {
-                    NSLog("Cancelled");
-                } else {
-                    NSLog("Logged in");
-   
-                }
-                
-        })
-        
-        
-       var res =  FBSDKLoginManager.logOut(login)
-        
 
-        print(res)
-        */
     }
     
     

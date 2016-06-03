@@ -8,35 +8,107 @@
 
 import Foundation
 
+let lolnotifies = ["92","203","155","165","271","203","210","22","57","71","267","273","247","120"]
+var notifications = [notifi]()
+
+func WorkWithJSON(){
+    if notifications.count == 0{
+        if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {
+            do {
+                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                do {
+                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if let Man : [NSDictionary] = jsonResult["reminder"] as? [NSDictionary] {
+                        for mans: NSDictionary in Man {
+                            var day = mans.valueForKey("день")
+                            day!.dataUsingEncoding(NSUTF8StringEncoding)
+                            if let d = day {
+                                notifications.append(notifi(day: d as! String, generalInformation: "\(mans.valueForKey("Общая информация")!)", healthMother: "\(mans.valueForKey("Здоровье мамы")!)", healthBaby: "\(mans.valueForKey("Здоровье малыша")!)", food: "\(mans.valueForKey("питание")!)", important: "\(mans.valueForKey("Это важно!")!)", HidenAdvertisment: "\(mans.valueForKey("Скрытая реклама")!)", advertisment: "\(mans.valueForKey("реклама ФЭСТ")!)", reflectionsPregnant: "\(mans.valueForKey("размышления беременной")!)"))
+                            }
+                        }
+                    }
+                } catch {}
+            } catch {}
+        }
+    }
+}
+
+func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
+{
+    let dateComponents = NSDateComponents()
+    let CurrentCalendar = NSCalendar.currentCalendar()
+    let CalendarOption = NSCalendarOptions()
+    
+    dateComponents.day = NumberOfDaysToAdd
+    let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
+    return newDate!
+}
 
 func loadNotifi() {
-    let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-    var dateFire=NSDate()
-    var fireComponents=calendar.components([NSCalendarUnit.Day , NSCalendarUnit.Month , NSCalendarUnit.Year , NSCalendarUnit.Hour , NSCalendarUnit.Minute], fromDate:dateFire)
-    let localNotification = UILocalNotification()
-    for (var i = 0 ; i < 10 ; i += 1){
-        for (var j = 0 ; j < 10 ; j += 1){
-            if (fireComponents.hour < 12 && i == 0){
-                let localNotification = UILocalNotification()
-                localNotification.fireDate = NSDate(timeIntervalSinceNow: 60) // время получения уведомления
+    
+    
+   
+    var Notificalendar = NSDate()
+    let calendar = NSCalendar.currentCalendar()
+
+    WorkWithJSON()
+    print(notifications.count)
+    for (var i = 0 ; i <  notifications.count; i += 1){
+        var notifiday = notifications[i]
+        var notification = [String]()
+        
+        notification.append(notifiday.generalInformation)
+        notification.append(notifiday.healthMother)
+        notification.append(notifiday.healthBaby)
+        notification.append(notifiday.food)
+        notification.append(notifiday.important)
+        notification.append(notifiday.HidenAdvertisment)
+        notification.append(notifiday.advertisment)
+        notification.append(notifiday.reflectionsPregnant)
+        notification.append(notifiday.day)
+
+        let components = calendar.components([.Day , .Month , .Year], fromDate: Notificalendar)
+        
+        for (var j = 0 ; j < 9 ; j += 1){
+            var localNotification = UILocalNotification()
+            //localNotification.category = "adolf"
+            if (components.hour > 12 && i == 0){
+                localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 + Double(j) * 60) // время получения уведомления
             }
             else {
-                fireComponents.hour = 12
-                fireComponents.minute = j
-                dateFire = calendar.dateFromComponents(fireComponents)!
-                let localNotification = UILocalNotification()
-                localNotification.fireDate = dateFire // время получения уведомления
+                components.hour = 12
+                components.minute = j
+                Notificalendar = calendar.dateFromComponents(components)!
+                localNotification.fireDate = Notificalendar // время получения уведомления
             }
-            localNotification.alertBody = "текст"
+            if(notification[j].isEmpty || notification[j].characters.count < 4)
+            {
+                continue
+            }
+
+            
+            localNotification.alertBody = notification[j]
+            
+
+            if(lolnotifies.contains(notification[8]) && j == 5)
+            {
+            var infoDict = ["objectId" : notification[8]]
+            localNotification.userInfo = infoDict
+            }
+
+            
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.soundName = UILocalNotificationDefaultSoundName;
-            localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+           // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
             
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
-        fireComponents.day += 1
+        notification.removeAll()
+       Notificalendar = addDaystoGivenDate(Notificalendar,NumberOfDaysToAdd: 1)
     }
 }
+
+
 
 func cancelLocalNotification(uniqueId: String){
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1435,6 +1435,57 @@
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EB-4N-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view hidden="YES" contentMode="scaleToFill" id="NRo-8o-jjs">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="342"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-3T-dqt">
+                            <rect key="frame" x="141" y="176" width="318" height="63"/>
+                            <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="318" id="6VO-Qz-ECg"/>
+                                <constraint firstAttribute="height" constant="63" id="9wC-S3-a6G"/>
+                            </constraints>
+                            <attributedString key="attributedText">
+                                <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="QUp-0y-loJ">
+                            <rect key="frame" x="240" y="25" width="120" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="120" id="Yex-Ol-GBn"/>
+                                <constraint firstAttribute="width" constant="120" id="ZKj-qm-vxk"/>
+                            </constraints>
+                        </imageView>
+                        <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrP-Jh-3sk" userLabel="Подключиться">
+                            <rect key="frame" x="230" y="254" width="141" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="8ET-cX-LLt"/>
+                                <constraint firstAttribute="width" constant="141" id="KeZ-tl-N3v"/>
+                            </constraints>
+                            <state key="normal" title="Повторить">
+                                <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="QUp-0y-loJ" firstAttribute="centerX" secondItem="ENe-3T-dqt" secondAttribute="centerX" id="Bel-Yi-cpP"/>
+                        <constraint firstItem="ENe-3T-dqt" firstAttribute="centerX" secondItem="RrP-Jh-3sk" secondAttribute="centerX" id="Ewq-o9-B6d"/>
+                        <constraint firstItem="ENe-3T-dqt" firstAttribute="top" secondItem="QUp-0y-loJ" secondAttribute="bottom" constant="31" id="ZAy-nR-01X"/>
+                        <constraint firstItem="QUp-0y-loJ" firstAttribute="centerX" secondItem="NRo-8o-jjs" secondAttribute="centerX" id="ktb-9V-eq2"/>
+                        <constraint firstItem="RrP-Jh-3sk" firstAttribute="top" secondItem="ENe-3T-dqt" secondAttribute="bottom" constant="15" id="oFU-MB-lwi"/>
+                        <constraint firstItem="QUp-0y-loJ" firstAttribute="top" secondItem="NRo-8o-jjs" secondAttribute="top" constant="25" id="xCg-Fi-ivM"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1678" y="4399"/>
         </scene>
@@ -2349,7 +2400,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="WA8-k7-BtE">
             <objects>
-                <viewController title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExperienceViewController" title="Полезный опыт" id="B3T-v7-VhL" customClass="ExperienceViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DYG-Dr-979"/>
                         <viewControllerLayoutGuide type="bottom" id="gs4-wJ-MDr"/>
@@ -4123,12 +4174,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1hf-Db-e0Z"/>
-        <segue reference="FRD-nV-ZPC"/>
-        <segue reference="T6c-gQ-90V"/>
+        <segue reference="J8J-RP-rbp"/>
+        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="L53-bo-E8K"/>
+        <segue reference="0ZV-Wo-vNj"/>
+        <segue reference="kMg-vQ-vuk"/>
         <segue reference="gAm-h9-WUK"/>
-        <segue reference="hz0-ZP-idO"/>
-        <segue reference="K7f-B5-ZW2"/>
-        <segue reference="VCA-Rz-Uxj"/>
+        <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
