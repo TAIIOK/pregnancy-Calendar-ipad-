@@ -12,8 +12,8 @@ import CoreData
 var not = [notifi]()
 var selectedExperienceDay:DayView!
 var fromCalendar = false
-var articles = ["Для чего нужен до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер"]
-var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов"]
+var articles = ["Для чего нужен до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер", "Другие статьи"]
+var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов", ""]
 
 var articletype = 0
 
@@ -320,7 +320,12 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webarticle")
             self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
-            
+        case 2:
+            let site = "http://www.mama-fest.com/article/"//"http://www.aist-k.com/"
+            if let url = NSURL(string: site){
+                UIApplication.sharedApplication().openURL(url)
+            }
+            break
         default: break
             }
         }else{

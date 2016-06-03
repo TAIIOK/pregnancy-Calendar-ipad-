@@ -145,6 +145,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             var headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
             headerview?.setopen(true)
             headerview?.changeFields()
+            
+            //let range = NSMakeRange(doctors.count, 1)
+            //let sectionToReload = NSIndexSet(indexesInRange: range)
+            //self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+            
             headerview?.doctornameText.editing == true
             headerview?.doctornameText.selected == true
             headerview?.doctornameText.becomeFirstResponder();
