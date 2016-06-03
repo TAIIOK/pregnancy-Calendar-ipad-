@@ -115,6 +115,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Text.appendContentsOf(notes[n].typeS)
                             Text.appendContentsOf(":  ")
                             Text.appendContentsOf(notes[n].text)
+                            Text.appendContentsOf("\n")
                         }
                         Textnotifi.removeAll()
                         for(var n = 0 ; n < notifi.count ; n++)
@@ -122,13 +123,14 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Textnotifi.appendContentsOf(notifi[n].typeS)
                             Textnotifi.appendContentsOf(":  ")
                             Textnotifi.appendContentsOf(notifi[n].text)
+                            Textnotifi.appendContentsOf("\n")
                         }
                         
                         if(segmenttype){
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + Textnotifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: String(Text + Textnotifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -150,6 +152,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Text.appendContentsOf(notes[n].typeS)
                             Text.appendContentsOf(":  ")
                             Text.appendContentsOf(notes[n].text)
+                            Text.appendContentsOf("\n")
                         }
                         Textnotifi.removeAll()
                         for(var n = 0 ; n < notifi.count ; n++)
@@ -157,13 +160,14 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Textnotifi.appendContentsOf(notifi[n].typeS)
                             Textnotifi.appendContentsOf(":  ")
                             Textnotifi.appendContentsOf(notifi[n].text)
+                            Textnotifi.appendContentsOf("\n")
                         }
                         
                         if(segmenttype){
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + Textnotifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + "\n" + Textnotifi))
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: String(Text + Textnotifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -190,6 +194,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Text.appendContentsOf(notes[n].typeS)
                             Text.appendContentsOf(":  ")
                             Text.appendContentsOf(notes[n].text)
+                            Text.appendContentsOf("\n")
                         }
                         Textnotifi.removeAll()
                         for(var n = 0 ; n < notifi.count ; n++)
@@ -197,13 +202,14 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             Textnotifi.appendContentsOf(notifi[n].typeS)
                             Textnotifi.appendContentsOf(":  ")
                             Textnotifi.appendContentsOf(notifi[n].text)
+                            Textnotifi.appendContentsOf("\n")
                         }
                         
                         if(segmenttype){
-                            image.image = CreateTextOnlyBlue(dateString , CenterText: Text + "\n" + Textnotifi)
+                            image.image = CreateTextOnlyBlue(dateString , CenterText: Text + Textnotifi)
                         }
                         else{
-                            image.image = CreateTextOnlyPink(dateString , CenterText: Text + "\n" + Textnotifi)
+                            image.image = CreateTextOnlyPink(dateString , CenterText: Text + Textnotifi)
                         }
                         if(CurrentScrollView.subviews.count > 0)
                         {
