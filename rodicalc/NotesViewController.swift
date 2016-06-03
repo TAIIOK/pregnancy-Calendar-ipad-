@@ -49,7 +49,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         db = try! Connection(destinationPath)
         let id = Expression<Int64>("_id")
         let articles = Table("article")
@@ -65,7 +65,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         let db = try! Connection(destinationPath)
         let table = Table(tableName)
         var count = 0
@@ -100,7 +100,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         let db = try! Connection(destinationPath)
         let table = Table(tableName)
         var str = ""

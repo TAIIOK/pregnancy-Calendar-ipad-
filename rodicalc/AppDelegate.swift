@@ -132,6 +132,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         
+      //  cancelLocalNotification("zlupa")
+        
+        
 
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
             if #available(iOS 8.0, *) {
@@ -186,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sourcePath = NSBundle.mainBundle().pathForResource("db", ofType: "sqlite")
         print(sourcePath)
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db.sqlite")
+        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         //print(destinationPath)
         do {
             try NSFileManager().copyItemAtPath(sourcePath!, toPath: destinationPath)

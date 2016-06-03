@@ -92,11 +92,15 @@ func loadNotifi() {
 
             if(lolnotifies.contains(notification[8]) && j == 5)
             {
-            var infoDict = ["objectId" : notification[8]]
+                var infoDict :  Dictionary<String,String!> = ["objectId" : notification[8]]
+           // var infoDict = ["objectId" : notification[8]]
             localNotification.userInfo = infoDict
             }
-
-            
+            else{
+            var infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
+            localNotification.userInfo = infoDict
+            }
+            localNotification.alertAction = "View"
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.soundName = UILocalNotificationDefaultSoundName;
            // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
@@ -111,21 +115,21 @@ func loadNotifi() {
 
 
 func cancelLocalNotification(uniqueId: String){
-    
-    var notifyCancel = UILocalNotification()
-    var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-    
-    for notifyCancel in notifyArray! as [UILocalNotification]{
-        
-        let info: [String: String] = notifyCancel.userInfo as! [String: String]
-        
-        if info[uniqueId] == uniqueId{
-            
-            UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
-        }else{
-            
-            print("No Local Notification Found!")
+
+    print(uniqueId)
+    guard
+        let app: UIApplication = UIApplication.sharedApplication(),
+        let notifications = app.scheduledLocalNotifications else { return }
+    for notification in notifications {
+
+        if
+            let userInfo = notification.userInfo,
+            let uid: [String: String] = userInfo as? [String: String] where uid["objectId"] == uniqueId {
+            app.cancelLocalNotification(notification)
+            print("Deleted local notification for '\(uniqueId)'")
         }
+       
+
     }
 }
 
@@ -138,7 +142,7 @@ func scheduleNotification(notifiDate :NSDate, notificationTitle:String, objectId
     localNotification.applicationIconBadgeNumber = 1
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.alertAction = "View"
-    var infoDict = ["objectId" : objectId]
+    var infoDict :  Dictionary<String,String!> = ["objectId" : objectId]
     localNotification.userInfo = infoDict
     
     UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
