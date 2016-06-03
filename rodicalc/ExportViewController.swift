@@ -540,7 +540,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         let calendar = NSCalendar.currentCalendar()
         
         var components = calendar.components([.Day , .Month , .Year], fromDate: date)
-        for i in try! db.prepare(table.select(date,name)) {
+        for i in try! db.prepare(table.select(Date,name)) {
             let b = i[Date]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
