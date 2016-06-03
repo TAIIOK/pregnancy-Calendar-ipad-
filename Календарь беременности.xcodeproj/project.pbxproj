@@ -116,6 +116,7 @@
 		8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC2FB1CCE508E007B4643 /* db.sqlite */; };
 		8EEAC3491CCE7194007B4643 /* TextNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */; };
 		8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */; };
+		8EF404101D01A31400B1D5D9 /* PhotoFromCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4040F1D01A31400B1D5D9 /* PhotoFromCalendarViewController.swift */; };
 		A01028D41CD227D8005E339F /* bondage.html in Resources */ = {isa = PBXBuildFile; fileRef = A01028D01CD227D8005E339F /* bondage.html */; };
 		A01028D51CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */; };
 		A01028D61CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */; };
@@ -415,6 +416,7 @@
 		8EEAC3461CCE5462007B4643 /* rodicalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rodicalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteViewController.swift; sourceTree = "<group>"; };
 		8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesireListViewController.swift; sourceTree = "<group>"; };
+		8EF4040F1D01A31400B1D5D9 /* PhotoFromCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFromCalendarViewController.swift; sourceTree = "<group>"; };
 		A01028D01CD227D8005E339F /* bondage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bondage.html; sourceTree = "<group>"; };
 		A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_6eeb0e92aa2e7186_html_77d5e2ab.jpg; sourceTree = "<group>"; };
 		A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = i_6eeb0e92aa2e7186_html_85ee0ffa.jpg; sourceTree = "<group>"; };
@@ -583,7 +585,6 @@
 		8E90A4111C7DF093001F3A07 /* rodicalc */ = {
 			isa = PBXGroup;
 			children = (
-				A076227F1CF70FD1003951EC /* Export */,
 				A04288241CE4B03A005DB953 /* socialNetwork */,
 				A01028CB1CD227B0005E339F /* html */,
 				A02058871CC8C45F00C70691 /* zodiac */,
@@ -606,7 +607,6 @@
 				8E90A4211C7DF093001F3A07 /* Info.plist */,
 				8E2538F21C84779F00B3C54E /* userInfo.plist */,
 				8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */,
-				A0B9D39C1CEA04CF005B5797 /* Doctor */,
 				8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */,
 				8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */,
 				8E1DD60B1CB2A79900D55893 /* DateTableViewCell.swift */,
@@ -615,22 +615,15 @@
 				8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */,
 				8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */,
 				8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */,
-				8E6D50361C7F053B00878957 /* PhotosViewController.swift */,
-				8E1DD6031CAE7F2800D55893 /* SelectPhotosViewController.swift */,
-				8E5A6BDF1CDA2E3F0073B693 /* OnePhotoViewController.swift */,
+				8EF404171D01A32700B1D5D9 /* Photo */,
 				8E1DD6051CB26A3D00D55893 /* ShareViewController.swift */,
-				8E6D50381C7F056200878957 /* VideosViewController.swift */,
-				8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */,
-				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
-				8E5A6BCF1CD3EC030073B693 /* WeightNoteViewController.swift */,
-				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
-				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
-				8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */,
+				8EF404181D01A35900B1D5D9 /* Video */,
+				8EF404191D01A37300B1D5D9 /* Notes */,
+				A076227F1CF70FD1003951EC /* Export */,
 				8E6D503C1C7F05D700878957 /* ForumViewController.swift */,
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
 				8EE947E71CE9DE4200064446 /* AdvertisingViewController.swift */,
-				A0669E711CDA3597002F8E95 /* DoctorViewController.swift */,
 				8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */,
 				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
 				8EE947C51CE5E56000064446 /* DrugsViewController.swift */,
@@ -641,12 +634,6 @@
 				8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */,
 				8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */,
 				8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */,
-				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
-				8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */,
-				8E5A6B981CD203F80073B693 /* DesireTableViewCell.swift */,
-				8E5A6BD11CD7A1680073B693 /* FoodTableViewCell.swift */,
-				8E5A6BD31CD7A1810073B693 /* PreferencesTableViewCell.swift */,
-				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8E5A6BC21CD25BFA0073B693 /* webArticleViewController.swift */,
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
 				A0244DDE1CFDCB370085C8F1 /* Notifications.swift */,
@@ -746,6 +733,45 @@
 				8EEAC3321CCE542F007B4643 /* Setter.swift */,
 			);
 			path = Typed;
+			sourceTree = "<group>";
+		};
+		8EF404171D01A32700B1D5D9 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DD6011CAE78D300D55893 /* PhotoCollectionViewCell.swift */,
+				8E6D50361C7F053B00878957 /* PhotosViewController.swift */,
+				8E1DD6031CAE7F2800D55893 /* SelectPhotosViewController.swift */,
+				8E5A6BDF1CDA2E3F0073B693 /* OnePhotoViewController.swift */,
+				8EF4040F1D01A31400B1D5D9 /* PhotoFromCalendarViewController.swift */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		8EF404181D01A35900B1D5D9 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				8E1AC9181CA937B30091D8BB /* VideoCollectionViewCell.swift */,
+				8E6D50381C7F056200878957 /* VideosViewController.swift */,
+				8E5A6BBA1CD22DF50073B693 /* VideoPlayerViewController.swift */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
+		8EF404191D01A37300B1D5D9 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				A0B9D39C1CEA04CF005B5797 /* Doctor */,
+				8E6D503A1C7F05AA00878957 /* NotesViewController.swift */,
+				8E5A6BCF1CD3EC030073B693 /* WeightNoteViewController.swift */,
+				8EEAC3481CCE7194007B4643 /* TextNoteViewController.swift */,
+				8EEAC34D1CD10F46007B4643 /* DesireListViewController.swift */,
+				8E5A6BCD1CD3CAA90073B693 /* FoodViewController.swift */,
+				8E5A6B981CD203F80073B693 /* DesireTableViewCell.swift */,
+				8E5A6BD11CD7A1680073B693 /* FoodTableViewCell.swift */,
+				8E5A6BD31CD7A1810073B693 /* PreferencesTableViewCell.swift */,
+				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
+			);
+			name = Notes;
 			sourceTree = "<group>";
 		};
 		A01028CB1CD227B0005E339F /* html */ = {
@@ -918,6 +944,7 @@
 		A0B9D39C1CEA04CF005B5797 /* Doctor */ = {
 			isa = PBXGroup;
 			children = (
+				A0669E711CDA3597002F8E95 /* DoctorViewController.swift */,
 				A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */,
 				A0669E601CDA34E4002F8E95 /* DoctorViewCell.swift */,
 				8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */,
@@ -1329,6 +1356,7 @@
 				8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */,
 				8EE947E81CE9DE4200064446 /* AdvertisingViewController.swift in Sources */,
 				A01029191CD29E0B005E339F /* CVRange.swift in Sources */,
+				8EF404101D01A31400B1D5D9 /* PhotoFromCalendarViewController.swift in Sources */,
 				8EEAC3451CCE542F007B4643 /* Setter.swift in Sources */,
 				A010290E1CD29E0B005E339F /* CVCalendarView.swift in Sources */,
 				8EE947E61CE6036E00064446 /* DatePickerViewController.swift in Sources */,

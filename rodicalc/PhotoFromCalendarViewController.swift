@@ -1,205 +1,105 @@
 //
-//  CalendarTableViewController.swift
-//  rodicalc
+//  PhotoFromCalendarViewController.swift
+//  Календарь беременности
 //
-//  Created by deck on 25.02.16.
+//  Created by deck on 03.06.16.
 //  Copyright © 2016 deck. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-var selectedCalendarDay: DayView!
-class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class PhotoWithType: NSObject {
+    var image: UIImage
+    var date: NSDate
+    var text: String
+    var isMyPhoto: Bool
+    var id: Int
+    init(image: UIImage, date: NSDate, text: String, isMyPhoto: Bool, id: Int) {
+        self.image = image
+        self.date = date
+        self.text = text
+        self.isMyPhoto = isMyPhoto
+        self.id = id
+        super.init()
+    }
+}
 
-   
+var selectedCalendarDayPhoto:DayView!
+var photoFromDate = [PhotoWithType]()
+
+class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var menuView: CVCalendarMenuView!
-    @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
-    var BirthDate = NSDate()
-    var day: Int = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbl.delegate = self
-        tbl.dataSource = self
-        tbl.backgroundColor = .clearColor()
-        loadDate()
-        self.presentedDateUpdated(CVDate(date: NSDate()))
-        let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = btnBack
+        let date = selectedCalendarDayPhoto.date.convertedDate()
+        self.presentedDateUpdated(CVDate(date: date!))
+        // Do any additional setup after loading the view.
+        loadPhoto(date!)
     }
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    
+    func loadPhoto(Date: NSDate){
+        photoFromDate.removeAll()
+        var table = Table("Photo")
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        let type = Expression<Int64>("Type")
+        let id = Expression<Int64>("_id")
+        let text = Expression<String>("Text")
+        
+        for i in try! db.prepare(table.select(date,image,type,text, id).filter(date == "\(Date)")) {
+            let a = i[image] as! Blob
+            let c = NSData(bytes: a.bytes, length: a.bytes.count)
+            let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            photoFromDate.append(PhotoWithType(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text], isMyPhoto: true, id: Int(i[id])))
+        }
+        
+        table = Table("Uzi")
+        for i in try! db.prepare(table.select(date,image,type,text, id).filter(date == "\(Date)")) {
+            let a = i[image] as! Blob
+            let c = NSData(bytes: a.bytes, length: a.bytes.count)
+            let b = i[date]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+            photoFromDate.append(PhotoWithType(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text], isMyPhoto: false, id: Int(i[id])))
+        }
+    }
+    
+    //collectionView
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  photoFromDate.count
     }
     
-    func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarCell", forIndexPath: indexPath)
-        if selectedCalendarDay != nil {
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Заметки"
-            cell.detailTextLabel?.text = String(" \(returnCount(0)) заметок")
-            break
-        case 1:
-            cell.textLabel?.text = "Фотографии"
-            cell.detailTextLabel?.text = String(" \(returnCount(1)) фотографий")
-            break
-        case 2:
-            cell.textLabel?.text = "Уведомления"
-            cell.detailTextLabel?.text = String(" \(returnCount(2)) уведомлений")
-            break
-        default:
-            break
-        }
-        }else{
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "Заметки"
-                break
-            case 1:
-                cell.textLabel?.text = "Фотографии"
-                break
-            case 2:
-                cell.textLabel?.text = "Уведомления"
-                break
-            default:
-                break
-            }
-        }
-        cell.backgroundColor = .clearColor()
-        return cell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCalendarCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        PhotoCell.photo.image = photoFromDate[indexPath.row].image
+        return PhotoCell
     }
     
-    func returnCount(number: Int) -> Int{
-        var count = 0
-        switch number {
-        case 0: //заметки
-            var table = Table("TextNote")
-            let Date = Expression<String>("Date")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            table = Table("WeightNote")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            
-            table = Table("DoctorVisit")
-            let calendar = NSCalendar.currentCalendar()
-            var components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
-            
-            for i in try! db.prepare(table.select(Date)) {
-                let b = i[Date]
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-                let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-                if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                    count += 1
-                }
-            }
-            
-            table = Table("Food")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            
-            table = Table("MedicineTake")
-            let start = Expression<String>("Start")
-            let end = Expression<String>("End")
-            
-            components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
-            components.hour = 00
-            components.minute = 00
-            components.second = 00
-            let newcurDate = calendar.dateFromComponents(components)
-            
-            for i in try! db.prepare(table.select(start,end)) {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-                let componentsS = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[start])!)
-                let componentsE = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(i[end])!)
-                componentsS.hour = 00
-                componentsS.minute = 00
-                componentsS.second = 00
-                let newDateS = calendar.dateFromComponents(componentsS)
-                componentsE.hour = 00
-                componentsE.minute = 00
-                componentsE.second = 00
-                let newDateE = calendar.dateFromComponents(componentsE)
-                var a = newcurDate?.compare(newDateS!)
-                var b = newcurDate?.compare(newDateE!)
-                if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
-                    count += 1
-                }
-            }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        currentPhoto = indexPath.row
+    }
 
-            break
-        case 1: //фото
-            var table = Table("Photo")
-            let Date = Expression<String>("Date")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            
-            table = Table("Uzi")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
-            break
-        case 2: //уведомления
-            day = 300 - BirthDate.daysFrom(selectedCalendarDay.date.convertedDate()!)
-            var table = Table("Notification")
-            let Day = Expression<Int64>("Day")
-            count = try db.scalar(table.filter(Day == Int64(day)).count)
-            break
-        default:
-            break
-        }
-        return count
-    }
-    
-    private func getCustomBackgroundView() -> UIView{
-        let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
-        return BackgroundView
-    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.selectedBackgroundView=getCustomBackgroundView()
-        cell!.textLabel?.highlightedTextColor = StrawBerryColor
-        cell!.detailTextLabel?.highlightedTextColor = StrawBerryColor
-        return indexPath
+        let  date = selectedCalendarDayPhoto.date
+        let controller = calendarView.contentController as! CVCalendarWeekContentViewController
+        controller.selectDayViewWithDay(date.day, inWeekView: controller.getPresentedWeek()!)
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            //cell.textLabel?.text = "Заметки"
-            selectedNoteDay = selectedCalendarDay!
-            
-            let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
-            self.splitViewController?.showDetailViewController(notes!, sender: self)
-            break
-        case 1:
-            //cell.textLabel?.text = "Фотографии"
-            selectedCalendarDayPhoto = selectedCalendarDay!
-            let photo = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoFromCalendarNavigation")
-            //self.splitViewController?.showDetailViewController(photo!, sender: self)
-            self.navigationController?.pushViewController(photo!, animated: true)
-            break
-        case 2:
-            //cell.textLabel?.text = "Уведомления"
-            selectedExperienceDay = selectedCalendarDay!
-            fromCalendar = true
-            let experience = self.storyboard?.instantiateViewControllerWithIdentifier("Experience")
-            self.splitViewController?.showDetailViewController(experience!, sender: self)
-            break
-        default:
-            break
-        }
-    }
-    
+
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
@@ -208,69 +108,20 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func loadDate(){
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
-        
-        fetchRequest.entity = entityDescription
-        do {
-            let result = try managedContext.executeFetchRequest(fetchRequest)
-            
-            if (result.count > 0) {
-                for i in result {
-                    let date = i as! NSManagedObject
-                    let dte = date.valueForKey("date") as! NSDate
-                    dateType = date.valueForKey("type") as! Int
-                    BirthDate = dte
-                    if dateType == 0{
-                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
-                    }
-                    else if dateType == 1{
-                        BirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
-                    }
-                }
-            }
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-    }
-
-    func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
-    {
-        let dateComponents = NSDateComponents()
-        let CurrentCalendar = NSCalendar.currentCalendar()
-        let CalendarOption = NSCalendarOptions()
-        
-        dateComponents.day = NumberOfDaysToAdd
-        
-        let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
-        return newDate!
-    }
 }
 
-
-
-extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension PhotoFromCalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
-        return .MonthView
+        return .WeekView
     }
     
     /// Required method to implement!
@@ -290,9 +141,11 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        selectedCalendarDay = dayView
-        tbl.reloadData()
+        selectedCalendarDayPhoto = dayView
+        loadPhoto(selectedCalendarDayPhoto.date.convertedDate()!)
+        photoCollectionView.reloadData()
     }
+    
     
     func swipedetected(){
         
@@ -365,7 +218,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
                 break
             }
             //updatedMonthLabel.center = self.monthLabel.center
-           // self.title = updatedMonthLabel.text
+            // self.title = updatedMonthLabel.text
             /*
              let offset = CGFloat(48)
              updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)
@@ -397,6 +250,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
              */
         }
     }
+
     
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return true
@@ -444,7 +298,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
         return false
     }
-
+    
     
     func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
         return 13
@@ -525,7 +379,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension CalendarViewController: CVCalendarViewAppearanceDelegate {
+extension PhotoFromCalendarViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -537,7 +391,7 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension CalendarViewController {
+extension PhotoFromCalendarViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -574,7 +428,7 @@ extension CalendarViewController {
 
 // MARK: - Convenience API Demo
 
-extension CalendarViewController {
+extension PhotoFromCalendarViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager

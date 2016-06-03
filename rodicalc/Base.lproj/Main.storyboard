@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="96l-2U-KKg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -4127,6 +4127,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9i-58-lmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2603" y="4724"/>
+        </scene>
+        <!--Calendar Appearance Delegate-->
+        <scene sceneID="AQP-Nk-BXV">
+            <objects>
+                <viewController storyboardIdentifier="PhotoFromCalendarNavigation" id="mi7-i9-Km6" customClass="PhotoFromCalendarViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BHU-Nk-ksu"/>
+                        <viewControllerLayoutGuide type="bottom" id="5v4-Ot-Urs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="036-zw-Bkq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2J7-Lf-5m0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5q-lm-ecv" customClass="CVCalendarMenuView" customModule="Календарь_беременности" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="38"/>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="mi7-i9-Km6" id="v96-1e-goM"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iz-gY-gcJ" customClass="CVCalendarView" customModule="Календарь_беременности" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="102" width="600" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="aBK-GD-ttk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="mi7-i9-Km6" id="hZJ-48-1VY"/>
+                                    <outlet property="calendarDelegate" destination="mi7-i9-Km6" id="h6b-iU-qfn"/>
+                                </connections>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GXO-mX-GHc">
+                                <rect key="frame" x="0.0" y="180" width="600" height="412"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="412" id="XrP-ju-6c4"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="40h-vO-TMI">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoCalendarCell" reuseIdentifier="PhotoCalendarCell" id="jfg-d6-Vex" customClass="PhotoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-5O-Tmn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ubg-ie-GEv">
+                                                    <rect key="frame" x="62" y="62" width="30" height="30"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Ubg-ie-GEv" firstAttribute="leading" secondItem="jfg-d6-Vex" secondAttribute="leadingMargin" constant="54" id="3TR-pk-HWh"/>
+                                            <constraint firstItem="QzS-5O-Tmn" firstAttribute="leading" secondItem="jfg-d6-Vex" secondAttribute="leading" id="DRD-Ta-s4g"/>
+                                            <constraint firstItem="Ubg-ie-GEv" firstAttribute="bottom" secondItem="jfg-d6-Vex" secondAttribute="bottomMargin" id="Fbk-Un-GcW"/>
+                                            <constraint firstItem="QzS-5O-Tmn" firstAttribute="top" secondItem="jfg-d6-Vex" secondAttribute="top" id="Lnh-pN-MjM"/>
+                                            <constraint firstAttribute="trailing" secondItem="QzS-5O-Tmn" secondAttribute="trailing" id="Roc-qU-81E"/>
+                                            <constraint firstAttribute="bottom" secondItem="QzS-5O-Tmn" secondAttribute="bottom" id="Vvg-CF-chv"/>
+                                            <constraint firstItem="Ubg-ie-GEv" firstAttribute="top" secondItem="jfg-d6-Vex" secondAttribute="topMargin" constant="54" id="cFr-PL-Ph0"/>
+                                            <constraint firstItem="Ubg-ie-GEv" firstAttribute="trailing" secondItem="jfg-d6-Vex" secondAttribute="trailingMargin" id="cYJ-iu-Rlw"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="ImgSelector" destination="Ubg-ie-GEv" id="LSk-Y8-NQ6"/>
+                                            <outlet property="photo" destination="QzS-5O-Tmn" id="q7v-Hx-LQO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="mi7-i9-Km6" id="Uai-pz-bHf"/>
+                                    <outlet property="delegate" destination="mi7-i9-Km6" id="c2Y-gu-WfB"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2J7-Lf-5m0" firstAttribute="leading" secondItem="f5q-lm-ecv" secondAttribute="leading" id="7qG-IO-RQi"/>
+                            <constraint firstItem="2J7-Lf-5m0" firstAttribute="leading" secondItem="036-zw-Bkq" secondAttribute="leading" id="9DC-Er-jTz"/>
+                            <constraint firstItem="6iz-gY-gcJ" firstAttribute="top" secondItem="036-zw-Bkq" secondAttribute="top" constant="102" id="A2h-k1-MPJ"/>
+                            <constraint firstItem="f5q-lm-ecv" firstAttribute="top" secondItem="BHU-Nk-ksu" secondAttribute="bottom" id="ADU-9p-Fkd"/>
+                            <constraint firstItem="GXO-mX-GHc" firstAttribute="top" secondItem="6iz-gY-gcJ" secondAttribute="bottom" constant="8" symbolic="YES" id="BEW-o1-jIR"/>
+                            <constraint firstItem="6iz-gY-gcJ" firstAttribute="top" secondItem="f5q-lm-ecv" secondAttribute="bottom" id="JPF-Z4-drF"/>
+                            <constraint firstAttribute="trailing" secondItem="2J7-Lf-5m0" secondAttribute="trailing" id="M7d-kg-0xa"/>
+                            <constraint firstItem="2J7-Lf-5m0" firstAttribute="trailing" secondItem="6iz-gY-gcJ" secondAttribute="trailing" id="S7n-oF-Ji2"/>
+                            <constraint firstItem="6iz-gY-gcJ" firstAttribute="trailing" secondItem="GXO-mX-GHc" secondAttribute="trailing" id="Wnd-ZB-C3a"/>
+                            <constraint firstItem="6iz-gY-gcJ" firstAttribute="leading" secondItem="GXO-mX-GHc" secondAttribute="leading" id="Xhm-gp-nkU"/>
+                            <constraint firstItem="2J7-Lf-5m0" firstAttribute="top" secondItem="036-zw-Bkq" secondAttribute="top" id="dWZ-3p-l8n"/>
+                            <constraint firstItem="5v4-Ot-Urs" firstAttribute="top" secondItem="GXO-mX-GHc" secondAttribute="bottom" constant="8" symbolic="YES" id="hlh-GN-QfZ"/>
+                            <constraint firstItem="f5q-lm-ecv" firstAttribute="trailing" secondItem="6iz-gY-gcJ" secondAttribute="trailing" id="jsv-bf-oa9"/>
+                            <constraint firstItem="f5q-lm-ecv" firstAttribute="leading" secondItem="6iz-gY-gcJ" secondAttribute="leading" id="qzK-DL-iQD"/>
+                            <constraint firstItem="2J7-Lf-5m0" firstAttribute="bottom" secondItem="5v4-Ot-Urs" secondAttribute="top" id="sGe-dA-qGD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mAK-mf-uf4"/>
+                    <connections>
+                        <outlet property="calendarView" destination="6iz-gY-gcJ" id="wAx-iO-UmR"/>
+                        <outlet property="menuView" destination="f5q-lm-ecv" id="0wh-6d-Luw"/>
+                        <outlet property="photoCollectionView" destination="GXO-mX-GHc" id="ulM-C4-XSb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXk-Gn-NlS" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3768" y="5326"/>
         </scene>
     </scenes>
     <resources>
