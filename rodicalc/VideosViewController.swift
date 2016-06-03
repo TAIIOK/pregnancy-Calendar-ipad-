@@ -161,7 +161,10 @@ class VideosViewController: UICollectionViewController {
         }
     }
     func loadList(notification: NSNotification){
-        self.VideoCollectionView.reloadData()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.VideoCollectionView.reloadData()
+            return}
+        )
     }
     
     override func viewDidLoad() {

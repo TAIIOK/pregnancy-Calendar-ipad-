@@ -188,6 +188,7 @@
 		A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07622901CF7465A003951EC /* PhotoTemplate.xib */; };
 		A09350CB1CFF90BE00563AE8 /* CreateAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */; };
 		A0A527111CF87559003F7041 /* ShowExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A527101CF87559003F7041 /* ShowExportViewController.swift */; };
+		A0D040041D01B1BF0059D4FB /* loadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D040031D01B1BF0059D4FB /* loadJson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,6 +487,7 @@
 		A07622901CF7465A003951EC /* PhotoTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTemplate.xib; sourceTree = "<group>"; };
 		A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAlbum.swift; sourceTree = "<group>"; };
 		A0A527101CF87559003F7041 /* ShowExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowExportViewController.swift; sourceTree = "<group>"; };
+		A0D040031D01B1BF0059D4FB /* loadJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadJson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +653,7 @@
 				8EE947B81CE484F100064446 /* NotifiCell.swift */,
 				A0244DDE1CFDCB370085C8F1 /* Notifications.swift */,
 				A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */,
+				A0D040031D01B1BF0059D4FB /* loadJson.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */,
 				A010290B1CD29E0B005E339F /* CVCalendarMonthContentViewController.swift in Sources */,
 				A01029091CD29E0B005E339F /* CVCalendarMenuView.swift in Sources */,
+				A0D040041D01B1BF0059D4FB /* loadJson.swift in Sources */,
 				8E1DD60A1CB2978500D55893 /* ShowZodiacViewController.swift in Sources */,
 				A0244DDF1CFDCB370085C8F1 /* Notifications.swift in Sources */,
 				8EEAC3381CCE542F007B4643 /* FTS4.swift in Sources */,
