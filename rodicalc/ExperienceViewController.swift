@@ -326,9 +326,13 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         }else{
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if cell?.textLabel?.text == "Полезно знать каждой"{
-                let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("advertising")
-                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                isAdvertitsing = true
+            }else{
+                noteText[0] = (cell?.textLabel?.text)!
+                noteText[1] = (cell?.detailTextLabel?.text)!
             }
+            let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("advertising")
+            self.navigationController?.pushViewController(destinationViewController!, animated: true)
         }
     }
     

@@ -8,11 +8,15 @@
 
 import UIKit
 
+var isAdvertitsing = false
+var noteText = ["",""]
 class AdvertisingViewController: UIViewController {
     
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label: UILabel!
     
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -21,6 +25,15 @@ class AdvertisingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !isAdvertitsing{
+            textView.text = noteText[1]
+            textView.textColor = BiruzaColor
+            textView.font = .systemFontOfSize(16)
+            label.text = noteText[0]
+            label.textColor = StrawBerryColor
+            label.font = .systemFontOfSize(16)
+        }
 
         if selectedDay != nil {
             self.calendarView.toggleViewWithDate(selectedDay.date.convertedDate()!)
@@ -28,7 +41,7 @@ class AdvertisingViewController: UIViewController {
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
-                self.presentedDateUpdated(CVDate(date: NSDate()))        //WorkWithDB()
+        self.presentedDateUpdated(CVDate(date: NSDate()))        //WorkWithDB()
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,7 +57,7 @@ class AdvertisingViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let date = selectedNoteDay.date
+        let date = selectedExperienceDay.date
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
         
