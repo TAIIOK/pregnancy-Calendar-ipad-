@@ -210,7 +210,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             text = returnTableText("TextNote", type: 0, date: date)
             
             if  text  != "" {
-                cell.detailTextLabel?.text?.appendContentsOf("Сегодня я чувствую себя ")
+                cell.detailTextLabel?.text?.appendContentsOf("Мое самочувствие ")
                 cell.detailTextLabel?.text = String(text)
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"
@@ -219,7 +219,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 1: //как ведет сеья малыш - текстовая
             text = returnTableText("TextNote", type: 1, date: date)
             if  text  != "" {
-                cell.detailTextLabel?.text?.appendContentsOf("Сегодня мой малыш ")
+                cell.detailTextLabel?.text?.appendContentsOf("Как ведет себя малыш ")
                 cell.detailTextLabel?.text = String(text)
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"

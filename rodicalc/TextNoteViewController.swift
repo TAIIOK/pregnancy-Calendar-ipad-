@@ -9,7 +9,21 @@
 import UIKit
 
 class TextNoteViewController: UIViewController {
-
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+    
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var NoteTitle: UILabel!
@@ -22,8 +36,16 @@ class TextNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         //self.navigationController?.navigationBar.backItem?.title = ""
         //self.title = CVDate(date: NSDate()).globalDescription
+        
+        NoteText.layer.borderColor = UIColor.blackColor().CGColor
+        NoteText.layer.borderWidth = 1.0;
+        NoteText.layer.cornerRadius = 5.0;
+        
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         }else{
