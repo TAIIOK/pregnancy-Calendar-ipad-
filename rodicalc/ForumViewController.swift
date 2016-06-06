@@ -9,7 +9,7 @@
 import UIKit
 var items: [String] = ["Общие","Скидки, подарки, конкурсы","Планирование беременности","Традиционные религии России","Беременность","Поступки мужчин","Ваш возраст при беременности","Роды","После родов","Клуб МАМА-ФЭСТ","Комментарии пользователей"]
 
-var urls: [String] = ["http://www.aist-k.com/forum/forum8/","http://www.aist-k.com/forum/group2/","http://www.aist-k.com/forum/group4/","http://www.aist-k.com/forum/group10/","http://www.aist-k.com/forum/group5/","http://www.aist-k.com/forum/group9/","http://www.aist-k.com/forum/group3/","http://www.aist-k.com/forum/group7/","http://www.aist-k.com/forum/group8/","http://www.aist-k.com/forum/group6/","http://www.aist-k.com/forum/group1/"]
+var urls: [String] = ["http://www.aist-k.com/forum/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=2/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=4/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=10/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=5/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=9/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=3/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=7/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=8/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=6/","http://www.aist-k.com/forum/?PAGE_NAME=forums&GID=1/"]
 var id=0
 
 class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {

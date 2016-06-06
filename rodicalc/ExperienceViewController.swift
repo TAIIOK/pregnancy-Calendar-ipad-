@@ -320,7 +320,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             self.navigationController?.pushViewController(destinationViewController!, animated: true)
             break
         case 2:
-            let site = "http://www.mama-fest.com/article/"//"http://www.aist-k.com/"
+            let site = "http://www.mama-fest.com/article/o_zdorove/"
             if let url = NSURL(string: site){
                 UIApplication.sharedApplication().openURL(url)
             }
