@@ -13,14 +13,14 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
+            self.view.frame.origin.y -= keyboardSize.height/2
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+            self.view.frame.origin.y += keyboardSize.height/2
         }
     }
 
@@ -82,7 +82,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         for i in try! db.prepare(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)")) {
             Food.append(i[text])
         }
-        
+
         Preferences.removeAll()
         table = Table("Preferences")
         text = Expression<String>("Text")
@@ -178,6 +178,11 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillDisappear(animated: Bool) {
+        saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    func saveNote(){
         fromTableFoodInArray()
         var table = Table("Food")
         var text = Expression<String>("Text")
@@ -191,7 +196,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)", date <- "\(selectedNoteDay.date.convertedDate()!)"))}
         }
-
+        
         fromTablePreferencesInArray()
         table = Table("Preferences")
         count = try! db.scalar(table.count)
@@ -213,7 +218,6 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)"))}
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func fromTableFoodInArray(){
@@ -292,7 +296,21 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     }
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        saveNote()
         selectedNoteDay = dayView
+        loadData()
+        if Food.count == 0 {
+            Food.append("")
+        }
+        if Preferences.count == 0 {
+            Preferences.append("")
+        }
+        if Restrictions.count == 0 {
+            Restrictions.append("")
+        }
+        FoodTable.reloadData()
+        PreferencesTable.reloadData()
+        RestrictionsTable.reloadData()
     }
     
     func swipedetected(){

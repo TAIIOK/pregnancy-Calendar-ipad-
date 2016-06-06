@@ -422,6 +422,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
             var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
                 var read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
+                    noteText[1] = notification.alertBody!
+                    //let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destinationViewController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("advertising")
+                    print(destinationViewController)
+                    self.window?.rootViewController!.navigationController?.pushViewController(destinationViewController!, animated: true)
                 /*
                     let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
@@ -431,7 +436,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 self.window?.rootViewController?.presentViewController(initialViewControlleripad, animated: true, completion: nil)
                 */
-        
+                    
                 } )
 
                 
