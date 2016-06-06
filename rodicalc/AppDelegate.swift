@@ -402,10 +402,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
                     
                 }
+                
+                var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
+                var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+                
+                if(notification.userInfo?.first != nil)
+                {
+                    var key = notification.userInfo?.first?.1 as! String
+                    if(key == "-1"){
+                        var read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
+                            /*
+                             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                             let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
+                             let vc : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
+                             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                             var  ViewControllers =  [vc,initialViewControlleripad]
+                             
+                             self.window?.rootViewController?.presentViewController(initialViewControlleripad, animated: true, completion: nil)
+                             */
+                            
+                        } )
+                        alert.addAction(read)
+                    }
+                }
+                
+                
+                alert.addAction(ok)
+                
+                self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             
             }
             
-            if(notification.alertBody!.contains("http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/")){
+           else if(notification.alertBody!.contains("http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/")){
                 
                 var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
                     var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
@@ -421,6 +449,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
            var   alert =  UIAlertController(title: "", message: notification.alertBody, preferredStyle: .Alert)
             var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+                
+                if(notification.userInfo?.first != nil)
+                {
+                    var key = notification.userInfo?.first?.1 as! String
+                    if(key == "-1"){
                 var read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
                 /*
                     let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -433,10 +466,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 */
         
                 } )
+                     alert.addAction(read)
+                    }
+                }
 
                 
             alert.addAction(ok)
-            alert.addAction(read)
+            
             self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             }
             
