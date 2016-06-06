@@ -138,10 +138,13 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             components.second = componentsCurrent.second
             let newDate = calendar.dateFromComponents(components)
             
-            doctors.append(Doctor(date: newDate!, name: "Доктор", isRemind: false, remindType: 0, cellType: 1))
+            doctors.append(Doctor(date: newDate!, name: "", isRemind: false, remindType: 0, cellType: 1))
             arrayForBool.addObject("1")
 
             tbl.reloadData()
+            let range = NSMakeRange(doctors.count, 1)
+            let sectionToReload = NSIndexSet(indexesInRange: range)
+            self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
             var headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
             headerview?.setopen(true)
             headerview?.changeFields()
