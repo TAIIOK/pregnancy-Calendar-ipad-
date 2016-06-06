@@ -331,89 +331,59 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
             updatedMonthLabel.alpha = 0
             
             
+            
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь"
-                self.title = "Январь"
+                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
+                self.title = "Январь,\(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль"
-                self.title = "Февраль"
+                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
+                self.title = "Февраль,\(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март"
-                self.title = "Март"
+                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
+                self.title = "Март,\(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель"
-                self.title = "Апрель"
+                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
+                self.title = "Апрель,\(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май"
-                self.title = "Май"
+                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
+                self.title = "Май,\(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь"
-                self.title = "Июнь"
+                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
+                self.title = "Июнь,\(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль"
-                self.title = "Июль"
+                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
+                self.title = "Июль,\(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август"
-                self.title = "Август"
+                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
+                self.title = "Август,\(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь"
-                self.title = "Сентябрь"
+                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
+                self.title = "Сентябрь,\(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь"
-                self.title = "Октябрь"
+                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
+                self.title = "Октябрь,\(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь"
-                self.title = "Ноябрь"
+                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
+                self.title = "Ноябрь,\(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь"
-                self.title = "Декабрь"
+                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
+                self.title = "Декабрь,\(date.year)"
                 break
             default:
                 break
             }
-            //updatedMonthLabel.center = self.monthLabel.center
-            // self.title = updatedMonthLabel.text
-            /*
-             let offset = CGFloat(48)
-             updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)
-             updatedMonthLabel.transform = CGAffineTransformMakeScale(1, 0.1)
-             
-             UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-             //self.animationFinished = false
-             // self.monthLabel.transform = CGAffineTransformMakeTranslation(0, -offset)
-             //  self.monthLabel.transform = CGAffineTransformMakeScale(1, 0.1)
-             //  self.monthLabel.alpha = 0
-             
-             updatedMonthLabel.alpha = 1
-             updatedMonthLabel.transform = CGAffineTransformIdentity
-             
-             }) { _ in
-             
-             // self.animationFinished = true
-             // self.monthLabel.frame = updatedMonthLabel.frame
-             //  self.monthLabel.text = updatedMonthLabel.text
-             //  self.monthLabel.transform = CGAffineTransformIdentity
-             //  self.monthLabel.alpha = 1
-             self.title = updatedMonthLabel.text
-             updatedMonthLabel.removeFromSuperview()
-             }
-             
-             
-             
-             // self.view.insertSubview(updatedMonthLabel, aboveSubview: self.title)
-             */
         }
     }
     
