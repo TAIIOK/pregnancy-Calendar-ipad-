@@ -192,6 +192,11 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     override func viewWillDisappear(animated: Bool) {
+        saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    func saveNote(){
         let table = Table("WeightNote")
         let Date = Expression<String>("Date")
         let WeightKg = Expression<Int64>("WeightKg")
@@ -208,7 +213,6 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         }else{
             try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").delete())
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
 }
 
@@ -236,17 +240,19 @@ extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
         return false
     }
     
-
-    
-    
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        saveNote()
         selectedNoteDay = dayView
-        
+        weightKg = 0
+        weightGramm = 0
+        loadWeight()
+        setupWeightPickerView()
+        setupWeightPickerViewToolbar()
     }
     
     func swipedetected(){

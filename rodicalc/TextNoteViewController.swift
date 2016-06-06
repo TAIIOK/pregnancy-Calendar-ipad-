@@ -42,7 +42,7 @@ class TextNoteViewController: UIViewController {
         //self.navigationController?.navigationBar.backItem?.title = ""
         //self.title = CVDate(date: NSDate()).globalDescription
         
-        NoteText.layer.borderColor = UIColor.blackColor().CGColor
+        NoteText.layer.borderColor = StrawBerryColor.CGColor
         NoteText.layer.borderWidth = 1.0;
         NoteText.layer.cornerRadius = 5.0;
         
@@ -105,13 +105,18 @@ class TextNoteViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+
+    func saveNote(){
         if NoteText.text.characters.count > 0 && NoteType != 3{
             let table = Table("TextNote")
             let date = Expression<String>("Date")
             let text = Expression<String>("NoteText")
             let type = Expression<Int64>("Type")
             let count = try! db.scalar(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)" && type == Int64(NoteType)).count)
-        
+            
             if count == 0 {
                 try! db.run(table.insert(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)", type <- Int64(NoteType)))
             }else{
@@ -127,12 +132,10 @@ class TextNoteViewController: UIViewController {
             }else{
                 try! db.run(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").update(Date <- "\(selectedNoteDay.date.convertedDate()!)", Weight <- 60))
             }
-
+            
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
-    }
 
-    
+    }
     /*
      // MARK: - Navigation
      
@@ -169,8 +172,14 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        saveNote()
         selectedNoteDay = dayView
-        
+        NoteText.text = ""
+        if NoteType == 3{
+            NoteText.text = TextForWeight()
+        }else{
+            NoteText.text = TextForTextNote()
+        }
     }
     
     func swipedetected(){
