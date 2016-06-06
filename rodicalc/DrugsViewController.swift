@@ -142,8 +142,19 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let newDate = calendar.dateFromComponents(components)
             
             drugs.append(Drugs(name: "Лекарство", hour: 0, minute: 0, start: NSDate(), end: NSDate(), interval: 0, isRemind: false, cellType: 0))
-            arrayForBool.addObject("0")
+            arrayForBool.addObject("1")
             tbl.reloadData()
+            var headerview = tbl.viewWithTag(drugs.count) as? DoctorHeader
+            headerview?.setopen(true)
+            headerview?.changeFields()
+            
+            //let range = NSMakeRange(doctors.count, 1)
+            //let sectionToReload = NSIndexSet(indexesInRange: range)
+            //self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+            
+            headerview?.doctornameText.editing == true
+            headerview?.doctornameText.selected == true
+            headerview?.doctornameText.becomeFirstResponder();
         }
 
     }
