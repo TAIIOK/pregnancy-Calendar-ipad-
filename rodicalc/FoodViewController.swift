@@ -10,17 +10,23 @@ import UIKit
 
 class FoodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    var isKeyboard = false
+    
     func keyboardWillShow(notification: NSNotification) {
-        
+        if !isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.view.frame.origin.y -= keyboardSize.height/2
+            isKeyboard = true
+            }
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        if isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.view.frame.origin.y += keyboardSize.height/2
+            isKeyboard = false
+            }
         }
     }
 

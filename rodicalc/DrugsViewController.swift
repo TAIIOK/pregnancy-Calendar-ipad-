@@ -38,6 +38,25 @@ var StartORend = -1 //0 - start 1 - end
 var curDate = NSDate()
 class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPopoverPresentationControllerDelegate , UIGestureRecognizerDelegate {
     
+    var isKeyboard = false
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if !isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y -= keyboardSize.height/2
+                isKeyboard = true
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y += keyboardSize.height/2
+                isKeyboard = false
+            }
+        }
+    }
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -54,6 +73,9 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
         tbl.delegate = self
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()

@@ -51,17 +51,23 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var animationFinished = true
     var doctors = [Doctor]()
     
+    var isKeyboard = false
+    
     func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
+        if !isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y -= keyboardSize.height/2
+                isKeyboard = true
+            }
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+        if isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y += keyboardSize.height/2
+                isKeyboard = false
+            }
         }
     }
     
