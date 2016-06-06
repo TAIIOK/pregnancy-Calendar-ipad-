@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/BuyViewController.swift"
-            timestampString = "483542606.39334"
+            timestampString = "486906521.030506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "mapView(_:didDeselectAnnotationView:)"
-            landmarkType = "5">
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "BuyViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/BuyViewController.swift"
-            timestampString = "483542606.39334"
+            timestampString = "486906521.030506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "updateTable()"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "mapView(_:viewForAnnotation:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

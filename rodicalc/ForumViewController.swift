@@ -29,19 +29,29 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         noConnetionView.backgroundColor = .clearColor()
         table.backgroundColor = .clearColor()
-        if(Reachability.isConnectedToNetwork()==true){
-            self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
-            table.delegate = self
-            table.dataSource = self
-            table.hidden = false
-        }
-        else{
+        
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            print("Not connected")
             noConnetionImage.hidden = false
             noConnetionLabel.hidden = false
             noConnectionButton.hidden = false
             noConnetionView.hidden = false
             noConnectionButton.enabled = true
+            
+        case .Online(.WWAN):
+            self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
+            table.delegate = self
+            table.dataSource = self
+            table.hidden = false
+        case .Online(.WiFi):
+            self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
+            table.delegate = self
+            table.dataSource = self
+            table.hidden = false
         }
+    
     }
 
     override func didReceiveMemoryWarning() {

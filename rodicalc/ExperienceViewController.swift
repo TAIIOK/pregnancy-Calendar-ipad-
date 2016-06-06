@@ -183,19 +183,32 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func checkConnectionAndUpdateView(){
-        if(Reachability.isConnectedToNetwork()==false && choosedSegmentNotes==true){
+        
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
             noConnetionImage.hidden = false
             noConnetionLabel.hidden = false
             noConnetionButton.hidden = false
             noConnetionView.hidden = false
             noConnetionButton.enabled = true
-        }else{
+            print("no connection")
+        case .Online(.WWAN):
+            print("Connected via WWAN")
+            noConnetionImage.hidden = true
+            noConnetionLabel.hidden = true
+            noConnetionButton.hidden = true
+            noConnetionView.hidden = true
+            noConnetionButton.enabled = false
+        case .Online(.WiFi):
+            print("Connected via WiFi")
             noConnetionImage.hidden = true
             noConnetionLabel.hidden = true
             noConnetionButton.hidden = true
             noConnetionView.hidden = true
             noConnetionButton.enabled = false
         }
+        
     }
     
     override func viewDidLayoutSubviews() {

@@ -69,6 +69,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath
         info.text = choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n" + man[sections[indexPath.section].index + indexPath.row].value + "\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].value + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about)
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

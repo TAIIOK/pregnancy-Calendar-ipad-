@@ -13,7 +13,7 @@ import SwiftyVK
 var selectedNoteDay:DayView!
 var DayForView = NSDate()
 var NoteType = Int()
-var notes = ["Сегодня я чувствую себя","Сегодня мой малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
+var notes = ["Мое самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой \"лист желаний\""]
 
 
 class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
@@ -210,6 +210,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             text = returnTableText("TextNote", type: 0, date: date)
             
             if  text  != "" {
+                cell.detailTextLabel?.text?.appendContentsOf("Сегодня я чувствую себя ")
                 cell.detailTextLabel?.text = String(text)
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"
@@ -218,6 +219,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 1: //как ведет сеья малыш - текстовая
             text = returnTableText("TextNote", type: 1, date: date)
             if  text  != "" {
+                cell.detailTextLabel?.text?.appendContentsOf("Сегодня мой малыш ")
                 cell.detailTextLabel?.text = String(text)
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"

@@ -112,7 +112,18 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
             {
                 string = "\(components.month)"
             }
-            cell.detailTextLabel?.text = "\(components.day).\(string).\(components.year)"
+            
+            var stringday = ""
+            if(components.month<10)
+            {
+                stringday = "0\(components.day)"
+            }
+            else
+            {
+                stringday = "\(components.day)"
+            }
+            
+            cell.detailTextLabel?.text = "\(stringday).\(string).\(components.year)"
             //cell.detailTextLabel?.text = "\(selectedDay.date.day).\(selectedDay.date.month).\(selectedDay.date.year)"
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)

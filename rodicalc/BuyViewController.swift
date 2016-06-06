@@ -57,7 +57,18 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.backgroundColor = .clearColor()
-        if(Reachability.isConnectedToNetwork()==true){
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            noConnectionView.backgroundColor = .clearColor()
+            noConnectionImage.hidden = false
+            noConnectionView.hidden = false
+            map.hidden = true
+            noConnectionLabel.hidden=false
+            noConnectionButton.hidden=false
+            noConnectionButton.enabled=true
+            print("Not connected")
+        default:
             tbl.delegate = self
             tbl.dataSource = self
             map.delegate = self
@@ -88,15 +99,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             //addPinToMapView()
         }
-        else{
-            noConnectionView.backgroundColor = .clearColor()
-            noConnectionImage.hidden = false
-            noConnectionView.hidden = false
-            map.hidden = true
-            noConnectionLabel.hidden=false
-            noConnectionButton.hidden=false
-            noConnectionButton.enabled=true
-        }
+
  
     }
     
@@ -276,8 +279,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("MagCell", forIndexPath: indexPath)
             var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: nearPoints[indexPath.row].trade_point + "\nАдрес: " + nearPoints[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:nearPoints[indexPath.row].trade_point.characters.count+8,length:nearPoints[indexPath.row].address.characters.count))
+            var lenghtstring = nearPoints[indexPath.row].address.characters.count
+            lenghtstring += nearPoints[indexPath.row].city.characters.count
+            lenghtstring += 1
+            myMutableString = NSMutableAttributedString(string: nearPoints[indexPath.row].trade_point + "\nАдрес: " + "\(nearPoints[indexPath.row].city)" + " " + nearPoints[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:nearPoints[indexPath.row].trade_point.characters.count+8,length:lenghtstring ))
             cell.textLabel?.attributedText = myMutableString
             cell.backgroundColor = .clearColor()
             return cell

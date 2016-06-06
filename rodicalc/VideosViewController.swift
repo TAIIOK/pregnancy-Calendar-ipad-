@@ -67,13 +67,17 @@ class VideosViewController: UICollectionViewController {
     @IBOutlet weak var noConnectionButton: UIButton!
     @IBOutlet var noConnectionView: UIView!
     
+    
     @IBAction func reloadCollection(sender: AnyObject) {
         imagesfirst.removeAll()
         videoTitlefirst.removeAll()
         imagessecond.removeAll()
         videoTitlesecond.removeAll()
-        if(Reachability.isConnectedToNetwork()==true){
-
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            print("Not connected")
+        default:
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
         for (var i = 0 ; i < videosDress.count ; i += 1 ) {
             let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosDress[i])&format=json"
@@ -159,6 +163,7 @@ class VideosViewController: UICollectionViewController {
         }
         }
         }
+    
     }
     func loadList(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue(), {
@@ -174,12 +179,11 @@ class VideosViewController: UICollectionViewController {
         
         VideoCollectionView.delegate = self
         VideoCollectionView.dataSource = self
-        if(Reachability.isConnectedToNetwork()==true){
-            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
-            
-            VideoCollectionView.backgroundColor = .clearColor()
-        }
-        else{
+        
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            print("Not connected")
             imagesfirst.removeAll()
             videoTitlefirst.removeAll()
             imagessecond.removeAll()
@@ -192,8 +196,19 @@ class VideosViewController: UICollectionViewController {
             noConnectionButton.hidden = false
             noConnectionView.hidden = false
             noConnectionButton.enabled = true
+        case .Online(.WWAN):
+            print("Connected via WWAN")
+            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+            
+            VideoCollectionView.backgroundColor = .clearColor()
+        case .Online(.WiFi):
+            print("Connected via WiFi")
+            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+            
+            VideoCollectionView.backgroundColor = .clearColor()
         }
-    }
+        
+}
     
     @IBAction func ChangeSegment(sender: AnyObject) {
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
@@ -223,9 +238,12 @@ class VideosViewController: UICollectionViewController {
         VideoCell.photo.image = choosedVideoSegment ? imagesfirst[indexPath.row] : imagessecond[indexPath.row]
         VideoCell.title.text = choosedVideoSegment ? videoTitlefirst[indexPath.row]: videoTitlesecond[indexPath.row]
         VideoCell.backgroundColor = .clearColor()
-        if(Reachability.isConnectedToNetwork()==false){
-              VideoCell.hidden = true
-        }
+        
+        let status = Reach().connectionStatus()
+           
+       // if(Reachability.isConnectedToNetwork()==false){
+        //      VideoCell.hidden = true
+        //}
         return VideoCell
     }
     
