@@ -102,40 +102,40 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         switch date.month {
         case 1:
-            label.text = "Январь"
+            label.text = "Январь,\(date.year)"
             break
         case 2:
-            label.text = "Февраль"
+            label.text = "Февраль,\(date.year)"
             break
         case 3:
-            label.text = "Март"
+            label.text = "Март,\(date.year)"
             break
         case 4:
-            label.text = "Апрель"
+            label.text = "Апрель,\(date.year)"
             break
         case 5:
-            label.text = "Май"
+            label.text = "Май,\(date.year)"
             break
         case 6:
-            label.text = "Июнь"
+            label.text = "Июнь,\(date.year)"
             break
         case 7:
-            label.text = "Июль"
+            label.text = "Июль,\(date.year)"
             break
         case 8:
-            label.text =  "Август"
+            label.text =  "Август,\(date.year)"
             break
         case 9:
-            label.text =  "Сентябрь"
+            label.text =  "Сентябрь,\(date.year)"
             break
         case 10:
-            label.text =  "Октябрь"
+            label.text =  "Октябрь,\(date.year)"
             break
         case 11:
-            label.text = "Ноябрь"
+            label.text = "Ноябрь,\(date.year)"
             break
         case 12:
-            label.text = "Декабрь"
+            label.text = "Декабрь,\(date.year)"
             break
         default:
             break
