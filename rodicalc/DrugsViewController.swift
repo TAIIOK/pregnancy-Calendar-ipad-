@@ -85,6 +85,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func loadNotes(){
+        print("load ",selectedNoteDay.date.convertedDate()!)
         drugs.removeAll()
         var table = Table("MedicineTake")
         let name = Expression<String>("Name")
@@ -723,6 +724,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillDisappear(animated: Bool) {
+        saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    func saveNote(){
+        print("save ",selectedNoteDay.date.convertedDate()!)
         var table = Table("MedicineTake")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
@@ -764,7 +771,6 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         for i in drugs{
             try! db.run(table.insert(name <- i.name, start <- String(i.start), end <- String(i.end), isRemind <- i.isRemind, hour_ <- i.hour, minute_ <- i.minute, interval_ <- i.interval))
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func save()
@@ -834,7 +840,18 @@ extension DrugsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        saveNote()
+        drugs.removeAll()
+        arrayForBool.removeAllObjects()
+        tbl.reloadData()
         selectedNoteDay = dayView
+        arrayForBool.addObject("1")
+        loadNotes()
+        for(var i = 0 ; i<drugs.count ;i++)
+        {
+            arrayForBool.addObject("0")
+        }
+        tbl.reloadData()
     }
     
     func swipedetected(){

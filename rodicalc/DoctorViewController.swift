@@ -575,6 +575,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillDisappear(animated: Bool) {
+        saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    func saveNote(){
         var table = Table("DoctorVisit")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
@@ -598,7 +603,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for i in doctors{
             try! db.run(table.insert(name <- i.name, date <- String(i.date), isRemind <- i.isRemind, remindType <- i.remindType))
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
     func save()
@@ -677,7 +681,18 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+        saveNote()
+        doctors.removeAll()
+        arrayForBool.removeAllObjects()
+        tbl.reloadData()
         selectedNoteDay = dayView
+        arrayForBool.addObject("1")
+        loadNotes()
+        for(var i = 0 ; i<doctors.count ;i++)
+        {
+            arrayForBool.addObject("0")
+        }
+        tbl.reloadData()
     }
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
