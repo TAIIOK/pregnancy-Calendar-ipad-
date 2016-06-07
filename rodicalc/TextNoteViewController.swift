@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextNoteViewController: UIViewController {
+class TextNoteViewController: UIViewController, UITextViewDelegate {
     
     func keyboardWillShow(notification: NSNotification) {
         
@@ -34,9 +34,31 @@ class TextNoteViewController: UIViewController {
     //var db = try! Connection()
     
     
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        //This makes the new text black.
+     //   textField.typingAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
+        var protectedRange = NSMakeRange(0, 0)
+        if(NoteType == 0){
+        protectedRange = NSMakeRange(0, 16)
+        }
+        else if (NoteType == 1){
+        protectedRange = NSMakeRange(0, 23)
+        }
+        else{  return true }
+        let intersection = NSIntersectionRange(protectedRange, range)
+            print(intersection)
+        if(intersection.location == 0){
+            return true
+        }
+        else{ return false}
+        
+  
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NoteText.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         //self.navigationController?.navigationBar.backItem?.title = ""
