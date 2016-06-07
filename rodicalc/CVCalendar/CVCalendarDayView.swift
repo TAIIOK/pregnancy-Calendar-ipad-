@@ -101,6 +101,7 @@ public final class CVCalendarDayView: UIView {
             layer.borderColor = UIColor.whiteColor().CGColor
             layer.borderWidth = self.frame.width + 10
             layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
+ 
             
             self.topMarker = layer
             self.layer.addSublayer(self.topMarker!)

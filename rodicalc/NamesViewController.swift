@@ -78,11 +78,12 @@ class NamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath
-        //self.navigationController?.pushViewController(nameViewController!, animated: true)
+       // self.navigationController?.pushViewController(nameViewControlle, animated: true)
     }
     
     @IBAction func returnToFirstViewController(segue:UIStoryboardSegue) {
         print("This is called after  modal is dismissed by menu button on Siri Remote")
+        self.dismissViewControllerAnimated(true, completion: nil)
         Update()
     }
 

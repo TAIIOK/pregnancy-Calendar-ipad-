@@ -485,6 +485,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
         print("Update TIME")
+        self.dismissViewControllerAnimated(true, completion: nil)
         let tmp = doctors[currentRec-1].date
         cancelLocalNotification("\(doctors[currentRec-1].date)")
         let calendar = NSCalendar.currentCalendar()
@@ -506,6 +507,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("Update Notifi")
+        self.dismissViewControllerAnimated(true, completion: nil)
 
         cancelLocalNotification("\(doctors[currentRec-1].date)")
         
