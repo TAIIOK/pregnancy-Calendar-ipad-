@@ -136,6 +136,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                     count += 1
                 }
             }
+            
+            table = Table("DesireList")
+            count += try db.scalar(table.count)
 
             break
         case 1: //фото
