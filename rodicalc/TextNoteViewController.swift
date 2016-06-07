@@ -39,10 +39,10 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
         //This makes the new text black.
      //   textField.typingAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
         var protectedRange = NSMakeRange(0, 0)
-        if(NoteType == 0){
-        protectedRange = NSMakeRange(0, 16)
+        if(NoteType == 1){
+        protectedRange = NSMakeRange(0, 17)
         }
-        else if (NoteType == 1){
+        else if (NoteType == 0){
         protectedRange = NSMakeRange(0, 23)
         }
         else{  return true }
@@ -74,11 +74,15 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
         }
+
         NoteTitle.text = notes[NoteType]
+
+        
         if NoteType == 3{
             NoteText.text = TextForWeight()
         }else{
             NoteText.text = TextForTextNote()
+            
         }
         self.presentedDateUpdated(CVDate(date: NSDate()))        //WorkWithDB()
     }
@@ -91,6 +95,17 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
         var str = ""
         for tmp in try! db.prepare(table.select(text).filter(Date == "\(selectedNoteDay.date.convertedDate()!)" && Type == Int64(NoteType))){
             str = tmp[text]}
+        
+        if(str.characters.count == 0)
+        {
+            if(NoteType == 0){
+                str = "Сегодня я чувствую себя"
+            }
+            else  if(NoteType == 1){
+                str = "Сегодня мой малыш"
+            }
+        }
+        
         return str
     }
     
@@ -101,6 +116,9 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
         var str = "0 кг 0 г"
         for tmp in try! db.prepare(table.select(Weight).filter(Date == "\(selectedNoteDay.date.convertedDate()!)")){
             str = String(tmp[Weight])}
+        
+
+        
         return str
     }
     
@@ -132,6 +150,15 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     }
 
     func saveNote(){
+        print(NoteText.text.characters.count)
+        if(NoteText.text.characters.count == 17 && NoteType == 1)
+        {
+            return
+        }
+        if(NoteText.text.characters.count == 23 && NoteType == 0)
+        {
+            return
+        }
         if NoteText.text.characters.count > 0 && NoteType != 3{
             let table = Table("TextNote")
             let date = Expression<String>("Date")
