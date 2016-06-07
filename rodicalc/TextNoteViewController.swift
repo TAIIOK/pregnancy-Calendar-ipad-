@@ -122,6 +122,12 @@ class TextNoteViewController: UIViewController {
             }else{
                 try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)" && type == Int64(NoteType)).update(date <- "\(selectedNoteDay.date.convertedDate()!)", text <- "\(NoteText.text)"))
             }
+        }else if NoteText.text.characters.count == 0 && NoteType != 3{
+            let table = Table("TextNote")
+            let date = Expression<String>("Date")
+            let text = Expression<String>("NoteText")
+            let type = Expression<Int64>("Type")
+            try! db.run(table.delete())
         }else if NoteText.text.characters.count > 0 && NoteType == 3{
             let table = Table("WeightNote")
             let Date = Expression<String>("Date")

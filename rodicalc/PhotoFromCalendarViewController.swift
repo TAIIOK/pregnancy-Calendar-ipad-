@@ -27,7 +27,7 @@ class PhotoWithType: NSObject {
 var selectedCalendarDayPhoto:DayView!
 var photoFromDate = [PhotoWithType]()
 
-class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
     
     var picker:LandscapePickerController?=LandscapePickerController()
     
@@ -43,8 +43,8 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         let date = selectedCalendarDayPhoto.date.convertedDate()
         self.presentedDateUpdated(CVDate(date: date!))
         // Do any additional setup after loading the view.
-        let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))
+        let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotoFromCalendarViewController.openCamera))
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotoFromCalendarViewController.addPhoto))
         a.tintColor = UIColor.whiteColor()
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItems([a,b], animated: true)
@@ -91,7 +91,6 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         {
             UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
         }
-        
         let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Выберите в какую папку вы хотите добавить фотографию!", preferredStyle: .Alert)
         
         //Create and add the Cancel action
