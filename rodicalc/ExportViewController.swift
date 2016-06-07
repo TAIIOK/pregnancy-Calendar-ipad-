@@ -69,10 +69,21 @@ class Food: NSObject {
     }
 }
 
+class ExportWeek: NSObject {
+    var days: [NSDate]
+    var week: Int
+    init(week: Int, days: [NSDate]) {
+        self.week = week
+        self.days = days
+        super.init()
+    }
+}
+
 var showingExportType = 0 //0-экспорт справа, слева меню выбора вкладок 1-экспорт слева, справа календарь 2-экспорт слева, справа предпросмотр
 
-var selectonDateType = -1
+var selectionDateType = -1
 var selectedExportDays = [NSDate]()
+var selectedExportWeek = [ExportWeek]()
 var ExpPhoto = [Photo]()
 var NotificationExport = [TextNoteE]()
 
@@ -114,6 +125,9 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             self.title = ""
             let btn = UIBarButtonItem(image: img , style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ExportViewController.FallBack))
             self.navigationItem.leftBarButtonItem = btn
+            if selectionDateType == 1{
+                WeekToDays()
+            }
             loadPhotos()
             PhotoCollectionVIew.reloadData()
             loadNotifi()
@@ -125,12 +139,22 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         }
     }
     
+    func WeekToDays(){
+        selectedExportDays.removeAll()
+        for i in selectedExportWeek{
+            selectedExportDays.appendContentsOf(i.days)
+        }
+    }
+    
     func FallBack(){
         MasterViewSelectedRow = 12
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
         let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("MasterView")
         self.splitViewController?.showDetailViewController(vc!, sender: self)
         self.splitViewController?.viewControllers[0] = vc1!
+        if selectionDateType == 1{
+            WeekToDays()
+        }
         loadPhotos()
         PhotoCollectionVIew.reloadData()
         loadNotifi()
@@ -347,11 +371,23 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 }
             case 1:
                 cell.textLabel?.text = "Недели беременности"
-                cell.detailTextLabel?.text = "не выбрано"
+                var str = ""
+                for var i = 0; i < selectedExportWeek.count; i += 1{
+                    if i == 0 {
+                        str.appendContentsOf("\(selectedExportWeek[i].week)")
+                    }else{
+                        str.appendContentsOf(", \(selectedExportWeek[i].week)")
+                    }
+                }
+                if str.characters.count == 0 {
+                    cell.detailTextLabel?.text = "не выбрано"
+                }else{
+                    cell.detailTextLabel?.text = str
+                }
             default:
                 cell.textLabel?.text = ""
             }
-            if indexPath.row == selectonDateType{
+            if indexPath.row == selectionDateType{
                 cell.setHighlighted(true, animated: false)
                 tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
             }
@@ -406,7 +442,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == DateTable{
             
-            selectonDateType = indexPath.row
+            selectionDateType = indexPath.row
             selectedExportDays.removeAll()
             if showingExportType == 0 {
                 showingExportType = 1
@@ -732,7 +768,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         NotesExportDoctor.removeAll()
         NotesExportDrugs.removeAll()
         AllNotesCount.removeAll()
-        selectonDateType = -1
+        selectionDateType = -1
         selectedExportDays.removeAll()
         ExpPhoto.removeAll()
         NotificationExport.removeAll()*/

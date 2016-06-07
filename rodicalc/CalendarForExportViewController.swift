@@ -66,7 +66,7 @@ class CalendarForExportViewController: UIViewController {
         var days = [NSDate]()
         for element in temp {
             days.append(addDaystoGivenDate(element.date.convertedDate()!, NumberOfDaysToAdd: 1))
-            if selectonDateType == 0 {
+            if selectionDateType == 0 {
                 selectedExportDays.append(element.date.convertedDate()!)}
         }
         //print(selectedExportDays.count)

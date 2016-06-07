@@ -28,6 +28,9 @@ var selectedCalendarDayPhoto:DayView!
 var photoFromDate = [PhotoWithType]()
 
 class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var picker:LandscapePickerController?=LandscapePickerController()
+    
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -40,7 +43,97 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         let date = selectedCalendarDayPhoto.date.convertedDate()
         self.presentedDateUpdated(CVDate(date: date!))
         // Do any additional setup after loading the view.
+        let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotosViewController.openCamera))
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotosViewController.addPhoto))
+        a.tintColor = UIColor.whiteColor()
+        b.tintColor = UIColor.whiteColor()
+        self.navigationItem.setRightBarButtonItems([a,b], animated: true)
         loadPhoto(date!)
+    }
+    
+    func openCamera(){
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+            picker!.allowsEditing = false
+            picker!.sourceType = UIImagePickerControllerSourceType.Camera
+            picker!.cameraCaptureMode = .Photo
+            picker!.modalPresentationStyle = .FormSheet
+            
+            presentViewController(picker!, animated: true, completion: nil)
+        }else{
+            if #available(iOS 8.0, *) {
+                let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style:.Default, handler: nil)
+                alert.addAction(ok)
+                presentViewController(alert, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    
+    func addPhoto(){
+        picker!.allowsEditing = false
+        picker!.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        picker!.modalPresentationStyle = .FormSheet
+        //picker?.interfaceOrientation
+        presentViewController(picker!, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var type = 0
+        
+        if (picker.sourceType == UIImagePickerControllerSourceType.Camera)
+        {
+            UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
+        }
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Выберите в какую папку вы хотите добавить фотографию!", preferredStyle: .Alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Мои фото", style: .Default) { action -> Void in
+            //Do some stuff
+            type = 0
+        }
+        actionSheetController.addAction(cancelAction)
+        //Create and an option action
+        let nextAction: UIAlertAction = UIAlertAction(title: "Узи", style: .Default) { action -> Void in
+            //Do some other stuff
+            type = 1
+        }
+        actionSheetController.addAction(nextAction)
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
+        var isMyPhoto = true
+        if type == 1{
+            isMyPhoto = false
+        }
+        photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
+        dismissViewControllerAnimated(true, completion: nil)
+        photoCollectionView.reloadData()
+        
+        savePhotos(chosenImage,Type: type)
+    }
+    
+    func savePhotos(img: UIImage, Type: Int){
+        let date = Expression<String>("Date")
+        let image = Expression<Blob>("Image")
+        let text = Expression<String>("Text")
+        let imageData = NSData(data: UIImageJPEGRepresentation(img, 1.0)!)
+
+        if(Type == 0){
+            let table = Table("Photo")
+            try! db.run(table.insert(date <- "\(selectedCalendarDayPhoto.date.convertedDate()!)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- ""))
+        }else{
+            let table = Table("Uzi")
+            try! db.run(table.insert(date <- "\(selectedCalendarDayPhoto.date.convertedDate()!)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- ""))
+        }
     }
     
     func loadPhoto(Date: NSDate){

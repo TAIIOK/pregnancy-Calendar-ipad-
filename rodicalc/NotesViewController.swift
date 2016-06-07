@@ -47,12 +47,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func WorkWithDB(){
-        let path = NSSearchPathForDirectoriesInDomains(
+        /*let path = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
-        db = try! Connection(destinationPath)
+        db = try! Connection(destinationPath)*/
         let id = Expression<Int64>("_id")
         let articles = Table("article")
 
@@ -63,12 +63,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func returnTableCount(tableName: String, type: Int, date: NSDate) -> Int{
-        let path = NSSearchPathForDirectoriesInDomains(
+        /*let path = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
-        let db = try! Connection(destinationPath)
+        let db = try! Connection(destinationPath)*/
         let table = Table(tableName)
         var count = 0
         
@@ -98,12 +98,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func returnTableText(tableName: String, type: Int, date: NSDate) -> String{
-        let path = NSSearchPathForDirectoriesInDomains(
+        /*let path = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, false
             ).first!
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
-        let db = try! Connection(destinationPath)
+        let db = try! Connection(destinationPath)*/
         let table = Table(tableName)
         var str = ""
         
@@ -142,7 +142,19 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             if count > 0 {
-                str = "\(count) заметок"
+                var txt = ""
+                if count%10 == 1{
+                    txt = "заметка"
+                }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                    txt = "заметки"
+                }else{
+                    txt = "заметок"
+                }
+                
+                if count > 10 && count < 15{
+                    txt = "заметок"
+                }
+                str = "\(count) \(txt)"
             }
         }else if tableName == "MedicineTake"{
             var table = Table("MedicineTake")
@@ -178,7 +190,19 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             if count > 0 {
-                str = "\(count) лекарств"
+                var txt = ""
+                if count%10 == 1{
+                    txt = "заметка"
+                }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                    txt = "заметки"
+                }else{
+                    txt = "заметок"
+                }
+                
+                if count > 10 && count < 15{
+                    txt = "заметок"
+                }
+                str = "\(count) \(txt)"
             }
         }
         return str
@@ -266,15 +290,41 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 7: //мое меню на сегодня - несколько списков
-            if returnFoodCount(date) > 0 {
-                cell.detailTextLabel?.text = "\(returnFoodCount(date)) желаний"
+            let count = returnFoodCount(date)
+            if count > 0 {
+                var txt = ""
+                if count%10 == 1{
+                    txt = "заметка"
+                }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                    txt = "заметки"
+                }else{
+                    txt = "заметок"
+                }
+                
+                if count > 10 && count < 15{
+                    txt = "заметок"
+                }
+                cell.detailTextLabel?.text = "\(count) \(txt)"
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"
             }
             break
         case 8: //мой "лист желаний" - список - не превязаны ко дню
-            if returnDesireCount() > 0 {
-                cell.detailTextLabel?.text = "\(returnDesireCount()) желаний"
+            let count = returnDesireCount()
+            if count > 0 {
+                var txt = ""
+                if count%10 == 1{
+                    txt = "заметка"
+                }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                    txt = "заметки"
+                }else{
+                    txt = "заметок"
+                }
+                
+                if count > 10 && count < 15{
+                    txt = "заметок"
+                }
+                cell.detailTextLabel?.text = "\(count) \(txt)"
             }else{
                 cell.detailTextLabel?.text = "Нет заметок"
             }

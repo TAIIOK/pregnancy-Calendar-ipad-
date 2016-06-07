@@ -48,15 +48,54 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Заметки"
-            cell.detailTextLabel?.text = String(" \(returnCount(0)) заметок")
+            let count = returnCount(0)
+            var txt = ""
+            if count%10 == 1{
+                txt = "заметка"
+            }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                txt = "заметки"
+            }else{
+                txt = "заметок"
+            }
+            
+            if count > 10 && count < 15{
+                txt = "заметок"
+            }
+            cell.detailTextLabel?.text = "\(count) \(txt)"
             break
         case 1:
             cell.textLabel?.text = "Фотографии"
-            cell.detailTextLabel?.text = String(" \(returnCount(1)) фотографий")
+            let count = returnCount(1)
+            var txt = ""
+            if count%10 == 1{
+                txt = "фотография"
+            }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                txt = "фотографии"
+            }else{
+                txt = "фотографий"
+            }
+            
+            if count > 10 && count < 15{
+                txt = "фотографий"
+            }
+            cell.detailTextLabel?.text = "\(count) \(txt)"
             break
         case 2:
             cell.textLabel?.text = "Уведомления"
-            cell.detailTextLabel?.text = String(" \(returnCount(2)) уведомлений")
+            let count = returnCount(2)
+            var txt = ""
+            if count%10 == 1{
+                txt = "уведомление"
+            }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
+                txt = "уведомления"
+            }else{
+                txt = "уведомлений"
+            }
+            
+            if count > 10 && count < 15{
+                txt = "уведомлений"
+            }
+            cell.detailTextLabel?.text = "\(count) \(txt)"
             break
         default:
             break
