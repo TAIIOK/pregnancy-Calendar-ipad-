@@ -98,11 +98,19 @@ public final class CVCalendarDayView: UIView {
         if(BirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 &&  (self.date.month >= components.month && self.date.year >= components.year  ) ){
             let height = CGFloat(0.5)
             let layer = CALayer()
+            
             layer.borderColor = UIColor.whiteColor().CGColor
             layer.borderWidth = self.frame.width + 10
             layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
- 
             
+            let textLayer = CATextLayer()
+            textLayer.frame = CGRectMake( self.frame.width + 90 , height ,15, 15)
+            textLayer.string = "14"
+            textLayer.fontSize = 12
+            textLayer.contentsScale = UIScreen.mainScreen().scale
+            layer.addSublayer(textLayer)
+            
+            self.layer.addSublayer(textLayer)
             self.topMarker = layer
             self.layer.addSublayer(self.topMarker!)
             
