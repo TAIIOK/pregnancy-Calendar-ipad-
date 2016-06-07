@@ -10,6 +10,16 @@ import UIKit
 
 var selectedExportCalendarDay:DayView!
 
+class SelWeek: NSObject {
+    var days: [NSDate]
+    var week: Int
+    init(week: Int, days: [NSDate]) {
+        self.week = week
+        self.days = days
+        super.init()
+    }
+}
+
 class DaysInWeek: NSObject {
     var day: NSDate
     var isSelected: Bool
@@ -26,7 +36,7 @@ class CalendarForExportViewController: UIViewController {
     var animationFinished = true
     var multiselecting = false
     
-    var daysforsel = [NSDate]()
+    var days_week = [SelWeek]()
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -85,8 +95,13 @@ class CalendarForExportViewController: UIViewController {
     }
     
     func getWeek(){
-        selectedExportWeek.removeAll()
+        
         let week = Int((300 - BirthDate.daysFrom(selectedExportCalendarDay.date.convertedDate()!))/7)
+        for i in selectedExportWeek{
+            if i.week == week{
+                return
+            }
+        }
         let calendar = NSCalendar.currentCalendar()
         var MinDateWeek = NSDate()
         
@@ -110,10 +125,8 @@ class CalendarForExportViewController: UIViewController {
         components.minute = 00
         components.second = 00
         NewDate = calendar.dateFromComponents(components)!
-        
-        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        let temp =  controller.getSelectedDates()
-        var i = 0
+        var days = [NSDate]()
+        days_week.append(SelWeek(week: week, days: days))
         for ( i = 0; i < 7 ; i += 1){
             var select = true
             for element in temp {
@@ -121,12 +134,31 @@ class CalendarForExportViewController: UIViewController {
                     select = false
                 }
             }
-            
-            daysforsel.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
             if select{
                 calendarView.toggleViewWithDate(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))}
+            days.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
+            
+        }
+        
+        /*var daysforsel = [NSDate]()
+        
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        let temp =  controller.getSelectedDates()
+        var i = 0
+        for ( i = 0; i < 7 ; i += 1){
+            daysforsel.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
         }
         selectedExportWeek.append(ExportWeek(week: week, days: daysforsel))
+        for i in daysforsel{
+            var select = true
+            for element in temp {
+                if element.date.convertedDate()! == i{
+                    select = false
+                }
+            }
+            if select{
+                calendarView.toggleViewWithDate(i)}
+        }*/
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
@@ -176,23 +208,56 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         var stop = true
-        for i in daysforsel{
-            if i == dayView.date.convertedDate()!{
+        let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
+        for i in days_week{
+            if i.week == curweek{
                 stop = false
             }
         }
         if stop{
-        print("\(dayView.date.commonDescription) is selected!")
-        calendarView.coordinator.selection = true
-        selectedExportCalendarDay = dayView
-        if selectionDateType == 0 {
-            getDays()
-        }else{
-            getWeek()
+            print("\(dayView.date.commonDescription) is selected!")
+            calendarView.coordinator.selection = true
+            selectedExportCalendarDay = dayView
+            if selectionDateType == 0 {
+                getDays()
+            }else{
+                getWeek()
+            }
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            self.splitViewController?.viewControllers[0] = vc!
         }
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-        self.splitViewController?.viewControllers[0] = vc!
+
+         /*var stop = true
+        let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
+        for i in selectedExportWeek{
+            if i.week == curweek{
+                stop = false
+            }
         }
+        if stop{
+            print("\(dayView.date.commonDescription) is selected!")
+            calendarView.coordinator.selection = true
+            selectedExportCalendarDay = dayView
+            if selectionDateType == 0 {
+                getDays()
+            }else{
+                getWeek()
+            }
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            self.splitViewController?.viewControllers[0] = vc!
+        }
+        var k = 0
+       if selectionDateType == 1 && !stop {
+            for i in selectedExportWeek{
+                if i.week == curweek{
+                    for j in i.days{
+                        calendarView.toggleViewWithDate(j)
+                    }
+                    //selectedExportWeek.removeAtIndex(k)
+                }
+                k += 1
+            }
+        }*/
     }
     
 

@@ -362,7 +362,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                         str.appendContentsOf(", \(dateFormatter.stringFromDate(days[i]))")
                     }
                 }
-                if str.characters.count == 0 {
+                if str.characters.count == 0 || selectionDateType == 1{
                     cell.detailTextLabel?.text = "не выбрано"
                 }else{
                     cell.detailTextLabel?.text = str
@@ -377,7 +377,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                         str.appendContentsOf(", \(selectedExportWeek[i].week)")
                     }
                 }
-                if str.characters.count == 0 {
+                if str.characters.count == 0 || selectionDateType == 0{
                     cell.detailTextLabel?.text = "не выбрано"
                 }else{
                     cell.detailTextLabel?.text = str
