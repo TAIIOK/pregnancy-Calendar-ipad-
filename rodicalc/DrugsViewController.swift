@@ -163,9 +163,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             components.second = componentsCurrent.second
             let newDate = calendar.dateFromComponents(components)
             
-            drugs.append(Drugs(name: "Лекарство", hour: 0, minute: 0, start: NSDate(), end: NSDate(), interval: 0, isRemind: false, cellType: 0))
+            drugs.append(Drugs(name: "", hour: 0, minute: 0, start: NSDate(), end: NSDate(), interval: 0, isRemind: false, cellType: 0))
             arrayForBool.addObject("1")
             tbl.reloadData()
+            let range = NSMakeRange(drugs.count, 1)
+            let sectionToReload = NSIndexSet(indexesInRange: range)
+            self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
             var headerview = tbl.viewWithTag(drugs.count) as? DoctorHeader
             headerview?.setopen(true)
             headerview?.changeFields()
@@ -627,6 +630,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func UpdateSectionTime(segue:UIStoryboardSegue) {
         print("Update TIME")
+        self.dismissViewControllerAnimated(true, completion: nil)
         //cancelLocalNotification("\(drugs[currentRec-1].date)")
         var notifiday = drugs[currentRec-1].start
         print(drugs[currentRec-1].start, drugs[currentRec-1].end)
@@ -664,7 +668,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("Update Notifi")
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
         /*
         cancelLocalNotification("\(drugs[currentRec-1].date)")
         
