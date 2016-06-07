@@ -114,7 +114,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             var stringday = ""
-            if(components.month<10)
+            if(components.day<10)
             {
                 stringday = "0\(components.day)"
             }
