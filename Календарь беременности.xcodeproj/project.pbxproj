@@ -626,8 +626,6 @@
 				8E0177591C843819004E7A46 /* WebsViewController.swift */,
 				8E6D503E1C7F063A00878957 /* ExperienceViewController.swift */,
 				8EE947E71CE9DE4200064446 /* AdvertisingViewController.swift */,
-				8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */,
-				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
 				8EE947E51CE6036E00064446 /* DatePickerViewController.swift */,
 				8E6D50401C7F068000878957 /* CalendarViewController.swift */,
 				8E6D50421C7F06BE00878957 /* BuyViewController.swift */,
@@ -773,6 +771,8 @@
 				8E5A6BD51CD7A1920073B693 /* RestrictionsTableViewCell.swift */,
 				8EE947C51CE5E56000064446 /* DrugsViewController.swift */,
 				8EE947C31CE5E4D500064446 /* DrugsListTableViewController.swift */,
+				8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */,
+				8EE947BA1CE4A67C00064446 /* TimeListController.swift */,
 			);
 			name = Notes;
 			sourceTree = "<group>";

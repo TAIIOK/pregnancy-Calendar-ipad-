@@ -104,8 +104,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     @IBOutlet weak var PhotoCollectionVIew: UICollectionView!
     @IBOutlet weak var NotifiTable: UITableView!
     
-    var BirthExportDate = NSDate()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -638,7 +636,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         let text = Expression<String>("Text")
         let type = Expression<Int64>("CategoryId")
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: BirthExportDate)
+        let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
         components.hour = 24
         components.minute = 00
         components.second = 00
@@ -706,42 +704,6 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
         }
 
-    }
-
-    func loadDate(){
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
-        
-        fetchRequest.entity = entityDescription
-        do {
-            let result = try managedContext.executeFetchRequest(fetchRequest)
-            
-            if (result.count > 0) {
-                for i in result {
-                    let date = i as! NSManagedObject
-                    let dte = date.valueForKey("date") as! NSDate
-                    dateType = date.valueForKey("type") as! Int
-                    BirthExportDate = dte
-                    if dateType == 0{
-                        BirthExportDate = addDaystoGivenDate(BirthExportDate, NumberOfDaysToAdd: 7*38)
-                    }
-                    else if dateType == 1{
-                        BirthExportDate = addDaystoGivenDate(BirthExportDate, NumberOfDaysToAdd: 7*40)
-                    }
-                }
-            }
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
