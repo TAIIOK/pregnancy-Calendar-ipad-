@@ -42,7 +42,8 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         let date = selectedCalendarDayPhoto.date.convertedDate()
         self.presentedDateUpdated(CVDate(date: date!))
-        // Do any additional setup after loading the view.
+
+        picker?.delegate=self
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotoFromCalendarViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotoFromCalendarViewController.addPhoto))
         a.tintColor = UIColor.whiteColor()
@@ -91,30 +92,36 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         {
             UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
         }
+        dismissViewControllerAnimated(true, completion: nil)
         let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Выберите в какую папку вы хотите добавить фотографию!", preferredStyle: .Alert)
         
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Мои фото", style: .Default) { action -> Void in
             //Do some stuff
             type = 0
+            self.JustDoIT(chosenImage, type: type)
         }
         actionSheetController.addAction(cancelAction)
         //Create and an option action
         let nextAction: UIAlertAction = UIAlertAction(title: "Узи", style: .Default) { action -> Void in
             //Do some other stuff
             type = 1
+            self.JustDoIT(chosenImage, type: type)
         }
         actionSheetController.addAction(nextAction)
         
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
+
+    }
+    
+    func JustDoIT(chosenImage: UIImage, type: Int){
         
         var isMyPhoto = true
         if type == 1{
             isMyPhoto = false
         }
         photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
-        dismissViewControllerAnimated(true, completion: nil)
         photoCollectionView.reloadData()
         
         savePhotos(chosenImage,Type: type)
@@ -203,6 +210,10 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.performSegueWithIdentifier("UpdateCalendarTable", sender: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -259,87 +270,56 @@ extension PhotoFromCalendarViewController: CVCalendarViewDelegate, CVCalendarMen
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь"
-                self.title = "Январь"
+                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
+                self.title = "Январь,\(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль"
-                self.title = "Февраль"
+                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
+                self.title = "Февраль,\(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март"
-                self.title = "Март"
+                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
+                self.title = "Март,\(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель"
-                self.title = "Апрель"
+                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
+                self.title = "Апрель,\(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май"
-                self.title = "Май"
+                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
+                self.title = "Май,\(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь"
-                self.title = "Июнь"
+                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
+                self.title = "Июнь,\(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль"
-                self.title = "Июль"
+                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
+                self.title = "Июль,\(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август"
-                self.title = "Август"
+                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
+                self.title = "Август,\(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь"
-                self.title = "Сентябрь"
+                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
+                self.title = "Сентябрь,\(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь"
-                self.title = "Октябрь"
+                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
+                self.title = "Октябрь,\(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь"
-                self.title = "Ноябрь"
+                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
+                self.title = "Ноябрь,\(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь"
-                self.title = "Декабрь"
+                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
+                self.title = "Декабрь,\(date.year)"
                 break
             default:
                 break
             }
-            //updatedMonthLabel.center = self.monthLabel.center
-            // self.title = updatedMonthLabel.text
-            /*
-             let offset = CGFloat(48)
-             updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)
-             updatedMonthLabel.transform = CGAffineTransformMakeScale(1, 0.1)
-             
-             UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-             //self.animationFinished = false
-             // self.monthLabel.transform = CGAffineTransformMakeTranslation(0, -offset)
-             //  self.monthLabel.transform = CGAffineTransformMakeScale(1, 0.1)
-             //  self.monthLabel.alpha = 0
-             
-             updatedMonthLabel.alpha = 1
-             updatedMonthLabel.transform = CGAffineTransformIdentity
-             
-             }) { _ in
-             
-             // self.animationFinished = true
-             // self.monthLabel.frame = updatedMonthLabel.frame
-             //  self.monthLabel.text = updatedMonthLabel.text
-             //  self.monthLabel.transform = CGAffineTransformIdentity
-             //  self.monthLabel.alpha = 1
-             self.title = updatedMonthLabel.text
-             updatedMonthLabel.removeFromSuperview()
-             }
-             
-             
-             
-             // self.view.insertSubview(updatedMonthLabel, aboveSubview: self.title)
-             */
         }
     }
 

@@ -116,7 +116,6 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let type: Int
-        
         if (picker.sourceType == UIImagePickerControllerSourceType.Camera)
         {
             UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)

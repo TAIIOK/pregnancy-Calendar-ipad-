@@ -32,6 +32,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.backBarButtonItem = btnBack
     }
 
+    @IBAction func UpdateCalendar(segue:UIStoryboardSegue) {
+        print("update calendar table")
+        tbl.reloadData()
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
