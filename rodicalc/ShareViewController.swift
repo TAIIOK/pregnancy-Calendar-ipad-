@@ -21,6 +21,18 @@ var sharingExportVk = false
 var userID = ""
 class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewControllerDelegate {
 
+    @IBAction func SaveToGallery(sender: UIButton) {
+        
+        for (var i = 0 ; i < selectedImages.count ; i++){
+            CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
+        }
+        
+        var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в память вашего устройства", preferredStyle: .Alert)
+        var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        alert.addAction(ok)
+    self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     func vkAutorizationFailed(error: VK.Error) {
         print("Autorization failed with error: \n\(error)")

@@ -127,18 +127,7 @@ class CalendarForExportViewController: UIViewController {
         NewDate = calendar.dateFromComponents(components)!
         var days = [NSDate]()
         days_week.append(SelWeek(week: week, days: days))
-        for ( i = 0; i < 7 ; i += 1){
-            var select = true
-            for element in temp {
-                if element.date.convertedDate()! == self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i){
-                    select = false
-                }
-            }
-            if select{
-                calendarView.toggleViewWithDate(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))}
-            days.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
-            
-        }
+
         
         /*var daysforsel = [NSDate]()
         

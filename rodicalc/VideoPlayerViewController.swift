@@ -21,6 +21,7 @@ class VideoPlayerViewController: UIViewController {
         self.view.bringSubviewToFront(videoPlayer)
         let id =  choosedVideoSegment ? "\(videosDress[videoIndex])" : "\(videosGym[videoIndex])"
         videoPlayer.loadVideoID(id)
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func back(sender: UIBarButtonItem) {

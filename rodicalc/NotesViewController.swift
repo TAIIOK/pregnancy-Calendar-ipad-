@@ -125,6 +125,27 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 str = "\(tmp[WeightKg]) кг \(tmp[WeightGr]) г"
             }
         }else if tableName == "DoctorVisit"{
+           var table = Table("DoctorVisit")
+            let Date = Expression<String>("Date")
+            let name = Expression<String>("Name")
+            let calendar = NSCalendar.currentCalendar()
+            
+            var components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            for i in try! db.prepare(table.select(Date,name)) {
+                let b = i[Date]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
+                if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
+                    if(str.characters.count>0)
+                    {
+                        str.appendContentsOf(",")
+                    }
+                    str.appendContentsOf(i[name])
+                }
+            }
+            
+            /*
             var table = Table("DoctorVisit")
             let Date = Expression<String>("Date")
             let calendar = NSCalendar.currentCalendar()
@@ -156,6 +177,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
                 str = "\(count) \(txt)"
             }
+             */
         }else if tableName == "MedicineTake"{
             var table = Table("MedicineTake")
             let name = Expression<String>("Name")

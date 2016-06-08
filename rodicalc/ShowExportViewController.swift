@@ -64,7 +64,29 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
 
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components([.Day , .Month , .Year], fromDate: AllExportNotes[i].date)
-            let dateString = "\(components.day ).\(components.month).\(components.year)"
+            
+            var string = ""
+            if(components.month<10)
+            {
+                string = "0\(components.month)"
+            }
+            else
+            {
+                string = "\(components.month)"
+            }
+            
+            var stringday = ""
+            if(components.day<10)
+            {
+                stringday = "0\(components.day)"
+            }
+            else
+            {
+                stringday = "\(components.day)"
+            }
+            
+            
+            let dateString = "\(stringday).\(string).\(components.year)"
             
             if(!AllExportNotes[i].photos.isEmpty && AllExportNotes[i].notes.isEmpty && AllExportNotes[i].notifi.isEmpty)
             {

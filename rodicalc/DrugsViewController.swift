@@ -162,9 +162,18 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             components.minute = componentsCurrent.minute
             components.second = componentsCurrent.second
             let newDate = calendar.dateFromComponents(components)
-            
+            view.endEditing(true)
             drugs.append(Drugs(name: "", hour: 0, minute: 0, start: NSDate(), end: NSDate(), interval: 0, isRemind: false, cellType: 0))
+            
+            arrayForBool.removeAllObjects()
             arrayForBool.addObject("1")
+            for(var i = 0 ; i<drugs.count-1 ;i++)
+            {
+                arrayForBool.addObject("0")
+            }
+            arrayForBool.addObject("1")
+
+            
             tbl.reloadData()
             let range = NSMakeRange(drugs.count, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)

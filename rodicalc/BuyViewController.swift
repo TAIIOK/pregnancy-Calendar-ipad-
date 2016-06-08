@@ -17,6 +17,7 @@ class Points: NSObject {
     var phone: String
     var trade_point: String
     var latitude: Double
+    var distance: CLLocationDistance = 0
     
     init(city: String, address: String, trade_point: String, phone: String, longitude: Double, latitude: Double) {
         self.city = city
@@ -31,6 +32,7 @@ class Points: NSObject {
 
 var points: [Points] = []
 var nearPoints: [Points] = []
+
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -49,7 +51,10 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var noConnectionButton: UIButton!
     
     @IBAction func OpenSite(sender: UIButton) {
-        if let url = NSURL(string: "https://www.wildberries.ru/1.3266.ФЭСТ"){
+        let string = "https://www.wildberries.ru/1.3266.ФЭСТ"
+        
+       // [NSURL URLWithString:[googlSearchString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+        if let url = NSURL(string: string.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!){
             UIApplication.sharedApplication().openURL(url)
         }
     }
@@ -150,12 +155,15 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let location = CLLocationCoordinate2DMake(point.latitude, point.longitude)
                     
                     if locate.last?.distanceFromLocation(CLLocation(latitude: point.latitude, longitude: point.longitude)) < 100000 {
+                        point.distance = (locate.last?.distanceFromLocation(CLLocation(latitude: point.latitude, longitude: point.longitude)))!
                         let annotation = CustomAnnotation()
                         isFind = true
                         annotation.coordinate = location
                         annotation.title = point.trade_point + "\nАдрес: " + "\(point.city) " + point.address
                         map.addAnnotation(annotation)
+                        
                         nearPoints.append(point)
+                        nearPoints = nearPoints.sort({ $0.distance < $1.distance })
                     }
                 }
             }
@@ -248,6 +256,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         map.removeAnnotations(map.annotations)
         map.removeOverlays(map.overlays)
         map.removeFromSuperview()
+        nearPoints.removeAll()
+
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -282,6 +292,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             var lenghtstring = nearPoints[indexPath.row].address.characters.count
             lenghtstring += nearPoints[indexPath.row].city.characters.count
             lenghtstring += 1
+            
+            
+            
             myMutableString = NSMutableAttributedString(string: nearPoints[indexPath.row].trade_point + "\nАдрес: " + "\(nearPoints[indexPath.row].city)" + " " + nearPoints[indexPath.row].address, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14.0)!])
             myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:nearPoints[indexPath.row].trade_point.characters.count+8,length:lenghtstring ))
             cell.textLabel?.attributedText = myMutableString

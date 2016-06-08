@@ -69,16 +69,57 @@ class VideosViewController: UICollectionViewController {
     
     
     @IBAction func reloadCollection(sender: AnyObject) {
+        print(choosedVideoSegment)
+        print("Pizda")
         imagesfirst.removeAll()
         videoTitlefirst.removeAll()
         imagessecond.removeAll()
         videoTitlesecond.removeAll()
+        
+        if(choosedVideoSegment == true)
+        {
+            VideoChanger.selectedSegmentIndex = 0
+        }
+        else{
+        VideoChanger.selectedSegmentIndex = 1
+        }
+        
+        let statusfirst = Reach().connectionStatus()
+        switch statusfirst {
+        case .Unknown, .Offline:
+            print("Not connected")
+            imagesfirst.removeAll()
+            videoTitlefirst.removeAll()
+            imagessecond.removeAll()
+            videoTitlesecond.removeAll()
+            VideoCollectionView.reloadData()
+            //  noConnetionView.backgroundColor = .clearColor()
+            
+            noConnectionImage.hidden = false
+            noConnectionLable.hidden = false
+            noConnectionButton.hidden = false
+            noConnectionView.hidden = false
+            noConnectionButton.enabled = true
+        case .Online(.WWAN):
+            print("Connected via WWAN")
+            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+            
+            VideoCollectionView.backgroundColor = .clearColor()
+        case .Online(.WiFi):
+            print("Connected via WiFi")
+            VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+            
+            VideoCollectionView.backgroundColor = .clearColor()
+        }
+        
+
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
             print("Not connected")
         default:
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+
         for (var i = 0 ; i < videosDress.count ; i += 1 ) {
             let urlPath: String =  "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=\(videosDress[i])&format=json"
             
@@ -172,6 +213,10 @@ class VideosViewController: UICollectionViewController {
         )
     }
     
+    override func viewDidDisappear(animated: Bool) {
+         choosedVideoSegment = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -198,11 +243,19 @@ class VideosViewController: UICollectionViewController {
             noConnectionButton.enabled = true
         case .Online(.WWAN):
             print("Connected via WWAN")
+            if(imagesfirst.count < 25 || imagessecond.count < 5)
+            {
+            self.reloadCollection(true)
+            }
             VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
             
             VideoCollectionView.backgroundColor = .clearColor()
         case .Online(.WiFi):
             print("Connected via WiFi")
+            if(imagesfirst.count < 25 || imagessecond.count < 5)
+            {
+                self.reloadCollection(true)
+            }
             VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
             
             VideoCollectionView.backgroundColor = .clearColor()
@@ -211,11 +264,13 @@ class VideosViewController: UICollectionViewController {
 }
     
     @IBAction func ChangeSegment(sender: AnyObject) {
+
         self.reloadTable(sender.selectedSegmentIndex == 1 ? false : true)
     }
     private func reloadTable(index: Bool) {
-        choosedVideoSegment = index
-        VideoCollectionView.reloadData()
+
+            choosedVideoSegment = index
+            VideoCollectionView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

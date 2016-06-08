@@ -143,10 +143,16 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             components.minute = componentsCurrent.minute
             components.second = componentsCurrent.second
             let newDate = calendar.dateFromComponents(components)
-            
+             view.endEditing(true)
             doctors.append(Doctor(date: newDate!, name: "", isRemind: false, remindType: 0, cellType: 1))
+            arrayForBool.removeAllObjects()
             arrayForBool.addObject("1")
-
+            for(var i = 0 ; i<doctors.count-1 ;i++)
+            {
+                arrayForBool.addObject("0")
+            }
+            arrayForBool.addObject("1")
+           
             tbl.reloadData()
             let range = NSMakeRange(doctors.count, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)

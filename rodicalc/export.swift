@@ -246,6 +246,8 @@ class photo: UIView{
         func xibFirstSetupBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
            var view1 = loadViewFromNib("TwoPhotoBlue") as! TwoPhotoBlue
             
+
+                    
             view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
             
             frameSetup(view1)

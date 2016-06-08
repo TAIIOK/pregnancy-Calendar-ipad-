@@ -187,11 +187,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         )
         
-        
+        /*
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             getVideoDetails()
         }
-
+*/
         FBSDKApplicationDelegate.sharedInstance()
         
         return true

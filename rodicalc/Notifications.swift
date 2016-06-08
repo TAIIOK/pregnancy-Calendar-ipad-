@@ -45,8 +45,9 @@ func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
 }
 
 func loadNotifi() {
-    
-    
+    let app: UIApplication = UIApplication.sharedApplication()
+
+  
    
     var Notificalendar = NSDate()
     let calendar = NSCalendar.currentCalendar()

@@ -58,7 +58,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     @IBOutlet weak var changer: UISegmentedControl!
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
-        
+        selectedImages.removeAll()
         sharingExportVk  = false
         
         super.viewDidLoad()

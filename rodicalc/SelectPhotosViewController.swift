@@ -19,7 +19,8 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+ 
+ 
         
         PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         PhotoCollectionView.backgroundColor = .clearColor()
@@ -31,6 +32,22 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)*/
     }
     
+
+    @IBAction func SelectAllPhotos(sender: AnyObject) {
+        selectedImages.removeAll()
+        for (var i = 0; i < PhotoCollectionView.numberOfSections(); i++)
+        {
+            for (var j = 0; j < PhotoCollectionView.numberOfItemsInSection(i); j++)
+            {
+                var cell =  PhotoCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: j,inSection: i)) as! PhotoCollectionViewCell
+                selectedImages.append(cell.photo.image!)
+                cell.ImgSelector.hidden = false
+            }
+        }
+        if(choosedSegmentImages) {selected = photos.count } else { selected = uzis.count}
+        self.title = "\(selected) выбрано"
+        
+    }
     
     override func viewDidDisappear(animated: Bool) {
         selectedImages.removeAll()
