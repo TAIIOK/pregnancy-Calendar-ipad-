@@ -209,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //print(destinationPath)
         do {
             try NSFileManager().copyItemAtPath(sourcePath!, toPath: destinationPath)
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {loadNotifi()}
+            //dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {loadNotifi()}
         } catch _ {
             
         }

@@ -166,6 +166,7 @@ class ShowZodiacViewController: UIViewController {
     }
     
     @IBAction func btnEditDate(sender: AnyObject) {
+        cancelAllLocalNotification()
         Back = true
         //self.navigationController?.navigationBar.backItem?.backBarButtonItem?.enabled = true
         let date = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDate")

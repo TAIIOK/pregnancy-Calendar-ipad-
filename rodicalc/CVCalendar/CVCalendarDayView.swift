@@ -125,7 +125,7 @@ public final class CVCalendarDayView: UIView {
             
            var num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
             
-            
+            textLayer.name = "number"
             textLayer.string = "\(num)"
             textLayer.fontSize = 12
             textLayer.contentsScale = UIScreen.mainScreen().scale
@@ -277,18 +277,53 @@ extension CVCalendarDayView {
                     
                     let calendar = NSCalendar.currentCalendar()
                     let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
-            
-        if(BirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 &&  ( self.date.month >= components.month && self.date.year >= components.year  ) ){
-                    let height = CGFloat(0.5)
-                    let layer = CALayer()
-                    layer.borderColor = UIColor.whiteColor().CGColor
-                    layer.borderWidth = self.frame.width + 10
-                    layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
-                    
-                    self.topMarker = layer
-                    self.layer.addSublayer(self.topMarker!)
+                    var newBirthDate = BirthDate
+                    if dateType == 0{
+                        newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+                    }
+                    else if dateType == 1{
+                        newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                    }
+                    if(newBirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 ){
+                        let height = CGFloat(0.5)
+                        let layer = CALayer()
+                        
+                        layer.borderColor = UIColor.whiteColor().CGColor
+                        layer.borderWidth = self.frame.width + 10
+                        layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
+                        
+                        let textLayer = CATextLayer()
+                        textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
+                        
+                        var num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
+                        
+                        textLayer.name = "number"
+                        for lay in self.layer.sublayers!
+                        {
+                            if(lay.name == "number")
+                            {
+                                lay.removeFromSuperlayer()
+                            }
+                        }
+                        textLayer.string = "\(num)"
+                        textLayer.fontSize = 12
+                        textLayer.contentsScale = UIScreen.mainScreen().scale
+                        if(num > 0)
+                        {
+                            layer.addSublayer(textLayer)
+                            
+                            
+                            self.topMarker = layer
+                            self.layer.addSublayer(self.topMarker!)
+                            // self.layer.addSublayer(textLayer)
+                        }
+                        
+                        
+                    }
+    
                 
-                }
+                
+                
                 }
                 
             }
