@@ -125,11 +125,10 @@ class CalendarForExportViewController: UIViewController {
         components.minute = 00
         components.second = 00
         NewDate = calendar.dateFromComponents(components)!
-        var days = [NSDate]()
-        days_week.append(SelWeek(week: week, days: days))
 
+        //multiselecting = false
         
-        /*var daysforsel = [NSDate]()
+        var daysforsel = [NSDate]()
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
@@ -147,7 +146,7 @@ class CalendarForExportViewController: UIViewController {
             }
             if select{
                 calendarView.toggleViewWithDate(i)}
-        }*/
+        }
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
@@ -198,26 +197,6 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         var stop = true
         let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
-        for i in days_week{
-            if i.week == curweek{
-                stop = false
-            }
-        }
-        if stop{
-            print("\(dayView.date.commonDescription) is selected!")
-            calendarView.coordinator.selection = true
-            selectedExportCalendarDay = dayView
-            if selectionDateType == 0 {
-                getDays()
-            }else{
-                getWeek()
-            }
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-            self.splitViewController?.viewControllers[0] = vc!
-        }
-
-         /*var stop = true
-        let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
         for i in selectedExportWeek{
             if i.week == curweek{
                 stop = false
@@ -234,19 +213,26 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
             }
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
             self.splitViewController?.viewControllers[0] = vc!
-        }
-        var k = 0
-       if selectionDateType == 1 && !stop {
-            for i in selectedExportWeek{
-                if i.week == curweek{
-                    for j in i.days{
-                        calendarView.toggleViewWithDate(j)
+        }else if selectionDateType == 1{
+            /*let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+            let temp =  controller.getSelectedDates()
+            for (var i = 0; i < selectedExportWeek.count; i += 1 ){
+                if selectedExportWeek[i].week == curweek{
+                    for j in selectedExportWeek[i].days{
+                        var select = false
+                        for element in temp {
+                            if element.date.convertedDate()! == j{
+                                select = true
+                            }
+                        }
+                        if select{
+                            calendarView.toggleViewWithDate(j)}
                     }
-                    //selectedExportWeek.removeAtIndex(k)
+                    selectedExportWeek.removeAtIndex(i)
                 }
-                k += 1
-            }
-        }*/
+            }*/
+
+        }
     }
     
 
