@@ -35,8 +35,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(DayForView)
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
-
-        
         self.navigationItem.backBarButtonItem = btnBack
         //WorkWithDB()
     }
@@ -62,40 +60,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(count)
     }
     
-    func returnTableCount(tableName: String, type: Int, date: NSDate) -> Int{
-        /*let path = NSSearchPathForDirectoriesInDomains(
-            .DocumentDirectory, .UserDomainMask, false
-            ).first!
-        var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
-        let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
-        let db = try! Connection(destinationPath)*/
-        let table = Table(tableName)
-        var count = 0
-        
-        if tableName == "TextNote"{
-            let Type = Expression<Int64>("Type")
-            let Date = Expression<String>("Date")
-            switch type {
-            case 0:
-                count = try db.scalar(table.filter(Date == "\(date)" && Type == 0).count)
-                break
-            case 1:
-                count = try db.scalar(table.filter(Date == "\(date)" && Type == 1).count)
-                break
-            case 3:
-                count = try db.scalar(table.filter(Date == "\(date)" && Type == 3).count)
-                break
-            case 5:
-                count = try db.scalar(table.filter(Date == "\(date)" && Type == 5).count)
-                break
-            case 6:
-                count = try db.scalar(table.filter(Date == "\(date)" && Type == 6).count)
-                break
-            default: break
-            }
-        }
-        return count
-    }
     
     func returnTableText(tableName: String, type: Int, date: NSDate) -> String{
         /*let path = NSSearchPathForDirectoriesInDomains(
@@ -104,6 +68,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         let db = try! Connection(destinationPath)*/
+        
         let table = Table(tableName)
         var str = ""
         
@@ -144,40 +109,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     str.appendContentsOf(i[name])
                 }
             }
-            
-            /*
-            var table = Table("DoctorVisit")
-            let Date = Expression<String>("Date")
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
-            
-            var count = 0
-            
-            for i in try! db.prepare(table.select(Date)) {
-                let b = i[Date]
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-                let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: dateFormatter.dateFromString(b)!)
-                if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                    count += 1
-                }
-            }
-            if count > 0 {
-                var txt = ""
-                if count%10 == 1{
-                    txt = "заметка"
-                }else if count%10 == 2 || count%10 == 3 || count%10 == 4 {
-                    txt = "заметки"
-                }else{
-                    txt = "заметок"
-                }
-                
-                if count > 10 && count < 15{
-                    txt = "заметок"
-                }
-                str = "\(count) \(txt)"
-            }
-             */
         }else if tableName == "MedicineTake"{
             var table = Table("MedicineTake")
             let name = Expression<String>("Name")
@@ -229,7 +160,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         return str
     }
-
     
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -251,9 +181,13 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if selectedNoteDay != nil{
             date = selectedNoteDay.date.convertedDate()!
         }
+        dispatch_async(dispatch_get_main_queue(), {
         switch indexPath.row {
         case 0: //мое самочувствие - тестовая
-            text = returnTableText("TextNote", type: 0, date: date)
+            
+            
+
+            text = self.returnTableText("TextNote", type: 0, date: date)
             
             if  text  != "" {
                 cell.detailTextLabel?.text?.appendContentsOf("Мое самочувствие ")
@@ -263,7 +197,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 1: //как ведет сеья малыш - текстовая
-            text = returnTableText("TextNote", type: 1, date: date)
+            text = self.returnTableText("TextNote", type: 1, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text?.appendContentsOf("Как ведет себя малыш ")
                 cell.detailTextLabel?.text = String(text)
@@ -272,7 +206,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 2: //посещение врачей - список с напоминаниеями
-            text = returnTableText("DoctorVisit", type: 2, date: date)
+            text = self.returnTableText("DoctorVisit", type: 2, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{
@@ -280,7 +214,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 3: //мой вес - текстовая
-            text = returnTableText("WeightNote", type: 3, date: date)
+            text = self.returnTableText("WeightNote", type: 3, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{
@@ -288,7 +222,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 4: //принимаемые лекарства - список с напоминаниями
-            text = returnTableText("MedicineTake", type: 4, date: date)
+            text = self.returnTableText("MedicineTake", type: 4, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{
@@ -296,7 +230,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 5: //приятное воспоминание дня - тестовая
-            text = returnTableText("TextNote", type: 5, date: date)
+            text = self.returnTableText("TextNote", type: 5, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{
@@ -304,7 +238,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 6: //важные события - текстовая
-            text = returnTableText("TextNote", type: 6, date: date)
+            text = self.returnTableText("TextNote", type: 6, date: date)
             if  text  != "" {
                 cell.detailTextLabel?.text = String(text)
             }else{
@@ -312,7 +246,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 7: //мое меню на сегодня - несколько списков
-            let count = returnFoodCount(date)
+            let count = self.returnFoodCount(date)
             if count > 0 {
                 var txt = ""
                 if count%10 == 1{
@@ -332,7 +266,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             break
         case 8: //мой "лист желаний" - список - не превязаны ко дню
-            let count = returnDesireCount()
+            let count = self.returnDesireCount()
             if count > 0 {
                 var txt = ""
                 if count%10 == 1{
@@ -355,7 +289,10 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         cell.backgroundColor = .clearColor()
         cell.selectedBackgroundView?.backgroundColor = .clearColor()
+            }
+        )
         return cell
+
     }
     
     func returnDesireCount()->Int{
