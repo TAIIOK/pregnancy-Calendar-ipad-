@@ -17,6 +17,7 @@ var artticlessub = ["По материалам многоцентрового п
 
 var articletype = 0
 
+var opennotifi = false
 
 class notifi: NSObject {
     var day: String
@@ -157,12 +158,6 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
         
-        if fromCalendar{
-            fromCalendar = false
-            changer.selectedSegmentIndex = 1
-            choosedSegmentNotes = false
-            self.tbl.reloadData()
-        }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNotification:", name:"loadNotification", object: nil)
         setupNavigation(CVDate(date: NSDate()))
         tbl.delegate = self
@@ -171,6 +166,18 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         loadDate()
                 //leftbutt![0] = leftButton
         checkConnectionAndUpdateView()
+        if fromCalendar{
+            fromCalendar = false
+            changer.selectedSegmentIndex = 1
+            choosedSegmentNotes = false
+            self.tbl.reloadData()
+            if opennotifi{
+                opennotifi = false
+                let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("advertising")
+                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            }
+        }
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -267,7 +274,18 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func notesperday(){
-        day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
+        if selectedExperienceDay == nil{
+            let calendar = NSCalendar.currentCalendar()
+            var components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
+            components.hour = 00
+            components.minute = 00
+            components.second = 00
+            let NewDate = calendar.dateFromComponents(components)!
+            day = 300 - BirthDate.daysFrom(NewDate)
+        }else{
+            day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
+        }
+        
         mas.removeAll()
         for var i in not{
             let d = Int(i.day)

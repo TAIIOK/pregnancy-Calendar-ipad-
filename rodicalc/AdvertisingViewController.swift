@@ -56,8 +56,10 @@ class AdvertisingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let date = selectedExperienceDay.date
+        var date = CVDate(date: NSDate())
+        if selectedExperienceDay != nil{
+            date = selectedExperienceDay.date
+        }
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
         

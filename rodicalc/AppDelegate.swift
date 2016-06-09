@@ -411,16 +411,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     var key = notification.userInfo?.first?.1 as! String
                     if(key == "-1"){
                         var read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
-                            /*
-                             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                             let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
-                             let vc : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
-                             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                             var  ViewControllers =  [vc,initialViewControlleripad]
-                             
-                             self.window?.rootViewController?.presentViewController(initialViewControlleripad, animated: true, completion: nil)
-                             */
-                            
+                            opennotifi = true
+                            fromCalendar = true
+                            noteText[0] = ""
+                            noteText[1] = notification.alertBody!
+                            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                            var splitViewController = UISplitViewController()
+                            var rootViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
+                            var detailViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
+                            var rootNavigationController = UINavigationController(rootViewController:rootViewController)
+                            var detailNavigationController = UINavigationController(rootViewController:detailViewController)
+                            splitViewController.viewControllers = [rootViewController,detailNavigationController]
+                            self.window!.rootViewController = splitViewController
+                            self.window!.makeKeyAndVisible()
                         } )
                         alert.addAction(read)
                     }
