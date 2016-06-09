@@ -12,8 +12,19 @@ import CoreData
 var Back = false
 var selectedDay:DayView!
 var dateType = -1
-var BirthDate = NSDate()
+var BirthDate = NSDate.init(dateString: "1111-11-11")
 
+extension NSDate
+{
+    convenience
+    init(dateString:String) {
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let d = dateStringFormatter.dateFromString(dateString)!
+        self.init(timeInterval:0, sinceDate:d)
+    }
+}
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     let txt = ["По дате зачатия","По дате последней менструации","По дате, указанной врачем"]

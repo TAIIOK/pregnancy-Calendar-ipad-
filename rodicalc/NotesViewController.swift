@@ -185,8 +185,6 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch indexPath.row {
         case 0: //мое самочувствие - тестовая
             
-            
-
             text = self.returnTableText("TextNote", type: 0, date: date)
             
             if  text  != "" {
