@@ -86,8 +86,10 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func OK(sender: AnyObject) {
-        loadNotifi()
         dateType = dateTypeTemp
+        
+        loadNotifi()
+        
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
         BirthDate = selectedDay.date.convertedDate()!
     }
