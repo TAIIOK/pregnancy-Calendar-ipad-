@@ -47,8 +47,10 @@ extension CVCalendarDayViewControlCoordinator {
     }
     
     public func flush() {
+  
         selectedDayView = nil
         selectionSet.removeAll()
+        
     }
 }
 
@@ -76,6 +78,10 @@ extension CVCalendarDayViewControlCoordinator {
         selection = select
     }
     
+    public func selectDates(dates:[NSDate])
+        {
+            
+    }
     public func performDayViewSingleSelection(dayView: DayView) {
         
         if (selectionSet.contains(dayView) && selection)
