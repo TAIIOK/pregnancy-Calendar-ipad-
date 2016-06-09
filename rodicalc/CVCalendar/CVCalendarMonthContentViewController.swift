@@ -209,6 +209,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
     }
     
     private var togglingBlocked = false
+    
     public override func togglePresentedDate(date: NSDate) {
         let presentedDate = Date(date: date)
         if let presented = monthViews[Presented], let selectedDate = calendarView.coordinator.selectedDayView?.date {
