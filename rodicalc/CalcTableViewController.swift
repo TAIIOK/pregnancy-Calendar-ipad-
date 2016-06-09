@@ -12,7 +12,7 @@ import CoreData
 var Back = false
 var selectedDay:DayView!
 var dateType = -1
-var BirthDate = NSDate.init(dateString: "1111-11-11")
+var BirthDate = NSDate()
 
 extension NSDate
 {
