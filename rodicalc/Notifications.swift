@@ -45,16 +45,33 @@ func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
 }
 
 func loadNotifi() {
+    
+    cancelAllLocalNotification()
+    
+    let calendar = NSCalendar.currentCalendar()
+    let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
+    
+    var newBirthDate = BirthDate
+    if dateType == 0{
+        newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+    }
+    else if dateType == 1{
+        newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+    }
+    
+    var num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+    
+
     let app: UIApplication = UIApplication.sharedApplication()
 
   
    
     var Notificalendar = NSDate()
-    let calendar = NSCalendar.currentCalendar()
+
 
     WorkWithJSON()
-    print(notifications.count)
-    for (var i = 0 ; i <  notifications.count; i += 1){
+    print(NSDate().daysFrom(num))
+    for (var i = NSDate().daysFrom(num) ; i <  notifications.count; i += 1){
         var notifiday = notifications[i]
         var notification = [String]()
         
@@ -70,10 +87,10 @@ func loadNotifi() {
 
         let components = calendar.components([.Day , .Month , .Year], fromDate: Notificalendar)
         
-        for (var j = 0 ; j < 9 ; j += 1){
+        for (var j = 0 ; j < 8 ; j += 1){
             var localNotification = UILocalNotification()
             //localNotification.category = "adolf"
-            if (components.hour > 12 && i == 0){
+            if (components.hour > 12 && i == NSDate().daysFrom(num)){
                 localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 + Double(j) * 60) // время получения уведомления
             }
             else {
@@ -113,6 +130,27 @@ func loadNotifi() {
     }
 }
 
+
+
+func cancelAllLocalNotification(){
+    
+    let list = ["-1","92","203","155","165","271","203","210","22","57","71","267","273","247","120"]
+    
+    guard
+        let app: UIApplication = UIApplication.sharedApplication(),
+        let notifications = app.scheduledLocalNotifications else { return }
+    for notification in notifications {
+        
+        if
+            let userInfo = notification.userInfo,
+            let uid: [String: String] = userInfo as? [String: String] where list.contains(uid["objectId"]!) {
+            app.cancelLocalNotification(notification)
+            print("Deleted local notification")
+        }
+        
+        
+    }
+}
 
 
 func cancelLocalNotification(uniqueId: String){
