@@ -141,14 +141,16 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     private func addPinToMapView() {
+      
         if locate.isEmpty {
+            
             nearPoints = points
             updateTable()
         } else {
             if nearPoints.count > 1 {
                 return
             }
-            
+     
             var isFind = false
             for point in points {
                 if point.latitude != 0 && point.longitude != 0 {
@@ -257,6 +259,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         map.removeOverlays(map.overlays)
         map.removeFromSuperview()
         nearPoints.removeAll()
+        nearPoints.insert(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0), atIndex: 0)
 
     }
     override func viewDidAppear(animated: Bool) {

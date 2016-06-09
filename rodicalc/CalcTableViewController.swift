@@ -13,6 +13,7 @@ var Back = false
 var selectedDay:DayView!
 var dateType = -1
 var BirthDate = NSDate()
+var dateTypeTemp = -1
 
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -75,6 +76,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func OK(sender: AnyObject) {
         loadNotifi()
+        dateType = dateTypeTemp
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
         BirthDate = selectedDay.date.convertedDate()!
     }
@@ -94,7 +96,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("DateCell", forIndexPath: indexPath) as! DateTableViewCell
         cell.textLabel?.text = txt[indexPath.row]
     
-        if indexPath.row == dateType && selectedDay != nil{
+        if indexPath.row == dateTypeTemp  && selectedDay != nil{
             var date = selectedDay.date.convertedDate()!
             if dateType == 0{
                // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
@@ -146,7 +148,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //let a = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text
-        dateType = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
+        dateTypeTemp = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
         /*if selectedDay != nil{
             BirthDate = selectedDay.date.convertedDate()!
             if dateType == 0{
@@ -220,6 +222,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let date = i as! NSManagedObject
                     let dte = date.valueForKey("date") as! NSDate
                     dateType = date.valueForKey("type") as! Int
+                    dateTypeTemp = dateType
                     calendarView.toggleViewWithDate(dte)
                     BirthDate = dte
                     DateisLoaded = true
@@ -283,7 +286,7 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
-        if dateType != -1{
+        if dateTypeTemp != -1{
             if !Back{
                 //self.Cancel()
             }
