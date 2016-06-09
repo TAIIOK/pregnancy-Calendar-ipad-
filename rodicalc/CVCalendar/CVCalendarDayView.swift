@@ -102,7 +102,7 @@ public final class CVCalendarDayView: UIView {
             hidden = true
         }
         
-        
+        if(dateType != -1){
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
         var newBirthDate = BirthDate
@@ -141,7 +141,7 @@ public final class CVCalendarDayView: UIView {
             
             
         }
-        
+        }
 
 
         
@@ -274,7 +274,7 @@ extension CVCalendarDayView {
                 self.layer.addSublayer(self.topMarker!)
                 
                 if (self.date != nil){
-                    
+                    if(dateType != 1){
                     let calendar = NSCalendar.currentCalendar()
                     let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
                     var newBirthDate = BirthDate
@@ -323,7 +323,7 @@ extension CVCalendarDayView {
     
                 
                 
-                
+                    }
                 }
                 
             }

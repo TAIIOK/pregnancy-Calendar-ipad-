@@ -334,8 +334,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     cancelLocalNotification("\(doctors[i-1].date)")
                     }
                     else if(doctors[i-1].isRemind == false){
-                        doctors[i-1].isRemind = true
-                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(calculateDate(doctors[i-1].date, before: doctors[i-1].remindType , after: changeRemindInCurRec))")
+                        if(!doctors[currentRec-1].isRemind && doctors[currentRec-1].remindType != 0){
+                            doctors[i-1].isRemind = true
+                            scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(doctors[i-1].date)")
+                        }
                     }
                     
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
@@ -501,11 +503,14 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         components.second = 00
         let newDate = calendar.dateFromComponents(components)
         doctors[currentRec-1].date = newDate!
-        if(doctors.count >= currentRec-1){
-        if(doctors[currentRec-1].isRemind){
-            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
+        if (diffTwoDates(doctors[currentRec-1].date, second: calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec) ))
+        {
+        if(doctors[currentRec-1].isRemind && doctors[currentRec-1].remindType != 0){
+
+            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(doctors[currentRec-1].date )")
         }
         }
+        
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
    // self.view.addSubview(photo())
@@ -515,16 +520,48 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("Update Notifi")
         self.dismissViewControllerAnimated(true, completion: nil)
 
+ 
+        
         cancelLocalNotification("\(doctors[currentRec-1].date)")
-        
-        if(doctors[currentRec-1].isRemind){
-            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec))")
+           var second = calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec)
+
+        if (diffTwoDates(doctors[currentRec-1].date, second: calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec) ))
+        {
+        if(doctors[currentRec-1].isRemind && doctors[currentRec-1].remindType != 0){
+            scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(doctors[currentRec-1].date)")
         }
-        
+        }
+        else{
+        doctors[currentRec-1].isRemind = false
+        }
         doctors[currentRec-1].remindType = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
+    
+    
+    func diffTwoDates(first:NSDate,second:NSDate) -> Bool
+    {
+        let calendar = NSCalendar.currentCalendar()
+        let componentsfirst = calendar.components([.Day , .Month , .Year], fromDate: first)
+        let componentssecond = calendar.components([.Day , .Month , .Year], fromDate: second)
+
+        
+        if(componentsfirst.day < componentssecond.day)
+        {
+            if(componentsfirst.hour < componentssecond.hour){
+                
+            
+            if(componentsfirst.minute < componentssecond.minute)
+            {
+            return true
+            
+            }
+            }
+        }
+        return false
+    }
+    
     
     func calculateDate(date : NSDate,before : Int ,after : Int) -> NSDate
     {
@@ -541,45 +578,45 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return newDate!
         }
         var newdate = NSDate()
-        
+        /*
         switch before {
         case 0:
             return date
         case 1:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -5)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 5)
         case 2:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -15)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 15)
         case 3:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -30)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 30)
         case 4:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -1, NumberOfMinuteToAdd: 0)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 1, NumberOfMinuteToAdd: 0)
         case 5:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -2, NumberOfMinuteToAdd: 0)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 2, NumberOfMinuteToAdd: 0)
         case 6:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         case 7:
-            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+            newdate = addDaystoGivenDate(date, NumberOfDaysToAdd: 7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         default:
             return date
         }
-        
+        */
         switch after {
         case 0:
             return newdate
         case 1:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 5)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -5)
         case 2:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 15)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -15)
         case 3:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 30)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: -30)
         case 4:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 1, NumberOfMinuteToAdd: 0)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -1, NumberOfMinuteToAdd: 0)
         case 5:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: 2, NumberOfMinuteToAdd: 0)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: 0, NumberOfHoursToAdd: -2, NumberOfMinuteToAdd: 0)
         case 6:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: -1, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         case 7:
-            return addDaystoGivenDate(newdate, NumberOfDaysToAdd: 7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
+            return addDaystoGivenDate(date, NumberOfDaysToAdd: -7, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0)
         default:
             break
         }

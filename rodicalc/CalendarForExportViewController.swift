@@ -216,6 +216,7 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
             self.splitViewController?.viewControllers[0] = vc!
         }
 
+        calendarView.toggleViewWithDate(<#T##date: NSDate##NSDate#>)
          /*var stop = true
         let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
         for i in selectedExportWeek{
