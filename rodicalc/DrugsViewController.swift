@@ -672,11 +672,17 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        
+        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        headerview?.setopen(true)
+        headerview?.changeFields()
+        
         tbl.reloadData()
     }
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
         print("Update Notifi")
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         /*
         cancelLocalNotification("\(drugs[currentRec-1].date)")
@@ -687,6 +693,9 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         */
         drugs[currentRec-1].interval = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        
+     
+        
         tbl.reloadData()
     }
     
@@ -757,6 +766,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func UpdateSectionDate(segue:UIStoryboardSegue) {
         print("Update Date")
+        self.dismissViewControllerAnimated(true, completion: nil)
         switch StartORend {
         case 0:
             if drugs[currentRec-1].end.daysFrom(curDate) < 0 {break}
@@ -765,11 +775,17 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if drugs[currentRec-1].start.daysFrom(curDate) > 0 {break}
             drugs[currentRec-1].end = curDate
         }
+        
+        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        headerview?.setopen(true)
+        headerview?.changeFields()
+        
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        save()
         saveNote()
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }

@@ -91,7 +91,17 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         loadNotifi()
         
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
+        
+        
         BirthDate = selectedDay.date.convertedDate()!
+        
+        
+        let   alert =  UIAlertController(title: "", message: "Необходимо уведомление-алерт перед показом предполагаемой даты родов: \"Внимание! Обратите внимание, что рассчитанная дата родов является лишь приблизительной, так как течение беременности индивидуально для каждой женщины. По статистике, менее 10% детей рождаются точно в срок, остальные появляются на свет на несколько дней раньше или позже предполагаемой даты родов. Более точную информацию сможет дать наблюдающий Вас врач.\"", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+
+        
     }
     
     // MARK: - Table view data source

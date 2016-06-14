@@ -53,6 +53,9 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var isKeyboard = false
     
+
+    
+    
     func keyboardWillShow(notification: NSNotification) {
         if !isKeyboard{
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -511,6 +514,13 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         }
         
+        
+        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        headerview?.setopen(true)
+        headerview?.changeFields()
+        
+        
+        
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
    // self.view.addSubview(photo())
@@ -535,6 +545,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         doctors[currentRec-1].isRemind = false
         }
         doctors[currentRec-1].remindType = changeRemindInCurRec
+        
+        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        headerview?.setopen(true)
+        headerview?.changeFields()
+        
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         tbl.reloadData()
     }
@@ -626,6 +641,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillDisappear(animated: Bool) {
+        save()
         saveNote()
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
