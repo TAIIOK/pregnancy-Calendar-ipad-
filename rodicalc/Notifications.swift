@@ -70,7 +70,7 @@ func loadNotifi() {
 
 
     WorkWithJSON()
-    print(NSDate().daysFrom(num))
+   
     for (var i = NSDate().daysFrom(num) ; i <  notifications.count; i += 1){
         let notifiday = notifications[i]
         var notification = [String]()
@@ -155,7 +155,6 @@ func cancelAllLocalNotification(){
 
 func cancelLocalNotification(uniqueId: String){
 
-    print(uniqueId)
     guard
         let app: UIApplication = UIApplication.sharedApplication(),
         let notifications = app.scheduledLocalNotifications else { return }

@@ -20,6 +20,8 @@ class Zodiac: NSObject {
     }
 }
 
+var zodiacs = [Zodiac]()
+
 
 class ShowZodiacViewController: UIViewController {
 
@@ -29,11 +31,12 @@ class ShowZodiacViewController: UIViewController {
     @IBOutlet weak var zodiacAbout: UITextView!
     @IBOutlet weak var zodiacIcon: UIImageView!
     
-    var zodiacs = [Zodiac]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WorkWithJSON()
+        
+    
         var date = BirthDate//selectedDay.date.convertedDate()!
         if dateType == 0{
             date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
@@ -176,26 +179,6 @@ class ShowZodiacViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }*/
-    }
-
-    func WorkWithJSON(){
-        if let path = NSBundle.mainBundle().pathForResource("zodiacs", ofType: "json") {
-            do {
-                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                do {
-                    let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    if let zodiac : [NSDictionary] = jsonResult["Знаки"] as? [NSDictionary] {
-                        for Zodiacs: NSDictionary in zodiac {
-                            let name = Zodiacs.valueForKey("Знак")
-                            name!.dataUsingEncoding(NSUTF8StringEncoding)
-                            if let d = name {
-                                zodiacs.append(Zodiac(name: d as! String, element: "\(Zodiacs.valueForKey("Стихия")!)", about: "\(Zodiacs.valueForKey("Описание")!)"))
-                            }
-                        }
-                    }
-                } catch {}
-            } catch {}
-        }
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

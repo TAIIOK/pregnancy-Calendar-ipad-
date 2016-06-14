@@ -126,3 +126,27 @@ func PointsJSON(){
         } catch {}
     }
 }
+
+
+
+func LoadZadiacJSON(){
+    if let path = NSBundle.mainBundle().pathForResource("zodiacs", ofType: "json") {
+        do {
+            let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            do {
+                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let zodiac : [NSDictionary] = jsonResult["Знаки"] as? [NSDictionary] {
+                    for Zodiacs: NSDictionary in zodiac {
+                        let name = Zodiacs.valueForKey("Знак")
+                        name!.dataUsingEncoding(NSUTF8StringEncoding)
+                        if let d = name {
+                            zodiacs.append(Zodiac(name: d as! String, element: "\(Zodiacs.valueForKey("Стихия")!)", about: "\(Zodiacs.valueForKey("Описание")!)"))
+                        }
+                    }
+                }
+            } catch {}
+        } catch {}
+    }
+}
+
+

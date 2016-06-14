@@ -137,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
             if #available(iOS 8.0, *) {
-                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil))
+                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
             } else {
                 // Fallback on earlier versions
             }
@@ -169,7 +169,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge , .Sound] , categories: categories )
         application.registerUserNotificationSettings(settings)
         */
-  
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            
+            LoadZadiacJSON()
+            }
+        )
         dispatch_async(dispatch_get_main_queue(), {
             NamesJSON()
             sections = AddSect(man)
@@ -186,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PointsJSON()
             }
         )
-        
+
         /*
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             getVideoDetails()
