@@ -116,24 +116,25 @@ public class Reachability: NSObject {
 
     // MARK: - *** Notifier methods ***
     public func startNotifier() -> Bool {
-
+/*
         reachabilityObject = self
         _ = self.reachabilityRef!
 
         previousReachabilityFlags = reachabilityFlags
-        if let timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, timer_queue) {
+        if var timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, timer_queue) {
             dispatch_source_set_timer(timer, dispatch_walltime(nil, 0), 500 * NSEC_PER_MSEC, 100 * NSEC_PER_MSEC)
             dispatch_source_set_event_handler(timer, { [unowned self] in
                 self.timerFired()
                 })
 
-            dispatch_timer = timer
+           // dispatch_timer = timer
             dispatch_resume(timer)
 
             return true
-        } else {
-            return false
         }
+ */
+        return false
+ 
     }
 
     public func stopNotifier() {

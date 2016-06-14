@@ -110,7 +110,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadNotes(){
         doctors.removeAll()
-        var table = Table("DoctorVisit")
+        let table = Table("DoctorVisit")
         let name = Expression<String>("Name")
         let date = Expression<String>("Date")
         let isRemind = Expression<Bool>("isRemind")
@@ -157,7 +157,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let range = NSMakeRange(doctors.count, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
             self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
-            var headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
+            let headerview = tbl.viewWithTag(doctors.count) as? DoctorHeader
             headerview?.setopen(true)
             headerview?.changeFields()
             
@@ -273,7 +273,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
                     print("tapped on section header:: \(i)")
                     
-                    var headerview = tbl.viewWithTag(i) as? DoctorHeader
+                    let headerview = tbl.viewWithTag(i) as? DoctorHeader
                     headerview?.changeFields()
                     //tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
                     
@@ -370,7 +370,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let range = NSMakeRange(indexPath.section, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
             self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
-            var header = tbl?.viewWithTag(indexPath.section) as? DoctorHeader
+            let header = tbl?.viewWithTag(indexPath.section) as? DoctorHeader
             if(collapsed == true){
                 header!.setopen(true)
             }
@@ -390,12 +390,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -427,12 +427,12 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("NotifiTable") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -577,7 +577,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let newDate = CurrentCalendar.dateByAddingComponents(dateComponents, toDate: baseDate, options: CalendarOption)
             return newDate!
         }
-        var newdate = NSDate()
+        let newdate = NSDate()
         /*
         switch before {
         case 0:
@@ -631,7 +631,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func saveNote(){
-        var table = Table("DoctorVisit")
+        let table = Table("DoctorVisit")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
         let date = Expression<String>("Date")
@@ -662,7 +662,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let index = NSIndexPath(forItem: 0, inSection: i+1)
             
-            var header = tbl?.viewWithTag(index.section) as? DoctorHeader
+            let header = tbl?.viewWithTag(index.section) as? DoctorHeader
             
 
             if(header!.doctornameText.text?.isEmpty == false){
@@ -829,7 +829,7 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

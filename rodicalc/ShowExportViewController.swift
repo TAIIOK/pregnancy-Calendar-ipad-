@@ -91,7 +91,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             if(!AllExportNotes[i].photos.isEmpty && AllExportNotes[i].notes.isEmpty && AllExportNotes[i].notifi.isEmpty)
             {
                 var photos = AllExportNotes[i].photos
-                var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                 if(photos.count >= 2 ){
                 if(segmenttype){
                 image.image = CreateTwoPhotosBlue(photos[0].image, right: photos[1].image, title: dateString , leftText: photos[0].text, rightText: photos[1].text)
@@ -127,7 +127,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 var notifi = AllExportNotes[i].notifi
                 var Text = ""
                 var Textnotifi = ""
-                var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                     if(photos.count >= 2 )
                     {
                         
@@ -167,7 +167,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         
                     else if (photos.count < 2  && photos.count != 0)  {
                         
-                        var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                         Text.removeAll()
                         for(var n = 0 ; n < notes.count ; n++)
                         {
@@ -204,7 +204,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 
                 else if (photos.count == 0)
                     {
-                        var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                         var notes = AllExportNotes[i].notes
                         var notifi = AllExportNotes[i].notifi
                         var Text = ""
@@ -248,7 +248,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             }
             
             else if(AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
-                var image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                 var notes = AllExportNotes[i].notes
                 var notifi = AllExportNotes[i].notifi
                 var Text = ""

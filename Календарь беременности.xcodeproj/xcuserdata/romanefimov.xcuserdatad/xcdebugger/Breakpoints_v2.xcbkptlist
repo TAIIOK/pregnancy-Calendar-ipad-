@@ -31,8 +31,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
             endingLineNumber = "220"
-            landmarkName = "mapView(_:viewForAnnotation:)"
-            landmarkType = "5">
+            landmarkName = "mapView(mapView:viewForAnnotation:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/DoctorViewController.swift"
-            timestampString = "487078184.87755"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "lblTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/DoctorViewController.swift"
-            timestampString = "487078184.87755"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "lblTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/Notifications.swift"
-            timestampString = "487160737.443781"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "loadNotifi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/ShareViewController.swift"
-            timestampString = "487077611.319118"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "ShareFB(_:)"
-            landmarkType = "5">
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "ShareFB(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/DoctorViewController.swift"
-            timestampString = "487167164.856012"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rodicalc/Notifications.swift"
-            timestampString = "487160737.443781"
+            timestampString = "487596511.195026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "cancelLocalNotification(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -207,8 +207,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
             endingLineNumber = "338"
-            landmarkName = "application(_:didReceiveLocalNotification:)"
-            landmarkType = "5">
+            landmarkName = "application(application:didReceiveLocalNotification:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -61,7 +61,7 @@ extension NSData {
         let pdfContext: CGContextRef = CGPDFContextCreate(pdfConsumer, &mediaBox, nil)!
         
         CGContextBeginPage(pdfContext, &mediaBox)
-        CGContextDrawImage(pdfContext, mediaBox, image.CGImage)
+        CGContextDrawImage(pdfContext, mediaBox, image.CGImage!)
         CGContextEndPage(pdfContext)
         
         
@@ -97,7 +97,7 @@ extension NSData {
         let pdfContext: CGContextRef = CGPDFContextCreate(pdfConsumer, &mediaBox, nil)!
         
         CGContextBeginPage(pdfContext, &mediaBox)
-        CGContextDrawImage(pdfContext, imageBox, image.CGImage)
+        CGContextDrawImage(pdfContext, imageBox, image.CGImage!)
         CGContextEndPage(pdfContext)
         
         return pdfFile

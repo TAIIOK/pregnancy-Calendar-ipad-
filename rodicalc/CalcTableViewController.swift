@@ -110,7 +110,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = txt[indexPath.row]
     
         if indexPath.row == dateTypeTemp  && selectedDay != nil{
-            var date = selectedDay.date.convertedDate()!
+            let date = selectedDay.date.convertedDate()!
             if dateType == 0{
                // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
             }

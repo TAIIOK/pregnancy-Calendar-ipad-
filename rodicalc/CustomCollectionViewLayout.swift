@@ -124,7 +124,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         if self.itemAttributes != nil {
             for section in self.itemAttributes {
                 
-                let filteredArray = section.filteredArrayUsingPredicate(NSPredicate(block: { (evaluatedObject, bindings) -> Bool in return CGRectIntersectsRect(rect, evaluatedObject.frame) })) as! [UICollectionViewLayoutAttributes]
+                let filteredArray = section.filteredArrayUsingPredicate(NSPredicate(block: { (evaluatedObject, bindings) -> Bool in return CGRectIntersectsRect(rect, evaluatedObject!.frame) })) as! [UICollectionViewLayoutAttributes]
                 attributes.appendContentsOf(filteredArray)
             }
         }

@@ -372,7 +372,7 @@ extension CVCalendarMonthContentViewController {
         
         let coordinator = calendarView.coordinator
     
-        var dates =   coordinator.selectionSet
+        let dates =   coordinator.selectionSet
         
     
         return dates

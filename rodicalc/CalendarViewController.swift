@@ -174,8 +174,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 componentsE.minute = 00
                 componentsE.second = 00
                 let newDateE = calendar.dateFromComponents(componentsE)
-                var a = newcurDate?.compare(newDateS!)
-                var b = newcurDate?.compare(newDateE!)
+                let a = newcurDate?.compare(newDateS!)
+                let b = newcurDate?.compare(newDateE!)
                 if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                     count += 1
                 }
@@ -195,7 +195,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 2: //уведомления
             day = 300 - BirthDate.daysFrom(selectedCalendarDay.date.convertedDate()!)
-            var table = Table("Notification")
+            let table = Table("Notification")
             let Day = Expression<Int64>("Day")
             count = try db.scalar(table.filter(Day == Int64(day)).count)
             break
@@ -421,7 +421,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

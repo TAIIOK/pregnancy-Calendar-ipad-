@@ -85,7 +85,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         var type = 0
         
         if (picker.sourceType == UIImagePickerControllerSourceType.Camera)
@@ -152,7 +152,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         let text = Expression<String>("Text")
         
         for i in try! db.prepare(table.select(date,image,type,text, id).filter(date == "\(Date)")) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()
@@ -162,7 +162,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         
         table = Table("Uzi")
         for i in try! db.prepare(table.select(date,image,type,text, id).filter(date == "\(Date)")) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()
@@ -330,7 +330,7 @@ extension PhotoFromCalendarViewController: CVCalendarViewDelegate, CVCalendarMen
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

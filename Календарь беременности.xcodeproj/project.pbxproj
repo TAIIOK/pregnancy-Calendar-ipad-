@@ -1062,6 +1062,7 @@
 					8E90A40E1C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = FBJJC74S38;
+						LastSwiftMigration = 0800;
 					};
 					8E90A4251C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1555,6 +1556,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1584,6 +1586,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rodicalc/rodicalc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

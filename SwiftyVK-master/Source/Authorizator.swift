@@ -119,8 +119,8 @@ internal struct Authorizator {
     
     internal static func recieveTokenURL(url: NSURL, fromApp app: String?) {
       if (app == "com.vk.vkclient" || app == "com.vk.vkhd" || url.scheme == "vk\(VK.appID)") {
-        if url.absoluteString.containsString("access_token=") {
-          _ = Token(urlString: url.absoluteString)
+        if url.absoluteString!.containsString("access_token=") {
+          _ = Token(urlString: url.absoluteString!)
           WebController.cancel()
         }
       }

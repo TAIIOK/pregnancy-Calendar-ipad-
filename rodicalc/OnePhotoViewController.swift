@@ -66,7 +66,7 @@ class OnePhotoViewController: UIViewController{
             if count > 0{
                 try! db.run(table.delete())
             }
-            for var i in photos{
+            for  i in photos{
                 let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
                 try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
             }
@@ -82,7 +82,7 @@ class OnePhotoViewController: UIViewController{
                 try! db.run(table.delete())
             }
             
-            for var i in uzis{
+            for  i in uzis{
                 let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
                 let dateFormatter = NSDateFormatter()
                 try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
@@ -156,7 +156,7 @@ class OnePhotoViewController: UIViewController{
         if count > 0{
             try! db.run(table.delete())
         }
-        for var i in photos{
+        for  i in photos{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
@@ -173,7 +173,7 @@ class OnePhotoViewController: UIViewController{
             try! db.run(table.delete())
         }
         
-        for var i in uzis{
+        for  i in uzis{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             let dateFormatter = NSDateFormatter()
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))

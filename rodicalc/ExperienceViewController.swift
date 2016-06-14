@@ -276,7 +276,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     private func notesperday(){
         if selectedExperienceDay == nil{
             let calendar = NSCalendar.currentCalendar()
-            var components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
+            let components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
             components.hour = 00
             components.minute = 00
             components.second = 00
@@ -287,7 +287,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         mas.removeAll()
-        for var i in not{
+        for  i in not{
             let d = Int(i.day)
             if d == day{
                 if i.generalInformation != ""{
@@ -563,7 +563,7 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

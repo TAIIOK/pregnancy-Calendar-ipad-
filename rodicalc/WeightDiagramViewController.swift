@@ -76,7 +76,7 @@ var BirthDate = NSDate()
     }
 
     func loadWeight(){
-        var table = Table("WeightNote")
+        let table = Table("WeightNote")
         let date = Expression<String>("Date")
         let kg = Expression<Int64>("WeightKg")
         let gr = Expression<Int64>("WeightGr")

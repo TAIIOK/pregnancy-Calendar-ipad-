@@ -104,7 +104,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             try! db.run(table.delete())
         }
         
-        for var i in Desires{
+        for  i in Desires{
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)"))}
         }
@@ -252,7 +252,7 @@ extension DesireListViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

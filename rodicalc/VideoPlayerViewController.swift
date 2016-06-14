@@ -15,7 +15,7 @@ class VideoPlayerViewController: UIViewController {
         super.viewDidLoad()
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
-        var videoPlayer = YouTubePlayerView(frame: self.view.frame)
+        let videoPlayer = YouTubePlayerView(frame: self.view.frame)
         videoPlayer.backgroundColor = .whiteColor()
         self.view.addSubview(videoPlayer)
         self.view.bringSubviewToFront(videoPlayer)

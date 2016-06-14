@@ -311,7 +311,7 @@ class WebController : _WebControllerPrototype {
     //MARK: UIWebViewDelegate protocol
     func webViewDidFinishLoad(webView: UIWebView) {
       activity.stopAnimating()
-      handleResponse(webView.request!.URL!.absoluteString)
+      handleResponse(webView.request!.URL!.absoluteString!)
     }
     
     

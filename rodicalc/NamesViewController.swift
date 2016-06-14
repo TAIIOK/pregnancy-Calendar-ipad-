@@ -109,10 +109,10 @@ class NamesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var returnedView = UIView() //set these values as necessary
+        let returnedView = UIView() //set these values as necessary
         returnedView.backgroundColor = StrawBerryColor
         
-        var label = UILabel(frame: CGRectMake(18, 7, 18, 18))
+        let label = UILabel(frame: CGRectMake(18, 7, 18, 18))
         label.text = choosedSegmentNames ? sections[section].title : sectionsGirl[section].title
         label.textColor = UIColor.whiteColor()
         returnedView.addSubview(label)

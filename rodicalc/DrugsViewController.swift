@@ -109,7 +109,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func loadNotes(){
         print("load ",selectedNoteDay.date.convertedDate()!)
         drugs.removeAll()
-        var table = Table("MedicineTake")
+        let table = Table("MedicineTake")
         let name = Expression<String>("Name")
         let start = Expression<String>("Start")
         let end = Expression<String>("End")
@@ -140,8 +140,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             componentsE.minute = 00
             componentsE.second = 00
             let newDateE = calendar.dateFromComponents(componentsE)
-            var a = newcurDate?.compare(newDateS!)
-            var b = newcurDate?.compare(newDateE!)
+            let a = newcurDate?.compare(newDateS!)
+            let b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 drugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
@@ -178,7 +178,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let range = NSMakeRange(drugs.count, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
             self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
-            var headerview = tbl.viewWithTag(drugs.count) as? DoctorHeader
+            let headerview = tbl.viewWithTag(drugs.count) as? DoctorHeader
             headerview?.setopen(true)
             headerview?.changeFields()
             
@@ -372,7 +372,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
                     print("tapped on section header:: \(i)")
                     
-                    var headerview = tbl.viewWithTag(i) as? DoctorHeader
+                    let headerview = tbl.viewWithTag(i) as? DoctorHeader
                     headerview?.changeFields()
                     //tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
                     
@@ -395,7 +395,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if(drugs[i-1].isRemind == true){
                     drugs[i-1].isRemind = false
                         
-                        var notifiday = drugs[i-1].start
+                        let notifiday = drugs[i-1].start
                         
                         for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
                         {
@@ -407,7 +407,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     else if(drugs[i-1].isRemind == false){
                         drugs[i-1].isRemind = true
                         
-                        var notifiday = drugs[i-1].start
+                        let notifiday = drugs[i-1].start
                         
                         for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
                         {
@@ -449,7 +449,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let range = NSMakeRange(indexPath.section, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
             self.tbl.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
-            var header = tbl?.viewWithTag(indexPath.section) as? DoctorHeader
+            let header = tbl?.viewWithTag(indexPath.section) as? DoctorHeader
             if(collapsed == true){
                 header!.setopen(true)
             }
@@ -471,12 +471,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("TimeTable") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -504,12 +504,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("DrugsTable") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DrugsTable") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -534,12 +534,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -566,12 +566,12 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
                 
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") as! UIViewController
+                let vc = storyboard.instantiateViewControllerWithIdentifier("DatePickerView") 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
                 vc.preferredContentSize =  CGSizeMake(340,300)
                 let popover: UIPopoverPresentationController = vc.popoverPresentationController!
                 
-                var location = recognizer.locationInView(recognizer.view)
+                let location = recognizer.locationInView(recognizer.view)
                 popover.permittedArrowDirections = .Right
                 popover.delegate = self
                 
@@ -615,7 +615,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         }
         else{
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
             var selectedDate = dateFormatter.stringFromDate(drugs[indexPath.section-1].start)
             cell.timebutton.setTitle("\(firstComponent1[drugs[indexPath.section-1].hour]):\(secondComponent1[drugs[indexPath.section-1].minute])", forState: .Normal)
@@ -641,7 +641,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("Update TIME")
         self.dismissViewControllerAnimated(true, completion: nil)
         //cancelLocalNotification("\(drugs[currentRec-1].date)")
-        var notifiday = drugs[currentRec-1].start
+        let notifiday = drugs[currentRec-1].start
         print(drugs[currentRec-1].start, drugs[currentRec-1].end)
         for(var i = 0 ;i <= notifiday.daysFrom(drugs[currentRec-1].end); i++)
         {
@@ -664,7 +664,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if(drugs[currentRec-1].isRemind){
             
-            var notifiday = drugs[currentRec-1].start
+            let notifiday = drugs[currentRec-1].start
             
             for(var i = 0 ;i <= notifiday.daysFrom(drugs[currentRec-1].end); i++)
             {
@@ -776,7 +776,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func saveNote(){
         print("save ",selectedNoteDay.date.convertedDate()!)
-        var table = Table("MedicineTake")
+        let table = Table("MedicineTake")
         let id = Expression<Int64>("_id")
         let name = Expression<String>("Name")
         let start = Expression<String>("Start")
@@ -806,8 +806,8 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             componentsE.minute = 00
             componentsE.second = 00
             let newDateE = calendar.dateFromComponents(componentsE)
-            var a = newcurDate?.compare(newDateS!)
-            var b = newcurDate?.compare(newDateE!)
+            let a = newcurDate?.compare(newDateS!)
+            let b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 try! db.run(table.filter(id == i[id]).delete())
             }
@@ -825,7 +825,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             let index = NSIndexPath(forItem: 0, inSection: i+1)
             
-            var header = tbl?.viewWithTag(index.section) as? DoctorHeader
+            let header = tbl?.viewWithTag(index.section) as? DoctorHeader
             if(header!.doctornameText.text?.isEmpty == false){
                 drugs[i].name = (header!.doctornameText.text)!
             }
@@ -977,7 +977,7 @@ extension DrugsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

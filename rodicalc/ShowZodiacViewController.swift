@@ -186,7 +186,7 @@ class ShowZodiacViewController: UIViewController {
                     let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let zodiac : [NSDictionary] = jsonResult["Знаки"] as? [NSDictionary] {
                         for Zodiacs: NSDictionary in zodiac {
-                            var name = Zodiacs.valueForKey("Знак")
+                            let name = Zodiacs.valueForKey("Знак")
                             name!.dataUsingEncoding(NSUTF8StringEncoding)
                             if let d = name {
                                 zodiacs.append(Zodiac(name: d as! String, element: "\(Zodiacs.valueForKey("Стихия")!)", about: "\(Zodiacs.valueForKey("Описание")!)"))

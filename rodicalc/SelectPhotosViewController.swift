@@ -39,7 +39,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         {
             for (var j = 0; j < PhotoCollectionView.numberOfItemsInSection(i); j++)
             {
-                var cell =  PhotoCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: j,inSection: i)) as! PhotoCollectionViewCell
+                let cell =  PhotoCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: j,inSection: i)) as! PhotoCollectionViewCell
                 selectedImages.append(cell.photo.image!)
                 cell.ImgSelector.hidden = false
             }
@@ -163,7 +163,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
         if count > 0{
             try! db.run(table.delete())
         }
-        for var i in photos{
+        for  i in photos{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }
@@ -180,7 +180,7 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
             try! db.run(table.delete())
         }
         
-        for var i in uzis{
+        for  i in uzis{
             let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
             try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
         }

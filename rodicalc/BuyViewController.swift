@@ -255,9 +255,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     override func viewDidDisappear(animated: Bool) {
-        map.removeAnnotations(map.annotations)
-        map.removeOverlays(map.overlays)
-        map.removeFromSuperview()
+      //  map.removeAnnotations(map.annotations)
+      //  map.removeOverlays(map.overlays)
+      //  map.removeFromSuperview()
         nearPoints.removeAll()
         nearPoints.insert(Points(city: "",address: "",trade_point: "WILDBERRIES",phone: "",longitude: 0.0,latitude: 0.0), atIndex: 0)
 
