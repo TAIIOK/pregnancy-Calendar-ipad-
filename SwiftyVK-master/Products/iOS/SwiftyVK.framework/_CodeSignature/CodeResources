@@ -14,15 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		puVs3frkHAn/wBTOkLMmWGBa8Dg=
-		</data>
-		<key>Modules/SwiftyVK.swiftmodule/i386.swiftdoc</key>
-		<data>
-		TColTd8dthfCxyr+0DodngqBHvc=
-		</data>
-		<key>Modules/SwiftyVK.swiftmodule/i386.swiftmodule</key>
-		<data>
-		EY0VdYQtTE5R5eAmxq0PsQNjp0Y=
+		+dA8DNKDdaR5E94lHzb4yqMEWFk=
 		</data>
 		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -40,7 +32,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fMoUPKHIG6R9XwqZ21r964cHGBw=
+			wVTz3WJdDI3Wn+p5gU4i6C+24Co=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -49,14 +41,14 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jEOXrZxvUJPqJ3Uyp6KnoGx8Mk8=
+			K0xi2V8paKsHWB/czNopBI9Y1qE=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>SwiftyVKResources-iOS.bundle/Info.plist</key>
 		<data>
-		iLK34ScYyZtkv53myUNT7dnpY+k=
+		VOQ3TNaTSz0PBFt2Z2TGwbfUJ3I=
 		</data>
 		<key>SwiftyVKResources-iOS.bundle/be.lproj/CaptchaView-iOS.strings</key>
 		<dict>
@@ -155,28 +147,6 @@
 			2T/EsQ2AeOdS8pdyK0MXsCNtAldnEuNkrJWj9v3FDzE=
 			</data>
 		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/i386.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			TColTd8dthfCxyr+0DodngqBHvc=
-			</data>
-			<key>hash2</key>
-			<data>
-			PJRRrqTrDUzwOQtmgOL6WciRAJK4TkLEvGrwH7SM/CI=
-			</data>
-		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/i386.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			EY0VdYQtTE5R5eAmxq0PsQNjp0Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			/bgNo4+XFRu7rRaVN7IAMRIzTLtJdFCGLTD4Py8pLvA=
-			</data>
-		</dict>
 		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
@@ -214,11 +184,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fMoUPKHIG6R9XwqZ21r964cHGBw=
+			wVTz3WJdDI3Wn+p5gU4i6C+24Co=
 			</data>
 			<key>hash2</key>
 			<data>
-			vI1vf4NQ8F99WXIzfAwvcCBzs4sqkDfTyHhkaBJiDgI=
+			sQR/RYY4L1zsecAzF1PlNeAmYkusAEAGGfwAaU8lSgQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -227,11 +197,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jEOXrZxvUJPqJ3Uyp6KnoGx8Mk8=
+			K0xi2V8paKsHWB/czNopBI9Y1qE=
 			</data>
 			<key>hash2</key>
 			<data>
-			iCb2SlhI/PMcGHQldgagFmVSpBwrIrw5psAOEIajmFA=
+			YY9YO60si4XJp8feDLoIy0y1PXK1Cek+celDd2EFtgc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -240,11 +210,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iLK34ScYyZtkv53myUNT7dnpY+k=
+			VOQ3TNaTSz0PBFt2Z2TGwbfUJ3I=
 			</data>
 			<key>hash2</key>
 			<data>
-			uJ/XN8CpdNC/ric9pgljctWdg02Bpf32hnsZY8+J6RU=
+			BKixnI4jbOwzixYiRNOLd7633ltbhmg9LiPoDu58ih8=
 			</data>
 		</dict>
 		<key>SwiftyVKResources-iOS.bundle/be.lproj/CaptchaView-iOS.strings</key>
@@ -370,6 +340,11 @@
 			<key>weight</key>
 			<real>1100</real>
 		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
+		</dict>
 		<key>^version.plist$</key>
 		<true/>
 	</dict>
@@ -414,6 +389,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^Info\.plist$</key>
 		<dict>

@@ -145,14 +145,18 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func doneButtonTouched() {
         //self.pickerViewTextField.resignFirstResponder()
-        
-        if type == 0{
-            weightKg = getWeightFromPickerView()
-            self.btnKG.setTitle("\(weightKg) кг", forState: UIControlState.Normal)
+        dispatch_async(dispatch_get_main_queue(), {
+
+        if self.type == 0{
+            self.weightKg = self.getWeightFromPickerView()
+            self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
         }else{
-            weightGramm = getWeightFromPickerView()
-            self.btnGR.setTitle("\(weightGramm) г", forState: UIControlState.Normal)
+            self.weightGramm = self.getWeightFromPickerView()
+            self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
         }
+            
+            }
+        )
 
         //setupPickerViewValues()
         self.pickerViewTextField.resignFirstResponder()
@@ -171,12 +175,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
-        
-       
-       
 
-            
-        
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
