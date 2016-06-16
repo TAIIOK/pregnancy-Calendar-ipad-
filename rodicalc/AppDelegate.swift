@@ -342,7 +342,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if (state == UIApplicationState.Active) {
             //["92","203","155","165","271","203","210","22","57","71","267","273","247","120"]
-
+ 
             
             if(notification.userInfo?.first != nil)
             {
