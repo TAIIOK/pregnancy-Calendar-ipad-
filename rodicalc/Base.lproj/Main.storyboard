@@ -2280,7 +2280,6 @@
                                 <connections>
                                     <action selector="OK:" destination="FMa-bN-nRb" eventType="touchUpInside" id="Jx6-Un-iLz"/>
                                     <action selector="buttonSpasms:" destination="IN0-Vg-fgl" eventType="touchUpInside" id="9hB-5a-xqS"/>
-                                    <segue destination="KBc-RC-uUB" kind="showDetail" id="75J-b5-UbD"/>
                                 </connections>
                             </button>
                         </subviews>

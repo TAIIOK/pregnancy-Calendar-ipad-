@@ -86,25 +86,38 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func OK(sender: AnyObject) {
+        if(dateTypeTemp != -1){
         dateType = dateTypeTemp
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             loadNotifi()
             }
         
-        
-        
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
         
-        
         BirthDate = selectedDay.date.convertedDate()!
-        
-        
+
+        let date = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
+        self.navigationController?.showDetailViewController(date!, sender: self)
+            
         let   alert =  UIAlertController(title: "", message: "Внимание! Обратите внимание, что рассчитанная дата родов является лишь приблизительной, так как течение беременности индивидуально для каждой женщины. По статистике, менее 10% детей рождаются точно в срок, остальные появляются на свет на несколько дней раньше или позже предполагаемой даты родов. Более точную информацию сможет дать наблюдающий Вас врач.", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
         
         alert.addAction(ok)
         self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else{
+            let   alert =  UIAlertController(title: "", message: "Внимание! Вы не выбрали пункт для определения даты родов. Пожалуйста выберете пункт из перечня.", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+            
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        
+        }
+        
+
+
 
         
     }
