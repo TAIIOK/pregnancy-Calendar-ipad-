@@ -99,6 +99,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         }else {
             rowIndex = weightGramm
         }
+
         self.pickerView.selectRow(rowIndex % 10, inComponent: 2, animated: true)
         rowIndex /= 10
         self.pickerView.selectRow(rowIndex % 10, inComponent: 1, animated: true)
@@ -145,7 +146,8 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func doneButtonTouched() {
         //self.pickerViewTextField.resignFirstResponder()
-        dispatch_async(dispatch_get_main_queue(), {
+        
+       dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
 
         if self.type == 0{
             self.weightKg = self.getWeightFromPickerView()
@@ -154,12 +156,13 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
             self.weightGramm = self.getWeightFromPickerView()
             self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
         }
-            
+        
             }
-        )
+            
+        
+         self.pickerViewTextField.resignFirstResponder()
 
-        //setupPickerViewValues()
-        self.pickerViewTextField.resignFirstResponder()
+        
     }
     
     func cancelButtonTouched() {

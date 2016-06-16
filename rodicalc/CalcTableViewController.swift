@@ -88,10 +88,10 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func OK(sender: AnyObject) {
         dateType = dateTypeTemp
         
-        dispatch_async(dispatch_get_main_queue(), {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             loadNotifi()
             }
-        )
+        
         
         
         saveDate(selectedDay.date.convertedDate()!, type: dateType)

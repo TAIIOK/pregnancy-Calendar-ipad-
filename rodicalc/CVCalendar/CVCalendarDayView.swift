@@ -123,7 +123,7 @@ public final class CVCalendarDayView: UIView {
             let textLayer = CATextLayer()
             textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
             
-           let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
+           let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
             textLayer.foregroundColor = UIColor(red:  40/255.0 , green: 160/255.0, blue: 143/255.0, alpha: 1.0).CGColor
            
                         textLayer.name = "number"
@@ -280,10 +280,10 @@ extension CVCalendarDayView {
                     let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
                     var newBirthDate = BirthDate
                     if dateType == 0{
-                        newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+                        newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*41)
                     }
                     else if dateType == 1{
-                        newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                        newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*41)
                     }
                     if(newBirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 ){
                         let height = CGFloat(0.5)
@@ -296,7 +296,7 @@ extension CVCalendarDayView {
                         let textLayer = CATextLayer()
                         textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
                         
-                        let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
+                        let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
                         
                         textLayer.name = "number"
                         for lay in self.layer.sublayers!
