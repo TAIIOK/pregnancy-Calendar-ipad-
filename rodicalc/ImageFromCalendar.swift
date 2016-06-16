@@ -58,8 +58,8 @@ public class ImageFromCalendar {
             componentsE.minute = 00
             componentsE.second = 00
             let newDateE = calendar.dateFromComponents(componentsE)
-            var a = newcurDate?.compare(newDateS!)
-            var b = newcurDate?.compare(newDateE!)
+            let a = newcurDate?.compare(newDateS!)
+            let b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) && i[isRemind] == true{
                 showBell = true
             }
@@ -115,8 +115,8 @@ public class ImageFromCalendar {
             componentsE.minute = 00
             componentsE.second = 00
             let newDateE = calendar.dateFromComponents(componentsE)
-            var a = newcurDate?.compare(newDateS!)
-            var b = newcurDate?.compare(newDateE!)
+            let a = newcurDate?.compare(newDateS!)
+            let b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 count += 1
             }

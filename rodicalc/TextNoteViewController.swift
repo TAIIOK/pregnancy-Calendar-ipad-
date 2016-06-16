@@ -36,24 +36,25 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        //This makes the new text black.
-     //   textField.typingAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
+        
         var protectedRange = NSMakeRange(0, 0)
         if(NoteType == 1){
+            if(range.location > 17 )
+            {
+                return true
+            }
         protectedRange = NSMakeRange(0, 17)
         }
         else if (NoteType == 0){
+            if(range.location > 23 )
+            {
+                return true
+            }
         protectedRange = NSMakeRange(0, 23)
         }
-        else{  return true }
-        let intersection = NSIntersectionRange(protectedRange, range)
-            print(intersection)
-        if(intersection.location == 0){
-            return true
-        }
-        else{ return false}
+
         
-  
+        return false
     }
     
     override func viewDidLoad() {
@@ -258,59 +259,59 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
-                self.title = "Январь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Январь \(date.year)"
+                self.title = "Январь \(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
-                self.title = "Февраль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Февраль \(date.year)"
+                self.title = "Февраль \(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
-                self.title = "Март,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Март \(date.year)"
+                self.title = "Март \(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
-                self.title = "Апрель,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Апрель \(date.year)"
+                self.title = "Апрель \(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
-                self.title = "Май,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Май \(date.year)"
+                self.title = "Май \(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
-                self.title = "Июнь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июнь \(date.year)"
+                self.title = "Июнь \(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
-                self.title = "Июль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июль \(date.year)"
+                self.title = "Июль \(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
-                self.title = "Август,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Август \(date.year)"
+                self.title = "Август \(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
-                self.title = "Сентябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Сентябрь \(date.year)"
+                self.title = "Сентябрь \(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
-                self.title = "Октябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Октябрь \(date.year)"
+                self.title = "Октябрь \(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
-                self.title = "Ноябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Ноябрь \(date.year)"
+                self.title = "Ноябрь \(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
-                self.title = "Декабрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Декабрь \(date.year)"
+                self.title = "Декабрь \(date.year)"
                 break
             default:
                 break
             }
         }
     }
-
+    
 
     func shouldAutoSelectDayOnMonthChange() -> Bool
     {
@@ -323,7 +324,7 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

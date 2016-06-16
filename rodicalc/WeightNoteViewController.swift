@@ -15,6 +15,8 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     //@IBOutlet var pickerView: UIPickerView!
     @IBOutlet var pickerViewTextField: UITextField!
     @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var pickerViewTextFieldGramm: UITextField!
+    @IBOutlet var pickerViewGramm: UIPickerView!
     
     @IBOutlet weak var btnGR: UIButton!
     @IBOutlet weak var btnKG: UIButton!
@@ -48,12 +50,12 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         self.calendarView.delegate = self
         
-        
-        
         self.presentedDateUpdated(CVDate(date: NSDate()))
         loadWeight()
         setupWeightPickerView()
         setupWeightPickerViewToolbar()
+        setupWeightPickerViewGramm()
+        setupWeightPickerViewToolbarGramm()
     }
     
     func loadWeight(){
@@ -77,8 +79,8 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func setGramm(sender: UIButton) {
         type = 1
-        setupPickerViewValues()
-        self.pickerViewTextField.becomeFirstResponder()
+        setupPickerViewValuesGramm()
+        self.pickerViewTextFieldGramm.becomeFirstResponder()
     }
     
     private func setupWeightPickerView()  {
@@ -90,6 +92,16 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         self.pickerView.dataSource = self
         self.pickerView.backgroundColor = .whiteColor()
         self.pickerViewTextField.inputView = pickerView
+    }
+    private func setupWeightPickerViewGramm()  {
+        self.pickerViewTextFieldGramm = UITextField(frame: CGRectZero)
+        self.view.addSubview(self.pickerViewTextFieldGramm)
+        self.pickerViewGramm = UIPickerView(frame: CGRectMake(0, 0, 0, 0))
+        self.pickerViewGramm.showsSelectionIndicator = true
+        self.pickerViewGramm.delegate = self
+        self.pickerViewGramm.dataSource = self
+        self.pickerViewGramm.backgroundColor = .whiteColor()
+        self.pickerViewTextFieldGramm.inputView = pickerViewGramm
     }
     
     private func setupPickerViewValues() {
@@ -105,6 +117,19 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         rowIndex /= 10
         self.pickerView.selectRow(rowIndex % 10, inComponent: 0, animated: true)
     }
+    private func setupPickerViewValuesGramm() {
+        var rowIndex = 0
+        if type == 0{
+            rowIndex = weightKg
+        }else {
+            rowIndex = weightGramm
+        }
+        self.pickerViewGramm.selectRow(rowIndex % 10, inComponent: 2, animated: true)
+        rowIndex /= 10
+        self.pickerViewGramm.selectRow(rowIndex % 10, inComponent: 1, animated: true)
+        rowIndex /= 10
+        self.pickerViewGramm.selectRow(rowIndex % 10, inComponent: 0, animated: true)
+    }
     
     private func setupWeightPickerViewToolbar() {
         let toolBar = UIToolbar(frame: CGRectMake(0, 0, 320, 40))
@@ -116,9 +141,23 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
         self.pickerViewTextField.inputAccessoryView = toolBar
     }
+    private func setupWeightPickerViewToolbarGramm() {
+        let toolBar = UIToolbar(frame: CGRectMake(0, 0, 320, 40))
+        toolBar.tintColor = StrawBerryColor
+        toolBar.barTintColor = .whiteColor()
+        let doneButton = UIBarButtonItem(title: "Готово", style: .Plain, target: self, action: Selector("doneButtonTouchedGramm"))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .Plain, target: self, action: Selector("cancelButtonTouchedGramm"))
+        toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
+        self.pickerViewTextFieldGramm.inputAccessoryView = toolBar
+    }
     
     private func getWeightFromPickerView() -> Int {
         return secondComponent[self.pickerView.selectedRowInComponent(0)]*100 + secondComponent[self.pickerView.selectedRowInComponent(1)]*10 + secondComponent[self.pickerView.selectedRowInComponent(2)]
+    }
+    
+    private func getWeightFromPickerViewGramm() -> Int {
+        return secondComponent[self.pickerViewGramm.selectedRowInComponent(0)]*100 + secondComponent[self.pickerViewGramm.selectedRowInComponent(1)]*10 + secondComponent[self.pickerViewGramm.selectedRowInComponent(2)]
     }
     
     // MARK: - UIPickerView
@@ -145,21 +184,47 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func doneButtonTouched() {
         //self.pickerViewTextField.resignFirstResponder()
-        
-        if type == 0{
-            weightKg = getWeightFromPickerView()
-            self.btnKG.setTitle("\(weightKg) кг", forState: UIControlState.Normal)
-        }else{
-            weightGramm = getWeightFromPickerView()
-            self.btnGR.setTitle("\(weightGramm) г", forState: UIControlState.Normal)
-        }
+        dispatch_async(dispatch_get_main_queue(), {
 
+        if self.type == 0{
+            self.weightKg = self.getWeightFromPickerView()
+            self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
+        }else{
+            self.weightGramm = self.getWeightFromPickerView()
+            self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
+        }
+            
+            }
+        )
         //setupPickerViewValues()
         self.pickerViewTextField.resignFirstResponder()
     }
     
     func cancelButtonTouched() {
         self.pickerViewTextField.resignFirstResponder()
+    }
+    
+    func doneButtonTouchedGramm() {
+        //self.pickerViewTextField.resignFirstResponder()
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            if self.type == 0{
+                self.weightKg = self.getWeightFromPickerViewGramm()
+                self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
+            }else{
+                self.weightGramm = self.getWeightFromPickerViewGramm()
+                self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
+            }
+            
+            }
+        )
+        
+        //setupPickerViewValues()
+        self.pickerViewTextFieldGramm.resignFirstResponder()
+    }
+    
+    func cancelButtonTouchedGramm() {
+        self.pickerViewTextFieldGramm.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -171,12 +236,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         super.viewDidLayoutSubviews()
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
-        
-       
-       
 
-            
-        
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
@@ -276,59 +336,58 @@ extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
-                self.title = "Январь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Январь \(date.year)"
+                self.title = "Январь \(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
-                self.title = "Февраль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Февраль \(date.year)"
+                self.title = "Февраль \(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
-                self.title = "Март,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Март \(date.year)"
+                self.title = "Март \(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
-                self.title = "Апрель,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Апрель \(date.year)"
+                self.title = "Апрель \(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
-                self.title = "Май,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Май \(date.year)"
+                self.title = "Май \(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
-                self.title = "Июнь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июнь \(date.year)"
+                self.title = "Июнь \(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
-                self.title = "Июль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июль \(date.year)"
+                self.title = "Июль \(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
-                self.title = "Август,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Август \(date.year)"
+                self.title = "Август \(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
-                self.title = "Сентябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Сентябрь \(date.year)"
+                self.title = "Сентябрь \(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
-                self.title = "Октябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Октябрь \(date.year)"
+                self.title = "Октябрь \(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
-                self.title = "Ноябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Ноябрь \(date.year)"
+                self.title = "Ноябрь \(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
-                self.title = "Декабрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Декабрь \(date.year)"
+                self.title = "Декабрь \(date.year)"
                 break
             default:
                 break
             }
         }
     }
-
     
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return true
@@ -336,7 +395,7 @@ extension WeightNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

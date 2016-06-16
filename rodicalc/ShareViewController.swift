@@ -27,8 +27,8 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
         }
         
-        var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в память вашего устройства", preferredStyle: .Alert)
-        var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        let   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в память вашего устройства", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
         alert.addAction(ok)
     self.presentViewController(alert, animated: true, completion: nil)
         
@@ -79,7 +79,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             VK.API.Upload.document(Media(documentData: PDF, type: "pdf")).send(method: HTTPMethods.POST , success:{response in print(response)
                 let name = response.arrayObject![0] as! NSDictionary
                 
-                var string = "doc" + userID + "_" + String(name.valueForKey("id")!)
+                let string = "doc" + userID + "_" + String(name.valueForKey("id")!)
                 print(string)
                 let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
                 
@@ -146,7 +146,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     }
     
     @IBAction func ShareMail(sender: AnyObject) {
-        var mailComposerVC = MFMailComposeViewController()
+        let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self;
 
                 for (var i = 0 ; i < selectedImages.count ; i++){
@@ -167,6 +167,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
         switch result {
+    
             
         case MFMailComposeResultCancelled:
             print("Cancelled mail")
@@ -202,10 +203,10 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
                 CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
             }
             
-            var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение Одноклассники", preferredStyle: .Alert)
-            var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+            let   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение Одноклассники", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
             alert.addAction(ok)
-            var open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+            let open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
                 
                 if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "https://ok.ru")!)){
                     UIApplication.sharedApplication().openURL(NSURL(string: "https://ok.ru")!)
@@ -220,7 +221,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         }
         else{
             
-        var settings  = OKSDKInitSettings.init()
+        let settings  = OKSDKInitSettings.init()
         settings.appKey = "CBAFLEFLEBABABABA"
         settings.appId = "1246999552"
         settings.controllerHandler = {
@@ -248,7 +249,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
          let urlPath = data["upload_url"] as! String
          let url: NSURL = NSURL(string: urlPath)!
          let request1: NSMutableURLRequest = NSMutableURLRequest(URL: url)
-          var data = NSMutableData()
+          let data = NSMutableData()
             
             request1.HTTPMethod = "POST"
             request1.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -270,7 +271,7 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
                     if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
                         print("ASynchronous\(jsonResult)")
                         
-                        var token = jsonResult.valueForKeyPath("photos.\(photoId).token") // ["photos"][photoId]["token"]
+                        let token = jsonResult.valueForKeyPath("photos.\(photoId).token") // ["photos"][photoId]["token"]
 
                         OKSDK.invokeMethod("photosV2.commit", arguments: ["photo_id":photoId,"token":token!,"comment":"Example Anon"], success:{ data in print(data)}, error: {error in print(error)})
                         
@@ -303,10 +304,10 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
         }
     
-        var   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
-        var ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        let   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
         alert.addAction(ok)
-        var open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+        let open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
             
             if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
                 UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/PageId")!)
@@ -324,17 +325,17 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
 
                 
                  if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
-                    var dialog = FBSDKShareDialog()
+                    let dialog = FBSDKShareDialog()
                     dialog.fromViewController = self
                     dialog.mode = FBSDKShareDialogMode.Native
-                    var content = FBSDKSharePhotoContent()
+                    let content = FBSDKSharePhotoContent()
                     content.photos = selectedImages
                     dialog.shareContent = content
                     dialog.show()
                 }
                  else{
                 
-                    var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                    let shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
  
                   shareToFacebook.setInitialText("")
                 for (var i = 0 ; i < selectedImages.count ; i++){

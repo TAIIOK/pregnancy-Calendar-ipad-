@@ -88,10 +88,25 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func OK(sender: AnyObject) {
         dateType = dateTypeTemp
         
-        loadNotifi()
+        dispatch_async(dispatch_get_main_queue(), {
+            loadNotifi()
+            }
+        )
+        
         
         saveDate(selectedDay.date.convertedDate()!, type: dateType)
+        
+        
         BirthDate = selectedDay.date.convertedDate()!
+        
+        
+        let   alert =  UIAlertController(title: "", message: "Внимание! Обратите внимание, что рассчитанная дата родов является лишь приблизительной, так как течение беременности индивидуально для каждой женщины. По статистике, менее 10% детей рождаются точно в срок, остальные появляются на свет на несколько дней раньше или позже предполагаемой даты родов. Более точную информацию сможет дать наблюдающий Вас врач.", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        
+        alert.addAction(ok)
+        self.presentViewController(alert, animated: true, completion: nil)
+
+        
     }
     
     // MARK: - Table view data source
@@ -110,7 +125,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = txt[indexPath.row]
     
         if indexPath.row == dateTypeTemp  && selectedDay != nil{
-            var date = selectedDay.date.convertedDate()!
+            let date = selectedDay.date.convertedDate()!
             if dateType == 0{
                // date = addDaystoGivenDate(date, NumberOfDaysToAdd: 7*38)
             }
@@ -325,57 +340,57 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
             updatedMonthLabel.text = date.globalDescription
             updatedMonthLabel.sizeToFit()
             updatedMonthLabel.alpha = 0
-
+            
             
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
-                self.title = "Январь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Январь \(date.year)"
+                self.title = "Январь \(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
-                self.title = "Февраль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Февраль \(date.year)"
+                self.title = "Февраль \(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
-                self.title = "Март,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Март \(date.year)"
+                self.title = "Март \(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
-                self.title = "Апрель,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Апрель \(date.year)"
+                self.title = "Апрель \(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
-                self.title = "Май,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Май \(date.year)"
+                self.title = "Май \(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
-                self.title = "Июнь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июнь \(date.year)"
+                self.title = "Июнь \(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
-                self.title = "Июль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июль \(date.year)"
+                self.title = "Июль \(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
-                self.title = "Август,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Август \(date.year)"
+                self.title = "Август \(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
-                self.title = "Сентябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Сентябрь \(date.year)"
+                self.title = "Сентябрь \(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
-                self.title = "Октябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Октябрь \(date.year)"
+                self.title = "Октябрь \(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
-                self.title = "Ноябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Ноябрь \(date.year)"
+                self.title = "Ноябрь \(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
-                self.title = "Декабрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Декабрь \(date.year)"
+                self.title = "Декабрь \(date.year)"
                 break
             default:
                 break

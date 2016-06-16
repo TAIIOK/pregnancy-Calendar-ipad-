@@ -17,7 +17,7 @@ func NamesJSON(){
                 let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 if let Man : [NSDictionary] = jsonResult["мужские"] as? [NSDictionary] {
                     for mans: NSDictionary in Man {
-                        var name = mans.valueForKey("имя")
+                        let name = mans.valueForKey("имя")
                         name!.dataUsingEncoding(NSUTF8StringEncoding)
                         if let d = name {
                             man.append(Names(name: d as! String, value: "\(mans.valueForKey("значение")!)", about: "\(mans.valueForKey("описание")!)"))
@@ -26,7 +26,7 @@ func NamesJSON(){
                 }
                 if let Man : [NSDictionary] = jsonResult["женские"] as? [NSDictionary] {
                     for mans: NSDictionary in Man {
-                        var name = mans.valueForKey("имя")
+                        let name = mans.valueForKey("имя")
                         name!.dataUsingEncoding(NSUTF8StringEncoding)
                         if let d = name {
                             woman.append(Names(name: d as! String, value: "\(mans.valueForKey("значение")!)", about: "\(mans.valueForKey("описание")!)"))
@@ -88,7 +88,7 @@ func NotificationJSON(){
                     let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let Man : [NSDictionary] = jsonResult["reminder"] as? [NSDictionary] {
                         for mans: NSDictionary in Man {
-                            var day = mans.valueForKey("день")
+                            let day = mans.valueForKey("день")
                             day!.dataUsingEncoding(NSUTF8StringEncoding)
                             if let d = day {
                                 not.append(notifi(day: d as! String, generalInformation: "\(mans.valueForKey("Общая информация")!)", healthMother: "\(mans.valueForKey("Здоровье мамы")!)", healthBaby: "\(mans.valueForKey("Здоровье малыша")!)", food: "\(mans.valueForKey("питание")!)", important: "\(mans.valueForKey("Это важно!")!)", HidenAdvertisment: "\(mans.valueForKey("Скрытая реклама")!)", advertisment: "\(mans.valueForKey("реклама ФЭСТ")!)", reflectionsPregnant: "\(mans.valueForKey("размышления беременной")!)"))
@@ -112,7 +112,7 @@ func PointsJSON(){
                 let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 if let point : [NSDictionary] = jsonResult["points"] as? [NSDictionary] {
                     for Point: NSDictionary in point {
-                        var address = Point.valueForKey("address")
+                        let address = Point.valueForKey("address")
                         address!.dataUsingEncoding(NSUTF8StringEncoding)
                         if let d = address {
                             
@@ -126,3 +126,27 @@ func PointsJSON(){
         } catch {}
     }
 }
+
+
+
+func LoadZadiacJSON(){
+    if let path = NSBundle.mainBundle().pathForResource("zodiacs", ofType: "json") {
+        do {
+            let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            do {
+                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let zodiac : [NSDictionary] = jsonResult["Знаки"] as? [NSDictionary] {
+                    for Zodiacs: NSDictionary in zodiac {
+                        let name = Zodiacs.valueForKey("Знак")
+                        name!.dataUsingEncoding(NSUTF8StringEncoding)
+                        if let d = name {
+                            zodiacs.append(Zodiac(name: d as! String, element: "\(Zodiacs.valueForKey("Стихия")!)", about: "\(Zodiacs.valueForKey("Описание")!)"))
+                        }
+                    }
+                }
+            } catch {}
+        } catch {}
+    }
+}
+
+

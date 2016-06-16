@@ -36,7 +36,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
-        loadNotes()
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.loadNotes()})
         tbl.reloadData()
     }
     
@@ -69,12 +70,12 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 str = "\(tmp[WeightKg]) кг \(tmp[WeightGr]) г"
             }
         }else if tableName == "DoctorVisit"{
-           var table = Table("DoctorVisit")
+           let table = Table("DoctorVisit")
             let Date = Expression<String>("Date")
             let name = Expression<String>("Name")
             let calendar = NSCalendar.currentCalendar()
             
-            var components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
             for i in try! db.prepare(table.select(Date,name)) {
                 let b = i[Date]
                 let dateFormatter = NSDateFormatter()
@@ -89,7 +90,7 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
         }else if tableName == "MedicineTake"{
-            var table = Table("MedicineTake")
+            let table = Table("MedicineTake")
             let name = Expression<String>("Name")
             let start = Expression<String>("Start")
             let end = Expression<String>("End")
@@ -115,8 +116,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 componentsE.minute = 00
                 componentsE.second = 00
                 let newDateE = calendar.dateFromComponents(componentsE)
-                var a = newcurDate?.compare(newDateS!)
-                var b = newcurDate?.compare(newDateE!)
+                let a = newcurDate?.compare(newDateS!)
+                let b = newcurDate?.compare(newDateE!)
                 if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                      count += 1
                 }
@@ -464,52 +465,52 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
-                self.title = "Январь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Январь \(date.year)"
+                self.title = "Январь \(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
-                self.title = "Февраль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Февраль \(date.year)"
+                self.title = "Февраль \(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
-                self.title = "Март,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Март \(date.year)"
+                self.title = "Март \(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
-                self.title = "Апрель,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Апрель \(date.year)"
+                self.title = "Апрель \(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
-                self.title = "Май,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Май \(date.year)"
+                self.title = "Май \(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
-                self.title = "Июнь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июнь \(date.year)"
+                self.title = "Июнь \(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
-                self.title = "Июль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июль \(date.year)"
+                self.title = "Июль \(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
-                self.title = "Август,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Август \(date.year)"
+                self.title = "Август \(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
-                self.title = "Сентябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Сентябрь \(date.year)"
+                self.title = "Сентябрь \(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
-                self.title = "Октябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Октябрь \(date.year)"
+                self.title = "Октябрь \(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
-                self.title = "Ноябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Ноябрь \(date.year)"
+                self.title = "Ноябрь \(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
-                self.title = "Декабрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Декабрь \(date.year)"
+                self.title = "Декабрь \(date.year)"
                 break
             default:
                 break
@@ -523,7 +524,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

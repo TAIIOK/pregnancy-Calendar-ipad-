@@ -20,7 +20,7 @@ func WorkWithJSON(){
                     let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let Man : [NSDictionary] = jsonResult["reminder"] as? [NSDictionary] {
                         for mans: NSDictionary in Man {
-                            var day = mans.valueForKey("день")
+                            let day = mans.valueForKey("день")
                             day!.dataUsingEncoding(NSUTF8StringEncoding)
                             if let d = day {
                                 notifications.append(notifi(day: d as! String, generalInformation: "\(mans.valueForKey("Общая информация")!)", healthMother: "\(mans.valueForKey("Здоровье мамы")!)", healthBaby: "\(mans.valueForKey("Здоровье малыша")!)", food: "\(mans.valueForKey("питание")!)", important: "\(mans.valueForKey("Это важно!")!)", HidenAdvertisment: "\(mans.valueForKey("Скрытая реклама")!)", advertisment: "\(mans.valueForKey("реклама ФЭСТ")!)", reflectionsPregnant: "\(mans.valueForKey("размышления беременной")!)"))
@@ -59,7 +59,7 @@ func loadNotifi() {
         newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
     }
     
-    var num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+    let num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
     
 
     let app: UIApplication = UIApplication.sharedApplication()
@@ -70,9 +70,9 @@ func loadNotifi() {
 
 
     WorkWithJSON()
-    print(NSDate().daysFrom(num))
+   
     for (var i = NSDate().daysFrom(num) ; i <  notifications.count; i += 1){
-        var notifiday = notifications[i]
+        let notifiday = notifications[i]
         var notification = [String]()
         
         notification.append(notifiday.generalInformation)
@@ -88,7 +88,7 @@ func loadNotifi() {
         let components = calendar.components([.Day , .Month , .Year], fromDate: Notificalendar)
         
         for (var j = 0 ; j < 8 ; j += 1){
-            var localNotification = UILocalNotification()
+            let localNotification = UILocalNotification()
             //localNotification.category = "adolf"
             if (components.hour > 12 && i == NSDate().daysFrom(num)){
                 localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 + Double(j) * 60) // время получения уведомления
@@ -110,12 +110,12 @@ func loadNotifi() {
 
             if(lolnotifies.contains(notification[8]) && j == 5)
             {
-                var infoDict :  Dictionary<String,String!> = ["objectId" : notification[8]]
+                let infoDict :  Dictionary<String,String!> = ["objectId" : notification[8]]
            // var infoDict = ["objectId" : notification[8]]
             localNotification.userInfo = infoDict
             }
             else{
-            var infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
+            let infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
             localNotification.userInfo = infoDict
             }
             localNotification.alertAction = "View"
@@ -155,7 +155,6 @@ func cancelAllLocalNotification(){
 
 func cancelLocalNotification(uniqueId: String){
 
-    print(uniqueId)
     guard
         let app: UIApplication = UIApplication.sharedApplication(),
         let notifications = app.scheduledLocalNotifications else { return }
@@ -174,14 +173,14 @@ func cancelLocalNotification(uniqueId: String){
 
 func scheduleNotification(notifiDate :NSDate, notificationTitle:String, objectId:String) {
     
-    var localNotification = UILocalNotification()
+    let localNotification = UILocalNotification()
     localNotification.fireDate = notifiDate
     localNotification.alertBody = notificationTitle
     localNotification.timeZone = NSTimeZone.defaultTimeZone()
     localNotification.applicationIconBadgeNumber = 1
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.alertAction = "View"
-    var infoDict :  Dictionary<String,String!> = ["objectId" : objectId]
+    let infoDict :  Dictionary<String,String!> = ["objectId" : objectId]
     localNotification.userInfo = infoDict
     
     UIApplication.sharedApplication().scheduleLocalNotification(localNotification)

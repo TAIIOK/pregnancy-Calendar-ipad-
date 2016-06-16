@@ -1278,7 +1278,7 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-gM-3DF">
                                 <rect key="frame" x="135" y="538" width="330" height="42"/>
-                                <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15686274510000001" green="0.62745098040000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="O1N-a6-gQX"/>
                                     <constraint firstAttribute="height" constant="42" id="icx-dP-lI6"/>
@@ -1971,7 +1971,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-FY-cn5">
                                 <rect key="frame" x="231" y="477" width="330" height="42"/>
-                                <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.62745098039215685" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Vc9-y9-lob"/>
                                     <constraint firstAttribute="width" constant="330" id="XrE-Zp-tqz"/>
@@ -3302,7 +3302,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-F5-2Wh">
                                 <rect key="frame" x="410" y="506" width="170" height="58"/>
-                                <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15686274510000001" green="0.62745098040000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="GiS-i1-Mmj"/>
                                 </constraints>
@@ -4459,12 +4459,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XcH-dH-mWH"/>
-        <segue reference="IGw-IB-TBh"/>
         <segue reference="P0H-Yd-JxP"/>
-        <segue reference="L53-bo-E8K"/>
         <segue reference="kMg-vQ-vuk"/>
+        <segue reference="L53-bo-E8K"/>
         <segue reference="0ZV-Wo-vNj"/>
         <segue reference="FRD-nV-ZPC"/>
+        <segue reference="T6c-gQ-90V"/>
+        <segue reference="gAm-h9-WUK"/>
     </inferredMetricsTieBreakers>
 </document>

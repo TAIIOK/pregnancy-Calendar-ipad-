@@ -103,40 +103,40 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         switch date.month {
         case 1:
-            label.text = "Январь,\(date.year)"
+            label.text = "Январь \(date.year)"
             break
         case 2:
-            label.text = "Февраль,\(date.year)"
+            label.text = "Февраль \(date.year)"
             break
         case 3:
-            label.text = "Март,\(date.year)"
+            label.text = "Март \(date.year)"
             break
         case 4:
-            label.text = "Апрель,\(date.year)"
+            label.text = "Апрель \(date.year)"
             break
         case 5:
-            label.text = "Май,\(date.year)"
+            label.text = "Май \(date.year)"
             break
         case 6:
-            label.text = "Июнь,\(date.year)"
+            label.text = "Июнь \(date.year)"
             break
         case 7:
-            label.text = "Июль,\(date.year)"
+            label.text = "Июль \(date.year)"
             break
         case 8:
-            label.text =  "Август,\(date.year)"
+            label.text =  "Август \(date.year)"
             break
         case 9:
-            label.text =  "Сентябрь,\(date.year)"
+            label.text =  "Сентябрь \(date.year)"
             break
         case 10:
-            label.text =  "Октябрь,\(date.year)"
+            label.text =  "Октябрь \(date.year)"
             break
         case 11:
-            label.text = "Ноябрь,\(date.year)"
+            label.text = "Ноябрь \(date.year)"
             break
         case 12:
-            label.text = "Декабрь,\(date.year)"
+            label.text = "Декабрь \(date.year)"
             break
         default:
             break
@@ -163,7 +163,9 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         tbl.delegate = self
         tbl.dataSource = self
 
-        loadDate()
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.loadDate()})
+       
                 //leftbutt![0] = leftButton
         checkConnectionAndUpdateView()
         if fromCalendar{
@@ -276,7 +278,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     private func notesperday(){
         if selectedExperienceDay == nil{
             let calendar = NSCalendar.currentCalendar()
-            var components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
+            let components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
             components.hour = 00
             components.minute = 00
             components.second = 00
@@ -287,7 +289,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         mas.removeAll()
-        for var i in not{
+        for  i in not{
             let d = Int(i.day)
             if d == day{
                 if i.generalInformation != ""{
@@ -563,7 +565,7 @@ extension ExperienceViewController: CVCalendarViewDelegate, CVCalendarMenuViewDe
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

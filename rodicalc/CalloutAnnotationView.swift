@@ -26,9 +26,7 @@ class CalloutAnnotationView : MKAnnotationView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+
 
     // if we (re)set the annotation, remove old observer for title, if any and add new one
     

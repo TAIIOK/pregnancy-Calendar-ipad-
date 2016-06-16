@@ -42,7 +42,7 @@ class PhotoTemplate:UIView{
     
     
     func xibSetup(Photo: UIImage, title: String) {
-        var view1 = loadViewFromNib("PhotoTemplate") as! PhotoTemp
+        let view1 = loadViewFromNib("PhotoTemplate") as! PhotoTemp
         
         view1.setContent(Photo,title: title )
         
@@ -244,7 +244,7 @@ class photo: UIView{
             
         
         func xibFirstSetupBlue(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
-           var view1 = loadViewFromNib("TwoPhotoBlue") as! TwoPhotoBlue
+           let view1 = loadViewFromNib("TwoPhotoBlue") as! TwoPhotoBlue
             
 
                     
@@ -255,7 +255,7 @@ class photo: UIView{
         }
     
     func xibSecondSetupBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
-        var view1 = loadViewFromNib("TextWithTwoPhotosBlue") as! TextWithTwoPhotoBlue
+        let view1 = loadViewFromNib("TextWithTwoPhotosBlue") as! TextWithTwoPhotoBlue
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
         
@@ -264,7 +264,7 @@ class photo: UIView{
     }
     
     func xibThirdSetupBlue(Title : String, CenterText: String) {
-        var view1 = loadViewFromNib("TextOnlyBlue") as! TextOnlyBlue
+        let view1 = loadViewFromNib("TextOnlyBlue") as! TextOnlyBlue
         
         view1.setContent(Title, CenterText: CenterText)
         
@@ -273,7 +273,7 @@ class photo: UIView{
     }
     
     func xibFirstSetupPink(left: UIImage,right: UIImage, title: String,leftText : String, rightText: String) {
-        var view1 = loadViewFromNib("TwoPhotosPink") as! TwoPhotoPink
+        let view1 = loadViewFromNib("TwoPhotosPink") as! TwoPhotoPink
         
         view1.setContent(left, right: right, title: title, leftText: leftText, rightText: rightText)
         
@@ -282,7 +282,7 @@ class photo: UIView{
     }
     
     func xibSecondSetupPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
-        var view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoPink
+        let view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoPink
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
         
@@ -291,7 +291,7 @@ class photo: UIView{
     }
     
     func xibThirdSetupPink(Title : String, CenterText: String) {
-        var view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyPink
+        let view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyPink
         
         view1.setContent(Title, CenterText: CenterText)
         

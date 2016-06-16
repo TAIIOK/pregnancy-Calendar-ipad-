@@ -161,7 +161,7 @@ public class LineChart: UIView {
         
         if removeAll {
             let context = UIGraphicsGetCurrentContext()
-            CGContextClearRect(context, rect)
+            CGContextClearRect(context!, rect)
             return
         }
         

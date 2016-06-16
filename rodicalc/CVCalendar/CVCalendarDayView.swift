@@ -123,9 +123,10 @@ public final class CVCalendarDayView: UIView {
             let textLayer = CATextLayer()
             textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
             
-           var num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
-            
-            textLayer.name = "number"
+           let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
+            textLayer.foregroundColor = UIColor(red:  40/255.0 , green: 160/255.0, blue: 143/255.0, alpha: 1.0).CGColor
+           
+                        textLayer.name = "number"
             textLayer.string = "\(num)"
             textLayer.fontSize = 12
             textLayer.contentsScale = UIScreen.mainScreen().scale
@@ -295,7 +296,7 @@ extension CVCalendarDayView {
                         let textLayer = CATextLayer()
                         textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
                         
-                        var num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))/7
+                        let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
                         
                         textLayer.name = "number"
                         for lay in self.layer.sublayers!
@@ -305,6 +306,7 @@ extension CVCalendarDayView {
                                 lay.removeFromSuperlayer()
                             }
                         }
+                        textLayer.foregroundColor = UIColor(red:  40/255.0 , green: 160/255.0, blue: 143/255.0, alpha: 1.0).CGColor
                         textLayer.string = "\(num)"
                         textLayer.fontSize = 12
                         textLayer.contentsScale = UIScreen.mainScreen().scale
@@ -391,7 +393,7 @@ extension CVCalendarDayView {
                     dotMarker.fillColor = StrawBerryColor
                     dotMarker.center = CGPointMake(x, y)
                     
-                    var imageView = UIImageView(frame: CGRectMake(0, 2 , 12, 12));
+                    let imageView = UIImageView(frame: CGRectMake(0, 2 , 12, 12));
                     
                     var image = UIImage(named: "White_Bell-50.png");
                     

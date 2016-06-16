@@ -18,16 +18,16 @@ extension UIView{
         self.layer.renderInContext(context!)
         let screenShot = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        return screenShot
+        return screenShot!
     }
 }
 func CreateTitleBlue() -> UIImageView {
-   var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
+   let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
     imageView.image = UIImage(named: "title(blue).png")
     return imageView
 }
 func CreateTitlePink() -> UIImageView{
-    var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 700, height: 600))
     imageView.image = UIImage(named: "title(pink).png")
     return imageView
 }

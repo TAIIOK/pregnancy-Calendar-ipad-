@@ -285,8 +285,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                         componentsE.minute = 00
                         componentsE.second = 00
                         let newDateE = calendar.dateFromComponents(componentsE)
-                        var a = newcurDate?.compare(newDateS!)
-                        var b = newcurDate?.compare(newDateE!)
+                        let a = newcurDate?.compare(newDateS!)
+                        let b = newcurDate?.compare(newDateE!)
 
                         if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                             notemas.append(TextNoteE(typeS: "Принимаемые лекарства", text: j.name, date: date))
@@ -542,7 +542,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         var table = Table("TextNote")
         let Date = Expression<String>("Date")
         let type = Expression<Int64>("Type")
-        var text = Expression<String>("NoteText")
+        let text = Expression<String>("NoteText")
         //count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
         for i in try! db.prepare(table.select(text, type).filter(Date == "\(date)")){
             var str = ""
@@ -585,7 +585,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         }
         
         table = Table("Food")
-        var textFood = Expression<String>("Text")
+        let textFood = Expression<String>("Text")
         //count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
         for i in try! db.prepare(table.select(textFood).filter(Date == "\(date)")){
             NotesExportFood.append(Food(text: i[textFood], date: date))
@@ -619,8 +619,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             componentsE.minute = 00
             componentsE.second = 00
             let newDateE = calendar.dateFromComponents(componentsE)
-            var a = newcurDate?.compare(newDateS!)
-            var b = newcurDate?.compare(newDateE!)
+            let a = newcurDate?.compare(newDateS!)
+            let b = newcurDate?.compare(newDateE!)
             if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                 NotesExportDrugs.append(Drugs(name: i[name], hour: i[hour_], minute: i[minute_], start: dateFormatter.dateFromString(i[start])!, end: dateFormatter.dateFromString(i[end])!, interval: i[interval_], isRemind: i[isRemind], cellType: 0))
             }
@@ -631,7 +631,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         //300 - BirthDate.daysFrom(selectedDay.date.convertedDate()!)
         let days = selectedExportDays.sort(self.frontwards)
         NotificationExport.removeAll()
-        var table = Table("Notification")
+        let table = Table("Notification")
         let day = Expression<Int64>("Day")
         let text = Expression<String>("Text")
         let type = Expression<Int64>("CategoryId")
@@ -642,7 +642,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         components.second = 00
         let NewDate = calendar.dateFromComponents(components)!
         for i in days{
-            var a = 300-NewDate.daysFrom(i)
+            let a = 300-NewDate.daysFrom(i)
             for j in try! db.prepare(table.select(text,type).filter(day == Int64(a))){
                 var str = ""
                 switch j[type] {
@@ -686,7 +686,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         let text = Expression<String>("Text")
         let count = try db.scalar(table.filter(date == "\(Date)").count)
         for i in try! db.prepare(table.filter(date == "\(Date)")) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()
@@ -696,7 +696,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         
         table = Table("Uzi")
         for i in try! db.prepare(table.filter(date == "\(Date)")) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()

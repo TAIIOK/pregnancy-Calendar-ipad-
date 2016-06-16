@@ -23,13 +23,18 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbl.delegate = self
-        tbl.dataSource = self
-        tbl.backgroundColor = .clearColor()
+
+    
+   
+
+    
         loadDate()
         self.presentedDateUpdated(CVDate(date: NSDate()))
         let btnBack = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = btnBack
+        tbl.delegate = self
+        tbl.dataSource = self
+        tbl.backgroundColor = .clearColor()
     }
 
     @IBAction func UpdateCalendar(segue:UIStoryboardSegue) {
@@ -48,12 +53,15 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("calendarCell", forIndexPath: indexPath)
-        if selectedCalendarDay != nil {
+       dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+    
+        
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Заметки"
-            let count = returnCount(0)
+            let count = self.returnCount(0)
             var txt = ""
             if count%10 == 1{
                 txt = "заметка"
@@ -70,7 +78,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 1:
             cell.textLabel?.text = "Фотографии"
-            let count = returnCount(1)
+            let count = self.returnCount(1)
             var txt = ""
             if count%10 == 1{
                 txt = "фотография"
@@ -87,7 +95,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 2:
             cell.textLabel?.text = "Уведомления"
-            let count = returnCount(2)
+            let count = self.returnCount(2)
             var txt = ""
             if count%10 == 1{
                 txt = "уведомление"
@@ -105,38 +113,45 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             break
         }
-        }else{
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "Заметки"
-                break
-            case 1:
-                cell.textLabel?.text = "Фотографии"
-                break
-            case 2:
-                cell.textLabel?.text = "Уведомления"
-                break
-            default:
-                break
-            }
-        }
+               
         cell.backgroundColor = .clearColor()
+        
+
+     
+    
+        
+   
+                })
+        
         return cell
+
     }
     
+ 
     func returnCount(number: Int) -> Int{
         var count = 0
+        var Select = NSDate()
+        if(selectedCalendarDay != nil)
+        {
+            Select = selectedCalendarDay.date.convertedDate()!
+        }
+
+        
         switch number {
         case 0: //заметки
             var table = Table("TextNote")
             let Date = Expression<String>("Date")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            if(selectedCalendarDay == nil)
+            {count += try db.scalar(table.filter(Date == "\(Select)").count)}
+            else{
+            count += try db.scalar(table.filter(Date == "\(Select)").count)
+            }
             table = Table("WeightNote")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            count += try db.scalar(table.filter(Date == "\(Select)").count)
             
             table = Table("DoctorVisit")
             let calendar = NSCalendar.currentCalendar()
-            var components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
+            var components = calendar.components([.Day , .Month , .Year], fromDate: Select)
             
             for i in try! db.prepare(table.select(Date)) {
                 let b = i[Date]
@@ -149,13 +164,13 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             table = Table("Food")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            count += try db.scalar(table.filter(Date == "\(Select)").count)
             
             table = Table("MedicineTake")
             let start = Expression<String>("Start")
             let end = Expression<String>("End")
             
-            components = calendar.components([.Day , .Month , .Year], fromDate: selectedCalendarDay.date.convertedDate()!)
+            components = calendar.components([.Day , .Month , .Year], fromDate: Select)
             components.hour = 00
             components.minute = 00
             components.second = 00
@@ -174,8 +189,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 componentsE.minute = 00
                 componentsE.second = 00
                 let newDateE = calendar.dateFromComponents(componentsE)
-                var a = newcurDate?.compare(newDateS!)
-                var b = newcurDate?.compare(newDateE!)
+                let a = newcurDate?.compare(newDateS!)
+                let b = newcurDate?.compare(newDateE!)
                 if (a == NSComparisonResult.OrderedDescending || a == NSComparisonResult.OrderedSame) && (b == NSComparisonResult.OrderedAscending || b == NSComparisonResult.OrderedSame) {
                     count += 1
                 }
@@ -188,14 +203,14 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         case 1: //фото
             var table = Table("Photo")
             let Date = Expression<String>("Date")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            count += try db.scalar(table.filter(Date == "\(Select)").count)
             
             table = Table("Uzi")
-            count += try db.scalar(table.filter(Date == "\(selectedCalendarDay.date.convertedDate()!)").count)
+            count += try db.scalar(table.filter(Date == "\(Select)").count)
             break
         case 2: //уведомления
-            day = 300 - BirthDate.daysFrom(selectedCalendarDay.date.convertedDate()!)
-            var table = Table("Notification")
+            day = 300 - BirthDate.daysFrom(Select)
+            let table = Table("Notification")
             let Day = Expression<Int64>("Day")
             count = try db.scalar(table.filter(Day == Int64(day)).count)
             break
@@ -362,52 +377,52 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             
             switch date.month {
             case 1:
-                self.navigationController?.parentViewController?.title = "Январь,\(date.year)"
-                self.title = "Январь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Январь \(date.year)"
+                self.title = "Январь \(date.year)"
                 break
             case 2:
-                self.navigationController?.parentViewController?.title = "Февраль,\(date.year)"
-                self.title = "Февраль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Февраль \(date.year)"
+                self.title = "Февраль \(date.year)"
                 break
             case 3:
-                self.navigationController?.parentViewController?.title = "Март,\(date.year)"
-                self.title = "Март,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Март \(date.year)"
+                self.title = "Март \(date.year)"
                 break
             case 4:
-                self.navigationController?.parentViewController?.title = "Апрель,\(date.year)"
-                self.title = "Апрель,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Апрель \(date.year)"
+                self.title = "Апрель \(date.year)"
                 break
             case 5:
-                self.navigationController?.parentViewController?.title = "Май,\(date.year)"
-                self.title = "Май,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Май \(date.year)"
+                self.title = "Май \(date.year)"
                 break
             case 6:
-                self.navigationController?.parentViewController?.title = "Июнь,\(date.year)"
-                self.title = "Июнь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июнь \(date.year)"
+                self.title = "Июнь \(date.year)"
                 break
             case 7:
-                self.navigationController?.parentViewController?.title = "Июль,\(date.year)"
-                self.title = "Июль,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Июль \(date.year)"
+                self.title = "Июль \(date.year)"
                 break
             case 8:
-                self.navigationController?.parentViewController?.title = "Август,\(date.year)"
-                self.title = "Август,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Август \(date.year)"
+                self.title = "Август \(date.year)"
                 break
             case 9:
-                self.navigationController?.parentViewController?.title = "Сентябрь,\(date.year)"
-                self.title = "Сентябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Сентябрь \(date.year)"
+                self.title = "Сентябрь \(date.year)"
                 break
             case 10:
-                self.navigationController?.parentViewController?.title = "Октябрь,\(date.year)"
-                self.title = "Октябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Октябрь \(date.year)"
+                self.title = "Октябрь \(date.year)"
                 break
             case 11:
-                self.navigationController?.parentViewController?.title = "Ноябрь,\(date.year)"
-                self.title = "Ноябрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Ноябрь \(date.year)"
+                self.title = "Ноябрь \(date.year)"
                 break
             case 12:
-                self.navigationController?.parentViewController?.title = "Декабрь,\(date.year)"
-                self.title = "Декабрь,\(date.year)"
+                self.navigationController?.parentViewController?.title = "Декабрь \(date.year)"
+                self.title = "Декабрь \(date.year)"
                 break
             default:
                 break
@@ -421,7 +436,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         let day = dayView.date.day
-        var res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
+        let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
         {
             return true

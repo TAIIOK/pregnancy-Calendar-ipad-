@@ -114,7 +114,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let type: Int
         if (picker.sourceType == UIImagePickerControllerSourceType.Camera)
         {
@@ -229,7 +229,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         let text = Expression<String>("Text")
         
         for i in try! db.prepare(table.select(date,image,type,text)) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter()
@@ -239,7 +239,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
 
         table = Table("Uzi")
         for i in try! db.prepare(table.select(date,image,type,text)) {
-            let a = i[image] as! Blob
+            let a = i[image] 
             let c = NSData(bytes: a.bytes, length: a.bytes.count)
             let b = i[date]
             let dateFormatter = NSDateFormatter() 
