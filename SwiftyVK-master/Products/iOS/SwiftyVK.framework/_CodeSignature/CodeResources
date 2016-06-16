@@ -16,13 +16,13 @@
 		<data>
 		+dA8DNKDdaR5E94lHzb4yqMEWFk=
 		</data>
-		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftdoc</key>
+		<key>Modules/SwiftyVK.swiftmodule/i386.swiftdoc</key>
 		<data>
-		NNPIQbNFzOBzq6N3fGLS7UnAMp8=
+		Gfx0Qt5pHQy9BZTOORjHAH07w+g=
 		</data>
-		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftmodule</key>
+		<key>Modules/SwiftyVK.swiftmodule/i386.swiftmodule</key>
 		<data>
-		nVAm6bzfz023DqEqEHI0gyjSdYI=
+		45F/mWz69deE2MDzmPX2tUcl0SU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -147,26 +147,26 @@
 			2T/EsQ2AeOdS8pdyK0MXsCNtAldnEuNkrJWj9v3FDzE=
 			</data>
 		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftdoc</key>
+		<key>Modules/SwiftyVK.swiftmodule/i386.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NNPIQbNFzOBzq6N3fGLS7UnAMp8=
+			Gfx0Qt5pHQy9BZTOORjHAH07w+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			/lzYNeb30QplnwwvMH7XBzXYE/W1K0AoSJZTTDPXHlI=
+			W61emVqjk4jvNU54Q1SE5WtyHJpVCZ2J9MX/Dp6ynDE=
 			</data>
 		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/x86_64.swiftmodule</key>
+		<key>Modules/SwiftyVK.swiftmodule/i386.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nVAm6bzfz023DqEqEHI0gyjSdYI=
+			45F/mWz69deE2MDzmPX2tUcl0SU=
 			</data>
 			<key>hash2</key>
 			<data>
-			rlNsufaqyRjfzmK3X4fVrdIN6l3AQT5xEb7aN7eJJ/8=
+			J8gKAkxWB4Spa1VfQcsMF/Ba1ZeuBpzXZsL6C/S+xQI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
