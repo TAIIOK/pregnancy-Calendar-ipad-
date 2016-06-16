@@ -10,22 +10,22 @@ import UIKit
 
 var selectedExportCalendarDay:DayView!
 
-class SelWeek: NSObject {
-    var days: [NSDate]
-    var week: Int
-    init(week: Int, days: [NSDate]) {
-        self.week = week
-        self.days = days
+class DaysInWeek: NSObject {
+    var day: NSDate
+    var State: Int
+    init(State: Int, day: NSDate) {
+        self.State = State
+        self.day = day
         super.init()
     }
 }
 
-class DaysInWeek: NSObject {
-    var day: NSDate
-    var isSelected: Bool
-    init(isSelected: Bool, day: NSDate) {
-        self.isSelected = isSelected
-        self.day = day
+class Weeek: NSObject {
+    var days: [DaysInWeek]
+    var week: Int
+    init(week: Int, days: [DaysInWeek]) {
+        self.week = week
+        self.days = days
         super.init()
     }
 }
@@ -36,7 +36,7 @@ class CalendarForExportViewController: UIViewController {
     var animationFinished = true
     var multiselecting = false
     
-    var days_week = [SelWeek]()
+    var days_week = [Weeek]()
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -61,11 +61,7 @@ class CalendarForExportViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let date = CVDate(date: NSDate())
-        
-        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,24 +124,35 @@ class CalendarForExportViewController: UIViewController {
 
         //multiselecting = false
         
-        var daysforsel = [NSDate]()
+        var daysforsel = [DaysInWeek]()
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
         var i = 0
         for ( i = 0; i < 7 ; i += 1){
-            daysforsel.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
+            daysforsel.append(DaysInWeek(State: 0, day: self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i)))
         }
-        selectedExportWeek.append(ExportWeek(week: week, days: daysforsel))
+        days_week.append(Weeek(week: week, days: daysforsel))
         for i in daysforsel{
             var select = true
             for element in temp {
-                if element.date.convertedDate()! == i{
+                if element.date.convertedDate()! == i.day{
                     select = false
                 }
             }
             if select{
-                calendarView.toggleViewWithDate(i)}
+                calendarView.toggleViewWithDate(i.day)
+            }else{
+                for k in days_week{
+                    if k.week == week{
+                        for j in k.days{
+                            if j.day == i.day{
+                                j.State = 1
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -195,48 +202,121 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
-        var stop = true
-        let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
-        for i in selectedExportWeek{
-            if i.week == curweek{
-                stop = false
-            }
-        }
-        if stop{
+        if selectionDateType == 0{
             print("\(dayView.date.commonDescription) is selected!")
             calendarView.coordinator.selection = true
             selectedExportCalendarDay = dayView
-            if selectionDateType == 0 {
-                getDays()
-            }else{
-                getWeek()
-            }
+            getDays()
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
             self.splitViewController?.viewControllers[0] = vc!
-        }else if selectionDateType == 1{
-            /*let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-            let temp =  controller.getSelectedDates()
-            for (var i = 0; i < selectedExportWeek.count; i += 1 ){
-                if selectedExportWeek[i].week == curweek{
-                    for j in selectedExportWeek[i].days{
-                        var select = false
-                        for element in temp {
-                            if element.date.convertedDate()! == j{
-                                select = true
+
+        }else{
+            let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
+            var state = 0
+            for week in days_week{
+                if week.week == curweek{
+                    for day in week.days{
+                        if day.day == dayView.date.convertedDate()!{
+                            if day.State == 0{
+                                day.State = 1
+                                state = 1
+                            }else if day.State == 1{
+                                setstate2(curweek, date: dayView.date.convertedDate()!)
+                                state = 2
+                            }else{
+                                state = day.State
                             }
                         }
-                        if select{
-                            calendarView.toggleViewWithDate(j)}
                     }
-                    selectedExportWeek.removeAtIndex(i)
                 }
-            }*/
-
+            }
+            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+            let temp =  controller.getSelectedDates()
+            
+            if state == 0{
+                print("\(dayView.date.commonDescription) is selected!")
+                calendarView.coordinator.selection = true
+                selectedExportCalendarDay = dayView
+                getWeek()
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+                self.splitViewController?.viewControllers[0] = vc!
+            }else if state == 2{
+                
+                setstate3(dayView.date.convertedDate()!, week: curweek)
+            }
+            remove(curweek)
         }
     }
     
+    func setstate2(week: Int, date: NSDate){
+        for weeek in days_week{
+            if weeek.week == week{
+                for day in weeek.days{
+                    day.State = 3
+                    //if day.day != date{
+                        //calendarView.toggleViewWithDate(day.day)}
+                }
+            }
+        }
+
+    }
+    func setstate3(date: NSDate, week: Int){
+        for weeek in days_week{
+            if weeek.week == week{
+                for day in weeek.days{
+                    if day.day == date{
+                        day.State = 3
+                    }
+                }
+            }
+        }
+        for weeek in days_week{
+            if weeek.week == week{
+                weeek.days.last?.State = 3
+                //calendarView.toggleViewWithDate((weeek.days.last?.day)!)
+            }
+        }
+    }
 
     
+    func remove(week: Int){
+        var i = 0
+        var state = true
+        var ind = -1
+        for weeek in days_week{
+            if weeek.week == week{
+                for day in weeek.days{
+                    if day.State != 3{
+                        state = false
+                        break
+                    }
+                }
+                ind = i
+            }
+            i += 1
+        }
+        if state {
+            print("DELETE!!!")
+            if ind != -1{
+                let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+                var mas = controller.getSelectedDates()
+                var days = [DayView]()
+                for i in mas{
+                    for j in days_week{
+                        if j.week == week{
+                            for k in j.days{
+                                if k.day == i.date.convertedDate()!{
+                                    days.append(i)
+                                }
+                            }
+                        }
+                    }
+                }
+                controller.deselectDayViews(days)
+                days_week.removeAtIndex(ind)
+            }
+        }
+    }
 
     
     
