@@ -163,9 +163,10 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         tbl.delegate = self
         tbl.dataSource = self
 
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            self.loadDate()})
-       
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+            self.loadDate()
+        }
+        
                 //leftbutt![0] = leftButton
         checkConnectionAndUpdateView()
         if fromCalendar{
@@ -253,8 +254,8 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if choosedSegmentNotes == false{
-        notesperday()
+        if choosedSegmentNotes == false {
+            notesperday()
         }
         return choosedSegmentNotes ? articles.count : mas.count
     }
@@ -276,45 +277,47 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func notesperday(){
-        if selectedExperienceDay == nil{
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
-            components.hour = 00
-            components.minute = 00
-            components.second = 00
-            let NewDate = calendar.dateFromComponents(components)!
-            day = 300 - BirthDate.daysFrom(NewDate)
-        }else{
-            day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
-        }
-        
         mas.removeAll()
-        for  i in not{
-            let d = Int(i.day)
-            if d == day{
-                if i.generalInformation != ""{
-                    mas.append(note(name: "Общая информация",  text: "\(i.generalInformation)"))
-                }
-                if i.healthMother != ""{
-                    mas.append(note(name: "Здоровье мамы", text: "\(i.healthMother)"))
-                }
-                if i.healthBaby != ""{
-                    mas.append(note(name: "Здоровье малыша", text: "\(i.healthBaby)"))
-                }
-                if i.food != ""{
-                    mas.append(note(name: "Питание", text: "\(i.food)"))
-                }
-                if i.important != ""{
-                    mas.append(note(name: "Это важно!", text: "\(i.important)"))
-                }
-                if i.HidenAdvertisment != ""{
-                    mas.append(note(name: "Полезно знать каждой", text: "\(i.HidenAdvertisment)"))
-                }
-                if i.advertisment != ""{
-                    mas.append(note(name: "Полезно знать каждой", text: "\(i.advertisment)"))
-                }
-                if i.reflectionsPregnant != ""{
-                    mas.append(note(name: "Размышление беременной", text: "\(i.reflectionsPregnant)"))
+        if dateType != -1 {
+            if selectedExperienceDay == nil{
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Day , .Month , .Year], fromDate: NSDate())
+                components.hour = 00
+                components.minute = 00
+                components.second = 00
+                let NewDate = calendar.dateFromComponents(components)!
+                day = 300 - BirthDate.daysFrom(NewDate)
+            }else{
+                day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
+            }
+        
+            for  i in not{
+                let d = Int(i.day)
+                if d == day{
+                    if i.generalInformation != ""{
+                        mas.append(note(name: "Общая информация",  text: "\(i.generalInformation)"))
+                    }
+                    if i.healthMother != ""{
+                        mas.append(note(name: "Здоровье мамы", text: "\(i.healthMother)"))
+                    }
+                    if i.healthBaby != ""{
+                        mas.append(note(name: "Здоровье малыша", text: "\(i.healthBaby)"))
+                    }
+                    if i.food != ""{
+                        mas.append(note(name: "Питание", text: "\(i.food)"))
+                    }
+                    if i.important != ""{
+                        mas.append(note(name: "Это важно!", text: "\(i.important)"))
+                    }
+                    if i.HidenAdvertisment != ""{
+                        mas.append(note(name: "Полезно знать каждой", text: "\(i.HidenAdvertisment)"))
+                    }
+                    if i.advertisment != ""{
+                        mas.append(note(name: "Полезно знать каждой", text: "\(i.advertisment)"))
+                    }
+                    if i.reflectionsPregnant != ""{
+                        mas.append(note(name: "Размышление беременной", text: "\(i.reflectionsPregnant)"))
+                    }
                 }
             }
         }

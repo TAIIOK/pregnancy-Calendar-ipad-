@@ -449,9 +449,11 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 self.splitViewController?.viewControllers[0] = vc!
                 self.splitViewController?.showDetailViewController(vc1!, sender: self)
             }else{
+                if dateType != -1 {
                 showingExportType = 1
                 let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("CalendarNav")
-                self.splitViewController?.showDetailViewController(vc1!, sender: self)
+                    self.splitViewController?.showDetailViewController(vc1!, sender: self)
+                }
             }
         }else if tableView == NotesTable{
 
@@ -628,44 +630,46 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     }
 
     func loadNotifi(){
-        //300 - BirthDate.daysFrom(selectedDay.date.convertedDate()!)
-        let days = selectedExportDays.sort(self.frontwards)
-        NotificationExport.removeAll()
-        let table = Table("Notification")
-        let day = Expression<Int64>("Day")
-        let text = Expression<String>("Text")
-        let type = Expression<Int64>("CategoryId")
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
-        components.hour = 24
-        components.minute = 00
-        components.second = 00
-        let NewDate = calendar.dateFromComponents(components)!
-        for i in days{
-            let a = 300-NewDate.daysFrom(i)
-            for j in try! db.prepare(table.select(text,type).filter(day == Int64(a))){
-                var str = ""
-                switch j[type] {
-                case 1:
-                    str = "Общая информация"
-                case 2:
-                    str = "Здоровье мамы"
-                case 3:
-                    str = "Здоровье малыша"
-                case 4:
-                    str = "Питание"
-                case 5:
-                    str = "Это важно!"
-                case 6:
-                    str = "Скрытая реклама"
-                case 7:
-                    str = "Рекалама ФЭСТ"
-                case 8:
-                    str = "Размышления ФЭСТ"
-                default:
-                    str = ""
+        if dateType != -1 {
+            //300 - BirthDate.daysFrom(selectedDay.date.convertedDate()!)
+            let days = selectedExportDays.sort(self.frontwards)
+            NotificationExport.removeAll()
+            let table = Table("Notification")
+            let day = Expression<Int64>("Day")
+            let text = Expression<String>("Text")
+            let type = Expression<Int64>("CategoryId")
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
+            components.hour = 24
+            components.minute = 00
+            components.second = 00
+            let NewDate = calendar.dateFromComponents(components)!
+            for i in days{
+                let a = 300-NewDate.daysFrom(i)
+                for j in try! db.prepare(table.select(text,type).filter(day == Int64(a))){
+                    var str = ""
+                    switch j[type] {
+                    case 1:
+                        str = "Общая информация"
+                    case 2:
+                        str = "Здоровье мамы"
+                    case 3:
+                        str = "Здоровье малыша"
+                    case 4:
+                        str = "Питание"
+                    case 5:
+                        str = "Это важно!"
+                    case 6:
+                        str = "Скрытая реклама"
+                    case 7:
+                        str = "Рекалама ФЭСТ"
+                    case 8:
+                        str = "Размышления ФЭСТ"
+                    default:
+                        str = ""
+                    }
+                    NotificationExport.append(TextNoteE(typeS: str, text: j[text], date: i))
                 }
-                NotificationExport.append(TextNoteE(typeS: str, text: j[text], date: i))
             }
         }
     }
