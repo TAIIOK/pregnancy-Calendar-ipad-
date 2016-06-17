@@ -78,10 +78,14 @@ extension CVCalendarDayViewControlCoordinator {
         selection = select
     }
     
-    public func selectDates(dates:[NSDate])
-        {
-            
+    public func deselect(days: [DayView])
+    {
+        for i in days{
+            presentDeselectionOnDayView(i)
+            selectionSet.remove(i)
+        }
     }
+    
     public func performDayViewSingleSelection(dayView: DayView) {
         
         if (selectionSet.contains(dayView) && selection)

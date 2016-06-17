@@ -121,8 +121,7 @@ public final class CVCalendarDayView: UIView {
             layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
             
             let textLayer = CATextLayer()
-            print(self.frame.height, self.frame.width , "SMOTRI")
-            textLayer.frame = CGRectMake( -4  ,  -13   ,15, 15)
+            textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
             
            let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
             textLayer.foregroundColor = UIColor(red:  40/255.0 , green: 160/255.0, blue: 143/255.0, alpha: 1.0).CGColor
@@ -295,10 +294,7 @@ extension CVCalendarDayView {
                         layer.frame = CGRectMake(self.frame.width ,self.frame.height - 4, height, -(self.frame.height) / 2 )
                         
                         let textLayer = CATextLayer()
-                        print(self.frame.height, self.frame.width , "SMOTRI")
-                        
-                        textLayer.frame = CGRectMake( -4  ,  -13   ,15, 15)
-
+                        textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
                         
                         let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
                         

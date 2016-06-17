@@ -372,12 +372,21 @@ extension CVCalendarMonthContentViewController {
         
         let coordinator = calendarView.coordinator
     
-        let dates =   coordinator.selectionSet
+        var dates =   coordinator.selectionSet
         
-    
+        
+        
         return dates
    
     }
+    
+    public func deselectDayViews(days: [DayView]){
+        
+        let coordinator = calendarView.coordinator
+        coordinator.deselect(days)
+    }
+    
+    
 
     
 }
