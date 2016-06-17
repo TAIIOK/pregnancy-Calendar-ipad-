@@ -95,7 +95,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 2:
             cell.textLabel?.text = "Уведомления"
-            let count = self.returnCount(2)
+            let count = 0
+            if dateType != -1{
+                self.returnCount(2)
+            }
             var txt = ""
             if count%10 == 1{
                 txt = "уведомление"
