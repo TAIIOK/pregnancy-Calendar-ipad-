@@ -30,10 +30,13 @@ public final class CVCalendarViewAnimator {
 
 extension CVCalendarViewAnimator {
     public func animateSelectionOnDayView(dayView: DayView) {
+        
         let selectionAnimation = delegate.selectionAnimation()
         dayView.setSelectedWithType(.Single)
         selectionAnimation(dayView) { [unowned dayView] completion in
-            //dayView.calendarView.delegate?.didSelectDayView?(dayView, animationDidFinish: completion)
+            if !self.coordinator.selection {
+                dayView.calendarView.delegate?.didSelectDayView?(dayView, animationDidFinish: completion)
+            }
         }
     }
     

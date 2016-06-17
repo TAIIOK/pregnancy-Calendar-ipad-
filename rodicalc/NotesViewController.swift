@@ -275,15 +275,17 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if selectedNoteDay != nil{
             date = selectedNoteDay.date.convertedDate()!
         }
-        texts[0] = returnTableText("TextNote", type: 0, date: date)
-        texts[1] = returnTableText("TextNote", type: 1, date: date)
-        texts[2] = returnTableText("DoctorVisit", type: 2, date: date)
-        texts[3] = returnTableText("WeightNote", type: 3, date: date)
-        texts[4] = returnTableText("MedicineTake", type: 4, date: date)
-        texts[5] = returnTableText("TextNote", type: 5, date: date)
-        texts[6] = returnTableText("TextNote", type: 6, date: date)
-        texts[7] = String(returnFoodCount(date))
-        texts[8] = String(returnDesireCount())
+        dispatch_async(dispatch_get_main_queue(), {
+        self.texts[0] = self.returnTableText("TextNote", type: 0, date: date)
+        self.texts[1] = self.returnTableText("TextNote", type: 1, date: date)
+        self.texts[2] = self.returnTableText("DoctorVisit", type: 2, date: date)
+        self.texts[3] = self.returnTableText("WeightNote", type: 3, date: date)
+        self.texts[4] = self.returnTableText("MedicineTake", type: 4, date: date)
+        self.texts[5] = self.returnTableText("TextNote", type: 5, date: date)
+        self.texts[6] = self.returnTableText("TextNote", type: 6, date: date)
+        self.texts[7] = String(self.returnFoodCount(date))
+        self.texts[8] = String(self.returnDesireCount())
+        })
     }
     
     func returnDesireCount()->Int{
