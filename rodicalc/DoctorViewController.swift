@@ -225,7 +225,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         if doctors.count > 0{
             let calendar = NSCalendar.currentCalendar()
-            print(section, doctors.count)
+            //print(section, doctors.count)
             let components = calendar.components([.Hour , .Minute , .Second], fromDate: doctors[section-1].date)
             view.setupView(section, doctor: doctors[section-1].name, time: "\(firstComponent1[components.hour]):\(secondComponent1[components.minute])")
         }

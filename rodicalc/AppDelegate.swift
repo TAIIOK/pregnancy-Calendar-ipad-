@@ -206,7 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // First, test for existence.
         // Override point for customization after application launch.
         let sourcePath = NSBundle.mainBundle().pathForResource("db", ofType: "sqlite")
-        print(sourcePath)
+        //print(sourcePath)
         let doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
         let destinationPath = (doumentDirectoryPath as NSString).stringByAppendingPathComponent("db1.sqlite")
         //print(destinationPath)
@@ -245,8 +245,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        print("open share link ")
-        print(url)
+        //print("open share link ")
+        //print(url)
         if(url.absoluteString!.containsString("vk54745842://"))
         {
         }
@@ -335,8 +335,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // Do something serious in a real app.
-        print("Received Local Notification:")
-        print(notification.alertBody)
+        //print("Received Local Notification:")
+        //print(notification.alertBody)
         
         let  state = application.applicationState
 
@@ -465,17 +465,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     noteText[1] = notification.alertBody!
                     //let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let destinationViewController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("advertising")
-                    print(destinationViewController)
+                    //print(destinationViewController)
                     self.window?.rootViewController!.navigationController?.pushViewController(destinationViewController!, animated: true)
-                /*
-                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
-                    let vc : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
-                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                   var  ViewControllers =  [vc,initialViewControlleripad]
-                
-                self.window?.rootViewController?.presentViewController(initialViewControlleripad, animated: true, completion: nil)
-                */
                     
                 } )
                      alert.addAction(read)

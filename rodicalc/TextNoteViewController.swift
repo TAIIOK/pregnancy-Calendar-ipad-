@@ -38,7 +38,6 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         var protectedRange = NSMakeRange(0, 0)
-        print(range.location)
         if(NoteType == 1){
             if(range.location > 16 )
             {
@@ -152,7 +151,6 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     }
 
     func saveNote(){
-        print(NoteText.text.characters.count)
         if(NoteText.text.characters.count == 17 && NoteType == 1)
         {
             return
