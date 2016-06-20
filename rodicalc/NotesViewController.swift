@@ -387,9 +387,9 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         calendarView.backgroundColor = StrawBerryColor
         menuView.backgroundColor = StrawBerryColor
         
-        
-        calendarView.commitCalendarViewUpdate()
-        menuView.commitMenuViewUpdate()
+
+        self.calendarView.commitCalendarViewUpdate()
+        self.menuView.commitMenuViewUpdate()
         
         
         // calendarView.changeMode(.WeekView)
@@ -525,6 +525,7 @@ extension NotesViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
+        
         let day = dayView.date.day
         let res = ImageFromCalendar.ShowCalendarImages(dayView.date.convertedDate()!)
         if (res.0 || res.1 || res.2)
