@@ -37,7 +37,7 @@ class MasterTableViewController: UITableViewController {
         table.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
 
         self.tableView(table, willSelectRowAtIndexPath: rowToSelect)
-        table.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        table.backgroundView = UIImageView(image: UIImage(named: "background_left.png"))
         table.backgroundColor = .clearColor()
         cellLogo.backgroundColor = .clearColor()
         cell0.backgroundColor = .clearColor()
