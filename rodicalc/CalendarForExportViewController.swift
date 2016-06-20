@@ -125,14 +125,17 @@ class CalendarForExportViewController: UIViewController {
         //multiselecting = false
         
         var daysforsel = [DaysInWeek]()
+        var days = [NSDate]()
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
         var i = 0
         for ( i = 0; i < 7 ; i += 1){
             daysforsel.append(DaysInWeek(State: 0, day: self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i)))
+            days.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
         }
         days_week.append(Weeek(week: week, days: daysforsel))
+        selectedExportWeek.append(ExportWeek(week: week, days: days))
         for i in daysforsel{
             var select = true
             for element in temp {
@@ -298,6 +301,19 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
         if state {
             print("DELETE!!!")
             if ind != -1{
+                var index = -1
+                i = 0
+                for j in selectedExportWeek{
+                    if j.week == week{
+                        index = i
+                    }
+                    i += 1
+                }
+                if index != -1{
+                    print("remove week")
+                    selectedExportWeek.removeAtIndex(index)
+                }
+                
                 let controller = calendarView.contentController as! CVCalendarMonthContentViewController
                 var mas = controller.getSelectedDates()
                 var days = [DayView]()
@@ -315,6 +331,8 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
                 controller.deselectDayViews(days)
                 days_week.removeAtIndex(ind)
             }
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            self.splitViewController?.viewControllers[0] = vc!
         }
     }
 

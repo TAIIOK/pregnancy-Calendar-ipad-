@@ -12,7 +12,15 @@ import Foundation
 public class ImageFromCalendar {
     
     class func ShowCalendarImages(date: NSDate) -> (Bool, Bool, Bool) {
-        return (bell(date), calendar(date), camera(date))
+        var a = false
+        var b = false
+        var c = false
+        //dispatch_async(dispatch_get_main_queue(), {
+        a = self.bell(date)
+        b = self.calendar(date)
+        c = self.camera(date)
+          //  })
+        return (a, b, c)
     }
     
     
