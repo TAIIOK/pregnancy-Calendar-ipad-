@@ -97,7 +97,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             cell.textLabel?.text = "Уведомления"
             let count = 0
             if dateType != -1{
-                self.returnCount(2)
+                count = self.returnCount(2)
             }
             var txt = ""
             if count%10 == 1{
