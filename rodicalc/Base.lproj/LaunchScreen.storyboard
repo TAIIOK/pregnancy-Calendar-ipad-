@@ -20,15 +20,15 @@
                         <subviews>
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load_screen" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-LS-dkN">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="626" id="C9I-JF-G5A"/>
+                                    <constraint firstAttribute="width" constant="600" id="C9I-JF-G5A"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ySi-LS-dkN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="47V-gZ-ReF"/>
-                            <constraint firstItem="ySi-LS-dkN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="11" id="DPf-u7-wqt"/>
-                            <constraint firstItem="ySi-LS-dkN" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="50" id="QJs-hK-Ply"/>
+                            <constraint firstItem="ySi-LS-dkN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DPf-u7-wqt"/>
+                            <constraint firstItem="ySi-LS-dkN" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="39" id="QJs-hK-Ply"/>
                         </constraints>
                     </view>
                 </viewController>
