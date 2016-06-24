@@ -99,6 +99,7 @@ var AllNotesCount = [AllNotesForExport]()
 class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
 
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var DateTable: UITableView!
     @IBOutlet weak var NotesTable: UITableView!
     @IBOutlet weak var PhotoCollectionVIew: UICollectionView!
@@ -118,6 +119,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         NotifiTable.backgroundColor = .clearColor()
         PhotoCollectionVIew.allowsMultipleSelection = true
         if self.splitViewController?.viewControllers[0].restorationIdentifier == "ExportNav"{
+            background.image = UIImage(named: "background_left.png")
             let img = UIImage(named: "Row-32")
             //self.navigationItem.setLeftBarButtonItem(,animated: false)
             self.title = ""
@@ -133,6 +135,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             loadNotes()
             NotesTable.reloadData()
         }else{
+            background.image = UIImage(named: "background.png")
             showingExportType = 0
         }
     }
