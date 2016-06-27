@@ -97,11 +97,11 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         BirthDate = selectedDay.date.convertedDate()!
 
-        let date = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
-        self.navigationController?.showDetailViewController(date!, sender: self)
-            
         let   alert =  UIAlertController(title: "", message: "Внимание! Обратите внимание, что рассчитанная дата родов является лишь приблизительной, так как течение беременности индивидуально для каждой женщины. По статистике, менее 10% детей рождаются точно в срок, остальные появляются на свет на несколько дней раньше или позже предполагаемой даты родов. Более точную информацию сможет дать наблюдающий Вас врач.", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)
+            let date = self.storyboard?.instantiateViewControllerWithIdentifier("ShowZodiac")
+            self.navigationController?.showDetailViewController(date!, sender: self)
+        } )
         
         alert.addAction(ok)
         self.presentViewController(alert, animated: true, completion: nil)
@@ -112,14 +112,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             alert.addAction(ok)
             self.presentViewController(alert, animated: true, completion: nil)
-
-        
         }
-        
-
-
-
-        
     }
     
     // MARK: - Table view data source

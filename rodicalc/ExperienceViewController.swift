@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
-var not = [notifi]()
+var not = [notification]()
 var selectedExperienceDay:DayView!
 var fromCalendar = false
-var articles = ["Для чего нужен до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер", "Другие статьи"]
+var articles = ["Для чего нужен универсальный, до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер", "Другие статьи"]
 var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов", ""]
+var notifiCategory = ["Общая информация", "Здоровье мамы","Здоровье малыша","Питание","Это важно!","Скрытая реклама","На заметку","Размышления ФЭСТ"]
 
 var articletype = 0
 
@@ -40,6 +41,19 @@ class notifi: NSObject {
         self.HidenAdvertisment = HidenAdvertisment
         self.advertisment = advertisment
         self.reflectionsPregnant = reflectionsPregnant
+        super.init()
+    }
+}
+
+class notification: NSObject {
+    var day: Int
+    var text: String
+    var category: Int
+    
+    init(day: Int, text: String, category: Int) {
+        self.day = day
+        self.text = text
+        self.category = category
         super.init()
     }
 }
@@ -290,8 +304,12 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             }else{
                 day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
             }
-        
-            for  i in not{
+            for i in not{
+                if i.day == day{
+                    mas.append(note(name: notifiCategory[i.category], text: i.text))
+                }
+            }
+            /*for  i in not{
                 let d = Int(i.day)
                 if d == day{
                     if i.generalInformation != ""{
@@ -319,7 +337,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
                         mas.append(note(name: "Размышление беременной", text: "\(i.reflectionsPregnant)"))
                     }
                 }
-            }
+            }*/
         }
     }
     

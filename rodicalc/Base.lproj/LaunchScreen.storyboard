@@ -20,7 +20,7 @@
                         <subviews>
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load_screen" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-LS-dkN">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="540" id="C9I-JF-G5A"/>
+                                    <constraint firstAttribute="width" constant="520" id="C9I-JF-G5A"/>
                                 </constraints>
                             </imageView>
                         </subviews>

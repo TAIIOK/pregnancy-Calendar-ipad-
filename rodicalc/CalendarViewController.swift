@@ -413,9 +413,26 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     }
     
     func swipedetected(){
+        /*print("great work")
+        arrSelectedDates.removeAll()
+        arrSelectedDates.append(selectedDay.date.convertedDate()!)
         
         
+        let calendarPicker = EPCalendarPicker(startYear: currentyear - 1 , endYear: currentyear + 10, multiSelection: false, selectedDates: arrSelectedDates,window: false , scroll: true , scrollDate: selectedDay.date.convertedDate()!)
+        calendarPicker.calendarDelegate = self
+        calendarPicker.startDate = NSDate()
+        //calendarPicker.hightlightsToday = true
+        //calendarPicker.showsTodaysButton = true
         
+        calendarPicker.backgroundColor = StrawBerryColor
+        calendarPicker.monthTitleColor = UIColor.whiteColor()
+        calendarPicker.weekdayTintColor = UIColor.lightGrayColor()
+        calendarPicker.weekendTintColor = UIColor.lightGrayColor()
+        
+        
+        let navigationController = UINavigationController(rootViewController: calendarPicker)
+        
+        self.presentViewController(navigationController, animated: true, completion: nil)*/
     }
     
     func presentedDateUpdated(date: CVDate) {

@@ -25,6 +25,7 @@
 		8E2538F11C84746D00B3C54E /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F01C84746D00B3C54E /* Plist.swift */; };
 		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
 		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
+		8E27BF3F1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */; };
 		8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4FACBF1C89CADF003405D0 /* MapKit.framework */; };
 		8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */; };
 		8E51BF131CA2AA8000D8D739 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */; };
@@ -311,6 +312,7 @@
 		8E2538F01C84746D00B3C54E /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		8E2538F21C84779F00B3C54E /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
 		8E2538F91C848E5100B3C54E /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E4FACBF1C89CADF003405D0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 				A0A527101CF87559003F7041 /* ShowExportViewController.swift */,
 				A07622621CF5CA5A003951EC /* pdfCreator.swift */,
 				8EE75B411CF31EA2002CF72C /* CalendarForExportViewController.swift */,
+				8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */,
 				A076226D1CF70D02003951EC /* bluePhoto */,
 				A07622741CF70D63003951EC /* pinkPhoto */,
 				A07622901CF7465A003951EC /* PhotoTemplate.xib */,
@@ -1269,6 +1272,7 @@
 				8E6D50371C7F053B00878957 /* PhotosViewController.swift in Sources */,
 				8E5A6BE01CDA2E3F0073B693 /* OnePhotoViewController.swift in Sources */,
 				8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */,
+				8E27BF3F1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift in Sources */,
 				A04288351CE4B0D4005DB953 /* OKSDK.m in Sources */,
 				8E20C8B41C998F430003C1CF /* ContentCollectionViewCell.swift in Sources */,
 				A09350CB1CFF90BE00563AE8 /* CreateAlbum.swift in Sources */,

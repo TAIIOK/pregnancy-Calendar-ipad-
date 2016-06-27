@@ -190,16 +190,50 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 print("\tNotifi: \(n)")
             }
         }*/
-        if showingExportType == 0 {
-            showingExportType = 1
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-            let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
-            self.splitViewController?.viewControllers[0] = vc!
-            self.splitViewController?.showDetailViewController(vc1!, sender: self)
+        var somanyphoto = false
+        for i in AllExportNotes{
+            if i.photos.count > 2{
+                somanyphoto = true
+            }
+        }
+        if somanyphoto{
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Выбрано более двух фотографий за один день, в экспорт будут добавлены только первые две!", preferredStyle: .Alert)
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Перевыбрать", style: .Cancel) { action -> Void in
+                //Do some stuff
+            }
+            actionSheetController.addAction(cancelAction)
+            //Create and an option action
+            let nextAction: UIAlertAction = UIAlertAction(title: "Продолжить", style: .Default) { action -> Void in
+                //Do some other stuff
+                if showingExportType == 0 {
+                    showingExportType = 1
+                    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+                    let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+                    self.splitViewController?.viewControllers[0] = vc!
+                    self.splitViewController?.showDetailViewController(vc1!, sender: self)
+                }else{
+                    showingExportType = 1
+                    let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+                    self.splitViewController?.showDetailViewController(vc1!, sender: self)
+                }
+            }
+            actionSheetController.addAction(nextAction)
+            
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
         }else{
-            showingExportType = 1
-            let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
-            self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            if showingExportType == 0 {
+                showingExportType = 1
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+                let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+                self.splitViewController?.viewControllers[0] = vc!
+                self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            }else{
+                showingExportType = 1
+                let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("ShowingExport")
+                self.splitViewController?.showDetailViewController(vc1!, sender: self)
+            }
         }
     }
     
@@ -475,14 +509,37 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("ExpPhotoSelCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        let PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier("ExpPhotoSelCell", forIndexPath: indexPath) as! ExportPhotoCollectionViewCell
         PhotoCell.photo.image = ExpPhoto[indexPath.row].image
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: ExpPhoto[indexPath.row].date)
+        var string = ""
+        if(components.month<10)
+        {
+            string = "0\(components.month)"
+        }
+        else
+        {
+            string = "\(components.month)"
+        }
+        
+        var stringday = ""
+        if(components.day<10)
+        {
+            stringday = "0\(components.day)"
+        }
+        else
+        {
+            stringday = "\(components.day)"
+        }
+
+        PhotoCell.title.text = "\(stringday).\(string).\(components.year)"
         //PhotoCell.ImgSelector.hidden = true
         return PhotoCell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ExportPhotoCollectionViewCell
         if(cell.ImgSelector.hidden == true){
             //cell.ImgSelector.hidden = false
             //selectedImages.append(cell.photo.image!)
