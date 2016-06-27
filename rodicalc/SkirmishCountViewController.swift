@@ -78,26 +78,28 @@ class tmpSpasm {
             }
         }
         @IBAction func buttonTrash(sender: AnyObject) {
-            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Вы уверены, что хотите удалить данные?", preferredStyle: .Alert)
-            
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
-                //Do some stuff
+            if self.dict.count > 0{
+                let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Вы уверены, что хотите удалить данные?", preferredStyle: .Alert)
+                
+                //Create and add the Cancel action
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                    //Do some stuff
+                }
+                actionSheetController.addAction(cancelAction)
+                //Create and an option action
+                let nextAction: UIAlertAction = UIAlertAction(title: "Очистить", style: .Destructive) { action -> Void in
+                    //Do some other stuff
+                    self.collectionView.setContentOffset(CGPoint.zero, animated: false)
+                    self.dict.removeAll()
+                    self.clearSpasm()
+                    self.collectionView.reloadData()
+                    self.collectionView.collectionViewLayout.invalidateLayout()
+                }
+                actionSheetController.addAction(nextAction)
+                
+                //Present the AlertController
+                    self.presentViewController(actionSheetController, animated: true, completion: nil)
             }
-            actionSheetController.addAction(cancelAction)
-            //Create and an option action
-            let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
-                //Do some other stuff
-                self.collectionView.setContentOffset(CGPoint.zero, animated: false)
-                self.dict.removeAll()
-                self.clearSpasm()
-                self.collectionView.reloadData()
-                self.collectionView.collectionViewLayout.invalidateLayout()
-            }
-            actionSheetController.addAction(nextAction)
-            
-            //Present the AlertController
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
         }
         
         override func viewDidLoad() {
