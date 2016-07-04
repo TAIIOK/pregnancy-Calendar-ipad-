@@ -425,7 +425,7 @@
                                 <frame key="frameInset" minY="92" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Jh-5B-lZy" id="LvC-S0-aXB">
-                                    <frame key="frameInset" width="768" height="44"/>
+                                    <frame key="frameInset" width="768" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -486,7 +486,7 @@
                                         <frame key="frameInset" minY="28" width="240" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWR-4i-324" id="kmf-SI-ySH">
-                                            <frame key="frameInset" width="240" height="43"/>
+                                            <frame key="frameInset" width="240" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -499,7 +499,7 @@
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -692,7 +692,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBE-fT-zhQ">
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkz-Eu-vMv">
-                                        <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="318" id="9fg-yF-cWZ"/>
                                             <constraint firstAttribute="height" constant="63" id="P5a-nf-Jis"/>
@@ -700,7 +700,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -839,7 +839,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="meY-XX-0lN">
-                                                    <frame key="frameInset" minX="48" minY="6" width="28.5" height="17"/>
+                                                    <frame key="frameInset" minX="48" minY="6" width="29" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.30980392156862746" green="0.12156862745098039" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -909,7 +909,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -1027,7 +1027,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Выбранные дни" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ccu-aB-05c">
-                                                            <frame key="frameInset" minX="28" minY="5" width="113.5" height="18"/>
+                                                            <frame key="frameInset" minX="28" minY="4" width="114" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1035,7 +1035,7 @@
                                                             <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="не выбрано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HCQ-OB-xag">
-                                                            <frame key="frameInset" minX="28" minY="23" width="63.5" height="13.5"/>
+                                                            <frame key="frameInset" minX="28" minY="22" width="64" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -1081,11 +1081,11 @@
                                                 <frame key="frameInset" minY="28" width="728" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8da-xG-YEG" id="wSE-gV-ybq">
-                                                    <frame key="frameInset" width="728" height="43.5"/>
+                                                    <frame key="frameInset" width="728" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Заметка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="efO-qS-ZXI">
-                                                            <frame key="frameInset" minX="28" minY="6" width="59.5" height="18"/>
+                                                            <frame key="frameInset" minX="28" minY="6" width="60" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1093,7 +1093,7 @@
                                                             <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 заметок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N5g-Yh-JOT">
-                                                            <frame key="frameInset" minX="28" minY="24" width="55" height="13.5"/>
+                                                            <frame key="frameInset" minX="28" minY="24" width="55" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -1204,7 +1204,7 @@
                                                 <frame key="frameInset" minY="28" width="728" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oWq-0D-2j7" id="NRO-Bw-ect">
-                                                    <frame key="frameInset" width="728" height="43.5"/>
+                                                    <frame key="frameInset" width="728" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Уведомление" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0h2-8T-zyf">
@@ -1216,7 +1216,7 @@
                                                             <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 уведомлений" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yYN-6A-x2d">
-                                                            <frame key="frameInset" minX="28" minY="24" width="84" height="13.5"/>
+                                                            <frame key="frameInset" minX="28" minY="24" width="84" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -1271,7 +1271,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-gM-3DF">
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.62560552359999999" blue="0.56066161390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="O1N-a6-gQX"/>
                                     <constraint firstAttribute="height" constant="42" id="icx-dP-lI6"/>
@@ -1371,7 +1371,7 @@
                                     <attributedString key="attributedText">
                                         <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                             <attributes>
-                                                <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -1441,7 +1441,7 @@
                     <navigationItem key="navigationItem" id="P37-Hh-obK">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="aW4-ot-CGC">
-                            <rect key="frame" x="103" y="7" width="395" height="30"/>
+                            <rect key="frame" x="187" y="7" width="395" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title=" Белье для беременных"/>
@@ -1818,8 +1818,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5u-wF-BfT">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
@@ -1852,7 +1852,7 @@
                                     <constraint firstAttribute="height" constant="21" id="fQo-8X-XPn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" cyan="0.0" magenta="0.00020354241132736206" yellow="4.4323860493022949e-06" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1933,7 +1933,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="s5a-9x-ibg"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-FY-cn5">
-                                <color key="backgroundColor" red="0.15686274509803921" green="0.62560552358627319" blue="0.56066161394119263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Vc9-y9-lob"/>
                                     <constraint firstAttribute="width" constant="330" id="XrE-Zp-tqz"/>
@@ -2238,7 +2238,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="По дате зачатия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PLo-g6-G7e">
-                                                    <frame key="frameInset" minX="28" minY="5" width="117" height="18"/>
+                                                    <frame key="frameInset" minX="28" minY="4" width="117" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2246,7 +2246,7 @@
                                                     <color key="highlightedColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="не выбрано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MFy-B1-1wD">
-                                                    <frame key="frameInset" minX="28" minY="23" width="63.5" height="13.5"/>
+                                                    <frame key="frameInset" minX="28" minY="22" width="64" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -2283,7 +2283,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1U-XF-Qi1">
-                                <color key="backgroundColor" red="0.0" green="0.74117647058823533" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="2lW-FA-pXF"/>
                                     <constraint firstAttribute="height" constant="42" id="tXU-uH-FS5"/>
@@ -2323,6 +2323,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PTG-xh-AIz"/>
                     <connections>
+                        <outlet property="btn" destination="w1U-XF-Qi1" id="euz-q1-SyI"/>
                         <outlet property="calendarView" destination="oOo-n9-PK8" id="0f3-yv-jl0"/>
                         <outlet property="menuView" destination="3cR-Tu-RJS" id="JNZ-fX-0Da"/>
                         <outlet property="tbl" destination="xvi-iE-8eZ" id="R7W-De-LgB"/>
@@ -2366,18 +2367,18 @@
                                         <frame key="frameInset" minY="28" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VnC-a1-gQ8" id="S6G-ue-pU1">
-                                            <frame key="frameInset" width="768" height="43.5"/>
+                                            <frame key="frameInset" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jPM-bG-e5A">
-                                                    <frame key="frameInset" minX="48" minY="6" width="31.5" height="19.5"/>
+                                                    <frame key="frameInset" minX="48" minY="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpX-Kl-7wf">
-                                                    <frame key="frameInset" minX="48" minY="25.5" width="40.5" height="13.5"/>
+                                                    <frame key="frameInset" minX="48" minY="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2399,7 +2400,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -2529,7 +2530,7 @@
                                         <frame key="frameInset" minY="28" width="728" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mEf-5m-i8L" id="kmZ-HY-f9C">
-                                            <frame key="frameInset" width="728" height="39.5"/>
+                                            <frame key="frameInset" width="728" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="По дате зачатия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UPh-Pq-wui">
@@ -2541,7 +2542,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Нет заметок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s1n-mO-4bZ">
-                                                    <frame key="frameInset" minX="28" minY="22" width="68" height="13.5"/>
+                                                    <frame key="frameInset" minX="28" minY="22" width="68" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -2825,18 +2826,18 @@
                                         <frame key="frameInset" minY="28" width="728" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fQw-pd-8bF" id="5fH-FQ-UUY">
-                                            <frame key="frameInset" width="728" height="43.5"/>
+                                            <frame key="frameInset" width="728" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FEh-kO-3Nk">
-                                                    <frame key="frameInset" minX="28" minY="6" width="31.5" height="19.5"/>
+                                                    <frame key="frameInset" minX="28" minY="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BaP-Pz-C3H">
-                                                    <frame key="frameInset" minX="28" minY="25.5" width="40.5" height="13.5"/>
+                                                    <frame key="frameInset" minX="28" minY="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2963,7 +2964,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Противопоказания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl6-ea-vmS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ограничения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl6-ea-vmS">
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3054,7 +3055,10 @@
                         <outlet property="PreferencesTable" destination="Y0a-hT-N7g" id="QY1-uz-u5S"/>
                         <outlet property="RestrictionsTable" destination="KBg-YI-RMT" id="eQG-NK-srB"/>
                         <outlet property="calendarView" destination="aP2-39-HLj" id="Ydt-P1-8Xa"/>
+                        <outlet property="foodlbl" destination="pKB-3L-NsY" id="Up7-G7-EFa"/>
                         <outlet property="menuView" destination="QxN-9B-pQw" id="AJm-ci-cz6"/>
+                        <outlet property="preferenceslbl" destination="qoj-Rd-i76" id="Eg6-2c-TUR"/>
+                        <outlet property="restrictionslbl" destination="Sl6-ea-vmS" id="fRD-wO-tB3"/>
                         <segue destination="hzE-Ha-aFD" kind="unwind" identifier="UpdateSectionTable" unwindAction="UpdateSectionTable:" id="Roy-gZ-hdU"/>
                     </connections>
                 </viewController>
@@ -3143,6 +3147,7 @@
                         <outlet property="btnGR" destination="3g6-7C-67R" id="yab-Fe-NnL"/>
                         <outlet property="btnKG" destination="y3M-tk-Rax" id="NaF-DS-QEW"/>
                         <outlet property="calendarView" destination="EUz-vs-CI4" id="ceL-YH-Fhl"/>
+                        <outlet property="label" destination="Wdr-qJ-BMk" id="IjV-41-3FF"/>
                         <outlet property="menuView" destination="CeL-fc-9ev" id="yhc-Yc-Dr4"/>
                         <segue destination="aJL-a0-r1Y" kind="unwind" identifier="UpdateSectionTable" unwindAction="UpdateSectionTable:" id="RGl-Zr-Obk"/>
                     </connections>
@@ -3187,7 +3192,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-F5-2Wh">
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.62560552359999999" blue="0.56066161390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="GiS-i1-Mmj"/>
                                 </constraints>
@@ -3271,12 +3276,12 @@
                                         <frame key="frameInset" minY="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSH-9I-co0" id="GyZ-dY-gjo">
-                                            <frame key="frameInset" width="400" height="44"/>
+                                            <frame key="frameInset" width="400" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-dK-tcb">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle Thin-48" highlightedImage="Checked-50" translatesAutoresizingMaskIntoConstraints="NO" id="2af-it-RBW">
@@ -3306,7 +3311,7 @@
                                 <items>
                                     <navigationItem title="Напоминание" id="nWH-6C-lbp">
                                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="toW-BW-0pV">
-                                            <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             <connections>
                                                 <action selector="Cancel:" destination="FOc-gQ-lYC" id="Aow-C5-9lo"/>
                                             </connections>
@@ -3459,7 +3464,7 @@
                                 <items>
                                     <navigationItem title="Напоминание" id="LyF-DL-Acn">
                                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="xD0-QC-NjH">
-                                            <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             <connections>
                                                 <action selector="Cancel:" destination="Qm1-uI-qlz" id="uRd-TX-nIl"/>
                                             </connections>
@@ -3523,12 +3528,12 @@
                                         <frame key="frameInset" minY="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VnJ-hx-XcH" id="74a-4d-Q3A">
-                                            <frame key="frameInset" width="400" height="44"/>
+                                            <frame key="frameInset" width="400" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTQ-7H-rNz">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle Thin-48" highlightedImage="Checked-50" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-AQ-Us9">
@@ -3558,7 +3563,7 @@
                                 <items>
                                     <navigationItem title="Повтор" id="ekX-73-THa">
                                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="Yxl-RE-J0L">
-                                            <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             <connections>
                                                 <action selector="Cancel:" destination="ARa-ax-89L" id="HKW-aP-iuu"/>
                                             </connections>
@@ -3711,7 +3716,7 @@
                                 <items>
                                     <navigationItem title="Дата" id="Cxw-8e-dlV">
                                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="ib0-d8-6jn">
-                                            <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             <connections>
                                                 <action selector="Cancel:" destination="J0Q-Co-ixn" id="JOu-Yd-Xui"/>
                                             </connections>
@@ -3802,7 +3807,7 @@
                                     <constraint firstAttribute="height" constant="313" id="GfS-TW-EpD"/>
                                 </constraints>
                                 <string key="text">Спасибо за установку нашего приложения! Предлагаем вам рассказать немного о себе: введите в наш календарь свой вес, рост, дату начала месячных. С какого дня считать срок беременноси? В акушерстве принято брать за точку отсчета первый день последней менструации, так как определить с точностью дату овуляции может быть весьма затруднительно, если только Вы не делали специальных тестов, не отслеживали этот процесс.</string>
-                                <color key="textColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" cyan="0.75" magenta="0.050000000000000003" yellow="0.42999999999999999" black="0.059999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -3955,7 +3960,7 @@
                     <navigationItem key="navigationItem" id="UqD-4g-urV">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="4bi-Kd-guP">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <rect key="frame" x="264" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Голубой"/>
@@ -4029,9 +4034,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-5O-Tmn"/>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubg-ie-GEv">
-                                                    <frame key="frameInset" minX="62" minY="62" width="91" height="91"/>
-                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ubg-ie-GEv"/>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -4292,12 +4295,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XcH-dH-mWH"/>
-        <segue reference="IGw-IB-TBh"/>
-        <segue reference="K7f-B5-ZW2"/>
-        <segue reference="FRD-nV-ZPC"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="kMg-vQ-vuk"/>
+        <segue reference="FRD-nV-ZPC"/>
+        <segue reference="K7f-B5-ZW2"/>
+        <segue reference="T6c-gQ-90V"/>
+        <segue reference="gAm-h9-WUK"/>
+        <segue reference="hz0-ZP-idO"/>
         <segue reference="VCA-Rz-Uxj"/>
     </inferredMetricsTieBreakers>
 </document>

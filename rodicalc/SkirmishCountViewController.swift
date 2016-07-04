@@ -107,6 +107,7 @@ class tmpSpasm {
             self.label.textAlignment = .Center
             self.collectionView.registerNib(UINib(nibName: "NumberCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: numberCellIdentifier)
             self.collectionView.registerNib(UINib(nibName: "ContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: contentCellIdentifier)
+        
         }
         
         func animWatch(){
@@ -245,26 +246,31 @@ class tmpSpasm {
                     let numberCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(numberCellIdentifier, forIndexPath: indexPath) as! NumberCollectionViewCell
                     numberCell.numberLabel.text = "№"
                     numberCell.numberLabel.font = .boldSystemFontOfSize(13)
+                    numberCell.backgroundColor = .lightGrayColor()
                     return numberCell
                 } else if indexPath.row == 1 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.text = "НАЧАЛАСЬ"
                     contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    contentCell.backgroundColor = .lightGrayColor()
                     return contentCell
                 } else if indexPath.row == 2 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.text = "ДЛИТЕЛЬНОСТЬ"
                     contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    contentCell.backgroundColor = .lightGrayColor()
                     return contentCell
                 } else if indexPath.row == 3 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.text = "ЗАКОНЧИЛАСЬ"
                     contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    contentCell.backgroundColor = .lightGrayColor()
                     return contentCell
                 } else {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.text = "ПРОМЕЖУТОК"
                     contentCell.contentLabel.font = .boldSystemFontOfSize(13)
+                    contentCell.backgroundColor = .lightGrayColor()
                     return contentCell
                 }
             } else {
@@ -272,21 +278,25 @@ class tmpSpasm {
                     let numberCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(numberCellIdentifier, forIndexPath: indexPath) as! NumberCollectionViewCell
                     numberCell.numberLabel.font = .systemFontOfSize(14)
                     numberCell.numberLabel.text = String(indexPath.section)
+                    numberCell.backgroundColor = .clearColor()
                     return numberCell
                 } else if indexPath.row == 1 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.font = .systemFontOfSize(14)
                     contentCell.contentLabel.text = self.dict[indexPath.section - 1].start
+                    contentCell.backgroundColor = .clearColor()
                     return contentCell
                 } else if indexPath.row == 2 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.font = .systemFontOfSize(14)
                     contentCell.contentLabel.text = String(format: "%.0f", self.dict[indexPath.section - 1].duration) + " сек."
+                    contentCell.backgroundColor = .clearColor()
                     return contentCell
                 } else if indexPath.row == 3 {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
                     contentCell.contentLabel.font = .systemFontOfSize(14)
                     contentCell.contentLabel.text = self.dict[indexPath.section - 1].stop
+                    contentCell.backgroundColor = .clearColor()
                     return contentCell
                 } else {
                     let contentCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(contentCellIdentifier, forIndexPath: indexPath) as! ContentCollectionViewCell
@@ -315,6 +325,7 @@ class tmpSpasm {
                         }
                         
                     }
+                    contentCell.backgroundColor = .clearColor()
                     return contentCell
                 }
             }

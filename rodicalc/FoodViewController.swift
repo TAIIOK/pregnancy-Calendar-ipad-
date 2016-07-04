@@ -35,6 +35,9 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var FoodTable: UITableView!
     @IBOutlet weak var PreferencesTable: UITableView!
     @IBOutlet weak var RestrictionsTable: UITableView!
+    @IBOutlet weak var foodlbl: UILabel!
+    @IBOutlet weak var preferenceslbl: UILabel!
+    @IBOutlet weak var restrictionslbl: UILabel!
     
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -68,6 +71,9 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         RestrictionsTable.delegate = self
         RestrictionsTable.dataSource = self
         RestrictionsTable.backgroundColor = .clearColor()
+        foodlbl.textColor = NotesColor[NoteType]
+        preferenceslbl.textColor = NotesColor[0]
+        restrictionslbl.textColor = NotesColor[6]
         loadData()
         if Food.count == 0 {
             Food.append("")

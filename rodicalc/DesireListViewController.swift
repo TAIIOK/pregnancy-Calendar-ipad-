@@ -53,6 +53,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             Desires.append("")
         }
         self.presentedDateUpdated(CVDate(date: NSDate()))
+        NoteTitle.textColor = NotesColor[NoteType]
     }
     
     func loadDesires(){

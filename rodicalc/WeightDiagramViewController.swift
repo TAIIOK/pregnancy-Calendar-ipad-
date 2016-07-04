@@ -133,7 +133,10 @@ var BirthDate = NSDate()
         self.lineChartView.xAxis.spaceBetweenLabels = 2
         self.lineChartView.xAxis.drawGridLinesEnabled = false
         self.lineChartView.leftAxis.drawAxisLineEnabled = false
-        self.lineChartView.leftAxis.drawGridLinesEnabled = false
+        self.lineChartView.leftAxis.drawGridLinesEnabled = true
+        
+        self.lineChartView.leftAxis.gridLineWidth = 40
+        self.lineChartView.leftAxis.gridColor = UIColor(red: 97/255.0, green: 195/255.0, blue: 255/255.0, alpha: 0.3)
     }
     
     private func drawGraph(){

@@ -88,6 +88,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //self.title = CVDate(date: NSDate()).globalDescription
         NoteTitle.text = notes[NoteType]
+        NoteTitle.textColor = NotesColor[NoteType]
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         }else{
@@ -385,6 +386,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func enablenotification(gesture:UIGestureRecognizer){
+        save()
         if let cellContentView = gesture.view {
             let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
             for i in 1..<tbl.numberOfSections  {

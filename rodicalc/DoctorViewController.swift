@@ -93,6 +93,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //self.title = CVDate(date: NSDate()).globalDescription
         NoteTitle.text = notes[NoteType]
+        NoteTitle.textColor = NotesColor[NoteType]
         if selectedNoteDay != nil {
             self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         }else{
@@ -325,6 +326,10 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func enablenotification(gesture:UIGestureRecognizer){
+        save()
+        let swipeLocation = gesture.locationInView(self.tbl)
+        let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation)
+        currentRec = swipedIndexPath!.section
         if let cellContentView = gesture.view {
             let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
             for i in 1..<tbl.numberOfSections  {
@@ -337,7 +342,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     cancelLocalNotification("\(doctors[i-1].date)")
                     }
                     else if(doctors[i-1].isRemind == false){
-                        if(!doctors[currentRec-1].isRemind && doctors[currentRec-1].remindType != 0){
+                        if(doctors[i-1].remindType != 0){
                             doctors[i-1].isRemind = true
                             scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(doctors[i-1].date)")
                         }

@@ -28,7 +28,7 @@ class AdvertisingViewController: UIViewController {
         
         if !isAdvertitsing{
             textView.text = noteText[1]
-            textView.textColor = BiruzaColor
+            textView.textColor = BiruzaColor1
             textView.font = .systemFontOfSize(16)
             label.text = noteText[0]
             label.textColor = StrawBerryColor

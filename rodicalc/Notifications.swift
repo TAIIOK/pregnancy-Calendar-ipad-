@@ -77,7 +77,15 @@ func loadNotifi() {
     for tmp in try! db.prepare(table.select(Day, Category, Text)){
         notifications.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category])))
     }
-    for (var i = NSDate().daysFrom(num) ; i <  notifications.count; i += 1){
+    print(notifications.count)
+    print(num, NSDate())
+    var day = NSDate().daysFrom(num)
+    if day < 0{
+        day = 0
+    }
+    for (var i = day; i <  notifications.count; i += 1){
+        print(i)
+    
         let notifiday = notifications[i]
         var notification = [String]()
         

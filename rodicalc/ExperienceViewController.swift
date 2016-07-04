@@ -286,7 +286,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         cell.backgroundColor = .clearColor()
         cell.textLabel?.textColor = StrawBerryColor
-        cell.detailTextLabel?.textColor = BiruzaColor
+        cell.detailTextLabel?.textColor = BiruzaColor1
         return cell
     }
     

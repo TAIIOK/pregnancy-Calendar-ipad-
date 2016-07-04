@@ -177,7 +177,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
                
         cell.backgroundColor = .clearColor()
-
+        cell.textLabel?.textColor = StrawBerryColor
+        cell.detailTextLabel?.textColor = StrawBerryColor
         
         return cell
 

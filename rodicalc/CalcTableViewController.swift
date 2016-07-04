@@ -28,12 +28,13 @@ extension NSDate
 }
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    let txt = ["По дате зачатия","По дате последней менструации","По дате, указанной врачем"]
+    let txt = ["По дате зачатия","По дате начала последней менструации","Установать вручную"]
 
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var btn: UIButton!
     var shouldShowDaysOut = true
     var animationFinished = true
     var DateisLoaded = false
@@ -44,7 +45,13 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         loadDate()
-
+        if dateTypeTemp != -1{
+            if dateTypeTemp == 2{
+                btn.setTitle("ПОКАЗАТЬ", forState: UIControlState.Normal)
+            }else{
+                btn.setTitle("РАССЧИТАТЬ", forState: UIControlState.Normal)
+            }
+        }
         self.presentedDateUpdated(CVDate(date: NSDate()))
 
         if !Back && DateisLoaded{
@@ -182,7 +189,13 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //let a = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text
-        dateTypeTemp = indexPath.row//print("type: \(indexPath.row), date: \(a!)")
+        dateTypeTemp = indexPath.row
+        if dateTypeTemp == 2{
+            btn.setTitle("ПОКАЗАТЬ", forState: UIControlState.Normal)
+        }else{
+            btn.setTitle("РАССЧИТАТЬ", forState: UIControlState.Normal)
+        }
+        //print("type: \(indexPath.row), date: \(a!)")
         /*if selectedDay != nil{
             BirthDate = selectedDay.date.convertedDate()!
             if dateType == 0{

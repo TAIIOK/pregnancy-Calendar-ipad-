@@ -128,7 +128,6 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                 attributes.appendContentsOf(filteredArray)
             }
         }
-        
         return attributes
     }
     
