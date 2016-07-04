@@ -417,7 +417,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
                             opennotifi = true
                             fromCalendar = true
-                            noteText[0] = ""
+                            let table = Table("Notification")
+                            let Day = Expression<Int64>("Day")
+                            let Category = Expression<Int64>("CategoryId")
+                            let Text = Expression<String>("Text")
+                            var cat = -1
+                            for tmp in try! db.prepare(table.select(Category, Text).filter(Text == notification.alertBody!)){
+                                cat = Int(tmp[Category])
+                            }
+                            noteText[0] = notifiCategory[cat]
                             noteText[1] = notification.alertBody!
                             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

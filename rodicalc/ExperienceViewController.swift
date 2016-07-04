@@ -85,7 +85,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tbl: UITableView!
     
     @IBOutlet weak var changer: UISegmentedControl!
-    
+    var online = true
     var day: Int = 0
     var choosedSegmentNotes = true // true: статьи, false: уведомления
     var BirthDate = NSDate()
@@ -211,14 +211,25 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
-            noConnetionImage.hidden = false
-            noConnetionLabel.hidden = false
-            noConnetionButton.hidden = false
-            noConnetionView.hidden = false
-            noConnetionButton.enabled = true
+            online = false
+            /*if !choosedSegmentNotes
+            {
+                noConnetionImage.hidden = false
+                noConnetionLabel.hidden = false
+                noConnetionButton.hidden = false
+                noConnetionView.hidden = false
+                noConnetionButton.enabled = true
+            }else{
+                noConnetionImage.hidden = true
+                noConnetionLabel.hidden = true
+                noConnetionButton.hidden = true
+                noConnetionView.hidden = true
+                noConnetionButton.enabled = false
+            }*/
             print("no connection")
         case .Online(.WWAN):
             print("Connected via WWAN")
+            online = true
             noConnetionImage.hidden = true
             noConnetionLabel.hidden = true
             noConnetionButton.hidden = true
@@ -226,6 +237,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             noConnetionButton.enabled = false
         case .Online(.WiFi):
             print("Connected via WiFi")
+            online = true
             noConnetionImage.hidden = true
             noConnetionLabel.hidden = true
             noConnetionButton.hidden = true
@@ -270,6 +282,9 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         // #warning Incomplete implementation, return the number of rows
         if choosedSegmentNotes == false {
             notesperday()
+        }
+        if !online{
+            return choosedSegmentNotes ? articles.count-1 : mas.count
         }
         return choosedSegmentNotes ? articles.count : mas.count
     }
