@@ -86,7 +86,7 @@ func NotificationJSON(){
         let Category = Expression<Int64>("CategoryId")
         let Text = Expression<String>("Text")
         for tmp in try! db.prepare(table.select(Day, Category, Text)){
-            not.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category])))
+            not.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category])-1))
             NSNotificationCenter.defaultCenter().postNotificationName("loadNotification", object: nil)
         }
         /*if let path = NSBundle.mainBundle().pathForResource("notifi", ofType: "json") {

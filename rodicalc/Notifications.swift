@@ -77,18 +77,16 @@ func loadNotifi() {
     for tmp in try! db.prepare(table.select(Day, Category, Text)){
         notifications.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category])))
     }
-    print(notifications.count)
-    print(num, NSDate())
+    
     var day = NSDate().daysFrom(num)
     if day < 0{
         day = 0
     }
-    for (var i = day; i <  notifications.count; i += 1){
-        print(i)
-    
-        let notifiday = notifications[i]
+
+    for (var i = day; i <=  300; i += 1){
+        //let notifiday = notifications[i]
         var notification = [String]()
-        
+        var titles = [String]()
         /*notification.append(notifiday.generalInformation)
         notification.append(notifiday.healthMother)
         notification.append(notifiday.healthBaby)
@@ -98,10 +96,10 @@ func loadNotifi() {
         notification.append(notifiday.advertisment)
         notification.append(notifiday.reflectionsPregnant)
         notification.append(notifiday.day)*/
-        let day = notifiday.day
         for i in notifications{
             if i.day == day{
                 notification.append(i.text)
+                titles.append(notifiCategory[i.category])
             }
         }
         notification.append("\(day)")
@@ -127,7 +125,11 @@ func loadNotifi() {
 
             
             localNotification.alertBody = notification[j]
-            
+            if #available(iOS 8.2, *) {
+                localNotification.alertTitle = titles[j]
+            } else {
+                // Fallback on earlier versions
+            }
 
             if(lolnotifies.contains(notification[notification.count-1]) && j == 5)
             {
@@ -143,10 +145,10 @@ func loadNotifi() {
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.soundName = UILocalNotificationDefaultSoundName;
            // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-            
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
         notification.removeAll()
+        titles.removeAll()
        Notificalendar = addDaystoGivenDate(Notificalendar,NumberOfDaysToAdd: 1)
     }
 }
@@ -166,11 +168,10 @@ func cancelAllLocalNotification(){
             let userInfo = notification.userInfo,
             let uid: [String: String] = userInfo as? [String: String] where list.contains(uid["objectId"]!) {
             app.cancelLocalNotification(notification)
-            print("Deleted local notification")
+            //print("Deleted local notification")
         }
-        
-        
     }
+    print("All local notification deleted")
 }
 
 

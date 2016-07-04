@@ -14,7 +14,7 @@ var selectedExperienceDay:DayView!
 var fromCalendar = false
 var articles = ["Для чего нужен универсальный, до-и послеродовой бандаж","Для чего нужен до-и послеродовой бюстгальтер", "Другие статьи"]
 var artticlessub = ["По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов","По материалам многоцентрового проспективного наблюдательного исследования Российского общества акушеров-гинекологов", ""]
-var notifiCategory = ["Общая информация", "Здоровье мамы","Здоровье малыша","Питание","Это важно!","Скрытая реклама","На заметку","Размышления ФЭСТ"]
+var notifiCategory = ["Общая информация", "Здоровье мамы","Здоровье малыша","Питание","Это важно!","На заметку","На заметку","Размышления ФЭСТ"]
 
 var articletype = 0
 
@@ -321,6 +321,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             for i in not{
                 if i.day == day{
+                    print(day, BirthDate)
                     mas.append(note(name: notifiCategory[i.category], text: i.text))
                 }
             }
