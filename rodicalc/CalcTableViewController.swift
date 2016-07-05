@@ -28,7 +28,7 @@ extension NSDate
 }
 class CalcViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    let txt = ["По дате зачатия","По дате начала последней менструации","Установать вручную"]
+    let txt = ["По дате зачатия","По дате начала последней менструации","Установить вручную"]
 
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -45,14 +45,19 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         tbl.dataSource = self
         tbl.backgroundColor = .clearColor()
         loadDate()
+        var date = NSDate()
         if dateTypeTemp != -1{
             if dateTypeTemp == 2{
                 btn.setTitle("ПОКАЗАТЬ", forState: UIControlState.Normal)
             }else{
                 btn.setTitle("РАССЧИТАТЬ", forState: UIControlState.Normal)
             }
+            date = BirthDate
         }
+        
+        
         self.presentedDateUpdated(CVDate(date: NSDate()))
+        //self.calendarView.toggleViewWithDate(date)
 
         if !Back && DateisLoaded{
             Cancel()
@@ -288,14 +293,15 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        let  date = CVDate(date: BirthDate)
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
         
-        
-
-            let  date = CVDate(date: BirthDate)
-            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-            controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
-        
-        
+        var date_ = NSDate()
+        if dateTypeTemp != -1{
+            date_ = BirthDate
+        }
+        self.calendarView.toggleViewWithDate(date_)
     }
     
     
