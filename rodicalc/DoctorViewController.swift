@@ -327,9 +327,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func enablenotification(gesture:UIGestureRecognizer){
         save()
-        let swipeLocation = gesture.locationInView(self.tbl)
-        let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation)
-        currentRec = swipedIndexPath!.section
         if let cellContentView = gesture.view {
             let tappedPoint = cellContentView.convertPoint(cellContentView.bounds.origin, toView: tbl)
             for i in 1..<tbl.numberOfSections  {
