@@ -83,6 +83,40 @@ func loadNotifi() {
         day = 0
     }
 
+    if day > 0{
+        var notification = ""
+        var titles = ""
+        notification = notifications[0].text
+        titles = notifiCategory[notifications[0].category]
+        
+        let components = calendar.components([.Day , .Month , .Year], fromDate: Notificalendar)
+        
+        let localNotification = UILocalNotification()
+        if components.hour > 12{
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 +  60) // время получения уведомления
+        }
+        else {
+            components.hour = 12
+            components.minute = 0
+            Notificalendar = calendar.dateFromComponents(components)!
+            localNotification.fireDate = Notificalendar // время получения уведомления
+        }
+        
+        localNotification.alertBody = notification
+        if #available(iOS 8.2, *) {
+            localNotification.alertTitle = titles
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        let infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
+        localNotification.userInfo = infoDict
+        localNotification.alertAction = "View"
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
     for (var i = day; i <=  300; i += 1){
         //let notifiday = notifications[i]
         var notification = [String]()
@@ -149,7 +183,7 @@ func loadNotifi() {
         }
         notification.removeAll()
         titles.removeAll()
-       Notificalendar = addDaystoGivenDate(Notificalendar,NumberOfDaysToAdd: 1)
+        Notificalendar = addDaystoGivenDate(Notificalendar,NumberOfDaysToAdd: 1)
     }
 }
 

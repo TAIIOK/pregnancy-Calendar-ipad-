@@ -471,6 +471,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let key = notification.userInfo?.first?.1 as! String
                     if(key == "-1"){
                 let read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
+                    MasterViewSelectedRow = 8
                     noteText[1] = notification.alertBody!
                     //let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let destinationViewController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("advertising")
