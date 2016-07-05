@@ -74,12 +74,16 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func setKg(sender: UIButton) {
         type = 0
+        setupWeightPickerView()
+        setupWeightPickerViewToolbar()
         setupPickerViewValues()
         self.pickerViewTextField.becomeFirstResponder()
     }
     
     @IBAction func setGramm(sender: UIButton) {
         type = 1
+        setupWeightPickerViewGramm()
+        setupWeightPickerViewToolbarGramm()
         setupPickerViewValuesGramm()
         self.pickerViewTextFieldGramm.becomeFirstResponder()
     }
@@ -106,12 +110,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     private func setupPickerViewValues() {
-        var rowIndex = 0
-        if type == 0{
-            rowIndex = weightKg
-        }else {
-            rowIndex = weightGramm
-        }
+        var rowIndex = weightKg
         self.pickerView.selectRow(rowIndex % 10, inComponent: 2, animated: true)
         rowIndex /= 10
         self.pickerView.selectRow(rowIndex % 10, inComponent: 1, animated: true)
@@ -119,12 +118,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         self.pickerView.selectRow(rowIndex % 10, inComponent: 0, animated: true)
     }
     private func setupPickerViewValuesGramm() {
-        var rowIndex = 0
-        if type == 0{
-            rowIndex = weightKg
-        }else {
-            rowIndex = weightGramm
-        }
+        var rowIndex = weightGramm
         self.pickerViewGramm.selectRow(rowIndex % 10, inComponent: 2, animated: true)
         rowIndex /= 10
         self.pickerViewGramm.selectRow(rowIndex % 10, inComponent: 1, animated: true)
@@ -185,18 +179,13 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func doneButtonTouched() {
         //self.pickerViewTextField.resignFirstResponder()
-        dispatch_async(dispatch_get_main_queue(), {
+        //dispatch_async(dispatch_get_main_queue(), {
 
-        if self.type == 0{
-            self.weightKg = self.getWeightFromPickerView()
-            self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
-        }else{
-            self.weightGramm = self.getWeightFromPickerView()
-            self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
-        }
+        self.weightKg = self.getWeightFromPickerView()
+        self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
             
-            }
-        )
+           // }
+        //)
         //setupPickerViewValues()
         self.pickerViewTextField.resignFirstResponder()
     }
@@ -207,18 +196,13 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func doneButtonTouchedGramm() {
         //self.pickerViewTextField.resignFirstResponder()
-        dispatch_async(dispatch_get_main_queue(), {
-            
-            if self.type == 0{
-                self.weightKg = self.getWeightFromPickerViewGramm()
-                self.btnKG.setTitle("\(self.weightKg) кг", forState: UIControlState.Normal)
-            }else{
-                self.weightGramm = self.getWeightFromPickerViewGramm()
-                self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
-            }
-            
-            }
-        )
+        //dispatch_async(dispatch_get_main_queue(), {
+        
+        self.weightGramm = self.getWeightFromPickerViewGramm()
+        self.btnGR.setTitle("\(self.weightGramm) г", forState: UIControlState.Normal)
+        
+           // }
+       // )
         
         //setupPickerViewValues()
         self.pickerViewTextFieldGramm.resignFirstResponder()
@@ -250,6 +234,7 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         let date = selectedNoteDay.date
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -264,7 +249,6 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
         let WeightGr = Expression<Int64>("WeightGr")
         
         let count = try! db.scalar(table.filter(Date == "\(selectedNoteDay.date.convertedDate()!)").count)
-        print(weightKg, weightGramm)
         if weightKg > 0 || weightGramm > 0 {
             if count == 0 {
                 try! db.run(table.insert(Date <- "\(selectedNoteDay.date.convertedDate()!)", WeightKg <- Int64(weightKg), WeightGr <- Int64(weightGramm)))

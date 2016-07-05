@@ -352,7 +352,7 @@ extension CVCalendarDayView {
     }
     
     public func setupDotMarker() {
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+        //dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
         for (index, dotMarker) in self.dotMarkers.enumerate() {
             dotMarker?.removeFromSuperview()
             self.dotMarkers[index] = nil
@@ -429,7 +429,7 @@ extension CVCalendarDayView {
             }
         }
     }
-    }
+    //}
 }
 
 // MARK: - Dot marker movement

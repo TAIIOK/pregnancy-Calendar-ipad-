@@ -244,7 +244,6 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             noConnetionView.hidden = true
             noConnetionButton.enabled = false
         }
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -387,7 +386,7 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }else{
             let cell = tableView.cellForRowAtIndexPath(indexPath)
-            if cell?.textLabel?.text == "Полезно знать каждой"{
+            if cell?.textLabel?.text == notifiCategory[5]{
                 isAdvertitsing = true
             }else{
                 noteText[0] = (cell?.textLabel?.text)!

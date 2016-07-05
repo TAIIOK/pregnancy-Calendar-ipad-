@@ -51,6 +51,9 @@ class OnePhotoViewController: UIViewController{
             uzis[currentPhoto].text = commentField.text!
         }
         UpdatePhotosInDB()
+        
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        
     }
     
     func UpdatePhotosInDB() {

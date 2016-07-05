@@ -267,6 +267,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
         let date = selectedNoteDay.date
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
     }
     
     override func viewDidLayoutSubviews() {

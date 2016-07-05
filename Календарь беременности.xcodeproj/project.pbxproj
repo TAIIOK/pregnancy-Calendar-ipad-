@@ -69,6 +69,7 @@
 		8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50401C7F068000878957 /* CalendarViewController.swift */; };
 		8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50421C7F06BE00878957 /* BuyViewController.swift */; };
 		8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50441C7F06D300878957 /* ExportViewController.swift */; };
+		8E89EB991D2BE9E800CAC64F /* ToAstMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89EB981D2BE9E800CAC64F /* ToAstMessage.swift */; };
 		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
 		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
 		8E90A41B1C7DF093001F3A07 /* rodicalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4191C7DF093001F3A07 /* rodicalc.xcdatamodeld */; };
@@ -358,6 +359,7 @@
 		8E6D50401C7F068000878957 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8E6D50421C7F06BE00878957 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		8E6D50441C7F06D300878957 /* ExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		8E89EB981D2BE9E800CAC64F /* ToAstMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToAstMessage.swift; sourceTree = "<group>"; };
 		8E90A40F1C7DF093001F3A07 /* Календарь беременности.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Календарь беременности.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E90A4121C7DF093001F3A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E90A4171C7DF093001F3A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				A0244DDE1CFDCB370085C8F1 /* Notifications.swift */,
 				A09350CA1CFF90BE00563AE8 /* CreateAlbum.swift */,
 				A0D040031D01B1BF0059D4FB /* loadJson.swift */,
+				8E89EB981D2BE9E800CAC64F /* ToAstMessage.swift */,
 			);
 			path = rodicalc;
 			sourceTree = "<group>";
@@ -1356,6 +1359,7 @@
 				8E1DD6021CAE78D300D55893 /* PhotoCollectionViewCell.swift in Sources */,
 				A01029111CD29E0B005E339F /* CVCalendarViewAppearance.swift in Sources */,
 				8E5A6BDE1CD9F0C90073B693 /* UIImagePickerController+UIIMPOrientationFix.m in Sources */,
+				8E89EB991D2BE9E800CAC64F /* ToAstMessage.swift in Sources */,
 				8EEAC34E1CD10F47007B4643 /* DesireListViewController.swift in Sources */,
 				8EE947E81CE9DE4200064446 /* AdvertisingViewController.swift in Sources */,
 				A01029191CD29E0B005E339F /* CVRange.swift in Sources */,
