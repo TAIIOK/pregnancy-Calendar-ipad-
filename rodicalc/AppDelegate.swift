@@ -423,8 +423,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let Text = Expression<String>("Text")
                             var cat = -1
                             for tmp in try! db.prepare(table.select(Category, Text).filter(Text == notification.alertBody!)){
-                                cat = Int(tmp[Category])
+                                cat = Int(tmp[Category]-1)
                             }
+                            MasterViewSelectedRow = 8
                             noteText[0] = notifiCategory[cat]
                             noteText[1] = notification.alertBody!
                             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

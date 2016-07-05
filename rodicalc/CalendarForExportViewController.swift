@@ -92,7 +92,7 @@ class CalendarForExportViewController: UIViewController {
     
     func getWeek(){
         
-        let week = Int((300 - BirthDate.daysFrom(selectedExportCalendarDay.date.convertedDate()!))/7)
+        let week = Int((calculateDay(selectedExportCalendarDay.date.convertedDate()!))/7)
         for i in selectedExportWeek{
             if i.week == week{
                 return
@@ -110,7 +110,7 @@ class CalendarForExportViewController: UIViewController {
             components = calendar.components([.Day , .Month , .Year], fromDate: NewDate)
             components.day -= 1
             NewDate = calendar.dateFromComponents(components)!
-            NewWeek = Int((300 - BirthDate.daysFrom(NewDate))/7)
+            NewWeek = Int((calculateDay(NewDate))/7)
             if week == NewWeek{
                 MinDateWeek = NewDate
             }
@@ -214,7 +214,7 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
             self.splitViewController?.viewControllers[0] = vc!
 
         }else{
-            let curweek = Int((300 - BirthDate.daysFrom(dayView.date.convertedDate()!))/7)
+            let curweek = Int((calculateDay(dayView.date.convertedDate()!))/7)
             var state = 0
             for week in days_week{
                 if week.week == curweek{

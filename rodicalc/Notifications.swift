@@ -44,6 +44,20 @@ func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
     return newDate!
 }
 
+func calculateDay(date: NSDate) -> Int{
+    var newBirthDate = BirthDate
+    if dateType == 0{
+        newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+    }
+    else if dateType == 1{
+        newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+    }
+    
+    let num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+    
+    return  date.daysFrom(num)
+}
+
 func loadNotifi() {
     
     cancelAllLocalNotification()
@@ -93,7 +107,7 @@ func loadNotifi() {
         
         let localNotification = UILocalNotification()
         if components.hour > 12{
-            localNotification.fireDate = NSDate(timeIntervalSinceNow: 60 +  60) // время получения уведомления
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 60) // время получения уведомления
         }
         else {
             components.hour = 12
@@ -118,18 +132,8 @@ func loadNotifi() {
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     for (var i = day; i <=  300; i += 1){
-        //let notifiday = notifications[i]
         var notification = [String]()
         var titles = [String]()
-        /*notification.append(notifiday.generalInformation)
-        notification.append(notifiday.healthMother)
-        notification.append(notifiday.healthBaby)
-        notification.append(notifiday.food)
-        notification.append(notifiday.important)
-        notification.append(notifiday.HidenAdvertisment)
-        notification.append(notifiday.advertisment)
-        notification.append(notifiday.reflectionsPregnant)
-        notification.append(notifiday.day)*/
         for i in notifications{
             if i.day == day{
                 notification.append(i.text)

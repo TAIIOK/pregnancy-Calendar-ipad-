@@ -315,13 +315,14 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
                 components.minute = 00
                 components.second = 00
                 let NewDate = calendar.dateFromComponents(components)!
-                day = 300 - BirthDate.daysFrom(NewDate)
+                //day = 300 - BirthDate.daysFrom(NewDate)
+                day = calculateDay(NewDate)
             }else{
-                day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
+                //day = 300 - BirthDate.daysFrom(selectedExperienceDay.date.convertedDate()!)
+                day = calculateDay(selectedExperienceDay.date.convertedDate()!)
             }
             for i in not{
                 if i.day == day{
-                    print(day, BirthDate)
                     mas.append(note(name: notifiCategory[i.category], text: i.text))
                 }
             }

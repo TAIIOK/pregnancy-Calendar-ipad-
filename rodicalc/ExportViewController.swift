@@ -710,29 +710,9 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             components.second = 00
             let NewDate = calendar.dateFromComponents(components)!
             for i in days{
-                let a = 300-NewDate.daysFrom(i)
+                let a = calculateDay(i)
                 for j in try! db.prepare(table.select(text,type).filter(day == Int64(a))){
-                    var str = ""
-                    switch j[type] {
-                    case 1:
-                        str = "Общая информация"
-                    case 2:
-                        str = "Здоровье мамы"
-                    case 3:
-                        str = "Здоровье малыша"
-                    case 4:
-                        str = "Питание"
-                    case 5:
-                        str = "Это важно!"
-                    case 6:
-                        str = "Скрытая реклама"
-                    case 7:
-                        str = "Рекалама ФЭСТ"
-                    case 8:
-                        str = "Размышления ФЭСТ"
-                    default:
-                        str = ""
-                    }
+                    var str = notifiCategory[j[type]-1]
                     NotificationExport.append(TextNoteE(typeS: str, text: j[text], date: i))
                 }
             }
