@@ -96,6 +96,23 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     override func viewWillDisappear(animated: Bool) {
+        
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    func fromTableInArray(){
+        let int = self.tbl.numberOfRowsInSection(0)-1
+        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
+            let cell = self.tbl.cellForRowAtIndexPath(i) as! DesireTableViewCell
+            Desires[i.row] = cell.textField.text!
+        }
+    }
+    
+    @IBAction func btnSave(sender: UIButton) {
+        saveNote()
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+    }
+    func saveNote(){
         fromTableInArray()
         let table = Table("DesireList")
         let text = Expression<String>("Text")
@@ -109,17 +126,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             if i.characters.count > 0{
                 try! db.run(table.insert(text <- "\(i)"))}
         }
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
-    
-    func fromTableInArray(){
-        let int = self.tbl.numberOfRowsInSection(0)-1
-        for var i = NSIndexPath(forRow: 0, inSection: 0); i.row < int; i = NSIndexPath(forRow: i.row+1, inSection: 0){
-            let cell = self.tbl.cellForRowAtIndexPath(i) as! DesireTableViewCell
-            Desires[i.row] = cell.textField.text!
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

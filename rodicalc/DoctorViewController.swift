@@ -643,11 +643,16 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillDisappear(animated: Bool) {
-        save()
-        saveNote()
+        //save()
+        //saveNote()
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
+    @IBAction func btnSave(sender: UIButton) {
+        save()
+        saveNote()
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+    }
     func saveNote(){
         let table = Table("DoctorVisit")
         let id = Expression<Int64>("_id")
@@ -750,7 +755,7 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        saveNote()
+        //saveNote()
         doctors.removeAll()
         arrayForBool.removeAllObjects()
         tbl.reloadData()

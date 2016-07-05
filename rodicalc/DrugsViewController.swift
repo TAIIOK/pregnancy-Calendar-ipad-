@@ -787,9 +787,16 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillDisappear(animated: Bool) {
+        //save()
+        //saveNote()
+        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+   
+    @IBAction func btnSave(sender: UIButton) {
         save()
         saveNote()
-        self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
     }
     
     func saveNote(){
@@ -905,7 +912,7 @@ extension DrugsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        saveNote()
+        //saveNote()
         drugs.removeAll()
         arrayForBool.removeAllObjects()
         tbl.reloadData()

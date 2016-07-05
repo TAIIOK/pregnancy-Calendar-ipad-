@@ -190,8 +190,13 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillDisappear(animated: Bool) {
-        saveNote()
+        //saveNote()
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
+    }
+    
+    @IBAction func btnSave(sender: UIButton) {
+        saveNote()
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
     }
     
     func saveNote(){
@@ -309,7 +314,7 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     }
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        saveNote()
+        //saveNote()
         selectedNoteDay = dayView
         loadData()
         if Food.count == 0 {
