@@ -422,9 +422,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let Category = Expression<Int64>("CategoryId")
                             let Text = Expression<String>("Text")
                             var cat = -1
-                            for tmp in try! db.prepare(table.select(Category, Text).filter(Text == notification.alertBody!)){
-                                cat = Int(tmp[Category]-1)
+                            loadBirthDate()
+                            var newBirthDate = BirthDate
+                            if dateType == 0{
+                                newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
                             }
+                            else if dateType == 1{
+                                newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                            }
+                            
+                            newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+                            
+                            for tmp in try! db.prepare(table.select(Category, Text, Day).filter(Text == notification.alertBody!)){
+                                cat = Int(tmp[Category]-1)
+                                newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: Int(tmp[Day])))
+                            }
+                            dateFromOpenNotifi = newBirthDate
                             MasterViewSelectedRow = 8
                             noteText[0] = notifiCategory[cat]
                             noteText[1] = notification.alertBody!

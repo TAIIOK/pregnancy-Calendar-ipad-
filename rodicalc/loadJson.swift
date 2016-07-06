@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreData
 
 func NamesJSON(){
     if let path = NSBundle.mainBundle().pathForResource("names", ofType: "json") {
@@ -157,4 +157,32 @@ func LoadZadiacJSON(){
     }
 }
 
+func loadBirthDate(){
+    let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let managedContext = appDelegate.managedObjectContext
+    
+    // Initialize Fetch Request
+    let fetchRequest = NSFetchRequest()
+    
+    // Create Entity Description
+    let entityDescription = NSEntityDescription.entityForName("BirthDate", inManagedObjectContext:managedContext)
+    
+    fetchRequest.entity = entityDescription
+    do {
+        let result = try managedContext.executeFetchRequest(fetchRequest)
+        
+        if (result.count > 0) {
+            for i in result {
+                let date = i as! NSManagedObject
+                BirthDate = date.valueForKey("date") as! NSDate
+                dateType = date.valueForKey("type") as! Int
+            }
+        }
+    } catch {
+        let fetchError = error as NSError
+        print(fetchError)
+    }
+}
 

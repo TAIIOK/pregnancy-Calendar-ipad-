@@ -34,9 +34,9 @@ class AdvertisingViewController: UIViewController {
             label.textColor = StrawBerryColor
             label.font = .systemFontOfSize(16)
         }
-
-        if selectedDay != nil {
-            self.calendarView.toggleViewWithDate(selectedDay.date.convertedDate()!)
+        
+        if selectedExperienceDay != nil {
+            self.calendarView.toggleViewWithDate(selectedExperienceDay.date.convertedDate()!)
         }else{
             let date = NSDate()
             self.calendarView.toggleViewWithDate(date)
@@ -56,10 +56,15 @@ class AdvertisingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var date = CVDate(date: NSDate())
-        if selectedExperienceDay != nil{
-            date = selectedExperienceDay.date
+        var tmp = NSDate()
+        if opennotifi{
+            opennotifi = false
+            tmp = dateFromOpenNotifi
+        }else if selectedExperienceDay != nil{
+            tmp = selectedExperienceDay.date.convertedDate()!
         }
+        var date = CVDate(date: tmp)
+        
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
         

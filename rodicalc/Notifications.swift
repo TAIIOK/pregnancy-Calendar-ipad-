@@ -89,7 +89,7 @@ func loadNotifi() {
     let Category = Expression<Int64>("CategoryId")
     let Text = Expression<String>("Text")
     for tmp in try! db.prepare(table.select(Day, Category, Text)){
-        notifications.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category])))
+        notifications.append(notification(day: Int(tmp[Day]), text: tmp[Text], category: Int(tmp[Category]-1)))
     }
     
     var day = NSDate().daysFrom(num)
@@ -133,14 +133,14 @@ func loadNotifi() {
     }*/
     for (var i = day; i <=  300; i += 1){
         var notification = [String]()
-        var titles = [String]()
-        for i in notifications{
-            if i.day == day{
-                notification.append(i.text)
-                titles.append(notifiCategory[i.category])
+        var titles = [Int]()
+        for k in notifications{
+            if k.day == i{
+                notification.append(k.text)
+                titles.append(k.category)
             }
         }
-        notification.append("\(day)")
+        notification.append("\(i)")
 
         let components = calendar.components([.Day , .Month , .Year], fromDate: Notificalendar)
         
@@ -164,20 +164,19 @@ func loadNotifi() {
             
             localNotification.alertBody = notification[j]
             if #available(iOS 8.2, *) {
-                localNotification.alertTitle = titles[j]
+                //localNotification.alertTitle = titles[j]
             } else {
                 // Fallback on earlier versions
             }
 
-            if(lolnotifies.contains(notification[notification.count-1]) && j == 5)
+            if(lolnotifies.contains(notification[notification.count-1]) && (titles[j] == 5 || titles[j] == 6))
             {
-                let infoDict :  Dictionary<String,String!> = ["objectId" : notification[8]]
+                let infoDict :  Dictionary<String,String!> = ["objectId" : notification[notification.count-1]]
            // var infoDict = ["objectId" : notification[8]]
             localNotification.userInfo = infoDict
-            }
-            else{
-            let infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
-            localNotification.userInfo = infoDict
+            }else{
+                let infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
+                localNotification.userInfo = infoDict
             }
             localNotification.alertAction = "View"
             localNotification.timeZone = NSTimeZone.defaultTimeZone()

@@ -17,6 +17,7 @@ var artticlessub = ["По материалам многоцентрового п
 var notifiCategory = ["Общая информация", "Здоровье мамы","Здоровье малыша","Питание","Это важно!","На заметку","На заметку","Размышления ФЭСТ"]
 
 var articletype = 0
+var dateFromOpenNotifi = NSDate()
 
 var opennotifi = false
 
@@ -184,14 +185,14 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
                 //leftbutt![0] = leftButton
         checkConnectionAndUpdateView()
         if fromCalendar{
-            fromCalendar = false
             changer.selectedSegmentIndex = 1
             choosedSegmentNotes = false
             self.tbl.reloadData()
             if opennotifi{
-                opennotifi = false
                 let destinationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("advertising")
                 self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            }else{
+                fromCalendar = false
             }
         }
 
@@ -461,12 +462,13 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        var date = CVDate(date: NSDate())
-        
-        if selectedExperienceDay != nil{
-            date = selectedExperienceDay.date
+        var tmp = NSDate()
+        if opennotifi{
+            tmp = dateFromOpenNotifi
+        }else if selectedExperienceDay != nil{
+            tmp = selectedExperienceDay.date.convertedDate()!
         }
+        var date = CVDate(date: tmp)
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
