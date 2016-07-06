@@ -42,7 +42,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         let date = selectedCalendarDayPhoto.date.convertedDate()
         self.presentedDateUpdated(CVDate(date: date!))
-
+        self.calendarView.toggleViewWithDate(selectedCalendarDayPhoto.date.convertedDate()!)
         picker?.delegate=self
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotoFromCalendarViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotoFromCalendarViewController.addPhoto))
@@ -196,6 +196,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         let  date = selectedCalendarDayPhoto.date
         let controller = calendarView.contentController as! CVCalendarWeekContentViewController
         controller.selectDayViewWithDay(date.day, inWeekView: controller.getPresentedWeek()!)
+        self.calendarView.toggleViewWithDate(selectedCalendarDayPhoto.date.convertedDate()!)
     }
 
 
@@ -233,7 +234,11 @@ extension PhotoFromCalendarViewController: CVCalendarViewDelegate, CVCalendarMen
     }
     
     // MARK: Optional methods
-    
+    func shouldAutoSelectDayOnWeekChange() -> Bool
+    {
+        return true
+    }
+
     func shouldShowWeekdaysOut() -> Bool {
         return shouldShowDaysOut
     }
