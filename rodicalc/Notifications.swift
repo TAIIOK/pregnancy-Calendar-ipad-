@@ -97,7 +97,7 @@ func loadNotifi() {
         day = 0
     }
 
-    if day > 0{
+    /*if day > 0{
         var notification = ""
         var titles = ""
         notification = notifications[0].text
@@ -130,7 +130,7 @@ func loadNotifi() {
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }
+    }*/
     for (var i = day; i <=  300; i += 1){
         var notification = [String]()
         var titles = [String]()
