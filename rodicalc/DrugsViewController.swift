@@ -43,7 +43,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func keyboardWillShow(notification: NSNotification) {
         if !isKeyboard{
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                self.view.frame.origin.y -= keyboardSize.height/2
+                self.view.frame.origin.y -= keyboardSize.height
                 isKeyboard = true
             }
         }
@@ -52,7 +52,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func keyboardWillHide(notification: NSNotification) {
         if isKeyboard{
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                self.view.frame.origin.y += keyboardSize.height/2
+                self.view.frame.origin.y += keyboardSize.height
                 isKeyboard = false
             }
         }
