@@ -8,7 +8,24 @@
 
 import Foundation
 
-let lolnotifies = ["92","203","155","165","271","203","210","22","57","71","267","273","247","120"]
+let lolnotifies = ["92","204","241","260","22","57","71","85","120","134","155","165","169","217", "239", "261", "267"]
+let urlnotifies = ["http://www.aist-k.com/forum/?PAGE_NAME=message&FID=54&TID=1947&TITLE_SEO=1947&MID=18262#message18262",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=39&TID=1221&TITLE_SEO=1221&MID=12419#message12419",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=read&FID=38&TID=603&TITLE_SEO=603&PAGEN_1=2",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=39&TID=1221&TITLE_SEO=1221&MID=12419#message12419",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=42&TID=659&TITLE_SEO=659&MID=5299#message5299",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=42&TID=659&TITLE_SEO=659&MID=5299#message5299",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=42&TID=659&TITLE_SEO=659&MID=5299#message5299",
+                   "http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=31&TID=4325&TITLE_SEO=4325&MID=42669#message42669",
+                   "http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=54&TID=2457&TITLE_SEO=2457&MID=22350#message22350",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=54&TID=2457&TITLE_SEO=2457&MID=22350#message22350",
+                   "http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/",
+                   "http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/",
+                   "http://www.mama-fest.com/issledovaniya_akusherov_ginekologov/",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=message&FID=39&TID=1221&TITLE_SEO=1221&MID=12419#message1241961",
+                   "http://www.aist-k.com/forum/?PAGE_NAME=read&FID=8&TID=3686&TITLE_SEO=3686"]
 var notifications = [notification]()
 
 /*func WorkWithJSON(){
