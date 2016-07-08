@@ -15,7 +15,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     func keyboardWillShow(notification: NSNotification) {
         if !isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height/2
+            self.view.frame.origin.y -= keyboardSize.height*0.8
             isKeyboard = true
             }
         }
@@ -24,7 +24,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     func keyboardWillHide(notification: NSNotification) {
         if isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height/2
+            self.view.frame.origin.y += keyboardSize.height*0.8
             isKeyboard = false
             }
         }
@@ -60,7 +60,6 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.calendarView.toggleViewWithDate(date)
         }
         self.presentedDateUpdated(CVDate(date: NSDate()))
-        
         
         FoodTable.delegate = self
         FoodTable.dataSource = self
@@ -137,6 +136,8 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.textField.hidden = false
                 cell.textField.text = Food[indexPath.row]}
             cell.backgroundColor = .clearColor()
+            cell.textField.layer.borderWidth = 0.5
+            cell.textField.layer.borderColor = StrawBerryColor.CGColor
             return cell
         }else if tableView == PreferencesTable{
             let cell = tableView.dequeueReusableCellWithIdentifier("PreferencesCell", forIndexPath: indexPath) as! PreferencesTableViewCell
@@ -146,6 +147,8 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.textField.hidden = false
                 cell.textField.text = Preferences[indexPath.row]}
             cell.backgroundColor = .clearColor()
+            cell.textField.layer.borderWidth = 0.5
+            cell.textField.layer.borderColor = StrawBerryColor.CGColor
             return cell
 
         }else{
@@ -156,10 +159,25 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.textField.hidden = false
                 cell.textField.text = Restrictions[indexPath.row]}
             cell.backgroundColor = .clearColor()
+            cell.textField.layer.borderWidth = 0.5
+            cell.textField.layer.borderColor = StrawBerryColor.CGColor
+            //cell.textField.delegate = self
             return cell
         }
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+    /*func textViewDidChange(textView: UITextView) {
+        let fixedWidth = textView.frame.size.width
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        var newFrame = textView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        textView.frame = newFrame;
+    }*/
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == FoodTable{

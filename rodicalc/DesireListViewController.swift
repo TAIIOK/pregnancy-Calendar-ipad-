@@ -84,9 +84,14 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textField.hidden = false
             cell.textField.text = Desires[indexPath.row]}
         cell.backgroundColor = .clearColor()
+        cell.textField.layer.borderWidth = 0.5
+        cell.textField.layer.borderColor = StrawBerryColor.CGColor
         return cell
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == Desires.count{

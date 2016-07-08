@@ -10,7 +10,8 @@ import UIKit
 
 class PreferencesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textField: UITextField!
+    
+    @IBOutlet weak var textField: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

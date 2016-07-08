@@ -42,19 +42,21 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
             if(range.location > 16 )
             {
                 return true
+            }else{
+                return false
             }
-        protectedRange = NSMakeRange(0, 17)
-        }
-        else if (NoteType == 0){
+            protectedRange = NSMakeRange(0, 17)
+        }else if (NoteType == 0){
             if(range.location > 22 )
             {
                 return true
+            }else{
+                return false
             }
-        protectedRange = NSMakeRange(0, 23)
+            protectedRange = NSMakeRange(0, 23)
         }
 
-        
-        return false
+        return true
     }
     
     override func viewDidLoad() {
