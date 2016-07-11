@@ -112,7 +112,8 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
-
+        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.refreshPresentedMonth()
     }
     
     func JustDoIT(chosenImage: UIImage, type: Int){

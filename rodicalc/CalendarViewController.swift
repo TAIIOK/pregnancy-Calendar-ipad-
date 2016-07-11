@@ -40,6 +40,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func UpdateCalendar(segue:UIStoryboardSegue) {
         print("update calendar table")
         tbl.reloadData()
+        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.refreshPresentedMonth()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -155,15 +155,44 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     @IBAction func btnSave(sender: UIButton) {
         saveNote()
         self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
+        //self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
+        controller.refreshPresentedMonth()
+        //self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
     }
+    
+    func removeCircleLabel(dayView: CVCalendarDayView) {
+        for each in dayView.subviews {
+            if each is UILabel {
+                continue
+            }
+            else if each is CVAuxiliaryView  {
+                continue
+            }
+            else {
+                each.removeFromSuperview()
+            }
+        }
+    }
+
 
     func saveNote(){
         if(NoteText.text.characters.count == 17 && NoteType == 1)
         {
+            let table = Table("TextNote")
+            let date = Expression<String>("Date")
+            let text = Expression<String>("NoteText")
+            let type = Expression<Int64>("Type")
+            try! db.run(table.delete())
             return
         }
         if(NoteText.text.characters.count == 23 && NoteType == 0)
         {
+            let table = Table("TextNote")
+            let date = Expression<String>("Date")
+            let text = Expression<String>("NoteText")
+            let type = Expression<Int64>("Type")
+            try! db.run(table.delete())
             return
         }
         if NoteText.text.characters.count > 0 && NoteType != 3{

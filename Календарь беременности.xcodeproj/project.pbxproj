@@ -1551,7 +1551,7 @@
 					"$(PROJECT_DIR)/rodicalc/vk/Resources/Products/iOS",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "Календарь беременности";
@@ -1581,7 +1581,7 @@
 					"$(PROJECT_DIR)/rodicalc/vk/Resources/Products/iOS",
 				);
 				INFOPLIST_FILE = rodicalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mamafest.pregnancycalendar;
 				PRODUCT_NAME = "Календарь беременности";

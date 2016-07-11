@@ -245,6 +245,8 @@ class WeightNoteViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBAction func btnSave(sender: UIButton) {
         saveNote()
         self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.refreshPresentedMonth()
     }
     func saveNote(){
         let table = Table("WeightNote")

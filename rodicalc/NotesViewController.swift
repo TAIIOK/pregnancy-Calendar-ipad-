@@ -54,6 +54,8 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("update notes table")
         loadNotes()
         tbl.reloadData()
+        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
+        controller.refreshPresentedMonth()
     }
     
     
