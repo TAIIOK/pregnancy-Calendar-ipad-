@@ -1062,7 +1062,9 @@
 					8E90A40E1C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = FBJJC74S38;
+						DevelopmentTeamName = "Volgograd State Technical University (Training Center at VSTU)";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					8E90A4251C7DF093001F3A07 = {
 						CreatedOnToolsVersion = 7.2.1;

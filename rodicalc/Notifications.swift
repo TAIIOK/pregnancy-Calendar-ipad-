@@ -90,7 +90,7 @@ func loadNotifi() {
         newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
     }
     
-    let num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+    let num = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))
     
 
     let app: UIApplication = UIApplication.sharedApplication()

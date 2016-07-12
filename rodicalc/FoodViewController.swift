@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class FoodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
     var isKeyboard = false
     
@@ -138,6 +138,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.backgroundColor = .clearColor()
             cell.textField.layer.borderWidth = 0.5
             cell.textField.layer.borderColor = StrawBerryColor.CGColor
+            cell.textField.delegate = self
             return cell
         }else if tableView == PreferencesTable{
             let cell = tableView.dequeueReusableCellWithIdentifier("PreferencesCell", forIndexPath: indexPath) as! PreferencesTableViewCell
@@ -149,6 +150,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.backgroundColor = .clearColor()
             cell.textField.layer.borderWidth = 0.5
             cell.textField.layer.borderColor = StrawBerryColor.CGColor
+            cell.textField.delegate = self
             return cell
 
         }else{
@@ -161,13 +163,19 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.backgroundColor = .clearColor()
             cell.textField.layer.borderWidth = 0.5
             cell.textField.layer.borderColor = StrawBerryColor.CGColor
-            //cell.textField.delegate = self
+            cell.textField.delegate = self
             return cell
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        fromTableFoodInArray()
+        fromTablePreferencesInArray()
+        fromTableRestrictionsInArray()
     }
     
     /*func textViewDidChange(textView: UITextView) {

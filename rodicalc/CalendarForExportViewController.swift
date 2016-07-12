@@ -105,23 +105,26 @@ class CalendarForExportViewController: UIViewController {
         var NewDate = calendar.dateFromComponents(components)!
         
         var NewWeek = week
-        
+        print("s", NewDate)
         while  week == NewWeek{
-            components = calendar.components([.Day , .Month , .Year], fromDate: NewDate)
-            components.day -= 1
-            NewDate = calendar.dateFromComponents(components)!
             NewWeek = Int((calculateDay(NewDate))/7)
+            let NewWeek_ = Double((calculateDay(NewDate)))
+            print(NewWeek, NewWeek_)
             if week == NewWeek{
                 MinDateWeek = NewDate
+                print(MinDateWeek, NewWeek)
             }
+            NewDate = addDaystoGivenDate(NewDate, NumberOfDaysToAdd: -1)
         }
+        print("STOP")
+        //MinDateWeek = addDaystoGivenDate(MinDateWeek, NumberOfDaysToAdd: 1)
         
         components = calendar.components([.Day , .Month , .Year], fromDate: MinDateWeek)
         components.hour = 00
         components.minute = 00
         components.second = 00
         NewDate = calendar.dateFromComponents(components)!
-
+        //print(NewDate, week)
         //multiselecting = false
         
         var daysforsel = [DaysInWeek]()

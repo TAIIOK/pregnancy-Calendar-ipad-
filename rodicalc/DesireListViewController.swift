@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DesireListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class DesireListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
 
     func keyboardWillShow(notification: NSNotification) {
         
@@ -86,9 +86,14 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.backgroundColor = .clearColor()
         cell.textField.layer.borderWidth = 0.5
         cell.textField.layer.borderColor = StrawBerryColor.CGColor
+        cell.textField.delegate = self
         return cell
     }
 
+    func textViewDidChange(textView: UITextView) {
+        fromTableInArray()
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
@@ -100,6 +105,7 @@ class DesireListViewController: UIViewController, UITableViewDelegate, UITableVi
             self.tbl.reloadData()
         }
     }
+    
     override func viewWillDisappear(animated: Bool) {
         
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)

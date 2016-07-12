@@ -285,7 +285,7 @@ extension CVCalendarDayView {
                         else if dateType == 1{
                             newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
                         }
-                        if(newBirthDate.daysFrom(self.date.convertedDate()!) % 7 == 0 ){
+                        if((newBirthDate.daysFrom(self.date.convertedDate()!)-1) % 7 == 0 ){
                             let height = CGFloat(0.5)
                             let layer = CALayer()
                             
@@ -296,7 +296,7 @@ extension CVCalendarDayView {
                             let textLayer = CATextLayer()
                             textLayer.frame = CGRectMake( -5  , self.frame.height - 13  ,15, 15)
                             
-                            let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(41*7)))/7
+                            let num = self.date.convertedDate()!.daysFrom(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(42*7)))/7
                             
                             textLayer.name = "number"
                             for lay in self.layer.sublayers!
