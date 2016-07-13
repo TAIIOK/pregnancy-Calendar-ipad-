@@ -183,6 +183,20 @@ class CalendarForExportViewController: UIViewController {
         }
     }
     
+    func selectWeek(week: Int){
+        
+    }
+    
+    func deselectall(){
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        let a = controller.getSelectedDates()
+        var b = [DayView]()
+        for i in a{
+            b.append(i)
+        }
+        controller.deselectDayViews(b)
+    }
+    
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
     {
         let dateComponents = NSDateComponents()

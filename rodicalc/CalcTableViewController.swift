@@ -98,7 +98,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func OK(sender: AnyObject) {
-        if(dateTypeTemp != -1){
+       if(dateTypeTemp != -1){
         dateType = dateTypeTemp
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
