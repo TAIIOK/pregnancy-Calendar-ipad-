@@ -285,10 +285,8 @@ extension CVCalendarDayView {
                         else if dateType == 1{
                             newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
                         }
-                        let a = Double(calculateDay(self.date.convertedDate()!))/7
-                        let b = calculateDay(addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: 1))
+
                         if((newBirthDate.daysFrom(self.date.convertedDate()!)-1) % 7 == 0 ){
-                            print(self.date.convertedDate()!)
                         //if a/100 == 0{
                             let height = CGFloat(0.5)
                             let layer = CALayer()

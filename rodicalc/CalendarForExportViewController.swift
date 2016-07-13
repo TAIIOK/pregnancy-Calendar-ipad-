@@ -9,6 +9,7 @@
 import UIKit
 
 var selectedExportCalendarDay:DayView!
+var curMonth = -1
 
 class DaysInWeek: NSObject {
     var day: NSDate
@@ -34,10 +35,9 @@ class CalendarForExportViewController: UIViewController {
 
     var shouldShowDaysOut = true
     var animationFinished = true
-    var multiselecting = false
-    
+    var needupdate = false
     var days_week = [Weeek]()
-    var curMonth = -1
+    
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -57,6 +57,7 @@ class CalendarForExportViewController: UIViewController {
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
+
         // calendarView.changeMode(.WeekView)
     }
     
@@ -75,6 +76,10 @@ class CalendarForExportViewController: UIViewController {
         }else{
             //getWeek()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        //selectingDateInCurMonth()
     }
     
     func getDays()
@@ -179,7 +184,6 @@ class CalendarForExportViewController: UIViewController {
     func selectDays(days: [NSDate]){
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let a = controller.getSelectedDates()
-        print("________________________")
         for day in days{
             var select = true
             for i in a {
@@ -187,9 +191,8 @@ class CalendarForExportViewController: UIViewController {
                     select = false
                 }
             }
-            if select{
+            if select {
                 if curMonth == CVDate(date: day).month{
-                    print(day, CVDate(date: day).day)
                     self.calendarView.selectDate(day)
                 }
             }
@@ -211,6 +214,9 @@ class CalendarForExportViewController: UIViewController {
     }
     
     func selectingDateInCurMonth(){
+        if curMonth == -1{
+            return
+        }
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let a = controller.getSelectedDates()
         var b = [DayView]()
@@ -261,7 +267,6 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     {
         return false
     }
-    
     
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
@@ -691,6 +696,8 @@ extension CalendarForExportViewController {
         curMonth = components.month
         selectingDateInCurMonth()
         print("Showing Month: \(components.month)")
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        print(controller.getSelectedDates())
     }
     
 }

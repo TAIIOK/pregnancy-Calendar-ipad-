@@ -170,6 +170,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                         self.prepareTopMarkersOnMonthView(monthView, hidden: false)
                     }
                 }
+                self.calendarView.delegate?.didShowPreviousMonthView?(previous.date)
             }
         }
     }
@@ -200,6 +201,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                         self.prepareTopMarkersOnMonthView(monthView, hidden: false)
                     }
                 }
+                self.calendarView.delegate?.didShowNextMonthView?(following.date)
             }
         }
     }
