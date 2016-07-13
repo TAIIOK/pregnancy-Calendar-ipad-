@@ -37,7 +37,8 @@ class CalendarForExportViewController: UIViewController {
     var multiselecting = false
     
     var days_week = [Weeek]()
-
+    var curMonth = -1
+    
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     
@@ -92,11 +93,11 @@ class CalendarForExportViewController: UIViewController {
     func getWeek(){
         
         let week = Int((calculateDay(selectedExportCalendarDay.date.convertedDate()!))/7)
-        for i in selectedExportWeek{
+        /*for i in selectedExportWeek{
             if i.week == week{
                 return
             }
-        }
+        }*/
         let calendar = NSCalendar.currentCalendar()
         var MinDateWeek = NSDate()
         
@@ -104,26 +105,21 @@ class CalendarForExportViewController: UIViewController {
         var NewDate = calendar.dateFromComponents(components)!
         
         var NewWeek = week
-        print("s", NewDate)
         while  week == NewWeek{
             NewWeek = Int((calculateDay(NewDate))/7)
             let NewWeek_ = Double((calculateDay(NewDate)))
-            print(NewWeek, NewWeek_)
             if week == NewWeek{
                 MinDateWeek = NewDate
-                print(MinDateWeek, NewWeek)
             }
             NewDate = addDaystoGivenDate(NewDate, NumberOfDaysToAdd: -1)
         }
-        print("STOP")
-        //MinDateWeek = addDaystoGivenDate(MinDateWeek, NumberOfDaysToAdd: 1)
         
         components = calendar.components([.Day , .Month , .Year], fromDate: MinDateWeek)
         components.hour = 00
         components.minute = 00
         components.second = 00
         NewDate = calendar.dateFromComponents(components)!
-        //print(NewDate, week)
+        print(NewDate)
         //multiselecting = false
         
         var daysforsel = [DaysInWeek]()
@@ -131,14 +127,33 @@ class CalendarForExportViewController: UIViewController {
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
-        var i = 0
-        for ( i = 0; i < 7 ; i += 1){
-            daysforsel.append(DaysInWeek(State: 0, day: self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i)))
+        for (var i = 0; i < 7 ; i += 1){
+            //daysforsel.append(DaysInWeek(State: 0, day: self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i)))
             days.append(self.addDaystoGivenDate(NewDate, NumberOfDaysToAdd: i))
         }
-        days_week.append(Weeek(week: week, days: daysforsel))
-        selectedExportWeek.append(ExportWeek(week: week, days: days))
-        for i in daysforsel{
+        var contains = false
+        var index = -1
+        for var i = 0; i < selectedExportWeek.count; i += 1{
+            if selectedExportWeek[i].week == week{
+                contains = true
+                index = i
+            }
+        }
+        let ExpWeek = ExportWeek(week: week, days: days)
+        if contains && index != -1{
+            print("remove")
+            deselectDays(days)
+            selectedExportWeek.removeAtIndex(index)
+        }else{
+            print("append")
+            selectDays(days)
+            selectedExportWeek.append(ExpWeek)
+        }
+        
+        //days_week.append(Weeek(week: week, days: daysforsel))
+        //selectedExportWeek.append(ExportWeek(week: week, days: days))
+        
+        /*for i in daysforsel{
             var select = true
             for element in temp {
                 if element.date.convertedDate()! == i.day || element.date.month != CVDate(date: i.day).month{
@@ -158,36 +173,44 @@ class CalendarForExportViewController: UIViewController {
                     }
                 }
             }
-        }
+        }*/
     }
     
-    func selectingDateInCurMonth(month: Int){
-        print("selecting")
+    func selectDays(days: [NSDate]){
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        let temp =  controller.getSelectedDates()
-        for i in days_week{
-            for j in i.days{
-               /* var select = true
-                for element in temp {
-                    if element.date.convertedDate()! == j.day || element.date.month != CVDate(date: j.day).month{
-                        select = false
-                    }
+        let a = controller.getSelectedDates()
+        print("________________________")
+        for day in days{
+            var select = true
+            for i in a {
+                if i.date.convertedDate()! == day{
+                    select = false
                 }
-                if select{
-                    calendarView.toggleViewWithDate(j.day)
-                }*/
-                if CVDate(date: j.day).month == month{
-                    calendarView.toggleViewWithDate(j.day)
+            }
+            if select{
+                if curMonth == CVDate(date: day).month{
+                    print(day, CVDate(date: day).day)
+                    self.calendarView.selectDate(day)
                 }
             }
         }
     }
     
-    func selectWeek(week: Int){
-        
+    func deselectDays(days: [NSDate]){
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        let a = controller.getSelectedDates()
+        var b = [DayView]()
+        for i in a{
+            for day in days{
+                if day == i.date.convertedDate()!{
+                    b.append(i)
+                }
+            }
+        }
+        controller.deselectDayViews(b)
     }
     
-    func deselectall(){
+    func selectingDateInCurMonth(){
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let a = controller.getSelectedDates()
         var b = [DayView]()
@@ -195,6 +218,9 @@ class CalendarForExportViewController: UIViewController {
             b.append(i)
         }
         controller.deselectDayViews(b)
+        for i in selectedExportWeek{
+            selectDays(i.days)
+        }
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate
@@ -252,7 +278,14 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
             self.splitViewController?.viewControllers[0] = vc!
 
         }else{
-            let curweek = Int((calculateDay(dayView.date.convertedDate()!))/7)
+            print("\(dayView.date.commonDescription) date in week is selected!")
+            calendarView.coordinator.selection = true
+            selectedExportCalendarDay = dayView
+            curMonth = selectedExportCalendarDay.date.month
+            getWeek()
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            self.splitViewController?.viewControllers[0] = vc!
+            /*let curweek = Int((calculateDay(dayView.date.convertedDate()!))/7)
             var state = 0
             for week in days_week{
                 if week.week == curweek{
@@ -285,7 +318,7 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
                 
                 setstate3(dayView.date.convertedDate()!, week: curweek)
             }
-            remove(curweek)
+            remove(curweek)*/
         }
     }
     
@@ -644,7 +677,8 @@ extension CalendarForExportViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        //selectingDateInCurMonth(components.month)
+        curMonth = components.month
+        selectingDateInCurMonth()
         print("Showing Month: \(components.month)")
     }
     
@@ -654,7 +688,8 @@ extension CalendarForExportViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        //selectingDateInCurMonth(components.month)
+        curMonth = components.month
+        selectingDateInCurMonth()
         print("Showing Month: \(components.month)")
     }
     

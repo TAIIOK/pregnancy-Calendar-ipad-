@@ -254,7 +254,10 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
         if let presented = monthViews[Presented], let selectedDate = calendarView.coordinator.selectedDayView?.date {
             if !matchedDays(selectedDate, presentedDate) && !togglingBlocked {
                 if !matchedMonths(presentedDate, selectedDate) {
-                    togglingBlocked = true
+                    if let currentMonthView = monthViews[Presented] {
+                        selectDayViewWithDay_(presentedDate.day, inMonthView: currentMonthView)
+                    }
+                    /*togglingBlocked = true
                     
                     monthViews[Previous]?.removeFromSuperview()
                     monthViews[Following]?.removeFromSuperview()
@@ -269,7 +272,6 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                     presentedMonthView = currentMonthView
                     
                     calendarView.presentedDate = Date(date: date)
-                    
                     UIView.animateWithDuration(0.8, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
                         presented.alpha = 0
                         currentMonthView.alpha = 1
@@ -278,7 +280,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                         self.selectDayViewWithDay_(presentedDate.day, inMonthView: currentMonthView)
                         self.togglingBlocked = false
                         self.updateLayoutIfNeeded()
-                    }
+                    }*/
                 } else {
                     if let currentMonthView = monthViews[Presented] {
                         selectDayViewWithDay_(presentedDate.day, inMonthView: currentMonthView)
