@@ -18,8 +18,6 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
     var selected = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
- 
  
         
         PhotoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))

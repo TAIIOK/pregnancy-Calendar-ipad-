@@ -119,9 +119,9 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
                             
             })
             
-            while (result != selectedImages.count)
+            /*while (result != selectedImages.count)
             {
-            }
+            }*/
             
             let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
             

@@ -61,7 +61,6 @@ class CalendarForExportViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,7 +141,7 @@ class CalendarForExportViewController: UIViewController {
         for i in daysforsel{
             var select = true
             for element in temp {
-                if element.date.convertedDate()! == i.day{
+                if element.date.convertedDate()! == i.day || element.date.month != CVDate(date: i.day).month{
                     select = false
                 }
             }
@@ -157,6 +156,28 @@ class CalendarForExportViewController: UIViewController {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func selectingDateInCurMonth(month: Int){
+        print("selecting")
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        let temp =  controller.getSelectedDates()
+        for i in days_week{
+            for j in i.days{
+               /* var select = true
+                for element in temp {
+                    if element.date.convertedDate()! == j.day || element.date.month != CVDate(date: j.day).month{
+                        select = false
+                    }
+                }
+                if select{
+                    calendarView.toggleViewWithDate(j.day)
+                }*/
+                if CVDate(date: j.day).month == month{
+                    calendarView.toggleViewWithDate(j.day)
                 }
             }
         }
@@ -609,7 +630,7 @@ extension CalendarForExportViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        
+        //selectingDateInCurMonth(components.month)
         print("Showing Month: \(components.month)")
     }
     
@@ -619,7 +640,7 @@ extension CalendarForExportViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        
+        //selectingDateInCurMonth(components.month)
         print("Showing Month: \(components.month)")
     }
     
