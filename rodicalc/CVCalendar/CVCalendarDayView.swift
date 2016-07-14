@@ -418,7 +418,7 @@ extension CVCalendarDayView {
                     imageView.image = image
                     
                     dotMarker.addSubview(imageView)
-                    self.insertSubview(dotMarker, atIndex: 0)
+                    self.insertSubview(dotMarker, atIndex: self.subviews.count)
                     
                     dotMarker.setNeedsDisplay()
                     self.dotMarkers.append(dotMarker)

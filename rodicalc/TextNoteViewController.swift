@@ -156,9 +156,7 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
         saveNote()
         self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
-        //self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
         controller.refreshPresentedMonth()
-        //self.calendarView.toggleViewWithDate(selectedNoteDay.date.convertedDate()!)
     }
     
     func removeCircleLabel(dayView: CVCalendarDayView) {
