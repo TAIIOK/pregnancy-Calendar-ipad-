@@ -20,7 +20,7 @@ import MessageUI
 var sharingExportVk = false
 var userID = ""
 class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewControllerDelegate {
-
+    
     @IBAction func SaveToGallery(sender: UIButton) {
         
         for (var i = 0 ; i < selectedImages.count ; i++){
@@ -51,11 +51,12 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     }
     
     func vkDidAutorize(parameters: Dictionary<String, String>) {
-      userID =  parameters["user_id"]! as String
+        userID =  parameters["user_id"]! as String
+        print("didit")
     }
 
     func vkDidUnautorize() {
-        
+        print("didnotit")
     }
     
     func vkTokenPath() -> (useUserDefaults: Bool, alternativePath: String) {
@@ -63,71 +64,104 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     }
     
     func vkWillPresentView() -> UIViewController {
-     
+        print("present")
         return self
     }
 
-    
+    @IBAction func ShareVK(sender: AnyObject) {
+        self.view.makeToastActivityWithMessage(message: "Пожалуйста, подождите.", addOverlay: true)
+        /*dispatch_async(dispatch_get_main_queue(), {
+         VK.autorize()
+         self.Vk_sharing()
+         return
+         })*/
+        VK.autorize()
+        Vk_sharing()
+    }
     
     func Vk_sharing(){
-        
-        print(selectedImages.count)
-        
-        print(PDF.length)
-        
         if(sharingExportVk){
-            VK.API.Upload.document(Media(documentData: PDF, type: "pdf")).send(method: HTTPMethods.POST , success:{response in print(response)
+            //VK.logOut()
+            let req = VK.API.Account.getInfo()
+            req.successBlock = {
+                response in print("succes")
+                self.uploadpdf()
+            }
+            req.send()
+        }else{
+            //VK.logOut()
+            let req = VK.API.Account.getInfo()
+            req.successBlock = {
+                response in print("succes")
+                self.uploadphoto()
+            }
+            req.send()
+        }
+        //self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func uploadpdf(){
+        let req = VK.API.Upload.document(Media(documentData: PDF, type: "pdf"))
+        req.isAsynchronous = false
+        req.httpMethod = HTTPMethods.GET
+        req.catchErrors = false
+        //req.progressBlock = { (done, total) -> () in print("SwiftyVK: uploadPhoto progress: \(done) of \(total))")}
+        req.successBlock = {
+            response in print(response)
+            let name = response.arrayObject![0] as! NSDictionary
+            let string = "doc" + userID + "_" + String(name.valueForKey("id")!)
+            self.postToWall(string)
+        }
+        req.errorBlock = {
+            error in print(error)
+            print("error")
+        }
+        req.send()
+    }
+    
+    func uploadphoto(){
+        selectedImages = selectedImages.reverse()
+        var string = ""
+        var result = 0
+        for img in selectedImages{
+            let media = Media(imageData: UIImagePNGRepresentation(img)!, type: .PNG )
+            let req = VK.API.Upload.Photo.toWall.toUser(media, userId: userID)
+            req.isAsynchronous = false
+            req.httpMethod = HTTPMethods.GET
+            req.catchErrors = false
+            //req.progressBlock = { (done, total) -> () in print("SwiftyVK: uploadPhoto progress: \(done) of \(total))")}
+            req.successBlock = {
+                response in print(response)
                 let name = response.arrayObject![0] as! NSDictionary
-                
-                let string = "doc" + userID + "_" + String(name.valueForKey("id")!)
-                print(string)
-                let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
-                
-                let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
-                
-                },error: { error in print(error)})
-            
+                if(string.characters.count > 0)
+                {
+                    string.appendContentsOf(",")
+                }
+                string.appendContentsOf("photo" + userID + "_" + String(name.valueForKey("id")!))
+                result += 1
+            }
+            req.errorBlock = {
+                error in print(error)
+                result += 1
+                print("error")
+            }
+            req.send()
         }
-        else {
-            
-            selectedImages = selectedImages.reverse()
-            var string = ""
-            var result = 0
-            dispatch_sync(dispatch_get_main_queue(),
-                          {
-                            for(var i=0;i<selectedImages.count;i++){
-                                
-                                let media = Media(imageData: UIImagePNGRepresentation(selectedImages[i])!, type: .PNG )
-                                
-                                print(media)
-                                
-                                VK.API.Upload.Photo.toWall.toUser(media, userId: userID).send(method: HTTPMethods.GET , success: {response in print(response)
-                                    
-                                    
-                                    let name = response.arrayObject![0] as! NSDictionary
-                                    
-                                    if(string.characters.count > 0)
-                                    {
-                                        string.appendContentsOf(",")
-                                    }
-                                    string.appendContentsOf("photo" + userID + "_" + String(name.valueForKey("id")!))
-                                    
-                                    print(string)
-                                    result += 1
-                                    }, error: {error in print(error)  ; result += 1})
-                            }
-                            
-            })
-            
-            /*while (result != selectedImages.count)
-            {
-            }*/
-            
-            let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
-            
-            let req = VK.API.Wall.post(mass).send(method: HTTPMethods.GET , success: {response in print(response)}, error: {error in print(error)})
+        while(result < selectedImages.count){
         }
-        
+        postToWall(string)
+    }
+
+    func postToWall(string: String){
+        let mass = [VK.Arg.userId : userID , VK.Arg.friendsOnly : "0" , VK.Arg.message : "Testing FEST share " , VK.Arg.attachments : string ]
+        let postreq = VK.API.Wall.post(mass)
+        postreq.successBlock = {
+            response in print("post success")
+            self.view.hideToastActivity()
+        }
+        postreq.errorBlock = {error in print("post error",error)}
+        postreq.send()
+
     }
     
     override func viewDidLoad() {
@@ -139,7 +173,9 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         // Do any additional setup after loading the view.
     }
 
-
+    override func viewWillDisappear(animated: Bool) {
+        //self.performSegueWithIdentifier("ShowToast", sender: self)
+    }
     
     @IBAction func Cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -160,15 +196,11 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         } else {
             
         }
-        
-        print("шарю на мыло")
     }
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
         switch result {
-    
-            
         case MFMailComposeResult.Cancelled:
             print("Cancelled mail")
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -185,15 +217,9 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
         
     }
     
-    @IBAction func ShareVK(sender: AnyObject) {
-        
-            print("шарю во вконтактик")
-
-        VK.autorize()
-      
-        Vk_sharing()
-        
-
+    func  canAutorizeWithVkApp() -> Bool {
+        return UIApplication.sharedApplication().canOpenURL(NSURL(string: "vkauthorize://authorize?")!)
+            && UIApplication.sharedApplication().canOpenURL(NSURL(string: "vk\(VK.appID)://")!)
     }
     
     @IBAction func ShareOK(sender: AnyObject) {
@@ -296,18 +322,15 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
     }
     
     @IBAction func ShareFB(sender: AnyObject) {
-        print("шарю в фсб")
+        if(sharingExportVk){
+            for (var i = 0 ; i < selectedImages.count ; i++){
+                CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
+            }
         
-
-            if(sharingExportVk){
-        for (var i = 0 ; i < selectedImages.count ; i++){
-            CustomPhotoAlbum.sharedInstance.saveImage(selectedImages[i])
-        }
-    
-        let   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
-        alert.addAction(ok)
-        let open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
+            let   alert =  UIAlertController(title: "Внимание", message: "Экспортируемые фотографии сохранены в фотоальбом. Для того что бы разместить фотографии перейдите в приложение facebook", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Закрыть", style: .Default, handler: { (_) in alert.dismissViewControllerAnimated(true, completion: nil)  } )
+            alert.addAction(ok)
+            let open = UIAlertAction(title: "Перейти", style: .Default, handler: { (_) in
             
             if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
                 UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/PageId")!)
@@ -316,34 +339,33 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }
              } )
-        alert.addAction(open)
+            alert.addAction(open)
         
-        self.presentViewController(alert, animated: true, completion: nil)
-            }
-            else{
-        
-
-                
-                 if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
-                    let dialog = FBSDKShareDialog()
-                    dialog.fromViewController = self
-                    dialog.mode = FBSDKShareDialogMode.Native
-                    let content = FBSDKSharePhotoContent()
-                    content.photos = selectedImages
-                    dialog.shareContent = content
-                    dialog.show()
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/PageId")!)){
+                let dialog = FBSDKShareDialog()
+                dialog.fromViewController = self
+                dialog.mode = FBSDKShareDialogMode.Native
+                let content = FBSDKSharePhotoContent()
+                content.photos = []
+                for i in selectedImages{
+                    let share = FBSDKSharePhoto()
+                    share.caption = "Test FEST share"
+                    share.image = i
+                    content.photos.append(share)
                 }
-                 else{
-                
-                    let shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
- 
-                  shareToFacebook.setInitialText("")
+                dialog.shareContent = content
+                dialog.fromViewController = self
+                dialog.show()
+            }else{
+                let shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                shareToFacebook.setInitialText("")
                 for (var i = 0 ; i < selectedImages.count ; i++){
                       shareToFacebook.addImage(selectedImages[i])
                 }
                 self.presentViewController(shareToFacebook, animated: true, completion: nil)
-            
-                }
+            }
         }
      
         

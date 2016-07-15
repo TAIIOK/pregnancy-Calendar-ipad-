@@ -228,6 +228,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             //Present the AlertController
             self.presentViewController(actionSheetController, animated: true, completion: nil)
         }else{
+            
             if showingExportType == 0 {
                 showingExportType = 1
                 let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")

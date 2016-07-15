@@ -40,6 +40,7 @@ internal struct Authorizator {
   
   
   private static func autorize() {
+    print("authorize")
     NSThread.isMainThread()
       ? dispatch_async(vkSheetQueue, {start(nil)})
       : dispatch_sync(vkSheetQueue, {start(nil)})
@@ -54,6 +55,7 @@ internal struct Authorizator {
   
   
   private static func start(request: Request?) {
+    print("start")
     if canAutorizeWithVkApp {
       startWithApp(request)
     }
@@ -77,6 +79,7 @@ internal struct Authorizator {
   
   
   private static func startWithWeb(request: Request?) {
+    print("web")
     WebController.start(url: webAuthorizeUrl+paramsUrl, request: nil)
   }
 }
@@ -103,6 +106,7 @@ internal struct Authorizator {
     
     
     internal static var canAutorizeWithVkApp : Bool {
+        print("avtorizuu")
       return UIApplication.sharedApplication().canOpenURL(NSURL(string: appAuthorizeUrl)!)
         && UIApplication.sharedApplication().canOpenURL(NSURL(string: "vk\(VK.appID)://")!)
     }
@@ -110,6 +114,7 @@ internal struct Authorizator {
     
     
     private static func startWithApp(request: Request?) {
+        print("app")
       UIApplication.sharedApplication().openURL(NSURL(string: appAuthorizeUrl+paramsUrl)!)
       NSThread.sleepForTimeInterval(1)
       startWithWeb(request)

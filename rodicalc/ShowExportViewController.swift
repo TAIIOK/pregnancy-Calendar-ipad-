@@ -17,10 +17,17 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     
     @IBAction func SegmentAction(sender: AnyObject) {
         segmenttype = segmenttype ? false : true
-        loadExportImages()
+        self.view.makeToastActivityWithMessage(message: "Пожалуйста, подождите.", addOverlay: true)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.loadExportImages()
+            self.view.hideToastActivity()
+            return
+        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //addControls()
+        //timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateProgress", userInfo: nil, repeats: true)
         if segmenttype {
             Segment.selectedSegmentIndex = 0
         }else{
@@ -30,8 +37,14 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         CurrentScrollView.delegate = self
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
-        loadExportImages()
+        //loadExportImages()
         sharingExportVk = true
+        self.view.makeToastActivityWithMessage(message: "Пожалуйста, подождите.", addOverlay: true)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.loadExportImages()
+            self.view.hideToastActivity()
+            return
+        })
         // Do any additional setup after loading the view.
     }
     
@@ -40,11 +53,11 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         PDF = NSData()
     }
     
-    
     func loadExportImages()
     {
         selectedImages.removeAll()
         CurrentScrollView.removeAllSubviews()
+        
         let height =  CGFloat(integerLiteral:  620 * AllExportNotes.count + 620 )
          CurrentScrollView.contentSize = CGSizeMake(700 , height)
         
@@ -290,11 +303,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 CurrentScrollView.contentSize = CGSizeMake(700 , CurrentScrollView.contentSize.height -  620)
             }
             PDF = toPDF(CurrentScrollView.subviews)!
-            
         }
-
-        
-    
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,6 +41,11 @@ class OnePhotoViewController: UIViewController{
         selectedImages.append(image.image!)
     }
     
+    @IBAction func ShowToast(segue:UIStoryboardSegue) {
+        print("ShowToast")
+    }
+
+    
     @IBAction func SaveButton(sender: AnyObject) {
       
         if(choosedSegmentImages)
