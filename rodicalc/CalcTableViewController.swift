@@ -72,6 +72,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
         // calendarView.changeMode(.WeekView)
+        let controller = calendarView.contentController as CVCalendarContentViewController
+        
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate

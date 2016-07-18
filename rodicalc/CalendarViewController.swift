@@ -39,6 +39,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBAction func UpdateCalendar(segue:UIStoryboardSegue) {
         print("update calendar table")
+        phincalc = false
         tbl.reloadData()
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
         controller.refreshPresentedMonth()
@@ -305,6 +306,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         case 1:
             //cell.textLabel?.text = "Фотографии"
             selectedCalendarDayPhoto = selectedCalendarDay!
+            phincalc = true
             let photo = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoFromCalendarNavigation")
             //self.splitViewController?.showDetailViewController(photo!, sender: self)
             self.navigationController?.pushViewController(photo!, animated: true)

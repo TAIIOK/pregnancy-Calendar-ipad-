@@ -51,6 +51,7 @@ public class CVCalendarContentViewController: UIViewController {
         scrollView.layer.masksToBounds = true
         scrollView.pagingEnabled = true
         scrollView.delegate = self
+        
     }
 
     public required init?(coder aDecoder: NSCoder) {

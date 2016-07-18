@@ -35,7 +35,9 @@ extension CVCalendarViewAnimator {
         dayView.setSelectedWithType(.Single)
         selectionAnimation(dayView) { [unowned dayView] completion in
             if !self.coordinator.selection {
+                if !phincalc{
                 dayView.calendarView.delegate?.didSelectDayView?(dayView, animationDidFinish: completion)
+                }
             }
         }
     }

@@ -26,6 +26,7 @@ class PhotoWithType: NSObject {
 
 var selectedCalendarDayPhoto:DayView!
 var photoFromDate = [PhotoWithType]()
+var phincalc = false
 
 class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
     
@@ -42,13 +43,14 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         let date = selectedCalendarDayPhoto.date.convertedDate()
         self.presentedDateUpdated(CVDate(date: date!))
-        self.calendarView.toggleViewWithDate(selectedCalendarDayPhoto.date.convertedDate()!)
+        //self.calendarView.toggleViewWithDate(selectedCalendarDayPhoto.date.convertedDate()!)
         picker?.delegate=self
         let a = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(PhotoFromCalendarViewController.openCamera))
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PhotoFromCalendarViewController.addPhoto))
         a.tintColor = UIColor.whiteColor()
         b.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItems([a,b], animated: true)
+        print("start")
         loadPhoto(date!)
     }
     
@@ -100,6 +102,9 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
             //Do some stuff
             type = 0
             self.JustDoIT(chosenImage, type: type)
+            let controller = self.calendarView.contentController as! CVCalendarWeekContentViewController
+            controller.reloadWeekViews()
+            controller.refreshPresentedMonth()
         }
         actionSheetController.addAction(cancelAction)
         //Create and an option action
@@ -107,13 +112,14 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
             //Do some other stuff
             type = 1
             self.JustDoIT(chosenImage, type: type)
+            let controller = self.calendarView.contentController as! CVCalendarWeekContentViewController
+            //controller.reloadWeekViews()
+            controller.refreshPresentedMonth()
         }
         actionSheetController.addAction(nextAction)
         
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
-        let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
-        controller.refreshPresentedMonth()
     }
     
     func JustDoIT(chosenImage: UIImage, type: Int){
@@ -144,6 +150,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     }
     
     func loadPhoto(Date: NSDate){
+        print("load",Date)
         photoFromDate.removeAll()
         var table = Table("Photo")
         let date = Expression<String>("Date")
@@ -196,7 +203,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         
         let  date = selectedCalendarDayPhoto.date
         let controller = calendarView.contentController as! CVCalendarWeekContentViewController
-        controller.selectDayViewWithDay(date.day, inWeekView: controller.getPresentedWeek()!)
+        //controller.selectDayViewWithDay(date.day, inWeekView: controller.getPresentedWeek()!)
         self.calendarView.toggleViewWithDate(selectedCalendarDayPhoto.date.convertedDate()!)
     }
 
@@ -252,6 +259,7 @@ extension PhotoFromCalendarViewController: CVCalendarViewDelegate, CVCalendarMen
         print("\(dayView.date.commonDescription) is selected!")
         selectedCalendarDayPhoto = dayView
         loadPhoto(selectedCalendarDayPhoto.date.convertedDate()!)
+        print(selectedCalendarDayPhoto.date.convertedDate()!, "date")
         photoCollectionView.reloadData()
     }
     
