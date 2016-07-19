@@ -181,7 +181,7 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
             let date = Expression<String>("Date")
             let text = Expression<String>("NoteText")
             let type = Expression<Int64>("Type")
-            try! db.run(table.delete())
+            try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)" && type == Int64(NoteType)).delete())
             return
         }
         if(NoteText.text.characters.count == 23 && NoteType == 0)
@@ -190,7 +190,7 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
             let date = Expression<String>("Date")
             let text = Expression<String>("NoteText")
             let type = Expression<Int64>("Type")
-            try! db.run(table.delete())
+            try! db.run(table.filter(date == "\(selectedNoteDay.date.convertedDate()!)" && type == Int64(NoteType)).delete())
             return
         }
         if NoteText.text.characters.count > 0 && NoteType != 3{
