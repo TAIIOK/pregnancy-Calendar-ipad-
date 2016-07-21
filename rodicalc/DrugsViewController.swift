@@ -466,7 +466,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func loadtime(recognizer: UITapGestureRecognizer){
-        
+        save()
         
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
@@ -500,7 +500,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
-        
+        save()
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
@@ -531,6 +531,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func loadstartdate(recognizer: UITapGestureRecognizer){
+        save()
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
@@ -563,6 +564,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func loadenddate(recognizer: UITapGestureRecognizer){
+        save()
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DrugsTableViewCell {
@@ -796,7 +798,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func btnSave(sender: UIButton) {
         save()
         saveNote()
-        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
         controller.refreshPresentedMonth()
     }

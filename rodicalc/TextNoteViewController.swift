@@ -10,17 +10,23 @@ import UIKit
 
 class TextNoteViewController: UIViewController, UITextViewDelegate {
     
+    var isKeyboard = false
+    
     func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
+        if !isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y -= keyboardSize.height
+                isKeyboard = true
+            }
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+        if isKeyboard{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.view.frame.origin.y += keyboardSize.height
+                isKeyboard = false
+            }
         }
     }
     
@@ -154,7 +160,7 @@ class TextNoteViewController: UIViewController, UITextViewDelegate {
     }
     @IBAction func btnSave(sender: UIButton) {
         saveNote()
-        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
         controller.refreshPresentedMonth()
     }

@@ -15,7 +15,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     func keyboardWillShow(notification: NSNotification) {
         if !isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height*0.8
+            self.view.frame.origin.y -= keyboardSize.height
             isKeyboard = true
             }
         }
@@ -24,7 +24,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     func keyboardWillHide(notification: NSNotification) {
         if isKeyboard{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height*0.8
+            self.view.frame.origin.y += keyboardSize.height
             isKeyboard = false
             }
         }
@@ -222,7 +222,7 @@ class FoodViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func btnSave(sender: UIButton) {
         saveNote()
-        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
         controller.refreshPresentedMonth()
     }

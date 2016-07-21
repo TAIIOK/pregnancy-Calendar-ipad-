@@ -53,9 +53,6 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var isKeyboard = false
     
-
-    
-    
     func keyboardWillShow(notification: NSNotification) {
         if !isKeyboard{
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -388,7 +385,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadtime(recognizer: UITapGestureRecognizer){
-        
+        save()
         
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
@@ -426,7 +423,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadnotifilist(recognizer: UITapGestureRecognizer){
-        
+        save()
         let swipeLocation = recognizer.locationInView(self.tbl)
         if let swipedIndexPath = tbl.indexPathForRowAtPoint(swipeLocation) {
             if let swipedCell = self.tbl.cellForRowAtIndexPath(swipedIndexPath) as? DoctorViewCell {
@@ -648,13 +645,15 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.performSegueWithIdentifier("UpdateSectionTable", sender: self)
     }
     
+    
     @IBAction func btnSave(sender: UIButton) {
         save()
         saveNote()
-        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         let controller = self.calendarView.contentController as! CVCalendarMonthContentViewController
         controller.refreshPresentedMonth()
     }
+    
     func saveNote(){
         let table = Table("DoctorVisit")
         let id = Expression<Int64>("_id")
