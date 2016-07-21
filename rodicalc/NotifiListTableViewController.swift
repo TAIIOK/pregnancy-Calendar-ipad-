@@ -22,6 +22,7 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
         table.dataSource = self
         navbar.barTintColor = .whiteColor()
         navbar.tintColor = .blackColor()
+        changeRemindInCurRec = curRemindType
     }
     
     func complete(){
@@ -51,8 +52,7 @@ class NotifiListTableViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notifiCell", forIndexPath: indexPath) as! NotifiCell
         cell.textLbl.text = Notification[indexPath.row]
-        
-        if firstStart && indexPath.row == curRemindType{
+        if  indexPath.row == changeRemindInCurRec{
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
             firstStart = false

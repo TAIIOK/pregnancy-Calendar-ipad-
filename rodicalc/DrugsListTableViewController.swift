@@ -21,6 +21,7 @@ class DrugsListTableViewController: UIViewController, UITableViewDelegate, UITab
         table.dataSource = self
         navbar.barTintColor = .whiteColor()
         navbar.tintColor = .blackColor()
+        changeRemindInCurRec = curRemindType
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +46,7 @@ class DrugsListTableViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("drugsCell", forIndexPath: indexPath) as! NotifiCell
         cell.textLbl.text = Interval[indexPath.row]
         
-        if firstStart && indexPath.row == curRemindType{
+        if  indexPath.row == changeRemindInCurRec{
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
             firstStart = false
