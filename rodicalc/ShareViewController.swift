@@ -84,16 +84,28 @@ class ShareViewController: UIViewController ,VKDelegate, MFMailComposeViewContro
             //VK.logOut()
             let req = VK.API.Account.getInfo()
             req.successBlock = {
-                response in print("succes")
+                response in print("succes login")
                 self.uploadpdf()
+            }
+            req.errorBlock = {
+                error in print(error)
+                print("error login")
+                self.view.hideToastActivity()
             }
             req.send()
         }else{
             //VK.logOut()
             let req = VK.API.Account.getInfo()
             req.successBlock = {
-                response in print("succes")
+                response in print("succes login")
                 self.uploadphoto()
+            }
+            req.errorBlock = {
+                error in print(error)
+                print("error login")
+                self.view.hideToastActivity()
+
+                
             }
             req.send()
         }
