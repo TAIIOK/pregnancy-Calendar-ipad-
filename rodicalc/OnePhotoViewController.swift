@@ -57,7 +57,7 @@ class OnePhotoViewController: UIViewController{
         }
         UpdatePhotosInDB()
         
-        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionCenter)
+        self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         
     }
     

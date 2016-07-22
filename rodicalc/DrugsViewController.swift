@@ -680,7 +680,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        
+        self.view.endEditing(true)
         tbl.reloadData()
     }
     
@@ -698,8 +698,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         drugs[currentRec-1].interval = changeRemindInCurRec
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         
-     
-        
+        self.view.endEditing(true)
         tbl.reloadData()
     }
     
@@ -785,6 +784,7 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         headerview?.changeFields()
         
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        self.view.endEditing(true)
         tbl.reloadData()
     }
     

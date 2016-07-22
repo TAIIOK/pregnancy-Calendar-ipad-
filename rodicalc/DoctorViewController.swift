@@ -521,6 +521,7 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        self.view.endEditing(true)
         tbl.reloadData()
    // self.view.addSubview(photo())
     }
@@ -545,12 +546,13 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         doctors[currentRec-1].remindType = changeRemindInCurRec
         
+        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        self.view.endEditing(true)
+        tbl.reloadData()
         let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
-        tbl.reloadData()
+        headerview?.doctornameText.editing == true
     }
     
     

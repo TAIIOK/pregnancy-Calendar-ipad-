@@ -211,39 +211,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     private func getChartDataEntriesForRecommend(weight: Double) -> [ChartDataEntry] {
         let weeks = self.getWeeks()
         var dataEntries: [ChartDataEntry] = []
-        if weights.count > 0 && weight == 0 {
-            var week = weights[0].week
-            let growth_ = Double(growth)
-            var null_weight = Double(weights[0].kg + weights[0].gr/100)
-            let imt = Double( null_weight / (growth_/100 * growth_/100))
-            var IMT = [Double]()
-            if(imt < 18.5){
-                IMT = IMT0
-            }
-            else if (imt >= 25){
-                IMT = IMT2
-            }
-            else{
-                IMT = IMT1
-            }
-            if week%2 != 0{
-                week -= 1
-            }
-            /*for (var i = week/2-1; i >= 0; i -= 1){
-                print(null_weight)
-                null_weight -= IMT[i]
-            }*/
-            null_weight -= IMT[week/2-1]
-            
-            let dataEntry = ChartDataEntry(value: null_weight, xIndex: weeks[0])
-            dataEntries.append(dataEntry)
-            
-            for i in 1..<weeks.count {
-                let dataEntry = ChartDataEntry(value: null_weight + IMT[i-1], xIndex: weeks[i])
-                dataEntries.append(dataEntry)
-            }
-        }else if weight != 0 {
-            print(weight)
+        if weight != 0 {
             let dataEntry = ChartDataEntry(value: weight, xIndex: weeks[0])
             dataEntries.append(dataEntry)
             let growth_ = Double(growth)
@@ -262,6 +230,37 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
                 let dataEntry = ChartDataEntry(value: weight + IMT[i-1], xIndex: weeks[i])
                 dataEntries.append(dataEntry)
             }
+        }else if weights.count > 0 {
+            var week = weights[0].week
+            let growth_ = Double(growth)
+            var null_weight = Double(weights[0].kg + weights[0].gr/1000)
+            let imt = Double( null_weight / (growth_/100 * growth_/100))
+            var IMT = [Double]()
+            if(imt < 18.5){
+                IMT = IMT0
+            }
+            else if (imt >= 25){
+                IMT = IMT2
+            }
+            else{
+                IMT = IMT1
+            }
+            if week%2 != 0{
+                week -= 1
+            }
+            /*for (var i = week/2-1; i >= 0; i -= 1){
+             print(null_weight)
+             null_weight -= IMT[i]
+             }*/
+            null_weight -= IMT[week/2-1]
+            print(null_weight)
+            let dataEntry = ChartDataEntry(value: null_weight, xIndex: weeks[0])
+            dataEntries.append(dataEntry)
+            
+            for i in 1..<weeks.count {
+                let dataEntry = ChartDataEntry(value: null_weight + IMT[i-1], xIndex: weeks[i])
+                dataEntries.append(dataEntry)
+            }
         }
         return dataEntries
     }
@@ -271,7 +270,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         
         if weights.count > 0{
             for i in weights{
-                let dataEntry = ChartDataEntry(value: Double(i.kg+i.gr/100), xIndex: i.week)
+                let dataEntry = ChartDataEntry(value: Double(i.kg+i.gr/1000), xIndex: i.week)
                 dataEntries.append(dataEntry)
             }
         }else{
@@ -345,6 +344,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             showoldalert()
         }else{
             print("null weight")
+            updateRecWeight()
             let actionSheetController: UIAlertController = UIAlertController(title: "Вес на момент зачатия не введен", message: "В качестве начального веса будет использован первый введенный в Заметках вес. Это может привести к тому, что рассчет рекомендуемой нормы веса будет необъективен. Рекоменуется ввести вес на момент зачатия.", preferredStyle: .Alert)
 
             //Create and an option action
