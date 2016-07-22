@@ -78,6 +78,7 @@ func calculateDay(date: NSDate) -> Int{
 func loadNotifi() {
     
     cancelAllLocalNotification()
+    //UIApplication.sharedApplication().cancelAllLocalNotifications()
     
     let calendar = NSCalendar.currentCalendar()
     let components = calendar.components([.Day , .Month , .Year], fromDate: BirthDate)
@@ -198,7 +199,7 @@ func loadNotifi() {
             localNotification.alertAction = "View"
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.soundName = UILocalNotificationDefaultSoundName;
-           // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+            //localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
         notification.removeAll()
@@ -210,8 +211,8 @@ func loadNotifi() {
 
 
 func cancelAllLocalNotification(){
-    
-    let list = ["-1","92","203","155","165","271","203","210","22","57","71","267","273","247","120"]
+    UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+    let list = ["-1","36","44","52","57","59","64","71","77","78","80","85","92","98","106","112","115","138","141","149","162","176","197","200","204","205","209","215","228","241","244","253","260","22","50","61","99","102","106","113","120","127","134","148","151","155","165","169","183","190","194","210","217","224","226","232","239","252","261","265","267"]
     
     guard
         let app: UIApplication = UIApplication.sharedApplication(),

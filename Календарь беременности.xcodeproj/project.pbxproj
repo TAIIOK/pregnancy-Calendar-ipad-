@@ -80,6 +80,7 @@
 		8E90A44F1C7DF20E001F3A07 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */; };
 		8E90A4511C7DF36D001F3A07 /* CalcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */; };
 		8E90A4531C7DF381001F3A07 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4521C7DF381001F3A07 /* NamesViewController.swift */; };
+		8E9BA49D1D421A5B009316D8 /* SetWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9BA49C1D421A5B009316D8 /* SetWeightViewController.swift */; };
 		8EE75B381CEC766E002CF72C /* ImageFromCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */; };
 		8EE75B421CF31EA2002CF72C /* CalendarForExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE75B411CF31EA2002CF72C /* CalendarForExportViewController.swift */; };
 		8EE947B41CE4842E00064446 /* NotifiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947B31CE4842E00064446 /* NotifiListTableViewController.swift */; };
@@ -376,6 +377,7 @@
 		8E90A44E1C7DF20E001F3A07 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4501C7DF36D001F3A07 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
 		8E90A4521C7DF381001F3A07 /* NamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
+		8E9BA49C1D421A5B009316D8 /* SetWeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetWeightViewController.swift; sourceTree = "<group>"; };
 		8EC7110B1CBB941E00ED1416 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8EE75B371CEC766E002CF72C /* ImageFromCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromCalendar.swift; sourceTree = "<group>"; };
 		8EE75B411CF31EA2002CF72C /* CalendarForExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarForExportViewController.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				8E20A0951C7F3A8D00CD6141 /* NameViewController.swift */,
 				8E6D50321C7F047100878957 /* SkirmishCountViewController.swift */,
 				8E6D50341C7F04F100878957 /* WeightDiagramViewController.swift */,
+				8E9BA49C1D421A5B009316D8 /* SetWeightViewController.swift */,
 				8EF404171D01A32700B1D5D9 /* Photo */,
 				8E1DD6051CB26A3D00D55893 /* ShareViewController.swift */,
 				8EF404181D01A35900B1D5D9 /* Video */,
@@ -1354,6 +1357,7 @@
 				A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */,
 				A01029141CD29E0B005E339F /* CVCalendarViewPresentationMode.swift in Sources */,
 				8EEAC33A1CCE542F007B4643 /* Foundation.swift in Sources */,
+				8E9BA49D1D421A5B009316D8 /* SetWeightViewController.swift in Sources */,
 				8E5A6BD61CD7A1920073B693 /* RestrictionsTableViewCell.swift in Sources */,
 				A010291E1CD29E0B005E339F /* CVWeekdaySymbolType.swift in Sources */,
 				8E6D50351C7F04F100878957 /* WeightDiagramViewController.swift in Sources */,

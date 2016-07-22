@@ -23,9 +23,16 @@ class Weight: NSObject {
         self.week = week
         super.init()
     }
+    override init() {
+        self.date = NSDate()
+        self.kg = 0
+        self.gr = 0
+        self.week = 0
+        super.init()
+    }
 }
-
-class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    var RecWeight = Double(0)
+class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIPopoverPresentationControllerDelegate {
     
     var growth = 0
     var mass = 60
@@ -36,7 +43,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     //var label = UILabel()
     //var label1 = UILabel()
     var views: [String: AnyObject] = [:]
-var BirthDate = NSDate()
+    var BirthDate = NSDate()
     
     @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var lbl: UILabel!
@@ -56,6 +63,7 @@ var BirthDate = NSDate()
         growth = loadGrowthFromCoreData()
         loadDate()
         loadWeight()
+        loadRecWeight()
         self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
@@ -75,6 +83,22 @@ var BirthDate = NSDate()
         }
     }
 
+    func loadRecWeight(){
+        let table = Table("RecWeight")
+        let weight = Expression<Double>("weight")
+        for i in try! db.prepare(table.select(weight)) {
+            RecWeight = i[weight]
+        }
+        print("weight loaded",RecWeight)
+    }
+    
+    func updateRecWeight(){
+        let table = Table("RecWeight")
+        let weight = Expression<Double>("weight")
+        try! db.run(table.delete())
+        try! db.run(table.insert(weight <- RecWeight))
+    }
+    
     func loadWeight(){
         let table = Table("WeightNote")
         let date = Expression<String>("Date")
@@ -145,7 +169,7 @@ var BirthDate = NSDate()
         
         // графики
         // нарисовать условно-рекомендуемый график
-        let dataEntries = self.getChartDataEntriesForRecommend(Double(50))
+        let dataEntries = self.getChartDataEntriesForRecommend(RecWeight)
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Условно-рекомендуемая норма")
         self.setRecommendSetStyle(lineChartDataSet)
         // нарисовать график фактического веса
@@ -187,7 +211,7 @@ var BirthDate = NSDate()
     private func getChartDataEntriesForRecommend(weight: Double) -> [ChartDataEntry] {
         let weeks = self.getWeeks()
         var dataEntries: [ChartDataEntry] = []
-        if weights.count > 0{
+        if weights.count > 0 && weight == 0 {
             var week = weights[0].week
             let growth_ = Double(growth)
             var null_weight = Double(weights[0].kg + weights[0].gr/100)
@@ -218,12 +242,24 @@ var BirthDate = NSDate()
                 let dataEntry = ChartDataEntry(value: null_weight + IMT[i-1], xIndex: weeks[i])
                 dataEntries.append(dataEntry)
             }
-        }else{
+        }else if weight != 0 {
+            print(weight)
             let dataEntry = ChartDataEntry(value: weight, xIndex: weeks[0])
             dataEntries.append(dataEntry)
-            
+            let growth_ = Double(growth)
+            let imt = Double( weight / (growth_/100 * growth_/100))
+            var IMT = [Double]()
+            if(imt < 18.5){
+                IMT = IMT0
+            }
+            else if (imt >= 25){
+                IMT = IMT2
+            }
+            else{
+                IMT = IMT1
+            }
             for i in 1..<weeks.count {
-                let dataEntry = ChartDataEntry(value: weight + self.IMT2[i-1], xIndex: weeks[i])
+                let dataEntry = ChartDataEntry(value: weight + IMT[i-1], xIndex: weeks[i])
                 dataEntries.append(dataEntry)
             }
         }
@@ -232,21 +268,6 @@ var BirthDate = NSDate()
     private func getChartDataEntriesForFact(weight: Double, growth: Double) -> [ChartDataEntry] {
         let weeks = self.getWeeks()
         var dataEntries: [ChartDataEntry] = []
-        
-        /*let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[0])
-        dataEntries.append(dataEntry)
-        var j = 0
-        for i in 1..<weeks.count {
-            if(weights.count>0 && weights[j].week == i){
-                let dataEntry = ChartDataEntry(value: Double(weights[i].kg), xIndex: weeks[i])
-                dataEntries.append(dataEntry)
-                j += 1
-            }
-            else{
-                let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[i])
-                dataEntries.append(dataEntry)
-            }
-        }*/
         
         if weights.count > 0{
             for i in weights{
@@ -263,41 +284,6 @@ var BirthDate = NSDate()
         }
         
         return dataEntries
-        /*let weeks = self.getWeeks()
-        var dataEntries: [ChartDataEntry] = []
-        
-        var imt=weight*10000.0
-        let x: Double = growth*growth
-        
-        if(x>0){
-            imt = imt/x}
-        else{
-            imt = 0
-        }
-        let dataEntry = ChartDataEntry(value: weight, xIndex: weeks[0])
-        dataEntries.append(dataEntry)
-        for i in 1..<weeks.count {
-            if(weight==0){
-                let dataEntry = ChartDataEntry(value: 0, xIndex: weeks[i])
-                dataEntries.append(dataEntry)
-            }
-            else{
-                if(imt < 18.5){
-                    let dataEntry = ChartDataEntry(value: weight + self.IMT0[i-1], xIndex: weeks[i])
-                    dataEntries.append(dataEntry)
-                }
-                else if (imt >= 25){
-                    let dataEntry = ChartDataEntry(value: weight + self.IMT1[i-1], xIndex: weeks[i])
-                    dataEntries.append(dataEntry)
-                }
-                else{
-                    let dataEntry = ChartDataEntry(value: weight + self.IMT2[i-1], xIndex: weeks[i])
-                    dataEntries.append(dataEntry)
-                }
-            }
-        }
-        
-        return dataEntries*/
     }
     private func getWeeks() -> [Int] {
         var weeks: [Int] = []
@@ -351,6 +337,28 @@ var BirthDate = NSDate()
         return firstComponent[self.pickerView.selectedRowInComponent(0)]*100 + secondComponent[self.pickerView.selectedRowInComponent(1)]*10 + thirdComponent[self.pickerView.selectedRowInComponent(2)]
     }
     
+    @IBAction func setweightWithSegue(segue:UIStoryboardSegue) {
+        if RecWeight > 0{
+            setweight = false
+            print("weight settend")
+            updateRecWeight()
+            showoldalert()
+        }else{
+            print("null weight")
+            let actionSheetController: UIAlertController = UIAlertController(title: "Вес на момент зачатия не введен", message: "В качестве начального веса будет использован первый введенный в Заметках вес. Это может привести к тому, что рассчет рекомендуемой нормы веса будет необъективен. Рекоменуется ввести вес на момент зачатия.", preferredStyle: .Alert)
+
+            //Create and an option action
+            let nextAction: UIAlertAction = UIAlertAction(title: "ПОНЯТНО", style: .Default) { action -> Void in
+                //Do some other stuff
+                self.showoldalert()
+            }
+            actionSheetController.addAction(nextAction)
+            
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
+    }
+    
     func doneButtonTouched() {
         self.pickerViewTextField.resignFirstResponder()
         growth = getGrowthFromPickerView()
@@ -361,32 +369,44 @@ var BirthDate = NSDate()
         
         if growth > 0{
         //Create the AlertController
-            if #available(iOS 8.0, *) {
-                let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
-                
-                //Create and add the Cancel action
-                let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
-                //Do some stuff
-                    let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
-                    self.splitViewController?.showDetailViewController(graph!, sender: self)
-                }
-                actionSheetController.addAction(cancelAction)
-                //Create and an option action
-                let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
-                //Do some other stuff
-                    let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
-                    self.splitViewController?.showDetailViewController(notes!, sender: self)
-                }
-                actionSheetController.addAction(nextAction)
-            
-                //Present the AlertController
-                self.presentViewController(actionSheetController, animated: true, completion: nil)
-            } else {
-                // Fallback on earlier versions
-            }
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("setweight") as! SetWeightViewController
+            var nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+            var popover = nav.popoverPresentationController
+            vc.preferredContentSize = CGSizeMake(700,800)
+            popover!.delegate = self
+            popover!.sourceView = self.view
+            //popover!.sourceRect = CGRectMake(100,100,0,0)
+            self.presentViewController(nav, animated: true, completion: nil)
         }else{
             let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
             self.splitViewController?.showDetailViewController(graph!, sender: self)
+        }
+    }
+    
+    func showoldalert(){
+        if #available(iOS 8.0, *) {
+            let actionSheetController: UIAlertController = UIAlertController(title: "", message: "Теперь укажите свой вес в заметках, чтобы построить фактический график набора веса и отслеживать отклонения", preferredStyle: .Alert)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Отмена", style: .Cancel) { action -> Void in
+                //Do some stuff
+                let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+                self.splitViewController?.showDetailViewController(graph!, sender: self)
+            }
+            actionSheetController.addAction(cancelAction)
+            //Create and an option action
+            let nextAction: UIAlertAction = UIAlertAction(title: "Заметки", style: .Default) { action -> Void in
+                //Do some other stuff
+                let notes = self.storyboard?.instantiateViewControllerWithIdentifier("NotesNavigator")
+                self.splitViewController?.showDetailViewController(notes!, sender: self)
+            }
+            actionSheetController.addAction(nextAction)
+            
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
         }
     }
     
