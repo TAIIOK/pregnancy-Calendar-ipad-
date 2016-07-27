@@ -512,17 +512,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
             scheduleNotification(calculateDate(doctors[currentRec-1].date, before: doctors[currentRec-1].remindType , after: changeRemindInCurRec), notificationTitle:"У вас посещение врача \(doctors[currentRec-1].name)" , objectId: "\(doctors[currentRec-1].date )")
         }
         }
-        
-        
-        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        self.view.endEditing(true)
+        tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        let headerview = tbl.viewWithTag(currentRec) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        
-        
-        
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
-        self.view.endEditing(true)
-        tbl.reloadData()
    // self.view.addSubview(photo())
     }
     
@@ -546,13 +540,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         doctors[currentRec-1].remindType = changeRemindInCurRec
         
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
         self.view.endEditing(true)
-        tbl.reloadData()
-        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        let headerview = tbl.viewWithTag(currentRec) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        headerview?.doctornameText.editing == true
     }
     
     

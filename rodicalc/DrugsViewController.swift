@@ -675,13 +675,11 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 scheduleNotification(calculateDate(addDaystoGivenDate(drugs[currentRec-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[currentRec-1].cellType), notificationTitle:"Время приема лекарства \(drugs[currentRec-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[currentRec-1].start, NumberOfDaysToAdd: i, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[currentRec-1].cellType))")
             }
         }
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
-        
-        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        self.view.endEditing(true)
+        tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        let headerview = tbl.viewWithTag(currentRec) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        self.view.endEditing(true)
-        tbl.reloadData()
     }
     
     @IBAction func UpdateSection(segue:UIStoryboardSegue) {
@@ -696,10 +694,11 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         */
         drugs[currentRec-1].interval = changeRemindInCurRec
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
-        
         self.view.endEditing(true)
-        tbl.reloadData()
+        tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        let headerview = tbl.viewWithTag(currentRec) as? DoctorHeader
+        headerview?.setopen(true)
+        headerview?.changeFields()
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int, NumberOfHoursToAdd: Int, NumberOfMinuteToAdd: Int) -> NSDate
@@ -779,13 +778,11 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             drugs[currentRec-1].end = curDate
         }
         
-        let headerview = tbl.viewWithTag(currentRec-1) as? DoctorHeader
+        self.view.endEditing(true)
+        tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
+        let headerview = tbl.viewWithTag(currentRec) as? DoctorHeader
         headerview?.setopen(true)
         headerview?.changeFields()
-        
-        //tbl.reloadSections(NSIndexSet(index: currentRec), withRowAnimation: .None)
-        self.view.endEditing(true)
-        tbl.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
