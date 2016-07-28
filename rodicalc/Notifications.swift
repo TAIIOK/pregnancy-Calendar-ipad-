@@ -76,7 +76,8 @@ func calculateDay(date: NSDate) -> Int{
 }
 
 func loadNotifi() {
-    
+    print("-----------do-------")
+    allnotif()
     cancelAllLocalNotification()
     UIApplication.sharedApplication().applicationIconBadgeNumber = 1
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
@@ -102,8 +103,6 @@ func loadNotifi() {
    
     var Notificalendar = NSDate()
 
-
-    //WorkWithJSON()
     notifications.removeAll()
     let table = Table("Notification")
     let Day = Expression<Int64>("Day")
@@ -118,7 +117,7 @@ func loadNotifi() {
         day = 0
     }
 
-    /*if day > 0{
+    if day > 0{
         var notification = ""
         var titles = ""
         notification = notifications[0].text
@@ -128,7 +127,7 @@ func loadNotifi() {
         
         let localNotification = UILocalNotification()
         if components.hour > 12{
-            localNotification.fireDate = NSDate(timeIntervalSinceNow: 60) // время получения уведомления
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 30) // время получения уведомления
         }
         else {
             components.hour = 12
@@ -138,20 +137,15 @@ func loadNotifi() {
         }
         
         localNotification.alertBody = notification
-        if #available(iOS 8.2, *) {
-            localNotification.alertTitle = titles
-        } else {
-            // Fallback on earlier versions
-        }
         
-        let infoDict :  Dictionary<String,String!> = ["objectId" : "-1"]
+        let infoDict :  Dictionary<String,String!> = ["objectId" : "-2"]
         localNotification.userInfo = infoDict
         localNotification.alertAction = "View"
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.soundName = UILocalNotificationDefaultSoundName;
-        // localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }*/
+    }
     for (var i = day; i <=  300; i += 1){
         var notification = [String]()
         var titles = [Int]()
@@ -184,11 +178,6 @@ func loadNotifi() {
 
             
             localNotification.alertBody = notification[j]
-            if #available(iOS 8.2, *) {
-                //localNotification.alertTitle = titles[j]
-            } else {
-                // Fallback on earlier versions
-            }
 
             if(lolnotifies.contains(notification[notification.count-1]) && (titles[j] == 5 || titles[j] == 6))
             {
@@ -210,21 +199,25 @@ func loadNotifi() {
         titles.removeAll()
         Notificalendar = addDaystoGivenDate(Notificalendar,NumberOfDaysToAdd: 1)
     }
+    print("-----------posle-------")
     allnotif()
 }
 
 func allnotif(){
+    var count = 0
     guard
         let app: UIApplication = UIApplication.sharedApplication(),
         let notifications = app.scheduledLocalNotifications else { return }
     for notification in notifications {
-        print(notification.userInfo as? [String: String],notification.alertBody!)
+        count += 1
+        //print(notification.userInfo as? [String: String],notification.alertBody!)
     }
+    print("count = \(count)")
 }
 
 
 func cancelAllLocalNotification(){
-    let list = ["-1","36","44","52","57","59","64","71","77","78","80","85","92","98","106","112","115","138","141","149","162","176","197","200","204","205","209","215","228","241","244","253","260","22","50","61","99","102","106","113","120","127","134","148","151","155","165","169","183","190","194","210","217","224","226","232","239","252","261","265","267"]
+    let list = ["-2","-1","36","44","52","57","59","64","71","77","78","80","85","92","98","106","112","115","138","141","149","162","176","197","200","204","205","209","215","228","241","244","253","260","22","50","61","99","102","106","113","120","127","134","148","151","155","165","169","183","190","194","210","217","224","226","232","239","252","261","265","267"]
     
     guard
         let app: UIApplication = UIApplication.sharedApplication(),
@@ -236,7 +229,7 @@ func cancelAllLocalNotification(){
             let uid: [String: String] = userInfo as? [String: String] where list.contains(uid["objectId"]!)
         {
             app.cancelLocalNotification(notification)
-            print("Deleted local notification for '\(uid["objectId"]!)'")
+            //print("Deleted local notification for '\(uid["objectId"]!)'")
         }
     }
     print("All local notification deleted")

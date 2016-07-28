@@ -315,6 +315,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             //cell.textLabel?.text = "Уведомления"
             selectedExperienceDay = selectedCalendarDay!
             fromCalendar = true
+            phincalc = true
             let experience = self.storyboard?.instantiateViewControllerWithIdentifier("Experience")
             self.splitViewController?.showDetailViewController(experience!, sender: self)
             break

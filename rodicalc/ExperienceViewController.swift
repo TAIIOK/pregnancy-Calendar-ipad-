@@ -174,7 +174,13 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationItem.backBarButtonItem = btnBack
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNotification:", name:"loadNotification", object: nil)
-        setupNavigation(CVDate(date: NSDate()))
+        var tmp = NSDate()
+        if opennotifi{
+            tmp = dateFromOpenNotifi
+        }else if selectedExperienceDay != nil{
+            tmp = selectedExperienceDay.date.convertedDate()!
+        }
+        setupNavigation(CVDate(date: tmp))
         tbl.delegate = self
         tbl.dataSource = self
 
@@ -472,9 +478,11 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
+        self.calendarView.toggleViewWithDate(tmp)
     }
     
     override func viewWillDisappear(animated: Bool) {
+        phincalc = false
         mas.removeAll()
         tbl.reloadData()
     }

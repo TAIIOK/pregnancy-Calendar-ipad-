@@ -32,6 +32,7 @@ class Weight: NSObject {
     }
 }
     var RecWeight = Double(0)
+    var editingRecWeight = false
 class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIPopoverPresentationControllerDelegate {
     
     var growth = 0
@@ -57,6 +58,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var growthButton: UIBarButtonItem!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var weekDescription: UILabel!
+    @IBOutlet weak var weightButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,9 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         loadDate()
         loadWeight()
         loadRecWeight()
-        self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
+        //self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
+        self.growthButton.title = growth == 0 ? "Ваш рост" : "\(growth) см"
+        self.weightButton.title = RecWeight == 0 ? "Ваш вес" : "\(RecWeight) кг"
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
         setupGraphSettings()
@@ -98,6 +102,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         try! db.run(table.delete())
         try! db.run(table.insert(weight <- RecWeight))
     }
+
     
     func loadWeight(){
         let table = Table("WeightNote")
@@ -294,7 +299,18 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         return weeks
     }
 
-    
+    @IBAction func setweightbtn(sender: UIBarButtonItem) {
+        editingRecWeight = true
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("setweight") as! SetWeightViewController
+        var nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        var popover = nav.popoverPresentationController
+        vc.preferredContentSize = CGSizeMake(700,800)
+        popover!.delegate = self
+        popover!.sourceView = self.view
+        //popover!.sourceRect = CGRectMake(100,100,0,0)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
     
     @IBAction func setHeight(sender: UIBarButtonItem) {
         self.pickerViewTextField.becomeFirstResponder()
@@ -337,11 +353,18 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     @IBAction func setweightWithSegue(segue:UIStoryboardSegue) {
+        self.weightButton.title = RecWeight == 0 ? "Ваш вес" : "\(RecWeight) кг"
         if RecWeight > 0{
             setweight = false
             print("weight settend")
             updateRecWeight()
-            showoldalert()
+            if editingRecWeight{
+                editingRecWeight = false
+                let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+                self.splitViewController?.showDetailViewController(graph!, sender: self)
+            }else{
+                self.showoldalert()
+            }
         }else{
             print("null weight")
             updateRecWeight()
@@ -350,7 +373,13 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             //Create and an option action
             let nextAction: UIAlertAction = UIAlertAction(title: "ПОНЯТНО", style: .Default) { action -> Void in
                 //Do some other stuff
-                self.showoldalert()
+                if editingRecWeight{
+                    editingRecWeight = false
+                    let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
+                    self.splitViewController?.showDetailViewController(graph!, sender: self)
+                }else{
+                    self.showoldalert()
+                }
             }
             actionSheetController.addAction(nextAction)
             
@@ -363,7 +392,8 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.pickerViewTextField.resignFirstResponder()
         growth = getGrowthFromPickerView()
 
-        self.navigationItem.rightBarButtonItem?.title = "\(growth) см"
+        //self.navigationItem.rightBarButtonItem?.title = "\(growth) см"
+        self.growthButton.title = "\(growth) см"
         saveGrowthToPlist(growth)
         setupPickerViewValues()
         

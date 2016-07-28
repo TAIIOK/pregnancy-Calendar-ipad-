@@ -26,6 +26,10 @@
 		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
 		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
 		8E27BF3F1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */; };
+		8E4968D51D4A084300DF11B9 /* pink1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D41D4A084300DF11B9 /* pink1.png */; };
+		8E4968D71D4A08E800DF11B9 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D61D4A08E800DF11B9 /* pink.png */; };
+		8E4968D91D4A0D0300DF11B9 /* bra.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D81D4A0D0300DF11B9 /* bra.jpg */; };
+		8E4968DB1D4A0D0A00DF11B9 /* bondage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968DA1D4A0D0A00DF11B9 /* bondage.jpg */; };
 		8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4FACBF1C89CADF003405D0 /* MapKit.framework */; };
 		8E4FACC21C89CE1C003405D0 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */; };
 		8E51BF131CA2AA8000D8D739 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */; };
@@ -171,7 +175,6 @@
 		A0669E701CDA34F2002F8E95 /* DoctorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */; };
 		A0669E721CDA3597002F8E95 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0669E711CDA3597002F8E95 /* DoctorViewController.swift */; };
 		A06A785B1CFC518D00552496 /* phototemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = A06A785A1CFC518D00552496 /* phototemplate.png */; };
-		A06A785D1CFC539700552496 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = A06A785C1CFC539700552496 /* pink.png */; };
 		A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622611CF5CA5A003951EC /* CreatingExportImage.swift */; };
 		A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622621CF5CA5A003951EC /* pdfCreator.swift */; };
 		A076226C1CF5E0E4003951EC /* Rotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076226B1CF5E0E4003951EC /* Rotatable.swift */; };
@@ -315,6 +318,10 @@
 		8E2538F21C84779F00B3C54E /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
 		8E2538F91C848E5100B3C54E /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E4968D41D4A084300DF11B9 /* pink1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink1.png; sourceTree = "<group>"; };
+		8E4968D61D4A08E800DF11B9 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink.png; sourceTree = "<group>"; };
+		8E4968D81D4A0D0300DF11B9 /* bra.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bra.jpg; sourceTree = "<group>"; };
+		8E4968DA1D4A0D0A00DF11B9 /* bondage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bondage.jpg; sourceTree = "<group>"; };
 		8E4FACBF1C89CADF003405D0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8E4FACC11C89CE1C003405D0 /* InternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		8E51BF121CA2AA8000D8D739 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -472,7 +479,6 @@
 		A0669E6F1CDA34F2002F8E95 /* DoctorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorHeader.swift; sourceTree = "<group>"; };
 		A0669E711CDA3597002F8E95 /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		A06A785A1CFC518D00552496 /* phototemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototemplate.png; sourceTree = "<group>"; };
-		A06A785C1CFC539700552496 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink.png; sourceTree = "<group>"; };
 		A07622611CF5CA5A003951EC /* CreatingExportImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingExportImage.swift; sourceTree = "<group>"; };
 		A07622621CF5CA5A003951EC /* pdfCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pdfCreator.swift; sourceTree = "<group>"; };
 		A076226B1CF5E0E4003951EC /* Rotatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotatable.swift; sourceTree = "<group>"; };
@@ -795,6 +801,7 @@
 				A01028D11CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg */,
 				A01028D21CD227D8005E339F /* i_6eeb0e92aa2e7186_html_85ee0ffa.jpg */,
 				A01028D31CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg */,
+				8E4968DA1D4A0D0A00DF11B9 /* bondage.jpg */,
 			);
 			name = bondage;
 			sourceTree = "<group>";
@@ -805,6 +812,7 @@
 				A01028D91CD22F13005E339F /* bra.html */,
 				A01028DA1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg */,
 				A01028DB1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg */,
+				8E4968D81D4A0D0300DF11B9 /* bra.jpg */,
 			);
 			name = bra;
 			sourceTree = "<group>";
@@ -916,7 +924,8 @@
 		A07622741CF70D63003951EC /* pinkPhoto */ = {
 			isa = PBXGroup;
 			children = (
-				A06A785C1CFC539700552496 /* pink.png */,
+				8E4968D41D4A084300DF11B9 /* pink1.png */,
+				8E4968D61D4A08E800DF11B9 /* pink.png */,
 				A07622751CF70D75003951EC /* 2photo(pink).png */,
 				A07622761CF70D75003951EC /* text+2photo(pink).png */,
 				A07622771CF70D75003951EC /* textonly(pink).png */,
@@ -1181,7 +1190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEAC3471CCE6621007B4643 /* db.sqlite in Resources */,
-				A06A785D1CFC539700552496 /* pink.png in Resources */,
+				8E4968D51D4A084300DF11B9 /* pink1.png in Resources */,
 				A01028D71CD227D8005E339F /* i_6eeb0e92aa2e7186_html_7926d373.jpg in Resources */,
 				A01028D41CD227D8005E339F /* bondage.html in Resources */,
 				8E1DD6081CB2896500D55893 /* zodiacs.json in Resources */,
@@ -1204,6 +1213,7 @@
 				A07622711CF70D20003951EC /* text+2photo(blue).png in Resources */,
 				8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */,
 				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
+				8E4968D71D4A08E800DF11B9 /* pink.png in Resources */,
 				A06A785B1CFC518D00552496 /* phototemplate.png in Resources */,
 				A076227B1CF70D75003951EC /* textonly(pink).png in Resources */,
 				A07622911CF7465A003951EC /* PhotoTemplate.xib in Resources */,
@@ -1219,6 +1229,7 @@
 				8E5A6BAA1CD20C7D0073B693 /* 1z.jpg in Resources */,
 				A07622791CF70D75003951EC /* 2photo(pink).png in Resources */,
 				A0669E671CDA34E4002F8E95 /* DoctorViewCell.xib in Resources */,
+				8E4968DB1D4A0D0A00DF11B9 /* bondage.jpg in Resources */,
 				8E5A6BAE1CD20C7D0073B693 /* 5z.jpg in Resources */,
 				A042880F1CE2329B005DB953 /* notifi.json in Resources */,
 				8E5618A01CAA8BF600C9B7D1 /* YTPlayer.html in Resources */,
@@ -1230,6 +1241,7 @@
 				A01028DE1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_e70a7969.jpg in Resources */,
 				8E5A6BB21CD20C7D0073B693 /* 9z.jpg in Resources */,
 				A01028D51CD227D8005E339F /* i_6eeb0e92aa2e7186_html_77d5e2ab.jpg in Resources */,
+				8E4968D91D4A0D0300DF11B9 /* bra.jpg in Resources */,
 				8EEAC33C1CCE542F007B4643 /* Info.plist in Resources */,
 				8E20C8BA1C998F520003C1CF /* NumberCollectionViewCell.xib in Resources */,
 			);

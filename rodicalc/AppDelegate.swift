@@ -131,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createEditableCopyOfDatabaseIfNeeded()
         Fabric.with([Crashlytics.self])
         
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        application.applicationIconBadgeNumber = 0
         
 
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
@@ -240,9 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        /*UIApplication.sharedApplication().applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        UIApplication.sharedApplication().cancelAllLocalNotifications()*/
         print("applicationDidBecomeActive")
         //allnotif()
     }
@@ -344,11 +342,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // Do something serious in a real app.
-        //print("Received Local Notification:")
+        print("Received Local Notification:")
         //print(notification.alertBody)
-        if UIApplication.sharedApplication().applicationIconBadgeNumber > 0 {
-            UIApplication.sharedApplication().applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber - 1
-        }
+        //if UIApplication.sharedApplication().applicationIconBadgeNumber > 0 {
+          //  UIApplication.sharedApplication().applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber - 1
+        //}
+        application.applicationIconBadgeNumber = 0
         let  state = application.applicationState
 
         if (state == UIApplicationState.Active) {
@@ -468,7 +467,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             self.window!.makeKeyAndVisible()
                         } )
                         alert.addAction(read)
+                    }else if(key == "-2"){
+                        let read = UIAlertAction(title: "Читать далее", style: .Default, handler: { (_) in
+                            opennotifi = true
+                            fromCalendar = true
+                            //isAdvertitsing = true
+                            let table = Table("Notification")
+                            let Day = Expression<Int64>("Day")
+                            let Category = Expression<Int64>("CategoryId")
+                            let Text = Expression<String>("Text")
+                            var cat = -1
+                            loadBirthDate()
+                            var newBirthDate = BirthDate
+                            if dateType == 0{
+                                newBirthDate = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*38)
+                            }
+                            else if dateType == 1{
+                                newBirthDate  = addDaystoGivenDate(BirthDate, NumberOfDaysToAdd: 7*40)
+                            }
+                            
+                            newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: -(40*7)))
+                            
+                            /*for tmp in try! db.prepare(table.select(Category, Text, Day).filter(Text == notification.alertBody!)){
+                                cat = Int(tmp[Category]-1)
+                                newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: Int(tmp[Day])))
+                            }*/
+                            newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: 1))
+                            dateFromOpenNotifi = newBirthDate
+                            MasterViewSelectedRow = 8
+                            noteText[0] = "Общая информация"
+                            noteText[1] = notification.alertBody!
+                            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                            let splitViewController = UISplitViewController()
+                            let rootViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("MasterView") as UIViewController
+                            let detailViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("ExperienceViewController") as UIViewController
+                            var rootNavigationController = UINavigationController(rootViewController:rootViewController)
+                            let detailNavigationController = UINavigationController(rootViewController:detailViewController)
+                            splitViewController.viewControllers = [rootViewController,detailNavigationController]
+                            self.window!.rootViewController = splitViewController
+                            self.window!.makeKeyAndVisible()
+                        } )
+                        alert.addAction(read)
                     }
+
                 }
                 
                 

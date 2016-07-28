@@ -67,7 +67,11 @@ class AdvertisingViewController: UIViewController {
         
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
-        
+        self.calendarView.toggleViewWithDate(tmp)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        isAdvertitsing = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,9 +133,11 @@ extension AdvertisingViewController: CVCalendarViewDelegate, CVCalendarMenuViewD
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
-        print("\(dayView.date.commonDescription) is selected!")
-        selectedExperienceDay = dayView
-        notifiFromDate(selectedExperienceDay.date.convertedDate()!)
+        if !isAdvertitsing{
+            print("\(dayView.date.commonDescription) is selected!")
+            selectedExperienceDay = dayView
+            notifiFromDate(selectedExperienceDay.date.convertedDate()!)
+        }
     }
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
