@@ -117,7 +117,7 @@ func loadNotifi() {
         day = 0
     }
 
-    if day > 0{
+    if day == 0 || day > 1{
         var notification = ""
         var titles = ""
         notification = notifications[0].text
