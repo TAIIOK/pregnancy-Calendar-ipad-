@@ -11,7 +11,6 @@ import UIKit
 
 
 class PhotoTemp: UIView {
-
     @IBOutlet weak var CenterImageView: UIImageView!
     
     @IBOutlet weak var Title: UILabel!
@@ -22,6 +21,7 @@ class PhotoTemp: UIView {
         CenterImageView.image = Photo
         CenterImageView.backgroundColor = .whiteColor()
         CenterImageView.center = (CenterImageView.superview?.center)!
+        CenterImageView.center.y -= 20
         Title.text = title
     }
 
