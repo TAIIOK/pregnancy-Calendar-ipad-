@@ -86,6 +86,22 @@ class MasterTableViewController: UITableViewController {
         if tableView.cellForRowAtIndexPath(indexPath) != cell11 && cell11.highlighted == true{
             cell11.setHighlighted(false, animated: false)
         }
+        if indexPath.row != 12{
+            selectedExportDays.removeAll()
+            selectedExportWeek.removeAll()
+            ExpPhoto.removeAll()
+            NotificationExport.removeAll()
+            
+            NotesExportText.removeAll()
+            NotestExportWeight.removeAll()
+            NotesExportDoctor.removeAll()
+            NotesExportFood.removeAll()
+            NotesExportDrugs.removeAll()
+            
+            AllExportNotes.removeAll()
+            AllNotesCount.removeAll()
+            segmenttype = true
+        }
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
