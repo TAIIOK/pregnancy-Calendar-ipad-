@@ -16,10 +16,6 @@
                     <frame key="frameInset" width="1000" height="700"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZm-TD-3CC">
-                    <frame key="frameInset" minX="469" minY="109" width="403" height="429"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
                     <frame key="frameInset" minX="171" minY="176" width="339" height="383"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -31,12 +27,16 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-yc-b0G">
+                    <frame key="frameInset" minX="469" minY="110" width="403" height="429"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="leftImage" destination="s30-2C-tDk" id="SEf-9u-NiO"/>
-                <outlet property="rightImage" destination="aZm-TD-3CC" id="jWb-MB-IGp"/>
+                <outlet property="rightImage" destination="PTc-yc-b0G" id="0GQ-Nw-brC"/>
                 <outlet property="titleLabel" destination="Rek-g4-m3r" id="71n-di-zFD"/>
             </connections>
             <point key="canvasLocation" x="185" y="198"/>
