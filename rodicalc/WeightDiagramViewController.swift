@@ -371,7 +371,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             let actionSheetController: UIAlertController = UIAlertController(title: "Вес на момент зачатия не введен", message: "В качестве начального веса будет использован первый введенный в Заметках вес. Это может привести к тому, что рассчет рекомендуемой нормы веса будет необъективен. Рекоменуется ввести вес на момент зачатия.", preferredStyle: .Alert)
 
             //Create and an option action
-            let nextAction: UIAlertAction = UIAlertAction(title: "ПОНЯТНО", style: .Default) { action -> Void in
+            let nextAction: UIAlertAction = UIAlertAction(title: "ОК", style: .Default) { action -> Void in
                 //Do some other stuff
                 if editingRecWeight{
                     editingRecWeight = false

@@ -12,16 +12,16 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink.png" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0K-hud">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink1.png" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0K-hud">
                     <frame key="frameInset" width="1000" height="700"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZm-TD-3CC">
-                    <frame key="frameInset" minX="458" minY="94" width="442" height="482"/>
+                    <frame key="frameInset" minX="469" minY="109" width="403" height="429"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s30-2C-tDk">
-                    <frame key="frameInset" minX="150" minY="140" width="360" height="419"/>
+                    <frame key="frameInset" minX="171" minY="176" width="339" height="383"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rek-g4-m3r">
@@ -43,6 +43,6 @@
         </view>
     </objects>
     <resources>
-        <image name="pink.png" width="800" height="560"/>
+        <image name="pink1.png" width="2000" height="1400"/>
     </resources>
 </document>

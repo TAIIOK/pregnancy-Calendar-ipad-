@@ -12,7 +12,10 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="700"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text+2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="0xV-hQ-dHH"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text+2photo(blue).png" translatesAutoresizingMaskIntoConstraints="NO" id="0xV-hQ-dHH">
+                    <frame key="frameInset" width="1000" height="700"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5JK-8j-vTD">
                     <frame key="frameInset" minX="98" minY="385" width="240" height="265"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,12 +41,6 @@
                 </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="0xV-hQ-dHH" secondAttribute="bottom" id="GAL-Dd-vn3"/>
-                <constraint firstItem="0xV-hQ-dHH" firstAttribute="top" secondItem="fuR-c5-tZY" secondAttribute="top" id="Il9-WF-gcO"/>
-                <constraint firstItem="0xV-hQ-dHH" firstAttribute="leading" secondItem="fuR-c5-tZY" secondAttribute="leading" id="lnQ-zn-l99"/>
-                <constraint firstAttribute="trailing" secondItem="0xV-hQ-dHH" secondAttribute="trailing" id="mzR-0v-BmK"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="CenterTextView" destination="k2j-Tr-sPa" id="iiI-YF-Scq"/>

@@ -73,6 +73,7 @@
 		8E6D50411C7F068000878957 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50401C7F068000878957 /* CalendarViewController.swift */; };
 		8E6D50431C7F06BE00878957 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50421C7F06BE00878957 /* BuyViewController.swift */; };
 		8E6D50451C7F06D300878957 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D50441C7F06D300878957 /* ExportViewController.swift */; };
+		8E7719C71D4B62D50076685F /* text+2photo(blue).png in Resources */ = {isa = PBXBuildFile; fileRef = A076226E1CF70D20003951EC /* text+2photo(blue).png */; };
 		8E89EB991D2BE9E800CAC64F /* ToAstMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89EB981D2BE9E800CAC64F /* ToAstMessage.swift */; };
 		8E90A4131C7DF093001F3A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E90A4121C7DF093001F3A07 /* AppDelegate.swift */; };
 		8E90A4181C7DF093001F3A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E90A4161C7DF093001F3A07 /* Main.storyboard */; };
@@ -178,7 +179,6 @@
 		A07622631CF5CA5A003951EC /* CreatingExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622611CF5CA5A003951EC /* CreatingExportImage.swift */; };
 		A07622641CF5CA5A003951EC /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07622621CF5CA5A003951EC /* pdfCreator.swift */; };
 		A076226C1CF5E0E4003951EC /* Rotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076226B1CF5E0E4003951EC /* Rotatable.swift */; };
-		A07622711CF70D20003951EC /* text+2photo(blue).png in Resources */ = {isa = PBXBuildFile; fileRef = A076226E1CF70D20003951EC /* text+2photo(blue).png */; };
 		A07622721CF70D20003951EC /* textonly(blue).png in Resources */ = {isa = PBXBuildFile; fileRef = A076226F1CF70D20003951EC /* textonly(blue).png */; };
 		A07622731CF70D20003951EC /* title(blue).png in Resources */ = {isa = PBXBuildFile; fileRef = A07622701CF70D20003951EC /* title(blue).png */; };
 		A07622791CF70D75003951EC /* 2photo(pink).png in Resources */ = {isa = PBXBuildFile; fileRef = A07622751CF70D75003951EC /* 2photo(pink).png */; };
@@ -1210,9 +1210,9 @@
 				A07622831CF71CC7003951EC /* TextWithTwoPhotosPink.xib in Resources */,
 				A07622731CF70D20003951EC /* title(blue).png in Resources */,
 				A01028DC1CD22F13005E339F /* bra.html in Resources */,
-				A07622711CF70D20003951EC /* text+2photo(blue).png in Resources */,
 				8EE947DE1CE5EFAC00064446 /* DrugsViewCell.xib in Resources */,
 				A01028DD1CD22F13005E339F /* i_a6a4e51b6778b3a0_html_9881344f.jpg in Resources */,
+				8E7719C71D4B62D50076685F /* text+2photo(blue).png in Resources */,
 				8E4968D71D4A08E800DF11B9 /* pink.png in Resources */,
 				A06A785B1CFC518D00552496 /* phototemplate.png in Resources */,
 				A076227B1CF70D75003951EC /* textonly(pink).png in Resources */,
