@@ -151,7 +151,7 @@ class tmpSpasm {
             animateStrokeEnd.duration = 60.0
             animateStrokeEnd.fromValue = 0.0
             animateStrokeEnd.toValue = 1.0
-            animateStrokeEnd.repeatCount = 2
+            //animateStrokeEnd.repeatCount = 2
             // add the animation
             progressLine.addAnimation(animateStrokeEnd, forKey: "animate stroke end animation")
         }
@@ -202,7 +202,7 @@ class tmpSpasm {
             self.label.text = String(format: "%.0f", elapsed)
             self.textlabel.text = txt
             
-            if elapsed > 119 {
+            /*if elapsed > 119 {
                 self.label.text = ""
                 progressLine.removeFromSuperlayer()
                 if #available(iOS 8.0, *) {
@@ -222,7 +222,7 @@ class tmpSpasm {
                     // Fallback on earlier versions
                 }
 
-            }
+            }*/
         }
         
         func scrollToBottom() {

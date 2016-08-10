@@ -342,7 +342,11 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                     }
                     
+                    self.view.endEditing(true)
                     tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+                    let headerview = tbl.viewWithTag(i) as? DoctorHeader
+                    headerview?.setopen(true)
+                    headerview?.changeFields()
                     break
                 }
             }

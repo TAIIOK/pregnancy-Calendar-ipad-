@@ -119,7 +119,14 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
                 weights_.append(Weight(date: dateFormatter.dateFromString(b)!, kg: Int(i[kg]), gr: Int(i[gr]),week: week))
             }
         }
-        weights = weights_.sort(self.fronkwards)
+        let tmp = weights_.sort(self.fronkwards)
+        var temp_week = tmp[0].week
+        for var i = 0; i < tmp.count; i += 1{
+            if temp_week != tmp[i].week{
+                weights.append(tmp[i-1])
+            }
+        }
+        weights.append(tmp[tmp.count-1])
     }
     
     func fronkwards(s1: Weight, _ s2: Weight) -> Bool {

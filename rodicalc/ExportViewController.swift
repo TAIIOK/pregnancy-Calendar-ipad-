@@ -280,9 +280,9 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
         for i in AllNotesCount{
             if i.selected == true{
-                if i.type == "Мое самочувствие" {
+                if i.type == "Моё самочувствие" {
                     for j in NotesExportText{
-                        if j.date == date && j.typeS == "Мое самочувствие"{
+                        if j.date == date && j.typeS == "Моё самочувствие"{
                             notemas.append(TextNoteE(typeS: j.typeS, text: j.text, date: date))
                         }
                     }
@@ -335,17 +335,17 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                             notemas.append(TextNoteE(typeS: "Принимаемые лекарства", text: j.name, date: date))
                         }
                     }
-                }else if i.type == "Посещение врачей"{
+                }else if i.type == "Посещения врачей"{
                     for j in NotesExportDoctor{
                         let componentsCurrent = calendar.components([.Day , .Month , .Year], fromDate: j.date)
                         if components.day == componentsCurrent.day && components.month == componentsCurrent.month && components.year == componentsCurrent.year {
-                            notemas.append(TextNoteE(typeS: "Посещение врачей", text: j.name, date: date))
+                            notemas.append(TextNoteE(typeS: "Посещения врачей", text: j.name, date: date))
                         }
                     }
-                }else if i.type == "Мое меню на сегодня"{
+                }else if i.type == "Моё меню на сегодня"{
                     for j in NotesExportFood{
                         if j.date == date{
-                            notemas.append(TextNoteE(typeS: "Мое меню на сегодня", text: j.text, date: date))
+                            notemas.append(TextNoteE(typeS: "Моё меню на сегодня", text: j.text, date: date))
                         }
                     }
                 }
@@ -377,6 +377,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         if tableView == DateTable{
             return 2
         }else if tableView == NotesTable{
+            tableView.bounds.size.height = 44 * CGFloat(AllNotesCount.count)
             return AllNotesCount.count
         }else{
            return 1
@@ -597,11 +598,11 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             AllNotesCount.append(AllNotesForExport(type: "Принимаемые лекарства", text: "", count: NotesExportDrugs.count,selected: false))
         }
         if NotesExportDoctor.count > 0{
-            AllNotesCount.append(AllNotesForExport(type: "Посещение врачей", text: "", count: NotesExportDoctor.count,selected:
+            AllNotesCount.append(AllNotesForExport(type: "Посещения врачей", text: "", count: NotesExportDoctor.count,selected:
                 false))
         }
         if NotesExportFood.count > 0{
-            AllNotesCount.append(AllNotesForExport(type: "Мое меню на сегодня", text: "", count: NotesExportFood.count,selected: false))
+            AllNotesCount.append(AllNotesForExport(type: "Моё меню на сегодня", text: "", count: NotesExportFood.count,selected: false))
         }
     }
     
@@ -616,7 +617,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             var str = ""
             switch i[type] {
             case 0:
-                str = "Мое самочувствие"
+                str = "Моё самочувствие"
             case 1:
                 str = "Как ведет себя малыш"
             case 5:

@@ -46,10 +46,10 @@ class PhotoTemplate:UIView{
     
     func xibSetup(Photo: UIImage, title: String) {
         //w 553 h 509
-        let x = Double(Photo.size.height)/Double(600)
+        let x = Double(Photo.size.height)/Double(450)
         let y = Double(Photo.size.width)/Double(550)
         let scale = x > y ? x : y
-        let a = UIImage(CGImage: Photo.CGImage!, scale: CGFloat(scale), orientation: UIImageOrientation.Down)
+        let a = UIImage(CGImage: Photo.CGImage!, scale: CGFloat(scale), orientation: Photo.imageOrientation)
         let view1 = loadViewFromNib("PhotoTemplate") as! PhotoTemp
         view1.setContent(a,title: title )
         
@@ -119,7 +119,7 @@ class TextWithTwoPhotoBlue: UIView{
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var CenterTextView: UITextView!
     
-    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
+    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :NSMutableAttributedString ){
         
         rotateViews()
         if(UpPhoto != DownPhoto){
@@ -133,8 +133,7 @@ class TextWithTwoPhotoBlue: UIView{
         DownPhotoView.image = PhotoDownView.screenshot
         
         TitleLabel.text = Title
-        CenterTextView.text = CenterText
-
+        CenterTextView.attributedText = CenterText
     }
     
     func rotateViews(){
@@ -149,9 +148,9 @@ class TextOnlyBlue: UIView{
     
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var CenterTextView: UITextView!
-    func setContent(Title : String, CenterText: String){
+    func setContent(Title : String, CenterText: NSMutableAttributedString){
         TitleLabel.text = Title
-        CenterTextView.text = CenterText
+        CenterTextView.attributedText = CenterText
     }
     
 }
@@ -193,7 +192,7 @@ class TextWithTwoPhotoPink: UIView{
     @IBOutlet weak var UpPhotoView: UIImageView!
     @IBOutlet weak var DownPhotoView: UIImageView!
     
-    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String ){
+    func setContent(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :NSMutableAttributedString ){
         
         rotateViews()
         
@@ -209,7 +208,7 @@ class TextWithTwoPhotoPink: UIView{
         
     
         TitleLabel.text = Title
-        CenterTextView.text = CenterText
+        CenterTextView.attributedText = CenterText
         
     }
     
@@ -226,9 +225,9 @@ class TextOnlyPink: UIView{
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var CenterTextView: UITextView!
     
-    func setContent(Title : String, CenterText: String){
+    func setContent(Title : String, CenterText: NSMutableAttributedString){
         TitleLabel.text = Title
-        CenterTextView.text = CenterText
+        CenterTextView.attributedText = CenterText
     }
     
 }
@@ -260,7 +259,7 @@ class photo: UIView{
 
         }
     
-    func xibSecondSetupBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
+    func xibSecondSetupBlue(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :NSMutableAttributedString) {
         let view1 = loadViewFromNib("TextWithTwoPhotosBlue") as! TextWithTwoPhotoBlue
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
@@ -269,7 +268,7 @@ class photo: UIView{
         
     }
     
-    func xibThirdSetupBlue(Title : String, CenterText: String) {
+    func xibThirdSetupBlue(Title : String, CenterText: NSMutableAttributedString) {
         let view1 = loadViewFromNib("TextOnlyBlue") as! TextOnlyBlue
         
         view1.setContent(Title, CenterText: CenterText)
@@ -287,7 +286,7 @@ class photo: UIView{
         
     }
     
-    func xibSecondSetupPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :String) {
+    func xibSecondSetupPink(UpPhoto:UIImage,UpText :String, DownPhoto : UIImage,DownText : String, Title: String,CenterText :NSMutableAttributedString) {
         let view1 = loadViewFromNib("TextWithTwoPhotosPink") as! TextWithTwoPhotoPink
         
         view1.setContent(UpPhoto, UpText: UpText, DownPhoto: DownPhoto, DownText: DownText, Title: Title, CenterText: CenterText)
@@ -296,7 +295,7 @@ class photo: UIView{
         
     }
     
-    func xibThirdSetupPink(Title : String, CenterText: String) {
+    func xibThirdSetupPink(Title : String, CenterText: NSMutableAttributedString) {
         let view1 = loadViewFromNib("TextOnlyPink") as! TextOnlyPink
         
         view1.setContent(Title, CenterText: CenterText)
