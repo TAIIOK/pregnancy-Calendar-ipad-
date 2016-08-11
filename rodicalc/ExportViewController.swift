@@ -388,6 +388,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         return s1.compare(s2) == NSComparisonResult.OrderedAscending
     }
     
+    @IBOutlet weak var NotesTableHeightConstrait: NSLayoutConstraint!
+    
     func  tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if tableView == DateTable{
@@ -457,6 +459,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             cell.detailTextLabel?.text = "\(count) \(txt)"
             cell.backgroundColor = .clearColor()
             cell.selectedBackgroundView?.backgroundColor = .clearColor()
+            NotesTableHeightConstrait.constant = tableView.contentSize.height
             return cell
             
         }else{
@@ -542,8 +545,15 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
 
         PhotoCell.title.text = "\(stringday).\(string).\(components.year)"
         //PhotoCell.ImgSelector.hidden = true
+        if indexPath.row == ExpPhoto.count-1{
+            //collectionView.frame.size.height = collectionView.collectionViewLayout.collectionViewContentSize().height
+            
+        }
+        collectionviewHeightConstrait.constant = collectionView.contentSize.height
         return PhotoCell
     }
+    
+    @IBOutlet weak var collectionviewHeightConstrait: NSLayoutConstraint!
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ExportPhotoCollectionViewCell

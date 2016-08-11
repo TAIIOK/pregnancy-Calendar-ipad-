@@ -136,79 +136,15 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             else if(!AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
                 
                 var photos = AllExportNotes[i].photos
-                var notes = AllExportNotes[i].notes
-                var notifi = AllExportNotes[i].notifi
-                var attrText = NSMutableAttributedString()
-                var attrTextnotifi = NSMutableAttributedString()
+
                 let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
                     if(photos.count >= 2 )
                     {
-                        var mas = [Int]()
-                        attrText.deleteCharactersInRange(NSRange(location: 0,length: attrText.length))
-                        for(var n = 0 ; n < notes.count ; n++)
-                        {
-                            if notes[n].typeS == "Посещения врачей" && !mas.contains(0){
-                                mas.append(0)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Принимаемые лекарства" && !mas.contains(1){
-                                mas.append(1)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Моё меню на сегодня" && !mas.contains(2){
-                                mas.append(2)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS != "Посещения врачей" && notes[n].typeS != "Принимаемые лекарства" && notes[n].typeS != "Моё меню на сегодня"{
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            }else{
-                                attrText.appendAttributedString(NSMutableAttributedString(string: "\t- "))
-                            }
-                            var tmp = NSMutableAttributedString(string: notes[n].text)
-                            attrText.appendAttributedString(tmp)
-                            attrText.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        mas.removeAll()
-                        attrTextnotifi.deleteCharactersInRange(NSRange(location: 0,length: attrTextnotifi.length))
-                        
-                        for(var n = 0 ; n < notifi.count ; n++)
-                        {
-                            var tmp = NSMutableAttributedString(string: notifi[n].typeS)
-                            tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            tmp = NSMutableAttributedString(string: notifi[n].text)
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        
-                        var centertext = NSMutableAttributedString()
-                        attrText.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrText.length))
-                        attrTextnotifi.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrTextnotifi.length))
-                        centertext.appendAttributedString(attrText)
-                        if notifi.count > 0{
-                            let uved = NSMutableAttributedString(string: "Уведомления\n\n", attributes: [NSForegroundColorAttributeName: BiruzaColor1])
-                            uved.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: uved.length))
-                            centertext.appendAttributedString(uved)
-                        }
-                        centertext.appendAttributedString(attrTextnotifi)
                         if(segmenttype){
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: centertext)
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: centertext)
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -224,70 +160,12 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     else if (photos.count < 2  && photos.count != 0)  {
                         
                         let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
-                        var mas = [Int]()
-                        attrText.deleteCharactersInRange(NSRange(location: 0,length: attrText.length))
-                        for(var n = 0 ; n < notes.count ; n++)
-                        {
-                            if notes[n].typeS == "Посещения врачей" && !mas.contains(0){
-                                mas.append(0)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Принимаемые лекарства" && !mas.contains(1){
-                                mas.append(1)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Моё меню на сегодня" && !mas.contains(2){
-                                mas.append(2)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS != "Посещения врачей" && notes[n].typeS != "Принимаемые лекарства" && notes[n].typeS != "Моё меню на сегодня"{
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            }else{
-                                attrText.appendAttributedString(NSMutableAttributedString(string: "\t- "))
-                            }
-                            var tmp = NSMutableAttributedString(string: notes[n].text)
-                            attrText.appendAttributedString(tmp)
-                            attrText.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        mas.removeAll()
-                        attrTextnotifi.deleteCharactersInRange(NSRange(location: 0,length: attrTextnotifi.length))
-                        for(var n = 0 ; n < notifi.count ; n++)
-                        {
-                            var tmp = NSMutableAttributedString(string: notifi[n].typeS)
-                            tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            tmp = NSMutableAttributedString(string: notifi[n].text)
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        var centertext = NSMutableAttributedString()
-                        attrText.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrText.length))
-                        attrTextnotifi.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrTextnotifi.length))
-                        centertext.appendAttributedString(attrText)
-                        if notifi.count > 0{
-                            let uved = NSMutableAttributedString(string: "Уведомления\n\n", attributes: [NSForegroundColorAttributeName: BiruzaColor1])
-                            uved.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: uved.length))
-                            centertext.appendAttributedString(uved)
-                        }
-                        centertext.appendAttributedString(attrTextnotifi)
+                        
                         if(segmenttype){
-                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: centertext)
+                            image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         else{
-                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: centertext)
+                            image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString , CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -303,75 +181,12 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 else if (photos.count == 0)
                     {
                         let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
-                        var notes = AllExportNotes[i].notes
-                        var notifi = AllExportNotes[i].notifi
-                        var attrText = NSMutableAttributedString()
-                        var attrTextnotifi = NSMutableAttributedString()
-                        var mas = [Int]()
-                        attrText.deleteCharactersInRange(NSRange(location: 0,length: attrText.length))
-                        for(var n = 0 ; n < notes.count ; n++)
-                        {
-                            if notes[n].typeS == "Посещения врачей" && !mas.contains(0){
-                                mas.append(0)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Принимаемые лекарства" && !mas.contains(1){
-                                mas.append(1)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS == "Моё меню на сегодня" && !mas.contains(2){
-                                mas.append(2)
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                            }
-                            if notes[n].typeS != "Посещения врачей" && notes[n].typeS != "Принимаемые лекарства" && notes[n].typeS != "Моё меню на сегодня"{
-                                var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                                attrText.appendAttributedString(tmp)
-                                attrText.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            }else{
-                                attrText.appendAttributedString(NSMutableAttributedString(string: "\t- "))
-                            }
-                            var tmp = NSMutableAttributedString(string: notes[n].text)
-                            attrText.appendAttributedString(tmp)
-                            attrText.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        mas.removeAll()
-                        attrTextnotifi.deleteCharactersInRange(NSRange(location: 0,length: attrTextnotifi.length))
-                        for(var n = 0 ; n < notifi.count ; n++)
-                        {
-                            var tmp = NSMutableAttributedString(string: notifi[n].typeS)
-                            tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: ": "))
-                            tmp = NSMutableAttributedString(string: notifi[n].text)
-                            attrTextnotifi.appendAttributedString(tmp)
-                            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                        }
-                        var centertext = NSMutableAttributedString()
-                        attrText.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrText.length))
-                        attrTextnotifi.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrTextnotifi.length))
-                        centertext.appendAttributedString(attrText)
-                        if notifi.count > 0{
-                            let uved = NSMutableAttributedString(string: "Уведомления\n\n", attributes: [NSForegroundColorAttributeName: BiruzaColor1])
-                            uved.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: uved.length))
-                            centertext.appendAttributedString(uved)
-                        }
-                        centertext.appendAttributedString(attrTextnotifi)
-
+                        
                         if(segmenttype){
-                            image.image = CreateTextOnlyBlue(dateString , CenterText: centertext)
+                            image.image = CreateTextOnlyBlue(dateString , CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         else{
-                            image.image = CreateTextOnlyPink(dateString , CenterText: centertext)
+                            image.image = CreateTextOnlyPink(dateString , CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                         }
                         if(CurrentScrollView.subviews.count > 0)
                         {
@@ -389,77 +204,12 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             
             else if(AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
                 let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
-                var notes = AllExportNotes[i].notes
-                var notifi = AllExportNotes[i].notifi
-                var attrText = NSMutableAttributedString()
-                var attrTextnotifi = NSMutableAttributedString()
-
-                var mas = [Int]()
-                attrText.deleteCharactersInRange(NSRange(location: 0,length: attrText.length))
-                for(var n = 0 ; n < notes.count ; n++)
-                {
-                    if notes[n].typeS == "Посещения врачей" && !mas.contains(0){
-                        mas.append(0)
-                        var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                        tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                        attrText.appendAttributedString(tmp)
-                        attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                    }
-                    if notes[n].typeS == "Принимаемые лекарства" && !mas.contains(1){
-                        mas.append(1)
-                        var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                        tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                        attrText.appendAttributedString(tmp)
-                        attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                    }
-                    if notes[n].typeS == "Моё меню на сегодня" && !mas.contains(2){
-                        mas.append(2)
-                        var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                        tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                        attrText.appendAttributedString(tmp)
-                        attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
-                    }
-                    if notes[n].typeS != "Посещения врачей" && notes[n].typeS != "Принимаемые лекарства" && notes[n].typeS != "Моё меню на сегодня"{
-                        var tmp = NSMutableAttributedString(string: notes[n].typeS)
-                        tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                        attrText.appendAttributedString(tmp)
-                        attrText.appendAttributedString(NSMutableAttributedString(string: ": "))
-                    }else{
-                        attrText.appendAttributedString(NSMutableAttributedString(string: "\t- "))
-                    }
-                    var tmp = NSMutableAttributedString(string: notes[n].text)
-                    attrText.appendAttributedString(tmp)
-                    attrText.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                }
-                mas.removeAll()
-                attrTextnotifi.deleteCharactersInRange(NSRange(location: 0,length: attrTextnotifi.length))
-                for(var n = 0 ; n < notifi.count ; n++)
-                {
-                    var tmp = NSMutableAttributedString(string: notifi[n].typeS)
-                    tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
-                    attrTextnotifi.appendAttributedString(tmp)
-                    attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: ": "))
-                    tmp = NSMutableAttributedString(string: notifi[n].text)
-                    attrTextnotifi.appendAttributedString(tmp)
-                    attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
-                }
-                var centertext = NSMutableAttributedString()
-                attrText.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrText.length))
-                attrTextnotifi.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrTextnotifi.length))
-                centertext.appendAttributedString(attrText)
-                if notifi.count > 0{
-                    let uved = NSMutableAttributedString(string: "Уведомления\n\n", attributes: [NSForegroundColorAttributeName: BiruzaColor1])
-                    uved.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: uved.length))
-                    centertext.appendAttributedString(uved)
-                }
-                centertext.appendAttributedString(attrTextnotifi)
-
-
+                
                     if(segmenttype){
-                        image.image = CreateTextOnlyBlue(dateString, CenterText: centertext)
+                        image.image = CreateTextOnlyBlue(dateString, CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                     }
                     else{
-                        image.image = CreateTextOnlyPink(dateString , CenterText: centertext)
+                        image.image = CreateTextOnlyPink(dateString , CenterText: create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi))
                     }
                     if(CurrentScrollView.subviews.count >  0)
                     {
@@ -478,6 +228,88 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         }
     }
 
+    func create_text(notes: [TextNoteE], notifi: [TextNoteE])-> NSMutableAttributedString{
+        var attrText = NSMutableAttributedString()
+        var attrTextnotifi = NSMutableAttributedString()
+        
+        var mas = [Int]()
+        attrText.deleteCharactersInRange(NSRange(location: 0,length: attrText.length))
+        for(var n = 0 ; n < notes.count ; n++)
+        {
+            if notes[n].typeS == "Посещения врачей" && !mas.contains(0){
+                mas.append(0)
+                if n > 0{
+                    attrText.appendAttributedString(NSMutableAttributedString(string: "\n"))
+                }
+                var tmp = NSMutableAttributedString(string: notes[n].typeS)
+                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
+                attrText.appendAttributedString(tmp)
+                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
+            }
+            if notes[n].typeS == "Принимаемые лекарства" && !mas.contains(1){
+                mas.append(1)
+                if n > 0{
+                    attrText.appendAttributedString(NSMutableAttributedString(string: "\n"))
+                }
+                var tmp = NSMutableAttributedString(string: notes[n].typeS)
+                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
+                attrText.appendAttributedString(tmp)
+                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
+            }
+            if notes[n].typeS == "Моё меню на сегодня" && !mas.contains(2){
+                mas.append(2)
+                if n > 0{
+                    attrText.appendAttributedString(NSMutableAttributedString(string: "\n"))
+                }
+                var tmp = NSMutableAttributedString(string: notes[n].typeS)
+                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
+                attrText.appendAttributedString(tmp)
+                attrText.appendAttributedString(NSMutableAttributedString(string: ":\n"))
+            }
+            if notes[n].typeS != "Посещения врачей" && notes[n].typeS != "Принимаемые лекарства" && notes[n].typeS != "Моё меню на сегодня"{
+                if n > 0{
+                    attrText.appendAttributedString(NSMutableAttributedString(string: "\n"))
+                }
+                var tmp = NSMutableAttributedString(string: notes[n].typeS)
+                tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
+                attrText.appendAttributedString(tmp)
+                attrText.appendAttributedString(NSMutableAttributedString(string: ": "))
+            }else{
+                attrText.appendAttributedString(NSMutableAttributedString(string: "\t- "))
+            }
+            var tmp = NSMutableAttributedString(string: notes[n].text)
+            attrText.appendAttributedString(tmp)
+            attrText.appendAttributedString(NSMutableAttributedString(string: "\n"))
+        }
+        mas.removeAll()
+        attrTextnotifi.deleteCharactersInRange(NSRange(location: 0,length: attrTextnotifi.length))
+        for(var n = 0 ; n < notifi.count ; n++)
+        {
+            var tmp = NSMutableAttributedString(string: notifi[n].typeS)
+            tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: tmp.length))
+            attrTextnotifi.appendAttributedString(tmp)
+            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: ": "))
+            tmp = NSMutableAttributedString(string: notifi[n].text)
+            attrTextnotifi.appendAttributedString(tmp)
+            attrTextnotifi.appendAttributedString(NSMutableAttributedString(string: "\n\n"))
+        }
+        var centertext = NSMutableAttributedString()
+        attrText.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrText.length))
+        attrTextnotifi.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: attrTextnotifi.length))
+        centertext.appendAttributedString(attrText)
+        if notifi.count > 0{
+            if centertext.length > 0{
+                centertext.appendAttributedString(NSMutableAttributedString(string: "\n"))
+            }
+            let uved = NSMutableAttributedString(string: "Уведомления\n\n", attributes: [NSForegroundColorAttributeName: BiruzaColor1])
+            uved.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(13)], range: NSRange(location: 0,length: uved.length))
+            centertext.appendAttributedString(uved)
+        }
+        centertext.appendAttributedString(attrTextnotifi)
+        
+        return centertext
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
