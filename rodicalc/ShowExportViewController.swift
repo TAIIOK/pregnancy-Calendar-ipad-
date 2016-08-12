@@ -293,7 +293,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 break
             }
             
-            print(count)
+        
             
             if count > 17{
                 print("append")
@@ -372,7 +372,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             default:
                 break
             }
-            print(count)
+     
             if count > 17{
                 print("append")
                 var centertext = NSMutableAttributedString()
