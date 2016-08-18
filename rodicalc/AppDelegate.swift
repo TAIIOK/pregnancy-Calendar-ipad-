@@ -170,7 +170,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         */
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            
             LoadZadiacJSON()
             }
         )
@@ -201,6 +200,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         dispatch_async(dispatch_get_main_queue(), {
             fillcamera()
+            }
+        )
+        dispatch_async(dispatch_get_main_queue(), {
+            loadPhotos()
             }
         )
         

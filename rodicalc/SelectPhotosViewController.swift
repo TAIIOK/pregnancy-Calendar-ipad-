@@ -79,8 +79,9 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                             self.selected -= 1
                             choosedSegmentImages ? self.deleteImage(i.row) : self.deleteImageUzi(i.row)
                         }
-                        
                     }
+                    cameras.removeAll()
+                    fillcamera()
                     self.title =  "\(self.selected) выбрано"
                     dispatch_async(dispatch_get_main_queue(), {
                         self.PhotoCollectionView.reloadData()
@@ -88,8 +89,6 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                     )
                 }
                 actionSheetController.addAction(nextAction)
-                cameras.removeAll()
-                fillcamera()
                 //Present the AlertController
                 self.presentViewController(actionSheetController, animated: true, completion: nil)
             } else {

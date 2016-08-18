@@ -741,7 +741,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     }
     
     func PhotoFromDate(Date: NSDate){
-        var table = Table("Photo")
+        /*var table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         let text = Expression<String>("Text")
@@ -763,8 +763,18 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
             ExpPhoto.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
+        }*/
+        for i in photos{
+            print(i.date, Date)
+            if i.date == Date{
+                ExpPhoto.append(Photo(image: i.image, date: i.date, text: i.text))
+            }
         }
-
+        for i in uzis{
+            if i.date == Date{
+                ExpPhoto.append(Photo(image: i.image, date: i.date, text: i.text))
+            }
+        }
     }
     
     func addDaystoGivenDate(baseDate: NSDate, NumberOfDaysToAdd: Int) -> NSDate

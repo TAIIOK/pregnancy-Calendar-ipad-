@@ -80,7 +80,7 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         //loadImage()
         //loadImageUzi()
         
-        loadPhotos()
+        //loadPhotos()
         //
     }
 

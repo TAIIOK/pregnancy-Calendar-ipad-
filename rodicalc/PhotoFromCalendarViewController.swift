@@ -25,7 +25,7 @@ class PhotoWithType: NSObject {
 }
 
 var selectedCalendarDayPhoto:DayView!
-var photoFromDate = [PhotoWithType]()
+var photoFromDate = [Photo]()
 var phincalc = false
 
 class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
@@ -124,14 +124,16 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     
     func JustDoIT(chosenImage: UIImage, type: Int){
         
-        var isMyPhoto = true
+        /*var isMyPhoto = true
         if type == 1{
             isMyPhoto = false
-        }
-        photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
+        }*/
+        //photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
+        photoFromDate.append(Photo(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: ""))
         photoCollectionView.reloadData()
-        
         savePhotos(chosenImage,Type: type)
+        cameras.removeAll()
+        fillcamera()
     }
     
     func savePhotos(img: UIImage, Type: Int){
@@ -152,7 +154,7 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     func loadPhoto(Date: NSDate){
         print("load",Date)
         photoFromDate.removeAll()
-        var table = Table("Photo")
+        /*var table = Table("Photo")
         let date = Expression<String>("Date")
         let image = Expression<Blob>("Image")
         let type = Expression<Int64>("Type")
@@ -176,6 +178,16 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
             photoFromDate.append(PhotoWithType(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text], isMyPhoto: false, id: Int(i[id])))
+        }*/
+        for i in photos{
+            if i.date == Date{
+                photoFromDate.append(Photo(image: i.image, date: i.date, text: i.text))
+            }
+        }
+        for i in uzis{
+            if i.date == Date{
+                photoFromDate.append(Photo(image: i.image, date: i.date, text: i.text))
+            }
         }
     }
     
