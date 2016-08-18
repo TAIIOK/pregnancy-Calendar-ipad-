@@ -431,11 +431,6 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     }
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        let day = dayView.date.day
-        let randomDay = Int(arc4random_uniform(31))
-        if day == randomDay {
-            return false
-        }
         
         return false
     }

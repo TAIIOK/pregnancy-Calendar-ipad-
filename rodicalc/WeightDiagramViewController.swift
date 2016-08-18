@@ -124,7 +124,9 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         for var i = 0; i < tmp.count; i += 1{
             if temp_week != tmp[i].week{
                 weights.append(tmp[i-1])
+                print(tmp[i-1])
             }
+            temp_week = tmp[i].week
         }
         weights.append(tmp[tmp.count-1])
     }
