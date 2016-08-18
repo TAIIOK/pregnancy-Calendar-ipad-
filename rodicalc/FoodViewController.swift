@@ -338,8 +338,9 @@ extension FoodViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
     {
-        return false
+        return true
     }
+    
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         //saveNote()

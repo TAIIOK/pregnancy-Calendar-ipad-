@@ -72,7 +72,7 @@ class CalendarForExportViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         if selectionDateType == 0{
-            getDays()
+            //getDays()
         }else{
             //getWeek()
         }
@@ -87,9 +87,7 @@ class CalendarForExportViewController: UIViewController {
         selectedExportDays.removeAll()
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         let temp =  controller.getSelectedDates()
-        var days = [NSDate]()
         for element in temp {
-            days.append(addDaystoGivenDate(element.date.convertedDate()!, NumberOfDaysToAdd: 1))
             if selectionDateType == 0 {
                 selectedExportDays.append(element.date.convertedDate()!)}
         }
@@ -194,6 +192,7 @@ class CalendarForExportViewController: UIViewController {
             if select {
                 if curMonth == CVDate(date: day).month{
                     self.calendarView.selectDate(day)
+                    print(day)
                 }
             }
         }
@@ -224,8 +223,17 @@ class CalendarForExportViewController: UIViewController {
             b.append(i)
         }
         controller.deselectDayViews(b)
-        for i in selectedExportWeek{
-            selectDays(i.days)
+        if selectionDateType == 0{
+            /*for day in selectedExportDays{
+                if curMonth == CVDate(date: day).month{
+                    self.calendarView.selectDate(day)
+                }
+            }*/
+            selectDays(selectedExportDays)
+        }else{
+            for i in selectedExportWeek{
+                selectDays(i.days)
+            }
         }
     }
     
@@ -274,143 +282,33 @@ extension CalendarForExportViewController: CVCalendarViewDelegate, CVCalendarMen
     }
     
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
+        calendarView.coordinator.selection = true
+        selectedExportCalendarDay = dayView
+        curMonth = selectedExportCalendarDay.date.month
         if selectionDateType == 0{
             print("\(dayView.date.commonDescription) is selected!")
-            calendarView.coordinator.selection = true
-            selectedExportCalendarDay = dayView
-            getDays()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-            self.splitViewController?.viewControllers[0] = vc!
-
-        }else{
-            print("\(dayView.date.commonDescription) date in week is selected!")
-            calendarView.coordinator.selection = true
-            selectedExportCalendarDay = dayView
-            curMonth = selectedExportCalendarDay.date.month
-            getWeek()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-            self.splitViewController?.viewControllers[0] = vc!
-            /*let curweek = Int((calculateDay(dayView.date.convertedDate()!))/7)
-            var state = 0
-            for week in days_week{
-                if week.week == curweek{
-                    for day in week.days{
-                        if day.day == dayView.date.convertedDate()!{
-                            if day.State == 0{
-                                day.State = 1
-                                state = 1
-                            }else if day.State == 1{
-                                setstate2(curweek, date: dayView.date.convertedDate()!)
-                                state = 2
-                            }else{
-                                state = day.State
-                            }
-                        }
-                    }
-                }
-            }
-            let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-            let temp =  controller.getSelectedDates()
-            
-            if state == 0{
-                print("\(dayView.date.commonDescription) is selected!")
-                calendarView.coordinator.selection = true
-                selectedExportCalendarDay = dayView
-                getWeek()
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
-                self.splitViewController?.viewControllers[0] = vc!
-            }else if state == 2{
-                
-                setstate3(dayView.date.convertedDate()!, week: curweek)
-            }
-            remove(curweek)*/
-        }
-    }
-    
-    func setstate2(week: Int, date: NSDate){
-        for weeek in days_week{
-            if weeek.week == week{
-                for day in weeek.days{
-                    day.State = 3
-                    //if day.day != date{
-                        //calendarView.toggleViewWithDate(day.day)}
-                }
-            }
-        }
-
-    }
-    func setstate3(date: NSDate, week: Int){
-        for weeek in days_week{
-            if weeek.week == week{
-                for day in weeek.days{
-                    if day.day == date{
-                        day.State = 3
-                    }
-                }
-            }
-        }
-        for weeek in days_week{
-            if weeek.week == week{
-                weeek.days.last?.State = 3
-                //calendarView.toggleViewWithDate((weeek.days.last?.day)!)
-            }
-        }
-    }
-
-    
-    func remove(week: Int){
-        var i = 0
-        var state = true
-        var ind = -1
-        for weeek in days_week{
-            if weeek.week == week{
-                for day in weeek.days{
-                    if day.State != 3{
-                        state = false
+            //getDays()
+            if !selectedExportDays.contains(dayView.date.convertedDate()!){
+                selectedExportDays.append(dayView.date.convertedDate()!)
+            }else{
+                for var i = 0; i < selectedExportDays.count; i += 1{
+                    if selectedExportDays[i] == dayView.date.convertedDate()!{
+                        selectedExportDays.removeAtIndex(i)
                         break
                     }
                 }
-                ind = i
             }
-            i += 1
-        }
-        if state {
-            print("DELETE!!!")
-            if ind != -1{
-                var index = -1
-                i = 0
-                for j in selectedExportWeek{
-                    if j.week == week{
-                        index = i
-                    }
-                    i += 1
-                }
-                if index != -1{
-                    print("remove week")
-                    selectedExportWeek.removeAtIndex(index)
-                }
-                
-                let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-                var mas = controller.getSelectedDates()
-                var days = [DayView]()
-                for i in mas{
-                    for j in days_week{
-                        if j.week == week{
-                            for k in j.days{
-                                if k.day == i.date.convertedDate()!{
-                                    days.append(i)
-                                }
-                            }
-                        }
-                    }
-                }
-                controller.deselectDayViews(days)
-                days_week.removeAtIndex(ind)
-            }
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
+            self.splitViewController?.viewControllers[0] = vc!
+        }else{
+            print("\(dayView.date.commonDescription) date in week is selected!")
+            
+            getWeek()
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
             self.splitViewController?.viewControllers[0] = vc!
         }
     }
+    
 
     
     
@@ -696,8 +594,6 @@ extension CalendarForExportViewController {
         curMonth = components.month
         selectingDateInCurMonth()
         print("Showing Month: \(components.month)")
-        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
-        print(controller.getSelectedDates())
     }
     
 }

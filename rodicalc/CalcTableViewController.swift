@@ -334,7 +334,7 @@ extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
     {
-        return false
+        return true
     }
     
     
@@ -609,7 +609,10 @@ extension CalcViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+        if Manager.componentsForDate(selectedDay.date.convertedDate()!).month == components.month{
+            
+        }
         print("Showing Month: \(components.month)")
     }
     
@@ -619,7 +622,11 @@ extension CalcViewController {
         //        let calendar = NSCalendar.currentCalendar()
         //        let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(date) // from today
-        
+        let controller = calendarView.contentController as! CVCalendarMonthContentViewController
+ 
+        if Manager.componentsForDate(selectedDay.date.convertedDate()!).month == components.month{
+            
+        }
         print("Showing Month: \(components.month)")
     }
     

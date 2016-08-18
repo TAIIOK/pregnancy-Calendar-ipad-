@@ -908,7 +908,7 @@ extension DrugsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
     {
-        return false
+        return true
     }
     
     func shouldAnimateResizing() -> Bool {

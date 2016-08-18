@@ -265,6 +265,11 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
         return true // Default value is true
     }
     
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return true
+    }
+    
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         //saveNote()
@@ -351,11 +356,6 @@ extension TextNoteViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
         }
     }
     
-
-    func shouldAutoSelectDayOnMonthChange() -> Bool
-    {
-        return false
-    }
     
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return true

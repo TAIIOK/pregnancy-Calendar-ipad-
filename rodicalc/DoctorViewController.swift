@@ -752,6 +752,11 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
         return true // Default value is true
     }
     
+    func shouldAutoSelectDayOnMonthChange() -> Bool
+    {
+        return true
+    }
+    
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         //saveNote()
@@ -766,11 +771,6 @@ extension DoctorViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelega
             arrayForBool.addObject("0")
         }
         tbl.reloadData()
-    }
-    
-    func shouldAutoSelectDayOnMonthChange() -> Bool
-    {
-        return false
     }
     
     func swipedetected(){
