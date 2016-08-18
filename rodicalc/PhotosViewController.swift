@@ -58,6 +58,8 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     @IBOutlet weak var changer: UISegmentedControl!
     @IBOutlet var PhotoCollectionView: UICollectionView!
     override func viewDidLoad() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPhoto:", name:"LoadPhoto", object: nil)
+        
         selectedImages.removeAll()
         sharingExportVk  = false
         
@@ -77,11 +79,18 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         self.navigationItem.setLeftBarButtonItems([a,b], animated: true)
         //loadImage()
         //loadImageUzi()
+        
         loadPhotos()
-        
-        
+        //
     }
 
+    func loadPhoto(notification: NSNotification){
+        dispatch_async(dispatch_get_main_queue(), {
+            self.PhotoCollectionView.reloadData()
+            return}
+        )
+    }
+    
     func openCamera(){
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
             picker!.allowsEditing = false
@@ -227,32 +236,36 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
     }
  
     func loadPhotos(){
-        photos.removeAll()
-        uzis.removeAll()
-        var table = Table("Photo")
-        let date = Expression<String>("Date")
-        let image = Expression<Blob>("Image")
-        let type = Expression<Int64>("Type")
-        let text = Expression<String>("Text")
-        
-        for i in try! db.prepare(table.select(date,image,type,text)) {
-            let a = i[image] 
-            let c = NSData(bytes: a.bytes, length: a.bytes.count)
-            let b = i[date]
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            print(dateFormatter.dateFromString(b)!)
-            photos.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
-        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+            photos.removeAll()
+            uzis.removeAll()
+            var table = Table("Photo")
+            let date = Expression<String>("Date")
+            let image = Expression<Blob>("Image")
+            let type = Expression<Int64>("Type")
+            let text = Expression<String>("Text")
+            
+            for i in try! db.prepare(table.select(date,image,type,text)) {
+                let a = i[image] 
+                let c = NSData(bytes: a.bytes, length: a.bytes.count)
+                let b = i[date]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                print(dateFormatter.dateFromString(b)!)
+                photos.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
+                NSNotificationCenter.defaultCenter().postNotificationName("LoadPhoto", object: nil)
+            }
 
-        table = Table("Uzi")
-        for i in try! db.prepare(table.select(date,image,type,text)) {
-            let a = i[image] 
-            let c = NSData(bytes: a.bytes, length: a.bytes.count)
-            let b = i[date]
-            let dateFormatter = NSDateFormatter() 
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-            uzis.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
+            table = Table("Uzi")
+            for i in try! db.prepare(table.select(date,image,type,text)) {
+                let a = i[image] 
+                let c = NSData(bytes: a.bytes, length: a.bytes.count)
+                let b = i[date]
+                let dateFormatter = NSDateFormatter() 
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                uzis.append(Photo(image: UIImage(data: c)!, date: dateFormatter.dateFromString(b)!, text: i[text]))
+                NSNotificationCenter.defaultCenter().postNotificationName("LoadPhoto", object: nil)
+            }
         }
     }
     
