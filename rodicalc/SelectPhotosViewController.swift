@@ -82,10 +82,14 @@ class SelectPhotosViewController: UICollectionViewController, UIImagePickerContr
                         
                     }
                     self.title =  "\(self.selected) выбрано"
-                    self.PhotoCollectionView.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.PhotoCollectionView.reloadData()
+                        return}
+                    )
                 }
                 actionSheetController.addAction(nextAction)
-                
+                cameras.removeAll()
+                fillcamera()
                 //Present the AlertController
                 self.presentViewController(actionSheetController, animated: true, completion: nil)
             } else {

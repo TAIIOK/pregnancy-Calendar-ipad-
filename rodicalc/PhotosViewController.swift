@@ -138,11 +138,16 @@ class PhotosViewController: UICollectionViewController, UIImagePickerControllerD
         components.minute = 00
         components.second = 00
         let newDate = calendar.dateFromComponents(components)
-        choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: newDate!, text: "")) : uzis.append(Photo(image: chosenImage, date: newDate!, text: "")) 
+        choosedSegmentImages ? photos.append(Photo(image: chosenImage, date: newDate!, text: "")) : uzis.append(Photo(image: chosenImage, date: newDate!, text: ""))
         dismissViewControllerAnimated(true, completion: nil)
-        PhotoCollectionView.reloadData()
-        
+        //PhotoCollectionView.reloadData()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.PhotoCollectionView.reloadData()
+            return}
+        )
         savePhotos(chosenImage,Type: type)
+        cameras.removeAll()
+        fillcamera()
     }
     
     @IBAction func SegmentChanger(sender: AnyObject) {

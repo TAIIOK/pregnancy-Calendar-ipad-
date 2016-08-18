@@ -132,6 +132,8 @@ class OnePhotoViewController: UIViewController{
                     //Do some other stuff
                     choosedSegmentImages ? photos.removeAtIndex(currentPhoto) : uzis.removeAtIndex(currentPhoto)
                     choosedSegmentImages ? self.deleteImage(currentPhoto) : self.deleteImageUzi(currentPhoto)
+                    cameras.removeAll()
+                    fillcamera()
                     let ph = self.storyboard?.instantiateViewControllerWithIdentifier("photo")
                     self.splitViewController?.showDetailViewController(ph!, sender: self)
                 }

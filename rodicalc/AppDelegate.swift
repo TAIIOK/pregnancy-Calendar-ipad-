@@ -190,6 +190,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PointsJSON()
             }
         )
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            fillbells()
+            }
+        )
+        dispatch_async(dispatch_get_main_queue(), {
+            fillcalendar()
+            }
+        )
+        dispatch_async(dispatch_get_main_queue(), {
+            fillcamera()
+            }
+        )
+        
 
         /*
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
