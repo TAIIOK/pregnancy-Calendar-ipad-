@@ -57,7 +57,6 @@ class CalendarForExportViewController: UIViewController {
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
-
         // calendarView.changeMode(.WeekView)
     }
     
@@ -79,7 +78,6 @@ class CalendarForExportViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //selectingDateInCurMonth()
     }
     
     func getDays()

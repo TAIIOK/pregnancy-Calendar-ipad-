@@ -110,11 +110,11 @@ class ExperienceViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupNavigation(date : CVDate){
     
     
-        let customView = UIView(frame: CGRectMake(0, 0, 100, 44))
+        let customView = UIView(frame: CGRectMake(0, 0, 150, 44))
         customView.backgroundColor = StrawBerryColor
         
         
-        let label = UILabel(frame: CGRectMake(0, 0,100, 44))
+        let label = UILabel(frame: CGRectMake(0, 0,150, 44))
         
         switch date.month {
         case 1:
