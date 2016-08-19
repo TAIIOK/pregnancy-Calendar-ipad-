@@ -59,6 +59,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var weekDescription: UILabel!
     @IBOutlet weak var weightButton: UIBarButtonItem!
+    @IBOutlet weak var dateBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,19 +73,30 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         setupGrowthPickerView()
         setupGrowthPickerViewToolbar()
         setupGraphSettings()
+        dateBtn.hidden = true
         if (growth > 0){
             //lbl.hidden = true
-            drawGraph()
-            weekDescription.hidden = false
-            //drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
-            //drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
-            arrow.hidden = true
+            if dateType != -1{
+                drawGraph()
+                weekDescription.hidden = false
+                //drawDataDots(StrawBerryColor, X: 80 ,Y: 100)
+                //drawDataDots(UIColor.blueColor(), X: 280 ,Y: 100)
+                arrow.hidden = true
+            }else{
+                dateBtn.hidden = false
+            }
         }
         else{
             weekDescription.hidden = true
             arrow.hidden = false
             //lbl.hidden = false
         }
+    }
+    @IBAction func toDate(sender: UIButton) {
+        let vc1 = self.storyboard?.instantiateViewControllerWithIdentifier("BirthDateChanger")
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MasterView")
+        self.splitViewController?.viewControllers[0] = vc!
+        self.splitViewController?.showDetailViewController(vc1!, sender: self)
     }
 
     func loadRecWeight(){
@@ -154,8 +166,15 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         self.lineChartView.descriptionText = "кг"
         self.lineChartView.descriptionTextPosition = CGPoint(x: 20, y: 15)
         self.lineChartView.descriptionFont = .systemFontOfSize(11)
-        self.lineChartView.noDataText = "Для отображения графика"
-        self.lineChartView.noDataTextDescription = "необходимо указать рост"
+        if dateType == -1 && growth > 0{
+            self.lineChartView.noDataText = "Пожалуйста, введите"
+            self.lineChartView.noDataTextDescription = "дату родов"
+            dateBtn.hidden = false
+            arrow.hidden = true
+        }else{
+            self.lineChartView.noDataText = "Для отображения графика"
+            self.lineChartView.noDataTextDescription = "необходимо указать рост"
+        }
         self.lineChartView.infoFont = .systemFontOfSize(18)
         self.lineChartView.infoTextColor = BiruzaColor1
         self.lineChartView.scaleXEnabled = true

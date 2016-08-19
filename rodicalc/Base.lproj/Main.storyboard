@@ -1776,10 +1776,26 @@
                                             <constraint firstAttribute="height" constant="229" id="npW-X3-jfi"/>
                                         </constraints>
                                     </imageView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUN-jc-4HU">
+                                        <color key="backgroundColor" red="0.15709728000000001" green="0.62560552359999999" blue="0.56066161390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="XbL-uz-D5I"/>
+                                            <constraint firstAttribute="width" constant="430" id="rEe-B6-VM6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="ВВЕСТИ ДАТУ РОДОВ">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toDate:" destination="y8F-fg-Re1" eventType="touchUpInside" id="ReZ-rj-PKt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="bUN-jc-4HU" firstAttribute="centerX" secondItem="Ep9-xs-AeL" secondAttribute="centerX" id="ArK-VU-ecP"/>
                                     <constraint firstAttribute="trailing" secondItem="C6O-Zt-E6a" secondAttribute="trailing" constant="37" id="Ezk-Cm-QKj"/>
+                                    <constraint firstAttribute="bottom" secondItem="bUN-jc-4HU" secondAttribute="bottom" constant="254" id="H9G-nu-fky"/>
                                     <constraint firstItem="C6O-Zt-E6a" firstAttribute="top" secondItem="Ep9-xs-AeL" secondAttribute="top" id="hmx-Ca-ARW"/>
                                 </constraints>
                             </view>
@@ -1829,6 +1845,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="arrow" destination="C6O-Zt-E6a" id="8ij-Kx-4Xb"/>
+                        <outlet property="dateBtn" destination="bUN-jc-4HU" id="j8o-Xc-eFa"/>
                         <outlet property="growthButton" destination="8U7-E2-ZRp" id="wFj-9i-Ps7"/>
                         <outlet property="lbl" destination="zNW-28-ANT" id="yYZ-gd-Hiy"/>
                         <outlet property="lineChartView" destination="Ep9-xs-AeL" id="621-cm-QPj"/>
@@ -2272,7 +2289,7 @@
                     <navigationItem key="navigationItem" id="QPZ-cd-WRK">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oie-Se-AAV">
-                            <rect key="frame" x="187" y="7" width="395" height="30"/>
+                            <rect key="frame" x="8" y="7" width="276" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Мои фото"/>
@@ -4619,12 +4636,12 @@
         <image name="vk_icon" width="445" height="445"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0ZV-Wo-vNj"/>
         <segue reference="L53-bo-E8K"/>
-        <segue reference="T6c-gQ-90V"/>
+        <segue reference="P0H-Yd-JxP"/>
+        <segue reference="kMg-vQ-vuk"/>
+        <segue reference="J8J-RP-rbp"/>
+        <segue reference="FRt-JM-3Od"/>
         <segue reference="gAm-h9-WUK"/>
-        <segue reference="hz0-ZP-idO"/>
-        <segue reference="VCA-Rz-Uxj"/>
-        <segue reference="K7f-B5-ZW2"/>
-        <segue reference="FRD-nV-ZPC"/>
     </inferredMetricsTieBreakers>
 </document>
