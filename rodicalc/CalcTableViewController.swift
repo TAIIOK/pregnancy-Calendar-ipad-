@@ -55,8 +55,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
             date = BirthDate
         }
         
-        
-        self.presentedDateUpdated(CVDate(date: NSDate()))
+        self.presentedDateUpdated(CVDate(date: BirthDate))
         //self.calendarView.toggleViewWithDate(date)
 
         if !Back && DateisLoaded{
@@ -277,9 +276,10 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let dte = date.valueForKey("date") as! NSDate
                     dateType = date.valueForKey("type") as! Int
                     dateTypeTemp = dateType
-                    calendarView.toggleViewWithDate(dte)
                     BirthDate = dte
                     DateisLoaded = true
+                    print("load")
+                    //calendarView.toggleViewWithDate(BirthDate)
                 }
             }
         } catch {
@@ -298,16 +298,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         let  date = CVDate(date: BirthDate)
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
-        
-        var date_ = NSDate()
-        if dateTypeTemp != -1{
-            date_ = BirthDate
-        }
-        self.calendarView.toggleViewWithDate(date_)
+        self.calendarView.toggleViewWithDate(BirthDate)
     }
-    
-    
-    
 }
 
 extension CalcViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {

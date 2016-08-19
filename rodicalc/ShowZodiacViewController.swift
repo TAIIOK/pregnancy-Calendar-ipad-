@@ -163,6 +163,14 @@ class ShowZodiacViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        //info.scrollRangeToVisible(NSRange(location:0, length:0))
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.zodiacAbout.scrollRectToVisible(CGRectMake(0,0,1,1), animated: false)
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
