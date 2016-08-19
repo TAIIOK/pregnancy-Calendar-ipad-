@@ -34,14 +34,13 @@ class AdvertisingViewController: UIViewController {
             label.textColor = StrawBerryColor
             label.font = .systemFontOfSize(16)
         }
-        
-        if selectedExperienceDay != nil {
-            self.calendarView.toggleViewWithDate(selectedExperienceDay.date.convertedDate()!)
-        }else{
-            let date = NSDate()
-            self.calendarView.toggleViewWithDate(date)
+        /*var tmp = NSDate()
+        if opennotifi{
+            tmp = dateFromOpenNotifi
+        }else if selectedExperienceDay != nil {
+            tmp = selectedExperienceDay.date.convertedDate()!
         }
-        self.presentedDateUpdated(CVDate(date: NSDate()))        //WorkWithDB()
+        self.presentedDateUpdated(CVDate(date: tmp)) */       //WorkWithDB()
     }
     
     override func viewDidLayoutSubviews() {

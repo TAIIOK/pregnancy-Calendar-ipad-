@@ -470,6 +470,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newBirthDate = (addDaystoGivenDate(newBirthDate, NumberOfDaysToAdd: Int(tmp[Day])))
                             }
                             dateFromOpenNotifi = newBirthDate
+                            print(dateFromOpenNotifi)
                             MasterViewSelectedRow = 8
                             noteText[0] = notifiCategory[cat]
                             noteText[1] = notification.alertBody!
