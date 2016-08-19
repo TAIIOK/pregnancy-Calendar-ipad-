@@ -120,15 +120,16 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             }
         }
         let tmp = weights_.sort(self.fronkwards)
-        var temp_week = tmp[0].week
-        for var i = 0; i < tmp.count; i += 1{
-            if temp_week != tmp[i].week{
-                weights.append(tmp[i-1])
-                print(tmp[i-1])
+        if tmp.count > 0{
+            var temp_week = tmp[0].week
+            for var i = 0; i < tmp.count; i += 1{
+                if temp_week != tmp[i].week{
+                    weights.append(tmp[i-1])
+                }
+                temp_week = tmp[i].week
             }
-            temp_week = tmp[i].week
+            weights.append(tmp[tmp.count-1])
         }
-        weights.append(tmp[tmp.count-1])
     }
     
     func fronkwards(s1: Weight, _ s2: Weight) -> Bool {
