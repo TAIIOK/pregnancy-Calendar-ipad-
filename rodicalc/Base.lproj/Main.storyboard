@@ -584,7 +584,7 @@
                                     <constraint firstAttribute="height" constant="58" id="SyL-ng-1he"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Введите свой вес на момент зачатия, для того чтобы рассчитать рекомендуемую норму">
+                                    <fragment content="Введите свой вес на момент зачатия для того, чтобы рассчитать рекомендуемую норму">
                                         <attributes>
                                             <color key="NSColor" cyan="0.71999999999999997" magenta="0.040000000000000001" yellow="0.37" black="0.01" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue"/>
@@ -888,6 +888,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Форум" id="Let-Ex-P1p"/>
                     <connections>
+                        <outlet property="background" destination="JCq-IN-p0u" id="npb-BF-A58"/>
                         <outlet property="noConnectionButton" destination="tbr-BD-zM8" id="9Eb-7H-Htp"/>
                         <outlet property="noConnetionImage" destination="f8t-51-6La" id="YRh-XN-veg"/>
                         <outlet property="noConnetionLabel" destination="Hkz-Eu-vMv" id="fXS-IO-HF0"/>
@@ -1107,6 +1108,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Купить белье ФЭСТ" id="rZ2-MO-KPo"/>
                     <connections>
+                        <outlet property="background" destination="IZK-uc-mBl" id="smL-Kg-kth"/>
                         <outlet property="map" destination="Wgj-EF-am9" id="4CY-RY-W5I"/>
                         <outlet property="noConnectionButton" destination="mns-th-pXE" id="4Wx-Vl-Oul"/>
                         <outlet property="noConnectionImage" destination="6be-92-lkr" id="DeQ-lk-ntK"/>
@@ -1498,10 +1500,16 @@
                             <rect key="frame" x="0.0" y="-64" width="768" height="1024"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsO-Fj-SuX">
-                                    <frame key="frameInset" minX="155" minY="322" width="318" height="63"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="no_connection_background" translatesAutoresizingMaskIntoConstraints="NO" id="bkR-45-ndX">
+                                    <frame key="frameInset" width="768" height="1024"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsO-Fj-SuX">
+                                    <frame key="frameInset" minX="225" minY="305" width="318" height="63"/>
                                     <color key="tintColor" red="0.0" green="0.74117647060000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="63" id="ZwE-ai-haO"/>
+                                        <constraint firstAttribute="width" constant="318" id="hKF-A5-qAK"/>
+                                    </constraints>
                                     <attributedString key="attributedText">
                                         <fragment content="Интернет-соединение недоступно Повторите попытку подключения">
                                             <attributes>
@@ -1513,13 +1521,19 @@
                                     </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="px7-XQ-VS7">
-                                    <frame key="frameInset" minX="254" minY="171" width="120" height="120"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="img_sad_smile" translatesAutoresizingMaskIntoConstraints="NO" id="px7-XQ-VS7">
+                                    <frame key="frameInset" minX="324" minY="154" width="120" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="Fta-A4-ZWY"/>
+                                        <constraint firstAttribute="height" constant="120" id="kOC-Bx-wmc"/>
+                                    </constraints>
                                 </imageView>
-                                <button contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-dR-a60" userLabel="Подключиться">
-                                    <frame key="frameInset" minX="244" minY="400" width="141" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-dR-a60" userLabel="Подключиться">
+                                    <frame key="frameInset" minX="314" minY="383" width="141" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="141" id="2GT-Hl-8Ai"/>
+                                        <constraint firstAttribute="height" constant="30" id="Cul-EF-ONV"/>
+                                    </constraints>
                                     <state key="normal" title="Повторить">
                                         <color key="titleColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="titleShadowColor" red="0.80784313730000001" green="0.058823529409999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1533,6 +1547,18 @@
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="YES"/>
                             </accessibility>
+                            <constraints>
+                                <constraint firstItem="bkR-45-ndX" firstAttribute="top" secondItem="se0-0H-chL" secondAttribute="top" id="2ea-1S-32q"/>
+                                <constraint firstAttribute="bottom" secondItem="bkR-45-ndX" secondAttribute="bottom" id="A0w-RW-Cld"/>
+                                <constraint firstItem="VXZ-dR-a60" firstAttribute="top" secondItem="zsO-Fj-SuX" secondAttribute="bottom" constant="15" id="GkZ-qQ-qEk"/>
+                                <constraint firstItem="px7-XQ-VS7" firstAttribute="centerX" secondItem="se0-0H-chL" secondAttribute="centerX" id="LhQ-s3-zWQ"/>
+                                <constraint firstItem="px7-XQ-VS7" firstAttribute="top" secondItem="se0-0H-chL" secondAttribute="top" constant="154" id="UuX-n6-R4y"/>
+                                <constraint firstItem="zsO-Fj-SuX" firstAttribute="centerX" secondItem="se0-0H-chL" secondAttribute="centerX" id="VIc-LL-IxH"/>
+                                <constraint firstAttribute="trailing" secondItem="bkR-45-ndX" secondAttribute="trailing" id="Y4F-yD-hch"/>
+                                <constraint firstItem="bkR-45-ndX" firstAttribute="leading" secondItem="se0-0H-chL" secondAttribute="leading" id="hKK-1t-XEZ"/>
+                                <constraint firstItem="VXZ-dR-a60" firstAttribute="centerX" secondItem="se0-0H-chL" secondAttribute="centerX" id="iHJ-NU-tgK"/>
+                                <constraint firstItem="zsO-Fj-SuX" firstAttribute="top" secondItem="px7-XQ-VS7" secondAttribute="bottom" constant="31" id="saj-IJ-8FY"/>
+                            </constraints>
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="VideoCell" reuseIdentifier="VideoCell" id="6fr-Vv-44k" customClass="VideoCollectionViewCell" customModule="Календарь_беременности" customModuleProvider="target">
@@ -1575,7 +1601,7 @@
                     <navigationItem key="navigationItem" id="P37-Hh-obK">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="aW4-ot-CGC">
-                            <rect key="frame" x="103" y="7" width="395" height="30"/>
+                            <rect key="frame" x="187" y="7" width="395" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title=" Белье для беременных"/>
@@ -1590,6 +1616,7 @@
                     <connections>
                         <outlet property="VideoChanger" destination="aW4-ot-CGC" id="kc9-Mk-gGk"/>
                         <outlet property="VideoCollectionView" destination="7yX-Ee-KgM" id="N72-oU-kdo"/>
+                        <outlet property="background" destination="bkR-45-ndX" id="mqv-qH-FMT"/>
                         <outlet property="noConnectionButton" destination="VXZ-dR-a60" id="iEu-Yr-s2j"/>
                         <outlet property="noConnectionImage" destination="px7-XQ-VS7" id="Pca-gP-sCQ"/>
                         <outlet property="noConnectionLable" destination="zsO-Fj-SuX" id="3Hh-7I-6gw"/>
@@ -1598,7 +1625,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EB-4N-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="4399"/>
+            <point key="canvasLocation" x="1677.34375" y="4398.6328125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KwC-5V-HrG">
@@ -1675,7 +1702,7 @@
                                     <constraint firstItem="XjH-m6-9nF" firstAttribute="top" secondItem="FbJ-lS-deO" secondAttribute="bottom" constant="15" id="WTc-t6-KG7"/>
                                     <constraint firstItem="FbJ-lS-deO" firstAttribute="centerX" secondItem="XjH-m6-9nF" secondAttribute="centerX" id="fZg-wD-UoT"/>
                                     <constraint firstItem="9Wu-No-pGd" firstAttribute="centerX" secondItem="FbJ-lS-deO" secondAttribute="centerX" id="iMw-TH-IMk"/>
-                                    <constraint firstItem="9Wu-No-pGd" firstAttribute="top" secondItem="nER-kQ-Qq6" secondAttribute="top" constant="351" id="r5P-Mt-8d0"/>
+                                    <constraint firstItem="9Wu-No-pGd" firstAttribute="top" secondItem="nER-kQ-Qq6" secondAttribute="top" constant="109" id="r5P-Mt-8d0"/>
                                     <constraint firstItem="9Wu-No-pGd" firstAttribute="centerX" secondItem="nER-kQ-Qq6" secondAttribute="centerX" constant="-0.5" id="uhz-2E-iKR"/>
                                 </constraints>
                             </view>
@@ -1700,6 +1727,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="background" destination="BEK-zp-cZc" id="JQe-QA-2Ns"/>
                         <outlet property="noConnectionButton" destination="XjH-m6-9nF" id="wEl-oo-dJ2"/>
                         <outlet property="noConnectionImage" destination="9Wu-No-pGd" id="hH9-4G-anP"/>
                         <outlet property="noConnectionLabel" destination="FbJ-lS-deO" id="kT5-eq-PAV"/>
@@ -2242,7 +2270,7 @@
         <scene sceneID="Kry-qF-sTh">
             <objects>
                 <collectionViewController id="2aq-1D-rwJ" customClass="PhotosViewController" customModule="Календарь_беременности" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="40H-Bg-gU9">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="40H-Bg-gU9">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4628,6 +4656,7 @@
         <image name="img_sad_smile" width="300" height="300"/>
         <image name="logo" width="345" height="182"/>
         <image name="mail_icon" width="118" height="118"/>
+        <image name="no_connection_background" width="900" height="900"/>
         <image name="ok_icon" width="700" height="700"/>
         <image name="photos_ios_7" width="118" height="118"/>
         <image name="strip" width="900" height="185"/>
@@ -4637,11 +4666,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0ZV-Wo-vNj"/>
-        <segue reference="L53-bo-E8K"/>
-        <segue reference="P0H-Yd-JxP"/>
-        <segue reference="kMg-vQ-vuk"/>
         <segue reference="J8J-RP-rbp"/>
-        <segue reference="FRt-JM-3Od"/>
+        <segue reference="L53-bo-E8K"/>
         <segue reference="gAm-h9-WUK"/>
+        <segue reference="FRt-JM-3Od"/>
+        <segue reference="hz0-ZP-idO"/>
+        <segue reference="K7f-B5-ZW2"/>
     </inferredMetricsTieBreakers>
 </document>

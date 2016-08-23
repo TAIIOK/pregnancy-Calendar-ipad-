@@ -69,18 +69,41 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         choosedName = indexPath
-        info.text = choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n" + man[sections[indexPath.section].index + indexPath.row].value + "\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].value + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about)
-        info.font = .systemFontOfSize(18)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .Center
+        var text = NSMutableAttributedString()
+        var tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n") : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n"), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
+        tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
+        text.appendAttributedString(tmp)
+        tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].value) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].value), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
+        tmp.addAttributes([NSFontAttributeName : UIFont.italicSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
+        text.appendAttributedString(tmp)
+        text.appendAttributedString(NSMutableAttributedString(string: choosedSegmentNames ? ("\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : ("\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about), attributes: [NSFontAttributeName : UIFont.systemFontOfSize(18)]))
+        //text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
+        info.attributedText = text
+            /*choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n" + man[sections[indexPath.section].index + indexPath.row].value + "\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].value + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about)*/
+        //info.font = .systemFontOfSize(18)
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         cell.textLabel?.text = choosedSegmentNames ? man[sections[indexPath.section].index + indexPath.row].name : woman[sectionsGirl[indexPath.section].index + indexPath.row].name
+        //cell.textLabel!.tintColor = BiruzaColor1
         if(indexPath == choosedName){
-            
-            info.text = choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n" + man[sections[indexPath.section].index + indexPath.row].value + "\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].value + "\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about)
-            info.font = UIFont.systemFontOfSize(18)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .Center
+            var text = NSMutableAttributedString()
+            var tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].name + "\n\n") : (woman[sectionsGirl[indexPath.section].index + indexPath.row].name + "\n\n"), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
+            tmp.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
+            text.appendAttributedString(tmp)
+            tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].value) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].value), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
+            tmp.addAttributes([NSFontAttributeName : UIFont.italicSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
+            text.appendAttributedString(tmp)
+            text.appendAttributedString(NSMutableAttributedString(string: choosedSegmentNames ? ("\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : ("\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about), attributes: [NSFontAttributeName : UIFont.systemFontOfSize(18)]))
+            //text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
+            info.attributedText = text
+            //info.font = UIFont.systemFontOfSize(18)
         }
         cell.backgroundColor = .clearColor()
         return cell

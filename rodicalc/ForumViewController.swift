@@ -23,13 +23,17 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var table: UITableView!
 
+    @IBOutlet weak var background: UIImageView!
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         noConnetionView.backgroundColor = .clearColor()
         table.backgroundColor = .clearColor()
-        
+        noConnectionButton.layer.borderWidth = 2
+        noConnectionButton.layer.borderColor = StrawBerryColor.CGColor
+        noConnectionButton.layer.cornerRadius = 5
+        noConnetionLabel.textColor = UIColor.grayColor()
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
@@ -39,17 +43,19 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
             noConnectionButton.hidden = false
             noConnetionView.hidden = false
             noConnectionButton.enabled = true
-            
+            background.image = UIImage(named: "no_connection_background.png")
         case .Online(.WWAN):
             self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
             table.delegate = self
             table.dataSource = self
             table.hidden = false
+            background.image = UIImage(named: "background.png")
         case .Online(.WiFi):
             self.table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ForumCell")
             table.delegate = self
             table.dataSource = self
             table.hidden = false
+            background.image = UIImage(named: "background.png")
         }
     
     }
@@ -67,7 +73,7 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ForumCell", forIndexPath: indexPath)
         cell.textLabel?.text=items[indexPath.row]
-        cell.textLabel?.textColor=UIColor.blueColor()
+        cell.textLabel?.textColor=BiruzaColor1
         cell.selectionStyle=UITableViewCellSelectionStyle.None
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
         cell.backgroundColor = .clearColor()

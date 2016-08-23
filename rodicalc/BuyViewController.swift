@@ -45,6 +45,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var tbl: UITableView!
     
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var noConnectionView: UIView!
     @IBOutlet weak var noConnectionLabel: UILabel!
     @IBOutlet weak var noConnectionImage: UIImageView!
@@ -62,6 +63,10 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.backgroundColor = .clearColor()
+        noConnectionButton.layer.borderWidth = 2
+        noConnectionButton.layer.borderColor = StrawBerryColor.CGColor
+        noConnectionButton.layer.cornerRadius = 5
+        noConnectionLabel.textColor = UIColor.grayColor()
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
@@ -73,7 +78,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             noConnectionButton.hidden=false
             noConnectionButton.enabled=true
             print("Not connected")
+            background.image = UIImage(named: "no_connection_background.png")
         default:
+            background.image = UIImage(named: "background.png")
             tbl.delegate = self
             tbl.dataSource = self
             map.delegate = self

@@ -99,6 +99,7 @@ class VideosViewController: UICollectionViewController {
             noConnectionButton.hidden = false
             noConnectionView.hidden = false
             noConnectionButton.enabled = true
+            //VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "no_connection_background.png"))
         case .Online(.WWAN):
             print("Connected via WWAN")
             VideoCollectionView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
@@ -215,6 +216,7 @@ class VideosViewController: UICollectionViewController {
     override func viewDidDisappear(animated: Bool) {
          choosedVideoSegment = true
     }
+    @IBOutlet weak var background: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,7 +225,11 @@ class VideosViewController: UICollectionViewController {
         
         VideoCollectionView.delegate = self
         VideoCollectionView.dataSource = self
-        
+        noConnectionButton.layer.borderWidth = 2
+        noConnectionButton.layer.borderColor = StrawBerryColor.CGColor
+        noConnectionButton.layer.cornerRadius = 5
+        noConnectionLable.textColor = UIColor.grayColor()
+        noConnectionView.backgroundColor = .clearColor()
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
@@ -240,6 +246,7 @@ class VideosViewController: UICollectionViewController {
             noConnectionButton.hidden = false
             noConnectionView.hidden = false
             noConnectionButton.enabled = true
+            //background.image =  UIImage(named: "no_connection_background.png")
         case .Online(.WWAN):
             print("Connected via WWAN")
             if(imagesfirst.count < 25 || imagessecond.count < 5)
