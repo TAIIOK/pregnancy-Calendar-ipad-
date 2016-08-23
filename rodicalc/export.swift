@@ -21,7 +21,7 @@ class PhotoTemp: UIView {
         CenterImageView.image = Photo
         CenterImageView.backgroundColor = .whiteColor()
         CenterImageView.center = (CenterImageView.superview?.center)!
-        CenterImageView.center.y -= 30
+        CenterImageView.center.y -= 50
         Title.text = title
     }
 
@@ -46,7 +46,7 @@ class PhotoTemplate:UIView{
     
     func xibSetup(Photo: UIImage, title: String) {
         //w 553 h 509
-        let x = Double(Photo.size.height)/Double(465)
+        let x = Double(Photo.size.height)/Double(510)
         let y = Double(Photo.size.width)/Double(550)
         let scale = x > y ? x : y
         let a = UIImage(CGImage: Photo.CGImage!, scale: CGFloat(scale), orientation: Photo.imageOrientation)
@@ -178,8 +178,8 @@ class TwoPhotoPink: UIView{
     }
     
     func rotateViews(){
-        leftImage.rotate(degrees: -16)
-        rightImage.rotate(degrees: 12)
+        leftImage.rotate(degrees: -12)
+        rightImage.rotate(degrees: 10)
     }
     
 }

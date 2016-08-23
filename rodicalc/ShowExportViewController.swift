@@ -37,7 +37,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
         CurrentScrollView.pagingEnabled = true
-        //CurrentScrollView.bounces
+        CurrentScrollView.bounces = false
         //CurrentScrollView.bouncesZoom = true
         //CurrentScrollView.minimumZoomScale = 0.5
         //CurrentScrollView.minimumZoomScale = 3
@@ -94,7 +94,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             CurrentScrollView.addSubview(CreateTitlePink())
             selectedImages.append(CreateTitlePink().image!)}
         
-        y += 10
+        //y += 10
         
         for( var i = 0;i < AllExportNotes.count ; i++)
         {
@@ -151,7 +151,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     y += image.frame.height
                 }
                 CurrentScrollView.addSubview(image)
-                y += 10
+                //y += 10
                 selectedImages.append(image.image!)
 
             }else if(!AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
@@ -187,7 +187,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 10
+                        //y += 10
                     }
                     
                 }else if (photos.count < 2  && photos.count != 0)  {
@@ -218,7 +218,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 10
+                        //y += 10
                     }
                 }else{
                     let text = create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi, type: 0)
@@ -241,7 +241,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 10
+                        //y += 10
                     }
 
                 }
@@ -266,7 +266,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     }
                     CurrentScrollView.addSubview(image)
                     selectedImages.append(image.image!)
-                    y += 10
+                    //y += 10
                 }
             }else {
                 CurrentScrollView.contentSize = CGSizeMake(700 , CurrentScrollView.contentSize.height -  490)
