@@ -34,13 +34,13 @@ class AdvertisingViewController: UIViewController {
             label.textColor = StrawBerryColor
             label.font = .systemFontOfSize(16)
         }
-        /*var tmp = NSDate()
+        var tmp = NSDate()
         if opennotifi{
             tmp = dateFromOpenNotifi
         }else if selectedExperienceDay != nil {
             tmp = selectedExperienceDay.date.convertedDate()!
         }
-        self.presentedDateUpdated(CVDate(date: tmp)) */       //WorkWithDB()
+        self.presentedDateUpdated(CVDate(date: tmp))       //WorkWithDB()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,6 +67,7 @@ class AdvertisingViewController: UIViewController {
         let controller = calendarView.contentController as! CVCalendarMonthContentViewController
         controller.selectDayViewWithDay(date.day, inMonthView: controller.presentedMonthView)
         self.calendarView.toggleViewWithDate(tmp)
+        print(tmp)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -141,7 +142,7 @@ extension AdvertisingViewController: CVCalendarViewDelegate, CVCalendarMenuViewD
     
     func shouldAutoSelectDayOnMonthChange() -> Bool
     {
-        return true
+        return false
     }
     
     func swipedetected(){

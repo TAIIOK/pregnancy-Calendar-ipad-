@@ -14,7 +14,6 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
 
     @IBOutlet weak var Segment: UISegmentedControl!
     @IBOutlet weak var CurrentScrollView: UIScrollView!
-    
     @IBAction func SegmentAction(sender: AnyObject) {
         segmenttype = segmenttype ? false : true
         self.view.makeToastActivityWithMessage(message: "Пожалуйста, подождите.", addOverlay: true)
@@ -37,12 +36,19 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         CurrentScrollView.delegate = self
         CurrentScrollView.userInteractionEnabled = true
         CurrentScrollView.scrollEnabled = true
+        CurrentScrollView.pagingEnabled = true
+        //CurrentScrollView.bounces
+        //CurrentScrollView.bouncesZoom = true
+        //CurrentScrollView.minimumZoomScale = 0.5
+        //CurrentScrollView.minimumZoomScale = 3
+
         //loadExportImages()
         sharingExportVk = true
         self.view.makeToastActivityWithMessage(message: "Пожалуйста, подождите.", addOverlay: true)
         dispatch_async(dispatch_get_main_queue(), {
             self.loadExportImages()
             self.view.hideToastActivity()
+            //self.setZoomScale()
             return
         })
         // Do any additional setup after loading the view.
@@ -53,12 +59,30 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
         PDF = NSData()
     }
     
+    /*func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        print("viewforzooming")
+        let views = UIView(frame: CurrentScrollView.bounds)
+        for i in CurrentScrollView.subviews{
+            views.addSubview(i)
+        }
+        return nil
+    }*/
+    
+    func setZoomScale() {
+        let imageViewSize = CurrentScrollView.contentSize
+        let scrollViewSize = CurrentScrollView.bounds.size
+        let widthScale = scrollViewSize.width / imageViewSize.width
+        let heightScale = scrollViewSize.height / imageViewSize.height
+        
+        CurrentScrollView.minimumZoomScale = min(heightScale,widthScale)
+        CurrentScrollView.zoomScale = 5
+    }
+    
     func loadExportImages()
     {
         selectedImages.removeAll()
         CurrentScrollView.removeAllSubviews()
-        
-        let height =  CGFloat(integerLiteral:  620 * AllExportNotes.count + 620 )
+        let height =  CGFloat(integerLiteral:  490 * AllExportNotes.count + 490 )
          CurrentScrollView.contentSize = CGSizeMake(700 , height)
         
         var y = CGFloat(integerLiteral: 0)
@@ -70,7 +94,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             CurrentScrollView.addSubview(CreateTitlePink())
             selectedImages.append(CreateTitlePink().image!)}
         
-        y += 20
+        y += 10
         
         for( var i = 0;i < AllExportNotes.count ; i++)
         {
@@ -105,7 +129,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
             {
                 print("1")
                 var photos = AllExportNotes[i].photos
-                let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 490))
                 if(photos.count >= 2 ){
                     if(segmenttype){
                         image.image = CreateTwoPhotosBlue(photos[0].image, right: photos[1].image, title: dateString , leftText: photos[0].text, rightText: photos[1].text)
@@ -127,7 +151,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     y += image.frame.height
                 }
                 CurrentScrollView.addSubview(image)
-                y += 20
+                y += 10
                 selectedImages.append(image.image!)
 
             }else if(!AllExportNotes[i].photos.isEmpty && !AllExportNotes[i].notes.isEmpty || !AllExportNotes[i].notifi.isEmpty){
@@ -138,7 +162,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 {
                     let text = create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi, type: 3)
                     for var i = 0; i < text.count; i += 1{
-                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 490))
                         if i == 0{
                             if(segmenttype){
                                 image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: text[i])
@@ -147,7 +171,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                                 image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[1].image, DownText: photos[1].text, Title: dateString, CenterText: text[i])
                                 }
                         }else{
-                            CurrentScrollView.contentSize.height += 620
+                            CurrentScrollView.contentSize.height += 490
                             if(segmenttype){
                                 image.image = CreateTextOnlyBlue(dateString , CenterText: text[i])
                             }
@@ -163,13 +187,13 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 20
+                        y += 10
                     }
                     
                 }else if (photos.count < 2  && photos.count != 0)  {
                     let text = create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi, type: 3)
                     for var i = 0; i < text.count; i += 1{
-                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 490))
                         if i == 0{
                             if(segmenttype){
                                 image.image = CreateTextWithTwoPhotosBlue(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString, CenterText: text[i])
@@ -178,7 +202,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                                 image.image = CreateTextWithTwoPhotosPink(photos[0].image, UpText: photos[0].text, DownPhoto: photos[0].image, DownText: photos[0].text, Title: dateString, CenterText: text[i])
                             }
                         }else{
-                            CurrentScrollView.contentSize.height += 620
+                            CurrentScrollView.contentSize.height += 490
                             if(segmenttype){
                                 image.image = CreateTextOnlyBlue(dateString , CenterText: text[i])
                             }
@@ -194,12 +218,12 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 20
+                        y += 10
                     }
                 }else{
                     let text = create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi, type: 0)
                     for var i = 0; i < text.count; i += 1{
-                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                        let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 490))
                         if(segmenttype){
                             image.image = CreateTextOnlyBlue(dateString , CenterText: text[i])
                         }
@@ -207,7 +231,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                             image.image = CreateTextOnlyPink(dateString , CenterText: text[i])
                         }
                         if i > 0{
-                            CurrentScrollView.contentSize.height += 620
+                            CurrentScrollView.contentSize.height += 490
                         }
                         
                         if(CurrentScrollView.subviews.count > 0)
@@ -217,7 +241,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         }
                         CurrentScrollView.addSubview(image)
                         selectedImages.append(image.image!)
-                        y += 20
+                        y += 10
                     }
 
                 }
@@ -225,7 +249,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                 print("3")
                 let text = create_text(AllExportNotes[i].notes, notifi: AllExportNotes[i].notifi, type: 0)
                 for var i = 0; i < text.count; i += 1{
-                    let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 600))
+                    let image = UIImageView(frame: CGRect(x: 0, y: 0 , width: 700, height: 490))
                     if(segmenttype){
                         image.image = CreateTextOnlyBlue(dateString , CenterText: text[i])
                     }
@@ -233,7 +257,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                         image.image = CreateTextOnlyPink(dateString , CenterText: text[i])
                     }
                     if i > 0{
-                        CurrentScrollView.contentSize.height += 620
+                        CurrentScrollView.contentSize.height += 490
                     }
                     if(CurrentScrollView.subviews.count > 0)
                     {
@@ -242,10 +266,10 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
                     }
                     CurrentScrollView.addSubview(image)
                     selectedImages.append(image.image!)
-                    y += 20
+                    y += 10
                 }
             }else {
-                CurrentScrollView.contentSize = CGSizeMake(700 , CurrentScrollView.contentSize.height -  620)
+                CurrentScrollView.contentSize = CGSizeMake(700 , CurrentScrollView.contentSize.height -  490)
             }
             PDF = toPDF(CurrentScrollView.subviews)!
         }

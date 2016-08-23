@@ -24,6 +24,14 @@
 		<data>
 		nIGd95PYA0sS9VSD8/0dgPcHx7k=
 		</data>
+		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		6p85PSkrlwtzoyVnrj3Ilbw04as=
+		</data>
+		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		iCE1ILBCv7tAeDNPj3Ki+Ag598I=
+		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		PMVlbvf9xdDZgmU33JTsjDi/Dp0=
@@ -32,7 +40,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aUwtM2smIwFIXBgIVwreqlLy3pM=
+			Uc0qMtBhSJcVDdBBNFFgNdF6hfY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -41,7 +49,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KNDGUe7pCDZtcWABu9VfF1KXUc4=
+			ySChXV7GeQkRbdLUb7Yh0xsW0II=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -169,6 +177,28 @@
 			2VJgcN2+BurSEchhq13j88nRH0yKRQHNfatTD+GX7q4=
 			</data>
 		</dict>
+		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6p85PSkrlwtzoyVnrj3Ilbw04as=
+			</data>
+			<key>hash2</key>
+			<data>
+			pShf4dyTyNXNKQGXj8NlXjBsZpRd3SFBC8owCOjHglI=
+			</data>
+		</dict>
+		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			iCE1ILBCv7tAeDNPj3Ki+Ag598I=
+			</data>
+			<key>hash2</key>
+			<data>
+			QPWl+VV8mOZzAdGh/BNLQnAn5DJU/WDszINHpk7BIpg=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
@@ -184,11 +214,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aUwtM2smIwFIXBgIVwreqlLy3pM=
+			Uc0qMtBhSJcVDdBBNFFgNdF6hfY=
 			</data>
 			<key>hash2</key>
 			<data>
-			hX5LrZE4dFHjsbr44erqDDFqhPQRw1TUCoTYlrO26wM=
+			V7hXGcCaB5wdgz3uvG32H0TIabY8rD9zOAD1F2U+04Q=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -197,11 +227,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KNDGUe7pCDZtcWABu9VfF1KXUc4=
+			ySChXV7GeQkRbdLUb7Yh0xsW0II=
 			</data>
 			<key>hash2</key>
 			<data>
-			mWgGalZyo60hG4SMrXCuD1cBZhYDHaAckIuspAzVDsU=
+			VTtY5QkqHb1U8N5V7qqNVRrBHwWK/WB0T4j7fLxR4xg=
 			</data>
 			<key>optional</key>
 			<true/>

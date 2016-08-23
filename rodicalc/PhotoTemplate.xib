@@ -12,8 +12,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="670"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phototemplate.png" translatesAutoresizingMaskIntoConstraints="NO" id="bC6-cv-Mpk">
-                    <frame key="frameInset" width="600" height="670"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photoplace.png" translatesAutoresizingMaskIntoConstraints="NO" id="bC6-cv-Mpk">
+                    <frame key="frameInset" minX="-22" minY="-22" width="644" height="714"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JWY-V5-D5i">
@@ -22,7 +22,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0z.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9Xo-7f-e6z">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xo-7f-e6z">
                     <frame key="frameInset" minX="20" minY="17" width="560" height="509"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -44,7 +44,6 @@
         </view>
     </objects>
     <resources>
-        <image name="0z.jpg" width="400" height="400"/>
-        <image name="phototemplate.png" width="600" height="670"/>
+        <image name="photoplace.png" width="650" height="720"/>
     </resources>
 </document>
