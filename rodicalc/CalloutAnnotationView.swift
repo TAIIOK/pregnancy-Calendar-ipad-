@@ -58,9 +58,10 @@ class CalloutAnnotationView : MKAnnotationView {
 
             var myMutableString = NSMutableAttributedString()
             myMutableString = NSMutableAttributedString(string: string!, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 10.0)!])
-            let pos = string?.startIndex.distanceTo((string?.characters.indexOf(":"))!)
-
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location: pos! ,length: (string?.characters.count)!-pos!))
+            var pos = (string?.startIndex.distanceTo((string?.characters.indexOf(":"))!))!
+            myMutableString.addAttributes([NSFontAttributeName : UIFont.boldSystemFontOfSize(10)], range: NSRange(location: 0,length: pos - 5))
+            //pos = string?.startIndex.distanceTo((string?.characters.indexOf(":"))!)
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: BiruzaColor1, range: NSRange(location: pos ,length: (string?.characters.count)! - pos))
 
             label.attributedText = myMutableString
             size = string!.sizeWithAttributes(attributes)
@@ -69,7 +70,7 @@ class CalloutAnnotationView : MKAnnotationView {
         if size.width < 30 {
             size.width = 30
         }
-        size.height = 30
+        size.height = 40
         bubbleView.setContentViewSize(size)
         frame = bubbleView.bounds
         centerOffset = CGPoint(x: 0, y: -50)
@@ -87,7 +88,7 @@ class CalloutAnnotationView : MKAnnotationView {
         label.textAlignment = .Left
         label.font = font
         label.textColor = UIColor.blackColor()
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         bubbleView.contentView.addSubview(label)
         
         updateCallout()
