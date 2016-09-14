@@ -26,6 +26,7 @@
 		8E2538F31C84779F00B3C54E /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2538F21C84779F00B3C54E /* userInfo.plist */; };
 		8E2538FA1C848E5100B3C54E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2538F91C848E5100B3C54E /* LineChart.swift */; };
 		8E27BF3F1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27BF3E1D2149DB00B0564C /* ExportPhotoCollectionViewCell.swift */; };
+		8E48AD031D89856B00ED75A4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8E4968D51D4A084300DF11B9 /* pink1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D41D4A084300DF11B9 /* pink1.png */; };
 		8E4968D71D4A08E800DF11B9 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D61D4A08E800DF11B9 /* pink.png */; };
 		8E4968D91D4A0D0300DF11B9 /* bra.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E4968D81D4A0D0300DF11B9 /* bra.jpg */; };
@@ -506,6 +507,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E48AD031D89856B00ED75A4 /* libsqlite3.dylib in Frameworks */,
 				A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 				A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */,

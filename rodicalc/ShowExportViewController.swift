@@ -81,7 +81,7 @@ class ShowExportViewController: UIViewController , UIScrollViewDelegate  {
     func loadExportImages()
     {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let scale = CGFloat(screenSize.width)/CGFloat(700)
+        let scale = CGFloat(1)//CGFloat(screenSize.width)/CGFloat(700)
         selectedImages.removeAll()
         CurrentScrollView.removeAllSubviews()
         let height =  CGFloat(integerLiteral:  490 * AllExportNotes.count + 490 )

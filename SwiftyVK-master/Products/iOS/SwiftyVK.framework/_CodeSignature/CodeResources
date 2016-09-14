@@ -24,14 +24,6 @@
 		<data>
 		nIGd95PYA0sS9VSD8/0dgPcHx7k=
 		</data>
-		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		6p85PSkrlwtzoyVnrj3Ilbw04as=
-		</data>
-		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		iCE1ILBCv7tAeDNPj3Ki+Ag598I=
-		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		PMVlbvf9xdDZgmU33JTsjDi/Dp0=
@@ -175,28 +167,6 @@
 			<key>hash2</key>
 			<data>
 			2VJgcN2+BurSEchhq13j88nRH0yKRQHNfatTD+GX7q4=
-			</data>
-		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			6p85PSkrlwtzoyVnrj3Ilbw04as=
-			</data>
-			<key>hash2</key>
-			<data>
-			pShf4dyTyNXNKQGXj8NlXjBsZpRd3SFBC8owCOjHglI=
-			</data>
-		</dict>
-		<key>Modules/SwiftyVK.swiftmodule/arm64.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			iCE1ILBCv7tAeDNPj3Ki+Ag598I=
-			</data>
-			<key>hash2</key>
-			<data>
-			QPWl+VV8mOZzAdGh/BNLQnAn5DJU/WDszINHpk7BIpg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
