@@ -99,7 +99,6 @@
 		8EE947E21CE5F41C00064446 /* DrugsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947E11CE5F41C00064446 /* DrugsTableViewCell.swift */; };
 		8EE947E61CE6036E00064446 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947E51CE6036E00064446 /* DatePickerViewController.swift */; };
 		8EE947E81CE9DE4200064446 /* AdvertisingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE947E71CE9DE4200064446 /* AdvertisingViewController.swift */; };
-		8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEAC3171CCE53F7007B4643 /* libsqlite3.dylib */; };
 		8EEAC3331CCE542F007B4643 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31B1CCE542F007B4643 /* Blob.swift */; };
 		8EEAC3341CCE542F007B4643 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31C1CCE542F007B4643 /* Connection.swift */; };
 		8EEAC3351CCE542F007B4643 /* SQLite-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAC31F1CCE542F007B4643 /* SQLite-Bridging.m */; };
@@ -507,7 +506,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EEAC3181CCE53F7007B4643 /* libsqlite3.dylib in Frameworks */,
 				A01D66FF1CD0F960004960CD /* Fabric.framework in Frameworks */,
 				8E4FACC01C89CADF003405D0 /* MapKit.framework in Frameworks */,
 				A01D67031CD0FF97004960CD /* Charts.framework in Frameworks */,
