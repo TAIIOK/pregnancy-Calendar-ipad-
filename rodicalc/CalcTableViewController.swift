@@ -189,7 +189,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func getCustomBackgroundView() -> UIView{
         let BackgroundView = UIView()
-        BackgroundView.backgroundColor = UIColor.whiteColor()
+        BackgroundView.backgroundColor = UIColor.clearColor()
         return BackgroundView
     }
     
