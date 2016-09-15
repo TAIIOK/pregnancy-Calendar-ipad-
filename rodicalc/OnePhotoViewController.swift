@@ -42,17 +42,16 @@ class OnePhotoViewController: UIViewController{
         }else{
             Photo_temp = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
         }
-        let x = Double(Photo_temp.size.height)/Double(500)
-        let y = Double(Photo_temp.size.width)/Double(400)
+        let x = Double(Photo_temp.size.height)/Double(600)
+        let y = Double(Photo_temp.size.width)/Double(700)
         let scale = x > y ? x : y
         let Photo = UIImage(CGImage: Photo_temp.CGImage!, scale: CGFloat(scale), orientation: Photo_temp.imageOrientation)
         image.frame.size.width = Photo.size.width
         image.frame.size.height = Photo.size.height
         imageheight.constant = Photo.size.height
         imagewidth.constant = Photo.size.width
-        image.image = Photo
         self.updateViewConstraints()
-        
+        image.image = Photo
         image.backgroundColor = .clearColor()
         image.center = (image.superview?.center)!
         if fromPhotoCal{
