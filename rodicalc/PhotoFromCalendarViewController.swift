@@ -25,9 +25,9 @@ class PhotoWithType: NSObject {
 }
 
 var selectedCalendarDayPhoto:DayView!
-var photoFromDate = [Photo]()
+var photoFromDate = [PhotoWithType]()
 var phincalc = false
-
+var fromPhotoCal = false
 class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
     
     var picker:LandscapePickerController?=LandscapePickerController()
@@ -124,12 +124,11 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     
     func JustDoIT(chosenImage: UIImage, type: Int){
         
-        /*var isMyPhoto = true
+        var isMyPhoto = true
         if type == 1{
             isMyPhoto = false
-        }*/
-        //photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
-        photoFromDate.append(Photo(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: ""))
+        }
+        photoFromDate.append(PhotoWithType(image: chosenImage, date: selectedCalendarDayPhoto.date.convertedDate()!, text: "", isMyPhoto: isMyPhoto, id: 0))
         photoCollectionView.reloadData()
         savePhotos(chosenImage,Type: type)
         if(type == 0){
@@ -186,12 +185,12 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
         }*/
         for i in photos{
             if i.date == Date{
-                photoFromDate.append(Photo(image: i.image, date: i.date, text: i.text))
+                photoFromDate.append(PhotoWithType(image: i.image, date: i.date, text: i.text, isMyPhoto: true, id: 0))
             }
         }
         for i in uzis{
             if i.date == Date{
-                photoFromDate.append(Photo(image: i.image, date: i.date, text: i.text))
+                photoFromDate.append(PhotoWithType(image: i.image, date: i.date, text: i.text, isMyPhoto: false, id: 0))
             }
         }
     }
@@ -213,6 +212,8 @@ class PhotoFromCalendarViewController: UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         currentPhoto = indexPath.row
+        let ph = self.storyboard?.instantiateViewControllerWithIdentifier("onePhoto")
+        self.splitViewController?.showDetailViewController(ph!, sender: self)
     }
 
     override func viewWillAppear(animated: Bool) {

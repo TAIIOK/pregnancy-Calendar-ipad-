@@ -28,6 +28,7 @@ class OnePhotoViewController: UIViewController{
     @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var image: UIImageView!
     
+    
     @IBOutlet weak var imageheight: NSLayoutConstraint!
     @IBOutlet weak var imagewidth: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -35,25 +36,42 @@ class OnePhotoViewController: UIViewController{
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        let Photo_temp = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
-        let x = Double(Photo_temp.size.height)/Double(600)
-        let y = Double(Photo_temp.size.width)/Double(700)
+        var Photo_temp = UIImage()
+        if fromPhotoCal{
+            Photo_temp = photoFromDate[currentPhoto].image
+        }else{
+            Photo_temp = choosedSegmentImages ? photos[currentPhoto].image : uzis[currentPhoto].image
+        }
+        let x = Double(Photo_temp.size.height)/Double(500)
+        let y = Double(Photo_temp.size.width)/Double(400)
         let scale = x > y ? x : y
         let Photo = UIImage(CGImage: Photo_temp.CGImage!, scale: CGFloat(scale), orientation: Photo_temp.imageOrientation)
         image.frame.size.width = Photo.size.width
         image.frame.size.height = Photo.size.height
         imageheight.constant = Photo.size.height
         imagewidth.constant = Photo.size.width
-        self.updateViewConstraints()
         image.image = Photo
+        self.updateViewConstraints()
         
-        image.backgroundColor = .whiteColor()
+        image.backgroundColor = .clearColor()
         image.center = (image.superview?.center)!
-        
-        commentField.text = choosedSegmentImages ? photos[currentPhoto].text : uzis[currentPhoto].text
+        if fromPhotoCal{
+            commentField.text = photoFromDate[currentPhoto].text
+        }else{
+            commentField.text = choosedSegmentImages ? photos[currentPhoto].text : uzis[currentPhoto].text
+        }
+
         
         selectedImages.append(Photo_temp)
     }
+    @IBAction func goback(sender: UIBarButtonItem) {
+        if fromPhotoCal{
+            let ph = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoFromCalendarNavigation")
+            self.splitViewController?.showDetailViewController(ph!, sender: self)
+        }else{
+            let ph = self.storyboard?.instantiateViewControllerWithIdentifier("photo")
+            self.splitViewController?.showDetailViewController(ph!, sender: self)
+        }    }
     
     @IBAction func ShowToast(segue:UIStoryboardSegue) {
         print("ShowToast")
@@ -62,19 +80,87 @@ class OnePhotoViewController: UIViewController{
     
     @IBAction func SaveButton(sender: AnyObject) {
       
-        if(choosedSegmentImages)
-        {
-            photos[currentPhoto].text = commentField.text!
+        if fromPhotoCal{
+            var index = -1
+            let count = photoFromDate[currentPhoto].isMyPhoto ? photos.count : uzis.count
+            for(var i = 0; i < count; i += 1)
+            {
+                if(photoFromDate[currentPhoto].isMyPhoto)
+                {
+                    if photos[i].date == photoFromDate[currentPhoto].date && photos[i].image.CIImage == photoFromDate[currentPhoto].image.CIImage{
+                        index = i;
+                        break;
+                    }
+                }
+                else{
+                    if uzis[i].date == photoFromDate[currentPhoto].date && uzis[i].image.CIImage == photoFromDate[currentPhoto].image.CIImage{
+                        index = i;
+                        break;
+                    }
+                }
+                
+            }
+            if(photoFromDate[currentPhoto].isMyPhoto)
+            {
+                photos[index].text = commentField.text!
+            }
+            else{
+                uzis[index].text = commentField.text!
+            }
+            UpdatePhotosInDB_()
+        }else{
+            if(choosedSegmentImages)
+            {
+                photos[currentPhoto].text = commentField.text!
+            }
+            else{
+                uzis[currentPhoto].text = commentField.text!
+            }
+            UpdatePhotosInDB()
         }
-        else{
-            uzis[currentPhoto].text = commentField.text!
-        }
-        UpdatePhotosInDB()
+
         
         self.view.makeToast(message: "Cохранено!", duration: 2.0, position:HRToastPositionDefault)
         
     }
     
+    func UpdatePhotosInDB_(){
+        if(photoFromDate[currentPhoto].isMyPhoto)
+        {
+            let table = Table("Photo")
+            let date = Expression<String>("Date")
+            let image = Expression<Blob>("Image")
+            let text = Expression<String>("Text")
+            
+            let count = try! db.scalar(table.count)
+            
+            if count > 0{
+                try! db.run(table.delete())
+            }
+            for var i in photos{
+                let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+                try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
+            }
+        }
+        else{
+            let table = Table("Uzi")
+            let date = Expression<String>("Date")
+            let image = Expression<Blob>("Image")
+            let text = Expression<String>("Text")
+            let count = try! db.scalar(table.count)
+            
+            if count > 0{
+                try! db.run(table.delete())
+            }
+            
+            for var i in uzis{
+                let imageData = NSData(data: UIImageJPEGRepresentation(i.image, 1.0)!)
+                let dateFormatter = NSDateFormatter()
+                try! db.run(table.insert(date <- "\(i.date)", image <- Blob(bytes: imageData.datatypeValue.bytes), text <- i.text))
+            }
+        }
+        
+    }
     func UpdatePhotosInDB() {
         if(choosedSegmentImages)
         {
@@ -114,6 +200,7 @@ class OnePhotoViewController: UIViewController{
     
     override func viewDidDisappear(animated: Bool) {
         selectedImages.removeAll()
+        fromPhotoCal = false
     }
 
     @IBAction func Delete(sender: UIBarButtonItem) {
@@ -130,12 +217,44 @@ class OnePhotoViewController: UIViewController{
                 //Create and an option action
                 let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .Default) { action -> Void in
                     //Do some other stuff
-                    choosedSegmentImages ? photos.removeAtIndex(currentPhoto) : uzis.removeAtIndex(currentPhoto)
-                    choosedSegmentImages ? self.deleteImage(currentPhoto) : self.deleteImageUzi(currentPhoto)
+                    if fromPhotoCal{
+                        var index = -1
+                        let count = photoFromDate[currentPhoto].isMyPhoto ? photos.count : uzis.count
+                        for(var i = 0; i < count; i += 1)
+                        {
+                            if(photoFromDate[currentPhoto].isMyPhoto)
+                            {
+                                if photos[i].date == photoFromDate[currentPhoto].date && photos[i].image.CIImage == photoFromDate[currentPhoto].image.CIImage{
+                                    index = i;
+                                    break;
+                                }
+                            }
+                            else{
+                                if uzis[i].date == photoFromDate[currentPhoto].date && uzis[i].image.CIImage == photoFromDate[currentPhoto].image.CIImage{
+                                    index = i;
+                                    break;
+                                }
+                            }
+                            
+                        }
+                        photoFromDate[currentPhoto].isMyPhoto ? photos.removeAtIndex(index) : uzis.removeAtIndex(index)
+                        photoFromDate[currentPhoto].isMyPhoto ? self.deleteImage(index) : self.deleteImageUzi(index)
+                    }else{
+                        choosedSegmentImages ? photos.removeAtIndex(currentPhoto) : uzis.removeAtIndex(currentPhoto)
+                        choosedSegmentImages ? self.deleteImage(currentPhoto) : self.deleteImageUzi(currentPhoto)
+                        
+                    }
+
                     cameras.removeAll()
                     fillcamera()
-                    let ph = self.storyboard?.instantiateViewControllerWithIdentifier("photo")
-                    self.splitViewController?.showDetailViewController(ph!, sender: self)
+                    if fromPhotoCal{
+                        let ph = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoFromCalendarNavigation")
+                        self.splitViewController?.showDetailViewController(ph!, sender: self)
+                    }else{
+                        let ph = self.storyboard?.instantiateViewControllerWithIdentifier("photo")
+                        self.splitViewController?.showDetailViewController(ph!, sender: self)
+                    }
+                   
                 }
                 actionSheetController.addAction(nextAction)
                 
