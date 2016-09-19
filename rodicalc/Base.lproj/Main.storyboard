@@ -2085,11 +2085,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5u-wF-BfT">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="iL4-1b-Ye8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <color key="textColor" red="0.15709728002548218" green="0.62560552358627319" blue="0.56066161394119263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-Yk-wrg">
+                                <frame key="frameInset" minX="20" minY="362" width="728" height="643"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -2110,6 +2114,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrM-4A-Nby">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="uHy-sB-E2u"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2128,25 +2135,27 @@
                             <constraint firstItem="dgO-Yk-wrg" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="0vQ-ga-KEX"/>
                             <constraint firstItem="90l-3n-SJS" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leading" id="AZf-mQ-ief"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="centerX" secondItem="xT6-1h-QuX" secondAttribute="centerX" id="AhX-1V-G9f"/>
-                            <constraint firstItem="juK-VP-Vgk" firstAttribute="leading" secondItem="y5u-wF-BfT" secondAttribute="leading" id="ESb-Bk-B9F"/>
+                            <constraint firstItem="dgO-Yk-wrg" firstAttribute="top" secondItem="jrM-4A-Nby" secondAttribute="bottom" constant="8" id="Fgy-Wr-oxU"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="centerX" secondItem="EqJ-x9-59O" secondAttribute="centerX" id="Khl-me-h0b"/>
                             <constraint firstAttribute="bottom" secondItem="dgO-Yk-wrg" secondAttribute="bottom" constant="20" symbolic="YES" id="MjM-gT-ctX"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="top" secondItem="juK-VP-Vgk" secondAttribute="bottom" constant="23" id="RjQ-5e-wAE"/>
-                            <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="25" id="T16-Xz-pcq"/>
                             <constraint firstItem="DeX-NN-P4g" firstAttribute="centerX" secondItem="juK-VP-Vgk" secondAttribute="centerX" id="T9T-nH-IIq"/>
                             <constraint firstItem="90l-3n-SJS" firstAttribute="top" secondItem="QrC-Rd-H0b" secondAttribute="top" id="UPR-EK-Xep"/>
                             <constraint firstItem="90l-3n-SJS" firstAttribute="bottom" secondItem="qRM-JT-6D4" secondAttribute="top" id="UTw-om-JKo"/>
-                            <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="jrM-4A-Nby" secondAttribute="leading" id="UcA-88-WIc"/>
                             <constraint firstAttribute="trailing" secondItem="90l-3n-SJS" secondAttribute="trailing" id="VZC-lb-Ll9"/>
                             <constraint firstItem="EqJ-x9-59O" firstAttribute="top" secondItem="xT6-1h-QuX" secondAttribute="bottom" constant="8" symbolic="YES" id="Wsy-j2-QkI"/>
-                            <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="16" id="awg-BF-1MH"/>
                             <constraint firstItem="xT6-1h-QuX" firstAttribute="top" secondItem="DeX-NN-P4g" secondAttribute="bottom" constant="3" id="c1l-kv-SJl"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="top" secondItem="EqJ-x9-59O" secondAttribute="bottom" constant="25" id="cqm-Dt-uil"/>
                             <constraint firstItem="juK-VP-Vgk" firstAttribute="top" secondItem="r6x-O1-9N4" secondAttribute="bottom" constant="15" id="eeM-Vs-IhU"/>
-                            <constraint firstItem="dgO-Yk-wrg" firstAttribute="top" secondItem="jrM-4A-Nby" secondAttribute="bottom" constant="8" symbolic="YES" id="eeY-ze-bc1"/>
                             <constraint firstItem="DeX-NN-P4g" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" constant="91" id="epX-1i-xMQ"/>
                             <constraint firstItem="90l-3n-SJS" firstAttribute="centerX" secondItem="DeX-NN-P4g" secondAttribute="centerX" id="fwx-up-GHR"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="trailing" secondItem="dgO-Yk-wrg" secondAttribute="trailing" id="gt9-j7-BvP"/>
                             <constraint firstItem="DeX-NN-P4g" firstAttribute="centerY" secondItem="juK-VP-Vgk" secondAttribute="centerY" id="h9h-bH-66a"/>
-                            <constraint firstItem="jrM-4A-Nby" firstAttribute="centerX" secondItem="dgO-Yk-wrg" secondAttribute="centerX" id="o4o-5Y-97x"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="oth-HF-PKC"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="trailing" secondItem="QrC-Rd-H0b" secondAttribute="trailingMargin" id="qmz-oM-8ea"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="leading" secondItem="QrC-Rd-H0b" secondAttribute="leadingMargin" id="zNS-xd-Vrx"/>
+                            <constraint firstItem="jrM-4A-Nby" firstAttribute="top" secondItem="y5u-wF-BfT" secondAttribute="bottom" constant="15" id="zgN-tm-xYJ"/>
+                            <constraint firstItem="y5u-wF-BfT" firstAttribute="trailing" secondItem="QrC-Rd-H0b" secondAttribute="trailingMargin" id="zrT-6y-SgX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Предполагаемая дата родов" id="Mx8-IS-U8c">
@@ -2167,7 +2176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5i-bo-bVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="-245"/>
+            <point key="canvasLocation" x="1259.375" y="-245.50781249999997"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Vu-8i-wat">
