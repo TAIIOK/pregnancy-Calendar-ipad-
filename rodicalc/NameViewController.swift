@@ -78,6 +78,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].value) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].value), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
         tmp.addAttributes([NSFontAttributeName : UIFont.italicSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
         text.appendAttributedString(tmp)
+        text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
         text.appendAttributedString(NSMutableAttributedString(string: choosedSegmentNames ? ("\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : ("\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about), attributes: [NSFontAttributeName : UIFont.systemFontOfSize(18)]))
         //text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
         info.attributedText = text
@@ -100,6 +101,7 @@ class NameViewController: UIViewController, UITableViewDelegate, UITableViewData
             tmp = NSMutableAttributedString(string: choosedSegmentNames ? (man[sections[indexPath.section].index + indexPath.row].value) : (woman[sectionsGirl[indexPath.section].index + indexPath.row].value), attributes: [NSParagraphStyleAttributeName: paragraphStyle])
             tmp.addAttributes([NSFontAttributeName : UIFont.italicSystemFontOfSize(18)], range: NSRange(location: 0,length: tmp.length))
             text.appendAttributedString(tmp)
+            text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
             text.appendAttributedString(NSMutableAttributedString(string: choosedSegmentNames ? ("\n\n" + man[sections[indexPath.section].index + indexPath.row].about) : ("\n\n" + woman[sectionsGirl[indexPath.section].index + indexPath.row].about), attributes: [NSFontAttributeName : UIFont.systemFontOfSize(18)]))
             //text.addAttributes([NSForegroundColorAttributeName: BiruzaColor1], range: NSRange(location: 0,length: text.length))
             info.attributedText = text

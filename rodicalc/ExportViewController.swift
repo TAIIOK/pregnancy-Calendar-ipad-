@@ -198,7 +198,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         for i in AllExportNotes{
             if i.photos.count > 2{
                 somanyphoto = true
-                txt.appendContentsOf("День \(dateFormatter.stringFromDate(i.date)) содержит \(i.photos.count) фото")
+                txt.appendContentsOf("День \(dateFormatter.stringFromDate(i.date)) содержит \(i.photos.count) фото.")
             }
         }
         if somanyphoto{
@@ -382,6 +382,18 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
         }else{
            return 1
         }
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DateTableViewCell
+        cell.selectedBackgroundView=getCustomBackgroundView()
+        return indexPath
+    }
+    
+    private func getCustomBackgroundView() -> UIView{
+        let BackgroundView = UIView()
+        BackgroundView.backgroundColor = UIColor.clearColor()
+        return BackgroundView
     }
     
     func frontwards(s1: NSDate, _ s2: NSDate) -> Bool {
