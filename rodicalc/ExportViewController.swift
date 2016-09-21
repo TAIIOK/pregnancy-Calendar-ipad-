@@ -448,7 +448,7 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
                 tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
             }
             
-            cell.selectedBackgroundView?.backgroundColor = .clearColor()
+            cell.selectedBackgroundView=getCustomBackgroundView()
             cell.backgroundColor = .clearColor()
             return cell
         }else if tableView == NotesTable{

@@ -183,6 +183,7 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         cell.backgroundColor = .clearColor()
         cell.tintColor = UIColor.lightGrayColor()
+        cell.selectedBackgroundView=getCustomBackgroundView()
         cell.detailTextLabel?.tintColor = UIColor.lightGrayColor()
         return cell
     }
