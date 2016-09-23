@@ -185,6 +185,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.tintColor = UIColor.lightGrayColor()
         cell.selectedBackgroundView=getCustomBackgroundView()
         cell.detailTextLabel?.tintColor = UIColor.lightGrayColor()
+        cell.textLabel?.backgroundColor = .clearColor()
+        cell.detailTextLabel?.backgroundColor = .clearColor()
         return cell
     }
     
@@ -220,6 +222,8 @@ class CalcViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! DateTableViewCell
         cell.selectedBackgroundView=getCustomBackgroundView()
+        cell.textLabel?.backgroundColor = .clearColor()
+        cell.detailTextLabel?.backgroundColor = .clearColor()
         cell.textLabel?.highlightedTextColor = StrawBerryColor
         cell.detailTextLabel?.highlightedTextColor = StrawBerryColor
         return indexPath
