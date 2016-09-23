@@ -46,17 +46,30 @@ class DrugsListTableViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("drugsCell", forIndexPath: indexPath) as! NotifiCell
         cell.textLbl.text = Interval[indexPath.row]
         
-        if  indexPath.row == changeRemindInCurRec{
+        cell.selectedBackgroundView = getCustomBackgroundView()
+        
+        if firstStart && indexPath.row == curRemindType{
             cell.setHighlighted(true, animated: false)
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
             firstStart = false
         }
-        cell.selectedBackgroundView?.backgroundColor = .whiteColor()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         changeRemindInCurRec = indexPath.row
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.dequeueReusableCellWithIdentifier("drugsCell", forIndexPath: indexPath) as! NotifiCell
+        cell.selectedBackgroundView = getCustomBackgroundView()
+        return indexPath
+    }
+    
+    private func getCustomBackgroundView() -> UIView{
+        let BackgroundView = UIView()
+        BackgroundView.backgroundColor = UIColor.whiteColor()
+        return BackgroundView
     }
     
     @IBAction func Cancel(sender: UIBarButtonItem) {
