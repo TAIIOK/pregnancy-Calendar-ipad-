@@ -330,22 +330,24 @@ class DoctorViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let sectionHeaderArea = tbl.rectForHeaderInSection(i)
                 if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
                     print("tapped on section header:: \(i)")
-                    
-                    if(doctors[i-1].isRemind == true){
-                        doctors[i-1].isRemind = false
-                    //cancelLocalNotification("\(doctors[i-1].date)")
-                    }else if(doctors[i-1].isRemind == false){
-                        if(doctors[i-1].remindType != 0){
-                            doctors[i-1].isRemind = true
-                            //scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(doctors[i-1].date)")
+                    let collapsed = arrayForBool .objectAtIndex(i).boolValue
+                    if  collapsed != nil && collapsed == true{
+                        if(doctors[i-1].isRemind == true){
+                            doctors[i-1].isRemind = false
+                        //cancelLocalNotification("\(doctors[i-1].date)")
+                        }else if(doctors[i-1].isRemind == false){
+                            if(doctors[i-1].remindType != 0){
+                                doctors[i-1].isRemind = true
+                                //scheduleNotification(calculateDate(doctors[i-1].date, before: -1 , after: doctors[i-1].remindType), notificationTitle:"У вас посещение врача \(doctors[i-1].name)" , objectId: "\(doctors[i-1].date)")
+                            }
                         }
+                        
+                        self.view.endEditing(true)
+                        tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+                        let headerview = tbl.viewWithTag(i) as? DoctorHeader
+                        headerview?.setopen(true)
+                        headerview?.changeFields()
                     }
-                    
-                    self.view.endEditing(true)
-                    tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
-                    let headerview = tbl.viewWithTag(i) as? DoctorHeader
-                    headerview?.setopen(true)
-                    headerview?.changeFields()
                     break
                 }
             }

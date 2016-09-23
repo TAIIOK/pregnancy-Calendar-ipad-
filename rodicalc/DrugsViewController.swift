@@ -393,34 +393,36 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let sectionHeaderArea = tbl.rectForHeaderInSection(i)
                 if CGRectContainsPoint(sectionHeaderArea, tappedPoint) {
                     print("tapped on section header:: \(i)")
-                    
-                    if(drugs[i-1].isRemind == true){
-                        drugs[i-1].isRemind = false
-                        
-                        /*let notifiday = drugs[i-1].start
-                        
-                        for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
-                        {
-                        cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
-                        }*/
+                    let collapsed = arrayForBool .objectAtIndex(i).boolValue
+                    if  collapsed != nil && collapsed == true{
+                        if(drugs[i-1].isRemind == true){
+                            drugs[i-1].isRemind = false
+                            
+                            /*let notifiday = drugs[i-1].start
+                            
+                            for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
+                            {
+                            cancelLocalNotification("\(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0))")
+                            }*/
 
-                        
+                            
+                        }
+                        else if(drugs[i-1].isRemind == false){
+                            drugs[i-1].isRemind = true
+                            
+                            /*let notifiday = drugs[i-1].start
+                            
+                            for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
+                            {
+                                scheduleNotification(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[i-1].cellType), notificationTitle:"Время приема лекарства \(drugs[i-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[i-1].cellType))")
+                            }*/
+                        }
+                        self.view.endEditing(true)
+                        tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
+                        let headerview = tbl.viewWithTag(i) as? DoctorHeader
+                        headerview?.setopen(true)
+                        headerview?.changeFields()
                     }
-                    else if(drugs[i-1].isRemind == false){
-                        drugs[i-1].isRemind = true
-                        
-                        /*let notifiday = drugs[i-1].start
-                        
-                        for(var j = 0 ;j <= notifiday.daysFrom(drugs[i-1].end); j++)
-                        {
-                            scheduleNotification(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1 , after: drugs[i-1].cellType), notificationTitle:"Время приема лекарства \(drugs[i-1].name)" , objectId: "\(calculateDate(addDaystoGivenDate(drugs[i-1].start, NumberOfDaysToAdd: j, NumberOfHoursToAdd: 0, NumberOfMinuteToAdd: 0), before: -1, after: drugs[i-1].cellType))")
-                        }*/
-                    }
-                    self.view.endEditing(true)
-                    tbl.reloadSections(NSIndexSet(index: i), withRowAnimation: .None)
-                    let headerview = tbl.viewWithTag(i) as? DoctorHeader
-                    headerview?.setopen(true)
-                    headerview?.changeFields()
                     break
                 }
             }
