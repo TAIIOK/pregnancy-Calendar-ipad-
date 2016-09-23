@@ -387,6 +387,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! DateTableViewCell
         cell.selectedBackgroundView=getCustomBackgroundView()
+        cell.textLabel?.backgroundColor = .clearColor()
+        cell.detailTextLabel?.backgroundColor = .clearColor()
         return indexPath
     }
     
@@ -443,13 +445,15 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             default:
                 cell.textLabel?.text = ""
             }
+            
+            cell.selectedBackgroundView=getCustomBackgroundView()
+            cell.backgroundColor = .clearColor()
+            cell.textLabel?.backgroundColor = .clearColor()
+            cell.detailTextLabel?.backgroundColor = .clearColor()
             if indexPath.row == selectionDateType{
                 cell.setHighlighted(true, animated: false)
                 tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
             }
-            
-            cell.selectedBackgroundView=getCustomBackgroundView()
-            cell.backgroundColor = .clearColor()
             return cell
         }else if tableView == NotesTable{
             let cell = tableView.dequeueReusableCellWithIdentifier("NoteExpCell", forIndexPath: indexPath) as! DateTableViewCell
@@ -501,6 +505,8 @@ class ExportViewController: UIViewController, UIWebViewDelegate, UITableViewDele
             
             selectionDateType = indexPath.row
             selectedExportDays.removeAll()
+            selectedExportWeek.removeAll()
+            tableView.reloadData()
             if showingExportType == 0 {
                 showingExportType = 1
                 let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ExportNav")
