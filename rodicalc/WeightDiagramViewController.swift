@@ -429,7 +429,7 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         saveGrowthToPlist(growth)
         setupPickerViewValues()
         
-        if growth > 0{
+        if growth > 0 && RecWeight == 0{
         //Create the AlertController
             let vc = self.storyboard!.instantiateViewControllerWithIdentifier("setweight") as! SetWeightViewController
             var nav = UINavigationController(rootViewController: vc)
@@ -440,6 +440,8 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             popover!.sourceView = self.view
             //popover!.sourceRect = CGRectMake(100,100,0,0)
             self.presentViewController(nav, animated: true, completion: nil)
+        } else if growth > 0 && RecWeight > 0{
+            showoldalert()
         }else{
             let graph = self.storyboard?.instantiateViewControllerWithIdentifier("Graph")
             self.splitViewController?.showDetailViewController(graph!, sender: self)
