@@ -14,7 +14,7 @@ var selectedNoteDay:DayView!
 var DayForView = NSDate()
 var NoteType = Int()
 var notes = ["Моё самочувствие","Как ведет себя малыш","Посещения врачей","Мой вес","Принимаемые лекарства","Приятное воспоминание дня","Важные события","Моё меню на сегодня","Мой лист желаний"]
-var NotesColor = [UIColor.greenColor(),
+var NotesColor = [UIColor(red: 1/255.0, green: 192/255.0, blue: 32/255.0, alpha: 1.0),
                   UIColor(red: 64/255.0, green: 224/255.0, blue: 208/255.0, alpha: 1.0),
                   UIColor(red: 0/255.0, green: 191/255.0, blue: 255/255.0, alpha: 1.0),
                   UIColor(red: 123/255.0, green: 104/255.0, blue: 238/255.0, alpha: 1.0),

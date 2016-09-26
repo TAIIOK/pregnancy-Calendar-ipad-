@@ -65,8 +65,8 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
         super.viewDidLoad()
         growth = loadGrowthFromCoreData()
         loadDate()
-        loadWeight()
         loadRecWeight()
+        loadWeight()
         //self.navigationItem.rightBarButtonItem?.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         self.growthButton.title = growth == 0 ? "Ваш рост" : "\(growth) см"
         self.weightButton.title = RecWeight == 0 ? "Ваш вес" : "\(RecWeight) кг"
@@ -130,6 +130,9 @@ class WeightDiagramViewController: UIViewController, UIPickerViewDataSource, UIP
             if week < 41 {
                 weights_.append(Weight(date: dateFormatter.dateFromString(b)!, kg: Int(i[kg]), gr: Int(i[gr]),week: week))
             }
+        }
+        if RecWeight > 0{
+            weights_.append(Weight(date: NSDate(), kg: Int(RecWeight), gr: Int((RecWeight - Double(Int(RecWeight))) * 1000), week: 0))
         }
         let tmp = weights_.sort(self.fronkwards)
         if tmp.count > 0{
